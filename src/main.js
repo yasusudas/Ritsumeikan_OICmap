@@ -1,5 +1,6 @@
 import './style.css';
 import { inject } from '@vercel/analytics';
+import { applyI18n, getLang, getLocale, onLanguageChange, t } from './i18n.js';
 
 if (window.__FILE_MODE__) {
   console.warn('This app must be opened through a local server, not file://');
@@ -12,36 +13,43 @@ if (window.__FILE_MODE__) {
     {
       id: '1F',
       label: '1F',
+      labelKey: 'floor.1F',
       svgUrl: new URL('../floor_img/1F.svg', import.meta.url).href
     },
     {
       id: '2F',
       label: '2F',
+      labelKey: 'floor.2F',
       svgUrl: new URL('../floor_img/2F.svg', import.meta.url).href
     },
     {
       id: '3F',
       label: '3F',
+      labelKey: 'floor.3F',
       svgUrl: new URL('../floor_img/3F.svg', import.meta.url).href
     },
     {
       id: '4F',
       label: '4F',
+      labelKey: 'floor.4F',
       svgUrl: new URL('../floor_img/4F.svg', import.meta.url).href
     },
     {
       id: '5F',
       label: '5F',
+      labelKey: 'floor.5F',
       svgUrl: new URL('../floor_img/5F.svg', import.meta.url).href
     },
     {
       id: 'A-6-9F',
       label: 'A棟6,7,8,9F',
+      labelKey: 'floor.A-6-9F',
       svgUrl: new URL('../floor_img/6F7F8F9F_BldgA.svg', import.meta.url).href
     },
     {
       id: 'H-6-9F',
       label: 'H棟6,7,8,9F',
+      labelKey: 'floor.H-6-9F',
       svgUrl: new URL('../floor_img/6F7F8F9F_BldgH.svg', import.meta.url).href
     }
   ];
@@ -49,6 +57,7 @@ if (window.__FILE_MODE__) {
     printer: {
       id: 'print-station',
       label: 'プリンター',
+      labelKey: 'floor.printerMap',
       svgUrl: new URL('../floor_img/print-station.svg', import.meta.url).href
     }
   };
@@ -70,7 +79,7 @@ if (window.__FILE_MODE__) {
   const ROOM_CODE_PATTERN = /[A-Z]{1,3}\s*-?\s*\d{2,4}[A-Z]?/g;
   const SEARCHABLE_CHAR_PATTERN = /[\p{L}\p{N}]/u;
   const LETTER_PATTERN = /\p{L}/u;
-  const roomCodeCollator = new Intl.Collator('ja', { numeric: true, sensitivity: 'base' });
+  let roomCodeCollator = new Intl.Collator(getLocale(), { numeric: true, sensitivity: 'base' });
   const svgCache = new Map();
   const appMode = document.body?.dataset.appMode === 'editor' ? 'editor' : 'viewer';
   const isEditorSite = appMode === 'editor';
@@ -108,13 +117,13 @@ if (window.__FILE_MODE__) {
   const editorRingList = document.querySelector('#editor-ring-list');
   const editorJson = document.querySelector('#editor-json');
   const knownFacilityDefinitions = [
-    { facilityKey: 'toilet', label: 'トイレ' },
-    { facilityKey: 'waterServer', label: 'ウォーターサーバー' },
-    { facilityKey: 'vendingMachine', label: '自販機' },
-    { facilityKey: 'printer', label: 'プリンター' },
-    { facilityKey: 'stairs', label: '階段' },
-    { facilityKey: 'escalator', label: 'エスカレーター' },
-    { facilityKey: 'elevator', label: 'エレベーター' }
+    { facilityKey: 'toilet', labelKey: 'facility.toilet' },
+    { facilityKey: 'waterServer', labelKey: 'facility.waterServer' },
+    { facilityKey: 'vendingMachine', labelKey: 'facility.vendingMachine' },
+    { facilityKey: 'printer', labelKey: 'facility.printer' },
+    { facilityKey: 'stairs', labelKey: 'facility.stairs' },
+    { facilityKey: 'escalator', labelKey: 'facility.escalator' },
+    { facilityKey: 'elevator', labelKey: 'facility.elevator' }
   ];
   const facilityButtonDefinitions = searchIconButtons
     .map((button) => {
@@ -125,14 +134,14 @@ if (window.__FILE_MODE__) {
 
       return {
         facilityKey,
-        label: button.getAttribute('aria-label')?.trim() || facilityKey
+        labelKey: `facility.${facilityKey}`
       };
     })
     .filter((definition) => definition !== null);
   const facilityLabelByKey = Object.fromEntries(
     [...knownFacilityDefinitions, ...facilityButtonDefinitions].map((definition) => [
       definition.facilityKey,
-      definition.label
+      definition.labelKey
     ])
   );
   const FACILITY_RING_DIAMETER_WIDTH_PERCENT_BY_FACILITY = Object.fromEntries(
@@ -147,13 +156,13 @@ if (window.__FILE_MODE__) {
       .filter((facilityKey) => Boolean(facilityKey && facilityKey in facilityLabelByKey))
   );
   const TOILET_RING_COLOR_VARIANT_OPTIONS = [
-    { value: 'red', label: '赤' },
-    { value: 'blue', label: '青' },
-    { value: 'yellow', label: '黄' }
+    { value: 'red', labelKey: 'color.red' },
+    { value: 'blue', labelKey: 'color.blue' },
+    { value: 'yellow', labelKey: 'color.yellow' }
   ];
   const DEFAULT_TOILET_RING_COLOR_VARIANT = 'red';
   const ringColorLabelByVariant = Object.fromEntries(
-    TOILET_RING_COLOR_VARIANT_OPTIONS.map((option) => [option.value, option.label])
+    TOILET_RING_COLOR_VARIANT_OPTIONS.map((option) => [option.value, option.labelKey])
   );
 
   const state = {
@@ -398,6 +407,29 @@ if (window.__FILE_MODE__) {
     return FLOOR_FILES[state.floorIndex];
   }
 
+  function getFloorLabel(floorOrId) {
+    const floor =
+      typeof floorOrId === 'string'
+        ? FLOOR_FILES.find((candidate) => candidate.id === floorOrId) ??
+          Object.values(SPECIAL_FLOOR_FILES_BY_FACILITY).find((candidate) => candidate.id === floorOrId)
+        : floorOrId;
+
+    if (!floor) {
+      return String(floorOrId ?? '');
+    }
+
+    return floor.labelKey ? t(floor.labelKey) : floor.label;
+  }
+
+  function getEntryFloorLabel(entry) {
+    return getFloorLabel(entry.floorId);
+  }
+
+  function getLocalizedEntryLabel(entry) {
+    const englishLabel = String(entry?.labelEn ?? '').trim();
+    return getLang() === 'en' && englishLabel ? englishLabel : entry.label;
+  }
+
   function getActiveSpecialFloorFacilityKey() {
     return Object.keys(SPECIAL_FLOOR_FILES_BY_FACILITY).find(
       (facilityKey) => state.facilityToggleState[facilityKey] === 1
@@ -450,7 +482,7 @@ if (window.__FILE_MODE__) {
   }
 
   function getCurrentFloorLabel() {
-    return getFloorDefinition().label;
+    return getFloorLabel(getFloorDefinition());
   }
 
   function createManualEntryId(floorId) {
@@ -462,7 +494,8 @@ if (window.__FILE_MODE__) {
   }
 
   function getFacilityLabel(facilityKey) {
-    return facilityLabelByKey[facilityKey] ?? facilityKey;
+    const labelKey = facilityLabelByKey[facilityKey];
+    return labelKey ? t(labelKey) : facilityKey;
   }
 
   function normalizeFacilityRingColorVariant(facilityKey, colorVariant) {
@@ -480,7 +513,8 @@ if (window.__FILE_MODE__) {
       return '';
     }
 
-    return ringColorLabelByVariant[normalizeFacilityRingColorVariant(facilityKey, colorVariant)] ?? '';
+    const labelKey = ringColorLabelByVariant[normalizeFacilityRingColorVariant(facilityKey, colorVariant)];
+    return labelKey ? t(labelKey) : '';
   }
 
   function getFacilityRingVisualVariant(facilityKey, colorVariant) {
@@ -534,12 +568,13 @@ if (window.__FILE_MODE__) {
     };
   }
 
-  function hydrateManualEntry(entry, fallbackFloorId = getCurrentFloorLabel()) {
+  function hydrateManualEntry(entry, fallbackFloorId = getFloorDefinition().id) {
     const floorId =
       FLOOR_FILES.find((floor) => floor.id === entry?.floorId)?.id ??
       FLOOR_FILES.find((floor) => floor.label === fallbackFloorId)?.id ??
       getFloorDefinition().id;
     const label = String(entry?.label ?? '').trim();
+    const labelEn = String(entry?.labelEn ?? '').trim();
     const rects = Array.isArray(entry?.rects) ? entry.rects.map((rect) => normalizeRect(rect)) : [];
 
     if (!label || rects.length === 0) {
@@ -547,16 +582,14 @@ if (window.__FILE_MODE__) {
     }
 
     const aliases = sanitizeAliases(entry?.aliases ?? []);
-    const floorLabel = FLOOR_FILES.find((floor) => floor.id === floorId)?.label ?? floorId;
 
     return {
       id: String(entry?.id ?? createManualEntryId(floorId)),
       label,
+      labelEn,
       normalized: normalizeSearchValue(label),
-      searchTerms: createEntrySearchTerms(label, aliases),
       aliases,
       floorId,
-      floorLabel,
       floorOrder: getFloorOrder(floorId),
       rects,
       source: 'manual'
@@ -575,7 +608,7 @@ if (window.__FILE_MODE__) {
       .filter((entry) => entry !== null);
   }
 
-  function hydrateFacilityRing(ring, fallbackFloorId = getCurrentFloorLabel()) {
+  function hydrateFacilityRing(ring, fallbackFloorId = getFloorDefinition().id) {
     const facilityKey = String(ring?.facilityKey ?? '').trim();
     const floorId =
       FLOOR_FILES.find((floor) => floor.id === ring?.floorId)?.id ??
@@ -587,7 +620,6 @@ if (window.__FILE_MODE__) {
       return null;
     }
 
-    const floorLabel = FLOOR_FILES.find((floor) => floor.id === floorId)?.label ?? floorId;
     const colorVariant = normalizeFacilityRingColorVariant(facilityKey, ring?.colorVariant);
 
     return {
@@ -597,7 +629,6 @@ if (window.__FILE_MODE__) {
       colorVariant,
       colorLabel: getFacilityRingColorLabel(facilityKey, colorVariant),
       floorId,
-      floorLabel,
       floorOrder: getFloorOrder(floorId),
       xRatio: point.xRatio,
       yRatio: point.yRatio
@@ -773,6 +804,7 @@ if (window.__FILE_MODE__) {
       id: entry.id,
       floorId: entry.floorId,
       label: entry.label,
+      ...(entry.labelEn ? { labelEn: entry.labelEn } : {}),
       aliases: entry.aliases,
       rects: entry.rects.map((rect) => ({
         xRatio: Number(rect.xRatio.toFixed(6)),
@@ -798,7 +830,7 @@ if (window.__FILE_MODE__) {
           return floorOrder;
         }
 
-        const facilityOrder = roomCodeCollator.compare(left.facilityLabel, right.facilityLabel);
+        const facilityOrder = roomCodeCollator.compare(getFacilityLabel(left.facilityKey), getFacilityLabel(right.facilityKey));
 
         if (facilityOrder !== 0) {
           return facilityOrder;
@@ -828,7 +860,7 @@ if (window.__FILE_MODE__) {
         return floorOrder;
       }
 
-      return roomCodeCollator.compare(left.label, right.label);
+      return roomCodeCollator.compare(getLocalizedEntryLabel(left), getLocalizedEntryLabel(right));
     });
 
     return {
@@ -854,14 +886,14 @@ if (window.__FILE_MODE__) {
   }
 
   function getEntrySearchTerms(entry) {
-    return entry.searchTerms?.length ? entry.searchTerms : [entry.normalized];
+    return createEntrySearchTerms(getLocalizedEntryLabel(entry), entry.aliases);
   }
 
   function refreshSearchEntries() {
     const combinedEntries = [...state.manualEntries];
 
     combinedEntries.sort((left, right) => {
-      const labelOrder = roomCodeCollator.compare(left.label, right.label);
+      const labelOrder = roomCodeCollator.compare(getLocalizedEntryLabel(left), getLocalizedEntryLabel(right));
 
       if (labelOrder !== 0) {
         return labelOrder;
@@ -965,7 +997,7 @@ if (window.__FILE_MODE__) {
     canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0)`;
 
     const percent = Math.round(state.zoom * 100);
-    setStatus(`${getRenderedFloorDefinition().label} | ${percent}%`);
+    setStatus(`${getFloorLabel(getRenderedFloorDefinition())} | ${percent}%`);
   }
 
   function scheduleViewRender() {
@@ -1149,7 +1181,9 @@ if (window.__FILE_MODE__) {
 
     if (state.activeRingEditorFacilityKey === 'toilet') {
       setEditorFeedback(
-        `トイレリング編集モードです。現在色: ${getFacilityRingColorLabel('toilet', state.activeToiletRingColorVariant)}`
+        t('editor.ringModeToilet', {
+          color: getFacilityRingColorLabel('toilet', state.activeToiletRingColorVariant)
+        })
       );
     }
 
@@ -1192,15 +1226,19 @@ if (window.__FILE_MODE__) {
       state.activeEditorPinKey = null;
       if (nextFacilityKey === 'toilet') {
         setEditorFeedback(
-          `トイレリング編集モードです。現在色: ${getFacilityRingColorLabel('toilet', state.activeToiletRingColorVariant)}`
+          t('editor.ringModeToilet', {
+            color: getFacilityRingColorLabel('toilet', state.activeToiletRingColorVariant)
+          })
         );
       } else {
         setEditorFeedback(
-          `${getFacilityLabel(nextFacilityKey)} のリング編集モードです。地図をタップすると追加、既存リングをタップすると削除します`
+          t('editor.ringModeFacility', {
+            facility: getFacilityLabel(nextFacilityKey)
+          })
         );
       }
     } else if (state.editMode) {
-      setEditorFeedback('地図上の文字位置をクリックして表示名を記録できます。リング編集モードはオフです');
+      setEditorFeedback(t('editor.ringModeOff'));
     }
 
     refreshEditorUi();
@@ -1217,8 +1255,13 @@ if (window.__FILE_MODE__) {
     ringButton.setAttribute(
       'aria-label',
       ring.facilityKey === 'toilet' && ring.colorLabel
-        ? `${ring.facilityLabel} ${ring.colorLabel}リングを操作`
-        : `${ring.facilityLabel} のリングを操作`
+        ? t('editor.ringHandleAriaWithColor', {
+            facility: getFacilityLabel(ring.facilityKey),
+            color: getFacilityRingColorLabel(ring.facilityKey, ring.colorVariant)
+          })
+        : t('editor.ringHandleAria', {
+            facility: getFacilityLabel(ring.facilityKey)
+          })
     );
     ringButton.style.left = `${ring.xRatio * 100}%`;
     ringButton.style.top = `${ring.yRatio * 100}%`;
@@ -1242,7 +1285,7 @@ if (window.__FILE_MODE__) {
     if (!facilityKey) {
       const empty = document.createElement('div');
       empty.className = 'editor-empty';
-      empty.textContent = '施設ボタンをオンにすると、その施設用のリングを追加・削除できます';
+      empty.textContent = t('editor.noRingTool');
       editorRingList.replaceChildren(empty);
       updateEditorRingClearButtonState();
       return;
@@ -1253,7 +1296,10 @@ if (window.__FILE_MODE__) {
     if (rings.length === 0) {
       const empty = document.createElement('div');
       empty.className = 'editor-empty';
-      empty.textContent = `${getCurrentFloorLabel()} の ${getFacilityLabel(facilityKey)} リングはまだありません`;
+      empty.textContent = t('editor.noRings', {
+        floor: getCurrentFloorLabel(),
+        facility: getFacilityLabel(facilityKey)
+      });
       editorRingList.replaceChildren(empty);
       updateEditorRingClearButtonState();
       return;
@@ -1272,14 +1318,21 @@ if (window.__FILE_MODE__) {
       label.className = 'editor-entry-label';
       label.textContent =
         ring.facilityKey === 'toilet' && ring.colorLabel
-          ? `${ring.facilityLabel}(${ring.colorLabel}) リング ${index + 1}`
-          : `${ring.facilityLabel} リング ${index + 1}`;
+          ? t('editor.ringLabelWithColor', {
+              facility: getFacilityLabel(ring.facilityKey),
+              color: getFacilityRingColorLabel(ring.facilityKey, ring.colorVariant),
+              index: index + 1
+            })
+          : t('editor.ringLabel', {
+              facility: getFacilityLabel(ring.facilityKey),
+              index: index + 1
+            });
 
       const meta = document.createElement('div');
       meta.className = 'editor-entry-meta';
       meta.textContent =
         ring.facilityKey === 'toilet' && ring.colorLabel
-          ? `${ring.colorLabel} / x ${ring.xRatio.toFixed(4)} / y ${ring.yRatio.toFixed(4)}`
+          ? `${getFacilityRingColorLabel(ring.facilityKey, ring.colorVariant)} / x ${ring.xRatio.toFixed(4)} / y ${ring.yRatio.toFixed(4)}`
           : `x ${ring.xRatio.toFixed(4)} / y ${ring.yRatio.toFixed(4)}`;
 
       body.append(label, meta);
@@ -1292,14 +1345,14 @@ if (window.__FILE_MODE__) {
       focusButton.className = 'editor-entry-button';
       focusButton.dataset.action = 'focus-ring';
       focusButton.dataset.ringId = ring.id;
-      focusButton.textContent = '移動';
+      focusButton.textContent = t('editor.move');
 
       const deleteButton = document.createElement('button');
       deleteButton.type = 'button';
       deleteButton.className = 'editor-entry-button';
       deleteButton.dataset.action = 'delete-ring';
       deleteButton.dataset.ringId = ring.id;
-      deleteButton.textContent = '削除';
+      deleteButton.textContent = t('editor.delete');
 
       actions.append(focusButton, deleteButton);
       row.append(body, actions);
@@ -1321,8 +1374,8 @@ if (window.__FILE_MODE__) {
       const entry = getManualEntryById(entryId);
 
       if (entry) {
-        const aliasText = entry.aliases.length ? ` / 別名: ${entry.aliases.join(', ')}` : '';
-        setEditorFeedback(`${entry.label}${aliasText}`);
+        const aliasText = entry.aliases.length ? t('editor.aliasMeta', { aliases: entry.aliases.join(', ') }) : '';
+        setEditorFeedback(`${getLocalizedEntryLabel(entry)}${aliasText}`);
       }
     }
 
@@ -1385,7 +1438,7 @@ if (window.__FILE_MODE__) {
       return;
     }
 
-    editorCoords.textContent = '位置未指定';
+    editorCoords.textContent = t('editor.noCoords');
   }
 
   function updateEditorJsonOutput() {
@@ -1407,7 +1460,7 @@ if (window.__FILE_MODE__) {
     if (currentFloorEntries.length === 0) {
       const empty = document.createElement('div');
       empty.className = 'editor-empty';
-      empty.textContent = `${getCurrentFloorLabel()} の手入力データはまだありません`;
+      empty.textContent = t('editor.noEntries', { floor: getCurrentFloorLabel() });
       editorList.replaceChildren(empty);
       return;
     }
@@ -1423,13 +1476,15 @@ if (window.__FILE_MODE__) {
 
       const label = document.createElement('div');
       label.className = 'editor-entry-label';
-      label.textContent = entry.label;
+      label.textContent = getLocalizedEntryLabel(entry);
 
       const meta = document.createElement('div');
       meta.className = 'editor-entry-meta';
-      meta.textContent = `${entry.rects.length} rect${entry.rects.length > 1 ? 's' : ''}${
-        entry.aliases.length ? ` / 別名: ${entry.aliases.join(', ')}` : ''
-      }`;
+      meta.textContent = t('editor.rectMeta', {
+        count: entry.rects.length,
+        rectSuffix: entry.rects.length > 1 ? 's' : '',
+        aliases: entry.aliases.length ? t('editor.aliasMeta', { aliases: entry.aliases.join(', ') }) : ''
+      });
 
       body.append(label, meta);
 
@@ -1441,14 +1496,14 @@ if (window.__FILE_MODE__) {
       focusButton.className = 'editor-entry-button';
       focusButton.dataset.action = 'focus';
       focusButton.dataset.entryId = entry.id;
-      focusButton.textContent = '移動';
+      focusButton.textContent = t('editor.move');
 
       const deleteButton = document.createElement('button');
       deleteButton.type = 'button';
       deleteButton.className = 'editor-entry-button';
       deleteButton.dataset.action = 'delete';
       deleteButton.dataset.entryId = entry.id;
-      deleteButton.textContent = '削除';
+      deleteButton.textContent = t('editor.delete');
 
       actions.append(focusButton, deleteButton);
       row.append(body, actions);
@@ -1493,7 +1548,7 @@ if (window.__FILE_MODE__) {
         pin.className = 'editor-pin-button';
         pin.dataset.entryId = entry.id;
         pin.dataset.rectIndex = String(rectIndex);
-        pin.setAttribute('aria-label', `${entry.label} を確認`);
+        pin.setAttribute('aria-label', t('editor.pinAria', { label: getLocalizedEntryLabel(entry) }));
         pin.style.left = `${center.xRatio * 100}%`;
         pin.style.top = `${center.yRatio * 100}%`;
 
@@ -1511,13 +1566,13 @@ if (window.__FILE_MODE__) {
 
           const label = document.createElement('div');
           label.className = 'editor-pin-popover-label';
-          label.textContent = entry.label;
+          label.textContent = getLocalizedEntryLabel(entry);
 
           const meta = document.createElement('div');
           meta.className = 'editor-pin-popover-meta';
           meta.textContent = entry.aliases.length
-            ? `${entry.floorLabel} / 別名: ${entry.aliases.join(', ')}`
-            : `${entry.floorLabel}`;
+            ? `${getEntryFloorLabel(entry)}${t('editor.aliasMeta', { aliases: entry.aliases.join(', ') })}`
+            : `${getEntryFloorLabel(entry)}`;
 
           popover.append(label, meta);
           fragment.append(popover);
@@ -1606,13 +1661,19 @@ if (window.__FILE_MODE__) {
       state.activeSuggestionIndex = -1;
 
       if (getActiveSearchEntry()) {
-        setSearchFeedback(`${getActiveSearchEntry().label} を ${getActiveSearchEntry().floorLabel} で表示中`);
+        const activeEntry = getActiveSearchEntry();
+        setSearchFeedback(
+          t('search.feedback.showing', {
+            label: getLocalizedEntryLabel(activeEntry),
+            floor: getEntryFloorLabel(activeEntry)
+          })
+        );
       } else if (state.searchLoading) {
-        setSearchFeedback('検索データを読み込み中...');
+        setSearchFeedback(t('search.feedback.loading'));
       } else if (state.searchEntries.length === 0) {
-        setSearchFeedback('検索データがまだありません');
+        setSearchFeedback(t('search.feedback.noData'));
       } else {
-        setSearchFeedback('500以上の教室の位置を検索できます / 地図は拡大･縮小･移動できます');
+        setSearchFeedback(t('search.feedback.default'));
       }
       return;
     }
@@ -1622,12 +1683,12 @@ if (window.__FILE_MODE__) {
     if (!normalizedQuery) {
       const hint = document.createElement('div');
       hint.className = 'search-result-empty';
-      hint.textContent = 'アルファベットと数字で検索できます';
+      hint.textContent = t('search.feedback.inputHint');
       searchResults.replaceChildren(hint);
       searchResults.hidden = false;
       state.searchSuggestions = [];
       state.activeSuggestionIndex = -1;
-      setSearchFeedback('検索語を入力してください');
+      setSearchFeedback(t('search.feedback.inputRequired'));
       return;
     }
 
@@ -1664,10 +1725,10 @@ if (window.__FILE_MODE__) {
       const empty = document.createElement('div');
       empty.className = 'search-result-empty';
       empty.textContent =
-        state.searchEntries.length === 0 ? '検索データがまだ登録されていません' : '一致する教室候補がありません';
+        state.searchEntries.length === 0 ? t('search.feedback.noDataRegistered') : t('search.feedback.noMatches');
       searchResults.replaceChildren(empty);
       searchResults.hidden = false;
-      setSearchFeedback(state.searchEntries.length === 0 ? '検索データなし' : '一致候補なし');
+      setSearchFeedback(state.searchEntries.length === 0 ? t('search.feedback.noDataShort') : t('search.feedback.noMatchesShort'));
       return;
     }
 
@@ -1685,11 +1746,11 @@ if (window.__FILE_MODE__) {
 
       const label = document.createElement('span');
       label.className = 'search-result-label';
-      label.textContent = entry.label;
+      label.textContent = getLocalizedEntryLabel(entry);
 
       const floor = document.createElement('span');
       floor.className = 'search-result-floor';
-      floor.textContent = entry.floorLabel;
+      floor.textContent = getEntryFloorLabel(entry);
 
       button.append(label, floor);
       fragment.append(button);
@@ -1697,7 +1758,12 @@ if (window.__FILE_MODE__) {
 
     searchResults.replaceChildren(fragment);
     searchResults.hidden = false;
-    setSearchFeedback(`${state.searchSuggestions.length} 件の候補`);
+    setSearchFeedback(
+      t('search.feedback.matches', {
+        count: state.searchSuggestions.length,
+        suffix: state.searchSuggestions.length === 1 ? '' : 'es'
+      })
+    );
   }
 
   function clearActiveSearchSelection({ clearInput = false } = {}) {
@@ -1717,7 +1783,7 @@ if (window.__FILE_MODE__) {
     }
 
     state.activeSearchEntryId = entry.id;
-    searchInput.value = entry.label;
+    searchInput.value = getLocalizedEntryLabel(entry);
     searchResults.hidden = true;
 
     if (entry.floorId !== getFloorDefinition().id || isSpecialFloorActive()) {
@@ -1728,7 +1794,12 @@ if (window.__FILE_MODE__) {
 
     renderSearchHighlights();
     focusSearchEntry(entry);
-    setSearchFeedback(`${entry.label} を ${entry.floorLabel} で表示中`);
+    setSearchFeedback(
+      t('search.feedback.showing', {
+        label: getLocalizedEntryLabel(entry),
+        floor: getEntryFloorLabel(entry)
+      })
+    );
   }
 
   async function buildSearchIndex() {
@@ -1737,7 +1808,7 @@ if (window.__FILE_MODE__) {
     }
 
     state.searchLoading = true;
-    setSearchFeedback('検索データを読み込み中...');
+    setSearchFeedback(t('search.feedback.loading'));
 
     state.searchPromise = (async () => {
       try {
@@ -1788,7 +1859,7 @@ if (window.__FILE_MODE__) {
     const floorLoadToken = ++state.floorLoadToken;
     const centerRatios = preserveView ? captureViewportCenterRatios() : null;
 
-    setStatus(`${floor.label} を読み込み中...`);
+    setStatus(t('status.floorLoading', { floor: getFloorLabel(floor) }));
 
     try {
       const asset = await fetchSvgAsset(floor);
@@ -1850,7 +1921,7 @@ if (window.__FILE_MODE__) {
       state.highlightLayer = null;
       state.ringLayer = null;
       state.editorLayer = null;
-      setStatus('地図の読み込みに失敗しました');
+      setStatus(t('status.floorError'));
     }
   }
 
@@ -1918,9 +1989,9 @@ if (window.__FILE_MODE__) {
     viewer.classList.toggle('is-editing', state.editMode);
 
     if (state.editMode) {
-      setEditorFeedback('地図上の文字位置をクリックして表示名を記録できます。リング編集ボタンがオンの時はリングを追加・削除できます');
+      setEditorFeedback(t('editor.mode.on'));
     } else {
-      setEditorFeedback('編集モードをオンにして、地図上の文字位置をクリックしてください');
+      setEditorFeedback(t('editor.mode.off'));
       state.pendingEditorPoint = null;
       state.activeEditorPinKey = null;
       state.activeEditorRingId = null;
@@ -1995,7 +2066,7 @@ if (window.__FILE_MODE__) {
     const ring = createFacilityRing(point, facilityKey);
 
     if (!ring) {
-      setEditorFeedback('リング位置を記録できませんでした');
+      setEditorFeedback(t('editor.ringRecordFailed'));
       return;
     }
 
@@ -2006,8 +2077,15 @@ if (window.__FILE_MODE__) {
     refreshEditorUi();
     setEditorFeedback(
       ring.facilityKey === 'toilet' && ring.colorLabel
-        ? `${ring.floorLabel} に ${ring.facilityLabel}(${ring.colorLabel}) リングを追加しました`
-        : `${ring.floorLabel} に ${ring.facilityLabel} リングを追加しました`
+        ? t('editor.ringAddedWithColor', {
+            floor: getFloorLabel(ring.floorId),
+            facility: getFacilityLabel(ring.facilityKey),
+            color: getFacilityRingColorLabel(ring.facilityKey, ring.colorVariant)
+          })
+        : t('editor.ringAdded', {
+            floor: getFloorLabel(ring.floorId),
+            facility: getFacilityLabel(ring.facilityKey)
+          })
     );
   }
 
@@ -2035,8 +2113,15 @@ if (window.__FILE_MODE__) {
     if (!silent) {
       setEditorFeedback(
         ring.facilityKey === 'toilet' && ring.colorLabel
-          ? `${ring.floorLabel} の ${ring.facilityLabel}(${ring.colorLabel}) リングを削除しました`
-          : `${ring.floorLabel} の ${ring.facilityLabel} リングを削除しました`
+          ? t('editor.ringRemovedWithColor', {
+              floor: getFloorLabel(ring.floorId),
+              facility: getFacilityLabel(ring.facilityKey),
+              color: getFacilityRingColorLabel(ring.facilityKey, ring.colorVariant)
+            })
+          : t('editor.ringRemoved', {
+              floor: getFloorLabel(ring.floorId),
+              facility: getFacilityLabel(ring.facilityKey)
+            })
       );
     }
   }
@@ -2058,7 +2143,7 @@ if (window.__FILE_MODE__) {
     const removedCount = beforeCount - state.facilityRings.length;
 
     if (removedCount === 0) {
-      setEditorFeedback(`${currentFloorLabel} の ${facilityLabel} リングはまだありません`);
+      setEditorFeedback(t('editor.noRings', { floor: currentFloorLabel, facility: facilityLabel }));
       return;
     }
 
@@ -2069,7 +2154,14 @@ if (window.__FILE_MODE__) {
     persistCurrentEditorState();
     renderFacilityRings();
     refreshEditorUi();
-    setEditorFeedback(`${currentFloorLabel} の ${facilityLabel} リングを ${removedCount} 件クリアしました`);
+    setEditorFeedback(
+      t('editor.ringsCleared', {
+        floor: currentFloorLabel,
+        facility: facilityLabel,
+        count: removedCount,
+        suffix: removedCount === 1 ? '' : 's'
+      })
+    );
   }
 
   function setActiveEditorRing(ringId = null) {
@@ -2083,8 +2175,15 @@ if (window.__FILE_MODE__) {
 
       setEditorFeedback(
         ring.facilityKey === 'toilet' && ring.colorLabel
-          ? `${ring.floorLabel} / ${ring.facilityLabel}(${ring.colorLabel}) リング`
-          : `${ring.floorLabel} / ${ring.facilityLabel} リング`
+          ? t('editor.ringSelectedWithColor', {
+              floor: getFloorLabel(ring.floorId),
+              facility: getFacilityLabel(ring.facilityKey),
+              color: getFacilityRingColorLabel(ring.facilityKey, ring.colorVariant)
+            })
+          : t('editor.ringSelected', {
+              floor: getFloorLabel(ring.floorId),
+              facility: getFacilityLabel(ring.facilityKey)
+            })
       );
     }
 
@@ -2115,8 +2214,15 @@ if (window.__FILE_MODE__) {
     refreshEditorUi();
     setEditorFeedback(
       ring.facilityKey === 'toilet' && ring.colorLabel
-        ? `${ring.floorLabel} / ${ring.facilityLabel}(${ring.colorLabel}) リングへ移動しました`
-        : `${ring.floorLabel} / ${ring.facilityLabel} リングへ移動しました`
+        ? t('editor.ringMovedWithColor', {
+            floor: getFloorLabel(ring.floorId),
+            facility: getFacilityLabel(ring.facilityKey),
+            color: getFacilityRingColorLabel(ring.facilityKey, ring.colorVariant)
+          })
+        : t('editor.ringMoved', {
+            floor: getFloorLabel(ring.floorId),
+            facility: getFacilityLabel(ring.facilityKey)
+          })
     );
   }
 
@@ -2128,7 +2234,7 @@ if (window.__FILE_MODE__) {
     const label = editorLabelInput.value.trim();
 
     if (!label) {
-      setEditorFeedback('表示名を入力してください');
+      setEditorFeedback(t('editor.labelRequired'));
       editorLabelInput.focus();
       return;
     }
@@ -2136,7 +2242,7 @@ if (window.__FILE_MODE__) {
     const rect = createPointRect(state.pendingEditorPoint);
 
     if (!rect) {
-      setEditorFeedback('先に地図上をクリックして位置を指定してください');
+      setEditorFeedback(t('editor.pointRequired'));
       return;
     }
 
@@ -2150,7 +2256,7 @@ if (window.__FILE_MODE__) {
     });
 
     if (!entry) {
-      setEditorFeedback('入力値から検索データを作成できませんでした');
+      setEditorFeedback(t('editor.entryCreateFailed'));
       return;
     }
 
@@ -2160,7 +2266,7 @@ if (window.__FILE_MODE__) {
     state.pendingEditorPoint = null;
     state.activeEditorPinKey = null;
     editorLabelInput.value = '';
-    setEditorFeedback(`${entry.label} を ${floor.label} に記録しました`);
+    setEditorFeedback(t('editor.entrySaved', { label: getLocalizedEntryLabel(entry), floor: getFloorLabel(floor) }));
     refreshEditorUi();
     renderSearchSuggestions();
   }
@@ -2174,11 +2280,11 @@ if (window.__FILE_MODE__) {
 
     try {
       await navigator.clipboard.writeText(payload);
-      setEditorFeedback('JSON をクリップボードにコピーしました');
+      setEditorFeedback(t('editor.copied'));
     } catch (error) {
       editorJson?.focus();
       editorJson?.select();
-      setEditorFeedback('自動コピーに失敗したため、JSON を選択した状態にしました');
+      setEditorFeedback(t('editor.copyFailed'));
     }
   }
 
@@ -2197,7 +2303,7 @@ if (window.__FILE_MODE__) {
     link.click();
     link.remove();
     URL.revokeObjectURL(url);
-    setEditorFeedback(`${MANUAL_EXPORT_FILENAME} を保存しました`);
+    setEditorFeedback(t('editor.exported', { filename: MANUAL_EXPORT_FILENAME }));
   }
 
   async function importManualEntriesJson(file) {
@@ -2225,12 +2331,17 @@ if (window.__FILE_MODE__) {
       renderSearchSuggestions();
       setEditorFeedback(
         importedEntries.length > 0 || importedFacilityRings.length > 0
-          ? `${importedEntries.length} 件の検索データと ${importedFacilityRings.length} 件のリング下書きを読み込みました。「編集を確定」で閲覧用に反映されます`
-          : '空の JSON を読み込みました。「編集を確定」で閲覧用からも削除されます'
+          ? t('editor.imported', {
+              entries: importedEntries.length,
+              rings: importedFacilityRings.length,
+              entrySuffix: importedEntries.length === 1 ? 'y' : 'ies',
+              ringSuffix: importedFacilityRings.length === 1 ? '' : 's'
+            })
+          : t('editor.importedEmpty')
       );
     } catch (error) {
       console.warn('Failed to import manual search entries.', error);
-      setEditorFeedback('JSON の読み込みに失敗しました');
+      setEditorFeedback(t('editor.importFailed'));
     }
   }
 
@@ -2247,8 +2358,13 @@ if (window.__FILE_MODE__) {
     });
     setEditorFeedback(
       publishedEntries.length > 0 || publishedFacilityRings.length > 0
-        ? `${publishedEntries.length} 件の検索データと ${publishedFacilityRings.length} 件のリングを閲覧用サイトに反映しました`
-        : '閲覧用サイトの検索データとリングを空に反映しました'
+        ? t('editor.published', {
+            entries: publishedEntries.length,
+            rings: publishedFacilityRings.length,
+            entrySuffix: publishedEntries.length === 1 ? 'y' : 'ies',
+            ringSuffix: publishedFacilityRings.length === 1 ? '' : 's'
+          })
+        : t('editor.publishedEmpty')
     );
   }
 
@@ -2258,14 +2374,14 @@ if (window.__FILE_MODE__) {
     }
 
     if (isSpecialFloorActive()) {
-      setEditorFeedback('プリンター表示中は通常フロアの位置編集を無効にしています');
+      setEditorFeedback(t('editor.specialFloorEditDisabled'));
       return;
     }
 
     const point = getMapPointFromClient(clientX, clientY);
 
     if (!point) {
-      setEditorFeedback('地図の外側は記録できません');
+      setEditorFeedback(t('editor.outsideMap'));
       return;
     }
 
@@ -2277,7 +2393,7 @@ if (window.__FILE_MODE__) {
     state.activeEditorPinKey = null;
     state.activeEditorRingId = null;
     state.pendingEditorPoint = point;
-    setEditorFeedback('位置を取得しました。表示名を入れて「この位置を記録」を押してください');
+    setEditorFeedback(t('editor.pointCaptured'));
     refreshEditorUi();
   }
 
@@ -2304,6 +2420,31 @@ if (window.__FILE_MODE__) {
     state.pinchStartCenterX = center.x;
     state.pinchStartCenterY = center.y;
   }
+
+  function refreshLanguageDependentUi() {
+    roomCodeCollator = new Intl.Collator(getLocale(), { numeric: true, sensitivity: 'base' });
+    applyI18n();
+    refreshSearchEntries();
+
+    const activeEntry = getActiveSearchEntry();
+    if (activeEntry && searchInput.value.trim()) {
+      searchInput.value = getLocalizedEntryLabel(activeEntry);
+    }
+
+    renderSearchSuggestions();
+    renderSearchHighlights();
+    renderFacilityRings();
+
+    if (state.baseWidth > 0 && state.baseHeight > 0) {
+      setStatus(`${getFloorLabel(getRenderedFloorDefinition())} | ${Math.round(state.zoom * 100)}%`);
+    }
+
+    if (isEditorSite) {
+      refreshEditorUi();
+    }
+  }
+
+  onLanguageChange(refreshLanguageDependentUi);
 
   if (isEditorSite) {
     setEditMode(true);
@@ -2410,7 +2551,7 @@ if (window.__FILE_MODE__) {
   if (editorClearPointButton) {
     editorClearPointButton.addEventListener('click', () => {
       state.pendingEditorPoint = null;
-      setEditorFeedback('仮位置をクリアしました');
+      setEditorFeedback(t('editor.pointCleared'));
       refreshEditorUi();
     });
   }
@@ -2579,8 +2720,8 @@ if (window.__FILE_MODE__) {
     const entry = getManualEntryById(entryId);
 
     if (entry && state.activeEditorPinKey) {
-      const aliasText = entry.aliases.length ? ` / 別名: ${entry.aliases.join(', ')}` : '';
-      setEditorFeedback(`${entry.label}${aliasText}`);
+      const aliasText = entry.aliases.length ? t('editor.aliasMeta', { aliases: entry.aliases.join(', ') }) : '';
+      setEditorFeedback(`${getLocalizedEntryLabel(entry)}${aliasText}`);
     }
 
     renderEditorOverlay();

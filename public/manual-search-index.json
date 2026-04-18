@@ -27,7 +27,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AC Office"
     },
     {
       "id": "manual-1F-1775276211133-ksv4nk",
@@ -55,7 +56,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AN Office"
     },
     {
       "id": "manual-1F-1775276397883-3ppsv2",
@@ -69,7 +71,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AS Office"
     },
     {
       "id": "manual-1F-1775178207718-ye8lju",
@@ -97,7 +100,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "D Office"
     },
     {
       "id": "manual-1F-1775276107988-dvmwti",
@@ -223,7 +227,8 @@
           "widthRatio": 0.02,
           "heightRatio": 0.02
         }
-      ]
+      ],
+      "labelEn": "Noh Theater"
     },
     {
       "id": "manual-1F-1775168044528-45uvni",
@@ -517,7 +522,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Event Hall 1"
     },
     {
       "id": "manual-1F-1775276138988-r98fqm",
@@ -531,7 +537,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Event Hall 2"
     },
     {
       "id": "manual-1F-1775276147617-kuif1d",
@@ -545,7 +552,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Event Hall 3"
     },
     {
       "id": "manual-1F-1775230586009-my4zd3",
@@ -559,7 +567,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Information (Building B Hall Reception)"
     },
     {
       "id": "manual-1F-1775230596676-b72rre",
@@ -573,7 +582,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Conference Hall"
     },
     {
       "id": "manual-1F-1775276376304-tyc217",
@@ -587,7 +597,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Campus Information"
     },
     {
       "id": "manual-1F-1775276357297-mkconb",
@@ -601,7 +612,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Campus Management Office 1"
     },
     {
       "id": "manual-1F-1775276347197-sitkay",
@@ -615,7 +627,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Campus Management Office 2"
     },
     {
       "id": "manual-1F-1775178126269-gkeqr2",
@@ -629,7 +642,8 @@
           "widthRatio": 0.03,
           "heightRatio": 0.01
         }
-      ]
+      ],
+      "labelEn": "Club Box"
     },
     {
       "id": "manual-1F-1775277787756-6ulo7v",
@@ -643,7 +657,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Grand Hall (1F)"
     },
     {
       "id": "manual-1F-1775178163639-5a4zwo",
@@ -657,7 +672,8 @@
           "widthRatio": 0.013,
           "heightRatio": 0.02
         }
-      ]
+      ],
+      "labelEn": "Conditioning Room"
     },
     {
       "id": "manual-1F-1775276070168-w74szt",
@@ -671,7 +687,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Starbucks Coffee"
     },
     {
       "id": "manual-1F-1775276488715-0vkkmq",
@@ -685,7 +702,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Staff Room"
     },
     {
       "id": "manual-1F-1775276194346-agkncx",
@@ -699,7 +717,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "7-Eleven"
     },
     {
       "id": "manual-1F-1775178231502-tnlcqo",
@@ -713,7 +732,8 @@
           "widthRatio": 0.008,
           "heightRatio": 0.013
         }
-      ]
+      ],
+      "labelEn": "Trainers' Room"
     },
     {
       "id": "manual-1F-1775178181780-67ua3b",
@@ -727,7 +747,8 @@
           "widthRatio": 0.03,
           "heightRatio": 0.02
         }
-      ]
+      ],
+      "labelEn": "Training Room"
     },
     {
       "id": "manual-1F-1775276089056-py4hnw",
@@ -741,7 +762,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Machi Library @ OIC"
     },
     {
       "id": "manual-1F-1775230520967-89bqi5",
@@ -755,7 +777,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Meeting Rooms 1 / 2"
     },
     {
       "id": "manual-1F-1775276166712-57ri6c",
@@ -769,7 +792,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Minamen Cafe"
     },
     {
       "id": "manual-1F-1775230529758-ksko0x",
@@ -783,7 +807,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Mini Practice Studio"
     },
     {
       "id": "manual-1F-1775230538897-62pvp7",
@@ -797,7 +822,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Locker Lounge"
     },
     {
       "id": "manual-1F-1775191321942-zip9wt",
@@ -811,7 +837,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Locker Room"
     },
     {
       "id": "manual-1F-1775276118609-t56rfz",
@@ -825,7 +852,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Music Practice Room"
     },
     {
       "id": "manual-1F-1775276319231-7gfakw",
@@ -839,7 +867,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Learning Support Commons / Beyond Borders Plaza (BBP)"
     },
     {
       "id": "manual-1F-1775276409499-7o2hye",
@@ -853,7 +882,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Student Support Room"
     },
     {
       "id": "manual-1F-1775192247078-61reuo",
@@ -867,7 +897,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Student Hall 1"
     },
     {
       "id": "manual-1F-1775192236916-i7oh6u",
@@ -881,7 +912,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Student Hall 2"
     },
     {
       "id": "manual-1F-1775168103780-lpuoyl",
@@ -895,7 +927,8 @@
           "widthRatio": 0.02,
           "heightRatio": 0.01
         }
-      ]
+      ],
+      "labelEn": "Caretaker's Room"
     },
     {
       "id": "manual-1F-1775192351892-mt9461",
@@ -909,7 +942,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Equipment Management Room"
     },
     {
       "id": "manual-1F-1775192406358-c8v4x2",
@@ -923,7 +957,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Equipment Storage"
     },
     {
       "id": "manual-1F-1775230485496-t6dvjs",
@@ -937,7 +972,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Shared Research Room"
     },
     {
       "id": "manual-1F-1775276338601-2qz3bs",
@@ -951,7 +987,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Faculty Lounge"
     },
     {
       "id": "manual-1F-1775230570647-6me2ud",
@@ -965,7 +1002,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Alumni Lounge"
     },
     {
       "id": "manual-1F-1775230497271-u8fiif",
@@ -979,7 +1017,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Instructors' Lounge"
     },
     {
       "id": "manual-1F-1775192178585-mf9vx7",
@@ -993,7 +1032,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Workroom 1"
     },
     {
       "id": "manual-1F-1775192168747-xr3ezg",
@@ -1007,7 +1047,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Workroom 2"
     },
     {
       "id": "manual-1F-1775192151264-nnn25i",
@@ -1021,7 +1062,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Workroom 3"
     },
     {
       "id": "manual-1F-1775192465934-ir15sn",
@@ -1035,7 +1077,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Social Co-Creation Desk"
     },
     {
       "id": "manual-1F-1775276453028-x6ko3m",
@@ -1049,7 +1092,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Automated Certificate Issuance Machine"
     },
     {
       "id": "manual-1F-1775276426828-bumr9i",
@@ -1063,7 +1107,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Psychological and Educational Counseling Center"
     },
     {
       "id": "manual-1F-1775192307264-bw6xtm",
@@ -1077,7 +1122,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Ritsumeikan Ibaraki Clinic Health Center"
     },
     {
       "id": "manual-2F-1775278203379-xcbyzp",
@@ -1707,7 +1753,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H246 Audio Editing Studio"
     },
     {
       "id": "manual-2F-1775276607310-be7uoq",
@@ -1805,7 +1852,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "OIC Arena"
     },
     {
       "id": "manual-2F-1775277833098-m4efsz",
@@ -1819,7 +1867,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "OIC Library"
     },
     {
       "id": "manual-2F-1775277852531-6642ck",
@@ -1833,7 +1882,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "OIC Library Office"
     },
     {
       "id": "manual-2F-1775277997672-8tc17i",
@@ -1847,7 +1897,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "RAINBOW Service Desk"
     },
     {
       "id": "manual-2F-1775278011072-d4uh96",
@@ -1875,7 +1926,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Announcer Booth"
     },
     {
       "id": "manual-2F-1775277927314-1i63fy",
@@ -1889,7 +1941,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Gallery R-AGORA"
     },
     {
       "id": "manual-2F-1775277753785-8znj1j",
@@ -1903,7 +1956,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Grand Hall (2F)"
     },
     {
       "id": "manual-2F-1775277399519-uu4w8e",
@@ -1917,7 +1971,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Sound Design Rooms 1 / 2"
     },
     {
       "id": "manual-2F-1775277012526-zqtpcr",
@@ -1931,7 +1986,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Screening Studio"
     },
     {
       "id": "manual-2F-1775277821181-3d8oft",
@@ -1945,7 +2001,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Piara"
     },
     {
       "id": "manual-2F-1775277720290-sbwf1p",
@@ -1959,7 +2016,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Media Archive / Media Transfer Room"
     },
     {
       "id": "manual-2F-1775277889365-34khyi",
@@ -1973,7 +2031,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Learning Studio"
     },
     {
       "id": "manual-2F-1775277969064-z3l6vd",
@@ -1987,7 +2046,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Learning Studio"
     },
     {
       "id": "manual-2F-1775277309157-phjk32",
@@ -2001,7 +2061,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Projection Room"
     },
     {
       "id": "manual-2F-1775277300074-3icz3r",
@@ -2015,7 +2076,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "College of Image Arts and Sciences Student Council Room"
     },
     {
       "id": "manual-2F-1775277338269-gk4jz9",
@@ -2029,7 +2091,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Sound Control Room"
     },
     {
       "id": "manual-2F-1775277655351-pyu9ze",
@@ -2043,7 +2106,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Rakushinken (Tea Room)"
     },
     {
       "id": "manual-2F-1775277601910-bnblqj",
@@ -2057,7 +2121,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Director's Office"
     },
     {
       "id": "manual-2F-1775277374652-022qui",
@@ -2071,7 +2136,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Community Partnership Space"
     },
     {
       "id": "manual-2F-1775277165937-auobrc",
@@ -2085,7 +2151,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Class Preparation Room"
     },
     {
       "id": "manual-2F-1775277911597-b61exg",
@@ -2099,7 +2166,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Regional Partnerships Office / Social Co-Creation Promotion Headquarters"
     },
     {
       "id": "manual-2F-1775277590193-13ngry",
@@ -2113,7 +2181,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Yasuhiro Bunbayashi Memorial Room"
     },
     {
       "id": "manual-3F-1775278696010-4lf6pa",
@@ -2519,7 +2588,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "B374 Colloquium"
     },
     {
       "id": "manual-3F-1775278973945-gyoqaf",
@@ -2575,7 +2645,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "C373 Learning Theater"
     },
     {
       "id": "manual-3F-1775278669280-unjjby",
@@ -2673,7 +2744,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H325 Video Editing Studio"
     },
     {
       "id": "manual-3F-1775278541980-o26e6o",
@@ -2855,7 +2927,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Server Room / Render Farm"
     },
     {
       "id": "manual-3F-1775278434256-8wok8y",
@@ -2869,7 +2942,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Personal Creation Lab"
     },
     {
       "id": "manual-3F-1775278792507-gwezbg",
@@ -2883,7 +2957,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Learning Studio"
     },
     {
       "id": "manual-3F-1775278509551-941x0d",
@@ -2897,7 +2972,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Video Editing Room 1"
     },
     {
       "id": "manual-3F-1775278502564-7o9zcu",
@@ -2911,7 +2987,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Video Editing Room 2"
     },
     {
       "id": "manual-3F-1775278497856-j1b0ql",
@@ -2925,7 +3002,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Video Editing Room 3"
     },
     {
       "id": "manual-3F-1775278493777-v5m5ye",
@@ -2939,7 +3017,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Video Editing Room 4"
     },
     {
       "id": "manual-3F-1775278488907-b7jtml",
@@ -2953,7 +3032,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Video Editing Room 5"
     },
     {
       "id": "manual-3F-1775278484939-nea6n2",
@@ -2967,7 +3047,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Video Editing Room 6"
     },
     {
       "id": "manual-3F-1775278474201-1gbvyb",
@@ -2981,7 +3062,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Video Editing Room 7"
     },
     {
       "id": "manual-3F-1775278464393-5ef60f",
@@ -2995,7 +3077,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Video Editing Room 8"
     },
     {
       "id": "manual-4F-1775279782649-n4rbfe",
@@ -3541,7 +3624,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "B401-B408 Project Rooms"
     },
     {
       "id": "manual-4F-1775279466681-hweydl",
@@ -3555,7 +3639,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "B411-B413 Seminar Rooms"
     },
     {
       "id": "manual-4F-1775279523005-ojoq1l",
@@ -3625,7 +3710,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H421 Team Creation Lab"
     },
     {
       "id": "manual-4F-1775279254152-cv87qo",
@@ -3639,7 +3725,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H422 Media Development Lab"
     },
     {
       "id": "manual-4F-1775279182637-0gs308",
@@ -3653,7 +3740,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H423 Creative PC Classroom 1"
     },
     {
       "id": "manual-4F-1775279170084-jhx1zv",
@@ -3667,7 +3755,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H424 Creative PC Classroom 2"
     },
     {
       "id": "manual-4F-1775279444098-exnozq",
@@ -3779,7 +3868,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Extension Center Study Room"
     },
     {
       "id": "manual-4F-1775279387825-751ctk",
@@ -3793,7 +3883,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Image Arts Research Room 1"
     },
     {
       "id": "manual-4F-1775279396303-og4rhv",
@@ -3807,7 +3898,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Image Arts Research Room 2"
     },
     {
       "id": "manual-4F-1775279684647-z88qhj",
@@ -3821,7 +3913,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Adjunct Lecturer Room (Language Education)"
     },
     {
       "id": "manual-4F-1775279532909-dndlca",
@@ -3835,7 +3928,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Graduate Student Lounge"
     },
     {
       "id": "manual-5F-1775280814382-ba0vhf",
@@ -4157,7 +4251,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "B501-B510 Research Centers / Institutes"
     },
     {
       "id": "manual-5F-1775280535421-s4y5p2",
@@ -4171,7 +4266,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "B511-B516 Seminar Rooms / Project Rooms"
     },
     {
       "id": "manual-5F-1775280450707-ffgw1o",
@@ -4185,7 +4281,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "B517 Research Institute"
     },
     {
       "id": "manual-5F-1775279337954-oauqtu",
@@ -4381,7 +4478,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H509 Laboratory"
     },
     {
       "id": "manual-5F-1775280155859-kr5wa8",
@@ -4395,7 +4493,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H510 Laboratory"
     },
     {
       "id": "manual-5F-1775280145239-9wfvlh",
@@ -4633,7 +4732,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "OIC Seminar House"
     },
     {
       "id": "manual-5F-1775280866294-vrjju3",
@@ -4675,7 +4775,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Annex"
     },
     {
       "id": "manual-5F-1775280919685-gme087",
@@ -4689,7 +4790,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Annex"
     },
     {
       "id": "manual-5F-1775280558479-d38d56",
@@ -4703,7 +4805,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Garden Library"
     },
     {
       "id": "manual-5F-1775280356229-2i3iqi",
@@ -4717,7 +4820,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Project Room"
     },
     {
       "id": "manual-5F-1775281002747-z51e74",
@@ -4731,7 +4835,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Front Desk"
     },
     {
       "id": "manual-5F-1775280933923-3haxbw",
@@ -4745,7 +4850,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Learning Studio"
     },
     {
       "id": "manual-5F-1775280942735-5zsrgz",
@@ -4759,7 +4865,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Learning Studio"
     },
     {
       "id": "manual-5F-1775280393683-2kax4y",
@@ -4773,7 +4880,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Lounge 1"
     },
     {
       "id": "manual-5F-1775280400995-46ntg6",
@@ -4787,7 +4895,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Lounge 2"
     },
     {
       "id": "manual-5F-1775280378970-2lm3s7",
@@ -4801,7 +4910,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Lounge 3"
     },
     {
       "id": "manual-5F-1775280966868-9iz14e",
@@ -4815,7 +4925,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Shared Laboratory"
     },
     {
       "id": "manual-5F-1775280978239-zihb4b",
@@ -4829,7 +4940,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Shared Laboratory"
     },
     {
       "id": "manual-5F-1775280468231-8zm1es",
@@ -4843,7 +4955,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Industry-Academia Lounge"
     },
     {
       "id": "manual-5F-1775280258752-pajtdz",
@@ -4857,7 +4970,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "College of Information Science and Engineering Student Council Room"
     },
     {
       "id": "manual-A-6-9F-1775283196728-i2ogl3",
@@ -4871,7 +4985,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "A610 Practicum Room"
     },
     {
       "id": "manual-A-6-9F-1775283186953-fvl5xq",
@@ -4885,7 +5000,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "A620 Practicum Room"
     },
     {
       "id": "manual-A-6-9F-1775282673739-152quq",
@@ -4899,7 +5015,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "A650 Data Analysis Room 2"
     },
     {
       "id": "manual-A-6-9F-1775282641387-ok0oyt",
@@ -4913,7 +5030,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "A660 Data Analysis Room 2"
     },
     {
       "id": "manual-A-6-9F-1775283085503-ohqvvz",
@@ -4997,7 +5115,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AC636 Laboratory"
     },
     {
       "id": "manual-A-6-9F-1775283027161-idshho",
@@ -5011,7 +5130,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AC637 Laboratory"
     },
     {
       "id": "manual-A-6-9F-1775283014970-c1lmz8",
@@ -5025,7 +5145,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AC638 Laboratory"
     },
     {
       "id": "manual-A-6-9F-1775283006957-86b5pp",
@@ -5039,7 +5160,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AC639 Laboratory"
     },
     {
       "id": "manual-A-6-9F-1775282885590-8tutlc",
@@ -5151,7 +5273,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AC648 Laboratory"
     },
     {
       "id": "manual-A-6-9F-1775284003881-eeplez",
@@ -5263,7 +5386,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AN612 Practicum Room"
     },
     {
       "id": "manual-A-6-9F-1775283372425-b6no7c",
@@ -5277,7 +5401,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AN613 Practicum Room"
     },
     {
       "id": "manual-A-6-9F-1775283359170-lb7xwc",
@@ -5291,7 +5416,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AN614 Practicum Room"
     },
     {
       "id": "manual-A-6-9F-1775283350304-e20pys",
@@ -5347,7 +5473,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AN622 Practicum Room"
     },
     {
       "id": "manual-A-6-9F-1775283295400-s1y68t",
@@ -5361,7 +5488,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AN623 Practicum Room"
     },
     {
       "id": "manual-A-6-9F-1775283305320-vzw9vf",
@@ -5375,7 +5503,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AN624 Practicum Room"
     },
     {
       "id": "manual-A-6-9F-1775283315812-c8p4ft",
@@ -5613,7 +5742,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "AS665 Group Practicum Room 3"
     },
     {
       "id": "manual-A-6-9F-1775284021544-acj986",
@@ -5781,7 +5911,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "PBL Preparation Room"
     },
     {
       "id": "manual-A-6-9F-1775282570574-1timkj",
@@ -5795,7 +5926,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Counseling Practicum Room"
     },
     {
       "id": "manual-A-6-9F-1775282811877-sx1ie0",
@@ -5809,7 +5941,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Conference Room"
     },
     {
       "id": "manual-A-6-9F-1775283163741-7hvheq",
@@ -5823,7 +5956,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Kokorabo Square"
     },
     {
       "id": "manual-A-6-9F-1775283729930-1tmm25",
@@ -5837,7 +5971,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Hirameki Lounge (6F)"
     },
     {
       "id": "manual-A-6-9F-1775283741209-cfmdy7",
@@ -5851,7 +5986,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Hirameki Lounge (6F)"
     },
     {
       "id": "manual-A-6-9F-1775283758947-gw7d9i",
@@ -5865,7 +6001,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Hirameki Lounge (7F)"
     },
     {
       "id": "manual-A-6-9F-1775283767755-0o3e93",
@@ -5879,7 +6016,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Hirameki Lounge (7F)"
     },
     {
       "id": "manual-A-6-9F-1775283674751-s21ose",
@@ -5893,7 +6031,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Hirameki Lounge (8F)"
     },
     {
       "id": "manual-A-6-9F-1775283688005-g12al6",
@@ -5907,7 +6046,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Hirameki Lounge (8F)"
     },
     {
       "id": "manual-A-6-9F-1775283806314-hsfz6v",
@@ -5921,7 +6061,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Hirameki Lounge (9F)"
     },
     {
       "id": "manual-A-6-9F-1775283814455-ea6acc",
@@ -5935,7 +6076,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Hirameki Lounge (9F)"
     },
     {
       "id": "manual-A-6-9F-1775282857094-ymx713",
@@ -5949,7 +6091,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Play Room"
     },
     {
       "id": "manual-A-6-9F-1775283877872-31hvvq",
@@ -5963,7 +6106,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Research Commons (7F)"
     },
     {
       "id": "manual-A-6-9F-1775283843789-ljfr71",
@@ -5977,7 +6121,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Research Commons (8F)"
     },
     {
       "id": "manual-A-6-9F-1775283510742-uvlwg8",
@@ -5991,7 +6136,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Research Office Co-Lab."
     },
     {
       "id": "manual-A-6-9F-1775283535629-aqmvld",
@@ -6005,7 +6151,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Shared Faculty Research Room 1"
     },
     {
       "id": "manual-A-6-9F-1775282792056-qisc3g",
@@ -6019,7 +6166,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Certified Psychologist Practicum Supervision Room"
     },
     {
       "id": "manual-A-6-9F-1775283136849-tao6qu",
@@ -6033,7 +6181,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Visual Perception Lab"
     },
     {
       "id": "manual-A-6-9F-1775282771540-7xa4zv",
@@ -6047,7 +6196,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Office"
     },
     {
       "id": "manual-A-6-9F-1775282735565-f0izvk",
@@ -6061,7 +6211,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Group Practicum Room 1"
     },
     {
       "id": "manual-A-6-9F-1775282616550-4wid4v",
@@ -6075,7 +6226,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Group Practicum Room 2"
     },
     {
       "id": "manual-A-6-9F-1775282579450-b5y9rt",
@@ -6089,7 +6241,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Daily Life Behavior Lab"
     },
     {
       "id": "manual-A-6-9F-1775283147291-69hf7t",
@@ -6103,7 +6256,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Physiology Lab"
     },
     {
       "id": "manual-A-6-9F-1775282688656-4u2zrp",
@@ -6117,7 +6271,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Comprehensive Psychology Practicum Station"
     },
     {
       "id": "manual-A-6-9F-1775283522480-cabzzz",
@@ -6131,7 +6286,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Large Conference Room"
     },
     {
       "id": "manual-A-6-9F-1775283606967-jvpljw",
@@ -6145,7 +6301,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Graduate School Shared Research Room 1"
     },
     {
       "id": "manual-A-6-9F-1775283611888-omn6pb",
@@ -6159,7 +6316,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Graduate School Shared Research Room 2"
     },
     {
       "id": "manual-A-6-9F-1775283574384-0f9ntz",
@@ -6173,7 +6331,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Graduate School Shared Research Room 3"
     },
     {
       "id": "manual-A-6-9F-1775283566017-4ap1cq",
@@ -6187,7 +6346,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Graduate School Shared Research Room 4"
     },
     {
       "id": "manual-A-6-9F-1775283588042-bpkeqj",
@@ -6201,7 +6361,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Graduate School Shared Research Room 5"
     },
     {
       "id": "manual-A-6-9F-1775283595351-8jldm6",
@@ -6215,7 +6376,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Graduate School Shared Research Room 6"
     },
     {
       "id": "manual-A-6-9F-1775283122466-qsj8wa",
@@ -6229,7 +6391,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Perception Lab"
     },
     {
       "id": "manual-A-6-9F-1775282929115-aytip7",
@@ -6243,7 +6406,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Auditory Lab"
     },
     {
       "id": "manual-A-6-9F-1775283331304-pgp7f0",
@@ -6257,7 +6421,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Animal Behavior Lab"
     },
     {
       "id": "manual-A-6-9F-1775282962390-liniap",
@@ -6271,7 +6436,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Cognitive Lab"
     },
     {
       "id": "manual-A-6-9F-1775282524234-qyyyzh",
@@ -6285,7 +6451,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "Interview Practicum Room"
     },
     {
       "id": "manual-H-6-9F-1775281343778-e3fg6q",
@@ -6299,7 +6466,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H601 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281321357-p2s2v9",
@@ -6313,7 +6481,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H602 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281331849-wqnzwj",
@@ -6327,7 +6496,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H603 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281315028-ujyzfc",
@@ -6369,7 +6539,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H606 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281292494-8zyn28",
@@ -6383,7 +6554,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H607 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281278636-h2p2py",
@@ -6467,7 +6639,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H613 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281147376-t0p4zm",
@@ -6635,7 +6808,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H701 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281584203-w0hvzj",
@@ -6649,7 +6823,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H702 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281595049-jycm3g",
@@ -6663,7 +6838,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H703 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281604840-dqcj1o",
@@ -6803,7 +6979,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H713 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281694986-qxtrp9",
@@ -6817,7 +6994,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H714 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281686081-ttef3m",
@@ -6831,7 +7009,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H715 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281703365-wsoln2",
@@ -6845,7 +7024,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H716 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281714644-lk12tz",
@@ -7013,7 +7193,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H801 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281825481-dq1vj8",
@@ -7027,7 +7208,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H802 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281814952-tep84r",
@@ -7041,7 +7223,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H803 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281844131-69vtwq",
@@ -7069,7 +7252,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H805 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281859443-omnxji",
@@ -7083,7 +7267,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H806 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281868605-cerx20",
@@ -7125,7 +7310,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H809 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281892339-044ngk",
@@ -7139,7 +7325,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H810 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775281906601-jyrdsq",
@@ -7307,7 +7494,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H901 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775282007117-rh9ale",
@@ -7321,7 +7509,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H902 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775282020384-x3895g",
@@ -7335,7 +7524,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H903 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775282028946-tj3m7g",
@@ -7363,7 +7553,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H905 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775282234673-5z0d0z",
@@ -7377,7 +7568,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H906 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775282245198-5r27hp",
@@ -7391,7 +7583,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H907 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775282255131-h1flz8",
@@ -7405,7 +7598,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H908 Shared Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775282262777-zrvusv",
@@ -7461,7 +7655,8 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
-      ]
+      ],
+      "labelEn": "H912 Laboratory"
     },
     {
       "id": "manual-H-6-9F-1775282364368-cxofu8",
