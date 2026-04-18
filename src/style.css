@@ -274,6 +274,13 @@ body[data-app-mode="viewer"] .app-shell {
   font-weight: 700;
 }
 
+.search-input::-webkit-search-cancel-button,
+.search-input::-webkit-search-decoration {
+  display: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .search-input::placeholder {
   color: rgba(16, 36, 49, 0.42);
   font-weight: 600;
