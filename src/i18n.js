@@ -317,12 +317,43 @@ const dictionaries = {
 
 let currentLang = readStoredLanguage();
 
+function normalizeSupportedLanguage(value) {
+  const language = String(value ?? '').trim().toLowerCase();
+
+  if (language === 'ja' || language.startsWith('ja-')) {
+    return 'ja';
+  }
+
+  if (language === 'en' || language.startsWith('en-')) {
+    return 'en';
+  }
+
+  return null;
+}
+
+function readBrowserLanguage() {
+  const languages = Array.isArray(navigator.languages) && navigator.languages.length > 0
+    ? navigator.languages
+    : [navigator.language];
+
+  for (const language of languages) {
+    const supportedLanguage = normalizeSupportedLanguage(language);
+
+    if (supportedLanguage) {
+      return supportedLanguage;
+    }
+  }
+
+  return 'ja';
+}
+
 function readStoredLanguage() {
   try {
     const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    return stored === 'en' || stored === 'ja' ? stored : 'ja';
+    const storedLanguage = normalizeSupportedLanguage(stored);
+    return storedLanguage ?? readBrowserLanguage();
   } catch {
-    return 'ja';
+    return readBrowserLanguage();
   }
 }
 
