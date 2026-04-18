@@ -13,6 +13,7 @@ const dictionaries = {
 
     'lang.switchToEnglish': '英語に切り替え',
     'lang.switchToJapanese': '日本語に切り替え',
+    'lang.toggle': '言語を切り替え',
 
     'app.title.viewer': '立命館OICマップ',
     'app.title.editor': '立命館OICマップ編集',
@@ -168,6 +169,7 @@ const dictionaries = {
 
     'lang.switchToEnglish': 'Switch to English',
     'lang.switchToJapanese': 'Switch to Japanese',
+    'lang.toggle': 'Switch language',
 
     'app.title.viewer': 'Ritsumeikan OIC Map',
     'app.title.editor': 'Ritsumeikan OIC Map Editor',
@@ -428,10 +430,31 @@ function applyDocumentMeta() {
 
 function updateLanguageToggles(root = document) {
   root.querySelectorAll('[data-lang-toggle]').forEach((button) => {
-    const targetLang = currentLang === 'ja' ? 'en' : 'ja';
-    button.textContent = targetLang.toUpperCase();
-    button.setAttribute('aria-label', targetLang === 'en' ? t('lang.switchToEnglish') : t('lang.switchToJapanese'));
-    button.setAttribute('title', targetLang === 'en' ? t('lang.switchToEnglish') : t('lang.switchToJapanese'));
+    if (!button.querySelector('[data-lang-option]')) {
+      const jpOption = document.createElement('span');
+      jpOption.className = 'lang-toggle-option';
+      jpOption.dataset.langOption = 'ja';
+      jpOption.textContent = 'JP';
+
+      const separator = document.createElement('span');
+      separator.className = 'lang-toggle-separator';
+      separator.textContent = '/';
+
+      const enOption = document.createElement('span');
+      enOption.className = 'lang-toggle-option';
+      enOption.dataset.langOption = 'en';
+      enOption.textContent = 'EN';
+
+      button.replaceChildren(jpOption, separator, enOption);
+    }
+
+    button.querySelectorAll('[data-lang-option]').forEach((option) => {
+      const isActive = option.dataset.langOption === currentLang;
+      option.classList.toggle('is-active', isActive);
+      option.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+    button.setAttribute('aria-label', t('lang.toggle'));
+    button.setAttribute('title', t('lang.toggle'));
   });
 }
 
@@ -442,7 +465,12 @@ function setupLanguageToggles(root = document) {
     }
 
     button.dataset.langToggleReady = 'true';
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+      const option = event.target instanceof Element ? event.target.closest('[data-lang-option]') : null;
+      if (option?.dataset.langOption) {
+        setLang(option.dataset.langOption);
+        return;
+      }
       toggleLang();
     });
   });
