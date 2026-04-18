@@ -138,6 +138,55 @@
         font-size: 0.9rem;
         font-weight: 700;
       }
+
+      .login-top-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .lang-toggle {
+        min-width: 92px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 0;
+        border-radius: 8px;
+        padding: 6px 4px;
+        background: transparent;
+        box-shadow: none;
+        color: #102431;
+        cursor: pointer;
+        font: inherit;
+        font-size: 1.32rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 1;
+      }
+
+      .lang-toggle-option {
+        color: rgba(16, 36, 49, 0.28);
+        transition: color 140ms ease;
+      }
+
+      .lang-toggle-option.is-active,
+      .lang-toggle-separator {
+        color: #101820;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        .lang-toggle-option:hover {
+          color: #101820;
+        }
+      }
+
+      .lang-toggle:focus-visible {
+        outline: 2px solid rgba(153, 0, 0, 0.42);
+        outline-offset: 2px;
+      }
     </style>
     <script>
       const isFileMode = window.location.protocol === 'file:';
@@ -158,11 +207,36 @@
 
       if (isFileMode) {
         document.addEventListener('DOMContentLoaded', () => {
+          const normalizeLang = (value) => {
+            const lang = String(value ?? '').trim().toLowerCase();
+            if (lang === 'ja' || lang.startsWith('ja-')) return 'ja';
+            if (lang === 'en' || lang.startsWith('en-')) return 'en';
+            return null;
+          };
+          const readBrowserLang = () => {
+            const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
+            return languages.map(normalizeLang).find(Boolean) ?? 'ja';
+          };
+          const lang = normalizeLang(localStorage.getItem('oicmap:lang')) ?? readBrowserLang();
+          const fileModeText = {
+            ja: {
+              title: '編集ページログイン',
+              copy:
+                'このログイン画面はローカルサーバー経由で開く必要があります。<code>npm run dev</code> のあと <code>http://127.0.0.1:5173/editor/login/</code> を開いてください。'
+            },
+            en: {
+              title: 'Editor Login',
+              copy:
+                'This login page must be opened through a local server. After running <code>npm run dev</code>, open <code>http://127.0.0.1:5173/editor/login/</code>.'
+            }
+          }[lang];
+
+          document.documentElement.lang = lang;
           document.body.innerHTML = `
             <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:linear-gradient(180deg,#fff1f1 0%,#eedddd 100%);font-family:'Hiragino Sans','Yu Gothic','Noto Sans JP',sans-serif;color:#102431;">
               <section style="max-width:720px;padding:28px;border-radius:24px;background:rgba(255,255,255,0.9);box-shadow:0 24px 50px rgba(16,36,49,0.12);">
-                <h1 style="margin:0 0 16px;font-size:2rem;">編集ページログイン</h1>
-                <p style="margin:0;line-height:1.8;">このログイン画面はローカルサーバー経由で開く必要があります。<code>npm run dev</code> のあと <code>http://127.0.0.1:5173/editor/login/</code> を開いてください。</p>
+                <h1 style="margin:0 0 16px;font-size:2rem;">${fileModeText.title}</h1>
+                <p style="margin:0;line-height:1.8;">${fileModeText.copy}</p>
               </section>
             </main>
           `;
@@ -193,7 +267,7 @@
               const passwordHash = await sha256Hex(passwordInput.value);
 
               if (passwordHash !== EDITOR_PASSWORD_HASH) {
-                errorMessage.textContent = 'パスワードが違います。';
+                errorMessage.textContent = window.OIC_I18N?.t('login.error.incorrect') ?? 'パスワードが違います。';
                 passwordInput.select();
                 return;
               }
@@ -210,13 +284,17 @@
         });
       }
     </script>
+    <script type="module" src="/src/i18n.js"></script>
   </head>
-  <body>
-    <main class="login-card" aria-label="編集ページログイン">
+  <body data-app-mode="login">
+    <main class="login-card" aria-label="編集ページログイン" data-i18n-aria="login.aria">
       <p class="login-eyebrow">EDITOR ACCESS</p>
-      <h1 class="login-title">編集ページにログイン</h1>
+      <div class="login-top-row">
+        <h1 class="login-title" data-i18n="login.title">編集ページにログイン</h1>
+        <button class="lang-toggle" data-lang-toggle type="button" aria-label="英語に切り替え">EN</button>
+      </div>
       <form id="editor-login-form" class="login-form">
-        <label class="login-label" for="editor-login-password">パスワード</label>
+        <label class="login-label" for="editor-login-password" data-i18n="login.password">パスワード</label>
         <input
           id="editor-login-password"
           class="login-input"
@@ -226,8 +304,8 @@
           required
         />
         <div class="login-actions">
-          <button id="editor-login-submit" class="login-submit" type="submit">ログイン</button>
-          <a class="login-link" href="/">閲覧用サイトへ戻る</a>
+          <button id="editor-login-submit" class="login-submit" type="submit" data-i18n="login.submit">ログイン</button>
+          <a class="login-link" href="/" data-i18n="login.back">閲覧用サイトへ戻る</a>
         </div>
         <p id="editor-login-error" class="login-error" aria-live="polite"></p>
       </form>

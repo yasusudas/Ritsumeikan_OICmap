@@ -1,5 +1,5 @@
-const STATIC_CACHE_NAME = 'rits-oic-map-static-v5';
-const RUNTIME_CACHE_NAME = 'rits-oic-map-runtime-v5';
+const STATIC_CACHE_NAME = 'rits-oic-map-static-v7';
+const RUNTIME_CACHE_NAME = 'rits-oic-map-runtime-v7';
 const APP_SHELL_URLS = [
   '/',
   '/index.html',

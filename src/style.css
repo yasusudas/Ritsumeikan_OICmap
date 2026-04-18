@@ -88,11 +88,34 @@ body[data-app-mode="viewer"] .app-shell {
   border-bottom: 1px solid rgba(16, 36, 49, 0.1);
 }
 
+.topbar-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+}
+
 .app-title {
   margin: 0;
+  display: inline-flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  column-gap: 0.35ch;
   font-size: clamp(1.1rem, 2vw, 1.45rem);
   font-weight: 800;
   letter-spacing: 0.04em;
+}
+
+.app-title-main,
+.app-title-version {
+  line-height: 1;
+}
+
+.app-title-version {
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 .editor-header-row {
@@ -100,6 +123,62 @@ body[data-app-mode="viewer"] .app-shell {
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
+}
+
+.editor-header-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.lang-toggle {
+  min-width: 92px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 8px;
+  padding: 6px 4px;
+  background: transparent;
+  box-shadow: none;
+  color: #102431;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.32rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  transition: transform 140ms ease;
+}
+
+.lang-toggle-option {
+  color: rgba(16, 36, 49, 0.28);
+  transition: color 140ms ease;
+}
+
+.lang-toggle-option.is-active,
+.lang-toggle-separator {
+  color: #101820;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lang-toggle-option:hover {
+    color: #101820;
+  }
+}
+
+.lang-toggle:focus-visible {
+  outline: 2px solid rgba(153, 0, 0, 0.42);
+  outline-offset: 2px;
+}
+
+.lang-toggle:active {
+  transform: scale(0.97);
 }
 
 .editor-logout-button {
@@ -257,6 +336,13 @@ body[data-app-mode="viewer"] .app-shell {
   color: #102431;
   font-size: 1rem;
   font-weight: 700;
+}
+
+.search-input::-webkit-search-cancel-button,
+.search-input::-webkit-search-decoration {
+  display: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .search-input::placeholder {
@@ -1190,6 +1276,22 @@ body[data-app-mode="editor"] .map-card {
     align-items: center;
   }
 
+  .topbar-title-row {
+    align-items: center;
+  }
+
+  .editor-header-actions {
+    gap: 8px;
+  }
+
+  .lang-toggle {
+    min-width: 82px;
+    min-height: 38px;
+    padding: 5px 2px;
+    font-size: 1.12rem;
+    gap: 8px;
+  }
+
   .search-box {
     padding-left: 14px;
   }
@@ -1310,6 +1412,14 @@ body[data-app-mode="editor"] .map-card {
   .editor-logout-button {
     padding: 9px 12px;
     font-size: 0.78rem;
+  }
+
+  .lang-toggle {
+    min-width: 76px;
+    min-height: 36px;
+    padding: 4px 2px;
+    font-size: 1.04rem;
+    gap: 7px;
   }
 
   .search-label {

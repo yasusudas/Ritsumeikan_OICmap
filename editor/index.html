@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="/icon/favicon-20260412b.png" />
     <link rel="apple-touch-icon" href="/icon/pwa-512-20260412b.png" />
     <meta name="robots" content="noindex,nofollow" />
-    <title>立命館OICマップ 編集用テスト</title>
+    <title>立命館OICマップ編集</title>
     <script>
       const isFileMode = window.location.protocol === 'file:';
       const EDITOR_AUTH_STORAGE_KEY = 'rits-oic-map-editor-auth-v1';
@@ -27,13 +27,44 @@
 
       if (isFileMode) {
         document.addEventListener('DOMContentLoaded', () => {
+          const normalizeLang = (value) => {
+            const lang = String(value ?? '').trim().toLowerCase();
+            if (lang === 'ja' || lang.startsWith('ja-')) return 'ja';
+            if (lang === 'en' || lang.startsWith('en-')) return 'en';
+            return null;
+          };
+          const readBrowserLang = () => {
+            const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
+            return languages.map(normalizeLang).find(Boolean) ?? 'ja';
+          };
+          const lang = normalizeLang(localStorage.getItem('oicmap:lang')) ?? readBrowserLang();
+          const fileModeText = {
+            ja: {
+              title: '立命館OICマップ編集',
+              copy1:
+                'このアプリは <strong>index.html を直接開く方式では動作しません</strong>。地図表示と編集機能はローカルサーバー経由で起動する必要があります。',
+              copy2:
+                'ターミナルで <code>npm run dev</code> を実行して、<code>http://127.0.0.1:5173/editor/</code> を開いてください。',
+              copy3: '閲覧用サイトは <code>http://127.0.0.1:5173/</code> です。'
+            },
+            en: {
+              title: 'Ritsumeikan OIC Map Editor',
+              copy1:
+                'This app does <strong>not work when you open <code>index.html</code> directly</strong>. The map and editor must be launched through a local server.',
+              copy2:
+                'Run <code>npm run dev</code> in Terminal, then open <code>http://127.0.0.1:5173/editor/</code>.',
+              copy3: 'The viewer site is <code>http://127.0.0.1:5173/</code>.'
+            }
+          }[lang];
+
+          document.documentElement.lang = lang;
           document.body.innerHTML = `
             <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:linear-gradient(180deg,#fff1f1 0%,#eedddd 100%);font-family:'Hiragino Sans','Yu Gothic','Noto Sans JP',sans-serif;color:#102431;">
               <section style="max-width:720px;padding:28px;border-radius:24px;background:rgba(255,255,255,0.9);box-shadow:0 24px 50px rgba(16,36,49,0.12);">
-                <h1 style="margin:0 0 16px;font-size:2rem;">立命館OICマップ 編集用テスト</h1>
-                <p style="margin:0 0 12px;line-height:1.8;">このアプリは <strong>index.html を直接開く方式では動作しません</strong>。地図表示と編集機能はローカルサーバー経由で起動する必要があります。</p>
-                <p style="margin:0 0 12px;line-height:1.8;">ターミナルで <code>npm run dev</code> を実行して、<code>http://127.0.0.1:5173/editor/</code> を開いてください。</p>
-                <p style="margin:0;line-height:1.8;">閲覧用サイトは <code>http://127.0.0.1:5173/</code> です。</p>
+                <h1 style="margin:0 0 16px;font-size:2rem;">${fileModeText.title}</h1>
+                <p style="margin:0 0 12px;line-height:1.8;">${fileModeText.copy1}</p>
+                <p style="margin:0 0 12px;line-height:1.8;">${fileModeText.copy2}</p>
+                <p style="margin:0;line-height:1.8;">${fileModeText.copy3}</p>
               </section>
             </main>
           `;
@@ -51,6 +82,7 @@
         });
       }
     </script>
+    <script type="module" src="/src/i18n.js"></script>
     <script type="module">
       if (!window.__FILE_MODE__ && sessionStorage.getItem('rits-oic-map-editor-auth-v1') === 'granted') {
         import('/src/main.js');
@@ -61,16 +93,22 @@
     <div class="app-shell">
       <header class="topbar">
         <div class="editor-header-row">
-          <h1 class="app-title">立命館OICマップ 編集用テスト</h1>
-          <button id="editor-logout-button" class="editor-logout-button" type="button">ログアウト</button>
+          <h1 class="app-title">
+            <span class="app-title-main" data-i18n="app.title.editor">立命館OICマップ編集</span>
+            <span class="app-title-version">Ver. 2.1</span>
+          </h1>
+          <div class="editor-header-actions">
+            <button class="lang-toggle" data-lang-toggle type="button" aria-label="英語に切り替え">EN</button>
+            <button id="editor-logout-button" class="editor-logout-button" type="button" data-i18n="editor.logout">ログアウト</button>
+          </div>
         </div>
         <div class="search-panel">
-          <div class="editor-caption">編集用URLです。地図をクリックして検索用テキストと位置を記録できます。</div>
+          <div class="editor-caption" data-i18n="editor.caption">編集用URLです。地図をクリックして検索用テキストと位置を記録できます。</div>
         </div>
         <div id="search-panel" class="search-panel">
           <div class="search-label-row">
-            <label class="search-label" for="search-input">教室検索</label>
-            <span id="toilet-ring-legend" class="toilet-ring-legend" hidden>
+            <label class="search-label" for="search-input" data-i18n="search.label">教室検索</label>
+            <span id="toilet-ring-legend" class="toilet-ring-legend" data-i18n="search.toiletLegend" hidden>
               青色は男子トイレ、赤色は女子トイレ、黄色は多目的トイレです
             </span>
           </div>
@@ -81,21 +119,23 @@
                 class="search-input"
                 type="search"
                 placeholder="教室名を検索"
+                data-i18n-placeholder="search.placeholder"
                 autocomplete="off"
                 autocapitalize="characters"
                 spellcheck="false"
                 enterkeyhint="search"
               />
-              <button id="search-clear" class="search-clear" type="button" aria-label="検索をクリア" hidden>
+              <button id="search-clear" class="search-clear" type="button" aria-label="検索をクリア" data-i18n-aria="search.clear" hidden>
                 ×
               </button>
             </div>
-            <div class="search-icon-actions" role="group" aria-label="施設アイコン">
+            <div class="search-icon-actions" role="group" aria-label="施設アイコン" data-i18n-aria="search.facilityActions">
               <button
                 class="search-icon-button"
                 type="button"
                 data-facility-key="toilet"
                 aria-label="トイレ"
+                data-i18n-aria="facility.toilet"
                 aria-pressed="false"
               >
                 <img class="search-icon-image" src="/iconsvg/toilet.svg" alt="" aria-hidden="true" />
@@ -105,6 +145,7 @@
                 type="button"
                 data-facility-key="waterServer"
                 aria-label="ウォーターサーバー"
+                data-i18n-aria="facility.waterServer"
                 aria-pressed="false"
               >
                 <img class="search-icon-image" src="/iconsvg/water-server.svg" alt="" aria-hidden="true" />
@@ -114,6 +155,7 @@
                 type="button"
                 data-facility-key="vendingMachine"
                 aria-label="自販機"
+                data-i18n-aria="facility.vendingMachine"
                 aria-pressed="false"
               >
                 <img class="search-icon-image" src="/iconsvg/vending-machine.svg" alt="" aria-hidden="true" />
@@ -123,6 +165,7 @@
                 type="button"
                 data-facility-key="printer"
                 aria-label="プリンター"
+                data-i18n-aria="facility.printer"
                 aria-pressed="false"
               >
                 <img class="search-icon-image" src="/iconsvg/printer.svg" alt="" aria-hidden="true" />
@@ -132,6 +175,7 @@
                 type="button"
                 data-facility-key="stairs"
                 aria-label="階段"
+                data-i18n-aria="facility.stairs"
                 aria-pressed="false"
               >
                 <img class="search-icon-image" src="/iconsvg/stairs.svg" alt="" aria-hidden="true" />
@@ -141,56 +185,57 @@
                 type="button"
                 data-facility-key="elevator"
                 aria-label="エレベーター"
+                data-i18n-aria="facility.elevator"
                 aria-pressed="false"
               >
                 <img class="search-icon-image" src="/iconsvg/elevator.svg" alt="" aria-hidden="true" />
               </button>
             </div>
           </div>
-          <div id="search-feedback" class="search-feedback" aria-live="polite">
+          <div id="search-feedback" class="search-feedback" aria-live="polite" data-i18n="search.feedback.default">
             500以上の教室の位置を検索できます / 地図は拡大･縮小･移動できます
           </div>
           <div id="search-results" class="search-results" role="listbox" hidden></div>
         </div>
         <div class="floor-tab-stack">
-          <nav class="floor-tabs floor-tabs-primary" aria-label="フロア切替">
+          <nav class="floor-tabs floor-tabs-primary" aria-label="フロア切替" data-i18n-aria="floor.primaryNav">
             <button class="floor-tab" data-floor="1F" type="button">1F</button>
             <button class="floor-tab" data-floor="2F" type="button">2F</button>
             <button class="floor-tab" data-floor="3F" type="button">3F</button>
             <button class="floor-tab" data-floor="4F" type="button">4F</button>
             <button class="floor-tab" data-floor="5F" type="button">5F</button>
           </nav>
-          <nav class="floor-tabs floor-tabs-secondary" aria-label="棟別フロア切替">
-            <button class="floor-tab floor-tab-wide" data-floor="A-6-9F" type="button">A棟6,7,8,9F</button>
-            <button class="floor-tab floor-tab-wide" data-floor="H-6-9F" type="button">H棟6,7,8,9F</button>
+          <nav class="floor-tabs floor-tabs-secondary" aria-label="棟別フロア切替" data-i18n-aria="floor.secondaryNav">
+            <button class="floor-tab floor-tab-wide" data-floor="A-6-9F" type="button" data-i18n="floor.A-6-9F">A棟6,7,8,9F</button>
+            <button class="floor-tab floor-tab-wide" data-floor="H-6-9F" type="button" data-i18n="floor.H-6-9F">H棟6,7,8,9F</button>
           </nav>
         </div>
-        <section class="editor-shell" aria-label="検索データ編集">
+        <section class="editor-shell" aria-label="検索データ編集" data-i18n-aria="editor.shellAria">
           <section id="editor-panel" class="editor-panel">
             <div class="editor-meta">
               <div id="editor-floor" class="editor-chip">1F</div>
-              <div id="editor-coords" class="editor-chip">位置未指定</div>
+              <div id="editor-coords" class="editor-chip" data-i18n="editor.noCoords">位置未指定</div>
             </div>
             <div class="editor-grid">
               <label class="editor-field">
-                <span class="editor-field-label">表示名</span>
-                <input id="editor-label" class="editor-input" type="text" placeholder="例: OIC Shop" />
+                <span class="editor-field-label" data-i18n="editor.field.displayName">表示名</span>
+                <input id="editor-label" class="editor-input" type="text" placeholder="例: OIC Shop" data-i18n-placeholder="editor.placeholder.displayName" />
               </label>
             </div>
             <div class="editor-actions">
-              <button id="editor-save" class="editor-action editor-action-primary" type="button">
+              <button id="editor-save" class="editor-action editor-action-primary" type="button" data-i18n="editor.action.save">
                 この位置を記録
               </button>
-              <button id="editor-clear-point" class="editor-action" type="button">位置をクリア</button>
-              <button id="editor-copy" class="editor-action" type="button">JSONをコピー</button>
-              <button id="editor-export" class="editor-action" type="button">JSONを保存</button>
-              <button id="editor-import" class="editor-action" type="button">JSONを読み込み</button>
-              <button id="editor-publish" class="editor-action" type="button">編集を確定</button>
+              <button id="editor-clear-point" class="editor-action" type="button" data-i18n="editor.action.clearPoint">位置をクリア</button>
+              <button id="editor-copy" class="editor-action" type="button" data-i18n="editor.action.copy">JSONをコピー</button>
+              <button id="editor-export" class="editor-action" type="button" data-i18n="editor.action.export">JSONを保存</button>
+              <button id="editor-import" class="editor-action" type="button" data-i18n="editor.action.import">JSONを読み込み</button>
+              <button id="editor-publish" class="editor-action" type="button" data-i18n="editor.action.publish">編集を確定</button>
             </div>
-            <section class="editor-ring-tools" aria-label="蛍光リング編集">
-              <div class="editor-section-label">蛍光リング設定</div>
-              <div id="editor-ring-mode-buttons" class="editor-ring-mode-buttons" role="group" aria-label="リング対象">
-                <button class="editor-ring-mode-button" type="button" data-facility-key="toilet" aria-pressed="false">
+            <section class="editor-ring-tools" aria-label="蛍光リング編集" data-i18n-aria="editor.ringTools">
+              <div class="editor-section-label" data-i18n="editor.ringSettings">蛍光リング設定</div>
+              <div id="editor-ring-mode-buttons" class="editor-ring-mode-buttons" role="group" aria-label="リング対象" data-i18n-aria="editor.ringTarget">
+                <button class="editor-ring-mode-button" type="button" data-facility-key="toilet" aria-pressed="false" data-i18n="facility.toilet">
                   トイレ
                 </button>
                 <button
@@ -198,6 +243,7 @@
                   type="button"
                   data-facility-key="waterServer"
                   aria-pressed="false"
+                  data-i18n="facility.waterServer"
                 >
                   ウォーターサーバー
                 </button>
@@ -206,10 +252,11 @@
                   type="button"
                   data-facility-key="vendingMachine"
                   aria-pressed="false"
+                  data-i18n="facility.vendingMachine"
                 >
                   自販機
                 </button>
-                <button class="editor-ring-mode-button" type="button" data-facility-key="stairs" aria-pressed="false">
+                <button class="editor-ring-mode-button" type="button" data-facility-key="stairs" aria-pressed="false" data-i18n="facility.stairs">
                   階段
                 </button>
                 <button
@@ -217,6 +264,7 @@
                   type="button"
                   data-facility-key="elevator"
                   aria-pressed="false"
+                  data-i18n="facility.elevator"
                 >
                   エレベーター
                 </button>
@@ -226,6 +274,7 @@
                 class="editor-toilet-ring-color-tools"
                 role="group"
                 aria-label="トイレリング色"
+                data-i18n-aria="editor.ringColor"
                 hidden
               >
                 <button
@@ -233,6 +282,7 @@
                   type="button"
                   data-ring-color-variant="red"
                   aria-pressed="true"
+                  data-i18n="color.red"
                 >
                   赤
                 </button>
@@ -241,6 +291,7 @@
                   type="button"
                   data-ring-color-variant="blue"
                   aria-pressed="false"
+                  data-i18n="color.blue"
                 >
                   青
                 </button>
@@ -249,17 +300,18 @@
                   type="button"
                   data-ring-color-variant="yellow"
                   aria-pressed="false"
+                  data-i18n="color.yellow"
                 >
                   黄
                 </button>
               </div>
               <div class="editor-ring-actions">
-                <button id="editor-ring-clear" class="editor-action" type="button">選択中施設の現在階リングをクリア</button>
+                <button id="editor-ring-clear" class="editor-action" type="button" data-i18n="editor.ringClear">選択中施設の現在階リングをクリア</button>
               </div>
               <div id="editor-ring-list" class="editor-ring-list"></div>
             </section>
             <input id="editor-import-input" type="file" accept="application/json,.json" hidden />
-            <div id="editor-feedback" class="editor-feedback" aria-live="polite">
+            <div id="editor-feedback" class="editor-feedback" aria-live="polite" data-i18n="editor.feedback.default">
               地図上の文字位置をクリックして表示名を記録できます。蛍光リング設定ボタンをオンにすると、地図タップで対応リングを設置または削除できます
             </div>
             <div id="editor-list" class="editor-list"></div>
@@ -269,6 +321,7 @@
               readonly
               spellcheck="false"
               aria-label="書き出し用JSON"
+              data-i18n-aria="editor.jsonAria"
             ></textarea>
           </section>
         </section>
@@ -276,9 +329,9 @@
 
       <main class="map-stage">
         <section class="map-card">
-          <div id="viewer" class="viewer" aria-label="フロアマップ">
+          <div id="viewer" class="viewer" aria-label="フロアマップ" data-i18n-aria="floor.map">
             <div id="canvas-layer" class="canvas-layer"></div>
-            <div id="status" class="status-pill" aria-live="polite">読み込み中...</div>
+            <div id="status" class="status-pill" aria-live="polite" data-i18n="status.loading">読み込み中...</div>
           </div>
         </section>
       </main>
@@ -290,13 +343,13 @@
           | Instagram:
           <a href="https://www.instagram.com/yasusudas/" target="_blank" rel="noopener noreferrer">@yasusudas</a>
         </p>
-        <p>出典：立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」（2025年3月発行、OIC地域連携課）</p>
+        <p data-i18n="footer.source">出典：立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」（2025年3月発行、OIC地域連携課）</p>
         <p>
           <a href="https://www.ritsumei.ac.jp/file.jsp?id=229844&f=.pdf" target="_blank" rel="noopener noreferrer">
             https://www.ritsumei.ac.jp/file.jsp?id=229844&f=.pdf
           </a>
         </p>
-        <p>© 2026 Issei Yasuda (立命館大学非公式)</p>
+        <p data-i18n="footer.copyright">© 2026 Issei Yasuda (立命館大学非公式)</p>
       </footer>
     </div>
   </body>
