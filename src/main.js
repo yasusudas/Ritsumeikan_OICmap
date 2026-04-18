@@ -14,43 +14,64 @@ if (window.__FILE_MODE__) {
       id: '1F',
       label: '1F',
       labelKey: 'floor.1F',
-      svgUrl: new URL('../floor_img/1F.svg', import.meta.url).href
+      svgUrls: {
+        ja: new URL('../floor_img/1F.svg', import.meta.url).href,
+        en: new URL('../floor_img_Eng/1F.svg', import.meta.url).href
+      }
     },
     {
       id: '2F',
       label: '2F',
       labelKey: 'floor.2F',
-      svgUrl: new URL('../floor_img/2F.svg', import.meta.url).href
+      svgUrls: {
+        ja: new URL('../floor_img/2F.svg', import.meta.url).href,
+        en: new URL('../floor_img_Eng/2F.svg', import.meta.url).href
+      }
     },
     {
       id: '3F',
       label: '3F',
       labelKey: 'floor.3F',
-      svgUrl: new URL('../floor_img/3F.svg', import.meta.url).href
+      svgUrls: {
+        ja: new URL('../floor_img/3F.svg', import.meta.url).href,
+        en: new URL('../floor_img_Eng/3F.svg', import.meta.url).href
+      }
     },
     {
       id: '4F',
       label: '4F',
       labelKey: 'floor.4F',
-      svgUrl: new URL('../floor_img/4F.svg', import.meta.url).href
+      svgUrls: {
+        ja: new URL('../floor_img/4F.svg', import.meta.url).href,
+        en: new URL('../floor_img_Eng/4F.svg', import.meta.url).href
+      }
     },
     {
       id: '5F',
       label: '5F',
       labelKey: 'floor.5F',
-      svgUrl: new URL('../floor_img/5F.svg', import.meta.url).href
+      svgUrls: {
+        ja: new URL('../floor_img/5F.svg', import.meta.url).href,
+        en: new URL('../floor_img_Eng/5F.svg', import.meta.url).href
+      }
     },
     {
       id: 'A-6-9F',
       label: 'A棟6,7,8,9F',
       labelKey: 'floor.A-6-9F',
-      svgUrl: new URL('../floor_img/6F7F8F9F_BldgA.svg', import.meta.url).href
+      svgUrls: {
+        ja: new URL('../floor_img/6F7F8F9F_BldgA.svg', import.meta.url).href,
+        en: new URL('../floor_img_Eng/6F7F8F9F_BldgA.svg', import.meta.url).href
+      }
     },
     {
       id: 'H-6-9F',
       label: 'H棟6,7,8,9F',
       labelKey: 'floor.H-6-9F',
-      svgUrl: new URL('../floor_img/6F7F8F9F_BldgH.svg', import.meta.url).href
+      svgUrls: {
+        ja: new URL('../floor_img/6F7F8F9F_BldgH.svg', import.meta.url).href,
+        en: new URL('../floor_img_Eng/6F7F8F9F_BldgH.svg', import.meta.url).href
+      }
     }
   ];
   const SPECIAL_FLOOR_FILES_BY_FACILITY = {
@@ -58,7 +79,10 @@ if (window.__FILE_MODE__) {
       id: 'print-station',
       label: 'プリンター',
       labelKey: 'floor.printerMap',
-      svgUrl: new URL('../floor_img/print-station.svg', import.meta.url).href
+      svgUrls: {
+        ja: new URL('../floor_img/print-station.svg', import.meta.url).href,
+        en: new URL('../floor_img_Eng/print-station.svg', import.meta.url).href
+      }
     }
   };
   const PDF_SUPPORT_ASSET_BASE = import.meta.env.BASE_URL;
@@ -443,6 +467,11 @@ if (window.__FILE_MODE__) {
 
   function getRenderedFloorDefinition() {
     return getActiveSpecialFloorDefinition() ?? getFloorDefinition();
+  }
+
+  function getFloorSvgUrl(floor) {
+    const urls = floor?.svgUrls ?? {};
+    return (getLang() === 'en' ? urls.en : urls.ja) ?? floor?.svgUrl ?? urls.ja ?? urls.en;
   }
 
   function isSpecialFloorActive() {
@@ -941,11 +970,14 @@ if (window.__FILE_MODE__) {
   }
 
   async function fetchSvgAsset(floor) {
-    if (svgCache.has(floor.id)) {
-      return svgCache.get(floor.id);
+    const svgUrl = getFloorSvgUrl(floor);
+    const cacheKey = `${floor.id}:${svgUrl}`;
+
+    if (svgCache.has(cacheKey)) {
+      return svgCache.get(cacheKey);
     }
 
-    const response = await fetch(floor.svgUrl);
+    const response = await fetch(svgUrl);
 
     if (!response.ok) {
       throw new Error(`Failed to load SVG for ${floor.id}`);
@@ -957,15 +989,15 @@ if (window.__FILE_MODE__) {
     }
 
     const metrics = extractSvgMetricsFromText(text);
-    const asset = { url: floor.svgUrl, width: metrics.width, height: metrics.height };
-    svgCache.set(floor.id, asset);
+    const asset = { url: svgUrl, width: metrics.width, height: metrics.height };
+    svgCache.set(cacheKey, asset);
     return asset;
   }
 
   function createFloorImageNode(floor) {
     const image = document.createElement('img');
     image.className = 'floor-svg';
-    image.src = floor.svgUrl;
+    image.src = getFloorSvgUrl(floor);
     image.alt = '';
     image.decoding = 'async';
     image.draggable = false;
@@ -2435,12 +2467,12 @@ if (window.__FILE_MODE__) {
     renderSearchHighlights();
     renderFacilityRings();
 
-    if (state.baseWidth > 0 && state.baseHeight > 0) {
-      setStatus(`${getFloorLabel(getRenderedFloorDefinition())} | ${Math.round(state.zoom * 100)}%`);
-    }
-
     if (isEditorSite) {
       refreshEditorUi();
+    }
+
+    if (state.baseWidth > 0 && state.baseHeight > 0) {
+      void renderFloor({ resetZoom: false, preserveView: true });
     }
   }
 
