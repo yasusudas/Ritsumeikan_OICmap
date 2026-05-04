@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -10,86 +10,65 @@
     <link rel="icon" type="image/png" href="/icon/favicon-20260412b.png" />
     <link rel="apple-touch-icon" href="/icon/pwa-512-20260412b.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="canonical" href="https://rits-oic-map.vercel.app/" />
+    <link rel="canonical" href="https://rits-oic-map.vercel.app/en/" />
     <link rel="alternate" hreflang="ja" href="https://rits-oic-map.vercel.app/" />
     <link rel="alternate" hreflang="en" href="https://rits-oic-map.vercel.app/en/" />
     <link rel="alternate" hreflang="x-default" href="https://rits-oic-map.vercel.app/" />
     <meta name="theme-color" content="#102431" />
-    <meta name="application-name" content="立命館OICマップ" />
+    <meta name="application-name" content="Ritsumeikan OIC Map" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="立命館OICマップ" />
+    <meta name="apple-mobile-web-app-title" content="Ritsumeikan OIC Map" />
     <meta
       name="description"
-      content="立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。"
+      content="Unofficial campus map for Ritsumeikan University's Osaka Ibaraki Campus (OIC). Search 500+ rooms and find restrooms, elevators, printers, and other facilities."
     />
     <meta name="robots" content="index,follow" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://rits-oic-map.vercel.app/" />
-    <meta property="og:site_name" content="立命館OICマップ" />
-    <meta property="og:title" content="立命館OICマップ" />
+    <meta property="og:url" content="https://rits-oic-map.vercel.app/en/" />
+    <meta property="og:site_name" content="Ritsumeikan OIC Map" />
+    <meta property="og:title" content="Ritsumeikan OIC Map" />
     <meta
       property="og:description"
-      content="立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。"
+      content="Unofficial campus map for Ritsumeikan University's Osaka Ibaraki Campus (OIC). Search 500+ rooms and find restrooms, elevators, printers, and other facilities."
     />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="立命館OICマップ" />
+    <meta name="twitter:title" content="Ritsumeikan OIC Map" />
     <meta
       name="twitter:description"
-      content="立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。"
+      content="Unofficial campus map for Ritsumeikan University's Osaka Ibaraki Campus (OIC). Search 500+ rooms and find restrooms, elevators, printers, and other facilities."
     />
-    <title>立命館OICマップ</title>
+    <title>Ritsumeikan OIC Map</title>
     <script type="application/ld+json" data-i18n-jsonld>
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "立命館OICマップ",
-        "alternateName": "Ritsumeikan OIC Map",
-        "description": "立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。",
-        "url": "https://rits-oic-map.vercel.app/",
-        "inLanguage": "ja"
+        "name": "Ritsumeikan OIC Map",
+        "alternateName": "立命館OICマップ",
+        "description": "Unofficial campus map for Ritsumeikan University's Osaka Ibaraki Campus (OIC). Search 500+ rooms and find restrooms, elevators, printers, and other facilities.",
+        "url": "https://rits-oic-map.vercel.app/en/",
+        "inLanguage": "en"
       }
     </script>
     <script>
+      window.__DEFAULT_LANG__ = 'en';
       const isFileMode = window.location.protocol === 'file:';
       window.__FILE_MODE__ = isFileMode;
 
       if (isFileMode) {
         document.addEventListener('DOMContentLoaded', () => {
-          const normalizeLang = (value) => {
-            const lang = String(value ?? '').trim().toLowerCase();
-            if (lang === 'ja' || lang.startsWith('ja-')) return 'ja';
-            if (lang === 'en' || lang.startsWith('en-')) return 'en';
-            return null;
-          };
-          const readBrowserLang = () => {
-            const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
-            return languages.map(normalizeLang).find(Boolean) ?? 'ja';
-          };
-          const lang = normalizeLang(localStorage.getItem('oicmap:lang')) ?? readBrowserLang();
           const fileModeText = {
-            ja: {
-              title: '立命館OICマップ',
-              copy1:
-                'このアプリは <strong>index.html を直接開く方式では動作しません</strong>。地図表示と操作機能はローカルサーバー経由で起動する必要があります。',
-              copy2:
-                '一番簡単なのは、プロジェクト直下の <code>start-map.command</code> をダブルクリックする方法です。',
-              copy3:
-                'ターミナルを使う場合は <code>npm run dev</code> のあと、<code>http://127.0.0.1:5173/</code> を開いてください。'
-            },
-            en: {
-              title: 'Ritsumeikan OIC Map',
-              copy1:
-                'This app does <strong>not work when you open <code>index.html</code> directly</strong>. The map and its controls must be launched through a local server.',
-              copy2:
-                'The easiest option is to double-click <code>start-map.command</code> in the project root.',
-              copy3:
-                'If you prefer the terminal, run <code>npm run dev</code> and then open <code>http://127.0.0.1:5173/</code>.'
-            }
-          }[lang];
+            title: 'Ritsumeikan OIC Map',
+            copy1:
+              'This app does <strong>not work when you open <code>index.html</code> directly</strong>. The map and its controls must be launched through a local server.',
+            copy2:
+              'The easiest option is to double-click <code>start-map.command</code> in the project root.',
+            copy3:
+              'If you prefer the terminal, run <code>npm run dev</code> and then open <code>http://127.0.0.1:5173/en/</code>.'
+          };
 
-          document.documentElement.lang = lang;
+          document.documentElement.lang = 'en';
           document.body.innerHTML = `
             <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:linear-gradient(180deg,#fff1f1 0%,#eedddd 100%);font-family:'Hiragino Sans','Yu Gothic','Noto Sans JP',sans-serif;color:#102431;">
               <section style="max-width:720px;padding:28px;border-radius:24px;background:rgba(255,255,255,0.9);box-shadow:0 24px 50px rgba(16,36,49,0.12);">
@@ -111,17 +90,17 @@
       <header class="topbar">
         <div class="topbar-title-row">
           <h1 class="app-title">
-            <span class="app-title-main" data-i18n="app.title.viewer">立命館OICマップ</span>
+            <span class="app-title-main" data-i18n="app.title.viewer">Ritsumeikan OIC Map</span>
             <span class="app-title-version">Ver. 2.2</span>
           </h1>
           <div class="topbar-actions">
-            <button class="lang-toggle" data-lang-toggle type="button" aria-label="英語に切り替え">EN</button>
+            <button class="lang-toggle" data-lang-toggle type="button" aria-label="Switch language">EN</button>
             <div id="site-menu" class="site-menu">
               <button
                 id="site-menu-toggle"
                 class="site-menu-toggle"
                 type="button"
-                aria-label="メニューを開く"
+                aria-label="Open menu"
                 aria-haspopup="true"
                 aria-expanded="false"
                 aria-controls="site-menu-panel"
@@ -134,7 +113,7 @@
               </button>
               <div id="site-menu-panel" class="site-menu-panel" role="menu" hidden>
                 <button id="about-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.about">
-                  このページについて
+                  About this map
                 </button>
               </div>
             </div>
@@ -142,9 +121,9 @@
         </div>
         <div id="search-panel" class="search-panel">
           <div class="search-label-row">
-            <label class="search-label" for="search-input" data-i18n="search.label">教室検索</label>
+            <label class="search-label" for="search-input" data-i18n="search.label">Search Rooms &amp; Facilities</label>
             <span id="toilet-ring-legend" class="toilet-ring-legend" data-i18n="search.toiletLegend" hidden>
-              青色は男子トイレ、赤色は女子トイレ、黄色は多目的トイレです
+              Blue rings mark men's restrooms, red rings mark women's restrooms, and yellow rings mark accessible restrooms.
             </span>
           </div>
           <div class="search-controls">
@@ -153,23 +132,23 @@
                 id="search-input"
                 class="search-input"
                 type="search"
-                placeholder="教室名を検索"
+                placeholder="Search by room or facility name"
                 data-i18n-placeholder="search.placeholder"
                 autocomplete="off"
                 autocapitalize="characters"
                 spellcheck="false"
                 enterkeyhint="search"
               />
-              <button id="search-clear" class="search-clear" type="button" aria-label="検索をクリア" data-i18n-aria="search.clear" hidden>
+              <button id="search-clear" class="search-clear" type="button" aria-label="Clear search" data-i18n-aria="search.clear" hidden>
                 ×
               </button>
             </div>
-            <div class="search-icon-actions" role="group" aria-label="施設アイコン" data-i18n-aria="search.facilityActions">
+            <div class="search-icon-actions" role="group" aria-label="Facility filters" data-i18n-aria="search.facilityActions">
               <button
                 class="search-icon-button"
                 type="button"
                 data-facility-key="toilet"
-                aria-label="トイレ"
+                aria-label="Restroom"
                 data-i18n-aria="facility.toilet"
                 aria-pressed="false"
               >
@@ -179,7 +158,7 @@
                 class="search-icon-button"
                 type="button"
                 data-facility-key="waterServer"
-                aria-label="ウォーターサーバー"
+                aria-label="Water Dispenser"
                 data-i18n-aria="facility.waterServer"
                 aria-pressed="false"
               >
@@ -189,7 +168,7 @@
                 class="search-icon-button"
                 type="button"
                 data-facility-key="vendingMachine"
-                aria-label="自販機"
+                aria-label="Vending Machine"
                 data-i18n-aria="facility.vendingMachine"
                 aria-pressed="false"
               >
@@ -199,7 +178,7 @@
                 class="search-icon-button"
                 type="button"
                 data-facility-key="printer"
-                aria-label="プリンター"
+                aria-label="Printer"
                 data-i18n-aria="facility.printer"
                 aria-pressed="false"
               >
@@ -209,7 +188,7 @@
                 class="search-icon-button"
                 type="button"
                 data-facility-key="stairs"
-                aria-label="階段"
+                aria-label="Staircase"
                 data-i18n-aria="facility.stairs"
                 aria-pressed="false"
               >
@@ -219,7 +198,7 @@
                 class="search-icon-button"
                 type="button"
                 data-facility-key="elevator"
-                aria-label="エレベーター"
+                aria-label="Elevator"
                 data-i18n-aria="facility.elevator"
                 aria-pressed="false"
               >
@@ -228,30 +207,30 @@
             </div>
           </div>
           <div id="search-feedback" class="search-feedback" aria-live="polite" data-i18n="search.feedback.default">
-            500以上の教室の位置を検索できます / 地図は拡大･縮小･移動できます
+            Search 500+ rooms and campus locations. Zoom, pan, and explore the map.
           </div>
           <div id="search-results" class="search-results" role="listbox" hidden></div>
         </div>
         <div class="floor-tab-stack">
-          <nav class="floor-tabs floor-tabs-primary" aria-label="フロア切替" data-i18n-aria="floor.primaryNav">
+          <nav class="floor-tabs floor-tabs-primary" aria-label="Floor selector" data-i18n-aria="floor.primaryNav">
             <button class="floor-tab" data-floor="1F" type="button">1F</button>
             <button class="floor-tab" data-floor="2F" type="button">2F</button>
             <button class="floor-tab" data-floor="3F" type="button">3F</button>
             <button class="floor-tab" data-floor="4F" type="button">4F</button>
             <button class="floor-tab" data-floor="5F" type="button">5F</button>
           </nav>
-          <nav class="floor-tabs floor-tabs-secondary" aria-label="棟別フロア切替" data-i18n-aria="floor.secondaryNav">
-            <button class="floor-tab floor-tab-wide" data-floor="A-6-9F" type="button" data-i18n="floor.A-6-9F">A棟6,7,8,9F</button>
-            <button class="floor-tab floor-tab-wide" data-floor="H-6-9F" type="button" data-i18n="floor.H-6-9F">H棟6,7,8,9F</button>
+          <nav class="floor-tabs floor-tabs-secondary" aria-label="Upper-floor building selector" data-i18n-aria="floor.secondaryNav">
+            <button class="floor-tab floor-tab-wide" data-floor="A-6-9F" type="button" data-i18n="floor.A-6-9F">Bldg. A 6F-9F</button>
+            <button class="floor-tab floor-tab-wide" data-floor="H-6-9F" type="button" data-i18n="floor.H-6-9F">Bldg. H 6F-9F</button>
           </nav>
         </div>
       </header>
 
       <main class="map-stage">
         <section class="map-card">
-          <div id="viewer" class="viewer" aria-label="フロアマップ" data-i18n-aria="floor.map">
+          <div id="viewer" class="viewer" aria-label="Floor map" data-i18n-aria="floor.map">
             <div id="canvas-layer" class="canvas-layer"></div>
-            <div id="status" class="status-pill" aria-live="polite" data-i18n="status.loading">読み込み中...</div>
+            <div id="status" class="status-pill" aria-live="polite" data-i18n="status.loading">Loading...</div>
           </div>
         </section>
       </main>
@@ -263,35 +242,35 @@
           | Instagram:
           <a href="https://www.instagram.com/yasusudas/" target="_blank" rel="noopener noreferrer">@yasusudas</a>
         </p>
-        <p data-i18n="footer.source">出典：立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」（2025年3月発行、OIC地域連携課）</p>
+        <p data-i18n="footer.source">Source: Ritsumeikan University, Osaka Ibaraki Campus Floor Guide (Japanese), published in March 2025 by the OIC Regional Partnerships Office.</p>
         <p>
           <a href="https://www.ritsumei.ac.jp/file.jsp?id=229844&f=.pdf" target="_blank" rel="noopener noreferrer">
             https://www.ritsumei.ac.jp/file.jsp?id=229844&f=.pdf
           </a>
         </p>
-        <p data-i18n="footer.copyright">© 2026 Issei Yasuda (立命館大学非公式)</p>
+        <p data-i18n="footer.copyright">© 2026 Issei Yasuda (Unofficial Ritsumeikan University site)</p>
       </footer>
     </div>
     <div id="about-dialog" class="about-dialog-backdrop" hidden>
       <section class="about-dialog" role="dialog" aria-modal="true" aria-labelledby="about-dialog-title" aria-describedby="about-dialog-description">
         <div class="about-dialog-header">
-          <h2 id="about-dialog-title" class="about-dialog-title" data-i18n="about.title">このページについて</h2>
-          <button id="about-dialog-close" class="about-dialog-close" type="button" aria-label="説明を閉じる" data-i18n-aria="about.close">
+          <h2 id="about-dialog-title" class="about-dialog-title" data-i18n="about.title">About this map</h2>
+          <button id="about-dialog-close" class="about-dialog-close" type="button" aria-label="Close description" data-i18n-aria="about.close">
             ×
           </button>
         </div>
         <div class="about-dialog-body">
           <p id="about-dialog-description" data-i18n="about.intro">
-            立命館OICマップは、立命館大学大阪いばらきキャンパス(OIC)の教室・施設をすばやく探せる非公式キャンパスマップです。OICのフロアマップを切り替えながら、目的の場所を確認できます。
+            Ritsumeikan OIC Map is an unofficial campus map for quickly finding rooms and facilities at Ritsumeikan University's Osaka Ibaraki Campus (OIC). Switch between OIC floor maps to check where you need to go.
           </p>
           <p data-i18n="about.rooms">
-            教室検索では、500以上の教室、研究室、ラウンジ、ホール、学生利用スペースを検索し、1Fから5F、A棟6〜9F、H棟6〜9Fの地図上で位置を確認できます。
+            The room search covers 500+ classrooms, labs, lounges, halls, and student spaces across 1F to 5F, Building A 6F-9F, and Building H 6F-9F.
           </p>
           <p data-i18n="about.facilities">
-            トイレ、エレベーター、階段、エスカレーター、プリンター、自販機、ウォーターサーバーなど、キャンパス内でよく探される施設の場所も確認できます。
+            You can also find frequently searched campus facilities, including restrooms, elevators, stairs, escalators, printers, vending machines, and water dispensers.
           </p>
           <p data-i18n="about.source">
-            地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした、立命館大学非公式の案内です。
+            The map information is based on Ritsumeikan University, Osaka Ibaraki Campus Floor Guide (Japanese), published in March 2025 by the OIC Regional Partnerships Office, and is provided as an unofficial guide.
           </p>
         </div>
       </section>

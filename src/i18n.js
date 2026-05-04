@@ -363,29 +363,23 @@ function normalizeSupportedLanguage(value) {
   return null;
 }
 
-function readBrowserLanguage() {
-  const languages = Array.isArray(navigator.languages) && navigator.languages.length > 0
-    ? navigator.languages
-    : [navigator.language];
-
-  for (const language of languages) {
-    const supportedLanguage = normalizeSupportedLanguage(language);
-
-    if (supportedLanguage) {
-      return supportedLanguage;
-    }
-  }
-
-  return 'ja';
+function readUrlLanguage() {
+  const path = window.location.pathname;
+  if (path === '/en' || path.startsWith('/en/')) return 'en';
+  if (window.__DEFAULT_LANG__ === 'en') return 'en';
+  return null;
 }
 
 function readStoredLanguage() {
+  const urlLang = readUrlLanguage();
+  if (urlLang !== null) return urlLang;
+
   try {
     const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
     const storedLanguage = normalizeSupportedLanguage(stored);
-    return storedLanguage ?? readBrowserLanguage();
+    return storedLanguage ?? 'ja';
   } catch {
-    return readBrowserLanguage();
+    return 'ja';
   }
 }
 
@@ -424,6 +418,10 @@ function updateJsonLd() {
     return;
   }
 
+  const pageUrl = currentLang === 'en'
+    ? 'https://rits-oic-map.vercel.app/en/'
+    : 'https://rits-oic-map.vercel.app/';
+
   script.textContent = JSON.stringify(
     {
       '@context': 'https://schema.org',
@@ -431,7 +429,7 @@ function updateJsonLd() {
       name: t('meta.title.viewer'),
       alternateName: t('meta.schemaAlternateName'),
       description: t('meta.description'),
-      url: 'https://rits-oic-map.vercel.app/',
+      url: pageUrl,
       inLanguage: currentLang
     },
     null,
@@ -550,6 +548,19 @@ export function applyI18n(root = document) {
 
 export function setLang(lang, { persist = true, notify = true } = {}) {
   const nextLang = lang === 'en' ? 'en' : 'ja';
+
+  if (!window.__FILE_MODE__) {
+    const isEnPath = window.location.pathname === '/en' || window.location.pathname.startsWith('/en/');
+    const needsNavigation = (nextLang === 'en' && !isEnPath) || (nextLang === 'ja' && isEnPath);
+
+    if (needsNavigation) {
+      if (persist) {
+        try { window.localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLang); } catch {}
+      }
+      window.location.href = nextLang === 'en' ? '/en/' : '/';
+      return nextLang;
+    }
+  }
 
   if (nextLang === currentLang) {
     applyI18n();
