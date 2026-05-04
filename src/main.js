@@ -120,6 +120,12 @@ if (window.__FILE_MODE__) {
   const searchResults = document.querySelector('#search-results');
   const toiletRingLegend = document.querySelector('#toilet-ring-legend');
   const searchIconButtons = Array.from(document.querySelectorAll('.search-icon-button'));
+  const siteMenu = document.querySelector('#site-menu');
+  const siteMenuToggle = document.querySelector('#site-menu-toggle');
+  const siteMenuPanel = document.querySelector('#site-menu-panel');
+  const aboutMenuButton = document.querySelector('#about-menu-button');
+  const aboutDialog = document.querySelector('#about-dialog');
+  const aboutDialogCloseButton = document.querySelector('#about-dialog-close');
   const editorToggleButton = document.querySelector('#editor-toggle');
   const editorPanel = document.querySelector('#editor-panel');
   const editorFloor = document.querySelector('#editor-floor');
@@ -2458,9 +2464,49 @@ if (window.__FILE_MODE__) {
     state.pinchStartCenterY = center.y;
   }
 
+  function isSiteMenuOpen() {
+    return Boolean(siteMenuPanel && !siteMenuPanel.hidden);
+  }
+
+  function setSiteMenuOpen(isOpen, { focusToggle = false } = {}) {
+    if (!siteMenuToggle || !siteMenuPanel) {
+      return;
+    }
+
+    siteMenuPanel.hidden = !isOpen;
+    siteMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    siteMenuToggle.setAttribute('aria-label', t(isOpen ? 'menu.close' : 'menu.open'));
+    siteMenuToggle.setAttribute('title', t(isOpen ? 'menu.close' : 'menu.open'));
+
+    if (!isOpen && focusToggle) {
+      siteMenuToggle.focus();
+    }
+  }
+
+  function setAboutDialogOpen(isOpen, { restoreFocus = false } = {}) {
+    if (!aboutDialog) {
+      return;
+    }
+
+    aboutDialog.hidden = !isOpen;
+
+    if (isOpen) {
+      setSiteMenuOpen(false);
+      window.requestAnimationFrame(() => {
+        aboutDialogCloseButton?.focus();
+      });
+      return;
+    }
+
+    if (restoreFocus) {
+      siteMenuToggle?.focus();
+    }
+  }
+
   function refreshLanguageDependentUi() {
     roomCodeCollator = new Intl.Collator(getLocale(), { numeric: true, sensitivity: 'base' });
     applyI18n();
+    setSiteMenuOpen(isSiteMenuOpen());
     refreshSearchEntries();
 
     const activeEntry = getActiveSearchEntry();
@@ -2490,6 +2536,33 @@ if (window.__FILE_MODE__) {
 
   registerViewerServiceWorker();
   renderFacilityToggleButtons();
+
+  if (siteMenuToggle && siteMenuPanel) {
+    setSiteMenuOpen(false);
+    siteMenuToggle.addEventListener('click', () => {
+      setSiteMenuOpen(!isSiteMenuOpen());
+    });
+  }
+
+  if (aboutMenuButton) {
+    aboutMenuButton.addEventListener('click', () => {
+      setAboutDialogOpen(true);
+    });
+  }
+
+  if (aboutDialogCloseButton) {
+    aboutDialogCloseButton.addEventListener('click', () => {
+      setAboutDialogOpen(false, { restoreFocus: true });
+    });
+  }
+
+  if (aboutDialog) {
+    aboutDialog.addEventListener('click', (event) => {
+      if (event.target === aboutDialog) {
+        setAboutDialogOpen(false, { restoreFocus: true });
+      }
+    });
+  }
 
   tabButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -2684,6 +2757,10 @@ if (window.__FILE_MODE__) {
   }
 
   document.addEventListener('pointerdown', (event) => {
+    if (siteMenu && isSiteMenuOpen() && !siteMenu.contains(event.target)) {
+      setSiteMenuOpen(false);
+    }
+
     if (searchPanel.contains(event.target)) {
       return;
     }
@@ -2694,6 +2771,23 @@ if (window.__FILE_MODE__) {
       state.activeEditorPinKey = null;
       state.activeEditorRingId = null;
       refreshEditorUi();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') {
+      return;
+    }
+
+    if (aboutDialog && !aboutDialog.hidden) {
+      event.preventDefault();
+      setAboutDialogOpen(false, { restoreFocus: true });
+      return;
+    }
+
+    if (isSiteMenuOpen()) {
+      event.preventDefault();
+      setSiteMenuOpen(false, { focusToggle: true });
     }
   });
 

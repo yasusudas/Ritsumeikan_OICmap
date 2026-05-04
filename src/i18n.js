@@ -8,12 +8,27 @@ const dictionaries = {
     'meta.title.editor': '立命館OICマップ 編集用テスト',
     'meta.title.login': '編集ページログイン',
     'meta.description':
-      '立命館大学大阪いばらきキャンパスの500以上の教室位置を検索できるフロアマップです。',
+      '立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。',
     'meta.schemaAlternateName': 'Ritsumeikan OIC Map',
 
     'lang.switchToEnglish': '英語に切り替え',
     'lang.switchToJapanese': '日本語に切り替え',
     'lang.toggle': '言語を切り替え',
+
+    'menu.open': 'メニューを開く',
+    'menu.close': 'メニューを閉じる',
+    'menu.about': 'このページについて',
+
+    'about.title': 'このページについて',
+    'about.close': '説明を閉じる',
+    'about.intro':
+      '立命館OICマップは、立命館大学大阪いばらきキャンパス(OIC)の教室・施設をすばやく探せる非公式キャンパスマップです。OICのフロアマップを切り替えながら、目的の場所を確認できます。',
+    'about.rooms':
+      '教室検索では、500以上の教室、研究室、ラウンジ、ホール、学生利用スペースを検索し、1Fから5F、A棟6〜9F、H棟6〜9Fの地図上で位置を確認できます。',
+    'about.facilities':
+      'トイレ、エレベーター、階段、エスカレーター、プリンター、自販機、ウォーターサーバーなど、キャンパス内でよく探される施設の場所も確認できます。',
+    'about.source':
+      '地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした、立命館大学非公式の案内です。',
 
     'app.title.viewer': '立命館OICマップ 閲覧用テスト',
     'app.title.editor': '立命館OICマップ 編集用テスト',
@@ -164,12 +179,27 @@ const dictionaries = {
     'meta.title.editor': 'Ritsumeikan OIC Map Editor Test',
     'meta.title.login': 'Editor Login',
     'meta.description':
-      "A floor map for searching 500+ classroom locations at Ritsumeikan University's Osaka Ibaraki Campus.",
+      "Unofficial campus map for Ritsumeikan University's Osaka Ibaraki Campus (OIC). Search 500+ rooms and find restrooms, elevators, printers, and other facilities.",
     'meta.schemaAlternateName': '立命館OICマップ',
 
     'lang.switchToEnglish': 'Switch to English',
     'lang.switchToJapanese': 'Switch to Japanese',
     'lang.toggle': 'Switch language',
+
+    'menu.open': 'Open menu',
+    'menu.close': 'Close menu',
+    'menu.about': 'About this map',
+
+    'about.title': 'About this map',
+    'about.close': 'Close description',
+    'about.intro':
+      "Ritsumeikan OIC Map is an unofficial campus map for quickly finding rooms and facilities at Ritsumeikan University's Osaka Ibaraki Campus (OIC). Switch between OIC floor maps to check where you need to go.",
+    'about.rooms':
+      'The room search covers 500+ classrooms, labs, lounges, halls, and student spaces across 1F to 5F, Building A 6F-9F, and Building H 6F-9F.',
+    'about.facilities':
+      'You can also find frequently searched campus facilities, including restrooms, elevators, stairs, escalators, printers, vending machines, and water dispensers.',
+    'about.source':
+      'The map information is based on Ritsumeikan University, Osaka Ibaraki Campus Floor Guide (Japanese), published in March 2025 by the OIC Regional Partnerships Office, and is provided as an unofficial guide.',
 
     'app.title.viewer': 'Ritsumeikan OIC Map Viewer Test',
     'app.title.editor': 'Ritsumeikan OIC Map Editor Test',
@@ -400,6 +430,7 @@ function updateJsonLd() {
       '@type': 'WebSite',
       name: t('meta.title.viewer'),
       alternateName: t('meta.schemaAlternateName'),
+      description: t('meta.description'),
       url: 'https://rits-oic-map.vercel.app/',
       inLanguage: currentLang
     },

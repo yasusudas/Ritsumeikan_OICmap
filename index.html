@@ -19,7 +19,7 @@
     <meta name="apple-mobile-web-app-title" content="立命館OICマップ" />
     <meta
       name="description"
-      content="立命館大学大阪いばらきキャンパスの500以上の教室位置を検索できるフロアマップです。"
+      content="立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。"
     />
     <meta name="robots" content="index,follow" />
     <meta property="og:type" content="website" />
@@ -28,13 +28,13 @@
     <meta property="og:title" content="立命館OICマップ 閲覧用テスト" />
     <meta
       property="og:description"
-      content="立命館大学大阪いばらきキャンパスの500以上の教室位置を検索できるフロアマップです。"
+      content="立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。"
     />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="立命館OICマップ 閲覧用テスト" />
     <meta
       name="twitter:description"
-      content="立命館大学大阪いばらきキャンパスの500以上の教室位置を検索できるフロアマップです。"
+      content="立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。"
     />
     <title>立命館OICマップ 閲覧用テスト</title>
     <script type="application/ld+json" data-i18n-jsonld>
@@ -43,6 +43,7 @@
         "@type": "WebSite",
         "name": "立命館OICマップ 閲覧用テスト",
         "alternateName": "Ritsumeikan OIC Map",
+        "description": "立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。",
         "url": "https://rits-oic-map.vercel.app/",
         "inLanguage": "ja"
       }
@@ -110,7 +111,31 @@
             <span class="app-title-main" data-i18n="app.title.viewer">立命館OICマップ 閲覧用テスト</span>
             <span class="app-title-version">Ver. 2.1</span>
           </h1>
-          <button class="lang-toggle" data-lang-toggle type="button" aria-label="英語に切り替え">EN</button>
+          <div class="topbar-actions">
+            <button class="lang-toggle" data-lang-toggle type="button" aria-label="英語に切り替え">EN</button>
+            <div id="site-menu" class="site-menu">
+              <button
+                id="site-menu-toggle"
+                class="site-menu-toggle"
+                type="button"
+                aria-label="メニューを開く"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="site-menu-panel"
+                data-i18n-aria="menu.open"
+                data-i18n-title="menu.open"
+              >
+                <span class="site-menu-line" aria-hidden="true"></span>
+                <span class="site-menu-line" aria-hidden="true"></span>
+                <span class="site-menu-line" aria-hidden="true"></span>
+              </button>
+              <div id="site-menu-panel" class="site-menu-panel" role="menu" hidden>
+                <button id="about-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.about">
+                  このページについて
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
         <div id="search-panel" class="search-panel">
           <div class="search-label-row">
@@ -243,6 +268,30 @@
         </p>
         <p data-i18n="footer.copyright">© 2026 Issei Yasuda (立命館大学非公式)</p>
       </footer>
+    </div>
+    <div id="about-dialog" class="about-dialog-backdrop" hidden>
+      <section class="about-dialog" role="dialog" aria-modal="true" aria-labelledby="about-dialog-title" aria-describedby="about-dialog-description">
+        <div class="about-dialog-header">
+          <h2 id="about-dialog-title" class="about-dialog-title" data-i18n="about.title">このページについて</h2>
+          <button id="about-dialog-close" class="about-dialog-close" type="button" aria-label="説明を閉じる" data-i18n-aria="about.close">
+            ×
+          </button>
+        </div>
+        <div class="about-dialog-body">
+          <p id="about-dialog-description" data-i18n="about.intro">
+            立命館OICマップは、立命館大学大阪いばらきキャンパス(OIC)の教室・施設をすばやく探せる非公式キャンパスマップです。OICのフロアマップを切り替えながら、目的の場所を確認できます。
+          </p>
+          <p data-i18n="about.rooms">
+            教室検索では、500以上の教室、研究室、ラウンジ、ホール、学生利用スペースを検索し、1Fから5F、A棟6〜9F、H棟6〜9Fの地図上で位置を確認できます。
+          </p>
+          <p data-i18n="about.facilities">
+            トイレ、エレベーター、階段、エスカレーター、プリンター、自販機、ウォーターサーバーなど、キャンパス内でよく探される施設の場所も確認できます。
+          </p>
+          <p data-i18n="about.source">
+            地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした、立命館大学非公式の案内です。
+          </p>
+        </div>
+      </section>
     </div>
   </body>
 </html>
