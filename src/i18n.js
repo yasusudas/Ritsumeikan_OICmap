@@ -4,8 +4,8 @@ export const LANGUAGE_CHANGE_EVENT = 'oicmap:languagechange';
 const dictionaries = {
   ja: {
     'meta.appName': '立命館OICマップ',
-    'meta.title.viewer': '立命館OICマップ 閲覧用テスト',
-    'meta.title.editor': '立命館OICマップ 編集用テスト',
+    'meta.title.viewer': '立命館OICマップ',
+    'meta.title.editor': '立命館OICマップ 編集用',
     'meta.title.login': '編集ページログイン',
     'meta.description':
       '立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。',
@@ -30,17 +30,17 @@ const dictionaries = {
     'about.source':
       '地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした、立命館大学非公式の案内です。',
 
-    'app.title.viewer': '立命館OICマップ 閲覧用テスト',
-    'app.title.editor': '立命館OICマップ 編集用テスト',
+    'app.title.viewer': '立命館OICマップ',
+    'app.title.editor': '立命館OICマップ 編集用',
 
-    'fileMode.viewer.title': '立命館OICマップ 閲覧用テスト',
+    'fileMode.viewer.title': '立命館OICマップ',
     'fileMode.viewer.copy1':
       'このアプリは <strong>index.html を直接開く方式では動作しません</strong>。地図表示と操作機能はローカルサーバー経由で起動する必要があります。',
     'fileMode.viewer.copy2':
       '一番簡単なのは、プロジェクト直下の <code>start-map.command</code> をダブルクリックする方法です。',
     'fileMode.viewer.copy3':
       'ターミナルを使う場合は <code>npm run dev</code> のあと、<code>http://127.0.0.1:5173/</code> を開いてください。',
-    'fileMode.editor.title': '立命館OICマップ 編集用テスト',
+    'fileMode.editor.title': '立命館OICマップ 編集用',
     'fileMode.editor.copy1':
       'このアプリは <strong>index.html を直接開く方式では動作しません</strong>。地図表示と編集機能はローカルサーバー経由で起動する必要があります。',
     'fileMode.editor.copy2':
@@ -175,8 +175,8 @@ const dictionaries = {
   },
   en: {
     'meta.appName': 'Ritsumeikan OIC Map',
-    'meta.title.viewer': 'Ritsumeikan OIC Map Viewer Test',
-    'meta.title.editor': 'Ritsumeikan OIC Map Editor Test',
+    'meta.title.viewer': 'Ritsumeikan OIC Map',
+    'meta.title.editor': 'Ritsumeikan OIC Map Editor',
     'meta.title.login': 'Editor Login',
     'meta.description':
       "Unofficial campus map for Ritsumeikan University's Osaka Ibaraki Campus (OIC). Search 500+ rooms and find restrooms, elevators, printers, and other facilities.",
@@ -201,17 +201,17 @@ const dictionaries = {
     'about.source':
       'The map information is based on Ritsumeikan University, Osaka Ibaraki Campus Floor Guide (Japanese), published in March 2025 by the OIC Regional Partnerships Office, and is provided as an unofficial guide.',
 
-    'app.title.viewer': 'Ritsumeikan OIC Map Viewer Test',
-    'app.title.editor': 'Ritsumeikan OIC Map Editor Test',
+    'app.title.viewer': 'Ritsumeikan OIC Map',
+    'app.title.editor': 'Ritsumeikan OIC Map Editor',
 
-    'fileMode.viewer.title': 'Ritsumeikan OIC Map Viewer Test',
+    'fileMode.viewer.title': 'Ritsumeikan OIC Map',
     'fileMode.viewer.copy1':
       'This app does <strong>not work when you open <code>index.html</code> directly</strong>. The map and its controls must be launched through a local server.',
     'fileMode.viewer.copy2':
       'The easiest option is to double-click <code>start-map.command</code> in the project root.',
     'fileMode.viewer.copy3':
       'If you prefer the terminal, run <code>npm run dev</code> and then open <code>http://127.0.0.1:5173/</code>.',
-    'fileMode.editor.title': 'Ritsumeikan OIC Map Editor Test',
+    'fileMode.editor.title': 'Ritsumeikan OIC Map Editor',
     'fileMode.editor.copy1':
       'This app does <strong>not work when you open <code>index.html</code> directly</strong>. The map and editor must be launched through a local server.',
     'fileMode.editor.copy2':
