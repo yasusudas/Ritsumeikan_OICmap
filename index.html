@@ -19,7 +19,7 @@
     <meta name="apple-mobile-web-app-title" content="立命館OICマップ" />
     <meta
       name="description"
-      content="立命館大学大阪いばらきキャンパスの500以上の教室位置を検索できるフロアマップです。"
+      content="立命館大学大阪いばらきキャンパス(OIC)の非公式フロアマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。"
     />
     <meta name="robots" content="index,follow" />
     <meta property="og:type" content="website" />
@@ -28,13 +28,13 @@
     <meta property="og:title" content="立命館OICマップ" />
     <meta
       property="og:description"
-      content="立命館大学大阪いばらきキャンパスの500以上の教室位置を検索できるフロアマップです。"
+      content="立命館大学大阪いばらきキャンパス(OIC)の非公式フロアマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。"
     />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="立命館OICマップ" />
     <meta
       name="twitter:description"
-      content="立命館大学大阪いばらきキャンパスの500以上の教室位置を検索できるフロアマップです。"
+      content="立命館大学大阪いばらきキャンパス(OIC)の非公式フロアマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。"
     />
     <title>立命館OICマップ</title>
     <script type="application/ld+json" data-i18n-jsonld>
@@ -43,10 +43,155 @@
         "@type": "WebSite",
         "name": "立命館OICマップ",
         "alternateName": "Ritsumeikan OIC Map",
+        "description": "立命館大学大阪いばらきキャンパス(OIC)の非公式フロアマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。",
         "url": "https://rits-oic-map.vercel.app/",
         "inLanguage": "ja"
       }
     </script>
+    <style>
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .site-menu {
+        position: relative;
+      }
+
+      .site-menu-toggle {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        border: 1px solid rgba(16, 36, 49, 0.18);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        color: #102431;
+        cursor: pointer;
+      }
+
+      .site-menu-toggle:hover,
+      .site-menu-toggle:focus-visible {
+        border-color: rgba(16, 36, 49, 0.36);
+        background: #ffffff;
+      }
+
+      .site-menu-line {
+        width: 16px;
+        height: 2px;
+        border-radius: 999px;
+        background: currentColor;
+      }
+
+      .site-menu-panel {
+        position: absolute;
+        z-index: 50;
+        top: calc(100% + 8px);
+        right: 0;
+        min-width: 184px;
+        padding: 6px;
+        border: 1px solid rgba(16, 36, 49, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 18px 40px rgba(16, 36, 49, 0.14);
+      }
+
+      .site-menu-item {
+        width: 100%;
+        padding: 10px 12px;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: #102431;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .site-menu-item:hover,
+      .site-menu-item:focus-visible {
+        background: rgba(16, 36, 49, 0.08);
+      }
+
+      .about-dialog-backdrop {
+        position: fixed;
+        z-index: 80;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        background: rgba(8, 18, 26, 0.42);
+      }
+
+      .about-dialog-backdrop[hidden],
+      .site-menu-panel[hidden] {
+        display: none;
+      }
+
+      .about-dialog {
+        width: min(640px, 100%);
+        max-height: min(720px, calc(100vh - 40px));
+        overflow: auto;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #102431;
+        box-shadow: 0 24px 70px rgba(8, 18, 26, 0.28);
+      }
+
+      .about-dialog-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 18px 20px 12px;
+        border-bottom: 1px solid rgba(16, 36, 49, 0.1);
+      }
+
+      .about-dialog-title {
+        margin: 0;
+        font-size: 1.1rem;
+        line-height: 1.35;
+      }
+
+      .about-dialog-close {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(16, 36, 49, 0.16);
+        border-radius: 8px;
+        background: #ffffff;
+        color: #102431;
+        font-size: 1.25rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .about-dialog-body {
+        padding: 16px 20px 20px;
+      }
+
+      .about-dialog-body p {
+        margin: 0 0 12px;
+        line-height: 1.75;
+      }
+
+      .about-dialog-body p:last-child {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 640px) {
+        .topbar-actions {
+          align-self: flex-start;
+        }
+
+        .site-menu-panel {
+          right: -2px;
+        }
+      }
+    </style>
     <script>
       const isFileMode = window.location.protocol === 'file:';
       window.__FILE_MODE__ = isFileMode;
@@ -101,6 +246,175 @@
     </script>
     <script type="module" src="/src/i18n.js"></script>
     <script type="module" src="/src/main.js"></script>
+    <script>
+      (() => {
+        if (window.__FILE_MODE__) return;
+
+        const SEO_COPY = {
+          ja: {
+            title: '立命館OICマップ',
+            description:
+              '立命館大学大阪いばらきキャンパス(OIC)の非公式フロアマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。',
+            menuOpen: 'メニューを開く',
+            menuClose: 'メニューを閉じる',
+            menuAbout: 'このページについて',
+            aboutTitle: 'このページについて',
+            aboutClose: '説明を閉じる',
+            about: [
+              '立命館OICマップは、立命館大学大阪いばらきキャンパス(OIC)の教室・施設をすばやく探せる非公式キャンパスマップです。OICのフロアマップを切り替えながら、目的の場所を確認できます。',
+              '教室検索では、500以上の教室、研究室、ラウンジ、ホール、学生利用スペースを検索し、1Fから5F、A棟6〜9F、H棟6〜9Fの地図上で位置を確認できます。',
+              'トイレ、エレベーター、階段、エスカレーター、プリンター、自販機、ウォーターサーバーなど、キャンパス内でよく探される施設の場所も確認できます。',
+              '地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした、立命館大学非公式の案内です。'
+            ]
+          },
+          en: {
+            title: 'Ritsumeikan OIC Map',
+            description:
+              'An unofficial floor map for Ritsumeikan University Osaka Ibaraki Campus (OIC). Search more than 500 rooms and check toilets, elevators, printers, and other campus facilities.',
+            menuOpen: 'Open menu',
+            menuClose: 'Close menu',
+            menuAbout: 'About this map',
+            aboutTitle: 'About this map',
+            aboutClose: 'Close description',
+            about: [
+              'Ritsumeikan OIC Map is an unofficial campus map for quickly finding rooms and facilities at Ritsumeikan University Osaka Ibaraki Campus (OIC). You can switch floor maps and check where you need to go.',
+              'The room search covers more than 500 classrooms, labs, lounges, halls, and student spaces across 1F to 5F, A Building 6F to 9F, and H Building 6F to 9F.',
+              'You can also check the locations of frequently searched campus facilities, including toilets, elevators, stairs, escalators, printers, vending machines, and water servers.',
+              'The map information is based on Ritsumeikan University’s OIC Floor Guide published in March 2025 by the OIC Regional Collaboration Division. This site is an unofficial guide.'
+            ]
+          }
+        };
+
+        const normalizeLang = (value) => {
+          const lang = String(value ?? '').trim().toLowerCase();
+          if (lang === 'en' || lang.startsWith('en-')) return 'en';
+          return 'ja';
+        };
+
+        const readLang = () => {
+          try {
+            const stored = localStorage.getItem('oicmap:lang');
+            if (stored) return normalizeLang(stored);
+          } catch {
+            // Ignore storage failures.
+          }
+          return normalizeLang(document.documentElement.lang || navigator.language);
+        };
+
+        const setMetaContent = (selector, content) => {
+          const node = document.querySelector(selector);
+          if (node) node.setAttribute('content', content);
+        };
+
+        const updateJsonLd = (lang, copy) => {
+          const node = document.querySelector('script[type="application/ld+json"][data-i18n-jsonld]');
+          if (!node) return;
+          node.textContent = JSON.stringify(
+            {
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: copy.title,
+              alternateName: 'Ritsumeikan OIC Map',
+              description: copy.description,
+              url: 'https://rits-oic-map.vercel.app/',
+              inLanguage: lang
+            },
+            null,
+            2
+          );
+        };
+
+        const applyCopy = (lang = readLang()) => {
+          const copy = SEO_COPY[lang] || SEO_COPY.ja;
+          document.documentElement.lang = lang;
+          document.title = copy.title;
+          setMetaContent('meta[name="description"]', copy.description);
+          setMetaContent('meta[property="og:title"]', copy.title);
+          setMetaContent('meta[property="og:description"]', copy.description);
+          setMetaContent('meta[name="twitter:title"]', copy.title);
+          setMetaContent('meta[name="twitter:description"]', copy.description);
+          updateJsonLd(lang, copy);
+
+          const menuToggle = document.querySelector('#site-menu-toggle');
+          const menuPanel = document.querySelector('#site-menu-panel');
+          const aboutButton = document.querySelector('#about-menu-button');
+          const title = document.querySelector('#about-dialog-title');
+          const close = document.querySelector('#about-dialog-close');
+          const paragraphs = document.querySelectorAll('[data-about-copy]');
+          const isOpen = menuPanel && !menuPanel.hidden;
+
+          if (menuToggle) {
+            const label = isOpen ? copy.menuClose : copy.menuOpen;
+            menuToggle.setAttribute('aria-label', label);
+            menuToggle.setAttribute('title', label);
+          }
+          if (aboutButton) aboutButton.textContent = copy.menuAbout;
+          if (title) title.textContent = copy.aboutTitle;
+          if (close) close.setAttribute('aria-label', copy.aboutClose);
+          paragraphs.forEach((paragraph, index) => {
+            paragraph.textContent = copy.about[index] || '';
+          });
+        };
+
+        const init = () => {
+          const menu = document.querySelector('#site-menu');
+          const menuToggle = document.querySelector('#site-menu-toggle');
+          const menuPanel = document.querySelector('#site-menu-panel');
+          const aboutButton = document.querySelector('#about-menu-button');
+          const dialogBackdrop = document.querySelector('#about-dialog');
+          const dialogClose = document.querySelector('#about-dialog-close');
+
+          if (!menu || !menuToggle || !menuPanel || !aboutButton || !dialogBackdrop || !dialogClose) return;
+
+          const setMenuOpen = (open) => {
+            menuPanel.hidden = !open;
+            menuToggle.setAttribute('aria-expanded', String(open));
+            applyCopy();
+          };
+
+          const setDialogOpen = (open) => {
+            dialogBackdrop.hidden = !open;
+            if (open) {
+              setMenuOpen(false);
+              dialogClose.focus({ preventScroll: true });
+            } else {
+              menuToggle.focus({ preventScroll: true });
+            }
+          };
+
+          menuToggle.addEventListener('click', () => setMenuOpen(menuPanel.hidden));
+          aboutButton.addEventListener('click', () => setDialogOpen(true));
+          dialogClose.addEventListener('click', () => setDialogOpen(false));
+          dialogBackdrop.addEventListener('click', (event) => {
+            if (event.target === dialogBackdrop) setDialogOpen(false);
+          });
+          document.addEventListener('click', (event) => {
+            if (menuPanel.hidden || menu.contains(event.target)) return;
+            setMenuOpen(false);
+          });
+          document.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') return;
+            if (!dialogBackdrop.hidden) {
+              setDialogOpen(false);
+              return;
+            }
+            if (!menuPanel.hidden) setMenuOpen(false);
+          });
+          window.addEventListener('oicmap:languagechange', (event) => applyCopy(event.detail?.lang));
+          window.addEventListener('storage', (event) => {
+            if (event.key === 'oicmap:lang') applyCopy();
+          });
+
+          applyCopy();
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', init, { once: true });
+        } else {
+          init();
+        }
+      })();
+    </script>
   </head>
   <body data-app-mode="viewer">
     <div class="app-shell">
@@ -110,7 +424,30 @@
             <span class="app-title-main" data-i18n="app.title.viewer">立命館OICマップ</span>
             <span class="app-title-version">Ver. 2.1</span>
           </h1>
-          <button class="lang-toggle" data-lang-toggle type="button" aria-label="英語に切り替え">EN</button>
+          <div class="topbar-actions">
+            <button class="lang-toggle" data-lang-toggle type="button" aria-label="英語に切り替え">EN</button>
+            <div id="site-menu" class="site-menu">
+              <button
+                id="site-menu-toggle"
+                class="site-menu-toggle"
+                type="button"
+                aria-label="メニューを開く"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="site-menu-panel"
+                title="メニューを開く"
+              >
+                <span class="site-menu-line" aria-hidden="true"></span>
+                <span class="site-menu-line" aria-hidden="true"></span>
+                <span class="site-menu-line" aria-hidden="true"></span>
+              </button>
+              <div id="site-menu-panel" class="site-menu-panel" role="menu" hidden>
+                <button id="about-menu-button" class="site-menu-item" type="button" role="menuitem">
+                  このページについて
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
         <div id="search-panel" class="search-panel">
           <div class="search-label-row">
@@ -243,6 +580,30 @@
         </p>
         <p data-i18n="footer.copyright">© 2026 Issei Yasuda (立命館大学非公式)</p>
       </footer>
+    </div>
+    <div id="about-dialog" class="about-dialog-backdrop" hidden>
+      <section class="about-dialog" role="dialog" aria-modal="true" aria-labelledby="about-dialog-title" aria-describedby="about-dialog-description">
+        <div class="about-dialog-header">
+          <h2 id="about-dialog-title" class="about-dialog-title">このページについて</h2>
+          <button id="about-dialog-close" class="about-dialog-close" type="button" aria-label="説明を閉じる">
+            ×
+          </button>
+        </div>
+        <div class="about-dialog-body">
+          <p id="about-dialog-description" data-about-copy>
+            立命館OICマップは、立命館大学大阪いばらきキャンパス(OIC)の教室・施設をすばやく探せる非公式キャンパスマップです。OICのフロアマップを切り替えながら、目的の場所を確認できます。
+          </p>
+          <p data-about-copy>
+            教室検索では、500以上の教室、研究室、ラウンジ、ホール、学生利用スペースを検索し、1Fから5F、A棟6〜9F、H棟6〜9Fの地図上で位置を確認できます。
+          </p>
+          <p data-about-copy>
+            トイレ、エレベーター、階段、エスカレーター、プリンター、自販機、ウォーターサーバーなど、キャンパス内でよく探される施設の場所も確認できます。
+          </p>
+          <p data-about-copy>
+            地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした、立命館大学非公式の案内です。
+          </p>
+        </div>
+      </section>
     </div>
   </body>
 </html>
