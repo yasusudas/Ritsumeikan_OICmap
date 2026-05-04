@@ -4,3 +4,4 @@ dist
 .map-server.pid
 .map-server.log
 .vercel
+tmp.claude/

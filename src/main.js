@@ -759,6 +759,13 @@ if (window.__FILE_MODE__) {
   }
 
   function getCurrentPublishedEditorData(deployedEntries = [], deployedFacilityRings = []) {
+    if (!isEditorSite) {
+      return {
+        entries: cloneManualEntries(deployedEntries),
+        facilityRings: cloneFacilityRings(deployedFacilityRings)
+      };
+    }
+
     const legacySnapshot = readStoredEditorData(LEGACY_MANUAL_STORAGE_KEY);
     const publishedSnapshot = readStoredEditorData(MANUAL_PUBLISHED_STORAGE_KEY);
     const deployedSnapshot = {

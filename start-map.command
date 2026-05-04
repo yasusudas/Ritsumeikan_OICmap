@@ -2,9 +2,14 @@
 
 set -euo pipefail
 
-PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="/Users/yasusu/Desktop/立命館OICマップ"
 PID_FILE="$PROJECT_DIR/.map-server.pid"
 PORT=4173
+
+if [ ! -d "$PROJECT_DIR" ]; then
+  echo "プロジェクトフォルダが見つかりません: $PROJECT_DIR"
+  exit 1
+fi
 
 cd "$PROJECT_DIR"
 
@@ -42,4 +47,4 @@ if [ "${NO_OPEN:-0}" != "1" ]; then
   open "http://127.0.0.1:$PORT/"
 fi
 
-echo "立命館キャンパスマップを http://127.0.0.1:$PORT/ で起動しました。"
+echo "立命館OICマップを http://127.0.0.1:$PORT/ で起動しました。"
