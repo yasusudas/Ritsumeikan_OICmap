@@ -658,6 +658,27 @@ body[data-app-mode="viewer"] .app-shell {
   transform: scale(0.97);
 }
 
+@media (min-width: 721px) {
+  .floor-tab-stack {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .floor-tabs,
+  .floor-tabs-secondary {
+    display: contents;
+  }
+
+  .floor-tab {
+    min-width: 0;
+    padding-inline: 8px;
+    white-space: nowrap;
+  }
+
+  .floor-tab-wide {
+    font-size: clamp(0.78rem, 1.25vw, 1rem);
+  }
+}
+
 .editor-shell {
   display: grid;
   gap: 10px;
