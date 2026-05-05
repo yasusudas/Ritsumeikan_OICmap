@@ -58,17 +58,39 @@
 
       if (isFileMode) {
         document.addEventListener('DOMContentLoaded', () => {
-          const fileModeText = {
-            title: 'Ritsumeikan OIC Map',
-            copy1:
-              'This app does <strong>not work when you open <code>index.html</code> directly</strong>. The map and its controls must be launched through a local server.',
-            copy2:
-              'The easiest option is to double-click <code>start-map.command</code> in the project root.',
-            copy3:
-              'If you prefer the terminal, run <code>npm run dev</code> and then open <code>http://127.0.0.1:5173/en/</code>.'
+          const normalizeLang = (value) => {
+            const lang = String(value ?? '').trim().toLowerCase();
+            if (lang === 'ja' || lang.startsWith('ja-')) return 'ja';
+            if (lang === 'en' || lang.startsWith('en-')) return 'en';
+            return null;
           };
+          const readBrowserLang = () => {
+            const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
+            return languages.map(normalizeLang).find(Boolean) ?? 'ja';
+          };
+          const lang = 'en';
+          const fileModeText = {
+            ja: {
+              title: '立命館OICマップ',
+              copy1:
+                'このアプリは <strong>index.html を直接開く方式では動作しません</strong>。地図表示と操作機能はローカルサーバー経由で起動する必要があります。',
+              copy2:
+                '一番簡単なのは、プロジェクト直下の <code>start-map.command</code> をダブルクリックする方法です。',
+              copy3:
+                'ターミナルを使う場合は <code>npm run dev</code> のあと、<code>http://127.0.0.1:5173/</code> を開いてください。'
+            },
+            en: {
+              title: 'Ritsumeikan OIC Map',
+              copy1:
+                'This app does <strong>not work when you open <code>index.html</code> directly</strong>. The map and its controls must be launched through a local server.',
+              copy2:
+                'The easiest option is to double-click <code>start-map.command</code> in the project root.',
+              copy3:
+                'If you prefer the terminal, run <code>npm run dev</code> and then open <code>http://127.0.0.1:5173/en/</code>.'
+            }
+          }[lang];
 
-          document.documentElement.lang = 'en';
+          document.documentElement.lang = lang;
           document.body.innerHTML = `
             <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:linear-gradient(180deg,#fff1f1 0%,#eedddd 100%);font-family:'Hiragino Sans','Yu Gothic','Noto Sans JP',sans-serif;color:#102431;">
               <section style="max-width:720px;padding:28px;border-radius:24px;background:rgba(255,255,255,0.9);box-shadow:0 24px 50px rgba(16,36,49,0.12);">
@@ -120,12 +142,6 @@
           </div>
         </div>
         <div id="search-panel" class="search-panel">
-          <div class="search-label-row">
-            <label class="search-label" for="search-input" data-i18n="search.label">Search Rooms &amp; Facilities</label>
-            <span id="toilet-ring-legend" class="toilet-ring-legend" data-i18n="search.toiletLegend" hidden>
-              Blue rings mark men's restrooms, red rings mark women's restrooms, and yellow rings mark accessible restrooms.
-            </span>
-          </div>
           <div class="search-controls">
             <div class="search-box">
               <input
@@ -206,9 +222,9 @@
               </button>
             </div>
           </div>
-          <div id="search-feedback" class="search-feedback" aria-live="polite" data-i18n="search.feedback.default">
-            Search 500+ rooms and campus locations. Zoom, pan, and explore the map.
-          </div>
+          <span id="toilet-ring-legend" class="toilet-ring-legend" data-i18n="search.toiletLegend" hidden>
+            Blue rings mark men's restrooms, red rings mark women's restrooms, and yellow rings mark accessible restrooms.
+          </span>
           <div id="search-results" class="search-results" role="listbox" hidden></div>
         </div>
         <div class="floor-tab-stack">

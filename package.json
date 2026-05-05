@@ -4,8 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node scripts/sync-en-index.mjs && vite",
+    "build": "node scripts/sync-en-index.mjs && vite build",
+    "sync:en": "node scripts/sync-en-index.mjs",
+    "check:en": "node scripts/sync-en-index.mjs --check",
     "preview": "vite preview"
   },
   "dependencies": {
