@@ -268,7 +268,9 @@ if (window.__FILE_MODE__) {
   }
 
   function setSearchFeedback(message) {
-    searchFeedback.textContent = message;
+    if (searchFeedback) {
+      searchFeedback.textContent = message;
+    }
   }
 
   function renderFacilityToggleButtons() {
