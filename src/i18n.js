@@ -50,7 +50,6 @@ const dictionaries = {
     'fileMode.login.copy':
       'このログイン画面はローカルサーバー経由で開く必要があります。<code>npm run dev</code> のあと <code>http://127.0.0.1:5173/editor/login/</code> を開いてください。',
 
-    'search.label': '教室検索',
     'search.placeholder': '教室名を検索',
     'search.clear': '検索をクリア',
     'search.facilityActions': '施設アイコン',
@@ -221,7 +220,6 @@ const dictionaries = {
     'fileMode.login.copy':
       'This login page must be opened through a local server. After running <code>npm run dev</code>, open <code>http://127.0.0.1:5173/editor/login/</code>.',
 
-    'search.label': 'Search Rooms & Facilities',
     'search.placeholder': 'Search by room or facility name',
     'search.clear': 'Clear search',
     'search.facilityActions': 'Facility filters',

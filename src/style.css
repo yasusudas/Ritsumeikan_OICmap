@@ -78,7 +78,7 @@ body[data-app-mode="viewer"] .app-shell {
   top: 0;
   z-index: 10;
   display: grid;
-  gap: 14px;
+  gap: 7px;
   padding:
     calc(var(--topbar-padding-top) + env(safe-area-inset-top, 0px))
     var(--topbar-padding-side)
@@ -390,21 +390,6 @@ body[data-app-mode="viewer"] .app-shell {
   min-width: 0;
 }
 
-.search-label-row {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  min-width: 0;
-  flex-wrap: wrap;
-}
-
-.search-label {
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: rgba(16, 36, 49, 0.72);
-}
-
 .toilet-ring-legend {
   min-width: 0;
   font-size: 0.82rem;
@@ -661,6 +646,7 @@ body[data-app-mode="viewer"] .app-shell {
 @media (min-width: 721px) {
   .floor-tab-stack {
     grid-template-columns: repeat(7, minmax(0, 1fr));
+    margin-top: 7px;
   }
 
   .floor-tabs,
@@ -1669,14 +1655,6 @@ body[data-app-mode="editor"] .map-card {
 
   .about-dialog-body p {
     font-size: 0.9rem;
-  }
-
-  .search-label {
-    font-size: 0.75rem;
-  }
-
-  .search-label-row {
-    gap: 8px;
   }
 
   .toilet-ring-legend {
