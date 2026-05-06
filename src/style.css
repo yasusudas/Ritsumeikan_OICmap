@@ -90,7 +90,7 @@ body[data-app-mode="viewer"] .app-shell {
 
 .topbar-title-row {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 12px;
   min-width: 0;
@@ -120,14 +120,14 @@ body[data-app-mode="viewer"] .app-shell {
 
 .editor-header-row {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 12px;
 }
 
 .editor-header-actions {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-end;
   gap: 10px;
   flex: 0 0 auto;
@@ -136,7 +136,7 @@ body[data-app-mode="viewer"] .app-shell {
 .topbar-actions {
   position: relative;
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-end;
   gap: 8px;
   flex: 0 0 auto;
@@ -1460,11 +1460,11 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .editor-header-row {
-    align-items: center;
+    align-items: flex-end;
   }
 
   .topbar-title-row {
-    align-items: center;
+    align-items: flex-end;
   }
 
   .editor-header-actions {
