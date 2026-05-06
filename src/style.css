@@ -4,7 +4,6 @@
   --topbar-padding-top: 18px;
   --topbar-padding-side: 20px;
   --topbar-padding-bottom: 14px;
-  --map-stage-padding-bottom: 18px;
   --zoom-offset-right: 18px;
   --zoom-offset-bottom: 18px;
   --accent: #990000;
@@ -993,17 +992,12 @@ body[data-app-mode="viewer"] .app-shell {
 }
 
 .map-stage {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  padding: var(--shell-padding) var(--shell-padding) var(--map-stage-padding-bottom);
-  overflow: hidden;
-}
-
-body[data-app-mode="viewer"] .map-stage {
   flex: 0 0 auto;
-  height: var(--viewer-stage-height, calc(100dvh - 220px));
-  min-height: var(--viewer-stage-height, calc(100dvh - 220px));
+  display: flex;
+  height: var(--map-stage-height, calc(100dvh - 220px));
+  min-height: var(--map-stage-height, calc(100dvh - 220px));
+  padding: var(--shell-padding) var(--shell-padding) 0;
+  overflow: hidden;
 }
 
 .site-footer {
@@ -1417,12 +1411,11 @@ body[data-app-mode="editor"] .app-shell {
 
 body[data-app-mode="editor"] .topbar {
   position: relative;
+  max-height: max(0px, calc(100dvh - 240px));
+  overflow-y: auto;
 }
 
 body[data-app-mode="editor"] .map-stage {
-  flex: 0 0 auto;
-  height: calc(100dvh - 36px);
-  min-height: 720px;
   overflow: visible;
 }
 
@@ -1450,7 +1443,6 @@ body[data-app-mode="editor"] .map-card {
     --topbar-padding-top: 12px;
     --topbar-padding-side: 12px;
     --topbar-padding-bottom: 10px;
-    --map-stage-padding-bottom: 10px;
     --zoom-offset-right: 12px;
     --zoom-offset-bottom: 12px;
   }
@@ -1643,8 +1635,6 @@ body[data-app-mode="editor"] .map-card {
   }
 
   body[data-app-mode="editor"] .map-stage {
-    height: max(68dvh, 560px);
-    min-height: 560px;
     padding-inline: var(--shell-padding);
   }
 }
@@ -1762,10 +1752,6 @@ body[data-app-mode="editor"] .map-card {
     max-width: calc(100% - 84px);
   }
 
-  body[data-app-mode="editor"] .map-stage {
-    height: max(64dvh, 520px);
-    min-height: 520px;
-  }
 }
 
 @media (max-height: 500px) and (orientation: landscape) {
@@ -1775,7 +1761,6 @@ body[data-app-mode="editor"] .map-card {
     --topbar-padding-top: 8px;
     --topbar-padding-side: 10px;
     --topbar-padding-bottom: 8px;
-    --map-stage-padding-bottom: 8px;
   }
 
   .topbar {
@@ -1835,10 +1820,6 @@ body[data-app-mode="editor"] .map-card {
     font-size: 0.78rem;
   }
 
-  body[data-app-mode="editor"] .map-stage {
-    height: max(72dvh, 460px);
-    min-height: 460px;
-  }
 }
 
 @media (max-width: 720px) and (max-height: 500px) and (orientation: landscape) {

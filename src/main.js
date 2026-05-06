@@ -406,14 +406,14 @@ if (window.__FILE_MODE__) {
     return Math.round(window.visualViewport?.height ?? window.innerHeight);
   }
 
-  function updateViewerStageHeight() {
-    if (isEditorSite || !appShell || !topbar) {
+  function updateMapStageHeight() {
+    if (!appShell || !topbar) {
       return;
     }
 
     const topbarHeight = Math.ceil(topbar.getBoundingClientRect().height);
-    const stageHeight = Math.max(getViewportHeight() - topbarHeight, 240);
-    appShell.style.setProperty('--viewer-stage-height', `${stageHeight}px`);
+    const stageHeight = Math.max(getViewportHeight() - topbarHeight, 0);
+    appShell.style.setProperty('--map-stage-height', `${stageHeight}px`);
   }
 
   function clamp(number, min, max) {
@@ -3023,7 +3023,7 @@ if (window.__FILE_MODE__) {
   });
 
   window.addEventListener('resize', () => {
-    updateViewerStageHeight();
+    updateMapStageHeight();
 
     if (!state.intrinsicWidth || !state.intrinsicHeight) {
       return;
@@ -3032,9 +3032,9 @@ if (window.__FILE_MODE__) {
     void renderFloor({ resetZoom: false, preserveView: true });
   });
 
-  if (!isEditorSite && 'ResizeObserver' in window && topbar) {
+  if ('ResizeObserver' in window && topbar) {
     const topbarResizeObserver = new ResizeObserver(() => {
-      updateViewerStageHeight();
+      updateMapStageHeight();
       if (state.intrinsicWidth && state.intrinsicHeight) {
         void renderFloor({ resetZoom: false, preserveView: true });
       }
@@ -3043,7 +3043,7 @@ if (window.__FILE_MODE__) {
   }
 
   window.visualViewport?.addEventListener('resize', () => {
-    updateViewerStageHeight();
+    updateMapStageHeight();
 
     if (!state.intrinsicWidth || !state.intrinsicHeight) {
       return;
@@ -3086,7 +3086,7 @@ if (window.__FILE_MODE__) {
   });
 
   updateTabSelection();
-  updateViewerStageHeight();
+  updateMapStageHeight();
   void buildSearchIndex();
   void renderFloor({ resetZoom: true });
 }
