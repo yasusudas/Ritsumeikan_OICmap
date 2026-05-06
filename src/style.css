@@ -1514,22 +1514,27 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .search-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
     gap: 8px;
   }
 
   .search-icon-actions {
-    gap: 4px;
+    display: grid;
+    grid-template-columns: repeat(2, 54px);
+    gap: 6px;
   }
 
   .search-icon-button {
-    width: 36px;
-    height: 36px;
-    border-radius: 12px;
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
   }
 
   .search-icon-image {
-    width: 24px;
-    height: 24px;
+    width: 36px;
+    height: 36px;
   }
 
   .search-input {
@@ -1568,21 +1573,26 @@ body[data-app-mode="editor"] .map-card {
     -webkit-overflow-scrolling: touch;
   }
 
+  .floor-tab-stack {
+    width: calc(100% - 122px);
+    justify-self: start;
+  }
+
   .floor-tabs::-webkit-scrollbar {
     display: none;
   }
 
   .floor-tab {
-    flex: 0 0 74px;
-    min-width: 74px;
+    flex: 0 0 64px;
+    min-width: 64px;
     padding: 11px 8px;
     font-size: 0.95rem;
     scroll-snap-align: start;
   }
 
   .floor-tab-wide {
-    flex-basis: 140px;
-    min-width: 140px;
+    flex-basis: 124px;
+    min-width: 124px;
     font-size: 0.88rem;
   }
 
@@ -1672,18 +1682,19 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .search-icon-actions {
-    gap: 4px;
+    grid-template-columns: repeat(2, 48px);
+    gap: 6px;
   }
 
   .search-icon-button {
-    width: 32px;
-    height: 32px;
-    border-radius: 10px;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
   }
 
   .search-icon-image {
-    width: 22px;
-    height: 22px;
+    width: 33px;
+    height: 33px;
   }
 
   .search-feedback {
@@ -1704,14 +1715,14 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .floor-tab {
-    flex-basis: 68px;
-    min-width: 68px;
+    flex-basis: 56px;
+    min-width: 56px;
     padding-block: 10px;
   }
 
   .floor-tab-wide {
-    flex-basis: 132px;
-    min-width: 132px;
+    flex-basis: 112px;
+    min-width: 112px;
     font-size: 0.82rem;
   }
 
