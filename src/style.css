@@ -1456,7 +1456,11 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .topbar {
-    gap: 10px;
+    --mobile-facility-toggle-size: 54px;
+    --mobile-facility-toggle-gap: 6px;
+    --mobile-search-controls-gap: 8px;
+    --mobile-topbar-gap: 10px;
+    gap: var(--mobile-topbar-gap);
   }
 
   .editor-header-row {
@@ -1517,18 +1521,18 @@ body[data-app-mode="editor"] .map-card {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: start;
-    gap: 8px;
+    gap: var(--mobile-search-controls-gap);
   }
 
   .search-icon-actions {
     display: grid;
-    grid-template-columns: repeat(2, 54px);
-    gap: 6px;
+    grid-template-columns: repeat(2, var(--mobile-facility-toggle-size));
+    gap: var(--mobile-facility-toggle-gap);
   }
 
   .search-icon-button {
-    width: 54px;
-    height: 54px;
+    width: var(--mobile-facility-toggle-size);
+    height: var(--mobile-facility-toggle-size);
     border-radius: 16px;
   }
 
@@ -1565,7 +1569,7 @@ body[data-app-mode="editor"] .map-card {
   .floor-tabs {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 6px;
+    gap: var(--mobile-facility-toggle-gap);
     overflow: visible;
     padding-bottom: 0;
     scroll-snap-type: none;
@@ -1576,10 +1580,10 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .floor-tab-stack {
-    width: calc(100% - 122px);
+    width: calc(100% - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-gap) - var(--mobile-search-controls-gap));
     justify-self: start;
-    gap: 6px;
-    margin-top: -124px;
+    gap: var(--mobile-facility-toggle-gap);
+    margin-top: calc(0px - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-gap) - var(--mobile-topbar-gap));
   }
 
   .floor-tabs::-webkit-scrollbar {
@@ -1588,7 +1592,7 @@ body[data-app-mode="editor"] .map-card {
 
   .floor-tab {
     width: 100%;
-    height: 54px;
+    height: var(--mobile-facility-toggle-size);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1635,6 +1639,11 @@ body[data-app-mode="editor"] .map-card {
 }
 
 @media (max-width: 430px) {
+  .topbar {
+    --mobile-facility-toggle-size: 48px;
+    --mobile-search-controls-gap: 6px;
+  }
+
   .app-title {
     font-size: 1.05rem;
   }
@@ -1685,17 +1694,18 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .search-controls {
-    gap: 6px;
+    --mobile-search-controls-gap: 6px;
+    gap: var(--mobile-search-controls-gap);
   }
 
   .search-icon-actions {
-    grid-template-columns: repeat(2, 48px);
-    gap: 6px;
+    grid-template-columns: repeat(2, var(--mobile-facility-toggle-size));
+    gap: var(--mobile-facility-toggle-gap);
   }
 
   .search-icon-button {
-    width: 48px;
-    height: 48px;
+    width: var(--mobile-facility-toggle-size);
+    height: var(--mobile-facility-toggle-size);
     border-radius: 14px;
   }
 
@@ -1722,14 +1732,14 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .floor-tab {
-    height: 48px;
+    height: var(--mobile-facility-toggle-size);
     min-width: 0;
     padding-block: 0;
   }
 
   .floor-tab-stack {
-    width: calc(100% - 108px);
-    margin-top: -112px;
+    width: calc(100% - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-gap) - var(--mobile-search-controls-gap));
+    margin-top: calc(0px - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-gap) - var(--mobile-topbar-gap));
   }
 
   .floor-tab-wide {
@@ -1758,7 +1768,8 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .topbar {
-    gap: 8px;
+    --mobile-topbar-gap: 8px;
+    gap: var(--mobile-topbar-gap);
   }
 
   .app-title {
@@ -1823,7 +1834,7 @@ body[data-app-mode="editor"] .map-card {
   .floor-tabs {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 6px;
+    gap: var(--mobile-facility-toggle-gap);
     overflow: visible;
     padding-bottom: 0;
     scroll-snap-type: none;
@@ -1834,14 +1845,14 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .floor-tab-stack {
-    width: calc(100% - 122px);
-    gap: 6px;
-    margin-top: -124px;
+    width: calc(100% - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-gap) - var(--mobile-search-controls-gap));
+    gap: var(--mobile-facility-toggle-gap);
+    margin-top: calc(0px - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-gap) - var(--mobile-topbar-gap));
   }
 
   .floor-tab {
     width: 100%;
-    height: 54px;
+    height: var(--mobile-facility-toggle-size);
     min-width: 0;
     padding: 0 4px;
   }
