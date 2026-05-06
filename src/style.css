@@ -1514,7 +1514,10 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .search-box {
-    padding-left: 14px;
+    height: var(--mobile-facility-toggle-size);
+    min-height: 0;
+    align-self: start;
+    padding: 0 6px 0 14px;
   }
 
   .search-controls {
@@ -1542,8 +1545,10 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .search-input {
+    height: 100%;
     font-size: 0.96rem;
-    padding-block: 11px;
+    padding-block: 0;
+    line-height: 1;
   }
 
   .search-results {
@@ -1569,7 +1574,11 @@ body[data-app-mode="editor"] .map-card {
   .floor-tabs {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: var(--mobile-facility-toggle-size);
     gap: var(--mobile-facility-toggle-gap);
+    height: var(--mobile-facility-toggle-size);
+    line-height: 0;
+    min-height: 0;
     overflow: visible;
     padding-bottom: 0;
     scroll-snap-type: none;
@@ -1581,6 +1590,7 @@ body[data-app-mode="editor"] .map-card {
 
   .floor-tab-stack {
     width: calc(100% - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-gap) - var(--mobile-search-controls-gap));
+    grid-template-rows: var(--mobile-facility-toggle-size) var(--mobile-facility-toggle-size);
     justify-self: start;
     gap: var(--mobile-facility-toggle-gap);
     margin-top: calc(0px - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-gap) - var(--mobile-topbar-gap));
@@ -1599,6 +1609,7 @@ body[data-app-mode="editor"] .map-card {
     min-width: 0;
     padding: 0 4px;
     font-size: 0.95rem;
+    line-height: 1;
     scroll-snap-align: start;
   }
 
