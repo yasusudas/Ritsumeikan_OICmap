@@ -1563,19 +1563,23 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .floor-tabs {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 2px;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+    overflow: visible;
+    padding-bottom: 0;
+    scroll-snap-type: none;
+  }
+
+  .floor-tabs-secondary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .floor-tab-stack {
     width: calc(100% - 122px);
     justify-self: start;
+    gap: 6px;
+    margin-top: -124px;
   }
 
   .floor-tabs::-webkit-scrollbar {
@@ -1583,16 +1587,19 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .floor-tab {
-    flex: 0 0 64px;
-    min-width: 64px;
-    padding: 11px 8px;
+    width: 100%;
+    height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 0 4px;
     font-size: 0.95rem;
     scroll-snap-align: start;
   }
 
   .floor-tab-wide {
-    flex-basis: 124px;
-    min-width: 124px;
+    min-width: 0;
     font-size: 0.88rem;
   }
 
@@ -1715,14 +1722,18 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .floor-tab {
-    flex-basis: 56px;
-    min-width: 56px;
-    padding-block: 10px;
+    height: 48px;
+    min-width: 0;
+    padding-block: 0;
+  }
+
+  .floor-tab-stack {
+    width: calc(100% - 108px);
+    margin-top: -112px;
   }
 
   .floor-tab-wide {
-    flex-basis: 112px;
-    min-width: 112px;
+    min-width: 0;
     font-size: 0.82rem;
   }
 
@@ -1805,5 +1816,38 @@ body[data-app-mode="editor"] .map-card {
   body[data-app-mode="editor"] .map-stage {
     height: max(72dvh, 460px);
     min-height: 460px;
+  }
+}
+
+@media (max-width: 720px) and (max-height: 500px) and (orientation: landscape) {
+  .floor-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+    overflow: visible;
+    padding-bottom: 0;
+    scroll-snap-type: none;
+  }
+
+  .floor-tabs-secondary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .floor-tab-stack {
+    width: calc(100% - 122px);
+    gap: 6px;
+    margin-top: -124px;
+  }
+
+  .floor-tab {
+    width: 100%;
+    height: 54px;
+    min-width: 0;
+    padding: 0 4px;
+  }
+
+  .floor-tab-wide {
+    min-width: 0;
+    font-size: 0.84rem;
   }
 }
