@@ -17,23 +17,30 @@
   </head>
   <body class="legal-page">
     <div class="legal-shell">
-      <header class="legal-header">
-        <div class="legal-header-inner">
-          <a class="legal-brand" href="/" aria-label="立命館OICマップへ戻る">
-            <span class="legal-brand-title">立命館OICマップ</span>
-            <span class="legal-brand-subtitle">立命館大学非公式</span>
+      <header class="topbar legal-header">
+        <div class="topbar-title-row legal-header-inner">
+          <a class="legal-brand app-title" href="/" aria-label="立命館OICマップへ戻る">
+            <span class="app-title-main">立命館OICマップ</span>
+            <span class="app-title-version">Ver. 2.3</span>
           </a>
-          <details class="legal-menu">
-            <summary aria-label="メニュー">
-              <span class="legal-menu-line" aria-hidden="true"></span>
-              <span class="legal-menu-line" aria-hidden="true"></span>
-              <span class="legal-menu-line" aria-hidden="true"></span>
-            </summary>
-            <nav class="legal-menu-panel" aria-label="ページメニュー">
-              <a href="/">マップへ戻る</a>
-              <a href="/terms/">利用規約</a>
-            </nav>
-          </details>
+          <div class="topbar-actions">
+            <button class="lang-toggle legal-lang-toggle" data-legal-lang-toggle type="button" aria-label="言語を切り替え" title="言語を切り替え">
+              <span class="lang-toggle-option is-active" data-legal-lang-option="ja" aria-current="true">JP</span>
+              <span class="lang-toggle-separator" aria-hidden="true">/</span>
+              <span class="lang-toggle-option" data-legal-lang-option="en">EN</span>
+            </button>
+            <details class="site-menu legal-menu">
+              <summary class="site-menu-toggle legal-menu-toggle" aria-label="メニュー">
+                <span class="site-menu-line" aria-hidden="true"></span>
+                <span class="site-menu-line" aria-hidden="true"></span>
+                <span class="site-menu-line" aria-hidden="true"></span>
+              </summary>
+              <nav class="site-menu-panel legal-menu-panel" aria-label="ページメニュー">
+                <a class="site-menu-item" href="/">マップへ戻る</a>
+                <a class="site-menu-item" href="/terms/">利用規約</a>
+              </nav>
+            </details>
+          </div>
         </div>
       </header>
 
