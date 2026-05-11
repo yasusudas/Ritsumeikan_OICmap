@@ -174,9 +174,10 @@ const dictionaries = {
     'login.back': '閲覧用サイトへ戻る',
     'login.error.incorrect': 'パスワードが違います。',
 
-    'footer.source':
-      '出典：立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」（2025年3月発行、OIC地域連携課）',
-    'footer.copyright': '© 2026 Issei Yasuda (立命館大学非公式)'
+    'footer.legalNav': '法務リンク',
+    'footer.terms': '利用規約',
+    'footer.privacy': 'プライバシーポリシー',
+    'footer.copyrightSimple': '© 2026 Issei Yasuda'
   },
   en: {
     'meta.appName': 'Ritsumeikan OIC Map',
@@ -351,9 +352,10 @@ const dictionaries = {
     'login.back': 'Back to the Viewer',
     'login.error.incorrect': 'Incorrect password.',
 
-    'footer.source':
-      'Source: Ritsumeikan University, Osaka Ibaraki Campus Floor Guide (Japanese), published in March 2025 by the OIC Regional Partnerships Office.',
-    'footer.copyright': '© 2026 Issei Yasuda (Unofficial Ritsumeikan University site)'
+    'footer.legalNav': 'Legal links',
+    'footer.terms': 'Terms',
+    'footer.privacy': 'Privacy Policy',
+    'footer.copyrightSimple': '© 2026 Issei Yasuda'
   }
 };
 
