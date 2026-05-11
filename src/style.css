@@ -636,6 +636,7 @@ body[data-app-mode="viewer"] .app-shell {
 }
 
 .floor-tab-stack {
+  position: relative;
   display: grid;
   gap: 8px;
 }
@@ -1846,6 +1847,7 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .floor-tab-stack {
+    z-index: 30;
     width: calc(100% - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-size) - var(--mobile-facility-toggle-gap) - var(--mobile-search-controls-gap));
     grid-template-rows: var(--mobile-facility-toggle-size) var(--mobile-facility-toggle-size);
     justify-self: start;
