@@ -1,0 +1,1995 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "1F-AC130",
+      "label": "AC130",
+      "normalized": "AC130",
+      "floorId": "1F",
+      "floorLabel": "1F",
+      "floorOrder": 0,
+      "rects": [
+        {
+          "xRatio": 0.6583378691700662,
+          "yRatio": 0.5640812675579198,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AC232",
+      "label": "AC232",
+      "normalized": "AC232",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.6861378098086185,
+          "yRatio": 0.3807459641447906,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AC237",
+      "label": "AC237",
+      "normalized": "AC237",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.6859278404684481,
+          "yRatio": 0.30407415439216684,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AC247",
+      "label": "AC247",
+      "normalized": "AC247",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.6470415186689021,
+          "yRatio": 0.30407415439216684,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AC248",
+      "label": "AC248",
+      "normalized": "AC248",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.6470415186689021,
+          "yRatio": 0.2809716493621353,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AC330",
+      "label": "AC330",
+      "normalized": "AC330",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.661361427668519,
+          "yRatio": 0.5526784887256163,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AC341",
+      "label": "AC341",
+      "normalized": "AC341",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.6470415186689021,
+          "yRatio": 0.4580116686282636,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AC342",
+      "label": "AC342",
+      "normalized": "AC342",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.6470415186689021,
+          "yRatio": 0.44007539684799457,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AC343",
+      "label": "AC343",
+      "normalized": "AC343",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.6470415186689021,
+          "yRatio": 0.4215509697355554,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AC344",
+      "label": "AC344",
+      "normalized": "AC344",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.6470415186689021,
+          "yRatio": 0.40272228797692317,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AC345",
+      "label": "AC345",
+      "normalized": "AC345",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.6470415186689021,
+          "yRatio": 0.383893606218291,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AC348",
+      "label": "AC348",
+      "normalized": "AC348",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.6470415186689021,
+          "yRatio": 0.29807581761059043,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AC431",
+      "label": "AC431",
+      "normalized": "AC431",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.6762692508206127,
+          "yRatio": 0.45943701598230147,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AC432",
+      "label": "AC432",
+      "normalized": "AC432",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.6760592814804424,
+          "yRatio": 0.44031297493275506,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AC433",
+      "label": "AC433",
+      "normalized": "AC433",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.6760592814804424,
+          "yRatio": 0.4220817845314621,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AC434",
+      "label": "AC434",
+      "normalized": "AC434",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.6760592814804424,
+          "yRatio": 0.40325457444397295,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AC435",
+      "label": "AC435",
+      "normalized": "AC435",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.6760592814804424,
+          "yRatio": 0.38419055358371557,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AC436",
+      "label": "AC436",
+      "normalized": "AC436",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.6760592814804424,
+          "yRatio": 0.3628103432731466,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AN210",
+      "label": "AN210",
+      "normalized": "AN210",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.7601310052846442,
+          "yRatio": 0.5574890360454943,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AN221",
+      "label": "AN221",
+      "normalized": "AN221",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.7462310349653681,
+          "yRatio": 0.457714721262839,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AN222",
+      "label": "AN222",
+      "normalized": "AN222",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.7462310349653681,
+          "yRatio": 0.4394843326194326,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AN224",
+      "label": "AN224",
+      "normalized": "AN224",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.7462310349653681,
+          "yRatio": 0.3916142377193298,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AN227",
+      "label": "AN227",
+      "normalized": "AN227",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.7462310349653681,
+          "yRatio": 0.3123261185653176,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AN228",
+      "label": "AN228",
+      "normalized": "AN228",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.7462310349653681,
+          "yRatio": 0.2901176282172121,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AN310",
+      "label": "AN310",
+      "normalized": "AN310",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.7607189194371212,
+          "yRatio": 0.5526784887256163,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AN316",
+      "label": "AN316",
+      "normalized": "AN316",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.7758367119293852,
+          "yRatio": 0.3613849959191087,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AN328",
+      "label": "AN328",
+      "normalized": "AN328",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.7460210656251978,
+          "yRatio": 0.2995011649646284,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AN412",
+      "label": "AN412",
+      "normalized": "AN412",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.7762566506097259,
+          "yRatio": 0.440313363339909,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AN413",
+      "label": "AN413",
+      "normalized": "AN413",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.7762566506097259,
+          "yRatio": 0.42208148877188606,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AN414",
+      "label": "AN414",
+      "normalized": "AN414",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.7762566506097259,
+          "yRatio": 0.4032528070132539,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AN415",
+      "label": "AN415",
+      "normalized": "AN415",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.7762566506097259,
+          "yRatio": 0.3841900832190887,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AN416",
+      "label": "AN416",
+      "normalized": "AN416",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.7762566506097259,
+          "yRatio": 0.3628103432731466,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AN421",
+      "label": "AN421",
+      "normalized": "AN421",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.7462310349653681,
+          "yRatio": 0.4591400686168769,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AN422",
+      "label": "AN422",
+      "normalized": "AN422",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.7460210656251978,
+          "yRatio": 0.4403136056489592,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AN423",
+      "label": "AN423",
+      "normalized": "AN423",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.7460210656251978,
+          "yRatio": 0.4220810374118907,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AN424",
+      "label": "AN424",
+      "normalized": "AN424",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.7460210656251978,
+          "yRatio": 0.40325457444397295,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AN425",
+      "label": "AN425",
+      "normalized": "AN425",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.7460210656251978,
+          "yRatio": 0.38472505884147984,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AN510",
+      "label": "AN510",
+      "normalized": "AN510",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.7411917708012801,
+          "yRatio": 0.48877541568624894,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AN520",
+      "label": "AN520",
+      "normalized": "AN520",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.7206147754645873,
+          "yRatio": 0.48877541568624894,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AS252",
+      "label": "AS252",
+      "normalized": "AS252",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.5873682321924932,
+          "yRatio": 0.3807459641447906,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AS257",
+      "label": "AS257",
+      "normalized": "AS257",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.5873722064921639,
+          "yRatio": 0.304070519756414,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AS264",
+      "label": "AS264",
+      "normalized": "AS264",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.5482719410527769,
+          "yRatio": 0.3916142377193298,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-AS267",
+      "label": "AS267",
+      "normalized": "AS267",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.5482719410527769,
+          "yRatio": 0.29581901763336377,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AS363",
+      "label": "AS363",
+      "normalized": "AS363",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.4212396786245912,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AS364",
+      "label": "AS364",
+      "normalized": "AS364",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.4027154130515188,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AS365",
+      "label": "AS365",
+      "normalized": "AS365",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.3835966588528664,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-AS368",
+      "label": "AS368",
+      "normalized": "AS368",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.29807581761059043,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AS461",
+      "label": "AS461",
+      "normalized": "AS461",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.45943701598230147,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AS462",
+      "label": "AS462",
+      "normalized": "AS462",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.440311752697399,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AS463",
+      "label": "AS463",
+      "normalized": "AS463",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.4220831279213432,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AS464",
+      "label": "AS464",
+      "normalized": "AS464",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.4032564511513224,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AS465",
+      "label": "AS465",
+      "normalized": "AS465",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.38419055358371557,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AS468",
+      "label": "AS468",
+      "normalized": "AS468",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.308354151793188,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-AS469",
+      "label": "AS469",
+      "normalized": "AS469",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.5480619717126065,
+          "yRatio": 0.2889892282285987,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS550",
+      "label": "AS550",
+      "normalized": "AS550",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5871582628523229,
+          "yRatio": 0.48877541568624894,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS551",
+      "label": "AS551",
+      "normalized": "AS551",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5646075557180289,
+          "yRatio": 0.4605654159709148,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS552",
+      "label": "AS552",
+      "normalized": "AS552",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5643975863778586,
+          "yRatio": 0.44233284773384635,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS553",
+      "label": "AS553",
+      "normalized": "AS553",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5646075557180289,
+          "yRatio": 0.4238033321313532,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS554",
+      "label": "AS554",
+      "normalized": "AS554",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5643975863778586,
+          "yRatio": 0.40527381652886,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS555",
+      "label": "AS555",
+      "normalized": "AS555",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5646075557180289,
+          "yRatio": 0.3870412482917915,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS557",
+      "label": "AS557",
+      "normalized": "AS557",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5644076253899569,
+          "yRatio": 0.3180306805671216,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS560",
+      "label": "AS560",
+      "normalized": "AS560",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5656154085508466,
+          "yRatio": 0.48877541568624894,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS561",
+      "label": "AS561",
+      "normalized": "AS561",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5466761740674824,
+          "yRatio": 0.4508849318580739,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS564",
+      "label": "AS564",
+      "normalized": "AS564",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5466761740674824,
+          "yRatio": 0.39642478503920786,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-AS567",
+      "label": "AS567",
+      "normalized": "AS567",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5466761740674824,
+          "yRatio": 0.3180306805671216,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-B374",
+      "label": "B374",
+      "normalized": "B374",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.4376180987830107,
+          "yRatio": 0.6760898137960673,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-B401",
+      "label": "B401",
+      "normalized": "B401",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.5331541485605128,
+          "yRatio": 0.6697945296490665,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-B408",
+      "label": "B408",
+      "normalized": "B408",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.5498677080380715,
+          "yRatio": 0.6697945296490665,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-B411",
+      "label": "B411",
+      "normalized": "B411",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.3777348429664314,
+          "yRatio": 0.6697945296490665,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-B413",
+      "label": "B413",
+      "normalized": "B413",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.3944903963120241,
+          "yRatio": 0.6697945296490665,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-B501",
+      "label": "B501",
+      "normalized": "B501",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5377734740442601,
+          "yRatio": 0.6455636246304215,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-B510",
+      "label": "B510",
+      "normalized": "B510",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.555914825034977,
+          "yRatio": 0.6455636246304215,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-B511",
+      "label": "B511",
+      "normalized": "B511",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.37592910664096657,
+          "yRatio": 0.6418814772991569,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-B516",
+      "label": "B516",
+      "normalized": "B516",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.3940704576316834,
+          "yRatio": 0.6418814772991569,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-B517",
+      "label": "B517",
+      "normalized": "B517",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.41884683977178283,
+          "yRatio": 0.7493764235828511,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-C271",
+      "label": "C271",
+      "normalized": "C271",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.43963380444864597,
+          "yRatio": 0.4625846580558019,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-C272",
+      "label": "C272",
+      "normalized": "C272",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.41582328127333007,
+          "yRatio": 0.4625846580558019,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-C273",
+      "label": "C273",
+      "normalized": "C273",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.4277495397950051,
+          "yRatio": 0.42154653215412646,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-C373",
+      "label": "C373",
+      "normalized": "C373",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.4275395704548347,
+          "yRatio": 0.3716593747627988,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-C471",
+      "label": "C471",
+      "normalized": "C471",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.4751186229374325,
+          "yRatio": 0.44886568977318686,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-C472",
+      "label": "C472",
+      "normalized": "C472",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.4751186229374325,
+          "yRatio": 0.4144197953839368,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-C473",
+      "label": "C473",
+      "normalized": "C473",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.4751186229374325,
+          "yRatio": 0.3875757535495557,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "1F-H101",
+      "label": "H101",
+      "normalized": "H101",
+      "floorId": "1F",
+      "floorLabel": "1F",
+      "floorOrder": 0,
+      "rects": [
+        {
+          "xRatio": 0.10057531394159012,
+          "yRatio": 0.5284475837069714,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-H241",
+      "label": "H241",
+      "normalized": "H241",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.33863855182671515,
+          "yRatio": 0.3973156271354816,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-H242",
+      "label": "H242",
+      "normalized": "H242",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.3199092866835213,
+          "yRatio": 0.3973156271354816,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-H243",
+      "label": "H243",
+      "normalized": "H243",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.2827867073414062,
+          "yRatio": 0.3973156271354816,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-H244",
+      "label": "H244",
+      "normalized": "H244",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.26447738087855305,
+          "yRatio": 0.3973156271354816,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "2F-H246",
+      "label": "H246",
+      "normalized": "H246",
+      "floorId": "2F",
+      "floorLabel": "2F",
+      "floorOrder": 1,
+      "rects": [
+        {
+          "xRatio": 0.1751564235700929,
+          "yRatio": 0.3904264482576315,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H301",
+      "label": "H301",
+      "normalized": "H301",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.22836265436925557,
+          "yRatio": 0.5292790363301603,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H322",
+      "label": "H322",
+      "normalized": "H322",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.30176793569280447,
+          "yRatio": 0.45456707918933853,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H324",
+      "label": "H324",
+      "normalized": "H324",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.1822113933998161,
+          "yRatio": 0.45373562656614974,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H325",
+      "label": "H325",
+      "normalized": "H325",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.12476378192921266,
+          "yRatio": 0.43710657410237386,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        },
+        {
+          "xRatio": 0.12476378192921266,
+          "yRatio": 0.4497565318694606,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H341",
+      "label": "H341",
+      "normalized": "H341",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.3392264659791921,
+          "yRatio": 0.3987409744895195,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H342",
+      "label": "H342",
+      "normalized": "H342",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.3204972008359983,
+          "yRatio": 0.3987409744895195,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H343",
+      "label": "H343",
+      "normalized": "H343",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.28341661536191726,
+          "yRatio": 0.3966623429315475,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H344",
+      "label": "H344",
+      "normalized": "H344",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.26426741153838273,
+          "yRatio": 0.3966623429315475,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H345",
+      "label": "H345",
+      "normalized": "H345",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.2098433585662321,
+          "yRatio": 0.3987409744895195,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H346",
+      "label": "H346",
+      "normalized": "H346",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.1920799523878218,
+          "yRatio": 0.3987409744895195,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "3F-H347",
+      "label": "H347",
+      "normalized": "H347",
+      "floorId": "3F",
+      "floorLabel": "3F",
+      "floorOrder": 2,
+      "rects": [
+        {
+          "xRatio": 0.17456850941761592,
+          "yRatio": 0.3987409744895195,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-H421",
+      "label": "H421",
+      "normalized": "H421",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.2211397090673961,
+          "yRatio": 0.4372253530485437,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-H422",
+      "label": "H422",
+      "normalized": "H422",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.18422709906545132,
+          "yRatio": 0.4372253530485437,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-H441",
+      "label": "H441",
+      "normalized": "H441",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.3603913754683618,
+          "yRatio": 0.48194562628148385,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-H442",
+      "label": "H442",
+      "normalized": "H442",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.3603913754683618,
+          "yRatio": 0.46371305804441526,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-H443",
+      "label": "H443",
+      "normalized": "H443",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.3603913754683618,
+          "yRatio": 0.44601499506511094,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-H444",
+      "label": "H444",
+      "normalized": "H444",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.3603913754683618,
+          "yRatio": 0.4243972268622023,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H502",
+      "label": "H502",
+      "normalized": "H502",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.2658631785236773,
+          "yRatio": 0.46430695277526446,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H503",
+      "label": "H503",
+      "normalized": "H503",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.2658631785236773,
+          "yRatio": 0.4454751732617162,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H504",
+      "label": "H504",
+      "normalized": "H504",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.21206903357203766,
+          "yRatio": 0.46431071094112125,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H505",
+      "label": "H505",
+      "normalized": "H505",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.21206903357203766,
+          "yRatio": 0.4454804898073467,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H506",
+      "label": "H506",
+      "normalized": "H506",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.19249989106816248,
+          "yRatio": 0.4548640265547631,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H507",
+      "label": "H507",
+      "normalized": "H507",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.17494645422992255,
+          "yRatio": 0.4548640265547631,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H508",
+      "label": "H508",
+      "normalized": "H508",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.15882080890484085,
+          "yRatio": 0.49447680510240066,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H509",
+      "label": "H509",
+      "normalized": "H509",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.12820727910800614,
+          "yRatio": 0.4865186157090222,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H510",
+      "label": "H510",
+      "normalized": "H510",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.12820727910800614,
+          "yRatio": 0.45171638448126267,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H521",
+      "label": "H521",
+      "normalized": "H521",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.28400452951439414,
+          "yRatio": 0.4034921323363126,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H528",
+      "label": "H528",
+      "normalized": "H528",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.1378658687558415,
+          "yRatio": 0.40444236390567123,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H529",
+      "label": "H529",
+      "normalized": "H529",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.11913660361264768,
+          "yRatio": 0.40444236390567123,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H541",
+      "label": "H541",
+      "normalized": "H541",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.3603913754683618,
+          "yRatio": 0.482539521012333,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H542",
+      "label": "H542",
+      "normalized": "H542",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.3603913754683618,
+          "yRatio": 0.46454282163098953,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H543",
+      "label": "H543",
+      "normalized": "H543",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.3603913754683618,
+          "yRatio": 0.4466088897959601,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-H544",
+      "label": "H544",
+      "normalized": "H544",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.3603913754683618,
+          "yRatio": 0.4249317321199665,
+          "widthRatio": 0.013975559281737451,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-H4043",
+      "label": "H4043",
+      "normalized": "H4043",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.15945071692535187,
+          "yRatio": 0.5009502576686563,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "4F-H4044",
+      "label": "H4044",
+      "normalized": "H4044",
+      "floorId": "4F",
+      "floorLabel": "4F",
+      "floorOrder": 3,
+      "rects": [
+        {
+          "xRatio": 0.15945071692535187,
+          "yRatio": 0.49394229984463645,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    },
+    {
+      "id": "5F-OOM10",
+      "label": "OOM10",
+      "normalized": "OOM10",
+      "floorId": "5F",
+      "floorLabel": "5F",
+      "floorOrder": 4,
+      "rects": [
+        {
+          "xRatio": 0.5344223633751416,
+          "yRatio": 0.5096211207390537,
+          "widthRatio": 0.017469449102171814,
+          "heightRatio": 0.01083263989068829
+        }
+      ]
+    }
+  ]
+}
