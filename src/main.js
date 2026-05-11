@@ -88,6 +88,7 @@ if (window.__FILE_MODE__) {
   const PDF_SUPPORT_ASSET_BASE = import.meta.env.BASE_URL;
   const MANUAL_SEARCH_INDEX_FILENAME = 'manual-search-index.json';
   const SEARCH_INDEX_URL = `${PDF_SUPPORT_ASSET_BASE}${MANUAL_SEARCH_INDEX_FILENAME}`;
+  const CONTACT_FORM_EMBED_URL = import.meta.env.VITE_CONTACT_FORM_EMBED_URL ?? '';
   const MAP_PADDING = 32;
   const SEARCH_RESULT_LIMIT = 18;
   const SEARCH_FOCUS_ZOOM = 6;
@@ -126,6 +127,11 @@ if (window.__FILE_MODE__) {
   const aboutMenuButton = document.querySelector('#about-menu-button');
   const aboutDialog = document.querySelector('#about-dialog');
   const aboutDialogCloseButton = document.querySelector('#about-dialog-close');
+  const contactFormMenuButton = document.querySelector('#contact-form-menu-button');
+  const contactFormDialog = document.querySelector('#contact-form-dialog');
+  const contactFormDialogCloseButton = document.querySelector('#contact-form-dialog-close');
+  const contactFormFrame = document.querySelector('#contact-form-frame');
+  const contactFormFallback = document.querySelector('#contact-form-fallback');
   const editorToggleButton = document.querySelector('#editor-toggle');
   const editorPanel = document.querySelector('#editor-panel');
   const editorFloor = document.querySelector('#editor-floor');
@@ -194,6 +200,7 @@ if (window.__FILE_MODE__) {
   const ringColorLabelByVariant = Object.fromEntries(
     TOILET_RING_COLOR_VARIANT_OPTIONS.map((option) => [option.value, option.labelKey])
   );
+  const contactFormEmbedUrl = normalizeGoogleFormEmbedUrl(CONTACT_FORM_EMBED_URL);
 
   const state = {
     floorIndex: 0,
@@ -261,6 +268,26 @@ if (window.__FILE_MODE__) {
         console.warn('Failed to register service worker.', error);
       });
     });
+  }
+
+  function normalizeGoogleFormEmbedUrl(value) {
+    const url = String(value ?? '').trim();
+
+    if (!url) {
+      return '';
+    }
+
+    try {
+      const parsedUrl = new URL(url, window.location.href);
+
+      if (parsedUrl.hostname === 'docs.google.com' && parsedUrl.pathname.includes('/forms/')) {
+        parsedUrl.searchParams.set('embedded', 'true');
+      }
+
+      return parsedUrl.toString();
+    } catch {
+      return url;
+    }
   }
 
   function setStatus(message) {
@@ -2512,6 +2539,38 @@ if (window.__FILE_MODE__) {
     }
   }
 
+  function setContactFormDialogOpen(isOpen, { restoreFocus = false } = {}) {
+    if (!contactFormDialog) {
+      return;
+    }
+
+    contactFormDialog.hidden = !isOpen;
+
+    if (isOpen) {
+      setSiteMenuOpen(false);
+
+      if (contactFormEmbedUrl && contactFormFrame) {
+        if (contactFormFrame.getAttribute('src') !== contactFormEmbedUrl) {
+          contactFormFrame.setAttribute('src', contactFormEmbedUrl);
+        }
+        contactFormFrame.hidden = false;
+      }
+
+      if (contactFormFallback) {
+        contactFormFallback.hidden = Boolean(contactFormEmbedUrl);
+      }
+
+      window.requestAnimationFrame(() => {
+        contactFormDialogCloseButton?.focus();
+      });
+      return;
+    }
+
+    if (restoreFocus) {
+      siteMenuToggle?.focus();
+    }
+  }
+
   function refreshLanguageDependentUi() {
     roomCodeCollator = new Intl.Collator(getLocale(), { numeric: true, sensitivity: 'base' });
     applyI18n();
@@ -2559,9 +2618,21 @@ if (window.__FILE_MODE__) {
     });
   }
 
+  if (contactFormMenuButton) {
+    contactFormMenuButton.addEventListener('click', () => {
+      setContactFormDialogOpen(true);
+    });
+  }
+
   if (aboutDialogCloseButton) {
     aboutDialogCloseButton.addEventListener('click', () => {
       setAboutDialogOpen(false, { restoreFocus: true });
+    });
+  }
+
+  if (contactFormDialogCloseButton) {
+    contactFormDialogCloseButton.addEventListener('click', () => {
+      setContactFormDialogOpen(false, { restoreFocus: true });
     });
   }
 
@@ -2569,6 +2640,14 @@ if (window.__FILE_MODE__) {
     aboutDialog.addEventListener('click', (event) => {
       if (event.target === aboutDialog) {
         setAboutDialogOpen(false, { restoreFocus: true });
+      }
+    });
+  }
+
+  if (contactFormDialog) {
+    contactFormDialog.addEventListener('click', (event) => {
+      if (event.target === contactFormDialog) {
+        setContactFormDialogOpen(false, { restoreFocus: true });
       }
     });
   }
@@ -2791,6 +2870,12 @@ if (window.__FILE_MODE__) {
     if (aboutDialog && !aboutDialog.hidden) {
       event.preventDefault();
       setAboutDialogOpen(false, { restoreFocus: true });
+      return;
+    }
+
+    if (contactFormDialog && !contactFormDialog.hidden) {
+      event.preventDefault();
+      setContactFormDialogOpen(false, { restoreFocus: true });
       return;
     }
 

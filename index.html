@@ -127,6 +127,7 @@
                 aria-controls="site-menu-panel"
                 data-i18n-aria="menu.open"
                 data-i18n-title="menu.open"
+                title="メニューを開く"
               >
                 <span class="site-menu-line" aria-hidden="true"></span>
                 <span class="site-menu-line" aria-hidden="true"></span>
@@ -135,6 +136,9 @@
               <div id="site-menu-panel" class="site-menu-panel" role="menu" hidden>
                 <button id="about-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.about">
                   このページについて
+                </button>
+                <button id="contact-form-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.contactForm">
+                  お問い合わせフォーム
                 </button>
               </div>
             </div>
@@ -286,6 +290,36 @@
           </p>
           <p data-i18n="about.source">
             地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした、立命館大学非公式の案内です。
+          </p>
+        </div>
+      </section>
+    </div>
+    <div id="contact-form-dialog" class="about-dialog-backdrop contact-form-dialog-backdrop" hidden>
+      <section class="about-dialog contact-form-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-form-dialog-title">
+        <div class="about-dialog-header">
+          <h2 id="contact-form-dialog-title" class="about-dialog-title" data-i18n="contactForm.title">お問い合わせフォーム</h2>
+          <button
+            id="contact-form-dialog-close"
+            class="about-dialog-close"
+            type="button"
+            aria-label="フォームを閉じる"
+            data-i18n-aria="contactForm.close"
+          >
+            ×
+          </button>
+        </div>
+        <div class="contact-form-dialog-body">
+          <iframe
+            id="contact-form-frame"
+            class="contact-form-frame"
+            title="お問い合わせフォーム"
+            data-i18n-title="contactForm.iframeTitle"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            hidden
+          ></iframe>
+          <p id="contact-form-fallback" class="contact-form-fallback" data-i18n="contactForm.unconfigured">
+            フォームURLがまだ設定されていません。Google Forms の埋め込みURLを設定してください。
           </p>
         </div>
       </section>

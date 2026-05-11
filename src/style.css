@@ -360,6 +360,42 @@ body[data-app-mode="viewer"] .app-shell {
   line-height: 1.8;
 }
 
+.contact-form-dialog {
+  width: min(100%, 760px);
+  max-height: min(88vh, 760px);
+}
+
+.contact-form-dialog-body {
+  padding: 0 18px 20px;
+}
+
+.contact-form-frame {
+  display: block;
+  width: 100%;
+  height: min(68vh, 640px);
+  min-height: 460px;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(16, 36, 49, 0.1);
+}
+
+.contact-form-frame[hidden],
+.contact-form-fallback[hidden] {
+  display: none;
+}
+
+.contact-form-fallback {
+  margin: 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--accent-soft);
+  color: rgba(16, 36, 49, 0.78);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
 .editor-logout-button {
   flex: 0 0 auto;
   border: 0;
@@ -1505,6 +1541,14 @@ body[data-app-mode="editor"] .map-card {
     padding: 0 16px 18px;
   }
 
+  .contact-form-dialog-body {
+    padding: 0 16px 18px;
+  }
+
+  .contact-form-frame {
+    min-height: 420px;
+  }
+
   .search-box {
     height: var(--mobile-facility-toggle-size);
     min-height: 0;
@@ -1681,6 +1725,14 @@ body[data-app-mode="editor"] .map-card {
   }
 
   .about-dialog-body p {
+    font-size: 0.9rem;
+  }
+
+  .contact-form-frame {
+    min-height: 380px;
+  }
+
+  .contact-form-fallback {
     font-size: 0.9rem;
   }
 

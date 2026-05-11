@@ -128,6 +128,7 @@
                 aria-controls="site-menu-panel"
                 data-i18n-aria="menu.open"
                 data-i18n-title="menu.open"
+                title="Open menu"
               >
                 <span class="site-menu-line" aria-hidden="true"></span>
                 <span class="site-menu-line" aria-hidden="true"></span>
@@ -136,6 +137,9 @@
               <div id="site-menu-panel" class="site-menu-panel" role="menu" hidden>
                 <button id="about-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.about">
                   About this map
+                </button>
+                <button id="contact-form-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.contactForm">
+                  Contact form
                 </button>
               </div>
             </div>
@@ -287,6 +291,36 @@
           </p>
           <p data-i18n="about.source">
             The map information is based on Ritsumeikan University, Osaka Ibaraki Campus Floor Guide (Japanese), published in March 2025 by the OIC Regional Partnerships Office, and is provided as an unofficial guide.
+          </p>
+        </div>
+      </section>
+    </div>
+    <div id="contact-form-dialog" class="about-dialog-backdrop contact-form-dialog-backdrop" hidden>
+      <section class="about-dialog contact-form-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-form-dialog-title">
+        <div class="about-dialog-header">
+          <h2 id="contact-form-dialog-title" class="about-dialog-title" data-i18n="contactForm.title">Contact form</h2>
+          <button
+            id="contact-form-dialog-close"
+            class="about-dialog-close"
+            type="button"
+            aria-label="Close form"
+            data-i18n-aria="contactForm.close"
+          >
+            ×
+          </button>
+        </div>
+        <div class="contact-form-dialog-body">
+          <iframe
+            id="contact-form-frame"
+            class="contact-form-frame"
+            title="Contact form"
+            data-i18n-title="contactForm.iframeTitle"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            hidden
+          ></iframe>
+          <p id="contact-form-fallback" class="contact-form-fallback" data-i18n="contactForm.unconfigured">
+            The form URL is not configured yet. Set the Google Forms embed URL to enable this form.
           </p>
         </div>
       </section>

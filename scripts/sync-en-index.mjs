@@ -166,6 +166,7 @@ function buildEnglishIndex() {
   html = replaceI18nElementContent(html, english, 'data-i18n-html', { allowHtml: true });
   html = replaceI18nAttribute(html, english, 'data-i18n-aria', 'aria-label');
   html = replaceI18nAttribute(html, english, 'data-i18n-placeholder', 'placeholder');
+  html = replaceI18nAttribute(html, english, 'data-i18n-title', 'title');
 
   return html;
 }

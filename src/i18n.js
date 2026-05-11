@@ -18,6 +18,7 @@ const dictionaries = {
     'menu.open': 'メニューを開く',
     'menu.close': 'メニューを閉じる',
     'menu.about': 'このページについて',
+    'menu.contactForm': 'お問い合わせフォーム',
 
     'about.title': 'このページについて',
     'about.close': '説明を閉じる',
@@ -29,6 +30,11 @@ const dictionaries = {
       'トイレ、エレベーター、階段、エスカレーター、プリンター、自販機、ウォーターサーバーなど、キャンパス内でよく探される施設の場所も確認できます。',
     'about.source':
       '地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした、立命館大学非公式の案内です。',
+
+    'contactForm.title': 'お問い合わせフォーム',
+    'contactForm.close': 'フォームを閉じる',
+    'contactForm.iframeTitle': 'お問い合わせフォーム',
+    'contactForm.unconfigured': 'フォームURLがまだ設定されていません。Google Forms の埋め込みURLを設定してください。',
 
     'app.title.viewer': '立命館OICマップ',
     'app.title.editor': '立命館OICマップ 編集用',
@@ -188,6 +194,7 @@ const dictionaries = {
     'menu.open': 'Open menu',
     'menu.close': 'Close menu',
     'menu.about': 'About this map',
+    'menu.contactForm': 'Contact form',
 
     'about.title': 'About this map',
     'about.close': 'Close description',
@@ -199,6 +206,11 @@ const dictionaries = {
       'You can also find frequently searched campus facilities, including restrooms, elevators, stairs, escalators, printers, vending machines, and water dispensers.',
     'about.source':
       'The map information is based on Ritsumeikan University, Osaka Ibaraki Campus Floor Guide (Japanese), published in March 2025 by the OIC Regional Partnerships Office, and is provided as an unofficial guide.',
+
+    'contactForm.title': 'Contact form',
+    'contactForm.close': 'Close form',
+    'contactForm.iframeTitle': 'Contact form',
+    'contactForm.unconfigured': 'The form URL is not configured yet. Set the Google Forms embed URL to enable this form.',
 
     'app.title.viewer': 'Ritsumeikan OIC Map',
     'app.title.editor': 'Ritsumeikan OIC Map Editor',
