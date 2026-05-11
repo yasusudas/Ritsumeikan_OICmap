@@ -1,6 +1,16 @@
 {
   "redirects": [
     {
+      "source": "/en/terms",
+      "destination": "/en/terms/",
+      "permanent": true
+    },
+    {
+      "source": "/en/privacy",
+      "destination": "/en/privacy/",
+      "permanent": true
+    },
+    {
       "source": "/terms",
       "destination": "/terms/",
       "permanent": true

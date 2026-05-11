@@ -17,12 +17,12 @@
   --accent-shadow-strong: rgba(153, 0, 0, 0.28);
   --accent-soft-gradient-start: rgba(153, 0, 0, 0.14);
   --accent-soft-gradient-end: rgba(122, 0, 0, 0.18);
-  --accent-page-radial: rgba(255, 196, 196, 0.45);
-  --accent-page-start: #fff1f1;
-  --accent-page-end: #eedddd;
-  --accent-surface-start: #f3d0d0;
-  --accent-surface-end: #fbf1f1;
-  --accent-button-surface-end: #f5e1e1;
+  --accent-page-radial: rgba(245, 245, 246, 0.72);
+  --accent-page-start: #f8f8f9;
+  --accent-page-end: #eeeeef;
+  --accent-surface-start: #eeeeef;
+  --accent-surface-end: #fafafa;
+  --accent-button-surface-end: #f4f4f5;
   font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
   color: #102431;
   background:

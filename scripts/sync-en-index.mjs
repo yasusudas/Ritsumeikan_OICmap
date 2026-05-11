@@ -167,6 +167,8 @@ function buildEnglishIndex() {
   html = replaceI18nAttribute(html, english, 'data-i18n-aria', 'aria-label');
   html = replaceI18nAttribute(html, english, 'data-i18n-placeholder', 'placeholder');
   html = replaceI18nAttribute(html, english, 'data-i18n-title', 'title');
+  html = html.replaceAll('href="/terms/"', 'href="/en/terms/"');
+  html = html.replaceAll('href="/privacy/"', 'href="/en/privacy/"');
 
   return html;
 }
