@@ -20,7 +20,7 @@
 
 検索欄に教室名や施設名を入力すると、該当する場所が地図上でハイライトされます。施設アイコンを使うと、トイレ、ウォーターサーバー、自販機、プリンター、階段、エレベーターなど、キャンパス内でよく探す設備をすばやく確認できます。
 
-右上メニューの「お問い合わせ」から、Google Forms の問い合わせフォームを埋め込み表示できます。フォームを有効にするには、Google Forms の埋め込みURLを `VITE_CONTACT_FORM_EMBED_URL` に設定してください。ローカルでは `.env.local` に `VITE_CONTACT_FORM_EMBED_URL=https://docs.google.com/forms/d/e/.../viewform?embedded=true` のように記載します。
+右上メニューの「お問い合わせ」から、Google Forms の問い合わせフォームを埋め込み表示できます。現在は指定済みのGoogleフォームが既定で開きます。別のフォームに差し替える場合は、Google Forms のURLを `VITE_CONTACT_FORM_EMBED_URL` に設定してください。ローカルでは `.env.local` に `VITE_CONTACT_FORM_EMBED_URL=https://docs.google.com/forms/d/e/.../viewform?embedded=true` のように記載します。
 
 日本語版と英語版の両方を用意しています。日本語版は `/`、英語版は `/en/` で表示され、画面上の言語切替ボタンでも切り替えられます。英語版のHTMLは `scripts/sync-en-index.mjs` によって日本語版の `index.html` と翻訳辞書から同期されます。
 
@@ -68,7 +68,7 @@ The viewer can switch between 1F through 5F, Building A 6F through 9F, Building 
 
 The search box highlights matching rooms and facilities directly on the map. Facility buttons make it easier to find frequently used campus amenities such as restrooms, water dispensers, vending machines, printers, stairs, and elevators.
 
-The top-right menu includes a Contact item that embeds a Google Forms form. To enable it, set the Google Forms embed URL in `VITE_CONTACT_FORM_EMBED_URL`. For local development, add a `.env.local` value such as `VITE_CONTACT_FORM_EMBED_URL=https://docs.google.com/forms/d/e/.../viewform?embedded=true`.
+The top-right menu includes a Contact item that embeds a Google Forms form. The configured Google Form now opens by default. To replace it with a different form, set the Google Forms URL in `VITE_CONTACT_FORM_EMBED_URL`. For local development, add a `.env.local` value such as `VITE_CONTACT_FORM_EMBED_URL=https://docs.google.com/forms/d/e/.../viewform?embedded=true`.
 
 The app supports both Japanese and English. The Japanese viewer is served from `/`, and the English viewer is served from `/en/`. Users can also switch languages from the button in the UI. The English HTML is generated from the Japanese `index.html` and the translation dictionary by `scripts/sync-en-index.mjs`.
 

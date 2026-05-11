@@ -88,7 +88,10 @@ if (window.__FILE_MODE__) {
   const PDF_SUPPORT_ASSET_BASE = import.meta.env.BASE_URL;
   const MANUAL_SEARCH_INDEX_FILENAME = 'manual-search-index.json';
   const SEARCH_INDEX_URL = `${PDF_SUPPORT_ASSET_BASE}${MANUAL_SEARCH_INDEX_FILENAME}`;
-  const CONTACT_FORM_EMBED_URL = import.meta.env.VITE_CONTACT_FORM_EMBED_URL ?? '';
+  const DEFAULT_CONTACT_FORM_EMBED_URL =
+    'https://docs.google.com/forms/d/e/1FAIpQLSdRZNEfH7hRLTylhvTLKUIJjXszWI8i3bq2VelAp7sfmH8fhQ/viewform?usp=dialog';
+  const CONTACT_FORM_EMBED_URL =
+    (import.meta.env.VITE_CONTACT_FORM_EMBED_URL || DEFAULT_CONTACT_FORM_EMBED_URL).trim();
   const MAP_PADDING = 32;
   const SEARCH_RESULT_LIMIT = 18;
   const SEARCH_FOCUS_ZOOM = 6;
