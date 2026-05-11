@@ -28,9 +28,6 @@ const dictionaries = {
       '教室検索では、500以上の教室、研究室、ラウンジ、ホール、学生利用スペースを検索し、1Fから5F、A棟6〜9F、H棟6〜9Fの地図上で位置を確認できます。',
     'about.facilities':
       'トイレ、エレベーター、階段、エスカレーター、プリンター、自販機、ウォーターサーバーなど、キャンパス内でよく探される施設の場所も確認できます。',
-    'about.source':
-      '地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした、立命館大学非公式の案内です。',
-
     'contactForm.title': 'お問い合わせ',
     'contactForm.close': 'フォームを閉じる',
     'contactForm.iframeTitle': 'お問い合わせ',
@@ -205,9 +202,6 @@ const dictionaries = {
       'The room search covers 500+ classrooms, labs, lounges, halls, and student spaces across 1F to 5F, Building A 6F-9F, and Building H 6F-9F.',
     'about.facilities':
       'You can also find frequently searched campus facilities, including restrooms, elevators, stairs, escalators, printers, vending machines, and water dispensers.',
-    'about.source':
-      'The map information is based on Ritsumeikan University, Osaka Ibaraki Campus Floor Guide (Japanese), published in March 2025 by the OIC Regional Partnerships Office, and is provided as an unofficial guide.',
-
     'contactForm.title': 'Contact',
     'contactForm.close': 'Close form',
     'contactForm.iframeTitle': 'Contact',
