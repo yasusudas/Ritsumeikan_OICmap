@@ -2160,6 +2160,7 @@ body[data-app-mode="editor"] .map-card {
     align-items: center;
     justify-content: center;
     min-width: 0;
+    border-radius: 10px;
     padding: 0 4px;
     font-size: 0.95rem;
     line-height: 1;
@@ -2492,6 +2493,7 @@ body[data-app-mode="editor"] .map-card {
     width: 100%;
     height: var(--mobile-facility-toggle-size);
     min-width: 0;
+    border-radius: 10px;
     padding: 0 4px;
   }
 
