@@ -427,10 +427,13 @@ body[data-app-mode="viewer"] .app-shell {
   min-width: 190px;
   padding: 8px;
   border-radius: 16px;
-  background: #fff;
+  background: rgb(255, 255, 255);
+  opacity: 1;
   box-shadow:
     0 22px 44px rgba(11, 18, 32, 0.16),
     inset 0 0 0 1px var(--accent-soft-mid);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
 .site-menu-panel[hidden] {
@@ -442,7 +445,8 @@ body[data-app-mode="viewer"] .app-shell {
   border: 0;
   border-radius: 12px;
   padding: 11px 12px;
-  background: #fff;
+  background: rgb(255, 255, 255);
+  opacity: 1;
   color: #0b1220;
   font-size: 0.9rem;
   font-weight: 800;
