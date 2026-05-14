@@ -366,8 +366,7 @@ body[data-app-mode="viewer"] .app-shell {
 }
 
 .site-menu-toggle:focus-visible {
-  outline: 2px solid rgba(153, 28, 39, 0.42);
-  outline-offset: 2px;
+  outline: none;
 }
 
 .site-menu-toggle[aria-expanded="true"] {
@@ -443,6 +442,20 @@ body[data-app-mode="viewer"] .app-shell {
 
 .site-menu-panel[hidden] {
   display: none;
+}
+
+#site-menu-panel,
+#site-menu-panel .site-menu-item,
+#about-menu-button,
+#contact-form-menu-button {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  mix-blend-mode: normal !important;
 }
 
 .site-menu-item {
