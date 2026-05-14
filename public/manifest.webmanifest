@@ -8,8 +8,8 @@
   "scope": "/",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "browser"],
-  "background_color": "#f6efe7",
-  "theme_color": "#102431",
+  "background_color": "#eef0f5",
+  "theme_color": "#0b1220",
   "icons": [
     {
       "src": "/icon/pwa-192-20260412b.png",

@@ -6,18 +6,36 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Inter+Tight:wght@500;700;800;900&display=swap" />
     <link rel="icon" href="/icon/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/icon/favicon.png" />
     <link rel="apple-touch-icon" href="/icon/favicon.png" />
     <meta name="robots" content="noindex,nofollow" />
     <title>編集ページログイン</title>
     <style>
+      @font-face {
+        font-family: "Noto Sans JP";
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src:
+          url("/fonts/NotoSansJP-VariableFont_wght.ttf") format("truetype-variations"),
+          url("/fonts/NotoSansJP-VariableFont_wght.ttf") format("truetype");
+      }
+
       :root {
-        color: #102431;
+        --crimson-500: #991c27;
+        --crimson-600: #7e1620;
+        --ink-900: #0b1220;
+        color: var(--ink-900);
         background:
-          radial-gradient(circle at top, rgba(245, 245, 246, 0.72), transparent 42%),
-          linear-gradient(180deg, #f8f8f9 0%, #eeeeef 100%);
-        font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+          radial-gradient(120% 60% at 50% -10%, rgba(153, 28, 39, 0.045), transparent 60%),
+          linear-gradient(180deg, #f6f7fa 0%, #eef0f5 100%);
+        font-family: "Inter Tight", "Inter", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       * {
@@ -42,31 +60,32 @@
         width: min(100%, 460px);
         padding: 30px;
         border-radius: 28px;
-        background: rgba(255, 255, 255, 0.94);
+        background: rgba(255, 255, 255, 0.96);
         box-shadow:
-          0 24px 50px rgba(16, 36, 49, 0.12),
-          inset 0 0 0 1px rgba(153, 0, 0, 0.08);
+          0 30px 60px rgba(11, 18, 32, 0.12),
+          inset 0 0 0 1px rgba(153, 28, 39, 0.08);
       }
 
       .login-eyebrow {
         margin: 0 0 10px;
         font-size: 0.78rem;
         font-weight: 800;
-        letter-spacing: 0.1em;
-        color: rgba(16, 36, 49, 0.58);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--crimson-600);
       }
 
       .login-title {
         margin: 0 0 10px;
         font-size: clamp(1.5rem, 3vw, 1.95rem);
-        font-weight: 800;
-        letter-spacing: 0.04em;
+        font-weight: 900;
+        letter-spacing: -0.012em;
       }
 
       .login-copy {
         margin: 0 0 18px;
         line-height: 1.8;
-        color: rgba(16, 36, 49, 0.74);
+        color: rgba(11, 18, 32, 0.74);
       }
 
       .login-form {
@@ -78,7 +97,7 @@
         font-size: 0.82rem;
         font-weight: 800;
         letter-spacing: 0.08em;
-        color: rgba(16, 36, 49, 0.7);
+        color: rgba(11, 18, 32, 0.7);
       }
 
       .login-input {
@@ -87,12 +106,12 @@
         outline: none;
         padding: 14px 16px;
         border-radius: 16px;
-        background: rgba(255, 255, 255, 0.94);
+        background: #fff;
         box-shadow:
-          inset 0 0 0 1px rgba(153, 0, 0, 0.12),
-          0 12px 24px rgba(16, 36, 49, 0.08);
+          inset 0 0 0 1px rgba(153, 28, 39, 0.14),
+          0 12px 24px rgba(11, 18, 32, 0.06);
         font: inherit;
-        color: #102431;
+        color: var(--ink-900);
       }
 
       .login-actions {
@@ -109,13 +128,32 @@
         padding: 12px 18px;
         font: inherit;
         font-weight: 800;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.04em;
+        transition:
+          transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 120ms cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 1px 2px rgba(11, 18, 32, 0.04);
       }
 
       .login-submit {
-        background: linear-gradient(135deg, #990000 0%, #7a0000 100%);
+        background: var(--crimson-500);
         color: #fff;
         cursor: pointer;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        .login-submit:not(:disabled):hover {
+          background: var(--crimson-600);
+          transform: translateY(-2px);
+          box-shadow:
+            0 12px 22px rgba(153, 28, 39, 0.22),
+            0 4px 8px rgba(153, 28, 39, 0.14);
+        }
+      }
+
+      .login-submit:active {
+        transform: translateY(0);
       }
 
       .login-submit:disabled {
@@ -126,15 +164,25 @@
       .login-link {
         display: inline-flex;
         align-items: center;
-        background: rgba(16, 36, 49, 0.08);
-        color: #102431;
+        background: rgba(11, 18, 32, 0.08);
+        color: var(--ink-900);
         text-decoration: none;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        .login-link:hover {
+          background: rgba(11, 18, 32, 0.12);
+          transform: translateY(-2px);
+          box-shadow:
+            0 12px 22px rgba(11, 18, 32, 0.14),
+            0 4px 8px rgba(11, 18, 32, 0.08);
+        }
       }
 
       .login-error {
         min-height: 1.2rem;
         margin: 0;
-        color: #b42318;
+        color: var(--crimson-600);
         font-size: 0.9rem;
         font-weight: 700;
       }
@@ -158,7 +206,7 @@
         padding: 6px 4px;
         background: transparent;
         box-shadow: none;
-        color: #102431;
+        color: var(--ink-900);
         cursor: pointer;
         font: inherit;
         font-size: 1.32rem;
@@ -168,23 +216,23 @@
       }
 
       .lang-toggle-option {
-        color: rgba(16, 36, 49, 0.28);
+        color: rgba(11, 18, 32, 0.28);
         transition: color 140ms ease;
       }
 
       .lang-toggle-option.is-active,
       .lang-toggle-separator {
-        color: #101820;
+        color: var(--ink-900);
       }
 
       @media (hover: hover) and (pointer: fine) {
         .lang-toggle-option:hover {
-          color: #101820;
+          color: var(--ink-900);
         }
       }
 
       .lang-toggle:focus-visible {
-        outline: 2px solid rgba(153, 0, 0, 0.42);
+        outline: 2px solid rgba(153, 28, 39, 0.42);
         outline-offset: 2px;
       }
     </style>
@@ -233,9 +281,9 @@
 
           document.documentElement.lang = lang;
           document.body.innerHTML = `
-            <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:linear-gradient(180deg,#f8f8f9 0%,#eeeeef 100%);font-family:'Hiragino Sans','Yu Gothic','Noto Sans JP',sans-serif;color:#102431;">
-              <section style="max-width:720px;padding:28px;border-radius:24px;background:rgba(255,255,255,0.9);box-shadow:0 24px 50px rgba(16,36,49,0.12);">
-                <h1 style="margin:0 0 16px;font-size:2rem;">${fileModeText.title}</h1>
+            <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:linear-gradient(180deg,#f6f7fa 0%,#eef0f5 100%);font-family:'Inter Tight','Inter','Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;color:#0b1220;">
+              <section style="max-width:720px;padding:28px;border-radius:24px;background:rgba(255,255,255,0.92);box-shadow:0 24px 50px rgba(11,18,32,0.12);">
+                <h1 style="margin:0 0 16px;font-size:2rem;letter-spacing:-0.022em;">${fileModeText.title}</h1>
                 <p style="margin:0;line-height:1.8;">${fileModeText.copy}</p>
               </section>
             </main>

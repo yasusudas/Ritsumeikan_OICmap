@@ -6,6 +6,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" href="/icon/favicon-20260412b.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/icon/favicon-20260412b.png" />
     <link rel="apple-touch-icon" href="/icon/pwa-512-20260412b.png" />
@@ -14,7 +16,7 @@
     <link rel="alternate" hreflang="ja" href="https://rits-oic-map.vercel.app/" />
     <link rel="alternate" hreflang="en" href="https://rits-oic-map.vercel.app/en/" />
     <link rel="alternate" hreflang="x-default" href="https://rits-oic-map.vercel.app/" />
-    <meta name="theme-color" content="#102431" />
+    <meta name="theme-color" content="#0b1220" />
     <meta name="application-name" content="立命館OICマップ" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -91,9 +93,9 @@
 
           document.documentElement.lang = lang;
           document.body.innerHTML = `
-            <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:linear-gradient(180deg,#f8f8f9 0%,#eeeeef 100%);font-family:'Hiragino Sans','Yu Gothic','Noto Sans JP',sans-serif;color:#102431;">
-              <section style="max-width:720px;padding:28px;border-radius:24px;background:rgba(255,255,255,0.9);box-shadow:0 24px 50px rgba(16,36,49,0.12);">
-                <h1 style="margin:0 0 16px;font-size:2rem;">${fileModeText.title}</h1>
+            <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:linear-gradient(180deg,#f6f7fa 0%,#eef0f5 100%);font-family:'Inter Tight','Inter','Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;color:#0b1220;">
+              <section style="max-width:720px;padding:28px;border-radius:24px;background:rgba(255,255,255,0.92);box-shadow:0 24px 50px rgba(11,18,32,0.12);">
+                <h1 style="margin:0 0 16px;font-size:2rem;letter-spacing:-0.022em;">${fileModeText.title}</h1>
                 <p style="margin:0 0 12px;line-height:1.8;">${fileModeText.copy1}</p>
                 <p style="margin:0 0 12px;line-height:1.8;">${fileModeText.copy2}</p>
                 <p style="margin:0;line-height:1.8;">${fileModeText.copy3}</p>
