@@ -427,13 +427,18 @@ body[data-app-mode="viewer"] .app-shell {
   min-width: 190px;
   padding: 8px;
   border-radius: 16px;
-  background: rgb(255, 255, 255);
-  opacity: 1;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  opacity: 1 !important;
+  filter: none;
+  mix-blend-mode: normal;
+  isolation: isolate;
   box-shadow:
     0 22px 44px rgba(11, 18, 32, 0.16),
     inset 0 0 0 1px var(--accent-soft-mid);
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
 
 .site-menu-panel[hidden] {
@@ -445,8 +450,12 @@ body[data-app-mode="viewer"] .app-shell {
   border: 0;
   border-radius: 12px;
   padding: 11px 12px;
-  background: rgb(255, 255, 255);
-  opacity: 1;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  opacity: 1 !important;
+  filter: none;
+  mix-blend-mode: normal;
   color: #0b1220;
   font-size: 0.9rem;
   font-weight: 800;
@@ -456,7 +465,8 @@ body[data-app-mode="viewer"] .app-shell {
 
 .site-menu-item:hover,
 .site-menu-item:focus-visible {
-  background: #fff1f3;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   outline: none;
 }
 
