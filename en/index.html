@@ -112,123 +112,129 @@
   <body data-app-mode="viewer">
     <div class="app-shell">
       <header class="topbar">
-        <div class="topbar-title-row">
-          <h1 class="app-title">
-            <span class="app-title-main" data-i18n="app.title.viewer">Ritsumeikan OIC Map</span>
-            <span class="app-title-version">Ver. 2.4</span>
-          </h1>
-          <div class="topbar-actions">
-            <button class="lang-toggle" data-lang-toggle type="button" aria-label="Switch language">EN</button>
-            <div id="site-menu" class="site-menu">
-              <button
-                id="site-menu-toggle"
-                class="site-menu-toggle"
-                type="button"
-                aria-label="Open menu"
-                aria-haspopup="true"
-                aria-expanded="false"
-                aria-controls="site-menu-panel"
-                data-i18n-aria="menu.open"
-                data-i18n-title="menu.open"
-                title="Open menu"
-              >
-                <span class="site-menu-line" aria-hidden="true"></span>
-                <span class="site-menu-line" aria-hidden="true"></span>
-                <span class="site-menu-line" aria-hidden="true"></span>
-              </button>
-              <div id="site-menu-panel" class="site-menu-panel" role="menu" hidden>
-                <button id="about-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.about">
-                  About this map
+        <div class="topbar-glass">
+          <div class="topbar-title-row">
+            <h1 class="app-title">
+              <span class="app-title-main" data-i18n="app.title.viewer">Ritsumeikan OIC Map</span>
+              <span class="app-title-version">Ver. 2.4</span>
+            </h1>
+            <div class="topbar-actions">
+              <button class="lang-toggle" data-lang-toggle type="button" aria-label="Switch language">EN</button>
+              <div id="site-menu" class="site-menu">
+                <button
+                  id="site-menu-toggle"
+                  class="site-menu-toggle"
+                  type="button"
+                  aria-label="Open menu"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  aria-controls="site-menu-panel"
+                  data-i18n-aria="menu.open"
+                  data-i18n-title="menu.open"
+                  title="Open menu"
+                >
+                  <span class="site-menu-line" aria-hidden="true"></span>
+                  <span class="site-menu-line" aria-hidden="true"></span>
+                  <span class="site-menu-line" aria-hidden="true"></span>
                 </button>
-                <button id="contact-form-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.contactForm">
-                  Contact
-                </button>
+                <div id="site-menu-panel" class="site-menu-panel" role="menu" hidden>
+                  <button id="about-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.about">
+                    About this map
+                  </button>
+                  <button id="contact-form-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.contactForm">
+                    Contact
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div id="search-panel" class="search-panel">
-          <div class="search-controls">
-            <div class="search-box">
-              <input
-                id="search-input"
-                class="search-input"
-                type="search"
-                placeholder="Search by room or facility name"
-                data-i18n-placeholder="search.placeholder"
-                autocomplete="off"
-                autocapitalize="characters"
-                spellcheck="false"
-                enterkeyhint="search"
-              />
-              <button id="search-clear" class="search-clear" type="button" aria-label="Clear search" data-i18n-aria="search.clear" hidden>
-                ×
-              </button>
+          <div id="search-panel" class="search-panel">
+            <div class="search-controls">
+              <div class="search-box">
+                <svg class="search-leading-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <path d="m20 20-3.5-3.5"></path>
+                </svg>
+                <input
+                  id="search-input"
+                  class="search-input"
+                  type="search"
+                  placeholder="Search by room or facility name"
+                  data-i18n-placeholder="search.placeholder"
+                  autocomplete="off"
+                  autocapitalize="characters"
+                  spellcheck="false"
+                  enterkeyhint="search"
+                />
+                <button id="search-clear" class="search-clear" type="button" aria-label="Clear search" data-i18n-aria="search.clear" hidden>
+                  ×
+                </button>
+              </div>
+              <div class="search-icon-actions" role="group" aria-label="Facility filters" data-i18n-aria="search.facilityActions">
+                <button
+                  class="search-icon-button"
+                  type="button"
+                  data-facility-key="toilet"
+                  aria-label="Restroom"
+                  data-i18n-aria="facility.toilet"
+                  aria-pressed="false"
+                >
+                  <img class="search-icon-image" src="/iconsvg/toilet.svg" alt="" aria-hidden="true" />
+                </button>
+                <button
+                  class="search-icon-button"
+                  type="button"
+                  data-facility-key="waterServer"
+                  aria-label="Water Dispenser"
+                  data-i18n-aria="facility.waterServer"
+                  aria-pressed="false"
+                >
+                  <img class="search-icon-image" src="/iconsvg/water-server.svg" alt="" aria-hidden="true" />
+                </button>
+                <button
+                  class="search-icon-button"
+                  type="button"
+                  data-facility-key="vendingMachine"
+                  aria-label="Vending Machine"
+                  data-i18n-aria="facility.vendingMachine"
+                  aria-pressed="false"
+                >
+                  <img class="search-icon-image" src="/iconsvg/vending-machine.svg" alt="" aria-hidden="true" />
+                </button>
+                <button
+                  class="search-icon-button"
+                  type="button"
+                  data-facility-key="printer"
+                  aria-label="Printer"
+                  data-i18n-aria="facility.printer"
+                  aria-pressed="false"
+                >
+                  <img class="search-icon-image" src="/iconsvg/printer.svg" alt="" aria-hidden="true" />
+                </button>
+                <button
+                  class="search-icon-button"
+                  type="button"
+                  data-facility-key="stairs"
+                  aria-label="Staircase"
+                  data-i18n-aria="facility.stairs"
+                  aria-pressed="false"
+                >
+                  <img class="search-icon-image" src="/iconsvg/stairs.svg" alt="" aria-hidden="true" />
+                </button>
+                <button
+                  class="search-icon-button"
+                  type="button"
+                  data-facility-key="elevator"
+                  aria-label="Elevator"
+                  data-i18n-aria="facility.elevator"
+                  aria-pressed="false"
+                >
+                  <img class="search-icon-image" src="/iconsvg/elevator.svg" alt="" aria-hidden="true" />
+                </button>
+              </div>
             </div>
-            <div class="search-icon-actions" role="group" aria-label="Facility filters" data-i18n-aria="search.facilityActions">
-              <button
-                class="search-icon-button"
-                type="button"
-                data-facility-key="toilet"
-                aria-label="Restroom"
-                data-i18n-aria="facility.toilet"
-                aria-pressed="false"
-              >
-                <img class="search-icon-image" src="/iconsvg/toilet.svg" alt="" aria-hidden="true" />
-              </button>
-              <button
-                class="search-icon-button"
-                type="button"
-                data-facility-key="waterServer"
-                aria-label="Water Dispenser"
-                data-i18n-aria="facility.waterServer"
-                aria-pressed="false"
-              >
-                <img class="search-icon-image" src="/iconsvg/water-server.svg" alt="" aria-hidden="true" />
-              </button>
-              <button
-                class="search-icon-button"
-                type="button"
-                data-facility-key="vendingMachine"
-                aria-label="Vending Machine"
-                data-i18n-aria="facility.vendingMachine"
-                aria-pressed="false"
-              >
-                <img class="search-icon-image" src="/iconsvg/vending-machine.svg" alt="" aria-hidden="true" />
-              </button>
-              <button
-                class="search-icon-button"
-                type="button"
-                data-facility-key="printer"
-                aria-label="Printer"
-                data-i18n-aria="facility.printer"
-                aria-pressed="false"
-              >
-                <img class="search-icon-image" src="/iconsvg/printer.svg" alt="" aria-hidden="true" />
-              </button>
-              <button
-                class="search-icon-button"
-                type="button"
-                data-facility-key="stairs"
-                aria-label="Staircase"
-                data-i18n-aria="facility.stairs"
-                aria-pressed="false"
-              >
-                <img class="search-icon-image" src="/iconsvg/stairs.svg" alt="" aria-hidden="true" />
-              </button>
-              <button
-                class="search-icon-button"
-                type="button"
-                data-facility-key="elevator"
-                aria-label="Elevator"
-                data-i18n-aria="facility.elevator"
-                aria-pressed="false"
-              >
-                <img class="search-icon-image" src="/iconsvg/elevator.svg" alt="" aria-hidden="true" />
-              </button>
-            </div>
+            <div id="search-results" class="search-results" role="listbox" hidden></div>
           </div>
-          <div id="search-results" class="search-results" role="listbox" hidden></div>
         </div>
         <div class="floor-tab-stack">
           <nav class="floor-tabs floor-tabs-primary" aria-label="Floor selector" data-i18n-aria="floor.primaryNav">
