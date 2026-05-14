@@ -1283,7 +1283,7 @@ body[data-app-mode="viewer"] .app-shell {
   display: flex;
   height: var(--map-stage-height, calc(100dvh - 220px));
   min-height: var(--map-stage-height, calc(100dvh - 220px));
-  padding: var(--shell-padding) var(--shell-padding) 0;
+  padding: var(--shell-padding) var(--shell-padding) 6px;
   overflow: hidden;
 }
 
