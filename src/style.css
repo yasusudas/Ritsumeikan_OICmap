@@ -877,8 +877,10 @@ body[data-app-mode="viewer"] .app-shell {
   letter-spacing: var(--ls-wide);
   transition:
     transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-med) var(--ease-out),
     background-color var(--dur-fast) var(--ease-out),
     color var(--dur-fast) var(--ease-out);
+  cursor: pointer;
 }
 
 .floor-tab-wide {
@@ -911,12 +913,28 @@ body[data-app-mode="viewer"] .app-shell {
 
   .floor-tab {
     min-width: 0;
+    border-radius: 10px;
     padding-inline: 8px;
     white-space: nowrap;
   }
 
   .floor-tab-wide {
     font-size: clamp(0.78rem, 1.25vw, 1rem);
+  }
+}
+
+@media (min-width: 721px) and (hover: hover) and (pointer: fine) {
+  .floor-tab:not(.is-active):hover {
+    background: rgba(11, 18, 32, 0.11);
+    box-shadow: 0 8px 16px rgba(11, 18, 32, 0.08);
+    color: var(--ink-900);
+    transform: translateY(-1px);
+  }
+
+  .floor-tab.is-active:hover {
+    background: var(--crimson-600);
+    box-shadow: 0 10px 18px rgba(153, 28, 39, 0.2);
+    transform: translateY(-1px);
   }
 }
 
