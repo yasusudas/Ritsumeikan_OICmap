@@ -5,6 +5,10 @@ const LANGUAGE_STORAGE_KEY = 'oicmap:lang';
 function getLegalPageSlug() {
   const path = window.location.pathname.replace(/\/+$/, '/');
 
+  if (path === '/access/' || path === '/en/access/') {
+    return 'access';
+  }
+
   if (path === '/privacy/' || path === '/en/privacy/') {
     return 'privacy';
   }
