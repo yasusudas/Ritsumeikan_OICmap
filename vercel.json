@@ -21,6 +21,16 @@
       "permanent": true
     },
     {
+      "source": "/en/access",
+      "destination": "/en/access/",
+      "permanent": true
+    },
+    {
+      "source": "/access",
+      "destination": "/access/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!google4ddf7f320452e31a\\.html$).*)",
       "has": [
         {

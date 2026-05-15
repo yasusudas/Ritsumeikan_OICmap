@@ -12,8 +12,10 @@ export default defineConfig({
         editorLogin: resolve(__dirname, 'editor/login/index.html'),
         terms: resolve(__dirname, 'terms/index.html'),
         privacy: resolve(__dirname, 'privacy/index.html'),
+        access: resolve(__dirname, 'access/index.html'),
         enTerms: resolve(__dirname, 'en/terms/index.html'),
-        enPrivacy: resolve(__dirname, 'en/privacy/index.html')
+        enPrivacy: resolve(__dirname, 'en/privacy/index.html'),
+        enAccess: resolve(__dirname, 'en/access/index.html')
       }
     }
   }

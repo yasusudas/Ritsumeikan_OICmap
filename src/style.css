@@ -284,44 +284,6 @@ body[data-app-mode="viewer"] .app-shell {
   flex: 0 0 auto;
 }
 
-.access-nav-button {
-  min-height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  flex: 0 0 auto;
-  min-width: 0;
-  border: 1px solid rgba(11, 18, 32, 0.08);
-  border-radius: 10px;
-  padding: 6px 14px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(229, 233, 241, 0.96) 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.85),
-    0 10px 20px rgba(11, 18, 32, 0.08);
-  color: var(--ink-800);
-  text-decoration: none;
-  white-space: nowrap;
-  font-size: 0.9rem;
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 1;
-  transition:
-    transform var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-med) var(--ease-out),
-    background-color var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out);
-}
-
-.access-nav-button::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-top: 1.8px solid currentColor;
-  border-right: 1.8px solid currentColor;
-  transform: rotate(45deg) translateY(-1px);
-}
-
 .lang-toggle {
   min-width: 92px;
   min-height: 40px;
@@ -343,26 +305,6 @@ body[data-app-mode="viewer"] .app-shell {
   letter-spacing: 0;
   line-height: 1;
   transition: transform 140ms ease;
-}
-
-@media (min-width: 721px) and (hover: hover) and (pointer: fine) {
-  .access-nav-button:hover {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(236, 239, 246, 1) 100%);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.92),
-      0 14px 24px rgba(11, 18, 32, 0.1);
-    color: var(--ink-900);
-    transform: translateY(-1px);
-  }
-}
-
-.access-nav-button:focus-visible {
-  outline: 2px solid rgba(153, 28, 39, 0.42);
-  outline-offset: 2px;
-}
-
-.access-nav-button:active {
-  transform: scale(0.97);
 }
 
 .lang-toggle-option {
@@ -2402,13 +2344,6 @@ body[data-app-mode="editor"] .map-card {
     gap: 6px;
   }
 
-  .access-nav-button {
-    min-height: 38px;
-    gap: 5px;
-    padding: 5px 11px;
-    font-size: 0.82rem;
-  }
-
   .lang-toggle {
     min-width: 82px;
     min-height: 38px;
@@ -2684,13 +2619,6 @@ body[data-app-mode="editor"] .map-card {
 
   .topbar-actions {
     gap: 4px;
-  }
-
-  .access-nav-button {
-    min-height: 36px;
-    gap: 4px;
-    padding: 4px 9px;
-    font-size: 0.76rem;
   }
 
   .site-menu-toggle {

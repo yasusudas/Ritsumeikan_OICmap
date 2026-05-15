@@ -14,11 +14,11 @@ const dictionaries = {
     'lang.switchToEnglish': '英語に切り替え',
     'lang.switchToJapanese': '日本語に切り替え',
     'lang.toggle': '言語を切り替え',
-    'nav.access': 'アクセス',
 
     'menu.open': 'メニューを開く',
     'menu.close': 'メニューを閉じる',
     'menu.about': 'このサイトについて',
+    'menu.access': 'アクセス',
     'menu.contactForm': 'お問い合わせ',
 
     'about.title': 'このサイトについて',
@@ -189,11 +189,11 @@ const dictionaries = {
     'lang.switchToEnglish': 'Switch to English',
     'lang.switchToJapanese': 'Switch to Japanese',
     'lang.toggle': 'Switch language',
-    'nav.access': 'Access',
 
     'menu.open': 'Open menu',
     'menu.close': 'Close menu',
     'menu.about': 'About this map',
+    'menu.access': 'Access',
     'menu.contactForm': 'Contact',
 
     'about.title': 'About this map',
