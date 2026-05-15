@@ -575,7 +575,7 @@ body[data-app-mode="viewer"] .app-shell {
 .about-dialog-version {
   margin: 0;
   color: rgba(11, 18, 32, 0.5);
-  font-size: 0.82rem;
+  font-size: 1rem;
   font-weight: 800;
   line-height: 1.4;
   letter-spacing: 0;
