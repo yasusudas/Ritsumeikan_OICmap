@@ -17,10 +17,10 @@ const dictionaries = {
 
     'menu.open': 'メニューを開く',
     'menu.close': 'メニューを閉じる',
-    'menu.about': 'このページについて',
+    'menu.about': 'このサイトについて',
     'menu.contactForm': 'お問い合わせ',
 
-    'about.title': 'このページについて',
+    'about.title': 'このサイトについて',
     'about.close': '説明を閉じる',
     'about.intro':
       '立命館OICマップは、立命館大学大阪いばらきキャンパス(OIC)の教室・施設をすばやく探せる非公式キャンパスマップです。OICのフロアマップを切り替えながら、目的の場所を確認できます。',
