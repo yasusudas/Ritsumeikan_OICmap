@@ -6,3 +6,4 @@ dist
 .map-server.log
 .vercel
 tmp.claude/
+.claude/
