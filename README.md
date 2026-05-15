@@ -10,7 +10,7 @@
 
 - 閲覧用サイト: `https://rits-oic-map.vercel.app/`
 - 編集用サイト: `https://rits-oic-map.vercel.app/editor/`
-- 編集用ログイン: `https://rits-oic-map.vercel.app/editor/login/?next=%2Feditor%2F`
+- 編集用ログイン: `https://rits-oic-map.vercel.app/editor/login/`
 
 このリポジトリでは、`main` ブランチを本番用の唯一のブランチとして扱います。以前のテスト用Preview Deploymentや非mainブランチ由来のURLは運用対象ではありません。
 
