@@ -1039,14 +1039,24 @@ if (window.__FILE_MODE__) {
     return asset;
   }
 
+  let isFirstFloorImage = true;
+
   function createFloorImageNode(floor) {
     const image = document.createElement('img');
     image.className = 'floor-svg';
     image.src = getFloorSvgUrl(floor);
     image.alt = '';
-    image.decoding = 'async';
     image.draggable = false;
     image.setAttribute('aria-hidden', 'true');
+
+    if (isFirstFloorImage) {
+      image.fetchPriority = 'high';
+      image.decoding = 'auto';
+      isFirstFloorImage = false;
+    } else {
+      image.decoding = 'async';
+    }
+
     return image;
   }
 

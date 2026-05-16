@@ -1,14 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@500;600;700;800;900&display=swap");
-
-@font-face {
-  font-family: "Noto Sans JP";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src:
-    url("/fonts/NotoSansJP-VariableFont_wght.ttf") format("truetype-variations"),
-    url("/fonts/NotoSansJP-VariableFont_wght.ttf") format("truetype");
-}
+/* Google Fonts are loaded via <link> in HTML for faster discovery */
 
 :root {
   --shell-padding: 18px;
