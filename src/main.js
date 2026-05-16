@@ -2655,6 +2655,15 @@ if (window.__FILE_MODE__) {
     });
   }
 
+  // Open about/contact dialog via URL hash (e.g. /#about, /#contact)
+  if (window.location.hash === '#about') {
+    setAboutDialogOpen(true);
+    history.replaceState(null, '', window.location.pathname);
+  } else if (window.location.hash === '#contact') {
+    setContactFormDialogOpen(true);
+    history.replaceState(null, '', window.location.pathname);
+  }
+
   tabButtons.forEach((button) => {
     button.addEventListener('click', () => {
       void setActiveFloor(button.dataset.floor, { resetZoom: true });

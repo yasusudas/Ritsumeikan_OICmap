@@ -472,6 +472,7 @@ body[data-app-mode="viewer"] .app-shell {
   font-size: 0.9rem;
   font-weight: 800;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
 }
 
