@@ -437,6 +437,8 @@ body[data-app-mode="viewer"] .app-shell {
   top: calc(100% + 8px);
   right: 0;
   z-index: 100;
+  display: grid;
+  gap: 2px;
   min-width: 190px;
   padding: 8px;
   border-radius: 16px;
@@ -496,6 +498,12 @@ body[data-app-mode="viewer"] .app-shell {
   background: #ffffff !important;
   background-color: #ffffff !important;
   outline: none;
+}
+
+.site-menu-panel a {
+  display: block;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .about-dialog-backdrop {
