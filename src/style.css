@@ -274,6 +274,31 @@ body[data-app-mode="viewer"] .app-shell {
   flex: 0 0 auto;
 }
 
+.access-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: rgba(153, 28, 39, 0.08);
+  color: #991c27;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.access-link:hover {
+  background: rgba(153, 28, 39, 0.15);
+}
+
+.access-link:active {
+  transform: scale(0.95);
+}
+
 .lang-toggle {
   min-width: 92px;
   min-height: 40px;
@@ -2333,6 +2358,12 @@ body[data-app-mode="editor"] .map-card {
 
   .topbar-actions {
     gap: 6px;
+  }
+
+  .access-link {
+    padding: 4px 8px;
+    font-size: 0.74rem;
+    border-radius: 5px;
   }
 
   .lang-toggle {
