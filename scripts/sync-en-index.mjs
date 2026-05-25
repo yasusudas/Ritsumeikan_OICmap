@@ -147,7 +147,10 @@ function buildEnglishIndex() {
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(english['meta.title.viewer'])}</title>`);
   html = replaceJsonLd(html, english);
 
-  html = html.replace('<script>\n', "<script>\n      window.__DEFAULT_LANG__ = 'en';\n");
+  html = html.replace(
+    "<script>\n      const isFileMode = window.location.protocol === 'file:';",
+    "<script>\n      window.__DEFAULT_LANG__ = 'en';\n      const isFileMode = window.location.protocol === 'file:';"
+  );
   html = html.replace(
     "const lang = normalizeLang(localStorage.getItem('oicmap:lang')) ?? readBrowserLang();",
     "const lang = 'en';"
