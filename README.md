@@ -44,12 +44,6 @@ UIの文言は `src/i18n.js` にまとまっています。日本語と英語の
 
 Vercelでは `main` ブランチからProduction Deploymentを作成します。`vercel.json` では旧ドメイン `iris-oic-map.vercel.app` から本番ドメインへのリダイレクト、静的アセットのキャッシュ、`manual-search-index.json` と `sw.js` のキャッシュ方針を設定しています。
 
-### 注意
-
-このマップは立命館大学公式のサービスではありません。地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした非公式の案内です。
-
-編集用サイトはパスワードで保護されています。パスワードそのものはREADMEや公開ドキュメントには記載しません。運用上必要な人にだけ別経路で共有してください。
-
 ## English
 
 ### Overview
@@ -93,9 +87,3 @@ Floor maps are stored as SVG files. Japanese maps live in `floor_img/`, and Engl
 UI text is centralized in `src/i18n.js`. When changing Japanese or English copy, update the translation dictionary and run `npm run sync:en` or `npm run build` so that the English HTML stays in sync.
 
 Vercel creates the Production Deployment from the `main` branch. `vercel.json` configures the redirect from the old `iris-oic-map.vercel.app` domain, cache rules for static assets, and cache behavior for `manual-search-index.json` and `sw.js`.
-
-### Notes
-
-This is not an official Ritsumeikan University service. The map information is based on Ritsumeikan University's Osaka Ibaraki Campus Floor Guide (Japanese), published in March 2025 by the OIC Regional Partnerships Office, and is provided as an unofficial guide.
-
-The editor is password-protected. The password itself should not be written in the README or other public documentation. Share it only with maintainers through a separate private channel.
