@@ -6,35 +6,11 @@
 
 立命館OICマップは、立命館大学大阪いばらきキャンパス(OIC)の教室や施設をブラウザで探すための非公式キャンパスマップです。フロア図を見ながら、教室名、研究室名、ラウンジ、ホール、学生利用スペース、トイレ、エレベーター、プリンターなどを検索できます。
 
-公開している本番サイトは次の3つです。
-
-- 閲覧用サイト: `https://rits-oic-map.vercel.app/`
-- 編集用サイト: `https://rits-oic-map.vercel.app/editor/`
-- 編集用ログイン: `https://rits-oic-map.vercel.app/editor/login/`
-
-このリポジトリでは、`main` ブランチを本番用の唯一のブランチとして扱います。以前のテスト用Preview Deploymentや非mainブランチ由来のURLは運用対象ではありません。
-
 ### できること
 
 閲覧用サイトでは、1Fから5Fに加えて、A棟6から9F、H棟6から9F、プリンター案内図を切り替えて表示できます。地図はスマートフォンではピンチ操作、PCではホイールやドラッグ操作で拡大、縮小、移動できます。
 
-検索欄に教室名や施設名を入力すると、該当する場所が地図上でハイライトされます。施設アイコンを使うと、トイレ、ウォーターサーバー、自販機、プリンター、階段、エレベーターなど、キャンパス内でよく探す設備をすばやく確認できます。
-
-右上メニューの「お問い合わせ」から、Google Forms の問い合わせフォームを埋め込み表示できます。現在は指定済みのGoogleフォームが既定で開きます。別のフォームに差し替える場合は、Google Forms のURLを `VITE_CONTACT_FORM_EMBED_URL` に設定してください。ローカルでは `.env.local` に `VITE_CONTACT_FORM_EMBED_URL=https://docs.google.com/forms/d/e/.../viewform?embedded=true` のように記載します。
-
-Google Analytics 4 は、Google tag の測定ID `G-NDHG4VRB1F` で各HTMLの `<head>` 直後に実装しています。別の測定IDに差し替える場合は、各HTML内の Google tag を更新してください。
-
-日本語版と英語版の両方を用意しています。日本語版は `/`、英語版は `/en/` で表示され、画面上の言語切替ボタンでも切り替えられます。英語版のHTMLは `scripts/sync-en-index.mjs` によって日本語版の `index.html` と翻訳辞書から同期されます。
-
-編集用サイトでは、地図上をクリックして検索用ラベルの位置を追加したり、施設リングの位置を調整したりできます。編集内容はブラウザのローカルストレージに下書きとして保存され、JSONとしてコピーまたは書き出しできます。本番データとして反映する場合は、書き出した内容を `public/manual-search-index.json` に反映してからビルド、デプロイします。
-
-### 公開と更新
-
-このサイトはオンラインアクセスを前提にしています。利用者向けの閲覧、編集、ログインは、すべて本番URLから行います。
-
-更新作業では、検索データ、地図SVG、翻訳辞書、画面HTML、スタイル、JavaScriptを変更したあと、`main` ブランチへ反映します。Vercelは `main` ブランチからProduction Deploymentを作成し、本番URLへ公開します。
-
-英語版HTMLを手動で同期したい場合は `npm run sync:en` を使います。同期状態を確認したい場合は `npm run check:en` を使います。本番ビルドの確認には `npm run build` を使います。
+検索欄に教室名や施設名を入力すると、該当する場所が地図上でハイライトされます。施設アイコンを使うと、トイレ、ウォーターサーバー、自販機、プリンター、階段、エレベーターなど、キャンパス内でよく探す設備をすばやく確認できます
 
 ### データと構成
 
@@ -42,48 +18,28 @@ Google Analytics 4 は、Google tag の測定ID `G-NDHG4VRB1F` で各HTMLの `<h
 
 UIの文言は `src/i18n.js` にまとまっています。日本語と英語の表示を変える場合は、原則としてこの翻訳辞書を更新し、`npm run sync:en` または `npm run build` で英語版HTMLを同期します。
 
-Vercelでは `main` ブランチからProduction Deploymentを作成します。`vercel.json` では旧ドメイン `iris-oic-map.vercel.app` から本番ドメインへのリダイレクト、静的アセットのキャッシュ、`manual-search-index.json` と `sw.js` のキャッシュ方針を設定しています。
+### 注意
+
+このマップは立命館大学公式のサービスではありません。地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした非公式の案内です。
 
 ## English
 
 ### Overview
 
-Ritsumeikan OIC Map is an unofficial browser-based campus map for Ritsumeikan University's Osaka Ibaraki Campus (OIC). It helps visitors and students find classrooms, laboratories, lounges, halls, student spaces, restrooms, elevators, printers, and other campus facilities while looking at the actual floor maps.
-
-The production site is published at the following URLs.
-
-- Viewer: `https://rits-oic-map.vercel.app/`
-- Editor: `https://rits-oic-map.vercel.app/editor/`
-- Editor login: `https://rits-oic-map.vercel.app/editor/login/?next=%2Feditor%2F`
-
-This repository treats the `main` branch as the only production branch. Old test Preview Deployments and URLs generated from non-main branches are not part of the current operation.
+Ritsumeikan OIC Map is an unofficial campus map for browsing classrooms and facilities at Ritsumeikan University Osaka Ibaraki Campus (OIC) via a web browser. While viewing floor plans, you can search for classroom names, laboratory names, lounges, halls, student-use spaces, restrooms, elevators, printers, and more.
 
 ### Features
 
-The viewer can switch between 1F through 5F, Building A 6F through 9F, Building H 6F through 9F, and the printer guide map. Users can zoom and pan the map with touch gestures on mobile devices or with wheel and drag operations on desktop browsers.
+On the viewing site, you can switch between displays for the 1st to 5th floors, as well as Building A floors 6 to 9, Building H floors 6 to 9, and a printer guide map. You can zoom in/out and move the map using pinch gestures on smartphones, or by using the mouse wheel and dragging on a PC.
 
-The search box highlights matching rooms and facilities directly on the map. Facility buttons make it easier to find frequently used campus amenities such as restrooms, water dispensers, vending machines, printers, stairs, and elevators.
+When you enter a classroom or facility name in the search bar, the corresponding location will be highlighted on the map. You can use the facility icons to quickly identify frequently searched amenities on campus, such as restrooms, water dispensers, vending machines, printers, stairs, and elevators.
 
-The top-right menu includes a Contact item that embeds a Google Forms form. The configured Google Form now opens by default. To replace it with a different form, set the Google Forms URL in `VITE_CONTACT_FORM_EMBED_URL`. For local development, add a `.env.local` value such as `VITE_CONTACT_FORM_EMBED_URL=https://docs.google.com/forms/d/e/.../viewform?embedded=true`.
+### Data and Structure
 
-Google Analytics 4 is installed with the Google tag measurement ID `G-NDHG4VRB1F` immediately after each HTML `<head>` tag. To switch to another measurement ID, update the Google tag in each HTML file.
+Map images are managed as SVGs. The Japanese version uses `floor_img/`, and the English version uses `floor_img_Eng/`. Coordinate data for searching and facility rings are stored in `public/manual-search-index.json`.
 
-The app supports both Japanese and English. The Japanese viewer is served from `/`, and the English viewer is served from `/en/`. Users can also switch languages from the button in the UI. The English HTML is generated from the Japanese `index.html` and the translation dictionary by `scripts/sync-en-index.mjs`.
+UI text is consolidated in `src/i18n.js`. To change the Japanese and English displays, you should generally update this translation dictionary and sync the English HTML using `npm run sync:en` or `npm run build`.
 
-The editor site lets maintainers click the map to add searchable label positions and adjust facility highlight rings. Editor changes are stored as drafts in browser local storage, and they can be copied or exported as JSON. To update the deployed search data, export the JSON, apply it to `public/manual-search-index.json`, then build and deploy the project.
+### Disclaimer
 
-### Publishing and Updates
-
-This site is intended to be accessed online. Viewer access, editor access, and editor login all use the production URLs listed above.
-
-When updating the site, maintainers change the search data, SVG maps, translation dictionary, HTML, styles, or JavaScript, then publish those changes through the `main` branch. Vercel creates the Production Deployment from `main` and serves it through the production URLs.
-
-Use `npm run sync:en` when the English HTML needs to be regenerated. Use `npm run check:en` to confirm that the English HTML is in sync. Use `npm run build` to verify the production build before publishing.
-
-### Data and Project Structure
-
-Floor maps are stored as SVG files. Japanese maps live in `floor_img/`, and English maps live in `floor_img_Eng/`. Search coordinates and facility rings are stored in `public/manual-search-index.json`.
-
-UI text is centralized in `src/i18n.js`. When changing Japanese or English copy, update the translation dictionary and run `npm run sync:en` or `npm run build` so that the English HTML stays in sync.
-
-Vercel creates the Production Deployment from the `main` branch. `vercel.json` configures the redirect from the old `iris-oic-map.vercel.app` domain, cache rules for static assets, and cache behavior for `manual-search-index.json` and `sw.js`.
+This map is not an official service of Ritsumeikan University. The map information is based on the Ritsumeikan University Osaka Ibaraki Campus Floor Guide (Japanese) (published March 2025, OIC Community Liaison Division) and serves as an unofficial guide.
