@@ -1,0 +1,2948 @@
+{
+  "id": "hankyu-minami-ibaraki-osaka-weekday",
+  "cardId": "hankyu-minami-ibaraki-osaka",
+  "railwayId": "hankyu",
+  "railwayNameJa": "阪急電車",
+  "station": {
+    "id": "minami-ibaraki",
+    "nameJa": "南茨木",
+    "code": "HK-68",
+    "sf": "6025",
+    "lineJa": "京都線"
+  },
+  "line": {
+    "nameJa": "京都線"
+  },
+  "direction": {
+    "id": "osaka",
+    "labelJa": "大阪梅田・天下茶屋方面"
+  },
+  "calendar": {
+    "id": "weekday",
+    "labelJa": "平日",
+    "shortLabelJa": "平日"
+  },
+  "source": {
+    "pageUrl": "https://www.hankyu.co.jp/station/html/HK-68_ky_1_w.html",
+    "pdfUrl": "https://www.hankyu.co.jp/station/pdf/HK-68_ky_1_w.pdf",
+    "fetchedAt": "2026-06-01T13:16:49.183Z"
+  },
+  "revision": "",
+  "notes": [
+    "阪急公式ページは駅探との利用契約に基づく時刻表データです。"
+  ],
+  "departures": [
+    {
+      "time": "05:20",
+      "hour": 5,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1292-KY4081",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1292-KY4081&DW=0&TM=0520",
+      "raw": {
+        "dw": "0",
+        "tm": "0520"
+      }
+    },
+    {
+      "time": "05:39",
+      "hour": 5,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1294-KY501",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1294-KY501&DW=0&TM=0539",
+      "raw": {
+        "dw": "0",
+        "tm": "0539"
+      }
+    },
+    {
+      "time": "05:45",
+      "hour": 5,
+      "minute": 45,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1631-KYL525",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1631-KYL525&DW=0&TM=0545",
+      "raw": {
+        "dw": "0",
+        "tm": "0545"
+      }
+    },
+    {
+      "time": "05:51",
+      "hour": 5,
+      "minute": 51,
+      "serviceDayOffset": 0,
+      "serviceType": "急行",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1317-KY5111",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1317-KY5111&DW=0&TM=0551",
+      "raw": {
+        "dw": "0",
+        "tm": "0551"
+      }
+    },
+    {
+      "time": "05:58",
+      "hour": 5,
+      "minute": 58,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1297-KY503",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1297-KY503&DW=0&TM=0558",
+      "raw": {
+        "dw": "0",
+        "tm": "0558"
+      }
+    },
+    {
+      "time": "06:06",
+      "hour": 6,
+      "minute": 6,
+      "serviceDayOffset": 0,
+      "serviceType": "急行",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1318-KY5113",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1318-KY5113&DW=0&TM=0606",
+      "raw": {
+        "dw": "0",
+        "tm": "0606"
+      }
+    },
+    {
+      "time": "06:08",
+      "hour": 6,
+      "minute": 8,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1634-KYL641",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1634-KYL641&DW=0&TM=0608",
+      "raw": {
+        "dw": "0",
+        "tm": "0608"
+      }
+    },
+    {
+      "time": "06:18",
+      "hour": 6,
+      "minute": 18,
+      "serviceDayOffset": 0,
+      "serviceType": "急行",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1319-KY5115",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1319-KY5115&DW=0&TM=0618",
+      "raw": {
+        "dw": "0",
+        "tm": "0618"
+      }
+    },
+    {
+      "time": "06:20",
+      "hour": 6,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1384-KY643",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1384-KY643&DW=0&TM=0620",
+      "raw": {
+        "dw": "0",
+        "tm": "0620"
+      }
+    },
+    {
+      "time": "06:23",
+      "hour": 6,
+      "minute": 23,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1304-KY505",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1304-KY505&DW=0&TM=0623",
+      "raw": {
+        "dw": "0",
+        "tm": "0623"
+      }
+    },
+    {
+      "time": "06:31",
+      "hour": 6,
+      "minute": 31,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1312-KY5081",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1312-KY5081&DW=0&TM=0631",
+      "raw": {
+        "dw": "0",
+        "tm": "0631"
+      }
+    },
+    {
+      "time": "06:37",
+      "hour": 6,
+      "minute": 37,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1309-KY507",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1309-KY507&DW=0&TM=0637",
+      "raw": {
+        "dw": "0",
+        "tm": "0637"
+      }
+    },
+    {
+      "time": "06:47",
+      "hour": 6,
+      "minute": 47,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1373-KY6081",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1373-KY6081&DW=0&TM=0647",
+      "raw": {
+        "dw": "0",
+        "tm": "0647"
+      }
+    },
+    {
+      "time": "06:53",
+      "hour": 6,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1209-KY3061",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1209-KY3061&DW=0&TM=0653",
+      "raw": {
+        "dw": "0",
+        "tm": "0653"
+      }
+    },
+    {
+      "time": "06:59",
+      "hour": 6,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1344-KY601",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1344-KY601&DW=0&TM=0659",
+      "raw": {
+        "dw": "0",
+        "tm": "0659"
+      }
+    },
+    {
+      "time": "07:04",
+      "hour": 7,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1352-KY6031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1352-KY6031&DW=0&TM=0704",
+      "raw": {
+        "dw": "0",
+        "tm": "0704"
+      }
+    },
+    {
+      "time": "07:09",
+      "hour": 7,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1386-KY645",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1386-KY645&DW=0&TM=0709",
+      "raw": {
+        "dw": "0",
+        "tm": "0709"
+      }
+    },
+    {
+      "time": "07:13",
+      "hour": 7,
+      "minute": 13,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1354-KY6033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1354-KY6033&DW=0&TM=0713",
+      "raw": {
+        "dw": "0",
+        "tm": "0713"
+      }
+    },
+    {
+      "time": "07:15",
+      "hour": 7,
+      "minute": 15,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1450-KY741",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1450-KY741&DW=0&TM=0715",
+      "raw": {
+        "dw": "0",
+        "tm": "0715"
+      }
+    },
+    {
+      "time": "07:20",
+      "hour": 7,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1638-KYL743",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1638-KYL743&DW=0&TM=0720",
+      "raw": {
+        "dw": "0",
+        "tm": "0720"
+      }
+    },
+    {
+      "time": "07:22",
+      "hour": 7,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1453-KY745",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1453-KY745&DW=0&TM=0722",
+      "raw": {
+        "dw": "0",
+        "tm": "0722"
+      }
+    },
+    {
+      "time": "07:24",
+      "hour": 7,
+      "minute": 24,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1210-KY3063",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1210-KY3063&DW=0&TM=0724",
+      "raw": {
+        "dw": "0",
+        "tm": "0724"
+      }
+    },
+    {
+      "time": "07:29",
+      "hour": 7,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1635-KYL721",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1635-KYL721&DW=0&TM=0729",
+      "raw": {
+        "dw": "0",
+        "tm": "0729"
+      }
+    },
+    {
+      "time": "07:32",
+      "hour": 7,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1454-KY747",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1454-KY747&DW=0&TM=0732",
+      "raw": {
+        "dw": "0",
+        "tm": "0732"
+      }
+    },
+    {
+      "time": "07:39",
+      "hour": 7,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1211-KY3065",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1211-KY3065&DW=0&TM=0739",
+      "raw": {
+        "dw": "0",
+        "tm": "0739"
+      }
+    },
+    {
+      "time": "07:41",
+      "hour": 7,
+      "minute": 41,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1639-KYL749",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1639-KYL749&DW=0&TM=0741",
+      "raw": {
+        "dw": "0",
+        "tm": "0741"
+      }
+    },
+    {
+      "time": "07:47",
+      "hour": 7,
+      "minute": 47,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1444-KY723",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1444-KY723&DW=0&TM=0747",
+      "raw": {
+        "dw": "0",
+        "tm": "0747"
+      }
+    },
+    {
+      "time": "07:50",
+      "hour": 7,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1351-KY603",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1351-KY603&DW=0&TM=0750",
+      "raw": {
+        "dw": "0",
+        "tm": "0750"
+      }
+    },
+    {
+      "time": "07:58",
+      "hour": 7,
+      "minute": 58,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1214-KY3071",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1214-KY3071&DW=0&TM=0758",
+      "raw": {
+        "dw": "0",
+        "tm": "0758"
+      }
+    },
+    {
+      "time": "08:00",
+      "hour": 8,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1442-KY7081",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1442-KY7081&DW=0&TM=0800",
+      "raw": {
+        "dw": "0",
+        "tm": "0800"
+      }
+    },
+    {
+      "time": "08:05",
+      "hour": 8,
+      "minute": 5,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1703-KYS725",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1703-KYS725&DW=0&TM=0805",
+      "raw": {
+        "dw": "0",
+        "tm": "0805"
+      }
+    },
+    {
+      "time": "08:08",
+      "hour": 8,
+      "minute": 8,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1415-KY701",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1415-KY701&DW=0&TM=0808",
+      "raw": {
+        "dw": "0",
+        "tm": "0808"
+      }
+    },
+    {
+      "time": "08:15",
+      "hour": 8,
+      "minute": 15,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1215-KY3073",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1215-KY3073&DW=0&TM=0815",
+      "raw": {
+        "dw": "0",
+        "tm": "0815"
+      }
+    },
+    {
+      "time": "08:17",
+      "hour": 8,
+      "minute": 17,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1640-KYL841",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1640-KYL841&DW=0&TM=0817",
+      "raw": {
+        "dw": "0",
+        "tm": "0817"
+      }
+    },
+    {
+      "time": "08:23",
+      "hour": 8,
+      "minute": 23,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1704-KYS821",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1704-KYS821&DW=0&TM=0823",
+      "raw": {
+        "dw": "0",
+        "tm": "0823"
+      }
+    },
+    {
+      "time": "08:26",
+      "hour": 8,
+      "minute": 26,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1420-KY703",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1420-KY703&DW=0&TM=0826",
+      "raw": {
+        "dw": "0",
+        "tm": "0826"
+      }
+    },
+    {
+      "time": "08:34",
+      "hour": 8,
+      "minute": 34,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1216-KY3075",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1216-KY3075&DW=0&TM=0834",
+      "raw": {
+        "dw": "0",
+        "tm": "0834"
+      }
+    },
+    {
+      "time": "08:36",
+      "hour": 8,
+      "minute": 36,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1641-KYL843",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1641-KYL843&DW=0&TM=0836",
+      "raw": {
+        "dw": "0",
+        "tm": "0836"
+      }
+    },
+    {
+      "time": "08:42",
+      "hour": 8,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1520-KY845",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1520-KY845&DW=0&TM=0842",
+      "raw": {
+        "dw": "0",
+        "tm": "0842"
+      }
+    },
+    {
+      "time": "08:44",
+      "hour": 8,
+      "minute": 44,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1213-KY30701",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1213-KY30701&DW=0&TM=0844",
+      "raw": {
+        "dw": "0",
+        "tm": "0844"
+      }
+    },
+    {
+      "time": "08:51",
+      "hour": 8,
+      "minute": 51,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1221-KY3081",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1221-KY3081&DW=0&TM=0851",
+      "raw": {
+        "dw": "0",
+        "tm": "0851"
+      }
+    },
+    {
+      "time": "08:54",
+      "hour": 8,
+      "minute": 54,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1521-KY847",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1521-KY847&DW=0&TM=0854",
+      "raw": {
+        "dw": "0",
+        "tm": "0854"
+      }
+    },
+    {
+      "time": "09:00",
+      "hour": 9,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1716-KYSL823",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1716-KYSL823&DW=0&TM=0900",
+      "raw": {
+        "dw": "0",
+        "tm": "0900"
+      }
+    },
+    {
+      "time": "09:08",
+      "hour": 9,
+      "minute": 8,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1494-KY8031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1494-KY8031&DW=0&TM=0908",
+      "raw": {
+        "dw": "0",
+        "tm": "0908"
+      }
+    },
+    {
+      "time": "09:11",
+      "hour": 9,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1219-KY30801",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1219-KY30801&DW=0&TM=0911",
+      "raw": {
+        "dw": "0",
+        "tm": "0911"
+      }
+    },
+    {
+      "time": "09:18",
+      "hour": 9,
+      "minute": 18,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1498-KY8033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1498-KY8033&DW=0&TM=0918",
+      "raw": {
+        "dw": "0",
+        "tm": "0918"
+      }
+    },
+    {
+      "time": "09:20",
+      "hour": 9,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1484-KY801",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1484-KY801&DW=0&TM=0920",
+      "raw": {
+        "dw": "0",
+        "tm": "0920"
+      }
+    },
+    {
+      "time": "09:28",
+      "hour": 9,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1502-KY8035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1502-KY8035&DW=0&TM=0928",
+      "raw": {
+        "dw": "0",
+        "tm": "0928"
+      }
+    },
+    {
+      "time": "09:30",
+      "hour": 9,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1584-KY921",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1584-KY921&DW=0&TM=0930",
+      "raw": {
+        "dw": "0",
+        "tm": "0930"
+      }
+    },
+    {
+      "time": "09:38",
+      "hour": 9,
+      "minute": 38,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1562-KY9031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1562-KY9031&DW=0&TM=0938",
+      "raw": {
+        "dw": "0",
+        "tm": "0938"
+      }
+    },
+    {
+      "time": "09:40",
+      "hour": 9,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1490-KY803",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1490-KY803&DW=0&TM=0940",
+      "raw": {
+        "dw": "0",
+        "tm": "0940"
+      }
+    },
+    {
+      "time": "09:48",
+      "hour": 9,
+      "minute": 48,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1565-KY9033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1565-KY9033&DW=0&TM=0948",
+      "raw": {
+        "dw": "0",
+        "tm": "0948"
+      }
+    },
+    {
+      "time": "09:50",
+      "hour": 9,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1220-KY30803",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1220-KY30803&DW=0&TM=0950",
+      "raw": {
+        "dw": "0",
+        "tm": "0950"
+      }
+    },
+    {
+      "time": "09:58",
+      "hour": 9,
+      "minute": 58,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1569-KY9035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1569-KY9035&DW=0&TM=0958",
+      "raw": {
+        "dw": "0",
+        "tm": "0958"
+      }
+    },
+    {
+      "time": "10:00",
+      "hour": 10,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1599-KY941",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1599-KY941&DW=0&TM=1000",
+      "raw": {
+        "dw": "0",
+        "tm": "1000"
+      }
+    },
+    {
+      "time": "10:09",
+      "hour": 10,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1573-KY9037",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1573-KY9037&DW=0&TM=1009",
+      "raw": {
+        "dw": "0",
+        "tm": "1009"
+      }
+    },
+    {
+      "time": "10:11",
+      "hour": 10,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1588-KY923",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1588-KY923&DW=0&TM=1011",
+      "raw": {
+        "dw": "0",
+        "tm": "1011"
+      }
+    },
+    {
+      "time": "10:19",
+      "hour": 10,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1575-KY9039",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1575-KY9039&DW=0&TM=1019",
+      "raw": {
+        "dw": "0",
+        "tm": "1019"
+      }
+    },
+    {
+      "time": "10:21",
+      "hour": 10,
+      "minute": 21,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-326-KY1041",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-326-KY1041&DW=0&TM=1021",
+      "raw": {
+        "dw": "0",
+        "tm": "1021"
+      }
+    },
+    {
+      "time": "10:29",
+      "hour": 10,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1577-KY9041",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1577-KY9041&DW=0&TM=1029",
+      "raw": {
+        "dw": "0",
+        "tm": "1029"
+      }
+    },
+    {
+      "time": "10:31",
+      "hour": 10,
+      "minute": 31,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-314-KY1021",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-314-KY1021&DW=0&TM=1031",
+      "raw": {
+        "dw": "0",
+        "tm": "1031"
+      }
+    },
+    {
+      "time": "10:40",
+      "hour": 10,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1578-KY9043",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1578-KY9043&DW=0&TM=1040",
+      "raw": {
+        "dw": "0",
+        "tm": "1040"
+      }
+    },
+    {
+      "time": "10:42",
+      "hour": 10,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-330-KY1043",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-330-KY1043&DW=0&TM=1042",
+      "raw": {
+        "dw": "0",
+        "tm": "1042"
+      }
+    },
+    {
+      "time": "10:50",
+      "hour": 10,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-295-KY10031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-295-KY10031&DW=0&TM=1050",
+      "raw": {
+        "dw": "0",
+        "tm": "1050"
+      }
+    },
+    {
+      "time": "10:52",
+      "hour": 10,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-318-KY1023",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-318-KY1023&DW=0&TM=1052",
+      "raw": {
+        "dw": "0",
+        "tm": "1052"
+      }
+    },
+    {
+      "time": "11:00",
+      "hour": 11,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-299-KY10033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-299-KY10033&DW=0&TM=1100",
+      "raw": {
+        "dw": "0",
+        "tm": "1100"
+      }
+    },
+    {
+      "time": "11:02",
+      "hour": 11,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-334-KY1045",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-334-KY1045&DW=0&TM=1102",
+      "raw": {
+        "dw": "0",
+        "tm": "1102"
+      }
+    },
+    {
+      "time": "11:10",
+      "hour": 11,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-303-KY10035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-303-KY10035&DW=0&TM=1110",
+      "raw": {
+        "dw": "0",
+        "tm": "1110"
+      }
+    },
+    {
+      "time": "11:12",
+      "hour": 11,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1643-KYS1025",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1643-KYS1025&DW=0&TM=1112",
+      "raw": {
+        "dw": "0",
+        "tm": "1112"
+      }
+    },
+    {
+      "time": "11:20",
+      "hour": 11,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-306-KY10037",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-306-KY10037&DW=0&TM=1120",
+      "raw": {
+        "dw": "0",
+        "tm": "1120"
+      }
+    },
+    {
+      "time": "11:22",
+      "hour": 11,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-399-KY1141",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-399-KY1141&DW=0&TM=1122",
+      "raw": {
+        "dw": "0",
+        "tm": "1122"
+      }
+    },
+    {
+      "time": "11:30",
+      "hour": 11,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-308-KY10039",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-308-KY10039&DW=0&TM=1130",
+      "raw": {
+        "dw": "0",
+        "tm": "1130"
+      }
+    },
+    {
+      "time": "11:32",
+      "hour": 11,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-391-KY1121",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-391-KY1121&DW=0&TM=1132",
+      "raw": {
+        "dw": "0",
+        "tm": "1132"
+      }
+    },
+    {
+      "time": "11:40",
+      "hour": 11,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-310-KY10041",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-310-KY10041&DW=0&TM=1140",
+      "raw": {
+        "dw": "0",
+        "tm": "1140"
+      }
+    },
+    {
+      "time": "11:42",
+      "hour": 11,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-403-KY1143",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-403-KY1143&DW=0&TM=1142",
+      "raw": {
+        "dw": "0",
+        "tm": "1142"
+      }
+    },
+    {
+      "time": "11:50",
+      "hour": 11,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-374-KY11031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-374-KY11031&DW=0&TM=1150",
+      "raw": {
+        "dw": "0",
+        "tm": "1150"
+      }
+    },
+    {
+      "time": "11:52",
+      "hour": 11,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1649-KYS1123",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1649-KYS1123&DW=0&TM=1152",
+      "raw": {
+        "dw": "0",
+        "tm": "1152"
+      }
+    },
+    {
+      "time": "12:00",
+      "hour": 12,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-378-KY11033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-378-KY11033&DW=0&TM=1200",
+      "raw": {
+        "dw": "0",
+        "tm": "1200"
+      }
+    },
+    {
+      "time": "12:02",
+      "hour": 12,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-407-KY1145",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-407-KY1145&DW=0&TM=1202",
+      "raw": {
+        "dw": "0",
+        "tm": "1202"
+      }
+    },
+    {
+      "time": "12:10",
+      "hour": 12,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-382-KY11035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-382-KY11035&DW=0&TM=1210",
+      "raw": {
+        "dw": "0",
+        "tm": "1210"
+      }
+    },
+    {
+      "time": "12:12",
+      "hour": 12,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1652-KYS1125",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1652-KYS1125&DW=0&TM=1212",
+      "raw": {
+        "dw": "0",
+        "tm": "1212"
+      }
+    },
+    {
+      "time": "12:20",
+      "hour": 12,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-385-KY11037",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-385-KY11037&DW=0&TM=1220",
+      "raw": {
+        "dw": "0",
+        "tm": "1220"
+      }
+    },
+    {
+      "time": "12:22",
+      "hour": 12,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-471-KY1241",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-471-KY1241&DW=0&TM=1222",
+      "raw": {
+        "dw": "0",
+        "tm": "1222"
+      }
+    },
+    {
+      "time": "12:30",
+      "hour": 12,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-387-KY11039",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-387-KY11039&DW=0&TM=1230",
+      "raw": {
+        "dw": "0",
+        "tm": "1230"
+      }
+    },
+    {
+      "time": "12:32",
+      "hour": 12,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1655-KYS1221",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1655-KYS1221&DW=0&TM=1232",
+      "raw": {
+        "dw": "0",
+        "tm": "1232"
+      }
+    },
+    {
+      "time": "12:40",
+      "hour": 12,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-389-KY11041",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-389-KY11041&DW=0&TM=1240",
+      "raw": {
+        "dw": "0",
+        "tm": "1240"
+      }
+    },
+    {
+      "time": "12:42",
+      "hour": 12,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-475-KY1243",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-475-KY1243&DW=0&TM=1242",
+      "raw": {
+        "dw": "0",
+        "tm": "1242"
+      }
+    },
+    {
+      "time": "12:50",
+      "hour": 12,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-446-KY12031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-446-KY12031&DW=0&TM=1250",
+      "raw": {
+        "dw": "0",
+        "tm": "1250"
+      }
+    },
+    {
+      "time": "12:52",
+      "hour": 12,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-465-KY1223",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-465-KY1223&DW=0&TM=1252",
+      "raw": {
+        "dw": "0",
+        "tm": "1252"
+      }
+    },
+    {
+      "time": "13:00",
+      "hour": 13,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-450-KY12033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-450-KY12033&DW=0&TM=1300",
+      "raw": {
+        "dw": "0",
+        "tm": "1300"
+      }
+    },
+    {
+      "time": "13:02",
+      "hour": 13,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-479-KY1245",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-479-KY1245&DW=0&TM=1302",
+      "raw": {
+        "dw": "0",
+        "tm": "1302"
+      }
+    },
+    {
+      "time": "13:10",
+      "hour": 13,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-454-KY12035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-454-KY12035&DW=0&TM=1310",
+      "raw": {
+        "dw": "0",
+        "tm": "1310"
+      }
+    },
+    {
+      "time": "13:12",
+      "hour": 13,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1659-KYS1225",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1659-KYS1225&DW=0&TM=1312",
+      "raw": {
+        "dw": "0",
+        "tm": "1312"
+      }
+    },
+    {
+      "time": "13:20",
+      "hour": 13,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-457-KY12037",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-457-KY12037&DW=0&TM=1320",
+      "raw": {
+        "dw": "0",
+        "tm": "1320"
+      }
+    },
+    {
+      "time": "13:22",
+      "hour": 13,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-545-KY1341",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-545-KY1341&DW=0&TM=1322",
+      "raw": {
+        "dw": "0",
+        "tm": "1322"
+      }
+    },
+    {
+      "time": "13:30",
+      "hour": 13,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-459-KY12039",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-459-KY12039&DW=0&TM=1330",
+      "raw": {
+        "dw": "0",
+        "tm": "1330"
+      }
+    },
+    {
+      "time": "13:32",
+      "hour": 13,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1661-KYS1321",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1661-KYS1321&DW=0&TM=1332",
+      "raw": {
+        "dw": "0",
+        "tm": "1332"
+      }
+    },
+    {
+      "time": "13:40",
+      "hour": 13,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-461-KY12041",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-461-KY12041&DW=0&TM=1340",
+      "raw": {
+        "dw": "0",
+        "tm": "1340"
+      }
+    },
+    {
+      "time": "13:42",
+      "hour": 13,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-549-KY1343",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-549-KY1343&DW=0&TM=1342",
+      "raw": {
+        "dw": "0",
+        "tm": "1342"
+      }
+    },
+    {
+      "time": "13:50",
+      "hour": 13,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-519-KY13031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-519-KY13031&DW=0&TM=1350",
+      "raw": {
+        "dw": "0",
+        "tm": "1350"
+      }
+    },
+    {
+      "time": "13:52",
+      "hour": 13,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1663-KYS1323",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1663-KYS1323&DW=0&TM=1352",
+      "raw": {
+        "dw": "0",
+        "tm": "1352"
+      }
+    },
+    {
+      "time": "14:00",
+      "hour": 14,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-523-KY13033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-523-KY13033&DW=0&TM=1400",
+      "raw": {
+        "dw": "0",
+        "tm": "1400"
+      }
+    },
+    {
+      "time": "14:02",
+      "hour": 14,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-553-KY1345",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-553-KY1345&DW=0&TM=1402",
+      "raw": {
+        "dw": "0",
+        "tm": "1402"
+      }
+    },
+    {
+      "time": "14:10",
+      "hour": 14,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-527-KY13035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-527-KY13035&DW=0&TM=1410",
+      "raw": {
+        "dw": "0",
+        "tm": "1410"
+      }
+    },
+    {
+      "time": "14:12",
+      "hour": 14,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-541-KY1325",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-541-KY1325&DW=0&TM=1412",
+      "raw": {
+        "dw": "0",
+        "tm": "1412"
+      }
+    },
+    {
+      "time": "14:20",
+      "hour": 14,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-530-KY13037",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-530-KY13037&DW=0&TM=1420",
+      "raw": {
+        "dw": "0",
+        "tm": "1420"
+      }
+    },
+    {
+      "time": "14:22",
+      "hour": 14,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-616-KY1441",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-616-KY1441&DW=0&TM=1422",
+      "raw": {
+        "dw": "0",
+        "tm": "1422"
+      }
+    },
+    {
+      "time": "14:30",
+      "hour": 14,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-532-KY13039",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-532-KY13039&DW=0&TM=1430",
+      "raw": {
+        "dw": "0",
+        "tm": "1430"
+      }
+    },
+    {
+      "time": "14:32",
+      "hour": 14,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-609-KY1421",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-609-KY1421&DW=0&TM=1432",
+      "raw": {
+        "dw": "0",
+        "tm": "1432"
+      }
+    },
+    {
+      "time": "14:40",
+      "hour": 14,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-534-KY13041",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-534-KY13041&DW=0&TM=1440",
+      "raw": {
+        "dw": "0",
+        "tm": "1440"
+      }
+    },
+    {
+      "time": "14:42",
+      "hour": 14,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-620-KY1443",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-620-KY1443&DW=0&TM=1442",
+      "raw": {
+        "dw": "0",
+        "tm": "1442"
+      }
+    },
+    {
+      "time": "14:50",
+      "hour": 14,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-592-KY14031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-592-KY14031&DW=0&TM=1450",
+      "raw": {
+        "dw": "0",
+        "tm": "1450"
+      }
+    },
+    {
+      "time": "14:52",
+      "hour": 14,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-612-KY1423",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-612-KY1423&DW=0&TM=1452",
+      "raw": {
+        "dw": "0",
+        "tm": "1452"
+      }
+    },
+    {
+      "time": "15:00",
+      "hour": 15,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-596-KY14033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-596-KY14033&DW=0&TM=1500",
+      "raw": {
+        "dw": "0",
+        "tm": "1500"
+      }
+    },
+    {
+      "time": "15:02",
+      "hour": 15,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-624-KY1445",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-624-KY1445&DW=0&TM=1502",
+      "raw": {
+        "dw": "0",
+        "tm": "1502"
+      }
+    },
+    {
+      "time": "15:10",
+      "hour": 15,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-600-KY14035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-600-KY14035&DW=0&TM=1510",
+      "raw": {
+        "dw": "0",
+        "tm": "1510"
+      }
+    },
+    {
+      "time": "15:12",
+      "hour": 15,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1672-KYS1425",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1672-KYS1425&DW=0&TM=1512",
+      "raw": {
+        "dw": "0",
+        "tm": "1512"
+      }
+    },
+    {
+      "time": "15:20",
+      "hour": 15,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-603-KY14037",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-603-KY14037&DW=0&TM=1520",
+      "raw": {
+        "dw": "0",
+        "tm": "1520"
+      }
+    },
+    {
+      "time": "15:22",
+      "hour": 15,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-691-KY1541",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-691-KY1541&DW=0&TM=1522",
+      "raw": {
+        "dw": "0",
+        "tm": "1522"
+      }
+    },
+    {
+      "time": "15:30",
+      "hour": 15,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-605-KY14039",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-605-KY14039&DW=0&TM=1530",
+      "raw": {
+        "dw": "0",
+        "tm": "1530"
+      }
+    },
+    {
+      "time": "15:32",
+      "hour": 15,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-686-KY1527",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-686-KY1527&DW=0&TM=1532",
+      "raw": {
+        "dw": "0",
+        "tm": "1532"
+      }
+    },
+    {
+      "time": "15:40",
+      "hour": 15,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-607-KY14041",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-607-KY14041&DW=0&TM=1540",
+      "raw": {
+        "dw": "0",
+        "tm": "1540"
+      }
+    },
+    {
+      "time": "15:42",
+      "hour": 15,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-695-KY1543",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-695-KY1543&DW=0&TM=1542",
+      "raw": {
+        "dw": "0",
+        "tm": "1542"
+      }
+    },
+    {
+      "time": "15:49",
+      "hour": 15,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-665-KY15031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-665-KY15031&DW=0&TM=1549",
+      "raw": {
+        "dw": "0",
+        "tm": "1549"
+      }
+    },
+    {
+      "time": "15:51",
+      "hour": 15,
+      "minute": 51,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1679-KYS1531",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1679-KYS1531&DW=0&TM=1551",
+      "raw": {
+        "dw": "0",
+        "tm": "1551"
+      }
+    },
+    {
+      "time": "15:59",
+      "hour": 15,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-669-KY15033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-669-KY15033&DW=0&TM=1559",
+      "raw": {
+        "dw": "0",
+        "tm": "1559"
+      }
+    },
+    {
+      "time": "16:01",
+      "hour": 16,
+      "minute": 1,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-699-KY1545",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-699-KY1545&DW=0&TM=1601",
+      "raw": {
+        "dw": "0",
+        "tm": "1601"
+      }
+    },
+    {
+      "time": "16:09",
+      "hour": 16,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-673-KY15035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-673-KY15035&DW=0&TM=1609",
+      "raw": {
+        "dw": "0",
+        "tm": "1609"
+      }
+    },
+    {
+      "time": "16:11",
+      "hour": 16,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1680-KYS1535",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1680-KYS1535&DW=0&TM=1611",
+      "raw": {
+        "dw": "0",
+        "tm": "1611"
+      }
+    },
+    {
+      "time": "16:19",
+      "hour": 16,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-676-KY15037",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-676-KY15037&DW=0&TM=1619",
+      "raw": {
+        "dw": "0",
+        "tm": "1619"
+      }
+    },
+    {
+      "time": "16:21",
+      "hour": 16,
+      "minute": 21,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-768-KY1641",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-768-KY1641&DW=0&TM=1621",
+      "raw": {
+        "dw": "0",
+        "tm": "1621"
+      }
+    },
+    {
+      "time": "16:29",
+      "hour": 16,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-678-KY15039",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-678-KY15039&DW=0&TM=1629",
+      "raw": {
+        "dw": "0",
+        "tm": "1629"
+      }
+    },
+    {
+      "time": "16:31",
+      "hour": 16,
+      "minute": 31,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-760-KY1621",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-760-KY1621&DW=0&TM=1631",
+      "raw": {
+        "dw": "0",
+        "tm": "1631"
+      }
+    },
+    {
+      "time": "16:39",
+      "hour": 16,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-680-KY15041",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-680-KY15041&DW=0&TM=1639",
+      "raw": {
+        "dw": "0",
+        "tm": "1639"
+      }
+    },
+    {
+      "time": "16:41",
+      "hour": 16,
+      "minute": 41,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-772-KY1643",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-772-KY1643&DW=0&TM=1641",
+      "raw": {
+        "dw": "0",
+        "tm": "1641"
+      }
+    },
+    {
+      "time": "16:49",
+      "hour": 16,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-740-KY16031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-740-KY16031&DW=0&TM=1649",
+      "raw": {
+        "dw": "0",
+        "tm": "1649"
+      }
+    },
+    {
+      "time": "16:51",
+      "hour": 16,
+      "minute": 51,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-761-KY1623",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-761-KY1623&DW=0&TM=1651",
+      "raw": {
+        "dw": "0",
+        "tm": "1651"
+      }
+    },
+    {
+      "time": "16:59",
+      "hour": 16,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-744-KY16033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-744-KY16033&DW=0&TM=1659",
+      "raw": {
+        "dw": "0",
+        "tm": "1659"
+      }
+    },
+    {
+      "time": "17:01",
+      "hour": 17,
+      "minute": 1,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-775-KY1645",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-775-KY1645&DW=0&TM=1701",
+      "raw": {
+        "dw": "0",
+        "tm": "1701"
+      }
+    },
+    {
+      "time": "17:08",
+      "hour": 17,
+      "minute": 8,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-748-KY16035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-748-KY16035&DW=0&TM=1708",
+      "raw": {
+        "dw": "0",
+        "tm": "1708"
+      }
+    },
+    {
+      "time": "17:11",
+      "hour": 17,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-764-KY1625",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-764-KY1625&DW=0&TM=1711",
+      "raw": {
+        "dw": "0",
+        "tm": "1711"
+      }
+    },
+    {
+      "time": "17:16",
+      "hour": 17,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-835-KY1721",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-835-KY1721&DW=0&TM=1716",
+      "raw": {
+        "dw": "0",
+        "tm": "1716"
+      }
+    },
+    {
+      "time": "17:20",
+      "hour": 17,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-751-KY16037",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-751-KY16037&DW=0&TM=1720",
+      "raw": {
+        "dw": "0",
+        "tm": "1720"
+      }
+    },
+    {
+      "time": "17:25",
+      "hour": 17,
+      "minute": 25,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-756-KY16081",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-756-KY16081&DW=0&TM=1725",
+      "raw": {
+        "dw": "0",
+        "tm": "1725"
+      }
+    },
+    {
+      "time": "17:28",
+      "hour": 17,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-843-KY1741",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-843-KY1741&DW=0&TM=1728",
+      "raw": {
+        "dw": "0",
+        "tm": "1728"
+      }
+    },
+    {
+      "time": "17:36",
+      "hour": 17,
+      "minute": 36,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1266-KY31601",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1266-KY31601&DW=0&TM=1736",
+      "raw": {
+        "dw": "0",
+        "tm": "1736"
+      }
+    },
+    {
+      "time": "17:40",
+      "hour": 17,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-754-KY16039",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-754-KY16039&DW=0&TM=1740",
+      "raw": {
+        "dw": "0",
+        "tm": "1740"
+      }
+    },
+    {
+      "time": "17:46",
+      "hour": 17,
+      "minute": 46,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-847-KY1743",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-847-KY1743&DW=0&TM=1746",
+      "raw": {
+        "dw": "0",
+        "tm": "1746"
+      }
+    },
+    {
+      "time": "17:48",
+      "hour": 17,
+      "minute": 48,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-850-KY1745",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-850-KY1745&DW=0&TM=1748",
+      "raw": {
+        "dw": "0",
+        "tm": "1748"
+      }
+    },
+    {
+      "time": "17:55",
+      "hour": 17,
+      "minute": 55,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1273-KY31701",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1273-KY31701&DW=0&TM=1755",
+      "raw": {
+        "dw": "0",
+        "tm": "1755"
+      }
+    },
+    {
+      "time": "18:00",
+      "hour": 18,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-819-KY17031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-819-KY17031&DW=0&TM=1800",
+      "raw": {
+        "dw": "0",
+        "tm": "1800"
+      }
+    },
+    {
+      "time": "18:07",
+      "hour": 18,
+      "minute": 7,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-852-KY1747",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-852-KY1747&DW=0&TM=1807",
+      "raw": {
+        "dw": "0",
+        "tm": "1807"
+      }
+    },
+    {
+      "time": "18:09",
+      "hour": 18,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-799-KY1701",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-799-KY1701&DW=0&TM=1809",
+      "raw": {
+        "dw": "0",
+        "tm": "1809"
+      }
+    },
+    {
+      "time": "18:17",
+      "hour": 18,
+      "minute": 17,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1689-KYS1821",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1689-KYS1821&DW=0&TM=1817",
+      "raw": {
+        "dw": "0",
+        "tm": "1817"
+      }
+    },
+    {
+      "time": "18:21",
+      "hour": 18,
+      "minute": 21,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-823-KY17033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-823-KY17033&DW=0&TM=1821",
+      "raw": {
+        "dw": "0",
+        "tm": "1821"
+      }
+    },
+    {
+      "time": "18:25",
+      "hour": 18,
+      "minute": 25,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-815-KY1703",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-815-KY1703&DW=0&TM=1825",
+      "raw": {
+        "dw": "0",
+        "tm": "1825"
+      }
+    },
+    {
+      "time": "18:29",
+      "hour": 18,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-920-KY1841",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-920-KY1841&DW=0&TM=1829",
+      "raw": {
+        "dw": "0",
+        "tm": "1829"
+      }
+    },
+    {
+      "time": "18:37",
+      "hour": 18,
+      "minute": 37,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-916-KY1823",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-916-KY1823&DW=0&TM=1837",
+      "raw": {
+        "dw": "0",
+        "tm": "1837"
+      }
+    },
+    {
+      "time": "18:40",
+      "hour": 18,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-827-KY17035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-827-KY17035&DW=0&TM=1840",
+      "raw": {
+        "dw": "0",
+        "tm": "1840"
+      }
+    },
+    {
+      "time": "18:46",
+      "hour": 18,
+      "minute": 46,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-834-KY1705",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-834-KY1705&DW=0&TM=1846",
+      "raw": {
+        "dw": "0",
+        "tm": "1846"
+      }
+    },
+    {
+      "time": "18:48",
+      "hour": 18,
+      "minute": 48,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-877-KY1801",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-877-KY1801&DW=0&TM=1848",
+      "raw": {
+        "dw": "0",
+        "tm": "1848"
+      }
+    },
+    {
+      "time": "18:56",
+      "hour": 18,
+      "minute": 56,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1620-KYL1825",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1620-KYL1825&DW=0&TM=1856",
+      "raw": {
+        "dw": "0",
+        "tm": "1856"
+      }
+    },
+    {
+      "time": "19:00",
+      "hour": 19,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-896-KY18031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-896-KY18031&DW=0&TM=1900",
+      "raw": {
+        "dw": "0",
+        "tm": "1900"
+      }
+    },
+    {
+      "time": "19:07",
+      "hour": 19,
+      "minute": 7,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-892-KY1803",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-892-KY1803&DW=0&TM=1907",
+      "raw": {
+        "dw": "0",
+        "tm": "1907"
+      }
+    },
+    {
+      "time": "19:09",
+      "hour": 19,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-924-KY1843",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-924-KY1843&DW=0&TM=1909",
+      "raw": {
+        "dw": "0",
+        "tm": "1909"
+      }
+    },
+    {
+      "time": "19:17",
+      "hour": 19,
+      "minute": 17,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1276-KY31801",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1276-KY31801&DW=0&TM=1917",
+      "raw": {
+        "dw": "0",
+        "tm": "1917"
+      }
+    },
+    {
+      "time": "19:21",
+      "hour": 19,
+      "minute": 21,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-900-KY18033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-900-KY18033&DW=0&TM=1921",
+      "raw": {
+        "dw": "0",
+        "tm": "1921"
+      }
+    },
+    {
+      "time": "19:26",
+      "hour": 19,
+      "minute": 26,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-911-KY1805",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-911-KY1805&DW=0&TM=1926",
+      "raw": {
+        "dw": "0",
+        "tm": "1926"
+      }
+    },
+    {
+      "time": "19:28",
+      "hour": 19,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-997-KY1941",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-997-KY1941&DW=0&TM=1928",
+      "raw": {
+        "dw": "0",
+        "tm": "1928"
+      }
+    },
+    {
+      "time": "19:36",
+      "hour": 19,
+      "minute": 36,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1713-KYSL1921",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1713-KYSL1921&DW=0&TM=1936",
+      "raw": {
+        "dw": "0",
+        "tm": "1936"
+      }
+    },
+    {
+      "time": "19:40",
+      "hour": 19,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-904-KY18035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-904-KY18035&DW=0&TM=1940",
+      "raw": {
+        "dw": "0",
+        "tm": "1940"
+      }
+    },
+    {
+      "time": "19:46",
+      "hour": 19,
+      "minute": 46,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-913-KY1807",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-913-KY1807&DW=0&TM=1946",
+      "raw": {
+        "dw": "0",
+        "tm": "1946"
+      }
+    },
+    {
+      "time": "19:49",
+      "hour": 19,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1001-KY1943",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1001-KY1943&DW=0&TM=1949",
+      "raw": {
+        "dw": "0",
+        "tm": "1949"
+      }
+    },
+    {
+      "time": "19:56",
+      "hour": 19,
+      "minute": 56,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1623-KYL1923",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1623-KYL1923&DW=0&TM=1956",
+      "raw": {
+        "dw": "0",
+        "tm": "1956"
+      }
+    },
+    {
+      "time": "20:00",
+      "hour": 20,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-971-KY19031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-971-KY19031&DW=0&TM=2000",
+      "raw": {
+        "dw": "0",
+        "tm": "2000"
+      }
+    },
+    {
+      "time": "20:06",
+      "hour": 20,
+      "minute": 6,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-952-KY1901",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-952-KY1901&DW=0&TM=2006",
+      "raw": {
+        "dw": "0",
+        "tm": "2006"
+      }
+    },
+    {
+      "time": "20:09",
+      "hour": 20,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1005-KY1945",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1005-KY1945&DW=0&TM=2009",
+      "raw": {
+        "dw": "0",
+        "tm": "2009"
+      }
+    },
+    {
+      "time": "20:16",
+      "hour": 20,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-967-KY1903",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-967-KY1903&DW=0&TM=2016",
+      "raw": {
+        "dw": "0",
+        "tm": "2016"
+      }
+    },
+    {
+      "time": "20:20",
+      "hour": 20,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-975-KY19033",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-975-KY19033&DW=0&TM=2020",
+      "raw": {
+        "dw": "0",
+        "tm": "2020"
+      }
+    },
+    {
+      "time": "20:26",
+      "hour": 20,
+      "minute": 26,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1079-KY2041",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1079-KY2041&DW=0&TM=2026",
+      "raw": {
+        "dw": "0",
+        "tm": "2026"
+      }
+    },
+    {
+      "time": "20:28",
+      "hour": 20,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1082-KY2043",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1082-KY2043&DW=0&TM=2028",
+      "raw": {
+        "dw": "0",
+        "tm": "2028"
+      }
+    },
+    {
+      "time": "20:36",
+      "hour": 20,
+      "minute": 36,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1280-KY31901",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1280-KY31901&DW=0&TM=2036",
+      "raw": {
+        "dw": "0",
+        "tm": "2036"
+      }
+    },
+    {
+      "time": "20:40",
+      "hour": 20,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-979-KY19035",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-979-KY19035&DW=0&TM=2040",
+      "raw": {
+        "dw": "0",
+        "tm": "2040"
+      }
+    },
+    {
+      "time": "20:47",
+      "hour": 20,
+      "minute": 47,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1083-KY2045",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1083-KY2045&DW=0&TM=2047",
+      "raw": {
+        "dw": "0",
+        "tm": "2047"
+      }
+    },
+    {
+      "time": "20:51",
+      "hour": 20,
+      "minute": 51,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1051-KY20031",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1051-KY20031&DW=0&TM=2051",
+      "raw": {
+        "dw": "0",
+        "tm": "2051"
+      }
+    },
+    {
+      "time": "20:57",
+      "hour": 20,
+      "minute": 57,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1084-KY2047",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1084-KY2047&DW=0&TM=2057",
+      "raw": {
+        "dw": "0",
+        "tm": "2057"
+      }
+    },
+    {
+      "time": "21:06",
+      "hour": 21,
+      "minute": 6,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1033-KY2001",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1033-KY2001&DW=0&TM=2106",
+      "raw": {
+        "dw": "0",
+        "tm": "2106"
+      }
+    },
+    {
+      "time": "21:09",
+      "hour": 21,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1047-KY2003",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1047-KY2003&DW=0&TM=2109",
+      "raw": {
+        "dw": "0",
+        "tm": "2109"
+      }
+    },
+    {
+      "time": "21:17",
+      "hour": 21,
+      "minute": 17,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1060-KY2005",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1060-KY2005&DW=0&TM=2117",
+      "raw": {
+        "dw": "0",
+        "tm": "2117"
+      }
+    },
+    {
+      "time": "21:20",
+      "hour": 21,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1697-KYS2121",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1697-KYS2121&DW=0&TM=2120",
+      "raw": {
+        "dw": "0",
+        "tm": "2120"
+      }
+    },
+    {
+      "time": "21:27",
+      "hour": 21,
+      "minute": 27,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1065-KY2007",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1065-KY2007&DW=0&TM=2127",
+      "raw": {
+        "dw": "0",
+        "tm": "2127"
+      }
+    },
+    {
+      "time": "21:31",
+      "hour": 21,
+      "minute": 31,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1134-KY2123",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1134-KY2123&DW=0&TM=2131",
+      "raw": {
+        "dw": "0",
+        "tm": "2131"
+      }
+    },
+    {
+      "time": "21:40",
+      "hour": 21,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1068-KY2009",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1068-KY2009&DW=0&TM=2140",
+      "raw": {
+        "dw": "0",
+        "tm": "2140"
+      }
+    },
+    {
+      "time": "21:45",
+      "hour": 21,
+      "minute": 45,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "天下茶屋",
+      "trainId": "1950110-1698-KYS2125",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1698-KYS2125&DW=0&TM=2145",
+      "raw": {
+        "dw": "0",
+        "tm": "2145"
+      }
+    },
+    {
+      "time": "21:53",
+      "hour": 21,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1069-KY2011",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1069-KY2011&DW=0&TM=2153",
+      "raw": {
+        "dw": "0",
+        "tm": "2153"
+      }
+    },
+    {
+      "time": "21:56",
+      "hour": 21,
+      "minute": 56,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "正雀",
+      "trainId": "1950110-1126-KY21061",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1126-KY21061&DW=0&TM=2156",
+      "raw": {
+        "dw": "0",
+        "tm": "2156"
+      }
+    },
+    {
+      "time": "22:06",
+      "hour": 22,
+      "minute": 6,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1111-KY2101",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1111-KY2101&DW=0&TM=2206",
+      "raw": {
+        "dw": "0",
+        "tm": "2206"
+      }
+    },
+    {
+      "time": "22:11",
+      "hour": 22,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1629-KYL2241",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1629-KYL2241&DW=0&TM=2211",
+      "raw": {
+        "dw": "0",
+        "tm": "2211"
+      }
+    },
+    {
+      "time": "22:19",
+      "hour": 22,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1118-KY2103",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1118-KY2103&DW=0&TM=2219",
+      "raw": {
+        "dw": "0",
+        "tm": "2219"
+      }
+    },
+    {
+      "time": "22:25",
+      "hour": 22,
+      "minute": 25,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1124-KY2105",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1124-KY2105&DW=0&TM=2225",
+      "raw": {
+        "dw": "0",
+        "tm": "2225"
+      }
+    },
+    {
+      "time": "22:35",
+      "hour": 22,
+      "minute": 35,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1129-KY2107",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1129-KY2107&DW=0&TM=2235",
+      "raw": {
+        "dw": "0",
+        "tm": "2235"
+      }
+    },
+    {
+      "time": "22:50",
+      "hour": 22,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1163-KY2201",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1163-KY2201&DW=0&TM=2250",
+      "raw": {
+        "dw": "0",
+        "tm": "2250"
+      }
+    },
+    {
+      "time": "23:04",
+      "hour": 23,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1166-KY2203",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1166-KY2203&DW=0&TM=2304",
+      "raw": {
+        "dw": "0",
+        "tm": "2304"
+      }
+    },
+    {
+      "time": "23:18",
+      "hour": 23,
+      "minute": 18,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1171-KY2205",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1171-KY2205&DW=0&TM=2318",
+      "raw": {
+        "dw": "0",
+        "tm": "2318"
+      }
+    },
+    {
+      "time": "23:33",
+      "hour": 23,
+      "minute": 33,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1174-KY2207",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1174-KY2207&DW=0&TM=2333",
+      "raw": {
+        "dw": "0",
+        "tm": "2333"
+      }
+    },
+    {
+      "time": "23:49",
+      "hour": 23,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪梅田",
+      "trainId": "1950110-1185-KY2301",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1185-KY2301&DW=0&TM=2349",
+      "raw": {
+        "dw": "0",
+        "tm": "2349"
+      }
+    },
+    {
+      "time": "00:10",
+      "hour": 0,
+      "minute": 10,
+      "serviceDayOffset": 1,
+      "serviceType": "普通",
+      "destinationJa": "正雀",
+      "trainId": "1950110-1189-KY23063",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1189-KY23063&DW=0&TM=0010",
+      "raw": {
+        "dw": "0",
+        "tm": "0010"
+      }
+    },
+    {
+      "time": "00:31",
+      "hour": 0,
+      "minute": 31,
+      "serviceDayOffset": 1,
+      "serviceType": "普通",
+      "destinationJa": "正雀",
+      "trainId": "1950110-1191-KY23065",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950110-1191-KY23065&DW=0&TM=0031",
+      "raw": {
+        "dw": "0",
+        "tm": "0031"
+      }
+    }
+  ]
+}

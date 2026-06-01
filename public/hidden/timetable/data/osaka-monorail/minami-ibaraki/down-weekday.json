@@ -1,0 +1,1199 @@
+{
+  "id": "osaka-monorail-minami-ibaraki-down-weekday",
+  "cardId": "osaka-monorail-minami-ibaraki-down",
+  "railwayId": "osaka-monorail",
+  "railwayNameJa": "大阪モノレール",
+  "station": {
+    "id": "minami-ibaraki",
+    "nameJa": "南茨木",
+    "code": "r19_minami_iba",
+    "stationId": 19,
+    "pageUrl": "https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/",
+    "pdfUrl": "https://www.osaka-monorail.co.jp/upload/timetable/r19_minami_iba_t2026.pdf"
+  },
+  "line": {
+    "nameJa": "大阪モノレール本線"
+  },
+  "direction": {
+    "id": "down",
+    "labelJa": "門真市方面",
+    "defaultDestinationJa": "門真市"
+  },
+  "calendar": {
+    "id": "weekday",
+    "labelJa": "平日",
+    "shortLabelJa": "平日"
+  },
+  "source": {
+    "pageUrl": "https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/",
+    "apiUrl": "https://www.osaka-monorail.co.jp/timetable/19",
+    "pdfUrl": "https://www.osaka-monorail.co.jp/upload/timetable/r19_minami_iba_t2026.pdf",
+    "fetchedAt": "2026-06-01T13:16:49.183Z"
+  },
+  "revision": "2026年時刻表",
+  "notes": [
+    "□印は万博記念公園駅で彩都線と連絡しません。"
+  ],
+  "departures": [
+    {
+      "time": "05:26",
+      "hour": 5,
+      "minute": 26,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "05:38",
+      "hour": 5,
+      "minute": 38,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "05:45",
+      "hour": 5,
+      "minute": 45,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "05:52",
+      "hour": 5,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:03",
+      "hour": 6,
+      "minute": 3,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:16",
+      "hour": 6,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:29",
+      "hour": 6,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:39",
+      "hour": 6,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:44",
+      "hour": 6,
+      "minute": 44,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:51",
+      "hour": 6,
+      "minute": 51,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:59",
+      "hour": 6,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:04",
+      "hour": 7,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:10",
+      "hour": 7,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:15",
+      "hour": 7,
+      "minute": 15,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:25",
+      "hour": 7,
+      "minute": 25,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:33",
+      "hour": 7,
+      "minute": 33,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:42",
+      "hour": 7,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:49",
+      "hour": 7,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:56",
+      "hour": 7,
+      "minute": 56,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:00",
+      "hour": 8,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:07",
+      "hour": 8,
+      "minute": 7,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:14",
+      "hour": 8,
+      "minute": 14,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:21",
+      "hour": 8,
+      "minute": 21,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:30",
+      "hour": 8,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:36",
+      "hour": 8,
+      "minute": 36,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:45",
+      "hour": 8,
+      "minute": 45,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:53",
+      "hour": 8,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:02",
+      "hour": 9,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:09",
+      "hour": 9,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:20",
+      "hour": 9,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:28",
+      "hour": 9,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:36",
+      "hour": 9,
+      "minute": 36,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:43",
+      "hour": 9,
+      "minute": 43,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:53",
+      "hour": 9,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:03",
+      "hour": 10,
+      "minute": 3,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:11",
+      "hour": 10,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:19",
+      "hour": 10,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:29",
+      "hour": 10,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:39",
+      "hour": 10,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:49",
+      "hour": 10,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:59",
+      "hour": 10,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:09",
+      "hour": 11,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:19",
+      "hour": 11,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:29",
+      "hour": 11,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:39",
+      "hour": 11,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:49",
+      "hour": 11,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:59",
+      "hour": 11,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:09",
+      "hour": 12,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:19",
+      "hour": 12,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:29",
+      "hour": 12,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:39",
+      "hour": 12,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:49",
+      "hour": 12,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:59",
+      "hour": 12,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:09",
+      "hour": 13,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:19",
+      "hour": 13,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:29",
+      "hour": 13,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:39",
+      "hour": 13,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:49",
+      "hour": 13,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:59",
+      "hour": 13,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:09",
+      "hour": 14,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:19",
+      "hour": 14,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:29",
+      "hour": 14,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:39",
+      "hour": 14,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:49",
+      "hour": 14,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:59",
+      "hour": 14,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:09",
+      "hour": 15,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:19",
+      "hour": 15,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:29",
+      "hour": 15,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:39",
+      "hour": 15,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:49",
+      "hour": 15,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:59",
+      "hour": 15,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:09",
+      "hour": 16,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:19",
+      "hour": 16,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:29",
+      "hour": 16,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:39",
+      "hour": 16,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:49",
+      "hour": 16,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:59",
+      "hour": 16,
+      "minute": 59,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "17:09",
+      "hour": 17,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "17:20",
+      "hour": 17,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "17:31",
+      "hour": 17,
+      "minute": 31,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "17:42",
+      "hour": 17,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "17:52",
+      "hour": 17,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "18:02",
+      "hour": 18,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "18:12",
+      "hour": 18,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "18:22",
+      "hour": 18,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "18:32",
+      "hour": 18,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "18:42",
+      "hour": 18,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "18:52",
+      "hour": 18,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:02",
+      "hour": 19,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:12",
+      "hour": 19,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:22",
+      "hour": 19,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:30",
+      "hour": 19,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:40",
+      "hour": 19,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:50",
+      "hour": 19,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:00",
+      "hour": 20,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:10",
+      "hour": 20,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:20",
+      "hour": 20,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:30",
+      "hour": 20,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:40",
+      "hour": 20,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:50",
+      "hour": 20,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:01",
+      "hour": 21,
+      "minute": 1,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:11",
+      "hour": 21,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:17",
+      "hour": 21,
+      "minute": 17,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:28",
+      "hour": 21,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:40",
+      "hour": 21,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:52",
+      "hour": 21,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "22:04",
+      "hour": 22,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "22:16",
+      "hour": 22,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "22:28",
+      "hour": 22,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "22:40",
+      "hour": 22,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "22:52",
+      "hour": 22,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "23:04",
+      "hour": 23,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "23:16",
+      "hour": 23,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "23:28",
+      "hour": 23,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "23:39",
+      "hour": 23,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "23:55",
+      "hour": 23,
+      "minute": 55,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "門真市",
+      "rawMarks": [],
+      "notes": []
+    }
+  ]
+}
