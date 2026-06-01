@@ -66,7 +66,7 @@ for (const requestId of requestIds) {
 }
 
 const slug = url.split("/").slice(-2).join("-");
-const savePath = `tmp/syllabus-detail-${slug}.json`;
+const savePath = `artifacts/syllabus-scrape/syllabus-detail-${slug}.json`;
 fs.writeFileSync(savePath, JSON.stringify({
   url,
   bodyText: textResult.result.value,

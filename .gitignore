@@ -7,3 +7,5 @@ dist
 .vercel
 tmp.claude/
 .claude/
+.llmwiki-locks/
+tmp/

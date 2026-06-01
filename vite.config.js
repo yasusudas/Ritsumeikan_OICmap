@@ -17,7 +17,8 @@ export default defineConfig({
         hiddenTimetable: resolve(__dirname, 'hidden/timetable/index.html'),
         enTerms: resolve(__dirname, 'en/terms/index.html'),
         enPrivacy: resolve(__dirname, 'en/privacy/index.html'),
-        enAccess: resolve(__dirname, 'en/access/index.html')
+        enAccess: resolve(__dirname, 'en/access/index.html'),
+        enTimetable: resolve(__dirname, 'en/timetable/index.html')
       }
     }
   }

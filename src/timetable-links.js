@@ -1,26 +1,68 @@
 const TODAY = getJapanDate();
 const ONE_DAY = 24 * 60 * 60 * 1000;
+const PAGE_LANG = getPageLanguage();
+
+const LABELS = {
+  ja: {
+    stationSuffix: '駅',
+    weekday: '平日',
+    holiday: '休日',
+    saturdayHoliday: '土曜・休日',
+    today: '本日',
+    tomorrow: '翌日',
+    modeDayType: '曜日種別を選んで公式ページへ',
+    modeMonorail: '曜日種別を選び、公式ページ内の該当列を確認',
+    modeDate: '表示日つきで公式ページへ',
+    officialPage: '公式ページ',
+    selectPrompt: '選択してください',
+    monorailWeekday: '平日用（月〜金）',
+    monorailHoliday: '休日用（土・日・祝日）',
+    monorailHelp: (dayType, direction) =>
+      `大阪モノレール公式ページ内で「${dayType}」タブを開き、「${direction}」列を確認してください。`
+  },
+  en: {
+    stationSuffix: ' Station',
+    weekday: 'Weekday',
+    holiday: 'Weekend/Holiday',
+    saturdayHoliday: 'Saturday/Holiday',
+    today: 'Today',
+    tomorrow: 'Tomorrow',
+    modeDayType: 'Open the official page by day type',
+    modeMonorail: 'Choose a day type and check the matching column on the official page',
+    modeDate: 'Open the official page with a display date',
+    officialPage: 'Official page',
+    selectPrompt: 'Select an option',
+    monorailWeekday: 'weekday',
+    monorailHoliday: 'weekend/holiday',
+    monorailHelp: (dayType, direction) =>
+      `On the Osaka Monorail official page, open the ${dayType} tab and check the ${direction} column.`
+  }
+};
 
 const RAILWAYS = [
   {
     id: 'osaka-monorail',
     name: '大阪モノレール',
+    nameEn: 'Osaka Monorail',
     accent: '#0072bc',
     note: '公式駅時刻表ページを開きます。方面・曜日は公式ページ側で確認してください。',
     stations: [
       {
         id: 'unobe',
         name: '宇野辺',
+        nameEn: 'Unobe',
         directions: [
           {
             id: 'osaka-airport',
             name: '上り 大阪空港方面',
+            nameEn: 'Up toward Osaka Airport',
             mode: 'monorail',
             url: 'https://www.osaka-monorail.co.jp/station/r18_unobe/timetable/'
           },
           {
             id: 'kadomashi',
             name: '下り 門真市方面',
+            nameEn: 'Down toward Kadomashi',
             mode: 'monorail',
             url: 'https://www.osaka-monorail.co.jp/station/r18_unobe/timetable/'
           }
@@ -29,16 +71,19 @@ const RAILWAYS = [
       {
         id: 'minami-ibaraki',
         name: '南茨木',
+        nameEn: 'Minami-ibaraki',
         directions: [
           {
             id: 'osaka-airport',
             name: '上り 大阪空港方面',
+            nameEn: 'Up toward Osaka Airport',
             mode: 'monorail',
             url: 'https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/'
           },
           {
             id: 'kadomashi',
             name: '下り 門真市方面',
+            nameEn: 'Down toward Kadomashi',
             mode: 'monorail',
             url: 'https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/'
           }
@@ -49,16 +94,19 @@ const RAILWAYS = [
   {
     id: 'hankyu',
     name: '阪急電鉄',
+    nameEn: 'Hankyu Railway',
     accent: '#7b3f2a',
     note: '南茨木駅の公式時刻表ページを、方面と曜日種別ごとに開きます。',
     stations: [
       {
         id: 'minami-ibaraki',
         name: '南茨木',
+        nameEn: 'Minami-ibaraki',
         directions: [
           {
             id: 'osaka',
             name: '大阪梅田・天下茶屋方面',
+            nameEn: 'Toward Osaka-umeda / Tengachaya',
             mode: 'dayType',
             urls: {
               weekday: 'https://www.hankyu.co.jp/station/html/HK-68_ky_1_w.html',
@@ -68,6 +116,7 @@ const RAILWAYS = [
           {
             id: 'kyoto',
             name: '京都河原町方面',
+            nameEn: 'Toward Kyoto-kawaramachi',
             mode: 'dayType',
             urls: {
               weekday: 'https://www.hankyu.co.jp/station/html/HK-68_ky_2_w.html',
@@ -81,22 +130,26 @@ const RAILWAYS = [
   {
     id: 'jr-west',
     name: 'JR西日本',
+    nameEn: 'JR West',
     accent: '#0068b7',
     note: 'JR西日本公式時刻表を、表示日つきで開きます。',
     stations: [
       {
         id: 'ibaraki',
         name: '茨木',
+        nameEn: 'Ibaraki',
         directions: [
           {
             id: 'kyoto',
             name: '京都方面',
+            nameEn: 'Toward Kyoto',
             mode: 'date',
             timetableId: '2791011001'
           },
           {
             id: 'osaka-kobe',
             name: '大阪・神戸方面',
+            nameEn: 'Toward Osaka / Kobe',
             mode: 'date',
             timetableId: '2791011002'
           }
@@ -104,6 +157,13 @@ const RAILWAYS = [
       }
     ]
   }
+];
+
+const OFFICIAL_CARD_ORDER = [
+  ['osaka-monorail', 'unobe'],
+  ['osaka-monorail', 'minami-ibaraki'],
+  ['jr-west', 'ibaraki'],
+  ['hankyu', 'minami-ibaraki']
 ];
 
 const elements = {
@@ -190,14 +250,16 @@ function updateGeneratedLink() {
   const railway = getSelectedRailway();
   const direction = getSelectedDirection();
   elements.generatedLink.href = url || '#';
-  elements.generatedLink.textContent = url || '選択してください';
+  elements.generatedLink.textContent = url || t('selectPrompt');
   elements.help.textContent = direction.mode === 'monorail' ? monorailHelpText(direction) : railway.note;
 }
 
 function renderOfficialCards() {
-  elements.cardGrid.innerHTML = RAILWAYS.flatMap((railway) =>
-    railway.stations.map((station) => renderOfficialCard(railway, station))
-  ).join('');
+  elements.cardGrid.innerHTML = OFFICIAL_CARD_ORDER.map(([railwayId, stationId]) => {
+    const railway = RAILWAYS.find((item) => item.id === railwayId);
+    const station = railway?.stations.find((item) => item.id === stationId);
+    return railway && station ? renderOfficialCard(railway, station) : '';
+  }).join('');
 }
 
 function renderOfficialCard(railway, station) {
@@ -207,8 +269,7 @@ function renderOfficialCard(railway, station) {
       return `
         <div class="timetable-official-row">
           <div>
-            <span>${escapeHtml(direction.name)}</span>
-            <small>${escapeHtml(linkModeLabel(direction.mode))}</small>
+            <span>${escapeHtml(localizeName(direction))}</span>
           </div>
           <div class="timetable-official-actions">
             ${links
@@ -228,8 +289,8 @@ function renderOfficialCard(railway, station) {
 
   return `
     <article class="timetable-official-card" style="--timetable-railway-color: ${escapeHtml(railway.accent)};">
-      <p class="timetable-railway">${escapeHtml(railway.name)}</p>
-      <h3>${escapeHtml(station.name)}駅</h3>
+      <p class="timetable-railway">${escapeHtml(localizeName(railway))}</p>
+      <h3>${escapeHtml(localizeName(station))}${escapeHtml(t('stationSuffix'))}</h3>
       <div class="timetable-official-rows">${rows}</div>
     </article>
   `;
@@ -238,15 +299,15 @@ function renderOfficialCard(railway, station) {
 function resolveDirectionLinks(direction) {
   if (direction.mode === 'dayType') {
     return [
-      { label: '平日', url: direction.urls.weekday },
-      { label: '土曜・休日', url: direction.urls.holiday }
+      { label: t('weekday'), url: direction.urls.weekday },
+      { label: t('saturdayHoliday'), url: direction.urls.holiday }
     ];
   }
 
   if (direction.mode === 'monorail') {
     return [
-      { label: '平日', url: monorailUrl(direction.url, 'weekday') },
-      { label: '休日', url: monorailUrl(direction.url, 'holiday') }
+      { label: t('weekday'), url: monorailUrl(direction.url, 'weekday') },
+      { label: t('holiday'), url: monorailUrl(direction.url, 'holiday') }
     ];
   }
 
@@ -254,12 +315,12 @@ function resolveDirectionLinks(direction) {
     const today = formatDateCompact(TODAY);
     const tomorrow = formatDateCompact(new Date(TODAY.getTime() + ONE_DAY));
     return [
-      { label: '今日', url: jrUrl(direction.timetableId, today) },
-      { label: '明日', url: jrUrl(direction.timetableId, tomorrow) }
+      { label: t('today'), url: jrUrl(direction.timetableId, today) },
+      { label: t('tomorrow'), url: jrUrl(direction.timetableId, tomorrow) }
     ];
   }
 
-  return [{ label: '公式ページ', url: direction.url }];
+  return [{ label: t('officialPage'), url: direction.url }];
 }
 
 function resolveSelectedUrl() {
@@ -307,15 +368,29 @@ function optionHtml(value, label) {
 }
 
 function linkModeLabel(mode) {
-  if (mode === 'dayType') return '曜日種別を選んで公式ページへ';
-  if (mode === 'monorail') return '曜日種別を選び、公式ページ内の該当列を確認';
-  if (mode === 'date') return '表示日つきで公式ページへ';
-  return '公式駅時刻表ページへ';
+  if (mode === 'dayType') return t('modeDayType');
+  if (mode === 'monorail') return t('modeMonorail');
+  if (mode === 'date') return t('modeDate');
+  return t('officialPage');
 }
 
 function monorailHelpText(direction) {
-  const dayType = elements.dayType.value === 'holiday' ? '休日用（土・日・祝日）' : '平日用（月〜金）';
-  return `大阪モノレール公式ページ内で「${dayType}」タブを開き、「${direction.name}」列を確認してください。`;
+  const dayType = elements.dayType.value === 'holiday' ? t('monorailHoliday') : t('monorailWeekday');
+  return t('monorailHelp')(dayType, localizeName(direction));
+}
+
+function getPageLanguage() {
+  return document.documentElement.lang === 'en' || window.location.pathname.startsWith('/en/')
+    ? 'en'
+    : 'ja';
+}
+
+function t(key) {
+  return (LABELS[PAGE_LANG] || LABELS.ja)[key];
+}
+
+function localizeName(item) {
+  return PAGE_LANG === 'en' && item.nameEn ? item.nameEn : item.name;
 }
 
 function formatDateValue(date) {

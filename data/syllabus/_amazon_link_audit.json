@@ -1,0 +1,449 @@
+{
+  "generatedAt": "2026-05-28T11:27:13.518Z",
+  "resolverVersion": 9,
+  "files": [
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/土曜日_1限.xlsx",
+      "rows": 18,
+      "books": 32,
+      "linked": 29,
+      "missing": 3
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/土曜日_2限.xlsx",
+      "rows": 64,
+      "books": 35,
+      "linked": 32,
+      "missing": 3
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/土曜日_3限.xlsx",
+      "rows": 57,
+      "books": 96,
+      "linked": 83,
+      "missing": 13
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/土曜日_4限.xlsx",
+      "rows": 66,
+      "books": 96,
+      "linked": 83,
+      "missing": 13
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/土曜日_5限.xlsx",
+      "rows": 13,
+      "books": 53,
+      "linked": 50,
+      "missing": 3
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/土曜日_6限.xlsx",
+      "rows": 15,
+      "books": 56,
+      "linked": 53,
+      "missing": 3
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/土曜日_7限.xlsx",
+      "rows": 29,
+      "books": 3,
+      "linked": 3,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/土曜日_8限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/土曜日_9限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/日曜日_1限.xlsx",
+      "rows": 13,
+      "books": 39,
+      "linked": 38,
+      "missing": 1
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/日曜日_2限.xlsx",
+      "rows": 13,
+      "books": 39,
+      "linked": 38,
+      "missing": 1
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/日曜日_3限.xlsx",
+      "rows": 15,
+      "books": 49,
+      "linked": 43,
+      "missing": 6
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/日曜日_4限.xlsx",
+      "rows": 15,
+      "books": 49,
+      "linked": 43,
+      "missing": 6
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/日曜日_5限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/日曜日_6限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/日曜日_7限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/日曜日_8限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/日曜日_9限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/月曜日_1限.xlsx",
+      "rows": 397,
+      "books": 826,
+      "linked": 712,
+      "missing": 114
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/月曜日_2限.xlsx",
+      "rows": 674,
+      "books": 1315,
+      "linked": 1147,
+      "missing": 168
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/月曜日_3限.xlsx",
+      "rows": 633,
+      "books": 1249,
+      "linked": 1096,
+      "missing": 153
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/月曜日_4限.xlsx",
+      "rows": 632,
+      "books": 1254,
+      "linked": 1079,
+      "missing": 175
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/月曜日_5限.xlsx",
+      "rows": 376,
+      "books": 718,
+      "linked": 611,
+      "missing": 107
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/月曜日_6限.xlsx",
+      "rows": 200,
+      "books": 161,
+      "linked": 145,
+      "missing": 16
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/月曜日_7限.xlsx",
+      "rows": 36,
+      "books": 29,
+      "linked": 28,
+      "missing": 1
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/月曜日_8限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/月曜日_9限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/木曜日_1限.xlsx",
+      "rows": 548,
+      "books": 984,
+      "linked": 776,
+      "missing": 208
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/木曜日_2限.xlsx",
+      "rows": 840,
+      "books": 1540,
+      "linked": 1295,
+      "missing": 245
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/木曜日_3限.xlsx",
+      "rows": 812,
+      "books": 1440,
+      "linked": 1193,
+      "missing": 247
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/木曜日_4限.xlsx",
+      "rows": 815,
+      "books": 1450,
+      "linked": 1261,
+      "missing": 189
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/木曜日_5限.xlsx",
+      "rows": 415,
+      "books": 624,
+      "linked": 572,
+      "missing": 52
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/木曜日_6限.xlsx",
+      "rows": 136,
+      "books": 167,
+      "linked": 155,
+      "missing": 12
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/木曜日_7限.xlsx",
+      "rows": 28,
+      "books": 55,
+      "linked": 50,
+      "missing": 5
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/木曜日_8限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/木曜日_9限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/水曜日_1限.xlsx",
+      "rows": 548,
+      "books": 1116,
+      "linked": 929,
+      "missing": 187
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/水曜日_2限.xlsx",
+      "rows": 730,
+      "books": 1424,
+      "linked": 1263,
+      "missing": 161
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/水曜日_3限.xlsx",
+      "rows": 814,
+      "books": 1430,
+      "linked": 1135,
+      "missing": 295
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/水曜日_4限.xlsx",
+      "rows": 856,
+      "books": 1393,
+      "linked": 1134,
+      "missing": 259
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/水曜日_5限.xlsx",
+      "rows": 362,
+      "books": 637,
+      "linked": 575,
+      "missing": 62
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/水曜日_6限.xlsx",
+      "rows": 119,
+      "books": 183,
+      "linked": 173,
+      "missing": 10
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/水曜日_7限.xlsx",
+      "rows": 21,
+      "books": 86,
+      "linked": 82,
+      "missing": 4
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/水曜日_8限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/水曜日_9限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/火曜日_1限.xlsx",
+      "rows": 473,
+      "books": 847,
+      "linked": 711,
+      "missing": 136
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/火曜日_2限.xlsx",
+      "rows": 730,
+      "books": 1395,
+      "linked": 1207,
+      "missing": 188
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/火曜日_3限.xlsx",
+      "rows": 527,
+      "books": 1180,
+      "linked": 1051,
+      "missing": 129
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/火曜日_4限.xlsx",
+      "rows": 438,
+      "books": 947,
+      "linked": 870,
+      "missing": 77
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/火曜日_5限.xlsx",
+      "rows": 166,
+      "books": 467,
+      "linked": 415,
+      "missing": 52
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/火曜日_6限.xlsx",
+      "rows": 72,
+      "books": 140,
+      "linked": 127,
+      "missing": 13
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/火曜日_7限.xlsx",
+      "rows": 27,
+      "books": 57,
+      "linked": 53,
+      "missing": 4
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/火曜日_8限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/火曜日_9限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/金曜日_1限.xlsx",
+      "rows": 519,
+      "books": 939,
+      "linked": 865,
+      "missing": 74
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/金曜日_2限.xlsx",
+      "rows": 752,
+      "books": 1719,
+      "linked": 1604,
+      "missing": 115
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/金曜日_3限.xlsx",
+      "rows": 684,
+      "books": 1311,
+      "linked": 1202,
+      "missing": 109
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/金曜日_4限.xlsx",
+      "rows": 618,
+      "books": 1342,
+      "linked": 1199,
+      "missing": 143
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/金曜日_5限.xlsx",
+      "rows": 235,
+      "books": 374,
+      "linked": 325,
+      "missing": 49
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/金曜日_6限.xlsx",
+      "rows": 46,
+      "books": 82,
+      "linked": 74,
+      "missing": 8
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/金曜日_7限.xlsx",
+      "rows": 15,
+      "books": 32,
+      "linked": 31,
+      "missing": 1
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/金曜日_8限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/data/syllabus/金曜日_9限.xlsx",
+      "rows": 0,
+      "books": 0,
+      "linked": 0,
+      "missing": 0
+    }
+  ],
+  "warnings": [],
+  "missingRows": 3820
+}

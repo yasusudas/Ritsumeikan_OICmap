@@ -9,6 +9,10 @@ function getLegalPageSlug() {
     return 'access';
   }
 
+  if (path === '/timetable/' || path === '/en/timetable/') {
+    return 'timetable';
+  }
+
   if (path === '/privacy/' || path === '/en/privacy/') {
     return 'privacy';
   }
@@ -136,7 +140,7 @@ function createDialogs() {
         <p>${t.aboutFacilities}</p>
       </div>
       <footer class="about-dialog-footer">
-        <p class="about-dialog-version">Ver. 2.6</p>
+        <p class="about-dialog-version">Ver. 2.8</p>
       </footer>
     </section>`;
   document.body.appendChild(aboutBackdrop);

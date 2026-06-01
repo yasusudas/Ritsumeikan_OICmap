@@ -1916,11 +1916,17 @@ body.legal-page {
 
 .access-hero {
   margin-bottom: 18px;
+  padding-block: clamp(14px, 1.6vw, 20px);
+  border-radius: 12px;
   text-align: center;
 }
 
 .access-hero h1 {
   margin: 0;
+}
+
+.legal-hero.access-hero h1 {
+  font-size: clamp(1.18rem, 1.8vw, 1.72rem);
 }
 
 .access-eyebrow {
@@ -2253,6 +2259,14 @@ body.timetable-page {
     inset 0 0 0 1px rgba(255, 255, 255, 0.7);
 }
 
+.timetable-link-hero {
+  padding-block: clamp(14px, 1.6vw, 20px);
+}
+
+.timetable-hero.timetable-link-hero {
+  border-radius: 12px;
+}
+
 .timetable-hero h1 {
   margin: 0;
   font-family: var(--font-display);
@@ -2260,6 +2274,10 @@ body.timetable-page {
   font-weight: 900;
   line-height: 1.25;
   letter-spacing: 0;
+}
+
+.timetable-hero.timetable-link-hero h1 {
+  font-size: clamp(1.18rem, 1.8vw, 1.72rem);
 }
 
 .timetable-hero p {
@@ -2419,7 +2437,7 @@ body.timetable-page {
 
 .timetable-official-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -3005,6 +3023,10 @@ body.is-timetable-sorting {
   margin-top: 0;
 }
 
+.timetable-source-card {
+  margin-top: 24px;
+}
+
 .timetable-source-card .timetable-source-reference-title {
   color: var(--ink-900);
   font-family: var(--font-display);
@@ -3058,7 +3080,6 @@ body.is-timetable-sorting {
     grid-column: 1 / -1;
   }
 
-  .timetable-official-card-grid,
   .timetable-compliance-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -3190,6 +3211,12 @@ body.is-timetable-sorting {
 
   .timetable-official-card h3 {
     font-size: 1.22rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .timetable-official-card-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -3803,9 +3830,11 @@ body[data-app-mode="editor"] .map-card {
   .mobile-quick-action-icon {
     width: 16px;
     height: 16px;
+    display: block;
     flex: 0 0 16px;
     color: #000;
     fill: none;
+    object-fit: contain;
     stroke: currentColor;
     stroke-width: 2;
     stroke-linecap: round;
@@ -3904,15 +3933,19 @@ body[data-app-mode="editor"] .map-card {
     display: flex;
     align-items: center;
     gap: 8px;
+    width: 100%;
     height: var(--mobile-facility-toggle-size);
   }
 
   .mobile-floor-label {
     color: var(--ink-800);
     flex-shrink: 0;
+    margin-left: 0;
   }
 
   .mobile-floor-toggle {
+    flex: 1 1 auto;
+    min-width: 0;
     height: var(--mobile-facility-toggle-size);
     font-size: 0.95rem;
   }
@@ -4400,13 +4433,6 @@ body[data-app-mode="viewer"] .site-footer {
 
 body[data-app-mode="viewer"] .site-footer a {
   pointer-events: auto;
-}
-
-/* Zoom/floor readout sits bottom-left, lifted clear of the footer strip. */
-body[data-app-mode="viewer"] .status-pill {
-  top: auto;
-  bottom: calc(72px + env(safe-area-inset-bottom, 0px));
-  left: 14px;
 }
 
 /* Desktop: give the floor switcher a glass backing so the tabs stay legible

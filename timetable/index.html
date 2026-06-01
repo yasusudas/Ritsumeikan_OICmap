@@ -26,6 +26,9 @@
     <link rel="apple-touch-icon" href="/icon/pwa-512-20260412b.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="canonical" href="https://rits-oic-map.vercel.app/timetable/" />
+    <link rel="alternate" hreflang="ja" href="https://rits-oic-map.vercel.app/timetable/" />
+    <link rel="alternate" hreflang="en" href="https://rits-oic-map.vercel.app/en/timetable/" />
+    <link rel="alternate" hreflang="x-default" href="https://rits-oic-map.vercel.app/timetable/" />
     <meta name="theme-color" content="#0b1220" />
     <meta name="application-name" content="立命館OICマップ" />
     <meta
@@ -58,9 +61,13 @@
           <div class="topbar-title-row legal-header-inner">
             <a class="app-title legal-brand" href="/">
               <span class="app-title-main">立命館OICマップ</span>
-              <span class="app-title-version">公式時刻表リンク</span>
             </a>
             <div class="topbar-actions">
+              <button class="lang-toggle legal-lang-toggle" data-legal-lang-toggle type="button" aria-label="言語を切り替え" title="言語を切り替え">
+                <span class="lang-toggle-option is-active" data-legal-lang-option="ja" aria-current="true">JP</span>
+                <span class="lang-toggle-separator" aria-hidden="true">/</span>
+                <span class="lang-toggle-option" data-legal-lang-option="en">EN</span>
+              </button>
               <details class="site-menu legal-menu">
                 <summary class="site-menu-toggle legal-menu-toggle" aria-label="メニュー">
                   <span class="site-menu-line" aria-hidden="true"></span>
@@ -82,19 +89,11 @@
       <main class="timetable-main" aria-labelledby="timetable-title">
         <section class="timetable-hero timetable-link-hero">
           <div>
-            <p class="timetable-hero-kicker">Official timetable links</p>
             <h1 id="timetable-title">公式時刻表リンク</h1>
-            <p>
-              時刻表データはこのサイトに保存・複製・加工せず、条件に合う各社公式ページを別タブで開きます。
-            </p>
           </div>
         </section>
 
-        <section class="timetable-official-grid" aria-labelledby="official-link-title">
-          <div class="timetable-section-heading">
-            <p class="timetable-section-kicker">Official pages</p>
-            <h2 id="official-link-title">主要駅の公式リンク</h2>
-          </div>
+        <section class="timetable-official-grid" aria-label="駅カード一覧">
           <div class="timetable-official-card-grid" data-official-card-grid></div>
         </section>
 
