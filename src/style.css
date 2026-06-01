@@ -234,6 +234,10 @@ body[data-app-mode="viewer"] .app-shell {
   box-shadow: inset 0 0 0 1px rgba(11, 18, 32, 0.08);
 }
 
+.topbar-glass:has(.site-menu-toggle[aria-expanded="true"]) {
+  z-index: 50;
+}
+
 .topbar-title-row {
   display: flex;
   align-items: center;
