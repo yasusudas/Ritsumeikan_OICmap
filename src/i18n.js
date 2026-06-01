@@ -19,6 +19,7 @@ const dictionaries = {
     'menu.close': 'メニューを閉じる',
     'menu.about': 'このサイトについて',
     'menu.access': 'アクセス',
+    'menu.timetable': '時刻表',
     'menu.contactForm': 'お問い合わせ',
 
     'about.title': 'このサイトについて',
@@ -194,6 +195,7 @@ const dictionaries = {
     'menu.close': 'Close menu',
     'menu.about': 'About this map',
     'menu.access': 'Access',
+    'menu.timetable': 'Timetable',
     'menu.contactForm': 'Contact',
 
     'about.title': 'About this map',

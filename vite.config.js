@@ -13,6 +13,7 @@ export default defineConfig({
         terms: resolve(__dirname, 'terms/index.html'),
         privacy: resolve(__dirname, 'privacy/index.html'),
         access: resolve(__dirname, 'access/index.html'),
+        timetable: resolve(__dirname, 'timetable/index.html'),
         enTerms: resolve(__dirname, 'en/terms/index.html'),
         enPrivacy: resolve(__dirname, 'en/privacy/index.html'),
         enAccess: resolve(__dirname, 'en/access/index.html')

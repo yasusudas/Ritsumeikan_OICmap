@@ -1,8 +1,10 @@
-const STATIC_CACHE_NAME = 'rits-oic-map-static-v13';
-const RUNTIME_CACHE_NAME = 'rits-oic-map-runtime-v13';
+const STATIC_CACHE_NAME = 'rits-oic-map-static-v17';
+const RUNTIME_CACHE_NAME = 'rits-oic-map-runtime-v17';
 const APP_SHELL_URLS = [
   '/',
   '/index.html',
+  '/timetable/',
+  '/timetable/index.html',
   '/manifest.webmanifest',
   '/icon/favicon-20260412b.ico',
   '/icon/favicon-20260412b.png',
