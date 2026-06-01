@@ -15,8 +15,8 @@ if (window.__FILE_MODE__) {
       label: '1F',
       labelKey: 'floor.1F',
       svgUrls: {
-        ja: new URL('../floor_img/1F.svg', import.meta.url).href,
-        en: new URL('../floor_img_Eng/1F.svg', import.meta.url).href
+        ja: new URL('./assets/floors/ja/1F.svg', import.meta.url).href,
+        en: new URL('./assets/floors/en/1F.svg', import.meta.url).href
       }
     },
     {
@@ -24,8 +24,8 @@ if (window.__FILE_MODE__) {
       label: '2F',
       labelKey: 'floor.2F',
       svgUrls: {
-        ja: new URL('../floor_img/2F.svg', import.meta.url).href,
-        en: new URL('../floor_img_Eng/2F.svg', import.meta.url).href
+        ja: new URL('./assets/floors/ja/2F.svg', import.meta.url).href,
+        en: new URL('./assets/floors/en/2F.svg', import.meta.url).href
       }
     },
     {
@@ -33,8 +33,8 @@ if (window.__FILE_MODE__) {
       label: '3F',
       labelKey: 'floor.3F',
       svgUrls: {
-        ja: new URL('../floor_img/3F.svg', import.meta.url).href,
-        en: new URL('../floor_img_Eng/3F.svg', import.meta.url).href
+        ja: new URL('./assets/floors/ja/3F.svg', import.meta.url).href,
+        en: new URL('./assets/floors/en/3F.svg', import.meta.url).href
       }
     },
     {
@@ -42,8 +42,8 @@ if (window.__FILE_MODE__) {
       label: '4F',
       labelKey: 'floor.4F',
       svgUrls: {
-        ja: new URL('../floor_img/4F.svg', import.meta.url).href,
-        en: new URL('../floor_img_Eng/4F.svg', import.meta.url).href
+        ja: new URL('./assets/floors/ja/4F.svg', import.meta.url).href,
+        en: new URL('./assets/floors/en/4F.svg', import.meta.url).href
       }
     },
     {
@@ -51,8 +51,8 @@ if (window.__FILE_MODE__) {
       label: '5F',
       labelKey: 'floor.5F',
       svgUrls: {
-        ja: new URL('../floor_img/5F.svg', import.meta.url).href,
-        en: new URL('../floor_img_Eng/5F.svg', import.meta.url).href
+        ja: new URL('./assets/floors/ja/5F.svg', import.meta.url).href,
+        en: new URL('./assets/floors/en/5F.svg', import.meta.url).href
       }
     },
     {
@@ -60,8 +60,8 @@ if (window.__FILE_MODE__) {
       label: 'A棟6,7,8,9F',
       labelKey: 'floor.A-6-9F',
       svgUrls: {
-        ja: new URL('../floor_img/6F7F8F9F_BldgA.svg', import.meta.url).href,
-        en: new URL('../floor_img_Eng/6F7F8F9F_BldgA.svg', import.meta.url).href
+        ja: new URL('./assets/floors/ja/6F7F8F9F_BldgA.svg', import.meta.url).href,
+        en: new URL('./assets/floors/en/6F7F8F9F_BldgA.svg', import.meta.url).href
       }
     },
     {
@@ -69,8 +69,8 @@ if (window.__FILE_MODE__) {
       label: 'H棟6,7,8,9F',
       labelKey: 'floor.H-6-9F',
       svgUrls: {
-        ja: new URL('../floor_img/6F7F8F9F_BldgH.svg', import.meta.url).href,
-        en: new URL('../floor_img_Eng/6F7F8F9F_BldgH.svg', import.meta.url).href
+        ja: new URL('./assets/floors/ja/6F7F8F9F_BldgH.svg', import.meta.url).href,
+        en: new URL('./assets/floors/en/6F7F8F9F_BldgH.svg', import.meta.url).href
       }
     }
   ];
@@ -80,8 +80,8 @@ if (window.__FILE_MODE__) {
       label: 'プリンター',
       labelKey: 'floor.printerMap',
       svgUrls: {
-        ja: new URL('../floor_img/print-station.svg', import.meta.url).href,
-        en: new URL('../floor_img_Eng/print-station.svg', import.meta.url).href
+        ja: new URL('./assets/floors/ja/print-station.svg', import.meta.url).href,
+        en: new URL('./assets/floors/en/print-station.svg', import.meta.url).href
       }
     }
   };
@@ -333,6 +333,9 @@ if (window.__FILE_MODE__) {
   }
 
   function setStatus(message) {
+    if (!statusElement) {
+      return;
+    }
     statusElement.textContent = message;
   }
 

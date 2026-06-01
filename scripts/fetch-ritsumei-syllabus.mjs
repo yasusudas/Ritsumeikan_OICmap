@@ -5,7 +5,7 @@ import { SpreadsheetFile, Workbook } from "@oai/artifact-tool";
 const BASE_URL = "https://syllabus.ritsumei.ac.jp";
 const SEARCH_PAGE = `${BASE_URL}/syllabus/s/?language=ja`;
 const AURA_ENDPOINT = `${BASE_URL}/syllabus/s/sfsites/aura`;
-const DEFAULT_OUTPUT_DIR = path.resolve("syllabus");
+const DEFAULT_OUTPUT_DIR = path.resolve("data/syllabus");
 const DEFAULT_YEAR = "2026";
 const MAX_SEARCH_LIMIT = 501;
 

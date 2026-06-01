@@ -87,7 +87,7 @@ for (const requestId of auraRequestIds) {
 }
 
 const out = { week, period, clickResult, events, bodies };
-const savePath = `tmp/syllabus-search-${week}-${period}.json`;
+const savePath = `artifacts/syllabus-scrape/syllabus-search-${week}-${period}.json`;
 fs.writeFileSync(savePath, JSON.stringify(out, null, 2));
 
 const requestSummaries = events

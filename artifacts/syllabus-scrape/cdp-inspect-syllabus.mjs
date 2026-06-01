@@ -82,13 +82,13 @@ const out = {
   eventCount: events.length,
 };
 
-fs.writeFileSync("tmp/syllabus-cdp-inspect.json", JSON.stringify(out, null, 2));
+fs.writeFileSync("artifacts/syllabus-scrape/syllabus-cdp-inspect.json", JSON.stringify(out, null, 2));
 console.log(JSON.stringify({
   bodyTextPreview: out.bodyText?.slice(0, 1000),
   auraRequestCount: auraRequests.length,
   responseCount: responseSummaries.length,
   htmlLength: out.htmlLength,
-  saved: "tmp/syllabus-cdp-inspect.json",
+  saved: "artifacts/syllabus-scrape/syllabus-cdp-inspect.json",
 }, null, 2));
 
 ws.close();

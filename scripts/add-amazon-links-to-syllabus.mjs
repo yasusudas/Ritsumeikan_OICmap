@@ -3,7 +3,7 @@ import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { SpreadsheetFile, Workbook } from "@oai/artifact-tool";
 
-const OUTPUT_DIR = path.resolve("syllabus");
+const OUTPUT_DIR = path.resolve("data/syllabus");
 const SUMMARY_FILE = path.join(OUTPUT_DIR, "_summary.json");
 const CACHE_FILE = path.join(OUTPUT_DIR, "_amazon_link_cache.json");
 const ISBN_LOOKUP_CACHE_FILE = path.join(OUTPUT_DIR, "_isbn_lookup_cache.json");
