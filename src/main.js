@@ -95,6 +95,7 @@ if (window.__FILE_MODE__) {
   const MAP_PADDING = 32;
   const SEARCH_RESULT_LIMIT = 18;
   const SEARCH_FOCUS_ZOOM = 6;
+  const VIEW_ANIMATION_MS = 480;
   const SEARCH_PIN_VERTICAL_OFFSET_RATIO = 0.01;
   const EDITOR_GUIDE_PIN_VERTICAL_OFFSET_RATIO = 0.01;
   const DEFAULT_FACILITY_RING_DIAMETER_WIDTH_PERCENT = 0.8;
@@ -107,6 +108,7 @@ if (window.__FILE_MODE__) {
   const ROOM_CODE_PATTERN = /[A-Z]{1,3}\s*-?\s*\d{2,4}[A-Z]?/g;
   const SEARCHABLE_CHAR_PATTERN = /[\p{L}\p{N}]/u;
   const LETTER_PATTERN = /\p{L}/u;
+  const STATIC_HASH_ROUTES = new Set(['about', 'contact']);
   let roomCodeCollator = new Intl.Collator(getLocale(), { numeric: true, sensitivity: 'base' });
   const svgCache = new Map();
   const appMode = document.body?.dataset.appMode === 'editor' ? 'editor' : 'viewer';
@@ -117,6 +119,11 @@ if (window.__FILE_MODE__) {
   const appShell = document.querySelector('.app-shell');
   const topbar = document.querySelector('.topbar');
   const tabButtons = Array.from(document.querySelectorAll('.floor-tab'));
+  const mobileFloorSelect = document.querySelector('[data-mobile-floor-select]');
+  const mobileFloorToggle = document.querySelector('[data-mobile-floor-toggle]');
+  const mobileFloorCurrent = document.querySelector('[data-mobile-floor-current]');
+  const mobileFloorList = document.querySelector('[data-mobile-floor-list]');
+  const mobileFloorOptions = Array.from(document.querySelectorAll('[data-mobile-floor-option]'));
   const searchPanel = document.querySelector('#search-panel');
   const searchInput = document.querySelector('#search-input');
   const searchClearButton = document.querySelector('#search-clear');
@@ -238,6 +245,7 @@ if (window.__FILE_MODE__) {
     baseSearchEntries: [],
     baseFacilityRings: [],
     searchEntries: [],
+    searchRouteIndex: new Map(),
     searchSuggestions: [],
     activeSuggestionIndex: -1,
     activeSearchEntryId: null,
@@ -252,6 +260,10 @@ if (window.__FILE_MODE__) {
     dragMoved: false,
     lastTouchEndAt: -Infinity,
     viewRenderFrame: 0,
+    viewAnimationFrame: 0,
+    initialZoom: 1,
+    safeInsetTop: 0,
+    safeInsetBottom: 0,
     facilityToggleState: Object.fromEntries(
       searchIconButtons
         .map((button) => button.dataset.facilityKey?.trim())
@@ -262,6 +274,33 @@ if (window.__FILE_MODE__) {
 
   function registerViewerServiceWorker() {
     if (appMode !== 'viewer' || !('serviceWorker' in navigator) || !window.isSecureContext) {
+      return;
+    }
+
+    if (import.meta.env.DEV) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .getRegistrations()
+          .then((registrations) => Promise.all(registrations.map((registration) => registration.unregister())))
+          .then(() => {
+            if (!('caches' in window)) {
+              return undefined;
+            }
+
+            return caches
+              .keys()
+              .then((cacheNames) =>
+                Promise.all(
+                  cacheNames
+                    .filter((cacheName) => cacheName.startsWith('rits-oic-map-'))
+                    .map((cacheName) => caches.delete(cacheName))
+                )
+              );
+          })
+          .catch((error) => {
+            console.warn('Failed to clear development service worker.', error);
+          });
+      });
       return;
     }
 
@@ -459,6 +498,49 @@ if (window.__FILE_MODE__) {
 
   function normalizeSearchValue(value) {
     return value.normalize('NFKC').toUpperCase().replace(/[^\p{L}\p{N}]+/gu, '');
+  }
+
+  function normalizeHashRouteId(value) {
+    return String(value ?? '')
+      .normalize('NFKC')
+      .trim()
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}]+/gu, '-')
+      .replace(/^-+|-+$/g, '');
+  }
+
+  function createHashSlugPart(value, fallback = '') {
+    return normalizeHashRouteId(value) || normalizeHashRouteId(fallback) || 'location';
+  }
+
+  function getDecodedLocationHash() {
+    const rawHash = window.location.hash.startsWith('#') ? window.location.hash.slice(1) : window.location.hash;
+
+    if (!rawHash) {
+      return '';
+    }
+
+    try {
+      return decodeURIComponent(rawHash);
+    } catch {
+      return rawHash;
+    }
+  }
+
+  function clearLocationHash() {
+    history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+  }
+
+  function replaceLocationHash(hashId) {
+    if (!hashId) {
+      return;
+    }
+
+    const nextUrl = `${window.location.pathname}${window.location.search}#${encodeURIComponent(hashId)}`;
+
+    if (window.location.href !== new URL(nextUrl, window.location.href).href) {
+      history.replaceState(null, '', nextUrl);
+    }
   }
 
   function normalizeMatchSource(value) {
@@ -963,6 +1045,72 @@ if (window.__FILE_MODE__) {
     return createEntrySearchTerms(getLocalizedEntryLabel(entry), entry.aliases);
   }
 
+  function getEntryHashBase(entry) {
+    const floorSlug = createHashSlugPart(entry.floorId, getEntryFloorLabel(entry));
+    const labelSlug = createHashSlugPart(entry.label, entry.id);
+    return `${floorSlug}-${labelSlug}`;
+  }
+
+  function addEntryHashRoute(index, hashId, entry) {
+    const normalizedHashId = normalizeHashRouteId(hashId);
+
+    if (!normalizedHashId || STATIC_HASH_ROUTES.has(normalizedHashId)) {
+      return;
+    }
+
+    if (!index.has(normalizedHashId)) {
+      index.set(normalizedHashId, entry);
+    }
+  }
+
+  function assignSearchEntryHashRoutes(entries) {
+    const baseCounts = new Map();
+    entries.forEach((entry) => {
+      const base = getEntryHashBase(entry);
+      baseCounts.set(base, (baseCounts.get(base) ?? 0) + 1);
+    });
+
+    const baseSeenCounts = new Map();
+    const labelIndex = new Map();
+
+    entries.forEach((entry) => {
+      const base = getEntryHashBase(entry);
+      const seenCount = (baseSeenCounts.get(base) ?? 0) + 1;
+      baseSeenCounts.set(base, seenCount);
+
+      entry.hashId = baseCounts.get(base) > 1 ? `${base}-${seenCount}` : base;
+
+      [entry.label, entry.labelEn, ...entry.aliases].forEach((value) => {
+        const labelHashId = normalizeHashRouteId(value);
+
+        if (!labelHashId || STATIC_HASH_ROUTES.has(labelHashId)) {
+          return;
+        }
+
+        const current = labelIndex.get(labelHashId);
+        if (current === undefined) {
+          labelIndex.set(labelHashId, entry);
+        } else if (current !== entry) {
+          labelIndex.set(labelHashId, null);
+        }
+      });
+    });
+
+    const routeIndex = new Map();
+    entries.forEach((entry) => {
+      addEntryHashRoute(routeIndex, entry.hashId, entry);
+      addEntryHashRoute(routeIndex, entry.id, entry);
+    });
+
+    labelIndex.forEach((entry, labelHashId) => {
+      if (entry) {
+        addEntryHashRoute(routeIndex, labelHashId, entry);
+      }
+    });
+
+    state.searchRouteIndex = routeIndex;
+  }
+
   function refreshSearchEntries() {
     const combinedEntries = [...state.manualEntries];
 
@@ -977,6 +1125,7 @@ if (window.__FILE_MODE__) {
     });
 
     state.searchEntries = combinedEntries;
+    assignSearchEntryHashRoutes(state.searchEntries);
   }
 
   function parseSvgLength(value) {
@@ -1060,16 +1209,32 @@ if (window.__FILE_MODE__) {
     return image;
   }
 
-  function getFittedBaseSize(intrinsicWidth, intrinsicHeight) {
+  // Height of the floating top bar / footer that overlay the full-bleed map,
+  // so the map can be fitted/positioned into the readable area between them.
+  function computeViewerSafeInsets() {
+    if (isEditorSite) {
+      return { top: 0, bottom: 0 };
+    }
+    const top = topbar ? Math.ceil(topbar.getBoundingClientRect().height) : 0;
+    const footerEl = document.querySelector('.site-footer');
+    const bottom = footerEl ? Math.ceil(footerEl.getBoundingClientRect().height) : 0;
+    return { top, bottom };
+  }
+
+  function getMapFit(intrinsicWidth, intrinsicHeight) {
     const viewport = getViewportSize();
+    const insets = computeViewerSafeInsets();
     const availableWidth = Math.max(viewport.width - MAP_PADDING, 80);
     const availableHeight = Math.max(viewport.height - MAP_PADDING, 80);
-    const fitScale = Math.min(availableWidth / intrinsicWidth, availableHeight / intrinsicHeight);
+    // Safe height excludes the floating top bar / footer so the whole floor can
+    // open inside the readable zone (not hidden behind the menu).
+    const safeHeight = Math.max(viewport.height - insets.top - insets.bottom - MAP_PADDING, 80);
+    // Contain = whole floor visible. Cover = map fills the frame edge-to-edge.
+    const containScale = Math.min(availableWidth / intrinsicWidth, availableHeight / intrinsicHeight);
+    const coverScale = Math.max(viewport.width / intrinsicWidth, viewport.height / intrinsicHeight);
+    const safeContainScale = Math.min(availableWidth / intrinsicWidth, safeHeight / intrinsicHeight);
 
-    return {
-      width: intrinsicWidth * fitScale,
-      height: intrinsicHeight * fitScale
-    };
+    return { containScale, coverScale, safeContainScale, insetTop: insets.top, insetBottom: insets.bottom };
   }
 
   function updateCanvasLayerBaseSize() {
@@ -1097,27 +1262,161 @@ if (window.__FILE_MODE__) {
     });
   }
 
-  function clampPosition() {
+  function getPrefersReducedMotion() {
+    return Boolean(
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    );
+  }
+
+  function clampTranslate(x, y, zoom) {
     const { width: viewportWidth, height: viewportHeight } = getViewportSize();
-    const scaledWidth = state.baseWidth * state.zoom;
-    const scaledHeight = state.baseHeight * state.zoom;
+    const top = state.safeInsetTop || 0;
+    const bottom = state.safeInsetBottom || 0;
+    const safeHeight = Math.max(viewportHeight - top - bottom, 0);
+    const scaledWidth = state.baseWidth * zoom;
+    const scaledHeight = state.baseHeight * zoom;
+    const next = { x, y };
 
     if (scaledWidth <= viewportWidth) {
-      state.x = (viewportWidth - scaledWidth) / 2;
+      next.x = (viewportWidth - scaledWidth) / 2;
     } else {
-      state.x = clamp(state.x, viewportWidth - scaledWidth, 0);
+      next.x = clamp(x, viewportWidth - scaledWidth, 0);
     }
 
-    if (scaledHeight <= viewportHeight) {
-      state.y = (viewportHeight - scaledHeight) / 2;
+    if (scaledHeight <= safeHeight) {
+      // Whole map fits the readable area → center it there (below the menu).
+      next.y = top + (safeHeight - scaledHeight) / 2;
     } else {
-      state.y = clamp(state.y, viewportHeight - scaledHeight, 0);
+      // Taller than the readable area → pan freely but keep it covering the area.
+      next.y = clamp(y, viewportHeight - bottom - scaledHeight, top);
+    }
+
+    return next;
+  }
+
+  function clampPosition() {
+    const clamped = clampTranslate(state.x, state.y, state.zoom);
+    state.x = clamped.x;
+    state.y = clamped.y;
+  }
+
+  function cancelViewAnimation() {
+    if (state.viewAnimationFrame) {
+      window.cancelAnimationFrame(state.viewAnimationFrame);
+      state.viewAnimationFrame = 0;
     }
   }
 
   function updateView() {
+    cancelViewAnimation();
     clampPosition();
     scheduleViewRender();
+  }
+
+  // Smoothly fly the viewport to a target zoom/translate. The destination is
+  // pre-clamped so the motion settles exactly where it lands (no end-jump),
+  // and any in-flight animation or user gesture cancels it cleanly.
+  function animateView(targetZoom, targetX, targetY, duration = VIEW_ANIMATION_MS) {
+    cancelViewAnimation();
+
+    const clampedZoom = clamp(targetZoom, state.minZoom, state.maxZoom);
+    const settled = clampTranslate(targetX, targetY, clampedZoom);
+    const startZoom = state.zoom;
+    const startX = state.x;
+    const startY = state.y;
+    const dz = clampedZoom - startZoom;
+    const dx = settled.x - startX;
+    const dy = settled.y - startY;
+
+    const finish = () => {
+      state.viewAnimationFrame = 0;
+      state.zoom = clampedZoom;
+      state.x = settled.x;
+      state.y = settled.y;
+      flushViewRender();
+    };
+
+    if (
+      duration <= 0 ||
+      getPrefersReducedMotion() ||
+      (Math.abs(dz) < 0.001 && Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5)
+    ) {
+      finish();
+      return;
+    }
+
+    const startedAt = performance.now();
+    const ease = (progress) => 1 - Math.pow(1 - progress, 3);
+
+    const step = (now) => {
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const eased = ease(progress);
+      state.zoom = startZoom + dz * eased;
+      state.x = startX + dx * eased;
+      state.y = startY + dy * eased;
+      flushViewRender();
+
+      if (progress < 1) {
+        state.viewAnimationFrame = window.requestAnimationFrame(step);
+      } else {
+        finish();
+      }
+    };
+
+    state.viewAnimationFrame = window.requestAnimationFrame(step);
+  }
+
+  function isMobileFloorListOpen() {
+    return Boolean(mobileFloorSelect?.classList.contains('is-open'));
+  }
+
+  function setMobileFloorListOpen(isOpen, { focusToggle = false } = {}) {
+    if (!mobileFloorSelect || !mobileFloorToggle || !mobileFloorList) {
+      return;
+    }
+
+    const nextOpen = Boolean(isOpen);
+
+    if (mobileFloorList.hidden) {
+      mobileFloorList.hidden = false;
+    }
+
+    mobileFloorSelect.classList.toggle('is-open', nextOpen);
+    mobileFloorList.setAttribute('aria-hidden', String(!nextOpen));
+    mobileFloorToggle.setAttribute('aria-expanded', String(nextOpen));
+    mobileFloorToggle.setAttribute(
+      'aria-label',
+      t(nextOpen ? 'floor.dropdownClose' : 'floor.dropdownOpen', { floor: getCurrentFloorLabel() })
+    );
+    mobileFloorOptions.forEach((button) => {
+      button.tabIndex = nextOpen ? 0 : -1;
+    });
+
+    if (!nextOpen && focusToggle) {
+      mobileFloorToggle.focus();
+    }
+  }
+
+  function updateMobileFloorSelection() {
+    const activeFloorId = getFloorDefinition().id;
+    const activeFloorLabel = getFloorLabel(activeFloorId);
+
+    if (mobileFloorCurrent) {
+      mobileFloorCurrent.textContent = activeFloorLabel;
+    }
+
+    mobileFloorOptions.forEach((button) => {
+      const isActive = button.dataset.floor === activeFloorId;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-selected', String(isActive));
+    });
+
+    if (mobileFloorToggle) {
+      mobileFloorToggle.setAttribute(
+        'aria-label',
+        t(isMobileFloorListOpen() ? 'floor.dropdownClose' : 'floor.dropdownOpen', { floor: activeFloorLabel })
+      );
+    }
   }
 
   function updateTabSelection() {
@@ -1127,6 +1426,7 @@ if (window.__FILE_MODE__) {
       button.classList.toggle('is-active', isActive);
       button.setAttribute('aria-pressed', String(isActive));
     });
+    updateMobileFloorSelection();
   }
 
   function getActiveSearchEntry() {
@@ -1134,10 +1434,14 @@ if (window.__FILE_MODE__) {
   }
 
   function resetView() {
-    state.zoom = 1;
+    state.zoom = state.initialZoom || 1;
     const { width, height } = getViewportSize();
-    state.x = (width - state.baseWidth) / 2;
-    state.y = (height - state.baseHeight) / 2;
+    const top = state.safeInsetTop || 0;
+    const bottom = state.safeInsetBottom || 0;
+    const scaledWidth = state.baseWidth * state.zoom;
+    const scaledHeight = state.baseHeight * state.zoom;
+    state.x = (width - scaledWidth) / 2;
+    state.y = top + (height - top - bottom - scaledHeight) / 2;
     updateView();
   }
 
@@ -1713,11 +2017,10 @@ if (window.__FILE_MODE__) {
     const targetX = state.baseWidth * (focusRect.xRatio + focusRect.widthRatio / 2);
     const targetY = state.baseHeight * (focusRect.yRatio + focusRect.heightRatio / 2);
     const { width: viewportWidth, height: viewportHeight } = getViewportSize();
+    const top = state.safeInsetTop || 0;
+    const focusCenterY = top + (viewportHeight - top - (state.safeInsetBottom || 0)) / 2;
 
-    state.zoom = nextZoom;
-    state.x = viewportWidth / 2 - targetX * state.zoom;
-    state.y = viewportHeight / 2 - targetY * state.zoom;
-    updateView();
+    animateView(nextZoom, viewportWidth / 2 - targetX * nextZoom, focusCenterY - targetY * nextZoom);
   }
 
   function focusMapPoint(point, targetZoom = SEARCH_FOCUS_ZOOM) {
@@ -1729,11 +2032,10 @@ if (window.__FILE_MODE__) {
     const targetX = state.baseWidth * point.xRatio;
     const targetY = state.baseHeight * point.yRatio;
     const { width: viewportWidth, height: viewportHeight } = getViewportSize();
+    const top = state.safeInsetTop || 0;
+    const focusCenterY = top + (viewportHeight - top - (state.safeInsetBottom || 0)) / 2;
 
-    state.zoom = nextZoom;
-    state.x = viewportWidth / 2 - targetX * state.zoom;
-    state.y = viewportHeight / 2 - targetY * state.zoom;
-    updateView();
+    animateView(nextZoom, viewportWidth / 2 - targetX * nextZoom, focusCenterY - targetY * nextZoom);
   }
 
   function renderSearchSuggestions() {
@@ -1853,7 +2155,7 @@ if (window.__FILE_MODE__) {
     );
   }
 
-  function clearActiveSearchSelection({ clearInput = false } = {}) {
+  function clearActiveSearchSelection({ clearInput = false, clearHash = true } = {}) {
     state.activeSearchEntryId = null;
     renderSearchHighlights();
 
@@ -1861,10 +2163,19 @@ if (window.__FILE_MODE__) {
       searchInput.value = '';
     }
 
+    if (clearHash) {
+      const normalizedHashId = normalizeHashRouteId(getDecodedLocationHash());
+      const hashEntry = state.searchRouteIndex.get(normalizedHashId);
+
+      if (hashEntry) {
+        clearLocationHash();
+      }
+    }
+
     renderSearchSuggestions();
   }
 
-  async function selectSearchEntry(entry) {
+  async function selectSearchEntry(entry, { updateHash = true } = {}) {
     if (!entry) {
       return;
     }
@@ -1887,6 +2198,10 @@ if (window.__FILE_MODE__) {
         floor: getEntryFloorLabel(entry)
       })
     );
+
+    if (updateHash) {
+      replaceLocationHash(entry.hashId);
+    }
   }
 
   async function buildSearchIndex() {
@@ -1927,6 +2242,7 @@ if (window.__FILE_MODE__) {
   }
 
   function zoomAt(nextZoom, focalX, focalY) {
+    cancelViewAnimation();
     const previousZoom = state.zoom;
     const clampedZoom = clamp(nextZoom, state.minZoom, state.maxZoom);
 
@@ -1958,7 +2274,11 @@ if (window.__FILE_MODE__) {
       const mapAsset = document.createElement('article');
       mapAsset.className = 'map-asset';
 
+      const enableFloorFade = !getPrefersReducedMotion();
       const svgNode = createFloorImageNode(floor);
+      if (enableFloorFade) {
+        svgNode.style.opacity = '0';
+      }
       const highlightLayer = document.createElement('div');
       highlightLayer.className = 'highlight-layer';
       const ringLayer = document.createElement('div');
@@ -1981,10 +2301,25 @@ if (window.__FILE_MODE__) {
       state.intrinsicWidth = asset.width;
       state.intrinsicHeight = asset.height;
 
-      const baseSize = getFittedBaseSize(asset.width, asset.height);
+      const fit = getMapFit(asset.width, asset.height);
+      // Viewer fills the frame (Maps-style); editor keeps the whole floor in
+      // view for precise pin/ring placement.
+      const useFillFit = !isEditorSite;
+      const baseScale = useFillFit ? fit.coverScale : fit.containScale;
       const hadDimensions = state.baseWidth > 0 && state.baseHeight > 0;
-      state.baseWidth = baseSize.width;
-      state.baseHeight = baseSize.height;
+      state.baseWidth = asset.width * baseScale;
+      state.baseHeight = asset.height * baseScale;
+      state.safeInsetTop = fit.insetTop;
+      state.safeInsetBottom = fit.insetBottom;
+      if (useFillFit) {
+        // 50% is the hard zoom-out floor; open with the whole floor inside the
+        // readable area below the menu (never starting below that floor).
+        state.minZoom = 0.5;
+        state.initialZoom = clamp(fit.safeContainScale / baseScale, state.minZoom, 1);
+      } else {
+        state.initialZoom = 1;
+        state.minZoom = 1;
+      }
       updateCanvasLayerBaseSize();
 
       if (resetZoom || !hadDimensions) {
@@ -1993,6 +2328,12 @@ if (window.__FILE_MODE__) {
         restoreViewportCenterRatios(centerRatios);
       } else {
         updateView();
+      }
+
+      if (enableFloorFade) {
+        window.requestAnimationFrame(() => {
+          svgNode.style.opacity = '1';
+        });
       }
 
       renderSearchHighlights();
@@ -2490,6 +2831,7 @@ if (window.__FILE_MODE__) {
   }
 
   function startDrag(clientX, clientY) {
+    cancelViewAnimation();
     state.isDragging = true;
     state.dragMoved = false;
     state.dragStartX = clientX;
@@ -2503,6 +2845,7 @@ if (window.__FILE_MODE__) {
   }
 
   function beginPinch(touches) {
+    cancelViewAnimation();
     const center = getTouchCenter(touches);
     state.isPinching = true;
     state.pinchStartDistance = getTouchDistance(touches);
@@ -2584,9 +2927,47 @@ if (window.__FILE_MODE__) {
     }
   }
 
+  async function handleLocationHashRoute() {
+    const hashId = normalizeHashRouteId(getDecodedLocationHash());
+
+    if (!hashId) {
+      return false;
+    }
+
+    if (hashId === 'about') {
+      setAboutDialogOpen(true);
+      clearLocationHash();
+      return true;
+    }
+
+    if (hashId === 'contact') {
+      setContactFormDialogOpen(true);
+      clearLocationHash();
+      return true;
+    }
+
+    await buildSearchIndex();
+
+    const entry = state.searchRouteIndex.get(hashId);
+    if (!entry) {
+      return false;
+    }
+
+    setAboutDialogOpen(false);
+    setContactFormDialogOpen(false);
+    await selectSearchEntry(entry, { updateHash: false });
+    return true;
+  }
+
+  async function initializeMap() {
+    await Promise.all([buildSearchIndex(), renderFloor({ resetZoom: true })]);
+    await handleLocationHashRoute();
+  }
+
   function refreshLanguageDependentUi() {
     roomCodeCollator = new Intl.Collator(getLocale(), { numeric: true, sensitivity: 'base' });
     applyI18n();
+    updateTabSelection();
     setSiteMenuOpen(isSiteMenuOpen());
     refreshSearchEntries();
 
@@ -2665,14 +3046,29 @@ if (window.__FILE_MODE__) {
     });
   }
 
-  // Open about/contact dialog via URL hash (e.g. /#about, /#contact)
-  if (window.location.hash === '#about') {
-    setAboutDialogOpen(true);
-    history.replaceState(null, '', window.location.pathname);
-  } else if (window.location.hash === '#contact') {
-    setContactFormDialogOpen(true);
-    history.replaceState(null, '', window.location.pathname);
+  window.addEventListener('hashchange', () => {
+    void handleLocationHashRoute();
+  });
+
+  if (mobileFloorToggle) {
+    mobileFloorToggle.addEventListener('click', () => {
+      setMobileFloorListOpen(!isMobileFloorListOpen());
+    });
   }
+
+  mobileFloorOptions.forEach((button) => {
+    button.addEventListener('click', () => {
+      const floorId = button.dataset.floor;
+
+      setMobileFloorListOpen(false);
+
+      if (!floorId || floorId === getFloorDefinition().id) {
+        return;
+      }
+
+      void setActiveFloor(floorId, { resetZoom: true });
+    });
+  });
 
   tabButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -2702,6 +3098,10 @@ if (window.__FILE_MODE__) {
     if (activeEntry && !getEntrySearchTerms(activeEntry).includes(normalizedValue)) {
       state.activeSearchEntryId = null;
       renderSearchHighlights();
+
+      if (state.searchRouteIndex.get(normalizeHashRouteId(getDecodedLocationHash())) === activeEntry) {
+        clearLocationHash();
+      }
     }
 
     renderSearchSuggestions();
@@ -2871,6 +3271,10 @@ if (window.__FILE_MODE__) {
       setSiteMenuOpen(false);
     }
 
+    if (mobileFloorSelect && isMobileFloorListOpen() && !mobileFloorSelect.contains(event.target)) {
+      setMobileFloorListOpen(false);
+    }
+
     if (searchPanel.contains(event.target)) {
       return;
     }
@@ -2898,6 +3302,12 @@ if (window.__FILE_MODE__) {
     if (contactFormDialog && !contactFormDialog.hidden) {
       event.preventDefault();
       setContactFormDialogOpen(false, { restoreFocus: true });
+      return;
+    }
+
+    if (isMobileFloorListOpen()) {
+      event.preventDefault();
+      setMobileFloorListOpen(false, { focusToggle: true });
       return;
     }
 
@@ -3192,8 +3602,8 @@ if (window.__FILE_MODE__) {
     }
   });
 
+  setMobileFloorListOpen(false);
   updateTabSelection();
   updateMapStageHeight();
-  void buildSearchIndex();
-  void renderFloor({ resetZoom: true });
+  void initializeMap();
 }
