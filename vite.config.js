@@ -13,11 +13,13 @@ export default defineConfig({
         terms: resolve(__dirname, 'terms/index.html'),
         privacy: resolve(__dirname, 'privacy/index.html'),
         access: resolve(__dirname, 'access/index.html'),
+        food: resolve(__dirname, 'food/index.html'),
         timetable: resolve(__dirname, 'timetable/index.html'),
         hiddenTimetable: resolve(__dirname, 'hidden/timetable/index.html'),
         enTerms: resolve(__dirname, 'en/terms/index.html'),
         enPrivacy: resolve(__dirname, 'en/privacy/index.html'),
         enAccess: resolve(__dirname, 'en/access/index.html'),
+        enFood: resolve(__dirname, 'en/food/index.html'),
         enTimetable: resolve(__dirname, 'en/timetable/index.html')
       }
     }

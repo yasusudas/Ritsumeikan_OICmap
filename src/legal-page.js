@@ -13,6 +13,10 @@ function getLegalPageSlug() {
     return 'timetable';
   }
 
+  if (path === '/food/' || path === '/en/food/') {
+    return 'food';
+  }
+
   if (path === '/privacy/' || path === '/en/privacy/') {
     return 'privacy';
   }
