@@ -3318,7 +3318,7 @@ body.is-timetable-sorting {
   left: 0;
   display: block;
   transform-origin: 0 0;
-  will-change: transform, width, height;
+  will-change: transform;
   backface-visibility: hidden;
   pointer-events: none;
 }
@@ -4493,5 +4493,34 @@ body[data-app-mode="viewer"] .site-footer a {
     box-shadow:
       0 14px 34px rgba(11, 18, 32, 0.14),
       inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-app-mode="viewer"] .map-asset {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[data-app-mode="viewer"] .floor-svg {
+    filter: none;
+  }
+
+  body[data-app-mode="viewer"] .topbar-glass,
+  body[data-app-mode="viewer"] .floor-tab-stack,
+  body[data-app-mode="viewer"] .toilet-ring-legend {
+    background: rgba(255, 255, 255, 0.94);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  body[data-app-mode="viewer"] .facility-ring,
+  body[data-app-mode="viewer"] .facility-ring.color-red,
+  body[data-app-mode="viewer"] .facility-ring.color-blue,
+  body[data-app-mode="viewer"] .facility-ring.color-water-server,
+  body[data-app-mode="viewer"] .facility-ring.color-yellow {
+    box-shadow:
+      0 0 0 2px rgba(255, 255, 255, 0.9),
+      0 4px 10px rgba(11, 18, 32, 0.14);
   }
 }
