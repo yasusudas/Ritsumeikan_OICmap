@@ -673,6 +673,10 @@ if (window.__FILE_MODE__) {
   }
 
   function getFacilityRingVisualVariant(facilityKey, colorVariant) {
+    if (facilityKey === 'waterServer') {
+      return 'water-server';
+    }
+
     if (facilityKey !== 'toilet') {
       return 'other';
     }
