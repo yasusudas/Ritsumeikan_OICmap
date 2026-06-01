@@ -1,0 +1,4315 @@
+{
+  "source": "https://syllabus.ritsumei.ac.jp/syllabus/s/?language=ja",
+  "year": "2026",
+  "generatedAt": "2026-05-25T09:55:46.001Z",
+  "outputDir": "/Users/yasusu/Desktop/立命館OICマップ/syllabus",
+  "countOnly": false,
+  "files": [
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/月曜日_1限.xlsx",
+      "day": "月",
+      "period": "1",
+      "count": 397,
+      "written": 397
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/月曜日_2限.xlsx",
+      "day": "月",
+      "period": "2",
+      "count": 674,
+      "written": 674
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/月曜日_3限.xlsx",
+      "day": "月",
+      "period": "3",
+      "count": 633,
+      "written": 633
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/月曜日_4限.xlsx",
+      "day": "月",
+      "period": "4",
+      "count": 632,
+      "written": 632
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/月曜日_5限.xlsx",
+      "day": "月",
+      "period": "5",
+      "count": 376,
+      "written": 376
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/月曜日_6限.xlsx",
+      "day": "月",
+      "period": "6",
+      "count": 200,
+      "written": 200
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/月曜日_7限.xlsx",
+      "day": "月",
+      "period": "7",
+      "count": 36,
+      "written": 36
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/月曜日_8限.xlsx",
+      "day": "月",
+      "period": "8",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/月曜日_9限.xlsx",
+      "day": "月",
+      "period": "9",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/火曜日_1限.xlsx",
+      "day": "火",
+      "period": "1",
+      "count": 473,
+      "written": 473
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/火曜日_2限.xlsx",
+      "day": "火",
+      "period": "2",
+      "count": 730,
+      "written": 730
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/火曜日_3限.xlsx",
+      "day": "火",
+      "period": "3",
+      "count": 527,
+      "written": 527
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/火曜日_4限.xlsx",
+      "day": "火",
+      "period": "4",
+      "count": 438,
+      "written": 438
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/火曜日_5限.xlsx",
+      "day": "火",
+      "period": "5",
+      "count": 166,
+      "written": 166
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/火曜日_6限.xlsx",
+      "day": "火",
+      "period": "6",
+      "count": 72,
+      "written": 72
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/火曜日_7限.xlsx",
+      "day": "火",
+      "period": "7",
+      "count": 27,
+      "written": 27
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/火曜日_8限.xlsx",
+      "day": "火",
+      "period": "8",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/火曜日_9限.xlsx",
+      "day": "火",
+      "period": "9",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/水曜日_1限.xlsx",
+      "day": "水",
+      "period": "1",
+      "count": 548,
+      "written": 548
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/水曜日_2限.xlsx",
+      "day": "水",
+      "period": "2",
+      "count": 730,
+      "written": 730
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/水曜日_3限.xlsx",
+      "day": "水",
+      "period": "3",
+      "count": 814,
+      "written": 814
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/水曜日_4限.xlsx",
+      "day": "水",
+      "period": "4",
+      "count": 856,
+      "written": 856
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/水曜日_5限.xlsx",
+      "day": "水",
+      "period": "5",
+      "count": 362,
+      "written": 362
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/水曜日_6限.xlsx",
+      "day": "水",
+      "period": "6",
+      "count": 119,
+      "written": 119
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/水曜日_7限.xlsx",
+      "day": "水",
+      "period": "7",
+      "count": 21,
+      "written": 21
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/水曜日_8限.xlsx",
+      "day": "水",
+      "period": "8",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/水曜日_9限.xlsx",
+      "day": "水",
+      "period": "9",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/木曜日_1限.xlsx",
+      "day": "木",
+      "period": "1",
+      "count": 548,
+      "written": 548
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/木曜日_2限.xlsx",
+      "day": "木",
+      "period": "2",
+      "count": 840,
+      "written": 840
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/木曜日_3限.xlsx",
+      "day": "木",
+      "period": "3",
+      "count": 812,
+      "written": 812
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/木曜日_4限.xlsx",
+      "day": "木",
+      "period": "4",
+      "count": 815,
+      "written": 815
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/木曜日_5限.xlsx",
+      "day": "木",
+      "period": "5",
+      "count": 415,
+      "written": 415
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/木曜日_6限.xlsx",
+      "day": "木",
+      "period": "6",
+      "count": 136,
+      "written": 136
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/木曜日_7限.xlsx",
+      "day": "木",
+      "period": "7",
+      "count": 28,
+      "written": 28
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/木曜日_8限.xlsx",
+      "day": "木",
+      "period": "8",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/木曜日_9限.xlsx",
+      "day": "木",
+      "period": "9",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/金曜日_1限.xlsx",
+      "day": "金",
+      "period": "1",
+      "count": 519,
+      "written": 519
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/金曜日_2限.xlsx",
+      "day": "金",
+      "period": "2",
+      "count": 752,
+      "written": 752
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/金曜日_3限.xlsx",
+      "day": "金",
+      "period": "3",
+      "count": 684,
+      "written": 684
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/金曜日_4限.xlsx",
+      "day": "金",
+      "period": "4",
+      "count": 618,
+      "written": 618
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/金曜日_5限.xlsx",
+      "day": "金",
+      "period": "5",
+      "count": 235,
+      "written": 235
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/金曜日_6限.xlsx",
+      "day": "金",
+      "period": "6",
+      "count": 46,
+      "written": 46
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/金曜日_7限.xlsx",
+      "day": "金",
+      "period": "7",
+      "count": 15,
+      "written": 15
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/金曜日_8限.xlsx",
+      "day": "金",
+      "period": "8",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/金曜日_9限.xlsx",
+      "day": "金",
+      "period": "9",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/土曜日_1限.xlsx",
+      "day": "土",
+      "period": "1",
+      "count": 18,
+      "written": 18
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/土曜日_2限.xlsx",
+      "day": "土",
+      "period": "2",
+      "count": 64,
+      "written": 64
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/土曜日_3限.xlsx",
+      "day": "土",
+      "period": "3",
+      "count": 57,
+      "written": 57
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/土曜日_4限.xlsx",
+      "day": "土",
+      "period": "4",
+      "count": 66,
+      "written": 66
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/土曜日_5限.xlsx",
+      "day": "土",
+      "period": "5",
+      "count": 13,
+      "written": 13
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/土曜日_6限.xlsx",
+      "day": "土",
+      "period": "6",
+      "count": 15,
+      "written": 15
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/土曜日_7限.xlsx",
+      "day": "土",
+      "period": "7",
+      "count": 29,
+      "written": 29
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/土曜日_8限.xlsx",
+      "day": "土",
+      "period": "8",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/土曜日_9限.xlsx",
+      "day": "土",
+      "period": "9",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/日曜日_1限.xlsx",
+      "day": "日",
+      "period": "1",
+      "count": 13,
+      "written": 13
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/日曜日_2限.xlsx",
+      "day": "日",
+      "period": "2",
+      "count": 13,
+      "written": 13
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/日曜日_3限.xlsx",
+      "day": "日",
+      "period": "3",
+      "count": 15,
+      "written": 15
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/日曜日_4限.xlsx",
+      "day": "日",
+      "period": "4",
+      "count": 15,
+      "written": 15
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/日曜日_5限.xlsx",
+      "day": "日",
+      "period": "5",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/日曜日_6限.xlsx",
+      "day": "日",
+      "period": "6",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/日曜日_7限.xlsx",
+      "day": "日",
+      "period": "7",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/日曜日_8限.xlsx",
+      "day": "日",
+      "period": "8",
+      "count": 0,
+      "written": 0
+    },
+    {
+      "file": "/Users/yasusu/Desktop/立命館OICマップ/syllabus/日曜日_9限.xlsx",
+      "day": "日",
+      "period": "9",
+      "count": 0,
+      "written": 0
+    }
+  ],
+  "splits": [
+    {
+      "day": "月",
+      "period": "2",
+      "count": 674,
+      "collected": 674,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 72,
+          "written": 72
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 75,
+          "written": 75
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 86,
+          "written": 86
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 85,
+          "written": 85
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 63,
+          "written": 63
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 36,
+          "written": 36
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 129,
+          "written": 129
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 27,
+          "written": 27
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 35,
+          "written": 35
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 18,
+          "written": 18
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 72,
+          "written": 72
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 47,
+          "written": 47
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 41,
+          "written": 41
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 44,
+          "written": 44
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 22,
+          "written": 22
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 14,
+          "written": 14
+        },
+        {
+          "faculty": "デザイン・アート学研究科",
+          "facultyCode": "38",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 15,
+          "written": 15
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "薬学研究科",
+          "facultyCode": "56",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 4,
+          "written": 4
+        }
+      ]
+    },
+    {
+      "day": "月",
+      "period": "3",
+      "count": 633,
+      "collected": 633,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 78,
+          "written": 78
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 98,
+          "written": 98
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 86,
+          "written": 86
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 95,
+          "written": 95
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 63,
+          "written": 63
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 36,
+          "written": 36
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 100,
+          "written": 100
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 19,
+          "written": 19
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 27,
+          "written": 27
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 36,
+          "written": 36
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 67,
+          "written": 67
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 22,
+          "written": 22
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 46,
+          "written": 46
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 23,
+          "written": 23
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 23,
+          "written": 23
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 11,
+          "written": 11
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 4,
+          "written": 4
+        }
+      ]
+    },
+    {
+      "day": "月",
+      "period": "4",
+      "count": 632,
+      "collected": 632,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 68,
+          "written": 68
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 60,
+          "written": 60
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 62,
+          "written": 62
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 68,
+          "written": 68
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 54,
+          "written": 54
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 33,
+          "written": 33
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 92,
+          "written": 92
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 13,
+          "written": 13
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 28,
+          "written": 28
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 21,
+          "written": 21
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 73,
+          "written": 73
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 46,
+          "written": 46
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 38,
+          "written": 38
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 33,
+          "written": 33
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 31,
+          "written": 31
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 42,
+          "written": 42
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 11,
+          "written": 11
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 11,
+          "written": 11
+        },
+        {
+          "faculty": "デザイン・アート学研究科",
+          "facultyCode": "38",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "教職研究科",
+          "facultyCode": "57",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 5,
+          "written": 5
+        }
+      ]
+    },
+    {
+      "day": "火",
+      "period": "2",
+      "count": 730,
+      "collected": 730,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 83,
+          "written": 83
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 104,
+          "written": 104
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 64,
+          "written": 64
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 89,
+          "written": 89
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 77,
+          "written": 77
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 43,
+          "written": 43
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 147,
+          "written": 147
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 25,
+          "written": 25
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 35,
+          "written": 35
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 41,
+          "written": 41
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 123,
+          "written": 123
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 60,
+          "written": 60
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 54,
+          "written": 54
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 43,
+          "written": 43
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 33,
+          "written": 33
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 36,
+          "written": 36
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 18,
+          "written": 18
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 24,
+          "written": 24
+        },
+        {
+          "faculty": "デザイン・アート学研究科",
+          "facultyCode": "38",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 13,
+          "written": 13
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "薬学研究科",
+          "facultyCode": "56",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 1,
+          "written": 1
+        }
+      ]
+    },
+    {
+      "day": "火",
+      "period": "3",
+      "count": 527,
+      "collected": 527,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 77,
+          "written": 77
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 55,
+          "written": 55
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 51,
+          "written": 51
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 96,
+          "written": 96
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 79,
+          "written": 79
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 90,
+          "written": 90
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 17,
+          "written": 17
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 19,
+          "written": 19
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 33,
+          "written": 33
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 63,
+          "written": 63
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 16,
+          "written": 16
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 44,
+          "written": 44
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 44,
+          "written": 44
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 25,
+          "written": 25
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 40,
+          "written": 40
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 29,
+          "written": 29
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "テクノロジー・マネジメント研究科",
+          "facultyCode": "46",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "薬学研究科",
+          "facultyCode": "56",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 2,
+          "written": 2
+        }
+      ]
+    },
+    {
+      "day": "水",
+      "period": "1",
+      "count": 548,
+      "collected": 548,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 53,
+          "written": 53
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 36,
+          "written": 36
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 61,
+          "written": 61
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 30,
+          "written": 30
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 63,
+          "written": 63
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 40,
+          "written": 40
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 83,
+          "written": 83
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 14,
+          "written": 14
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 31,
+          "written": 31
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 23,
+          "written": 23
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 71,
+          "written": 71
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 13,
+          "written": 13
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 30,
+          "written": 30
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 32,
+          "written": 32
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 65,
+          "written": 65
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 45,
+          "written": 45
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 40,
+          "written": 40
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 13,
+          "written": 13
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 3,
+          "written": 3
+        }
+      ]
+    },
+    {
+      "day": "水",
+      "period": "2",
+      "count": 730,
+      "collected": 730,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 110,
+          "written": 110
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 109,
+          "written": 109
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 101,
+          "written": 101
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 68,
+          "written": 68
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 60,
+          "written": 60
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 63,
+          "written": 63
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 140,
+          "written": 140
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 24,
+          "written": 24
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 36,
+          "written": 36
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 36,
+          "written": 36
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 104,
+          "written": 104
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 11,
+          "written": 11
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 28,
+          "written": 28
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 49,
+          "written": 49
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 56,
+          "written": 56
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 57,
+          "written": 57
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 29,
+          "written": 29
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 21,
+          "written": 21
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 13,
+          "written": 13
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "薬学研究科",
+          "facultyCode": "56",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 3,
+          "written": 3
+        }
+      ]
+    },
+    {
+      "day": "水",
+      "period": "3",
+      "count": 814,
+      "collected": 814,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 142,
+          "written": 142
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 114,
+          "written": 114
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 105,
+          "written": 105
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 122,
+          "written": 122
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 84,
+          "written": 84
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 52,
+          "written": 52
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 144,
+          "written": 144
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 25,
+          "written": 25
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 47,
+          "written": 47
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 46,
+          "written": 46
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 106,
+          "written": 106
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 43,
+          "written": 43
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 48,
+          "written": 48
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 36,
+          "written": 36
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 28,
+          "written": 28
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 29,
+          "written": 29
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 15,
+          "written": 15
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 14,
+          "written": 14
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 29,
+          "written": 29
+        },
+        {
+          "faculty": "デザイン・アート学研究科",
+          "facultyCode": "38",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 12,
+          "written": 12
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "テクノロジー・マネジメント研究科",
+          "facultyCode": "46",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "薬学研究科",
+          "facultyCode": "56",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 1,
+          "written": 1
+        }
+      ]
+    },
+    {
+      "day": "水",
+      "period": "4",
+      "count": 856,
+      "collected": 856,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 119,
+          "written": 119
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 74,
+          "written": 74
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 75,
+          "written": 75
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 114,
+          "written": 114
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 94,
+          "written": 94
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 70,
+          "written": 70
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 157,
+          "written": 157
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 18,
+          "written": 18
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 49,
+          "written": 49
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 65,
+          "written": 65
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 102,
+          "written": 102
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 16,
+          "written": 16
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 53,
+          "written": 53
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 37,
+          "written": 37
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 50,
+          "written": 50
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 30,
+          "written": 30
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 32,
+          "written": 32
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 15,
+          "written": 15
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 14,
+          "written": 14
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 13,
+          "written": 13
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 22,
+          "written": 22
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 11,
+          "written": 11
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "テクノロジー・マネジメント研究科",
+          "facultyCode": "46",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "公務研究科",
+          "facultyCode": "48",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 1,
+          "written": 1
+        }
+      ]
+    },
+    {
+      "day": "木",
+      "period": "1",
+      "count": 548,
+      "collected": 548,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 58,
+          "written": 58
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 41,
+          "written": 41
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 68,
+          "written": 68
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 61,
+          "written": 61
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 48,
+          "written": 48
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 26,
+          "written": 26
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 75,
+          "written": 75
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 40,
+          "written": 40
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 22,
+          "written": 22
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 44,
+          "written": 44
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 32,
+          "written": 32
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 24,
+          "written": 24
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 25,
+          "written": 25
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 53,
+          "written": 53
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 13,
+          "written": 13
+        },
+        {
+          "faculty": "デザイン・アート学研究科",
+          "facultyCode": "38",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 14,
+          "written": 14
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "テクノロジー・マネジメント研究科",
+          "facultyCode": "46",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "薬学研究科",
+          "facultyCode": "56",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "教職研究科",
+          "facultyCode": "57",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 3,
+          "written": 3
+        }
+      ]
+    },
+    {
+      "day": "木",
+      "period": "2",
+      "count": 840,
+      "collected": 840,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 94,
+          "written": 94
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 100,
+          "written": 100
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 130,
+          "written": 130
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 115,
+          "written": 115
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 70,
+          "written": 70
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 74,
+          "written": 74
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 172,
+          "written": 172
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 21,
+          "written": 21
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 59,
+          "written": 59
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 33,
+          "written": 33
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 90,
+          "written": 90
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 16,
+          "written": 16
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 37,
+          "written": 37
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 49,
+          "written": 49
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 43,
+          "written": 43
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 30,
+          "written": 30
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 80,
+          "written": 80
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 11,
+          "written": 11
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 18,
+          "written": 18
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 15,
+          "written": 15
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 19,
+          "written": 19
+        },
+        {
+          "faculty": "デザイン・アート学研究科",
+          "facultyCode": "38",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 16,
+          "written": 16
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 9,
+          "written": 9
+        }
+      ]
+    },
+    {
+      "day": "木",
+      "period": "3",
+      "count": 812,
+      "collected": 812,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 45,
+          "written": 45
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 80,
+          "written": 80
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 88,
+          "written": 88
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 114,
+          "written": 114
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 78,
+          "written": 78
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 72,
+          "written": 72
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 129,
+          "written": 129
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 19,
+          "written": 19
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 24,
+          "written": 24
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 85,
+          "written": 85
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 19,
+          "written": 19
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 64,
+          "written": 64
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 51,
+          "written": 51
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 52,
+          "written": 52
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 32,
+          "written": 32
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 35,
+          "written": 35
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 12,
+          "written": 12
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 19,
+          "written": 19
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 15,
+          "written": 15
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 30,
+          "written": 30
+        },
+        {
+          "faculty": "デザイン・アート学研究科",
+          "facultyCode": "38",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 15,
+          "written": 15
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "テクノロジー・マネジメント研究科",
+          "facultyCode": "46",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 4,
+          "written": 4
+        }
+      ]
+    },
+    {
+      "day": "木",
+      "period": "4",
+      "count": 815,
+      "collected": 815,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 82,
+          "written": 82
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 92,
+          "written": 92
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 72,
+          "written": 72
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 119,
+          "written": 119
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 66,
+          "written": 66
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 46,
+          "written": 46
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 116,
+          "written": 116
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 21,
+          "written": 21
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 19,
+          "written": 19
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 82,
+          "written": 82
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 15,
+          "written": 15
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 56,
+          "written": 56
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 43,
+          "written": 43
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 28,
+          "written": 28
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 16,
+          "written": 16
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 35,
+          "written": 35
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 21,
+          "written": 21
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 15,
+          "written": 15
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "テクノロジー・マネジメント研究科",
+          "facultyCode": "46",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "薬学研究科",
+          "facultyCode": "56",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "教職研究科",
+          "facultyCode": "57",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 6,
+          "written": 6
+        }
+      ]
+    },
+    {
+      "day": "金",
+      "period": "1",
+      "count": 519,
+      "collected": 519,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 58,
+          "written": 58
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 41,
+          "written": 41
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 64,
+          "written": 64
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 26,
+          "written": 26
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 25,
+          "written": 25
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 26,
+          "written": 26
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 90,
+          "written": 90
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 51,
+          "written": 51
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 21,
+          "written": 21
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 57,
+          "written": 57
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 11,
+          "written": 11
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 36,
+          "written": 36
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 21,
+          "written": 21
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 29,
+          "written": 29
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 23,
+          "written": 23
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 26,
+          "written": 26
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "デザイン・アート学研究科",
+          "facultyCode": "38",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "テクノロジー・マネジメント研究科",
+          "facultyCode": "46",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 15,
+          "written": 15
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "薬学研究科",
+          "facultyCode": "56",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "教職研究科",
+          "facultyCode": "57",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 4,
+          "written": 4
+        }
+      ]
+    },
+    {
+      "day": "金",
+      "period": "2",
+      "count": 752,
+      "collected": 752,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 68,
+          "written": 68
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 73,
+          "written": 73
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 90,
+          "written": 90
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 111,
+          "written": 111
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 60,
+          "written": 60
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 42,
+          "written": 42
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 148,
+          "written": 148
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 14,
+          "written": 14
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 64,
+          "written": 64
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 57,
+          "written": 57
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 98,
+          "written": 98
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 29,
+          "written": 29
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 40,
+          "written": 40
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 30,
+          "written": 30
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 39,
+          "written": 39
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 12,
+          "written": 12
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 17,
+          "written": 17
+        },
+        {
+          "faculty": "デザイン・アート学研究科",
+          "facultyCode": "38",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "応用人間科学研究科",
+          "facultyCode": "39",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 14,
+          "written": 14
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "薬学研究科",
+          "facultyCode": "56",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 2,
+          "written": 2
+        }
+      ]
+    },
+    {
+      "day": "金",
+      "period": "3",
+      "count": 684,
+      "collected": 684,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 80,
+          "written": 80
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 56,
+          "written": 56
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 84,
+          "written": 84
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 140,
+          "written": 140
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 75,
+          "written": 75
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 51,
+          "written": 51
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 162,
+          "written": 162
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 14,
+          "written": 14
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 19,
+          "written": 19
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 17,
+          "written": 17
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 93,
+          "written": 93
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 11,
+          "written": 11
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 34,
+          "written": 34
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 33,
+          "written": 33
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 33,
+          "written": 33
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 7,
+          "written": 7
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 15,
+          "written": 15
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 14,
+          "written": 14
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 6,
+          "written": 6
+        },
+        {
+          "faculty": "テクノロジー・マネジメント研究科",
+          "facultyCode": "46",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 3,
+          "written": 3
+        }
+      ]
+    },
+    {
+      "day": "金",
+      "period": "4",
+      "count": 618,
+      "collected": 618,
+      "split": [
+        {
+          "faculty": "法学部",
+          "facultyCode": "11",
+          "count": 71,
+          "written": 71
+        },
+        {
+          "faculty": "経済学部",
+          "facultyCode": "12",
+          "count": 48,
+          "written": 48
+        },
+        {
+          "faculty": "経営学部",
+          "facultyCode": "13",
+          "count": 62,
+          "written": 62
+        },
+        {
+          "faculty": "産業社会学部",
+          "facultyCode": "14",
+          "count": 71,
+          "written": 71
+        },
+        {
+          "faculty": "国際関係学部",
+          "facultyCode": "15",
+          "count": 94,
+          "written": 94
+        },
+        {
+          "faculty": "政策科学部",
+          "facultyCode": "16",
+          "count": 50,
+          "written": 50
+        },
+        {
+          "faculty": "文学部",
+          "facultyCode": "17",
+          "count": 150,
+          "written": 150
+        },
+        {
+          "faculty": "デザイン・アート学部",
+          "facultyCode": "18",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "映像学部",
+          "facultyCode": "19",
+          "count": 43,
+          "written": 43
+        },
+        {
+          "faculty": "総合心理学部",
+          "facultyCode": "20",
+          "count": 18,
+          "written": 18
+        },
+        {
+          "faculty": "理工学部",
+          "facultyCode": "21",
+          "count": 85,
+          "written": 85
+        },
+        {
+          "faculty": "グローバル教養学部",
+          "facultyCode": "24",
+          "count": 14,
+          "written": 14
+        },
+        {
+          "faculty": "食マネジメント学部",
+          "facultyCode": "25",
+          "count": 21,
+          "written": 21
+        },
+        {
+          "faculty": "情報理工学部",
+          "facultyCode": "26",
+          "count": 19,
+          "written": 19
+        },
+        {
+          "faculty": "生命科学部",
+          "facultyCode": "27",
+          "count": 30,
+          "written": 30
+        },
+        {
+          "faculty": "薬学部",
+          "facultyCode": "28",
+          "count": 33,
+          "written": 33
+        },
+        {
+          "faculty": "スポーツ健康科学部",
+          "facultyCode": "29",
+          "count": 32,
+          "written": 32
+        },
+        {
+          "faculty": "法学研究科",
+          "facultyCode": "31",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "経済学研究科",
+          "facultyCode": "32",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "経営学研究科",
+          "facultyCode": "33",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "社会学研究科",
+          "facultyCode": "34",
+          "count": 9,
+          "written": 9
+        },
+        {
+          "faculty": "国際関係研究科",
+          "facultyCode": "35",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "政策科学研究科",
+          "facultyCode": "36",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "文学研究科",
+          "facultyCode": "37",
+          "count": 18,
+          "written": 18
+        },
+        {
+          "faculty": "デザイン・アート学研究科",
+          "facultyCode": "38",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "理工学研究科",
+          "facultyCode": "41",
+          "count": 10,
+          "written": 10
+        },
+        {
+          "faculty": "先端総合学術研究科",
+          "facultyCode": "42",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "言語教育情報研究科",
+          "facultyCode": "43",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "法務研究科",
+          "facultyCode": "45",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "テクノロジー・マネジメント研究科",
+          "facultyCode": "46",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "経営管理研究科",
+          "facultyCode": "47",
+          "count": 8,
+          "written": 8
+        },
+        {
+          "faculty": "スポーツ健康科学研究科",
+          "facultyCode": "49",
+          "count": 5,
+          "written": 5
+        },
+        {
+          "faculty": "映像研究科",
+          "facultyCode": "50",
+          "count": 2,
+          "written": 2
+        },
+        {
+          "faculty": "情報理工学研究科",
+          "facultyCode": "54",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "生命科学研究科",
+          "facultyCode": "55",
+          "count": 4,
+          "written": 4
+        },
+        {
+          "faculty": "教職研究科",
+          "facultyCode": "57",
+          "count": 1,
+          "written": 1
+        },
+        {
+          "faculty": "人間科学研究科",
+          "facultyCode": "58",
+          "count": 3,
+          "written": 3
+        },
+        {
+          "faculty": "食マネジメント研究科",
+          "facultyCode": "59",
+          "count": 1,
+          "written": 1
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}

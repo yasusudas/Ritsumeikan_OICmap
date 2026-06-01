@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name='basePath' content='' />
+        <meta name='deployTarget' content='CORE' />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script type="text/javascript">
+            {errorHandlerScript}
+        </script>
+        
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">!function(){"use strict";const e=`/webruntime${"/log/errors"}`;const n="UNKNOWN_ERROR";function t(){return e="basePath",document?.querySelector(`meta[name="${e}"]`)?.getAttribute("content")||"";var e}const{window:o}=globalThis;function r({subject:r,error:s={},extra:a}){let i,c,d;s?(i=s.message,c=s.stack,d=s.wcstack):a&&(i=a.message);const{pathname:u,hostname:l}=o.location,m={subject:r,message:i,stack:c,wcstack:d,extra:a,location:{pathname:u,hostname:l}},v=t();!function(e){document.dispatchEvent(new CustomEvent("client-error",{detail:{error:e,type:n}}))}(m),function(e,n){const t=JSON.stringify(n);if(!(window&&window.navigator&&window.navigator.sendBeacon&&window.navigator.sendBeacon(e,t))){const n=new XMLHttpRequest;n.open("POST",e,!0),n.setRequestHeader("Content-Type","text/plain;charset=UTF-8"),n.send(t)}}(globalThis.location.origin+v+e,m)}const s=(e={})=>{const{reason:n={}}=e;r({subject:"unhandledrejection",error:n})};function a(e={},n={}){const{message:t,filename:o,lineno:s,colno:a,error:i}=e;r({subject:"window error",error:i,extra:{message:t,filename:o,lineno:s,colno:a},...n})}o?.addEventListener("error",a),o?.addEventListener("unhandledrejection",s),o?.addEventListener("removeErrorReporting",function(){o?.removeEventListener("unhandledrejection",s),o?.removeEventListener("error",a),o?.removeEventListener("removeErrorReporting",this)})}();
+</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">!function(){"use strict";const e="webruntime";function t(t){return`/${e}${t}`}const o=t("/log/metrics"),n=t("/log/errors");function r(e,t){const o=JSON.stringify(t);if(!(window&&window.navigator&&window.navigator.sendBeacon&&window.navigator.sendBeacon(e,o))){const t=new XMLHttpRequest;t.open("POST",e,!0),t.setRequestHeader("Content-Type","text/plain;charset=UTF-8"),t.send(o)}}function a(e){return document?.querySelector(`meta[name="${e}"]`)?.getAttribute("content")||""}function s(){return a("basePath")}function i(){return a("deployTarget")||"CORE"}const c=`${e}-app-bootstrap`;function l(e){!function(e){const t=e?.detail||{};t.name=t.name||"",t.duration=t.duration||"",c===t.name&&(t.deployTarget=i(),r(s()+o,{webruntimeBootstrap:t,info:"lwr.bootstrap.end"}))}(e),globalThis?.removeEventListener("bootstrapLoaded",this)}globalThis?.addEventListener("bootstrapLoaded",l),globalThis.LWR=globalThis.LWR||{},globalThis.LWR&&Object.isExtensible(globalThis.LWR)&&(globalThis.LWR.onError=e=>{!function(e){const{message:t,stack:o,wcstack:a}=e,{pathname:c,hostname:l}=globalThis.location;let d=[];try{globalThis.performance&&globalThis.performance.getEntriesByType&&(d=globalThis.performance.getEntriesByType("resource").map(e=>({name:e.name,entryType:e.entryType,startTime:e.startTime,duration:e.duration,fetchStart:e.fetchStart,domainLookupStart:e.domainLookupStart,domainLookupEnd:e.domainLookupEnd,connectStart:e.connectStart,connectEnd:e.connectEnd,requestStart:e.requestStart,responseStart:e.responseStart,responseEnd:e.responseEnd,responseStatus:e.responseStatus,transferSize:e.transferSize,encodedBodySize:e.encodedBodySize,decodedBodySize:e.decodedBodySize,initiatorType:e.initiatorType,nextHopProtocol:e.nextHopProtocol,failed:e.failed||!1})))}catch(e){globalThis.console&&globalThis.console.error&&globalThis.console.error("Error collecting resource performance data",e)}r(s()+n,{subject:"bootstrap error",webruntimeBootstrap:{deployTarget:i(),resources:d,resourceCount:d.length},message:t,stack:o,wcstack:a,location:{pathname:c,hostname:l}})}(e),globalThis.launchModal&&launchModal({id:"webruntime-client-bootstrap-error-failed-to-load-lwr",titleLabel:"Oops!",contentLabel:"Something went wrong. Please try refreshing the app",buttonLabel:"Refresh",callback:function(){var e=new URL(window.location);e.searchParams.set("lwr.cachebust",(new Date).getTime()),window.location=e.href}}),globalThis?.removeEventListener("bootstrapLoaded",l),globalThis?.dispatchEvent(new CustomEvent("removeErrorReporting")),delete globalThis.LWR.onError})}();
+</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">({})?.a?.a;window.supportsOptionalChaining=true;
+</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">!function(){const e={documentCreateElement:Document.prototype.createElement,elementSetAttribute:Element.prototype.setAttribute,elementAttachShadow:Element.prototype.attachShadow,elementAppendChild:Element.prototype.appendChild,htmlelementAddEventListener:Element.prototype.addEventListener,iframeContentDocumentGet:Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype,"contentDocument").get,iframeContentWindowGet:Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype,"contentWindow").get};Object.freeze(e),Object.defineProperty(window,"originalDomApis",{writable:!1,value:e});const t=window.frames;Object.defineProperty(window,"frames",{get:function(){const e=[];for(let n=0;n<t.length;n++)try{t[n].frameElement.getRootNode().nodeType===Node.DOCUMENT_FRAGMENT_NODE||e.push(t[n])}catch(o){e.push(t[n])}return e.length===t.length?t:e}})}();</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">!function(){"use strict";window.isBrowserSupportedByWebruntime=function(){const n="performance"in window&&"mark"in window.performance,i="customElements"in window;return n&&i&&void 0!==window.supportsOptionalChaining}()}();
+</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">globalThis.lwcRuntimeFlags = globalThis.lwcRuntimeFlags || {};
+globalThis.lwcRuntimeFlags = { ...globalThis.lwcRuntimeFlags, ...{"ENABLE_LEGACY_SCOPE_TOKENS":false,"ENABLE_FORCE_SHADOW_MIGRATE_MODE":false,"ENABLE_MIXED_SHADOW_MODE":false,"LEGACY_LOCKER_ENABLED":false,"ENABLE_LEGACY_SIGNAL_CONTEXT_VALIDATION":false,"DISABLE_LEGACY_VALIDATION":false,"ENABLE_EXPERIMENTAL_SIGNALS":false,"DISABLE_SYNTHETIC_SHADOW":false,"DISABLE_SCOPE_TOKEN_VALIDATION":false,"DISABLE_LIGHT_DOM_UNSCOPED_CSS":false,"ENABLE_LEGACY_CONTEXT_CONNECTION":false,"ENABLE_SLOT_FORWARDING_FIX":true,"DISABLE_NATIVE_CUSTOM_ELEMENT_LIFECYCLE":true,"DISABLE_TEMPORARY_V5_COMPILER_SUPPORT":true} };
+globalThis.LWR = globalThis.LWR || {};
+globalThis.LWR.initDeferDOM = true;
+globalThis.LWR.customInit = (lwr) => {
+
+        LWR.define('@app/apexApiBasePath', [], function() { return "webruntime/api"; });
+        LWR.define('@app/apiBasePath', [], function() { return "webruntime/api"; });
+        LWR.define('@app/basePath', [], function() { return ""; });
+        LWR.define('@app/deployTarget', [], function() { return "CORE"; });
+        LWR.define('@app/guestUuidCookieName', [], function() { return null; });
+        LWR.define('@app/isDesignMode', [], function() { return false; });
+        LWR.define('@app/isPreviewMode', [], function() { return false; });
+        LWR.define('@app/isSsrCodeTypeEnabled', [], function() { return false; });
+        LWR.define('@app/routes', [], function() { return [{"devName":"Too_Many_Requests","label":"要求が多すぎます","createdOnVersion":null,"isPublic":true,"viewId":"49e86e72-76d5-40b0-9b83-f1f393ba26f8","hasVanityURL":false,"patternMap":{},"id":"ea8f25b2-e5de-4bb4-afca-1be0085e1e81","path":"/toomanyrequests.html","view":"view_4","isRoot":true,"isDefault":true,"page":{"type":"comm__namedPage","attributes":{"name":"Too_Many_Requests"}}}]; });
+        LWR.define('@app/templateDevName', [], function() { return "sna-aura-lwr-shell-template"; });
+        LWR.define('@app/uiBasePath', [], function() { return ""; });
+        LWR.define('@app/versionKey', [], function() { return "0DBfD0000009Akv:5"; });
+        LWR.define('@app/viewToThemeLayoutMap', [], function() { return {"view_4":"serviceNotAvailable"}; });
+        LWR.define('@app/webruntimeFrameworkVersion', [], function() { return "258.92"; });
+        LWR.define('@salesforce/community/Id', [], function() { return "0DBfD0000009AkvWAE"; });
+        LWR.define('@salesforce/community/basePath', [], function() { return ""; });
+        LWR.define('@salesforce/i18n/lang', [], function() { return "ja"; });
+        LWR.define('@salesforce/site/Id', [], function() { return "0DMfD0000000Ac6WAE"; });
+        LWR.define('@salesforce/site/activeLanguages', [], function() { return [{"label":"日本語/Japanese","code":"ja","default":true}]; });
+        LWR.define('@salesforce/webstore/Id', [], function() { return null; });
+lwr.define("webruntime/dispatcher", [], function(){ return function o11yDipatcherInit(dispatcher) { typeof lwr !== 'undefined' && lwr.attachDispatcher(dispatcher); };});
+LWR.define('@salesforce/user/Id', ['@app/user'], function(m) { return (m && typeof m === 'object' && 'default' in m ? m.default : m)['id'] });
+LWR.define('@salesforce/user/isGuest', ['@app/user'], function(m) { return (m && typeof m === 'object' && 'default' in m ? m.default : m)['isGuest'] });
+lwr.initializeApp();
+globalThis.process = { env: { NODE_ENV: "dev" } };};</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">globalThis.CLWR = globalThis.CLWR || {};
+globalThis.CLWR.gates = {"enableLwrRouteValidation":false};
+</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">globalThis.LWR = globalThis.LWR || {};
+Object.assign(globalThis.LWR, {
+  "bootstrapModule": "@lwrjs/app-service/communities_app/module/amd/v/0_19_7",
+  "autoBoot": false,
+  "rootComponents": [
+    "webruntime/app/v/1_66_1083-258_0"
+  ],
+  "requiredModules": [
+    "lwc/v/8_20_6",
+    "@lwrjs/app-service/communities_app/module/amd/v/0_19_7"
+  ],
+  "importMappings": {
+    "default": "webruntime/component/latest/prod/ja/",
+    "imports": {
+      "/webruntime/component/latest/prod/ja/lwc": "webruntime/framework/868578dbfa/prod/lwr_lwc",
+      "@app/csrfToken": "webruntime/module/@app/csrfToken",
+      "@app/loginPath": "webruntime/module/@app/loginPath",
+      "@app/user": "webruntime/module/@app/user",
+      "@perm/": "webruntime/perm/",
+      "@salesforce/client/formFactor": "webruntime/module/@salesforce/client/formFactor",
+      "@salesforce/customPermission/": "webruntime/perm/custom/",
+      "@salesforce/featureFlag/": "webruntime/module/@salesforce/featureFlag/",
+      "@salesforce/user/Id": "webruntime/module/@salesforce/user/Id",
+      "@salesforce/user/isGuest": "webruntime/module/@salesforce/user/isGuest",
+      "@salesforce/userPermission/": "webruntime/perm/",
+      "@udd/": "webruntime/module/@udd/",
+      "@view/serviceNotAvailable": "webruntime/view/0a7c23447d60d3eba253115744ce6f63/prod/ja/serviceNotAvailable_view",
+      "@view/view_4": "webruntime/view/de223e6db36d6d300891400d50f5ea6d/prod/ja/view_4_view",
+      "mobileruntime/hybridAppManager": "webruntime/framework/d923dae8c2/prod/lwr_mobile",
+      "o11y/collectors": "webruntime/component/41d6697a2d1c1bcec25962da1d57ab0b/prod/ja/o11y/collectors_cmp",
+      "o11y/simple_collector": "webruntime/component/d2d3dad50024cc791370280919f1c897/prod/ja/o11y/simple_collector_cmp"
+    }
+  }
+});</script>
+        <script src="webruntime/framework/f005680334/prod/lwr_loader"></script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">/**
+* Copyright (c) 2021, salesforce.com, inc.
+* All rights reserved.
+* SPDX-License-Identifier: MIT
+* For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+*/
+/* LWR Error Shim v0.19.7 */
+!function(){"use strict";const o=globalThis;if(!(o.LWR&&o.LWR.define)){const r=new Error("The LWR application failed to bootstrap");if(!o.LWR||!o.LWR.onError)throw r;o.LWR.onError(r)}}();
+</script>
+        <script src="webruntime/framework/e5b945852f/prod/lwr_bootstrap"></script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('webruntime/handlebarsEngine/v/1_66_1083-258_0', [], function() { return 
+; });LWR.define('webruntime/handlebarsEngine', ['exports', 'webruntime/handlebarsEngine/v/1_66_1083-258_0'], function(e, m) {
+   if (m && typeof m === 'object' && 'default' in m) {
+      Object.keys(m).forEach((key) => {
+         e[key] = m[key];
+      });
+   } else {
+      return m;
+   }
+});</script>
+        <script src="webruntime/framework/59f5b575f9/prod/lwr_app_bootstrap_hook"></script>
+        <script src="webruntime/framework/868578dbfa/prod/lwr_lwc"></script>
+        <script src="webruntime/framework/f1f7179303/prod/lwr_app"></script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('lwc', ['lwc/v/8_20_6'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">
+        LWR.define('@app/authenticationCookieName', [], function() { return "__Secure-has-sid"; });
+        LWR.define('@app/extraRouteParams', [], function() { return {}; });
+        LWR.define('@app/imageOpt', [], function() { return "none"; });
+        LWR.define('@app/isMobileAppMode', [], function() { return true; });
+        LWR.define('@app/user', [], function() { return {"isGuest":true,"id":null,"csrfToken":null}; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/apexApiBasePath/v/1', ['@app/apexApiBasePath'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/apiBasePath/v/1', ['@app/apiBasePath'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/authenticationCookieName/v/1', ['@app/authenticationCookieName'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/basePath/v/1', ['@app/basePath'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/csrfToken/v/1', ['@app/csrfToken'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/deployTarget/v/1', ['@app/deployTarget'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/extraRouteParams/v/1', ['@app/extraRouteParams'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/guestUuidCookieName/v/1', ['@app/guestUuidCookieName'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/imageOpt/v/1', ['@app/imageOpt'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/isDesignMode/v/1', ['@app/isDesignMode'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/isMobileAppMode/v/1', ['@app/isMobileAppMode'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/isPreviewMode/v/1', ['@app/isPreviewMode'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/isSsrCodeTypeEnabled/v/1', ['@app/isSsrCodeTypeEnabled'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/o11yApiEndpoint/v/1', ['@app/o11yApiEndpoint'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/o11yConfiguration/v/1', ['@app/o11yConfiguration'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/o11yFalconEnabled/v/1', ['@app/o11yFalconEnabled'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/o11yGuestToken/v/1', ['@app/o11yGuestToken'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/o11ySamplingRate/v/1', ['@app/o11ySamplingRate'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/routes/v/1', ['@app/routes'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/templateDevName/v/1', ['@app/templateDevName'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/uiBasePath/v/1', ['@app/uiBasePath'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/user/v/1', ['@app/user'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/versionKey/v/1', ['@app/versionKey'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/viewToThemeLayoutMap/v/1', ['@app/viewToThemeLayoutMap'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@app/webruntimeFrameworkVersion/v/1', ['@app/webruntimeFrameworkVersion'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@salesforce/community/Id/v/1', ['@salesforce/community/Id'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@salesforce/i18n/lang/v/1', ['@salesforce/i18n/lang'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@salesforce/site/activeLanguages/v/1', ['@salesforce/site/activeLanguages'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@salesforce/site/Id/v/1', ['@salesforce/site/Id'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('@salesforce/webstore/Id/v/1', ['@salesforce/webstore/Id'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="e502d4a3-18d7-4452-b568-6c04841d11bf">LWR.define('webruntime/dispatcher/v/1', ['webruntime/dispatcher'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script src="webruntime/view/de223e6db36d6d300891400d50f5ea6d/prod/ja/view_4_view"></script>
+        <script src="webruntime/view/0a7c23447d60d3eba253115744ce6f63/prod/ja/serviceNotAvailable_view"></script><style type="text/css" id="webruntime-branding">:root{--dxp-g-brand:rgb(173, 51, 51);--dxp-c-link-text-color:rgb(16, 55, 213);--dxp-c-link-text-color-hover:#0d2daf;--dxp-c-link-text-color-active:#0d2daf;--dxp-g-neutral-contrast-3:#fff;--dxp-s-body-font-family:Lato;--dxp-g-neutral-contrast-2:#000;--dxp-g-neutral:#ecebea;--dxp-g-neutral-contrast-1:#000;--dxp-g-root:rgb(255, 255, 255);--dxp-g-root-contrast-1:rgba(0, 0, 0, 0.8);--dxp-g-root-contrast:rgba(0, 0, 0, 0.8);--dxp-g-root-contrast-2:rgba(0, 0, 0, 0.8);--dxp-g-root-contrast-3:rgba(0, 0, 0, 0.8);--dxp-g-neutral-contrast:#000;--dxp-g-root-1:rgb(235, 235, 235);--dxp-g-root-2:rgb(194, 194, 194);--dxp-g-root-3:rgb(133, 133, 133);--dxp-g-brand-contrast-1:rgb(255, 255, 255);--dxp-g-brand-contrast:rgb(255, 255, 255);--dxp-g-neutral-3:rgb(118, 113, 107);--dxp-g-neutral-2:rgb(178, 174, 170);--dxp-g-brand-contrast-3:rgb(255, 255, 255);--dxp-g-sna-heading-font-family:Montserrat;--dxp-g-brand-contrast-2:rgb(255, 255, 255);--dxp-g-neutral-1:rgb(217, 215, 213);--dxp-g-brand-1:rgb(141, 42, 42);--dxp-g-brand-2:rgb(78, 23, 23);--dxp-g-brand-3:rgb(0, 0, 0);--dxp-g-brand-h:0;--dxp-g-brand-s:54%;--dxp-g-brand-l:44%;--dxp-g-brand-a:1.0;--dxp-c-link-text-color-h:228;--dxp-c-link-text-color-s:86%;--dxp-c-link-text-color-l:45%;--dxp-c-link-text-color-a:1.0;--dxp-c-link-text-color-hover-h:228;--dxp-c-link-text-color-hover-s:86%;--dxp-c-link-text-color-hover-l:37%;--dxp-c-link-text-color-hover-a:1.0;--dxp-c-link-text-color-active-h:228;--dxp-c-link-text-color-active-s:86%;--dxp-c-link-text-color-active-l:37%;--dxp-c-link-text-color-active-a:1.0;--dxp-g-neutral-h:30;--dxp-g-neutral-s:5%;--dxp-g-neutral-l:92%;--dxp-g-neutral-a:1.0;--dxp-g-root-h:0;--dxp-g-root-s:0%;--dxp-g-root-l:100%;--dxp-g-root-a:1.0;--dxp-g-root-contrast-h:0;--dxp-g-root-contrast-s:0%;--dxp-g-root-contrast-l:0%;--dxp-g-root-contrast-a:0.8;--dxp-g-neutral-contrast-h:0;--dxp-g-neutral-contrast-s:0%;--dxp-g-neutral-contrast-l:0%;--dxp-g-neutral-contrast-a:1.0;--dxp-g-brand-contrast-h:0;--dxp-g-brand-contrast-s:0%;--dxp-g-brand-contrast-l:100%;--dxp-g-brand-contrast-a:1.0;}</style>
+        
+        
+        <!-- webruntime-branding-shared stylesheets -->
+        <link rel="stylesheet" href="assets/styles/salesforce-lightning-design-system.min.css?0DBfD0000009Akv:5"/>
+        <link rel="stylesheet" href="assets/styles/dxp-site-spacing-styling-hooks.min.css?0DBfD0000009Akv:5"/>
+        <link rel="stylesheet" href="assets/styles/dxp-styling-hooks.min.css?0DBfD0000009Akv:5"/>
+        <link rel="stylesheet" href="assets/styles/dxp-slds-extensions.min.css?0DBfD0000009Akv:5"/>
+        <!-- webruntime-branding-shared stylesheets -->
+        <link rel="stylesheet" href="assets/styles/styles.css?0DBfD0000009Akv:5"/>
+        <link rel="stylesheet" href="assets/css/fonts-and-custom.css?0DBfD0000009Akv:5"/>
+    </head>
+    <body>
+        <webruntime-app></webruntime-app>
+    </body>
+</html>
