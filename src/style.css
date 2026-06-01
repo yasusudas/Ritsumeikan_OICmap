@@ -1660,6 +1660,10 @@ body[data-app-mode="viewer"] .app-shell {
   gap: 18px;
 }
 
+.footer-portfolio-link {
+  white-space: nowrap;
+}
+
 .site-footer p {
   margin: 0;
 }
@@ -1910,23 +1914,44 @@ body.legal-page {
   background: transparent;
 }
 
-.access-main {
+.access-main,
+.food-main {
   width: min(calc(100% - 36px), 1120px);
 }
 
-.access-hero {
+.access-hero,
+.food-hero {
   margin-bottom: 18px;
   padding-block: clamp(14px, 1.6vw, 20px);
   border-radius: 12px;
   text-align: center;
 }
 
-.access-hero h1 {
+.access-hero h1,
+.food-hero h1 {
   margin: 0;
 }
 
-.legal-hero.access-hero h1 {
+.legal-hero.access-hero h1,
+.legal-hero.food-hero h1 {
   font-size: clamp(1.18rem, 1.8vw, 1.72rem);
+}
+
+.food-content {
+  display: grid;
+  place-items: center;
+  min-height: clamp(220px, 34vh, 380px);
+  padding: clamp(28px, 6vw, 72px) 18px;
+  text-align: center;
+}
+
+.food-placeholder {
+  margin: 0;
+  color: var(--ink-900);
+  font-size: clamp(1.08rem, 2vw, 1.38rem);
+  font-weight: 800;
+  line-height: 1.9;
+  letter-spacing: 0;
 }
 
 .access-eyebrow {
