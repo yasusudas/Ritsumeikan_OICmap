@@ -121,11 +121,14 @@ const elements = {
 };
 
 function initTimetableLinks() {
+  if (elements.cardGrid) {
+    renderOfficialCards();
+  }
+
   if (!elements.form) return;
 
   elements.dateInput.value = formatDateValue(TODAY);
   populateRailways();
-  renderOfficialCards();
   updateStationOptions();
   updateGeneratedLink();
 

@@ -71,6 +71,10 @@ const dictionaries = {
     'search.feedback.matches': '{count} 件の候補',
     'search.toiletLegend': '青色は男子トイレ、赤色は女子トイレ、黄色は多目的トイレです',
 
+    'quickActions.label': 'クイックリンク',
+    'quickActions.food': 'OICフード',
+    'quickActions.timetable': '時刻表',
+
     'facility.toilet': 'トイレ',
     'facility.waterServer': 'ウォーターサーバー',
     'facility.vendingMachine': '自販機',
@@ -87,8 +91,12 @@ const dictionaries = {
     'floor.A-6-9F': 'A棟6,7,8,9F',
     'floor.H-6-9F': 'H棟6,7,8,9F',
     'floor.printerMap': 'プリンター',
+    'floor.selected': '選択中の',
+    'floor.floor': 'フロア',
     'floor.primaryNav': 'フロア切替',
     'floor.secondaryNav': '棟別フロア切替',
+    'floor.dropdownOpen': '現在のフロアは {floor}。フロアリストを開く',
+    'floor.dropdownClose': '現在のフロアは {floor}。フロアリストを閉じる',
     'floor.map': 'フロアマップ',
     'status.loading': '読み込み中...',
     'status.floorLoading': '{floor} を読み込み中...',
@@ -248,6 +256,10 @@ const dictionaries = {
     'search.toiletLegend':
       "Blue rings mark men's restrooms, red rings mark women's restrooms, and yellow rings mark accessible restrooms.",
 
+    'quickActions.label': 'Quick links',
+    'quickActions.food': 'OIC Food',
+    'quickActions.timetable': 'Timetable',
+
     'facility.toilet': 'Restroom',
     'facility.waterServer': 'Water Dispenser',
     'facility.vendingMachine': 'Vending Machine',
@@ -264,8 +276,12 @@ const dictionaries = {
     'floor.A-6-9F': 'Bldg. A 6F-9F',
     'floor.H-6-9F': 'Bldg. H 6F-9F',
     'floor.printerMap': 'Printer Map',
+    'floor.selected': 'Selected',
+    'floor.floor': 'Floor',
     'floor.primaryNav': 'Floor selector',
     'floor.secondaryNav': 'Upper-floor building selector',
+    'floor.dropdownOpen': 'Current floor is {floor}. Open the floor list',
+    'floor.dropdownClose': 'Current floor is {floor}. Close the floor list',
     'floor.map': 'Floor map',
     'status.loading': 'Loading...',
     'status.floorLoading': 'Loading {floor}...',

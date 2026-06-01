@@ -90,51 +90,6 @@
           </div>
         </section>
 
-        <section class="timetable-link-builder" aria-labelledby="link-builder-title">
-          <div class="timetable-link-builder-header">
-            <div>
-              <p class="timetable-section-kicker">Smart link</p>
-              <h2 id="link-builder-title">条件を選んで公式ページを開く</h2>
-            </div>
-            <span class="timetable-compliance-badge">公式ページへ遷移</span>
-          </div>
-
-          <form class="timetable-link-form" data-timetable-link-form>
-            <label>
-              <span>鉄道</span>
-              <select data-railway-select></select>
-            </label>
-            <label>
-              <span>駅</span>
-              <select data-station-select></select>
-            </label>
-            <label>
-              <span>方面</span>
-              <select data-direction-select></select>
-            </label>
-            <label data-day-type-field>
-              <span>曜日種別</span>
-              <select data-day-type-select>
-                <option value="weekday">平日</option>
-                <option value="holiday">土曜・休日</option>
-              </select>
-            </label>
-            <label data-date-field>
-              <span>表示日</span>
-              <input type="date" data-date-input />
-            </label>
-            <button class="timetable-primary-link-button" type="submit">公式時刻表を開く</button>
-          </form>
-
-          <div class="timetable-link-preview" aria-live="polite">
-            <span>開く公式URL</span>
-            <a href="#" target="_blank" rel="noopener noreferrer" data-generated-link>選択してください</a>
-          </div>
-          <p class="timetable-link-help" data-link-help>
-            別タブで各社公式ページを開きます。このページ上では発車時刻や行先を表示しません。
-          </p>
-        </section>
-
         <section class="timetable-official-grid" aria-labelledby="official-link-title">
           <div class="timetable-section-heading">
             <p class="timetable-section-kicker">Official pages</p>
@@ -143,32 +98,10 @@
           <div class="timetable-official-card-grid" data-official-card-grid></div>
         </section>
 
-        <section class="timetable-compliance-panel" aria-labelledby="compliance-title">
-          <div class="timetable-section-heading">
-            <p class="timetable-section-kicker">Compliance</p>
-            <h2 id="compliance-title">規約対応方針</h2>
-          </div>
-          <div class="timetable-compliance-grid">
-            <article>
-              <h3>このページで行うこと</h3>
-              <ul>
-                <li>駅名、路線名、方面名、公式ページURLだけを保持します。</li>
-                <li>ユーザー操作に応じて各社公式時刻表ページを別タブで開きます。</li>
-                <li>ダイヤ改正後の正しい時刻は、常に公式ページ側で確認します。</li>
-              </ul>
-            </article>
-            <article>
-              <h3>このページで行わないこと</h3>
-              <ul>
-                <li>発車時刻、行先、列車種別の複製・JSON化・再配布は行いません。</li>
-                <li>公式ページをスクレイピング、iframe埋め込み、プロキシ配信しません。</li>
-                <li>公式表示をこのサイト内の独自時刻表として再構成しません。</li>
-              </ul>
-            </article>
-          </div>
+        <section class="timetable-compliance-panel timetable-source-card" aria-labelledby="source-reference-title">
           <div class="timetable-source-references timetable-compliance-links">
             <div class="timetable-source-reference-group">
-              <p class="timetable-source-reference-title">公式ページ・利用条件確認先</p>
+              <h2 id="source-reference-title" class="timetable-source-reference-title">公式ページ・利用条件確認先</h2>
               <ul class="timetable-source-reference-items">
                 <li><a href="https://www.osaka-monorail.co.jp/station/r18_unobe/timetable/" target="_blank" rel="noopener noreferrer">大阪モノレール 宇野辺駅時刻表</a></li>
                 <li><a href="https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/" target="_blank" rel="noopener noreferrer">大阪モノレール 南茨木駅時刻表</a></li>
@@ -179,9 +112,6 @@
               </ul>
             </div>
           </div>
-          <p class="timetable-link-disclaimer">
-            法的評価の最終判断は各社の最新規約・表示内容に従います。このページは公式ページへの案内のみを目的とし、各社の時刻表データを転載しません。
-          </p>
         </section>
       </main>
 
