@@ -93,6 +93,9 @@ if (window.__FILE_MODE__) {
   const CONTACT_FORM_EMBED_URL =
     (import.meta.env.VITE_CONTACT_FORM_EMBED_URL || DEFAULT_CONTACT_FORM_EMBED_URL).trim();
   const MAP_PADDING = 32;
+  const MOBILE_MAP_VIEWPORT_MAX_WIDTH = 720;
+  const MOBILE_MIN_MAP_WIDTH_RATIO = 0.9;
+  const VIEWER_MIN_ZOOM = 0.5;
   const SEARCH_RESULT_LIMIT = 18;
   const SEARCH_FOCUS_ZOOM = 6;
   const VIEW_ANIMATION_MS = 480;
@@ -1240,6 +1243,15 @@ if (window.__FILE_MODE__) {
     return { containScale, coverScale, safeContainScale, insetTop: insets.top, insetBottom: insets.bottom };
   }
 
+  function getViewerMinZoom(baseWidth) {
+    const { width } = getViewportSize();
+    if (width <= MOBILE_MAP_VIEWPORT_MAX_WIDTH && baseWidth > 0) {
+      return clamp((width * MOBILE_MIN_MAP_WIDTH_RATIO) / baseWidth, 0.01, 1);
+    }
+
+    return VIEWER_MIN_ZOOM;
+  }
+
   function updateCanvasLayerBaseSize() {
     canvasLayer.style.width = `${state.baseWidth}px`;
     canvasLayer.style.height = `${state.baseHeight}px`;
@@ -2315,14 +2327,13 @@ if (window.__FILE_MODE__) {
       state.safeInsetTop = fit.insetTop;
       state.safeInsetBottom = fit.insetBottom;
       if (useFillFit) {
-        // 50% is the hard zoom-out floor; open with the whole floor inside the
-        // readable area below the menu (never starting below that floor).
-        state.minZoom = 0.5;
+        state.minZoom = getViewerMinZoom(state.baseWidth);
         state.initialZoom = clamp(fit.safeContainScale / baseScale, state.minZoom, 1);
       } else {
         state.initialZoom = 1;
         state.minZoom = 1;
       }
+      state.zoom = clamp(state.zoom, state.minZoom, state.maxZoom);
       updateCanvasLayerBaseSize();
 
       if (resetZoom || !hadDimensions) {
