@@ -3318,7 +3318,7 @@ body.is-timetable-sorting {
   left: 0;
   display: block;
   transform-origin: 0 0;
-  will-change: transform;
+  will-change: transform, width, height;
   backface-visibility: hidden;
   pointer-events: none;
 }

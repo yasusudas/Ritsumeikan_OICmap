@@ -1311,7 +1311,9 @@ if (window.__FILE_MODE__) {
 
   function flushViewRender() {
     state.viewRenderFrame = 0;
-    canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${state.zoom})`;
+    canvasLayer.style.width = `${state.baseWidth * state.zoom}px`;
+    canvasLayer.style.height = `${state.baseHeight * state.zoom}px`;
+    canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0)`;
 
     const percent = Math.round(state.zoom * 100);
     setStatus(`${getFloorLabel(getRenderedFloorDefinition())} | ${percent}%`);
