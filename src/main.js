@@ -14,6 +14,10 @@ if (window.__FILE_MODE__) {
       id: '1F',
       label: '1F',
       labelKey: 'floor.1F',
+      dimensions: {
+        ja: { width: 1587.4, height: 1122.52 },
+        en: { width: 1190.55, height: 841.89 }
+      },
       svgUrls: {
         ja: new URL('./assets/floors/ja/1F.svg', import.meta.url).href,
         en: new URL('./assets/floors/en/1F.svg', import.meta.url).href
@@ -23,6 +27,10 @@ if (window.__FILE_MODE__) {
       id: '2F',
       label: '2F',
       labelKey: 'floor.2F',
+      dimensions: {
+        ja: { width: 1587.4, height: 1122.52 },
+        en: { width: 1190.55, height: 841.89 }
+      },
       svgUrls: {
         ja: new URL('./assets/floors/ja/2F.svg', import.meta.url).href,
         en: new URL('./assets/floors/en/2F.svg', import.meta.url).href
@@ -32,6 +40,10 @@ if (window.__FILE_MODE__) {
       id: '3F',
       label: '3F',
       labelKey: 'floor.3F',
+      dimensions: {
+        ja: { width: 1587.4, height: 1122.52 },
+        en: { width: 1190.55, height: 841.89 }
+      },
       svgUrls: {
         ja: new URL('./assets/floors/ja/3F.svg', import.meta.url).href,
         en: new URL('./assets/floors/en/3F.svg', import.meta.url).href
@@ -41,6 +53,10 @@ if (window.__FILE_MODE__) {
       id: '4F',
       label: '4F',
       labelKey: 'floor.4F',
+      dimensions: {
+        ja: { width: 1587.4, height: 1122.52 },
+        en: { width: 1190.55, height: 841.89 }
+      },
       svgUrls: {
         ja: new URL('./assets/floors/ja/4F.svg', import.meta.url).href,
         en: new URL('./assets/floors/en/4F.svg', import.meta.url).href
@@ -50,6 +66,10 @@ if (window.__FILE_MODE__) {
       id: '5F',
       label: '5F',
       labelKey: 'floor.5F',
+      dimensions: {
+        ja: { width: 1587.4, height: 1122.52 },
+        en: { width: 1190.55, height: 841.89 }
+      },
       svgUrls: {
         ja: new URL('./assets/floors/ja/5F.svg', import.meta.url).href,
         en: new URL('./assets/floors/en/5F.svg', import.meta.url).href
@@ -59,6 +79,10 @@ if (window.__FILE_MODE__) {
       id: 'A-6-9F',
       label: 'A棟6,7,8,9F',
       labelKey: 'floor.A-6-9F',
+      dimensions: {
+        ja: { width: 1587.4, height: 1122.52 },
+        en: { width: 1190.55, height: 841.89 }
+      },
       svgUrls: {
         ja: new URL('./assets/floors/ja/6F7F8F9F_BldgA.svg', import.meta.url).href,
         en: new URL('./assets/floors/en/6F7F8F9F_BldgA.svg', import.meta.url).href
@@ -68,6 +92,10 @@ if (window.__FILE_MODE__) {
       id: 'H-6-9F',
       label: 'H棟6,7,8,9F',
       labelKey: 'floor.H-6-9F',
+      dimensions: {
+        ja: { width: 1587.4, height: 1122.52 },
+        en: { width: 1190.55, height: 841.89 }
+      },
       svgUrls: {
         ja: new URL('./assets/floors/ja/6F7F8F9F_BldgH.svg', import.meta.url).href,
         en: new URL('./assets/floors/en/6F7F8F9F_BldgH.svg', import.meta.url).href
@@ -79,6 +107,10 @@ if (window.__FILE_MODE__) {
       id: 'print-station',
       label: 'プリンター',
       labelKey: 'floor.printerMap',
+      dimensions: {
+        ja: { width: 1207.8, height: 858.96 },
+        en: { width: 1208, height: 859 }
+      },
       svgUrls: {
         ja: new URL('./assets/floors/ja/print-station.svg', import.meta.url).href,
         en: new URL('./assets/floors/en/print-station.svg', import.meta.url).href
@@ -264,6 +296,7 @@ if (window.__FILE_MODE__) {
     lastTouchEndAt: -Infinity,
     viewRenderFrame: 0,
     viewAnimationFrame: 0,
+    mapRelayoutFrame: 0,
     initialZoom: 1,
     safeInsetTop: 0,
     safeInsetBottom: 0,
@@ -598,6 +631,14 @@ if (window.__FILE_MODE__) {
   function getFloorSvgUrl(floor) {
     const urls = floor?.svgUrls ?? {};
     return (getLang() === 'en' ? urls.en : urls.ja) ?? floor?.svgUrl ?? urls.ja ?? urls.en;
+  }
+
+  function getFloorSvgDimensions(floor) {
+    const dimensions = floor?.dimensions ?? {};
+    const localizedDimensions = (getLang() === 'en' ? dimensions.en : dimensions.ja) ?? dimensions.ja ?? dimensions.en;
+    const width = Number(localizedDimensions?.width);
+    const height = Number(localizedDimensions?.height);
+    return width > 0 && height > 0 ? { width, height } : null;
   }
 
   function isSpecialFloorActive() {
@@ -1181,6 +1222,13 @@ if (window.__FILE_MODE__) {
       return svgCache.get(cacheKey);
     }
 
+    const dimensions = getFloorSvgDimensions(floor);
+    if (dimensions) {
+      const asset = { url: svgUrl, width: dimensions.width, height: dimensions.height };
+      svgCache.set(cacheKey, asset);
+      return asset;
+    }
+
     const response = await fetch(svgUrl);
 
     if (!response.ok) {
@@ -1263,9 +1311,7 @@ if (window.__FILE_MODE__) {
 
   function flushViewRender() {
     state.viewRenderFrame = 0;
-    canvasLayer.style.width = `${state.baseWidth * state.zoom}px`;
-    canvasLayer.style.height = `${state.baseHeight * state.zoom}px`;
-    canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0)`;
+    canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${state.zoom})`;
 
     const percent = Math.round(state.zoom * 100);
     setStatus(`${getFloorLabel(getRenderedFloorDefinition())} | ${percent}%`);
@@ -1383,6 +1429,73 @@ if (window.__FILE_MODE__) {
     };
 
     state.viewAnimationFrame = window.requestAnimationFrame(step);
+  }
+
+  function applyMapLayout(asset, { resetZoom = false, preserveView = false, centerRatios = null } = {}) {
+    const preservedCenterRatios = centerRatios ?? (preserveView ? captureViewportCenterRatios() : null);
+    const fit = getMapFit(asset.width, asset.height);
+    const useFillFit = !isEditorSite;
+    const baseScale = useFillFit ? fit.coverScale : fit.containScale;
+    const hadDimensions = state.baseWidth > 0 && state.baseHeight > 0;
+    state.intrinsicWidth = asset.width;
+    state.intrinsicHeight = asset.height;
+    state.baseWidth = asset.width * baseScale;
+    state.baseHeight = asset.height * baseScale;
+    state.safeInsetTop = fit.insetTop;
+    state.safeInsetBottom = fit.insetBottom;
+
+    if (useFillFit) {
+      state.minZoom = getViewerMinZoom(state.baseWidth);
+      state.initialZoom = clamp(fit.safeContainScale / baseScale, state.minZoom, 1);
+    } else {
+      state.initialZoom = 1;
+      state.minZoom = 1;
+    }
+
+    state.zoom = clamp(state.zoom, state.minZoom, state.maxZoom);
+    updateCanvasLayerBaseSize();
+
+    if (resetZoom || !hadDimensions) {
+      resetView();
+    } else if (preservedCenterRatios) {
+      restoreViewportCenterRatios(preservedCenterRatios);
+    } else {
+      updateView();
+    }
+  }
+
+  function relayoutRenderedFloor({ preserveView = true } = {}) {
+    if (!state.intrinsicWidth || !state.intrinsicHeight || !canvasLayer.childElementCount) {
+      return;
+    }
+
+    applyMapLayout(
+      { width: state.intrinsicWidth, height: state.intrinsicHeight },
+      { resetZoom: false, preserveView }
+    );
+
+    renderSearchHighlights();
+    renderFacilityRings();
+    if (isEditorSite) {
+      renderEditorOverlay();
+    }
+  }
+
+  function scheduleMapRelayout() {
+    updateMapStageHeight();
+
+    if (!state.intrinsicWidth || !state.intrinsicHeight) {
+      return;
+    }
+
+    if (state.mapRelayoutFrame) {
+      return;
+    }
+
+    state.mapRelayoutFrame = window.requestAnimationFrame(() => {
+      state.mapRelayoutFrame = 0;
+      relayoutRenderedFloor({ preserveView: true });
+    });
   }
 
   function isMobileFloorListOpen() {
@@ -2317,36 +2430,7 @@ if (window.__FILE_MODE__) {
       state.highlightLayer = highlightLayer;
       state.ringLayer = ringLayer;
       state.editorLayer = editorLayer;
-      state.intrinsicWidth = asset.width;
-      state.intrinsicHeight = asset.height;
-
-      const fit = getMapFit(asset.width, asset.height);
-      // Viewer fills the frame (Maps-style); editor keeps the whole floor in
-      // view for precise pin/ring placement.
-      const useFillFit = !isEditorSite;
-      const baseScale = useFillFit ? fit.coverScale : fit.containScale;
-      const hadDimensions = state.baseWidth > 0 && state.baseHeight > 0;
-      state.baseWidth = asset.width * baseScale;
-      state.baseHeight = asset.height * baseScale;
-      state.safeInsetTop = fit.insetTop;
-      state.safeInsetBottom = fit.insetBottom;
-      if (useFillFit) {
-        state.minZoom = getViewerMinZoom(state.baseWidth);
-        state.initialZoom = clamp(fit.safeContainScale / baseScale, state.minZoom, 1);
-      } else {
-        state.initialZoom = 1;
-        state.minZoom = 1;
-      }
-      state.zoom = clamp(state.zoom, state.minZoom, state.maxZoom);
-      updateCanvasLayerBaseSize();
-
-      if (resetZoom || !hadDimensions) {
-        resetView();
-      } else if (centerRatios) {
-        restoreViewportCenterRatios(centerRatios);
-      } else {
-        updateView();
-      }
+      applyMapLayout(asset, { resetZoom, preserveView: Boolean(centerRatios), centerRatios });
 
       if (enableFloorFade) {
         window.requestAnimationFrame(() => {
@@ -3558,33 +3642,18 @@ if (window.__FILE_MODE__) {
   });
 
   window.addEventListener('resize', () => {
-    updateMapStageHeight();
-
-    if (!state.intrinsicWidth || !state.intrinsicHeight) {
-      return;
-    }
-
-    void renderFloor({ resetZoom: false, preserveView: true });
+    scheduleMapRelayout();
   });
 
   if ('ResizeObserver' in window && topbar) {
     const topbarResizeObserver = new ResizeObserver(() => {
-      updateMapStageHeight();
-      if (state.intrinsicWidth && state.intrinsicHeight) {
-        void renderFloor({ resetZoom: false, preserveView: true });
-      }
+      scheduleMapRelayout();
     });
     topbarResizeObserver.observe(topbar);
   }
 
   window.visualViewport?.addEventListener('resize', () => {
-    updateMapStageHeight();
-
-    if (!state.intrinsicWidth || !state.intrinsicHeight) {
-      return;
-    }
-
-    void renderFloor({ resetZoom: false, preserveView: true });
+    scheduleMapRelayout();
   });
 
   window.addEventListener('storage', (event) => {
