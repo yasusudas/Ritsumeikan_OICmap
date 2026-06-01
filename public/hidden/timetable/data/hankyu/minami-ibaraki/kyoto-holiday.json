@@ -1,0 +1,2850 @@
+{
+  "id": "hankyu-minami-ibaraki-kyoto-holiday",
+  "cardId": "hankyu-minami-ibaraki-kyoto",
+  "railwayId": "hankyu",
+  "railwayNameJa": "阪急電車",
+  "station": {
+    "id": "minami-ibaraki",
+    "nameJa": "南茨木",
+    "code": "HK-68",
+    "sf": "6025",
+    "lineJa": "京都線"
+  },
+  "line": {
+    "nameJa": "京都線"
+  },
+  "direction": {
+    "id": "kyoto",
+    "labelJa": "京都河原町方面"
+  },
+  "calendar": {
+    "id": "holiday",
+    "labelJa": "土曜・休日",
+    "shortLabelJa": "休日"
+  },
+  "source": {
+    "pageUrl": "https://www.hankyu.co.jp/station/html/HK-68_ky_2_h.html",
+    "pdfUrl": "https://www.hankyu.co.jp/station/pdf/HK-68_ky_2_h.pdf",
+    "fetchedAt": "2026-06-01T13:16:49.183Z"
+  },
+  "revision": "",
+  "notes": [
+    "阪急公式ページは駅探との利用契約に基づく時刻表データです。"
+  ],
+  "departures": [
+    {
+      "time": "05:04",
+      "hour": 5,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1305-KY5060",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1305-KY5060&DW=2&TM=0504",
+      "raw": {
+        "dw": "2",
+        "tm": "0504"
+      }
+    },
+    {
+      "time": "05:25",
+      "hour": 5,
+      "minute": 25,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1293-KY500",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1293-KY500&DW=2&TM=0525",
+      "raw": {
+        "dw": "2",
+        "tm": "0525"
+      }
+    },
+    {
+      "time": "05:45",
+      "hour": 5,
+      "minute": 45,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1296-KY502",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1296-KY502&DW=2&TM=0545",
+      "raw": {
+        "dw": "2",
+        "tm": "0545"
+      }
+    },
+    {
+      "time": "05:57",
+      "hour": 5,
+      "minute": 57,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1308-KY5062",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1308-KY5062&DW=2&TM=0557",
+      "raw": {
+        "dw": "2",
+        "tm": "0557"
+      }
+    },
+    {
+      "time": "06:05",
+      "hour": 6,
+      "minute": 5,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1302-KY504",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1302-KY504&DW=2&TM=0605",
+      "raw": {
+        "dw": "2",
+        "tm": "0605"
+      }
+    },
+    {
+      "time": "06:13",
+      "hour": 6,
+      "minute": 13,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1367-KY6060",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1367-KY6060&DW=2&TM=0613",
+      "raw": {
+        "dw": "2",
+        "tm": "0613"
+      }
+    },
+    {
+      "time": "06:23",
+      "hour": 6,
+      "minute": 23,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1323-KY600",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1323-KY600&DW=2&TM=0623",
+      "raw": {
+        "dw": "2",
+        "tm": "0623"
+      }
+    },
+    {
+      "time": "06:38",
+      "hour": 6,
+      "minute": 38,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1347-KY602",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1347-KY602&DW=2&TM=0638",
+      "raw": {
+        "dw": "2",
+        "tm": "0638"
+      }
+    },
+    {
+      "time": "06:48",
+      "hour": 6,
+      "minute": 48,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1356-KY604",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1356-KY604&DW=2&TM=0648",
+      "raw": {
+        "dw": "2",
+        "tm": "0648"
+      }
+    },
+    {
+      "time": "06:53",
+      "hour": 6,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1365-KY606",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1365-KY606&DW=2&TM=0653",
+      "raw": {
+        "dw": "2",
+        "tm": "0653"
+      }
+    },
+    {
+      "time": "07:03",
+      "hour": 7,
+      "minute": 3,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1380-KY620",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1380-KY620&DW=2&TM=0703",
+      "raw": {
+        "dw": "2",
+        "tm": "0703"
+      }
+    },
+    {
+      "time": "07:08",
+      "hour": 7,
+      "minute": 8,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1208-KY30600",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1208-KY30600&DW=2&TM=0708",
+      "raw": {
+        "dw": "2",
+        "tm": "0708"
+      }
+    },
+    {
+      "time": "07:11",
+      "hour": 7,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1371-KY608",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1371-KY608&DW=2&TM=0711",
+      "raw": {
+        "dw": "2",
+        "tm": "0711"
+      }
+    },
+    {
+      "time": "07:19",
+      "hour": 7,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1382-KY640",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1382-KY640&DW=2&TM=0719",
+      "raw": {
+        "dw": "2",
+        "tm": "0719"
+      }
+    },
+    {
+      "time": "07:23",
+      "hour": 7,
+      "minute": 23,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1394-KY700",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1394-KY700&DW=2&TM=0723",
+      "raw": {
+        "dw": "2",
+        "tm": "0723"
+      }
+    },
+    {
+      "time": "07:34",
+      "hour": 7,
+      "minute": 34,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1448-KY740",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1448-KY740&DW=2&TM=0734",
+      "raw": {
+        "dw": "2",
+        "tm": "0734"
+      }
+    },
+    {
+      "time": "07:39",
+      "hour": 7,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1417-KY702",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1417-KY702&DW=2&TM=0739",
+      "raw": {
+        "dw": "2",
+        "tm": "0739"
+      }
+    },
+    {
+      "time": "07:49",
+      "hour": 7,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1701-KYS720",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1701-KYS720&DW=2&TM=0749",
+      "raw": {
+        "dw": "2",
+        "tm": "0749"
+      }
+    },
+    {
+      "time": "07:53",
+      "hour": 7,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1422-KY7030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1422-KY7030&DW=2&TM=0753",
+      "raw": {
+        "dw": "2",
+        "tm": "0753"
+      }
+    },
+    {
+      "time": "07:57",
+      "hour": 7,
+      "minute": 57,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1430-KY704",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1430-KY704&DW=2&TM=0757",
+      "raw": {
+        "dw": "2",
+        "tm": "0757"
+      }
+    },
+    {
+      "time": "08:04",
+      "hour": 8,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1702-KYS722",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1702-KYS722&DW=2&TM=0804",
+      "raw": {
+        "dw": "2",
+        "tm": "0804"
+      }
+    },
+    {
+      "time": "08:07",
+      "hour": 8,
+      "minute": 7,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1507-KY8060",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1507-KY8060&DW=2&TM=0807",
+      "raw": {
+        "dw": "2",
+        "tm": "0807"
+      }
+    },
+    {
+      "time": "08:14",
+      "hour": 8,
+      "minute": 14,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1452-KY742",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1452-KY742&DW=2&TM=0814",
+      "raw": {
+        "dw": "2",
+        "tm": "0814"
+      }
+    },
+    {
+      "time": "08:18",
+      "hour": 8,
+      "minute": 18,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1491-KY8030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1491-KY8030&DW=2&TM=0818",
+      "raw": {
+        "dw": "2",
+        "tm": "0818"
+      }
+    },
+    {
+      "time": "08:24",
+      "hour": 8,
+      "minute": 24,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1508-KY820",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1508-KY820&DW=2&TM=0824",
+      "raw": {
+        "dw": "2",
+        "tm": "0824"
+      }
+    },
+    {
+      "time": "08:29",
+      "hour": 8,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1495-KY8032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1495-KY8032&DW=2&TM=0829",
+      "raw": {
+        "dw": "2",
+        "tm": "0829"
+      }
+    },
+    {
+      "time": "08:35",
+      "hour": 8,
+      "minute": 35,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1513-KY840",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1513-KY840&DW=2&TM=0835",
+      "raw": {
+        "dw": "2",
+        "tm": "0835"
+      }
+    },
+    {
+      "time": "08:39",
+      "hour": 8,
+      "minute": 39,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1499-KY8034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1499-KY8034&DW=2&TM=0839",
+      "raw": {
+        "dw": "2",
+        "tm": "0839"
+      }
+    },
+    {
+      "time": "08:45",
+      "hour": 8,
+      "minute": 45,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1706-KYS822",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1706-KYS822&DW=2&TM=0845",
+      "raw": {
+        "dw": "2",
+        "tm": "0845"
+      }
+    },
+    {
+      "time": "08:49",
+      "hour": 8,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1503-KY8036",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1503-KY8036&DW=2&TM=0849",
+      "raw": {
+        "dw": "2",
+        "tm": "0849"
+      }
+    },
+    {
+      "time": "08:55",
+      "hour": 8,
+      "minute": 55,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1516-KY842",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1516-KY842&DW=2&TM=0855",
+      "raw": {
+        "dw": "2",
+        "tm": "0855"
+      }
+    },
+    {
+      "time": "08:58",
+      "hour": 8,
+      "minute": 58,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1218-KY30800",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1218-KY30800&DW=2&TM=0858",
+      "raw": {
+        "dw": "2",
+        "tm": "0858"
+      }
+    },
+    {
+      "time": "09:01",
+      "hour": 9,
+      "minute": 1,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1506-KY8038",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1506-KY8038&DW=2&TM=0901",
+      "raw": {
+        "dw": "2",
+        "tm": "0901"
+      }
+    },
+    {
+      "time": "09:07",
+      "hour": 9,
+      "minute": 7,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1707-KYS824",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1707-KYS824&DW=2&TM=0907",
+      "raw": {
+        "dw": "2",
+        "tm": "0907"
+      }
+    },
+    {
+      "time": "09:11",
+      "hour": 9,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1518-KY844",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1518-KY844&DW=2&TM=0911",
+      "raw": {
+        "dw": "2",
+        "tm": "0911"
+      }
+    },
+    {
+      "time": "09:19",
+      "hour": 9,
+      "minute": 19,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1708-KYS826",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1708-KYS826&DW=2&TM=0919",
+      "raw": {
+        "dw": "2",
+        "tm": "0919"
+      }
+    },
+    {
+      "time": "09:21",
+      "hour": 9,
+      "minute": 21,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1559-KY9030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1559-KY9030&DW=2&TM=0921",
+      "raw": {
+        "dw": "2",
+        "tm": "0921"
+      }
+    },
+    {
+      "time": "09:29",
+      "hour": 9,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1596-KY940",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1596-KY940&DW=2&TM=0929",
+      "raw": {
+        "dw": "2",
+        "tm": "0929"
+      }
+    },
+    {
+      "time": "09:31",
+      "hour": 9,
+      "minute": 31,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1563-KY9032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1563-KY9032&DW=2&TM=0931",
+      "raw": {
+        "dw": "2",
+        "tm": "0931"
+      }
+    },
+    {
+      "time": "09:40",
+      "hour": 9,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1586-KY922",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1586-KY922&DW=2&TM=0940",
+      "raw": {
+        "dw": "2",
+        "tm": "0940"
+      }
+    },
+    {
+      "time": "09:42",
+      "hour": 9,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1567-KY9034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1567-KY9034&DW=2&TM=0942",
+      "raw": {
+        "dw": "2",
+        "tm": "0942"
+      }
+    },
+    {
+      "time": "09:52",
+      "hour": 9,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1600-KY942",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1600-KY942&DW=2&TM=0952",
+      "raw": {
+        "dw": "2",
+        "tm": "0952"
+      }
+    },
+    {
+      "time": "09:54",
+      "hour": 9,
+      "minute": 54,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1224-KY3090",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1224-KY3090&DW=2&TM=0954",
+      "raw": {
+        "dw": "2",
+        "tm": "0954"
+      }
+    },
+    {
+      "time": "10:00",
+      "hour": 10,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1590-KY924",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1590-KY924&DW=2&TM=1000",
+      "raw": {
+        "dw": "2",
+        "tm": "1000"
+      }
+    },
+    {
+      "time": "10:02",
+      "hour": 10,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1572-KY9036",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1572-KY9036&DW=2&TM=1002",
+      "raw": {
+        "dw": "2",
+        "tm": "1002"
+      }
+    },
+    {
+      "time": "10:10",
+      "hour": 10,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1603-KY944",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1603-KY944&DW=2&TM=1010",
+      "raw": {
+        "dw": "2",
+        "tm": "1010"
+      }
+    },
+    {
+      "time": "10:12",
+      "hour": 10,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1226-KY3092",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1226-KY3092&DW=2&TM=1012",
+      "raw": {
+        "dw": "2",
+        "tm": "1012"
+      }
+    },
+    {
+      "time": "10:20",
+      "hour": 10,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1594-KY928",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1594-KY928&DW=2&TM=1020",
+      "raw": {
+        "dw": "2",
+        "tm": "1020"
+      }
+    },
+    {
+      "time": "10:22",
+      "hour": 10,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-293-KY10030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-293-KY10030&DW=2&TM=1022",
+      "raw": {
+        "dw": "2",
+        "tm": "1022"
+      }
+    },
+    {
+      "time": "10:30",
+      "hour": 10,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-323-KY1040",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-323-KY1040&DW=2&TM=1030",
+      "raw": {
+        "dw": "2",
+        "tm": "1030"
+      }
+    },
+    {
+      "time": "10:32",
+      "hour": 10,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1229-KY3100",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1229-KY3100&DW=2&TM=1032",
+      "raw": {
+        "dw": "2",
+        "tm": "1032"
+      }
+    },
+    {
+      "time": "10:40",
+      "hour": 10,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-316-KY1022",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-316-KY1022&DW=2&TM=1040",
+      "raw": {
+        "dw": "2",
+        "tm": "1040"
+      }
+    },
+    {
+      "time": "10:42",
+      "hour": 10,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-298-KY10032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-298-KY10032&DW=2&TM=1042",
+      "raw": {
+        "dw": "2",
+        "tm": "1042"
+      }
+    },
+    {
+      "time": "10:50",
+      "hour": 10,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-327-KY1042",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-327-KY1042&DW=2&TM=1050",
+      "raw": {
+        "dw": "2",
+        "tm": "1050"
+      }
+    },
+    {
+      "time": "10:52",
+      "hour": 10,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1231-KY3102",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1231-KY3102&DW=2&TM=1052",
+      "raw": {
+        "dw": "2",
+        "tm": "1052"
+      }
+    },
+    {
+      "time": "11:00",
+      "hour": 11,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-320-KY1024",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-320-KY1024&DW=2&TM=1100",
+      "raw": {
+        "dw": "2",
+        "tm": "1100"
+      }
+    },
+    {
+      "time": "11:02",
+      "hour": 11,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-302-KY10034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-302-KY10034&DW=2&TM=1102",
+      "raw": {
+        "dw": "2",
+        "tm": "1102"
+      }
+    },
+    {
+      "time": "11:10",
+      "hour": 11,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-331-KY1044",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-331-KY1044&DW=2&TM=1110",
+      "raw": {
+        "dw": "2",
+        "tm": "1110"
+      }
+    },
+    {
+      "time": "11:12",
+      "hour": 11,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1233-KY3104",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1233-KY3104&DW=2&TM=1112",
+      "raw": {
+        "dw": "2",
+        "tm": "1112"
+      }
+    },
+    {
+      "time": "11:20",
+      "hour": 11,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1645-KYS1026",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1645-KYS1026&DW=2&TM=1120",
+      "raw": {
+        "dw": "2",
+        "tm": "1120"
+      }
+    },
+    {
+      "time": "11:22",
+      "hour": 11,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-372-KY11030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-372-KY11030&DW=2&TM=1122",
+      "raw": {
+        "dw": "2",
+        "tm": "1122"
+      }
+    },
+    {
+      "time": "11:30",
+      "hour": 11,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-396-KY1140",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-396-KY1140&DW=2&TM=1130",
+      "raw": {
+        "dw": "2",
+        "tm": "1130"
+      }
+    },
+    {
+      "time": "11:32",
+      "hour": 11,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1235-KY3110",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1235-KY3110&DW=2&TM=1132",
+      "raw": {
+        "dw": "2",
+        "tm": "1132"
+      }
+    },
+    {
+      "time": "11:40",
+      "hour": 11,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1647-KYS1120",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1647-KYS1120&DW=2&TM=1140",
+      "raw": {
+        "dw": "2",
+        "tm": "1140"
+      }
+    },
+    {
+      "time": "11:42",
+      "hour": 11,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-377-KY11032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-377-KY11032&DW=2&TM=1142",
+      "raw": {
+        "dw": "2",
+        "tm": "1142"
+      }
+    },
+    {
+      "time": "11:52",
+      "hour": 11,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-400-KY1142",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-400-KY1142&DW=2&TM=1152",
+      "raw": {
+        "dw": "2",
+        "tm": "1152"
+      }
+    },
+    {
+      "time": "11:54",
+      "hour": 11,
+      "minute": 54,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1237-KY3112",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1237-KY3112&DW=2&TM=1154",
+      "raw": {
+        "dw": "2",
+        "tm": "1154"
+      }
+    },
+    {
+      "time": "12:00",
+      "hour": 12,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1648-KYS1122",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1648-KYS1122&DW=2&TM=1200",
+      "raw": {
+        "dw": "2",
+        "tm": "1200"
+      }
+    },
+    {
+      "time": "12:02",
+      "hour": 12,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-381-KY11034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-381-KY11034&DW=2&TM=1202",
+      "raw": {
+        "dw": "2",
+        "tm": "1202"
+      }
+    },
+    {
+      "time": "12:10",
+      "hour": 12,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-404-KY1144",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-404-KY1144&DW=2&TM=1210",
+      "raw": {
+        "dw": "2",
+        "tm": "1210"
+      }
+    },
+    {
+      "time": "12:12",
+      "hour": 12,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1239-KY3114",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1239-KY3114&DW=2&TM=1212",
+      "raw": {
+        "dw": "2",
+        "tm": "1212"
+      }
+    },
+    {
+      "time": "12:20",
+      "hour": 12,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-394-KY1124",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-394-KY1124&DW=2&TM=1220",
+      "raw": {
+        "dw": "2",
+        "tm": "1220"
+      }
+    },
+    {
+      "time": "12:22",
+      "hour": 12,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-444-KY12030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-444-KY12030&DW=2&TM=1222",
+      "raw": {
+        "dw": "2",
+        "tm": "1222"
+      }
+    },
+    {
+      "time": "12:30",
+      "hour": 12,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-468-KY1240",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-468-KY1240&DW=2&TM=1230",
+      "raw": {
+        "dw": "2",
+        "tm": "1230"
+      }
+    },
+    {
+      "time": "12:32",
+      "hour": 12,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1241-KY3120",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1241-KY3120&DW=2&TM=1232",
+      "raw": {
+        "dw": "2",
+        "tm": "1232"
+      }
+    },
+    {
+      "time": "12:40",
+      "hour": 12,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-463-KY1220",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-463-KY1220&DW=2&TM=1240",
+      "raw": {
+        "dw": "2",
+        "tm": "1240"
+      }
+    },
+    {
+      "time": "12:42",
+      "hour": 12,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-449-KY12032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-449-KY12032&DW=2&TM=1242",
+      "raw": {
+        "dw": "2",
+        "tm": "1242"
+      }
+    },
+    {
+      "time": "12:50",
+      "hour": 12,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-472-KY1242",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-472-KY1242&DW=2&TM=1250",
+      "raw": {
+        "dw": "2",
+        "tm": "1250"
+      }
+    },
+    {
+      "time": "12:52",
+      "hour": 12,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1243-KY3122",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1243-KY3122&DW=2&TM=1252",
+      "raw": {
+        "dw": "2",
+        "tm": "1252"
+      }
+    },
+    {
+      "time": "13:00",
+      "hour": 13,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-464-KY1222",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-464-KY1222&DW=2&TM=1300",
+      "raw": {
+        "dw": "2",
+        "tm": "1300"
+      }
+    },
+    {
+      "time": "13:02",
+      "hour": 13,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-453-KY12034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-453-KY12034&DW=2&TM=1302",
+      "raw": {
+        "dw": "2",
+        "tm": "1302"
+      }
+    },
+    {
+      "time": "13:10",
+      "hour": 13,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-476-KY1244",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-476-KY1244&DW=2&TM=1310",
+      "raw": {
+        "dw": "2",
+        "tm": "1310"
+      }
+    },
+    {
+      "time": "13:12",
+      "hour": 13,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1245-KY3124",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1245-KY3124&DW=2&TM=1312",
+      "raw": {
+        "dw": "2",
+        "tm": "1312"
+      }
+    },
+    {
+      "time": "13:20",
+      "hour": 13,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-466-KY1224",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-466-KY1224&DW=2&TM=1320",
+      "raw": {
+        "dw": "2",
+        "tm": "1320"
+      }
+    },
+    {
+      "time": "13:22",
+      "hour": 13,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-517-KY13030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-517-KY13030&DW=2&TM=1322",
+      "raw": {
+        "dw": "2",
+        "tm": "1322"
+      }
+    },
+    {
+      "time": "13:30",
+      "hour": 13,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-542-KY1340",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-542-KY1340&DW=2&TM=1330",
+      "raw": {
+        "dw": "2",
+        "tm": "1330"
+      }
+    },
+    {
+      "time": "13:32",
+      "hour": 13,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1247-KY3130",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1247-KY3130&DW=2&TM=1332",
+      "raw": {
+        "dw": "2",
+        "tm": "1332"
+      }
+    },
+    {
+      "time": "13:40",
+      "hour": 13,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1660-KYS1320",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1660-KYS1320&DW=2&TM=1340",
+      "raw": {
+        "dw": "2",
+        "tm": "1340"
+      }
+    },
+    {
+      "time": "13:42",
+      "hour": 13,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-522-KY13032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-522-KY13032&DW=2&TM=1342",
+      "raw": {
+        "dw": "2",
+        "tm": "1342"
+      }
+    },
+    {
+      "time": "13:52",
+      "hour": 13,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-546-KY1342",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-546-KY1342&DW=2&TM=1352",
+      "raw": {
+        "dw": "2",
+        "tm": "1352"
+      }
+    },
+    {
+      "time": "13:54",
+      "hour": 13,
+      "minute": 54,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1249-KY3132",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1249-KY3132&DW=2&TM=1354",
+      "raw": {
+        "dw": "2",
+        "tm": "1354"
+      }
+    },
+    {
+      "time": "14:00",
+      "hour": 14,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1662-KYS1322",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1662-KYS1322&DW=2&TM=1400",
+      "raw": {
+        "dw": "2",
+        "tm": "1400"
+      }
+    },
+    {
+      "time": "14:02",
+      "hour": 14,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-526-KY13034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-526-KY13034&DW=2&TM=1402",
+      "raw": {
+        "dw": "2",
+        "tm": "1402"
+      }
+    },
+    {
+      "time": "14:10",
+      "hour": 14,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-550-KY1344",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-550-KY1344&DW=2&TM=1410",
+      "raw": {
+        "dw": "2",
+        "tm": "1410"
+      }
+    },
+    {
+      "time": "14:12",
+      "hour": 14,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1251-KY3134",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1251-KY3134&DW=2&TM=1412",
+      "raw": {
+        "dw": "2",
+        "tm": "1412"
+      }
+    },
+    {
+      "time": "14:20",
+      "hour": 14,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1664-KYS1324",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1664-KYS1324&DW=2&TM=1420",
+      "raw": {
+        "dw": "2",
+        "tm": "1420"
+      }
+    },
+    {
+      "time": "14:22",
+      "hour": 14,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-590-KY14030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-590-KY14030&DW=2&TM=1422",
+      "raw": {
+        "dw": "2",
+        "tm": "1422"
+      }
+    },
+    {
+      "time": "14:30",
+      "hour": 14,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-613-KY1440",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-613-KY1440&DW=2&TM=1430",
+      "raw": {
+        "dw": "2",
+        "tm": "1430"
+      }
+    },
+    {
+      "time": "14:32",
+      "hour": 14,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1253-KY3140",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1253-KY3140&DW=2&TM=1432",
+      "raw": {
+        "dw": "2",
+        "tm": "1432"
+      }
+    },
+    {
+      "time": "14:40",
+      "hour": 14,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1666-KYS1420",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1666-KYS1420&DW=2&TM=1440",
+      "raw": {
+        "dw": "2",
+        "tm": "1440"
+      }
+    },
+    {
+      "time": "14:42",
+      "hour": 14,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-595-KY14032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-595-KY14032&DW=2&TM=1442",
+      "raw": {
+        "dw": "2",
+        "tm": "1442"
+      }
+    },
+    {
+      "time": "14:50",
+      "hour": 14,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-617-KY1442",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-617-KY1442&DW=2&TM=1450",
+      "raw": {
+        "dw": "2",
+        "tm": "1450"
+      }
+    },
+    {
+      "time": "14:52",
+      "hour": 14,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1255-KY3142",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1255-KY3142&DW=2&TM=1452",
+      "raw": {
+        "dw": "2",
+        "tm": "1452"
+      }
+    },
+    {
+      "time": "15:00",
+      "hour": 15,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-611-KY1422",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-611-KY1422&DW=2&TM=1500",
+      "raw": {
+        "dw": "2",
+        "tm": "1500"
+      }
+    },
+    {
+      "time": "15:02",
+      "hour": 15,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-599-KY14034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-599-KY14034&DW=2&TM=1502",
+      "raw": {
+        "dw": "2",
+        "tm": "1502"
+      }
+    },
+    {
+      "time": "15:10",
+      "hour": 15,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-621-KY1444",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-621-KY1444&DW=2&TM=1510",
+      "raw": {
+        "dw": "2",
+        "tm": "1510"
+      }
+    },
+    {
+      "time": "15:12",
+      "hour": 15,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1257-KY3144",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1257-KY3144&DW=2&TM=1512",
+      "raw": {
+        "dw": "2",
+        "tm": "1512"
+      }
+    },
+    {
+      "time": "15:20",
+      "hour": 15,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1670-KYS1424",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1670-KYS1424&DW=2&TM=1520",
+      "raw": {
+        "dw": "2",
+        "tm": "1520"
+      }
+    },
+    {
+      "time": "15:22",
+      "hour": 15,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-663-KY15030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-663-KY15030&DW=2&TM=1522",
+      "raw": {
+        "dw": "2",
+        "tm": "1522"
+      }
+    },
+    {
+      "time": "15:30",
+      "hour": 15,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-688-KY1540",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-688-KY1540&DW=2&TM=1530",
+      "raw": {
+        "dw": "2",
+        "tm": "1530"
+      }
+    },
+    {
+      "time": "15:32",
+      "hour": 15,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1259-KY3150",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1259-KY3150&DW=2&TM=1532",
+      "raw": {
+        "dw": "2",
+        "tm": "1532"
+      }
+    },
+    {
+      "time": "15:40",
+      "hour": 15,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1674-KYS1520",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1674-KYS1520&DW=2&TM=1540",
+      "raw": {
+        "dw": "2",
+        "tm": "1540"
+      }
+    },
+    {
+      "time": "15:42",
+      "hour": 15,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-668-KY15032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-668-KY15032&DW=2&TM=1542",
+      "raw": {
+        "dw": "2",
+        "tm": "1542"
+      }
+    },
+    {
+      "time": "15:52",
+      "hour": 15,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-692-KY1542",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-692-KY1542&DW=2&TM=1552",
+      "raw": {
+        "dw": "2",
+        "tm": "1552"
+      }
+    },
+    {
+      "time": "15:54",
+      "hour": 15,
+      "minute": 54,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1261-KY3152",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1261-KY3152&DW=2&TM=1554",
+      "raw": {
+        "dw": "2",
+        "tm": "1554"
+      }
+    },
+    {
+      "time": "16:00",
+      "hour": 16,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1676-KYS1522",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1676-KYS1522&DW=2&TM=1600",
+      "raw": {
+        "dw": "2",
+        "tm": "1600"
+      }
+    },
+    {
+      "time": "16:02",
+      "hour": 16,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-672-KY15034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-672-KY15034&DW=2&TM=1602",
+      "raw": {
+        "dw": "2",
+        "tm": "1602"
+      }
+    },
+    {
+      "time": "16:09",
+      "hour": 16,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-696-KY1544",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-696-KY1544&DW=2&TM=1609",
+      "raw": {
+        "dw": "2",
+        "tm": "1609"
+      }
+    },
+    {
+      "time": "16:11",
+      "hour": 16,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1263-KY3154",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1263-KY3154&DW=2&TM=1611",
+      "raw": {
+        "dw": "2",
+        "tm": "1611"
+      }
+    },
+    {
+      "time": "16:20",
+      "hour": 16,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1677-KYS1524",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1677-KYS1524&DW=2&TM=1620",
+      "raw": {
+        "dw": "2",
+        "tm": "1620"
+      }
+    },
+    {
+      "time": "16:22",
+      "hour": 16,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-738-KY16030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-738-KY16030&DW=2&TM=1622",
+      "raw": {
+        "dw": "2",
+        "tm": "1622"
+      }
+    },
+    {
+      "time": "16:30",
+      "hour": 16,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-765-KY1640",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-765-KY1640&DW=2&TM=1630",
+      "raw": {
+        "dw": "2",
+        "tm": "1630"
+      }
+    },
+    {
+      "time": "16:32",
+      "hour": 16,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1265-KY3160",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1265-KY3160&DW=2&TM=1632",
+      "raw": {
+        "dw": "2",
+        "tm": "1632"
+      }
+    },
+    {
+      "time": "16:40",
+      "hour": 16,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-759-KY1620",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-759-KY1620&DW=2&TM=1640",
+      "raw": {
+        "dw": "2",
+        "tm": "1640"
+      }
+    },
+    {
+      "time": "16:42",
+      "hour": 16,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-743-KY16032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-743-KY16032&DW=2&TM=1642",
+      "raw": {
+        "dw": "2",
+        "tm": "1642"
+      }
+    },
+    {
+      "time": "16:50",
+      "hour": 16,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-769-KY1642",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-769-KY1642&DW=2&TM=1650",
+      "raw": {
+        "dw": "2",
+        "tm": "1650"
+      }
+    },
+    {
+      "time": "16:52",
+      "hour": 16,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1268-KY3162",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1268-KY3162&DW=2&TM=1652",
+      "raw": {
+        "dw": "2",
+        "tm": "1652"
+      }
+    },
+    {
+      "time": "17:00",
+      "hour": 17,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1682-KYS1622",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1682-KYS1622&DW=2&TM=1700",
+      "raw": {
+        "dw": "2",
+        "tm": "1700"
+      }
+    },
+    {
+      "time": "17:02",
+      "hour": 17,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-747-KY16034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-747-KY16034&DW=2&TM=1702",
+      "raw": {
+        "dw": "2",
+        "tm": "1702"
+      }
+    },
+    {
+      "time": "17:10",
+      "hour": 17,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-773-KY1644",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-773-KY1644&DW=2&TM=1710",
+      "raw": {
+        "dw": "2",
+        "tm": "1710"
+      }
+    },
+    {
+      "time": "17:12",
+      "hour": 17,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1270-KY3164",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1270-KY3164&DW=2&TM=1712",
+      "raw": {
+        "dw": "2",
+        "tm": "1712"
+      }
+    },
+    {
+      "time": "17:20",
+      "hour": 17,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-763-KY1624",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-763-KY1624&DW=2&TM=1720",
+      "raw": {
+        "dw": "2",
+        "tm": "1720"
+      }
+    },
+    {
+      "time": "17:22",
+      "hour": 17,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-816-KY17030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-816-KY17030&DW=2&TM=1722",
+      "raw": {
+        "dw": "2",
+        "tm": "1722"
+      }
+    },
+    {
+      "time": "17:30",
+      "hour": 17,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-840-KY1740",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-840-KY1740&DW=2&TM=1730",
+      "raw": {
+        "dw": "2",
+        "tm": "1730"
+      }
+    },
+    {
+      "time": "17:32",
+      "hour": 17,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1271-KY3170",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1271-KY3170&DW=2&TM=1732",
+      "raw": {
+        "dw": "2",
+        "tm": "1732"
+      }
+    },
+    {
+      "time": "17:40",
+      "hour": 17,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1686-KYS1720",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1686-KYS1720&DW=2&TM=1740",
+      "raw": {
+        "dw": "2",
+        "tm": "1740"
+      }
+    },
+    {
+      "time": "17:42",
+      "hour": 17,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-821-KY17032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-821-KY17032&DW=2&TM=1742",
+      "raw": {
+        "dw": "2",
+        "tm": "1742"
+      }
+    },
+    {
+      "time": "17:49",
+      "hour": 17,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-844-KY1742",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-844-KY1742&DW=2&TM=1749",
+      "raw": {
+        "dw": "2",
+        "tm": "1749"
+      }
+    },
+    {
+      "time": "17:51",
+      "hour": 17,
+      "minute": 51,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1274-KY3172",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1274-KY3172&DW=2&TM=1751",
+      "raw": {
+        "dw": "2",
+        "tm": "1751"
+      }
+    },
+    {
+      "time": "18:00",
+      "hour": 18,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1687-KYS1722",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1687-KYS1722&DW=2&TM=1800",
+      "raw": {
+        "dw": "2",
+        "tm": "1800"
+      }
+    },
+    {
+      "time": "18:02",
+      "hour": 18,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-825-KY17034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-825-KY17034&DW=2&TM=1802",
+      "raw": {
+        "dw": "2",
+        "tm": "1802"
+      }
+    },
+    {
+      "time": "18:10",
+      "hour": 18,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-848-KY1744",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-848-KY1744&DW=2&TM=1810",
+      "raw": {
+        "dw": "2",
+        "tm": "1810"
+      }
+    },
+    {
+      "time": "18:12",
+      "hour": 18,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-829-KY17036",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-829-KY17036&DW=2&TM=1812",
+      "raw": {
+        "dw": "2",
+        "tm": "1812"
+      }
+    },
+    {
+      "time": "18:20",
+      "hour": 18,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-838-KY1724",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-838-KY1724&DW=2&TM=1820",
+      "raw": {
+        "dw": "2",
+        "tm": "1820"
+      }
+    },
+    {
+      "time": "18:22",
+      "hour": 18,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-893-KY18030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-893-KY18030&DW=2&TM=1822",
+      "raw": {
+        "dw": "2",
+        "tm": "1822"
+      }
+    },
+    {
+      "time": "18:29",
+      "hour": 18,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-912-KY18060",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-912-KY18060&DW=2&TM=1829",
+      "raw": {
+        "dw": "2",
+        "tm": "1829"
+      }
+    },
+    {
+      "time": "18:31",
+      "hour": 18,
+      "minute": 31,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "茨木市",
+      "trainId": "1950100-1621-KYL1840",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1621-KYL1840&DW=2&TM=1831",
+      "raw": {
+        "dw": "2",
+        "tm": "1831"
+      }
+    },
+    {
+      "time": "18:33",
+      "hour": 18,
+      "minute": 33,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-897-KY18032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-897-KY18032&DW=2&TM=1833",
+      "raw": {
+        "dw": "2",
+        "tm": "1833"
+      }
+    },
+    {
+      "time": "18:40",
+      "hour": 18,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-914-KY1820",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-914-KY1820&DW=2&TM=1840",
+      "raw": {
+        "dw": "2",
+        "tm": "1840"
+      }
+    },
+    {
+      "time": "18:42",
+      "hour": 18,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-901-KY18034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-901-KY18034&DW=2&TM=1842",
+      "raw": {
+        "dw": "2",
+        "tm": "1842"
+      }
+    },
+    {
+      "time": "18:50",
+      "hour": 18,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-922-KY1842",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-922-KY1842&DW=2&TM=1850",
+      "raw": {
+        "dw": "2",
+        "tm": "1850"
+      }
+    },
+    {
+      "time": "18:52",
+      "hour": 18,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-905-KY18036",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-905-KY18036&DW=2&TM=1852",
+      "raw": {
+        "dw": "2",
+        "tm": "1852"
+      }
+    },
+    {
+      "time": "19:00",
+      "hour": 19,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-915-KY1822",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-915-KY1822&DW=2&TM=1900",
+      "raw": {
+        "dw": "2",
+        "tm": "1900"
+      }
+    },
+    {
+      "time": "19:02",
+      "hour": 19,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-907-KY18038",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-907-KY18038&DW=2&TM=1902",
+      "raw": {
+        "dw": "2",
+        "tm": "1902"
+      }
+    },
+    {
+      "time": "19:10",
+      "hour": 19,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-926-KY1844",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-926-KY1844&DW=2&TM=1910",
+      "raw": {
+        "dw": "2",
+        "tm": "1910"
+      }
+    },
+    {
+      "time": "19:12",
+      "hour": 19,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-909-KY18040",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-909-KY18040&DW=2&TM=1912",
+      "raw": {
+        "dw": "2",
+        "tm": "1912"
+      }
+    },
+    {
+      "time": "19:20",
+      "hour": 19,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1692-KYS1824",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1692-KYS1824&DW=2&TM=1920",
+      "raw": {
+        "dw": "2",
+        "tm": "1920"
+      }
+    },
+    {
+      "time": "19:22",
+      "hour": 19,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-968-KY19030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-968-KY19030&DW=2&TM=1922",
+      "raw": {
+        "dw": "2",
+        "tm": "1922"
+      }
+    },
+    {
+      "time": "19:30",
+      "hour": 19,
+      "minute": 30,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-995-KY1940",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-995-KY1940&DW=2&TM=1930",
+      "raw": {
+        "dw": "2",
+        "tm": "1930"
+      }
+    },
+    {
+      "time": "19:32",
+      "hour": 19,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-972-KY19032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-972-KY19032&DW=2&TM=1932",
+      "raw": {
+        "dw": "2",
+        "tm": "1932"
+      }
+    },
+    {
+      "time": "19:40",
+      "hour": 19,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-991-KY1922",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-991-KY1922&DW=2&TM=1940",
+      "raw": {
+        "dw": "2",
+        "tm": "1940"
+      }
+    },
+    {
+      "time": "19:42",
+      "hour": 19,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-976-KY19034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-976-KY19034&DW=2&TM=1942",
+      "raw": {
+        "dw": "2",
+        "tm": "1942"
+      }
+    },
+    {
+      "time": "19:50",
+      "hour": 19,
+      "minute": 50,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-999-KY1942",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-999-KY1942&DW=2&TM=1950",
+      "raw": {
+        "dw": "2",
+        "tm": "1950"
+      }
+    },
+    {
+      "time": "19:52",
+      "hour": 19,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-980-KY19036",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-980-KY19036&DW=2&TM=1952",
+      "raw": {
+        "dw": "2",
+        "tm": "1952"
+      }
+    },
+    {
+      "time": "20:00",
+      "hour": 20,
+      "minute": 0,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1693-KYS1924",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1693-KYS1924&DW=2&TM=2000",
+      "raw": {
+        "dw": "2",
+        "tm": "2000"
+      }
+    },
+    {
+      "time": "20:02",
+      "hour": 20,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-982-KY19038",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-982-KY19038&DW=2&TM=2002",
+      "raw": {
+        "dw": "2",
+        "tm": "2002"
+      }
+    },
+    {
+      "time": "20:09",
+      "hour": 20,
+      "minute": 9,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "茨木市",
+      "trainId": "1950100-1624-KYL1926",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1624-KYL1926&DW=2&TM=2009",
+      "raw": {
+        "dw": "2",
+        "tm": "2009"
+      }
+    },
+    {
+      "time": "20:11",
+      "hour": 20,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1003-KY1944",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1003-KY1944&DW=2&TM=2011",
+      "raw": {
+        "dw": "2",
+        "tm": "2011"
+      }
+    },
+    {
+      "time": "20:13",
+      "hour": 20,
+      "minute": 13,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-983-KY19040",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-983-KY19040&DW=2&TM=2013",
+      "raw": {
+        "dw": "2",
+        "tm": "2013"
+      }
+    },
+    {
+      "time": "20:20",
+      "hour": 20,
+      "minute": 20,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-993-KY1928",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-993-KY1928&DW=2&TM=2020",
+      "raw": {
+        "dw": "2",
+        "tm": "2020"
+      }
+    },
+    {
+      "time": "20:22",
+      "hour": 20,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1050-KY20030",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1050-KY20030&DW=2&TM=2022",
+      "raw": {
+        "dw": "2",
+        "tm": "2022"
+      }
+    },
+    {
+      "time": "20:32",
+      "hour": 20,
+      "minute": 32,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1077-KY2040",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1077-KY2040&DW=2&TM=2032",
+      "raw": {
+        "dw": "2",
+        "tm": "2032"
+      }
+    },
+    {
+      "time": "20:34",
+      "hour": 20,
+      "minute": 34,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1053-KY20032",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1053-KY20032&DW=2&TM=2034",
+      "raw": {
+        "dw": "2",
+        "tm": "2034"
+      }
+    },
+    {
+      "time": "20:43",
+      "hour": 20,
+      "minute": 43,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "茨木市",
+      "trainId": "1950100-1714-KYSL2020",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1714-KYSL2020&DW=2&TM=2043",
+      "raw": {
+        "dw": "2",
+        "tm": "2043"
+      }
+    },
+    {
+      "time": "20:46",
+      "hour": 20,
+      "minute": 46,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1055-KY20034",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1055-KY20034&DW=2&TM=2046",
+      "raw": {
+        "dw": "2",
+        "tm": "2046"
+      }
+    },
+    {
+      "time": "20:49",
+      "hour": 20,
+      "minute": 49,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1071-KY2022",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1071-KY2022&DW=2&TM=2049",
+      "raw": {
+        "dw": "2",
+        "tm": "2049"
+      }
+    },
+    {
+      "time": "20:56",
+      "hour": 20,
+      "minute": 56,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1081-KY2042",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1081-KY2042&DW=2&TM=2056",
+      "raw": {
+        "dw": "2",
+        "tm": "2056"
+      }
+    },
+    {
+      "time": "20:58",
+      "hour": 20,
+      "minute": 58,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1057-KY20036",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1057-KY20036&DW=2&TM=2058",
+      "raw": {
+        "dw": "2",
+        "tm": "2058"
+      }
+    },
+    {
+      "time": "21:08",
+      "hour": 21,
+      "minute": 8,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "茨木市",
+      "trainId": "1950100-1625-KYL2024",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1625-KYL2024&DW=2&TM=2108",
+      "raw": {
+        "dw": "2",
+        "tm": "2108"
+      }
+    },
+    {
+      "time": "21:10",
+      "hour": 21,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "準急",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1059-KY20038",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1059-KY20038&DW=2&TM=2110",
+      "raw": {
+        "dw": "2",
+        "tm": "2110"
+      }
+    },
+    {
+      "time": "21:14",
+      "hour": 21,
+      "minute": 14,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1283-KY32000",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1283-KY32000&DW=2&TM=2114",
+      "raw": {
+        "dw": "2",
+        "tm": "2114"
+      }
+    },
+    {
+      "time": "21:21",
+      "hour": 21,
+      "minute": 21,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1021-KY2000",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1021-KY2000&DW=2&TM=2121",
+      "raw": {
+        "dw": "2",
+        "tm": "2121"
+      }
+    },
+    {
+      "time": "21:25",
+      "hour": 21,
+      "minute": 25,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1095-KY2100",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1095-KY2100&DW=2&TM=2125",
+      "raw": {
+        "dw": "2",
+        "tm": "2125"
+      }
+    },
+    {
+      "time": "21:33",
+      "hour": 21,
+      "minute": 33,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1115-KY2102",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1115-KY2102&DW=2&TM=2133",
+      "raw": {
+        "dw": "2",
+        "tm": "2133"
+      }
+    },
+    {
+      "time": "21:41",
+      "hour": 21,
+      "minute": 41,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1121-KY2104",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1121-KY2104&DW=2&TM=2141",
+      "raw": {
+        "dw": "2",
+        "tm": "2141"
+      }
+    },
+    {
+      "time": "21:56",
+      "hour": 21,
+      "minute": 56,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1286-KY32100",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1286-KY32100&DW=2&TM=2156",
+      "raw": {
+        "dw": "2",
+        "tm": "2156"
+      }
+    },
+    {
+      "time": "22:12",
+      "hour": 22,
+      "minute": 12,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1287-KY32102",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1287-KY32102&DW=2&TM=2212",
+      "raw": {
+        "dw": "2",
+        "tm": "2212"
+      }
+    },
+    {
+      "time": "22:21",
+      "hour": 22,
+      "minute": 21,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "茨木市",
+      "trainId": "1950100-1628-KYL2140",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1628-KYL2140&DW=2&TM=2221",
+      "raw": {
+        "dw": "2",
+        "tm": "2221"
+      }
+    },
+    {
+      "time": "22:25",
+      "hour": 22,
+      "minute": 25,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1144-KY2200",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1144-KY2200&DW=2&TM=2225",
+      "raw": {
+        "dw": "2",
+        "tm": "2225"
+      }
+    },
+    {
+      "time": "22:41",
+      "hour": 22,
+      "minute": 41,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1164-KY2202",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1164-KY2202&DW=2&TM=2241",
+      "raw": {
+        "dw": "2",
+        "tm": "2241"
+      }
+    },
+    {
+      "time": "22:58",
+      "hour": 22,
+      "minute": 58,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1168-KY2204",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1168-KY2204&DW=2&TM=2258",
+      "raw": {
+        "dw": "2",
+        "tm": "2258"
+      }
+    },
+    {
+      "time": "23:11",
+      "hour": 23,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "桂",
+      "trainId": "1950100-1177-KY22082",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1177-KY22082&DW=2&TM=2311",
+      "raw": {
+        "dw": "2",
+        "tm": "2311"
+      }
+    },
+    {
+      "time": "23:24",
+      "hour": 23,
+      "minute": 24,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1201-KY2340",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1201-KY2340&DW=2&TM=2324",
+      "raw": {
+        "dw": "2",
+        "tm": "2324"
+      }
+    },
+    {
+      "time": "23:31",
+      "hour": 23,
+      "minute": 31,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "桂",
+      "trainId": "1950100-1192-KY23080",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1192-KY23080&DW=2&TM=2331",
+      "raw": {
+        "dw": "2",
+        "tm": "2331"
+      }
+    },
+    {
+      "time": "23:33",
+      "hour": 23,
+      "minute": 33,
+      "serviceDayOffset": 0,
+      "serviceType": "急行",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1198-KY23110",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1198-KY23110&DW=2&TM=2333",
+      "raw": {
+        "dw": "2",
+        "tm": "2333"
+      }
+    },
+    {
+      "time": "23:46",
+      "hour": 23,
+      "minute": 46,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "桂",
+      "trainId": "1950100-1194-KY23082",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1194-KY23082&DW=2&TM=2346",
+      "raw": {
+        "dw": "2",
+        "tm": "2346"
+      }
+    },
+    {
+      "time": "23:48",
+      "hour": 23,
+      "minute": 48,
+      "serviceDayOffset": 0,
+      "serviceType": "急行",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1199-KY23112",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1199-KY23112&DW=2&TM=2348",
+      "raw": {
+        "dw": "2",
+        "tm": "2348"
+      }
+    },
+    {
+      "time": "00:01",
+      "hour": 0,
+      "minute": 1,
+      "serviceDayOffset": 1,
+      "serviceType": "普通",
+      "destinationJa": "桂",
+      "trainId": "1950100-1196-KY23084",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1196-KY23084&DW=2&TM=0001",
+      "raw": {
+        "dw": "2",
+        "tm": "0001"
+      }
+    },
+    {
+      "time": "00:03",
+      "hour": 0,
+      "minute": 3,
+      "serviceDayOffset": 1,
+      "serviceType": "急行",
+      "destinationJa": "京都河原町",
+      "trainId": "1950100-1200-KY23114",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1200-KY23114&DW=2&TM=0003",
+      "raw": {
+        "dw": "2",
+        "tm": "0003"
+      }
+    },
+    {
+      "time": "00:12",
+      "hour": 0,
+      "minute": 12,
+      "serviceDayOffset": 1,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1202-KY2342",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1202-KY2342&DW=2&TM=0012",
+      "raw": {
+        "dw": "2",
+        "tm": "0012"
+      }
+    },
+    {
+      "time": "00:22",
+      "hour": 0,
+      "minute": 22,
+      "serviceDayOffset": 1,
+      "serviceType": "普通",
+      "destinationJa": "高槻市",
+      "trainId": "1950100-1207-KY2440",
+      "detailUrl": "https://www.hankyu.co.jp/station/timetable.php?stationName=%E5%8D%97%E8%8C%A8%E6%9C%A8&SF=6025&TX=1950100-1207-KY2440&DW=2&TM=0022",
+      "raw": {
+        "dw": "2",
+        "tm": "0022"
+      }
+    }
+  ]
+}

@@ -1,0 +1,465 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-01T13:16:49.183Z",
+  "titleJa": "キャンパス周辺 時刻表",
+  "calendars": [
+    {
+      "id": "weekday",
+      "labelJa": "平日",
+      "shortLabelJa": "平日"
+    },
+    {
+      "id": "holiday",
+      "labelJa": "土曜・休日",
+      "shortLabelJa": "休日"
+    }
+  ],
+  "holidayCalendar": {
+    "country": "JP",
+    "sourceNameJa": "内閣府 国民の祝日",
+    "sourceUrl": "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv",
+    "holidays": [
+      {
+        "date": "2026-01-01",
+        "nameJa": "元日"
+      },
+      {
+        "date": "2026-01-12",
+        "nameJa": "成人の日"
+      },
+      {
+        "date": "2026-02-11",
+        "nameJa": "建国記念の日"
+      },
+      {
+        "date": "2026-02-23",
+        "nameJa": "天皇誕生日"
+      },
+      {
+        "date": "2026-03-20",
+        "nameJa": "春分の日"
+      },
+      {
+        "date": "2026-04-29",
+        "nameJa": "昭和の日"
+      },
+      {
+        "date": "2026-05-03",
+        "nameJa": "憲法記念日"
+      },
+      {
+        "date": "2026-05-04",
+        "nameJa": "みどりの日"
+      },
+      {
+        "date": "2026-05-05",
+        "nameJa": "こどもの日"
+      },
+      {
+        "date": "2026-05-06",
+        "nameJa": "休日"
+      },
+      {
+        "date": "2026-07-20",
+        "nameJa": "海の日"
+      },
+      {
+        "date": "2026-08-11",
+        "nameJa": "山の日"
+      },
+      {
+        "date": "2026-09-21",
+        "nameJa": "敬老の日"
+      },
+      {
+        "date": "2026-09-22",
+        "nameJa": "休日"
+      },
+      {
+        "date": "2026-09-23",
+        "nameJa": "秋分の日"
+      },
+      {
+        "date": "2026-10-12",
+        "nameJa": "スポーツの日"
+      },
+      {
+        "date": "2026-11-03",
+        "nameJa": "文化の日"
+      },
+      {
+        "date": "2026-11-23",
+        "nameJa": "勤労感謝の日"
+      }
+    ]
+  },
+  "railways": [
+    {
+      "id": "osaka-monorail",
+      "nameJa": "大阪モノレール",
+      "shortNameJa": "モノレール",
+      "color": "#0072bc",
+      "textColor": "#ffffff"
+    },
+    {
+      "id": "hankyu",
+      "nameJa": "阪急電車",
+      "shortNameJa": "阪急",
+      "color": "#6f2c1f",
+      "textColor": "#ffffff"
+    },
+    {
+      "id": "jr-west",
+      "nameJa": "JR西日本",
+      "shortNameJa": "JR",
+      "color": "#0072bc",
+      "textColor": "#ffffff"
+    }
+  ],
+  "cards": [
+    {
+      "id": "osaka-monorail-unobe-up",
+      "railwayId": "osaka-monorail",
+      "railwayNameJa": "大阪モノレール",
+      "station": {
+        "id": "unobe",
+        "nameJa": "宇野辺",
+        "code": "r18_unobe"
+      },
+      "line": {
+        "nameJa": "大阪モノレール本線"
+      },
+      "direction": {
+        "id": "up",
+        "labelJa": "大阪空港方面",
+        "defaultDestinationJa": "大阪空港"
+      },
+      "calendars": {
+        "weekday": {
+          "labelJa": "平日",
+          "shortLabelJa": "平日",
+          "url": "/hidden/timetable/data/osaka-monorail/unobe/up-weekday.json",
+          "departures": 112
+        },
+        "holiday": {
+          "labelJa": "土曜・休日",
+          "shortLabelJa": "休日",
+          "url": "/hidden/timetable/data/osaka-monorail/unobe/up-holiday.json",
+          "departures": 106
+        }
+      },
+      "defaultCalendar": "weekday"
+    },
+    {
+      "id": "osaka-monorail-unobe-down",
+      "railwayId": "osaka-monorail",
+      "railwayNameJa": "大阪モノレール",
+      "station": {
+        "id": "unobe",
+        "nameJa": "宇野辺",
+        "code": "r18_unobe"
+      },
+      "line": {
+        "nameJa": "大阪モノレール本線"
+      },
+      "direction": {
+        "id": "down",
+        "labelJa": "門真市方面",
+        "defaultDestinationJa": "門真市"
+      },
+      "calendars": {
+        "weekday": {
+          "labelJa": "平日",
+          "shortLabelJa": "平日",
+          "url": "/hidden/timetable/data/osaka-monorail/unobe/down-weekday.json",
+          "departures": 116
+        },
+        "holiday": {
+          "labelJa": "土曜・休日",
+          "shortLabelJa": "休日",
+          "url": "/hidden/timetable/data/osaka-monorail/unobe/down-holiday.json",
+          "departures": 111
+        }
+      },
+      "defaultCalendar": "weekday"
+    },
+    {
+      "id": "osaka-monorail-minami-ibaraki-up",
+      "railwayId": "osaka-monorail",
+      "railwayNameJa": "大阪モノレール",
+      "station": {
+        "id": "minami-ibaraki",
+        "nameJa": "南茨木",
+        "code": "r19_minami_iba"
+      },
+      "line": {
+        "nameJa": "大阪モノレール本線"
+      },
+      "direction": {
+        "id": "up",
+        "labelJa": "大阪空港方面",
+        "defaultDestinationJa": "大阪空港"
+      },
+      "calendars": {
+        "weekday": {
+          "labelJa": "平日",
+          "shortLabelJa": "平日",
+          "url": "/hidden/timetable/data/osaka-monorail/minami-ibaraki/up-weekday.json",
+          "departures": 112
+        },
+        "holiday": {
+          "labelJa": "土曜・休日",
+          "shortLabelJa": "休日",
+          "url": "/hidden/timetable/data/osaka-monorail/minami-ibaraki/up-holiday.json",
+          "departures": 106
+        }
+      },
+      "defaultCalendar": "weekday"
+    },
+    {
+      "id": "osaka-monorail-minami-ibaraki-down",
+      "railwayId": "osaka-monorail",
+      "railwayNameJa": "大阪モノレール",
+      "station": {
+        "id": "minami-ibaraki",
+        "nameJa": "南茨木",
+        "code": "r19_minami_iba"
+      },
+      "line": {
+        "nameJa": "大阪モノレール本線"
+      },
+      "direction": {
+        "id": "down",
+        "labelJa": "門真市方面",
+        "defaultDestinationJa": "門真市"
+      },
+      "calendars": {
+        "weekday": {
+          "labelJa": "平日",
+          "shortLabelJa": "平日",
+          "url": "/hidden/timetable/data/osaka-monorail/minami-ibaraki/down-weekday.json",
+          "departures": 116
+        },
+        "holiday": {
+          "labelJa": "土曜・休日",
+          "shortLabelJa": "休日",
+          "url": "/hidden/timetable/data/osaka-monorail/minami-ibaraki/down-holiday.json",
+          "departures": 99
+        }
+      },
+      "defaultCalendar": "weekday"
+    },
+    {
+      "id": "hankyu-minami-ibaraki-osaka",
+      "railwayId": "hankyu",
+      "railwayNameJa": "阪急電車",
+      "station": {
+        "id": "minami-ibaraki",
+        "nameJa": "南茨木",
+        "code": "HK-68"
+      },
+      "line": {
+        "nameJa": "京都線"
+      },
+      "direction": {
+        "id": "osaka",
+        "labelJa": "大阪梅田・天下茶屋方面"
+      },
+      "calendars": {
+        "weekday": {
+          "labelJa": "平日",
+          "shortLabelJa": "平日",
+          "url": "/hidden/timetable/data/hankyu/minami-ibaraki/osaka-weekday.json",
+          "departures": 208
+        },
+        "holiday": {
+          "labelJa": "土曜・休日",
+          "shortLabelJa": "休日",
+          "url": "/hidden/timetable/data/hankyu/minami-ibaraki/osaka-holiday.json",
+          "departures": 194
+        }
+      },
+      "defaultCalendar": "weekday"
+    },
+    {
+      "id": "hankyu-minami-ibaraki-kyoto",
+      "railwayId": "hankyu",
+      "railwayNameJa": "阪急電車",
+      "station": {
+        "id": "minami-ibaraki",
+        "nameJa": "南茨木",
+        "code": "HK-68"
+      },
+      "line": {
+        "nameJa": "京都線"
+      },
+      "direction": {
+        "id": "kyoto",
+        "labelJa": "京都河原町方面"
+      },
+      "calendars": {
+        "weekday": {
+          "labelJa": "平日",
+          "shortLabelJa": "平日",
+          "url": "/hidden/timetable/data/hankyu/minami-ibaraki/kyoto-weekday.json",
+          "departures": 209
+        },
+        "holiday": {
+          "labelJa": "土曜・休日",
+          "shortLabelJa": "休日",
+          "url": "/hidden/timetable/data/hankyu/minami-ibaraki/kyoto-holiday.json",
+          "departures": 201
+        }
+      },
+      "defaultCalendar": "weekday"
+    },
+    {
+      "id": "jr-west-ibaraki-kyoto",
+      "railwayId": "jr-west",
+      "railwayNameJa": "JR西日本",
+      "station": {
+        "id": "ibaraki",
+        "nameJa": "茨木",
+        "code": "JR-A41"
+      },
+      "line": {
+        "nameJa": "JR京都線"
+      },
+      "direction": {
+        "id": "kyoto",
+        "labelJa": "高槻・京都方面"
+      },
+      "calendars": {
+        "weekday": {
+          "labelJa": "平日",
+          "shortLabelJa": "平日",
+          "url": "/hidden/timetable/data/jr-west/ibaraki/kyoto-weekday.json",
+          "departures": 219
+        },
+        "holiday": {
+          "labelJa": "土曜・休日",
+          "shortLabelJa": "休日",
+          "url": "/hidden/timetable/data/jr-west/ibaraki/kyoto-holiday.json",
+          "departures": 209
+        }
+      },
+      "defaultCalendar": "weekday"
+    },
+    {
+      "id": "jr-west-ibaraki-osaka-kobe",
+      "railwayId": "jr-west",
+      "railwayNameJa": "JR西日本",
+      "station": {
+        "id": "ibaraki",
+        "nameJa": "茨木",
+        "code": "JR-A41"
+      },
+      "line": {
+        "nameJa": "JR京都線"
+      },
+      "direction": {
+        "id": "osaka-kobe",
+        "labelJa": "新大阪・大阪・三ノ宮方面"
+      },
+      "calendars": {
+        "weekday": {
+          "labelJa": "平日",
+          "shortLabelJa": "平日",
+          "url": "/hidden/timetable/data/jr-west/ibaraki/osaka-kobe-weekday.json",
+          "departures": 224
+        },
+        "holiday": {
+          "labelJa": "土曜・休日",
+          "shortLabelJa": "休日",
+          "url": "/hidden/timetable/data/jr-west/ibaraki/osaka-kobe-holiday.json",
+          "departures": 210
+        }
+      },
+      "defaultCalendar": "weekday"
+    }
+  ],
+  "sourceNotes": [
+    "各社公式または公式表示ページから取得した時刻表データです。",
+    "運休、臨時列車、遅延、番線変更は反映されない場合があります。乗車前に各社公式情報を確認してください。",
+    "JR西日本の時刻は代表日として平日 2026-06-01、休日 2026-06-07 の表示を取得しています。",
+    "阪急電車の時刻表ページには、データの加工・再利用・再配布に許可が必要である旨が明記されています。",
+    "JR西日本の時刻表ページには、JR時刻表データの無断転載・複写・加工を禁じる旨が明記されています。"
+  ],
+  "sourceReferences": [
+    {
+      "labelJa": "時刻表データ取得元",
+      "items": [
+        {
+          "labelJa": "大阪モノレール 宇野辺駅",
+          "url": "https://www.osaka-monorail.co.jp/station/r18_unobe/timetable/"
+        },
+        {
+          "labelJa": "大阪モノレール 南茨木駅",
+          "url": "https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/"
+        },
+        {
+          "labelJa": "阪急 南茨木駅 大阪梅田・天下茶屋方面 平日",
+          "url": "https://www.hankyu.co.jp/station/html/HK-68_ky_1_w.html"
+        },
+        {
+          "labelJa": "阪急 南茨木駅 大阪梅田・天下茶屋方面 土曜・休日",
+          "url": "https://www.hankyu.co.jp/station/html/HK-68_ky_1_h.html"
+        },
+        {
+          "labelJa": "阪急 南茨木駅 京都河原町方面 平日",
+          "url": "https://www.hankyu.co.jp/station/html/HK-68_ky_2_w.html"
+        },
+        {
+          "labelJa": "阪急 南茨木駅 京都河原町方面 土曜・休日",
+          "url": "https://www.hankyu.co.jp/station/html/HK-68_ky_2_h.html"
+        },
+        {
+          "labelJa": "JR茨木駅 高槻・京都方面 平日代表日",
+          "url": "https://timetable.jr-odekake.net/station-timetable/2791011001?date=20260601"
+        },
+        {
+          "labelJa": "JR茨木駅 高槻・京都方面 休日代表日",
+          "url": "https://timetable.jr-odekake.net/station-timetable/2791011001?date=20260607"
+        },
+        {
+          "labelJa": "JR茨木駅 新大阪・大阪・三ノ宮方面 平日代表日",
+          "url": "https://timetable.jr-odekake.net/station-timetable/2791011002?date=20260601"
+        },
+        {
+          "labelJa": "JR茨木駅 新大阪・大阪・三ノ宮方面 休日代表日",
+          "url": "https://timetable.jr-odekake.net/station-timetable/2791011002?date=20260607"
+        }
+      ]
+    },
+    {
+      "labelJa": "運行情報確認先",
+      "items": [
+        {
+          "labelJa": "大阪モノレール 運行状況",
+          "url": "https://www.osaka-monorail.co.jp/"
+        },
+        {
+          "labelJa": "阪急電鉄 運行情報",
+          "url": "https://www.hankyu.co.jp/railinfo/"
+        },
+        {
+          "labelJa": "JR西日本 列車運行情報",
+          "url": "https://trafficinfo.westjr.co.jp/kinki.html"
+        }
+      ]
+    },
+    {
+      "labelJa": "利用条件・注記の根拠",
+      "items": [
+        {
+          "labelJa": "阪急電車 時刻表ページの注記",
+          "url": "https://www.hankyu.co.jp/station/html/HK-68_ky_2_h.html"
+        },
+        {
+          "labelJa": "JR西日本 時刻表ページの注記",
+          "url": "https://timetable.jr-odekake.net/station-timetable/2791011001?date=20260601"
+        }
+      ]
+    }
+  ]
+}

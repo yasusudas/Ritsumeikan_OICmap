@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NDHG4VRB1F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-NDHG4VRB1F');
+    </script>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400..900&display=swap" media="print" onload="this.media='all'" />
+    <link rel="icon" href="/icon/favicon-20260412b.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/icon/favicon-20260412b.png" />
+    <link rel="apple-touch-icon" href="/icon/pwa-512-20260412b.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="canonical" href="https://rits-oic-map.vercel.app/hidden/timetable/" />
+    <meta name="theme-color" content="#0b1220" />
+    <meta name="application-name" content="立命館OICマップ" />
+    <meta
+      name="description"
+      content="立命館大学OIC周辺の大阪モノレール、阪急電車、JR西日本の駅時刻表をカード形式で確認できます。"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rits-oic-map.vercel.app/hidden/timetable/" />
+    <meta property="og:site_name" content="立命館OICマップ" />
+    <meta property="og:title" content="キャンパス周辺 時刻表 | 立命館OICマップ" />
+    <meta
+      property="og:description"
+      content="OIC周辺の主要駅時刻表をカードで確認できます。カードの並べ替え、非表示、再表示にも対応しています。"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="キャンパス周辺 時刻表 | 立命館OICマップ" />
+    <meta
+      name="twitter:description"
+      content="OIC周辺の主要駅時刻表をカードで確認できます。カードの並べ替え、非表示、再表示にも対応しています。"
+    />
+    <title>キャンパス周辺 時刻表 | 立命館OICマップ</title>
+    <script type="module" src="/src/timetable.js"></script>
+  </head>
+  <body class="legal-page timetable-page">
+    <div class="legal-shell timetable-shell">
+      <header class="topbar legal-header timetable-header">
+        <div class="topbar-glass">
+          <div class="topbar-title-row legal-header-inner">
+            <a class="app-title legal-brand" href="/">
+              <span class="app-title-main">立命館OICマップ</span>
+              <span class="app-title-version">Hidden</span>
+            </a>
+            <div class="topbar-actions">
+              <details class="site-menu legal-menu">
+                <summary class="site-menu-toggle legal-menu-toggle" aria-label="メニュー">
+                  <span class="site-menu-line" aria-hidden="true"></span>
+                  <span class="site-menu-line" aria-hidden="true"></span>
+                  <span class="site-menu-line" aria-hidden="true"></span>
+                </summary>
+                <nav class="site-menu-panel legal-menu-panel" aria-label="ページメニュー">
+                  <a class="site-menu-item" href="/">マップへ戻る</a>
+                  <a class="site-menu-item" href="/access/">アクセス</a>
+                  <button class="site-menu-item" type="button" data-dialog="about">このサイトについて</button>
+                  <button class="site-menu-item" type="button" data-dialog="contact">お問い合わせ</button>
+                </nav>
+              </details>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="timetable-main" aria-labelledby="timetable-title">
+        <section class="timetable-hero">
+          <div>
+            <h1 id="timetable-title">キャンパス周辺 時刻表</h1>
+            <p>カードはドラッグで並べ替え可能</p>
+          </div>
+        </section>
+
+        <section class="timetable-card-grid" data-card-grid aria-live="polite"></section>
+
+        <section class="timetable-source-note" data-source-note aria-label="時刻表データの出典と注意事項"></section>
+
+        <div class="timetable-bottom-controls" aria-label="カード操作">
+          <button class="timetable-tool-button" type="button" data-reset-layout>初期順に戻す</button>
+          <button class="timetable-tool-button" type="button" data-show-all>すべて表示</button>
+        </div>
+
+        <section class="timetable-hidden-panel" aria-labelledby="hidden-title">
+          <div class="timetable-hidden-header">
+            <h2 id="hidden-title">非表示カード</h2>
+            <p data-hidden-count>0件</p>
+          </div>
+          <div class="timetable-hidden-list" data-hidden-list>
+            <p class="timetable-empty">非表示にしたカードはありません。</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="legal-footer">
+        <div class="site-footer">
+          <nav class="site-footer-links" aria-label="法務リンク">
+            <a href="/terms/">利用規約</a>
+            <a href="/privacy/">プライバシーポリシー</a>
+          </nav>
+          <p>© 2026 Issei Yasuda</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

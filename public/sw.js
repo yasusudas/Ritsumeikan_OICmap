@@ -1,5 +1,5 @@
-const STATIC_CACHE_NAME = 'rits-oic-map-static-v17';
-const RUNTIME_CACHE_NAME = 'rits-oic-map-runtime-v17';
+const STATIC_CACHE_NAME = 'rits-oic-map-static-v18';
+const RUNTIME_CACHE_NAME = 'rits-oic-map-runtime-v18';
 const APP_SHELL_URLS = [
   '/',
   '/index.html',
@@ -11,7 +11,7 @@ const APP_SHELL_URLS = [
   '/icon/pwa-192-20260412b.png',
   '/icon/pwa-512-20260412b.png'
 ];
-const STATIC_PATH_PREFIXES = ['/assets/', '/cmaps/', '/icon/', '/standard_fonts/'];
+const STATIC_PATH_PREFIXES = ['/assets/', '/cmaps/', '/icon/', '/standard_fonts/', '/hidden/timetable/data/'];
 const STATIC_PATHS = new Set(['/manual-search-index.json']);
 
 function isEditorPath(pathname) {

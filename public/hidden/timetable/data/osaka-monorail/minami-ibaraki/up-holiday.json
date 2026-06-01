@@ -1,0 +1,1148 @@
+{
+  "id": "osaka-monorail-minami-ibaraki-up-holiday",
+  "cardId": "osaka-monorail-minami-ibaraki-up",
+  "railwayId": "osaka-monorail",
+  "railwayNameJa": "大阪モノレール",
+  "station": {
+    "id": "minami-ibaraki",
+    "nameJa": "南茨木",
+    "code": "r19_minami_iba",
+    "stationId": 19,
+    "pageUrl": "https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/",
+    "pdfUrl": "https://www.osaka-monorail.co.jp/upload/timetable/r19_minami_iba_t2026.pdf"
+  },
+  "line": {
+    "nameJa": "大阪モノレール本線"
+  },
+  "direction": {
+    "id": "up",
+    "labelJa": "大阪空港方面",
+    "defaultDestinationJa": "大阪空港"
+  },
+  "calendar": {
+    "id": "holiday",
+    "labelJa": "土曜・休日",
+    "shortLabelJa": "休日"
+  },
+  "source": {
+    "pageUrl": "https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/",
+    "apiUrl": "https://www.osaka-monorail.co.jp/timetable/19",
+    "pdfUrl": "https://www.osaka-monorail.co.jp/upload/timetable/r19_minami_iba_t2026.pdf",
+    "fetchedAt": "2026-06-01T13:16:49.183Z"
+  },
+  "revision": "2026年時刻表",
+  "notes": [
+    "□印は万博記念公園駅で彩都線と連絡しません。"
+  ],
+  "departures": [
+    {
+      "time": "05:34",
+      "hour": 5,
+      "minute": 34,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "05:46",
+      "hour": 5,
+      "minute": 46,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:01",
+      "hour": 6,
+      "minute": 1,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:17",
+      "hour": 6,
+      "minute": 17,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:26",
+      "hour": 6,
+      "minute": 26,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:38",
+      "hour": 6,
+      "minute": 38,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "06:51",
+      "hour": 6,
+      "minute": 51,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:02",
+      "hour": 7,
+      "minute": 2,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:13",
+      "hour": 7,
+      "minute": 13,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:23",
+      "hour": 7,
+      "minute": 23,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:33",
+      "hour": 7,
+      "minute": 33,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:43",
+      "hour": 7,
+      "minute": 43,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "07:53",
+      "hour": 7,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:03",
+      "hour": 8,
+      "minute": 3,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:13",
+      "hour": 8,
+      "minute": 13,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:23",
+      "hour": 8,
+      "minute": 23,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:33",
+      "hour": 8,
+      "minute": 33,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:43",
+      "hour": 8,
+      "minute": 43,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "08:53",
+      "hour": 8,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:03",
+      "hour": 9,
+      "minute": 3,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:13",
+      "hour": 9,
+      "minute": 13,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:23",
+      "hour": 9,
+      "minute": 23,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:33",
+      "hour": 9,
+      "minute": 33,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:43",
+      "hour": 9,
+      "minute": 43,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "09:53",
+      "hour": 9,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:03",
+      "hour": 10,
+      "minute": 3,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:13",
+      "hour": 10,
+      "minute": 13,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:23",
+      "hour": 10,
+      "minute": 23,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:33",
+      "hour": 10,
+      "minute": 33,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:43",
+      "hour": 10,
+      "minute": 43,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "10:53",
+      "hour": 10,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:03",
+      "hour": 11,
+      "minute": 3,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:13",
+      "hour": 11,
+      "minute": 13,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:23",
+      "hour": 11,
+      "minute": 23,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:33",
+      "hour": 11,
+      "minute": 33,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:43",
+      "hour": 11,
+      "minute": 43,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "11:53",
+      "hour": 11,
+      "minute": 53,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:03",
+      "hour": 12,
+      "minute": 3,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:14",
+      "hour": 12,
+      "minute": 14,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:25",
+      "hour": 12,
+      "minute": 25,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:36",
+      "hour": 12,
+      "minute": 36,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:47",
+      "hour": 12,
+      "minute": 47,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "12:57",
+      "hour": 12,
+      "minute": 57,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:07",
+      "hour": 13,
+      "minute": 7,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:18",
+      "hour": 13,
+      "minute": 18,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:29",
+      "hour": 13,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:40",
+      "hour": 13,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "13:52",
+      "hour": 13,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:04",
+      "hour": 14,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:16",
+      "hour": 14,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:28",
+      "hour": 14,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:40",
+      "hour": 14,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "14:52",
+      "hour": 14,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:04",
+      "hour": 15,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:16",
+      "hour": 15,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:28",
+      "hour": 15,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:40",
+      "hour": 15,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "15:52",
+      "hour": 15,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:04",
+      "hour": 16,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:16",
+      "hour": 16,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:28",
+      "hour": 16,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:34",
+      "hour": 16,
+      "minute": 34,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "千里中央",
+      "rawMarks": [
+        "無",
+        "千"
+      ],
+      "notes": [
+        "万博記念公園駅で彩都線と連絡しない"
+      ]
+    },
+    {
+      "time": "16:40",
+      "hour": 16,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:46",
+      "hour": 16,
+      "minute": 46,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "千里中央",
+      "rawMarks": [
+        "無",
+        "千"
+      ],
+      "notes": [
+        "万博記念公園駅で彩都線と連絡しない"
+      ]
+    },
+    {
+      "time": "16:52",
+      "hour": 16,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "16:58",
+      "hour": 16,
+      "minute": 58,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "千里中央",
+      "rawMarks": [
+        "無",
+        "千"
+      ],
+      "notes": [
+        "万博記念公園駅で彩都線と連絡しない"
+      ]
+    },
+    {
+      "time": "17:04",
+      "hour": 17,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "17:10",
+      "hour": 17,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "千里中央",
+      "rawMarks": [
+        "無",
+        "千"
+      ],
+      "notes": [
+        "万博記念公園駅で彩都線と連絡しない"
+      ]
+    },
+    {
+      "time": "17:16",
+      "hour": 17,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "17:22",
+      "hour": 17,
+      "minute": 22,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "千里中央",
+      "rawMarks": [
+        "無",
+        "千"
+      ],
+      "notes": [
+        "万博記念公園駅で彩都線と連絡しない"
+      ]
+    },
+    {
+      "time": "17:28",
+      "hour": 17,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "17:34",
+      "hour": 17,
+      "minute": 34,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "千里中央",
+      "rawMarks": [
+        "無",
+        "千"
+      ],
+      "notes": [
+        "万博記念公園駅で彩都線と連絡しない"
+      ]
+    },
+    {
+      "time": "17:40",
+      "hour": 17,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "17:46",
+      "hour": 17,
+      "minute": 46,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "千里中央",
+      "rawMarks": [
+        "無",
+        "千"
+      ],
+      "notes": [
+        "万博記念公園駅で彩都線と連絡しない"
+      ]
+    },
+    {
+      "time": "17:52",
+      "hour": 17,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "17:58",
+      "hour": 17,
+      "minute": 58,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "千里中央",
+      "rawMarks": [
+        "無",
+        "千"
+      ],
+      "notes": [
+        "万博記念公園駅で彩都線と連絡しない"
+      ]
+    },
+    {
+      "time": "18:04",
+      "hour": 18,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "18:10",
+      "hour": 18,
+      "minute": 10,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "千里中央",
+      "rawMarks": [
+        "無",
+        "千"
+      ],
+      "notes": [
+        "万博記念公園駅で彩都線と連絡しない"
+      ]
+    },
+    {
+      "time": "18:16",
+      "hour": 18,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "18:28",
+      "hour": 18,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "18:40",
+      "hour": 18,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "18:52",
+      "hour": 18,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:04",
+      "hour": 19,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:16",
+      "hour": 19,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:28",
+      "hour": 19,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:40",
+      "hour": 19,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "19:52",
+      "hour": 19,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:04",
+      "hour": 20,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:16",
+      "hour": 20,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:28",
+      "hour": 20,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:40",
+      "hour": 20,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "20:52",
+      "hour": 20,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:04",
+      "hour": 21,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:16",
+      "hour": 21,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:28",
+      "hour": 21,
+      "minute": 28,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:40",
+      "hour": 21,
+      "minute": 40,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "21:52",
+      "hour": 21,
+      "minute": 52,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "22:04",
+      "hour": 22,
+      "minute": 4,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "22:16",
+      "hour": 22,
+      "minute": 16,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "22:29",
+      "hour": 22,
+      "minute": 29,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "22:42",
+      "hour": 22,
+      "minute": 42,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "22:56",
+      "hour": 22,
+      "minute": 56,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "23:11",
+      "hour": 23,
+      "minute": 11,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "23:21",
+      "hour": 23,
+      "minute": 21,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [
+        "無"
+      ],
+      "notes": [
+        "万博記念公園駅で彩都線と連絡しない"
+      ]
+    },
+    {
+      "time": "23:34",
+      "hour": 23,
+      "minute": 34,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    },
+    {
+      "time": "23:43",
+      "hour": 23,
+      "minute": 43,
+      "serviceDayOffset": 0,
+      "serviceType": "普通",
+      "destinationJa": "大阪空港",
+      "rawMarks": [],
+      "notes": []
+    }
+  ]
+}
