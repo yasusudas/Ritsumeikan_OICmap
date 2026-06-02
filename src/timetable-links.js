@@ -60,15 +60,15 @@ const RAILWAYS = [
         directions: [
           {
             id: 'osaka-airport',
-            name: '上り 大阪空港方面',
-            nameEn: 'Up toward Osaka Airport',
+            name: '大阪空港方面',
+            nameEn: 'Toward Osaka Airport',
             mode: 'monorail',
             url: 'https://www.osaka-monorail.co.jp/station/r18_unobe/timetable/'
           },
           {
             id: 'kadomashi',
-            name: '下り 門真市方面',
-            nameEn: 'Down toward Kadomashi',
+            name: '門真市方面',
+            nameEn: 'Toward Kadomashi',
             mode: 'monorail',
             url: 'https://www.osaka-monorail.co.jp/station/r18_unobe/timetable/'
           }
@@ -81,15 +81,15 @@ const RAILWAYS = [
         directions: [
           {
             id: 'osaka-airport',
-            name: '上り 大阪空港方面',
-            nameEn: 'Up toward Osaka Airport',
+            name: '大阪空港方面',
+            nameEn: 'Toward Osaka Airport',
             mode: 'monorail',
             url: 'https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/'
           },
           {
             id: 'kadomashi',
-            name: '下り 門真市方面',
-            nameEn: 'Down toward Kadomashi',
+            name: '門真市方面',
+            nameEn: 'Toward Kadomashi',
             mode: 'monorail',
             url: 'https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/'
           }
@@ -346,7 +346,7 @@ function renderServiceStatusCard() {
     const xLink = item.xUrl
       ? `<a href="${escapeHtml(item.xUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t('openOfficialX'))}</a>`
       : '';
-    const actionLinks = item.xUrl ? `${xLink}${statusLink}` : statusLink;
+    const actionLinks = item.xUrl ? `${statusLink}${xLink}` : statusLink;
 
     return `
       <div class="timetable-service-status-row" style="--timetable-railway-color: ${escapeHtml(item.accent)};">
