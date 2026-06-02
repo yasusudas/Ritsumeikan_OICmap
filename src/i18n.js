@@ -184,6 +184,7 @@ const dictionaries = {
     'footer.legalNav': '法務リンク',
     'footer.terms': '利用規約',
     'footer.privacy': 'プライバシーポリシー',
+    'footer.creator': '制作者について',
     'footer.copyrightSimple': '© 2026 Issei Yasuda'
   },
   en: {
@@ -369,6 +370,7 @@ const dictionaries = {
     'footer.legalNav': 'Legal links',
     'footer.terms': 'Terms',
     'footer.privacy': 'Privacy Policy',
+    'footer.creator': 'About the Creator',
     'footer.copyrightSimple': '© 2026 Issei Yasuda'
   }
 };
