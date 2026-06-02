@@ -2532,17 +2532,53 @@ body.timetable-page {
 .timetable-official-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 8px;
 }
 
+/* Refined station-link pills: tinted with each railway's accent colour, with a
+   crisp border, hover lift, press feedback and a visible focus ring. */
 .timetable-official-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
   border-radius: 999px;
-  padding: 7px 10px;
-  background: rgba(153, 28, 39, 0.08);
+  padding: 0 14px;
+  border: 1px solid rgba(153, 28, 39, 0.2);
+  border-color: color-mix(in srgb, var(--timetable-railway-color, var(--crimson-500)) 24%, transparent);
+  background: rgba(153, 28, 39, 0.06);
+  background: color-mix(in srgb, var(--timetable-railway-color, var(--crimson-500)) 8%, #fff);
   color: var(--ink-900);
-  font-size: 0.78rem;
-  font-weight: 900;
+  color: color-mix(in srgb, var(--timetable-railway-color, var(--crimson-600)) 70%, #0b1220);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
   text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .timetable-official-actions a:hover {
+    background: color-mix(in srgb, var(--timetable-railway-color, var(--crimson-500)) 15%, #fff);
+    border-color: color-mix(in srgb, var(--timetable-railway-color, var(--crimson-500)) 50%, transparent);
+  }
+}
+
+.timetable-official-actions a:active {
+  transform: translateY(1px);
+}
+
+.timetable-official-actions a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--timetable-railway-color, var(--crimson-500)) 38%, transparent);
+  outline-offset: 2px;
 }
 
 .timetable-service-status-card {
@@ -3771,8 +3807,9 @@ body.is-timetable-sorting {
   }
 
   .timetable-official-actions a {
-    padding: 6px 8px;
-    font-size: clamp(0.68rem, 2.8vw, 0.74rem);
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: clamp(0.72rem, 2.8vw, 0.78rem);
   }
 
   .timetable-shuttle-route {
@@ -4453,10 +4490,20 @@ body[data-app-mode="editor"] .map-card {
     stroke-linejoin: round;
   }
 
+  .mobile-quick-action[href="/food/"] .mobile-quick-action-icon {
+    width: 19px;
+    height: 19px;
+    flex-basis: 19px;
+  }
+
   .mobile-quick-action-icon-bus {
     width: 21px;
     height: 21px;
     flex-basis: 21px;
+  }
+
+  .mobile-quick-action-icon-bus + .mobile-quick-action-icon {
+    margin-left: -5px;
   }
 
   .mobile-quick-action span {
@@ -5080,9 +5127,14 @@ body[data-app-mode="viewer"] .site-footer a {
   }
 
   body[data-app-mode="viewer"] .topbar-glass,
-  body[data-app-mode="viewer"] .floor-tab-stack,
   body[data-app-mode="viewer"] .toilet-ring-legend {
     background: rgba(255, 255, 255, 0.94);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  body[data-app-mode="viewer"] .floor-tab-stack {
+    background: transparent;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
