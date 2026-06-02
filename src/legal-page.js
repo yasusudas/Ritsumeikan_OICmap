@@ -144,7 +144,7 @@ function createDialogs() {
         <p>${t.aboutFacilities}</p>
       </div>
       <footer class="about-dialog-footer">
-        <p class="about-dialog-version">Ver. 2.8</p>
+        <p class="about-dialog-version">Ver. 2.9</p>
       </footer>
     </section>`;
   document.body.appendChild(aboutBackdrop);

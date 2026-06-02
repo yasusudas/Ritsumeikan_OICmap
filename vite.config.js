@@ -1,8 +1,45 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
+import { getRailStatusPayload, RAIL_STATUS_REFRESH_INTERVAL_SECONDS } from './src/server/rail-status.js';
+
+function railStatusDevApi() {
+  return {
+    name: 'rits-oic-rail-status-dev-api',
+    configureServer(server) {
+      server.middlewares.use('/api/rail-status', async (request, response) => {
+        if (request.method !== 'GET') {
+          response.statusCode = 405;
+          response.setHeader('Content-Type', 'application/json; charset=utf-8');
+          response.end(JSON.stringify({ error: 'Method not allowed' }));
+          return;
+        }
+
+        try {
+          const payload = await getRailStatusPayload();
+          response.statusCode = 200;
+          response.setHeader('Content-Type', 'application/json; charset=utf-8');
+          response.setHeader(
+            'Cache-Control',
+            `public, max-age=0, s-maxage=${RAIL_STATUS_REFRESH_INTERVAL_SECONDS}, stale-while-revalidate=300`
+          );
+          response.end(JSON.stringify(payload));
+        } catch (error) {
+          response.statusCode = 500;
+          response.setHeader('Content-Type', 'application/json; charset=utf-8');
+          response.end(
+            JSON.stringify({
+              error: error instanceof Error ? error.message : String(error),
+            })
+          );
+        }
+      });
+    }
+  };
+}
 
 export default defineConfig({
   base: './',
+  plugins: [railStatusDevApi()],
   build: {
     rollupOptions: {
       input: {
