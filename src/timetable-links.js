@@ -14,6 +14,9 @@ const LABELS = {
     modeMonorail: '曜日種別を選び、公式ページ内の該当列を確認',
     modeDate: '表示日つきで公式ページへ',
     officialPage: '公式ページ',
+    serviceStatusHeading: '運行情報を確認',
+    openServiceStatus: '公式運行情報を開く',
+    openOfficialX: '公式Xを開く',
     selectPrompt: '選択してください',
     monorailWeekday: '平日用（月〜金）',
     monorailHoliday: '休日用（土・日・祝日）',
@@ -31,6 +34,9 @@ const LABELS = {
     modeMonorail: 'Choose a day type and check the matching column on the official page',
     modeDate: 'Open the official page with a display date',
     officialPage: 'Official page',
+    serviceStatusHeading: 'Service Status',
+    openServiceStatus: 'Open official status',
+    openOfficialX: 'Open official X',
     selectPrompt: 'Select an option',
     monorailWeekday: 'weekday',
     monorailHoliday: 'weekend/holiday',
@@ -166,6 +172,39 @@ const OFFICIAL_CARD_ORDER = [
   ['hankyu', 'minami-ibaraki']
 ];
 
+const SERVICE_STATUS_LINKS = [
+  {
+    id: 'hankyu-kyoto',
+    railway: '阪急電鉄',
+    railwayEn: 'Hankyu Railway',
+    line: '阪急京都線',
+    lineEn: 'Hankyu Kyoto Line',
+    accent: '#7b3f2a',
+    statusUrl: 'https://www.hankyu.co.jp/railinfo/',
+    xUrl: null
+  },
+  {
+    id: 'osaka-monorail',
+    railway: '大阪モノレール',
+    railwayEn: 'Osaka Monorail',
+    line: '大阪モノレール',
+    lineEn: 'Osaka Monorail',
+    accent: '#0072bc',
+    statusUrl: 'https://www.osaka-monorail.co.jp/',
+    xUrl: 'https://twitter.com/OsakaMonorail'
+  },
+  {
+    id: 'jr-kyoto',
+    railway: 'JR西日本',
+    railwayEn: 'JR West',
+    line: 'JR京都線',
+    lineEn: 'JR Kyoto Line',
+    accent: '#0068b7',
+    statusUrl: 'https://trafficinfo.westjr.co.jp/kinki.html',
+    xUrl: 'https://twitter.com/jrwest_kinki_a'
+  }
+];
+
 const elements = {
   form: document.querySelector('[data-timetable-link-form]'),
   railway: document.querySelector('[data-railway-select]'),
@@ -177,12 +216,17 @@ const elements = {
   dateInput: document.querySelector('[data-date-input]'),
   generatedLink: document.querySelector('[data-generated-link]'),
   help: document.querySelector('[data-link-help]'),
-  cardGrid: document.querySelector('[data-official-card-grid]')
+  cardGrid: document.querySelector('[data-official-card-grid]'),
+  serviceStatus: document.querySelector('[data-service-status-card]')
 };
 
 function initTimetableLinks() {
   if (elements.cardGrid) {
     renderOfficialCards();
+  }
+
+  if (elements.serviceStatus) {
+    renderServiceStatusCard();
   }
 
   if (!elements.form) return;
@@ -296,6 +340,37 @@ function renderOfficialCard(railway, station) {
   `;
 }
 
+function renderServiceStatusCard() {
+  const rows = SERVICE_STATUS_LINKS.map((item) => {
+    const statusLink = `<a href="${escapeHtml(item.statusUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t('openServiceStatus'))}</a>`;
+    const xLink = item.xUrl
+      ? `<a href="${escapeHtml(item.xUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t('openOfficialX'))}</a>`
+      : '';
+    const actionLinks = item.xUrl ? `${xLink}${statusLink}` : statusLink;
+
+    return `
+      <div class="timetable-service-status-row" style="--timetable-railway-color: ${escapeHtml(item.accent)};">
+        <div>
+          <p>${escapeHtml(localizeLine(item, 'railway'))}</p>
+          <h3>${escapeHtml(localizeLine(item, 'line'))}</h3>
+        </div>
+        <div class="timetable-official-actions">
+          ${actionLinks}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  elements.serviceStatus.innerHTML = `
+    <section class="timetable-service-status-card" aria-labelledby="service-status-title">
+      <div class="timetable-service-status-head">
+        <h2 id="service-status-title">${escapeHtml(t('serviceStatusHeading'))}</h2>
+      </div>
+      <div class="timetable-service-status-rows">${rows}</div>
+    </section>
+  `;
+}
+
 function resolveDirectionLinks(direction) {
   if (direction.mode === 'dayType') {
     return [
@@ -391,6 +466,11 @@ function t(key) {
 
 function localizeName(item) {
   return PAGE_LANG === 'en' && item.nameEn ? item.nameEn : item.name;
+}
+
+function localizeLine(item, key) {
+  const englishKey = `${key}En`;
+  return PAGE_LANG === 'en' && item[englishKey] ? item[englishKey] : item[key];
 }
 
 function formatDateValue(date) {

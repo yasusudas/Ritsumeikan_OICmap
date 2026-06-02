@@ -2410,7 +2410,7 @@ body.timetable-page {
   border-radius: 12px;
   padding: 0 16px;
   background: var(--crimson-500);
-  color: #fff;
+  color: var(--ink-900);
   font-family: var(--font-sans);
   font-size: 0.9rem;
   font-weight: 900;
@@ -2437,10 +2437,16 @@ body.timetable-page {
   font-weight: 900;
 }
 
-.timetable-link-preview a,
-.timetable-official-actions a,
-.timetable-compliance-links a {
+.timetable-link-preview a {
   color: var(--crimson-600);
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.timetable-compliance-links a {
+  color: var(--ink-900);
   overflow-wrap: anywhere;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -2533,6 +2539,263 @@ body.timetable-page {
   border-radius: 999px;
   padding: 7px 10px;
   background: rgba(153, 28, 39, 0.08);
+  color: var(--ink-900);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.timetable-service-status-card {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+  border-radius: 20px;
+  padding: clamp(16px, 2vw, 22px);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    var(--shadow-3),
+    inset 0 0 0 1px rgba(11, 18, 32, 0.07);
+}
+
+.timetable-service-status-head {
+  display: grid;
+  gap: 5px;
+}
+
+.timetable-service-status-head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.08rem, 1.5vw, 1.34rem);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.timetable-service-status-rows {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.timetable-service-status-row {
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  gap: 14px;
+  min-height: 136px;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 14px 14px 14px 18px;
+  background: rgba(11, 18, 32, 0.035);
+  box-shadow: inset 0 0 0 1px rgba(11, 18, 32, 0.07);
+}
+
+.timetable-service-status-row::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--timetable-railway-color, var(--crimson-500));
+}
+
+.timetable-service-status-row p,
+.timetable-service-status-row h3 {
+  margin: 0;
+}
+
+.timetable-service-status-row p {
+  color: var(--timetable-railway-color, var(--crimson-600));
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.timetable-service-status-row h3 {
+  margin-top: 4px;
+  color: var(--ink-900);
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.timetable-live-status {
+  margin-bottom: 16px;
+}
+
+.timetable-live-status-card {
+  display: grid;
+  gap: 14px;
+  border-radius: 18px;
+  padding: clamp(16px, 2vw, 22px);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    var(--shadow-3),
+    inset 0 0 0 1px rgba(11, 18, 32, 0.07);
+}
+
+.timetable-live-status-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.timetable-live-status-head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.08rem, 1.5vw, 1.34rem);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.timetable-live-status-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: rgba(11, 18, 32, 0.62);
+  font-size: 0.76rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: right;
+}
+
+.timetable-live-status-meta span,
+.timetable-live-status-meta time {
+  border-radius: 999px;
+  padding: 6px 8px;
+  background: rgba(11, 18, 32, 0.055);
+}
+
+.timetable-live-status-rows {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.timetable-live-status-row {
+  position: relative;
+  display: grid;
+  grid-template-rows: 48px minmax(0, 1fr) auto;
+  align-content: space-between;
+  gap: 12px;
+  min-height: 176px;
+  overflow: hidden;
+  border-radius: 14px;
+  padding: 14px 14px 14px 18px;
+  background: rgba(11, 18, 32, 0.035);
+  box-shadow: inset 0 0 0 1px rgba(11, 18, 32, 0.07);
+}
+
+.timetable-live-status-title {
+  min-height: 48px;
+}
+
+.timetable-live-status-row::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--timetable-railway-color, var(--crimson-500));
+}
+
+.timetable-live-status-row p,
+.timetable-live-status-row h3 {
+  margin: 0;
+}
+
+.timetable-live-status-row p {
+  color: rgba(11, 18, 32, 0.58);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.timetable-live-status-row h3 {
+  margin-top: 4px;
+  color: var(--ink-900);
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.timetable-live-status-summary {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.timetable-live-status-summary strong {
+  color: rgba(11, 18, 32, 0.78);
+  font-size: 0.86rem;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.timetable-live-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  min-width: 76px;
+  height: 24px;
+  border-radius: 999px;
+  padding: 0 9px;
+  background: rgba(11, 18, 32, 0.08);
+  color: var(--ink-900);
+  font-size: 0.76rem;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.timetable-live-status-row.is-normal .timetable-live-status-badge {
+  background: rgba(15, 169, 104, 0.14);
+  color: #08794a;
+}
+
+.timetable-live-status-row.is-notice .timetable-live-status-badge,
+.timetable-live-status-row.is-unknown .timetable-live-status-badge {
+  background: rgba(220, 110, 0, 0.14);
+  color: #8d4b00;
+}
+
+.timetable-live-status-row.is-delay .timetable-live-status-badge {
+  background: rgba(243, 189, 3, 0.22);
+  color: #6d5300;
+}
+
+.timetable-live-status-row.is-suspended .timetable-live-status-badge,
+.timetable-live-status-row.is-error .timetable-live-status-badge {
+  background: rgba(212, 39, 39, 0.14);
+  color: #9b1c1c;
+}
+
+.timetable-live-status-detail {
+  display: block;
+  color: rgba(11, 18, 32, 0.6);
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.timetable-live-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.timetable-live-status-actions a {
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: rgba(153, 28, 39, 0.08);
+  color: var(--ink-900);
   font-size: 0.78rem;
   font-weight: 900;
   text-decoration: none;
@@ -2599,7 +2862,7 @@ body.timetable-page {
   border-radius: 999px;
   padding: 0 13px;
   background: rgba(153, 28, 39, 0.08);
-  color: var(--crimson-600);
+  color: var(--ink-900);
   font-size: 0.84rem;
   font-weight: 900;
   transition:
@@ -2945,6 +3208,34 @@ body.is-timetable-sorting {
   overflow: hidden;
 }
 
+.timetable-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px 14px 26px;
+  margin-top: -4px;
+}
+
+.timetable-card-hide {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: rgba(11, 18, 32, 0.42);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.timetable-card-hide:hover,
+.timetable-card-hide:focus-visible {
+  color: rgba(11, 18, 32, 0.68);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .timetable-hour-list {
     transition: none;
@@ -3035,7 +3326,7 @@ body.is-timetable-sorting {
 
 .timetable-source-reference-group {
   display: grid;
-  gap: 4px;
+  gap: 14px;
 }
 
 .timetable-source-reference-title {
@@ -3059,6 +3350,20 @@ body.is-timetable-sorting {
   line-height: 1.3;
 }
 
+.timetable-source-reference-category {
+  display: grid;
+  gap: 6px;
+}
+
+.timetable-source-reference-category h3 {
+  margin: 0;
+  color: rgba(11, 18, 32, 0.68);
+  font-size: 0.88rem;
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
 .timetable-source-reference-items {
   display: flex;
   flex-wrap: wrap;
@@ -3069,7 +3374,7 @@ body.is-timetable-sorting {
 }
 
 .timetable-source-reference-items a {
-  color: var(--crimson-600);
+  color: var(--ink-900);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -3135,6 +3440,42 @@ body.is-timetable-sorting {
     font-size: 0.92rem;
   }
 
+  .timetable-service-status-card {
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .timetable-service-status-rows {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timetable-service-status-row {
+    min-height: 0;
+  }
+
+  .timetable-live-status-card {
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .timetable-live-status-head {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .timetable-live-status-meta {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .timetable-live-status-rows {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timetable-live-status-row {
+    min-height: 0;
+  }
+
   .timetable-hidden-panel {
     border-radius: 16px;
   }
@@ -3191,6 +3532,10 @@ body.is-timetable-sorting {
     padding: 0 16px 14px 22px;
   }
 
+  .timetable-card-footer {
+    padding: 0 16px 14px 22px;
+  }
+
   .timetable-hour-list {
     max-height: 310px;
   }
@@ -3241,7 +3586,35 @@ body.is-timetable-sorting {
 
 @media (max-width: 600px) {
   .timetable-official-card-grid {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .timetable-official-card {
+    padding: 14px 12px 14px 14px;
+  }
+
+  .timetable-official-card h3 {
+    margin-bottom: 10px;
+    font-size: clamp(1rem, 4.1vw, 1.12rem);
+  }
+
+  .timetable-official-row {
+    gap: 7px;
+    padding-top: 9px;
+  }
+
+  .timetable-official-row span {
+    font-size: clamp(0.76rem, 3.1vw, 0.86rem);
+  }
+
+  .timetable-official-actions {
+    gap: 6px;
+  }
+
+  .timetable-official-actions a {
+    padding: 6px 8px;
+    font-size: clamp(0.68rem, 2.8vw, 0.74rem);
   }
 }
 

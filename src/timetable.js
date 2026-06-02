@@ -1,12 +1,15 @@
 import './legal-page.js';
 
 const MANIFEST_URL = '/hidden/timetable/data/manifest.json';
+const LIVE_SERVICE_STATUS_URL = '/api/rail-status';
+const LIVE_SERVICE_STATUS_REFRESH_INTERVAL = 15 * 60 * 1000;
 const STORAGE_KEY = 'rits-oic-map:timetable-layout:v1';
 
 const elements = {
   cardGrid: document.querySelector('[data-card-grid]'),
   hiddenList: document.querySelector('[data-hidden-list]'),
   hiddenCount: document.querySelector('[data-hidden-count]'),
+  liveServiceStatus: document.querySelector('[data-live-service-status]'),
   sourceNote: document.querySelector('[data-source-note]'),
   resetLayout: document.querySelector('[data-reset-layout]'),
   showAll: document.querySelector('[data-show-all]'),
@@ -20,6 +23,12 @@ let state = {
 const scheduleCache = new Map();
 const activeSchedulesByCardId = new Map();
 let dragState = null;
+let liveServiceStatusState = {
+  payload: null,
+  isLoading: false,
+  error: null,
+  nextRefreshAt: 0,
+};
 
 init().catch((error) => {
   console.error(error);
@@ -38,6 +47,7 @@ async function init() {
   state = normalizeState(loadState(), manifest.cards);
   setupEvents();
   await render();
+  setupLiveServiceStatus();
   window.setInterval(() => {
     updateCountdownDisplays();
   }, 1_000);
@@ -61,6 +71,109 @@ async function render() {
   renderHiddenList();
   renderSourceNote();
   await renderCards();
+}
+
+function setupLiveServiceStatus() {
+  if (!elements.liveServiceStatus) return;
+  liveServiceStatusState.nextRefreshAt = Date.now() + LIVE_SERVICE_STATUS_REFRESH_INTERVAL;
+  renderLiveServiceStatus();
+  void refreshLiveServiceStatus();
+  window.setInterval(() => {
+    void refreshLiveServiceStatus();
+  }, LIVE_SERVICE_STATUS_REFRESH_INTERVAL);
+}
+
+async function refreshLiveServiceStatus() {
+  if (!elements.liveServiceStatus || liveServiceStatusState.isLoading) return;
+
+  liveServiceStatusState.isLoading = true;
+  liveServiceStatusState.error = null;
+  renderLiveServiceStatus();
+
+  try {
+    const payload = await fetchJson(LIVE_SERVICE_STATUS_URL);
+    liveServiceStatusState = {
+      payload,
+      isLoading: false,
+      error: null,
+      nextRefreshAt: Date.now() + (payload.refreshIntervalSeconds || 900) * 1000,
+    };
+  } catch (error) {
+    liveServiceStatusState = {
+      ...liveServiceStatusState,
+      isLoading: false,
+      error: error instanceof Error ? error.message : String(error),
+      nextRefreshAt: Date.now() + LIVE_SERVICE_STATUS_REFRESH_INTERVAL,
+    };
+  }
+
+  renderLiveServiceStatus();
+}
+
+function renderLiveServiceStatus() {
+  if (!elements.liveServiceStatus) return;
+
+  const { payload, error } = liveServiceStatusState;
+  const sources = payload?.sources || [];
+  const rows = sources.length
+    ? sources.map(renderLiveServiceStatusRow).join('')
+    : renderLiveServiceStatusPlaceholder(error);
+
+  elements.liveServiceStatus.innerHTML = `
+    <div class="timetable-live-status-card">
+      <div class="timetable-live-status-head">
+        <div>
+          <h2>運行情報</h2>
+        </div>
+        <div class="timetable-live-status-meta">
+          <time data-live-status-updated>${escapeHtml(formatLiveStatusUpdatedAt(payload?.generatedAt))}</time>
+        </div>
+      </div>
+      <div class="timetable-live-status-rows">
+        ${rows}
+      </div>
+    </div>
+  `;
+}
+
+function renderLiveServiceStatusPlaceholder(error) {
+  const message = error ? '運行情報を取得できませんでした。' : '運行情報を取得しています。';
+  return `
+    <article class="timetable-live-status-row is-unknown">
+      <div>
+        <p>取得状況</p>
+        <h3>${escapeHtml(message)}</h3>
+        ${error ? `<span class="timetable-live-status-detail">${escapeHtml(error)}</span>` : ''}
+      </div>
+    </article>
+  `;
+}
+
+function renderLiveServiceStatusRow(item) {
+  const details = (item.details || [])
+    .slice(0, 2)
+    .map((detail) => `<span class="timetable-live-status-detail">${escapeHtml(detail)}</span>`)
+    .join('');
+
+  return `
+    <article
+      class="timetable-live-status-row is-${escapeHtml(item.status || 'unknown')}"
+      style="--timetable-railway-color: ${escapeHtml(item.color || '#991c27')};"
+    >
+      <div class="timetable-live-status-title">
+        <p>${escapeHtml(item.railway)}</p>
+        <h3>${escapeHtml(item.line)}</h3>
+      </div>
+      <div class="timetable-live-status-summary">
+        <span class="timetable-live-status-badge">${escapeHtml(item.statusLabel)}</span>
+        <strong>${escapeHtml(item.summary)}</strong>
+        ${details}
+      </div>
+      <div class="timetable-live-status-actions">
+        <a href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">公式ページ</a>
+      </div>
+    </article>
+  `;
 }
 
 async function renderCards() {
@@ -135,6 +248,10 @@ function renderCard(card, scheduleSet) {
           ${renderHourList(schedule.departures)}
         </div>
       </details>
+
+      <div class="timetable-card-footer">
+        <button class="timetable-card-hide" type="button" data-hide-card="${escapeHtml(card.id)}">非表示</button>
+      </div>
     </article>
   `;
 }
@@ -195,6 +312,20 @@ function bindCardEvents() {
   elements.cardGrid.querySelectorAll('[data-card-id]').forEach((cardElement) => {
     setupCardDrag(cardElement);
     setupTimetableDetails(cardElement);
+    setupCardHide(cardElement);
+  });
+}
+
+function setupCardHide(cardElement) {
+  const button = cardElement.querySelector('[data-hide-card]');
+  if (!button) return;
+
+  button.addEventListener('click', () => {
+    const cardId = button.dataset.hideCard;
+    if (!cardId) return;
+    state.hidden = [...new Set([...state.hidden, cardId])];
+    saveState();
+    void render();
   });
 }
 
@@ -912,6 +1043,16 @@ function formatCountdownPrecise(seconds) {
   const minutes = Math.floor(totalSeconds / 60);
   const restSeconds = totalSeconds % 60;
   return `${minutes}:${String(restSeconds).padStart(2, '0')}`;
+}
+
+function formatLiveStatusUpdatedAt(value) {
+  if (!value) return '未更新';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '更新済み';
+  return `${date.toLocaleTimeString('ja-JP', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })}更新`;
 }
 
 function serviceClass(serviceType) {
