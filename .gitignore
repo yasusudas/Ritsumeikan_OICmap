@@ -9,3 +9,13 @@ tmp.claude/
 .claude/
 .llmwiki-locks/
 tmp/
+
+# Local AI / analysis working files kept off GitHub
+AGENTS.md
+CLAUDE.md
+archive/legacy-static-assets/
+artifacts/syllabus-scrape/
+data/syllabus/
+public/search-index 2.json
+scripts/add-amazon-links-to-syllabus.mjs
+scripts/fetch-ritsumei-syllabus.mjs
