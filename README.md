@@ -14,7 +14,7 @@
 
 ### データと構成
 
-地図画像はSVGとして管理しています。日本語版は `src/assets/floors/ja/`、英語版は `src/assets/floors/en/` を使います。検索用の座標データと施設リングは `public/manual-search-index.json` に入っています。シラバス関連の生成データは `data/syllabus/`、取得時の一時解析物は `artifacts/syllabus-scrape/` に分けています。
+地図画像はSVGとして管理しています。日本語版は `src/assets/floors/ja/`、英語版は `src/assets/floors/en/` を使います。検索用の座標データと施設リングは `public/manual-search-index.json` に入っています。シラバス関連の生成データや取得時の一時解析物はローカル作業用として扱い、GitHubには含めません。
 
 UIの文言は `src/i18n.js` にまとまっています。日本語と英語の表示を変える場合は、原則としてこの翻訳辞書を更新し、`npm run sync:en` または `npm run build` で英語版HTMLを同期します。
 
@@ -36,7 +36,7 @@ When you enter a classroom or facility name in the search bar, the corresponding
 
 ### Data and Structure
 
-Map images are managed as SVGs. The Japanese version uses `src/assets/floors/ja/`, and the English version uses `src/assets/floors/en/`. Coordinate data for searching and facility rings are stored in `public/manual-search-index.json`. Generated syllabus data lives in `data/syllabus/`, and one-off scraping captures live in `artifacts/syllabus-scrape/`.
+Map images are managed as SVGs. The Japanese version uses `src/assets/floors/ja/`, and the English version uses `src/assets/floors/en/`. Coordinate data for searching and facility rings are stored in `public/manual-search-index.json`. Generated syllabus data and one-off scraping captures are treated as local working files and are not included on GitHub.
 
 UI text is consolidated in `src/i18n.js`. To change the Japanese and English displays, you should generally update this translation dictionary and sync the English HTML using `npm run sync:en` or `npm run build`.
 
