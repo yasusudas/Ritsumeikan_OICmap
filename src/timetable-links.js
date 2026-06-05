@@ -15,8 +15,7 @@ const LABELS = {
     modeDate: '表示日つきで公式ページへ',
     officialPage: '公式ページ',
     serviceStatusHeading: '運行情報を確認',
-    shuttleHeading: 'シャトルバス',
-    shuttleSourceLabel: '2026年度公式PDF',
+    shuttleHeading: 'シャトルバス時刻表',
     shuttleNextDeparture: '次の発車時刻',
     shuttleCountdown: '発車まで',
     shuttleTimetablePdf: '時刻表PDF',
@@ -46,8 +45,7 @@ const LABELS = {
     modeDate: 'Open the official page with a display date',
     officialPage: 'Official page',
     serviceStatusHeading: 'Service Status',
-    shuttleHeading: 'Shuttle Bus',
-    shuttleSourceLabel: 'Official 2026 PDFs',
+    shuttleHeading: 'Shuttle Bus Timetable',
     shuttleNextDeparture: 'Next departure',
     shuttleCountdown: 'Until departure',
     shuttleTimetablePdf: 'Timetable PDF',
@@ -253,8 +251,8 @@ const SHUTTLE_BUS = {
     },
     {
       id: 'kinugasa',
-      destination: '京都衣笠キャンパス',
-      destinationEn: 'Kyoto Kinugasa Campus',
+      destination: '衣笠キャンパス',
+      destinationEn: 'Kinugasa Campus',
       shortName: 'KIC',
       departures: ['15:00', '16:45', '18:30', '20:05']
     }
@@ -457,7 +455,6 @@ function renderShuttleBusCard() {
       <div class="timetable-shuttle-head">
         <div>
           <h2 id="shuttle-bus-title">${escapeHtml(t('shuttleHeading'))}</h2>
-          <p>${escapeHtml(t('shuttleSourceLabel'))}</p>
         </div>
         <div class="timetable-official-actions timetable-shuttle-actions">
           <a href="${escapeHtml(SHUTTLE_BUS.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t('officialPage'))}</a>

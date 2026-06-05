@@ -12,16 +12,16 @@
   "theme_color": "#0b1220",
   "icons": [
     {
-      "src": "/icon/pwa-192-20260412b.png",
+      "src": "/icon/pwa-192-20260605.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/icon/pwa-512-20260412b.png",
+      "src": "/icon/pwa-512-20260605.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }

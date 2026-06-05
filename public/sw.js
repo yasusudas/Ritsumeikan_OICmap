@@ -1,15 +1,16 @@
-const STATIC_CACHE_NAME = 'rits-oic-map-static-v18';
-const RUNTIME_CACHE_NAME = 'rits-oic-map-runtime-v18';
+const STATIC_CACHE_NAME = 'rits-oic-map-static-v20';
+const RUNTIME_CACHE_NAME = 'rits-oic-map-runtime-v20';
 const APP_SHELL_URLS = [
   '/',
   '/index.html',
   '/timetable/',
   '/timetable/index.html',
   '/manifest.webmanifest',
-  '/icon/favicon-20260412b.ico',
-  '/icon/favicon-20260412b.png',
-  '/icon/pwa-192-20260412b.png',
-  '/icon/pwa-512-20260412b.png'
+  '/icon/favicon-20260605.ico',
+  '/icon/favicon-20260605.png',
+  '/icon/apple-touch-icon-20260605.png',
+  '/icon/pwa-192-20260605.png',
+  '/icon/pwa-512-20260605.png'
 ];
 const STATIC_PATH_PREFIXES = ['/assets/', '/cmaps/', '/icon/', '/standard_fonts/', '/hidden/timetable/data/'];
 const STATIC_PATHS = new Set(['/manual-search-index.json']);
