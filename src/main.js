@@ -419,6 +419,7 @@ if (window.__FILE_MODE__) {
     }
 
     renderFacilityToggleButtons();
+    updateMobileFloorSelection();
 
     if (wasSpecialFloorActive !== isNextSpecialFloorActive) {
       void renderFloor({ resetZoom: true });
@@ -679,6 +680,14 @@ if (window.__FILE_MODE__) {
 
   function getCurrentFloorLabel() {
     return getFloorLabel(getFloorDefinition());
+  }
+
+  function getMobileFloorDisplayLabel() {
+    if (getActiveSpecialFloorFacilityKey() === 'printer') {
+      return t('facility.printer');
+    }
+
+    return getCurrentFloorLabel();
   }
 
   function createManualEntryId(floorId) {
@@ -1520,7 +1529,7 @@ if (window.__FILE_MODE__) {
     mobileFloorToggle.setAttribute('aria-expanded', String(nextOpen));
     mobileFloorToggle.setAttribute(
       'aria-label',
-      t(nextOpen ? 'floor.dropdownClose' : 'floor.dropdownOpen', { floor: getCurrentFloorLabel() })
+      t(nextOpen ? 'floor.dropdownClose' : 'floor.dropdownOpen', { floor: getMobileFloorDisplayLabel() })
     );
     mobileFloorOptions.forEach((button) => {
       button.tabIndex = nextOpen ? 0 : -1;
@@ -1533,10 +1542,10 @@ if (window.__FILE_MODE__) {
 
   function updateMobileFloorSelection() {
     const activeFloorId = getFloorDefinition().id;
-    const activeFloorLabel = getFloorLabel(activeFloorId);
+    const displayLabel = getMobileFloorDisplayLabel();
 
     if (mobileFloorCurrent) {
-      mobileFloorCurrent.textContent = activeFloorLabel;
+      mobileFloorCurrent.textContent = displayLabel;
     }
 
     mobileFloorOptions.forEach((button) => {
@@ -1548,7 +1557,7 @@ if (window.__FILE_MODE__) {
     if (mobileFloorToggle) {
       mobileFloorToggle.setAttribute(
         'aria-label',
-        t(isMobileFloorListOpen() ? 'floor.dropdownClose' : 'floor.dropdownOpen', { floor: activeFloorLabel })
+        t(isMobileFloorListOpen() ? 'floor.dropdownClose' : 'floor.dropdownOpen', { floor: displayLabel })
       );
     }
   }
