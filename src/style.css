@@ -238,6 +238,10 @@ body[data-app-mode="viewer"] .app-shell {
   z-index: 50;
 }
 
+.topbar-glass:has(.search-results:not([hidden])) {
+  z-index: 40;
+}
+
 .topbar-title-row {
   display: flex;
   align-items: center;
