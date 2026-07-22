@@ -996,7 +996,7 @@ body.domain-migration-is-open {
   height: 38px;
   border: 0;
   border-radius: 50%;
-  background: var(--accent-soft-strong);
+  background: transparent;
   color: var(--accent);
   font-size: 1.35rem;
   line-height: 1;
@@ -1043,17 +1043,15 @@ body.domain-migration-is-open {
   border: 0;
   border-radius: 16px;
   padding: 12px 14px;
-  background: var(--accent-soft);
+  background: #f3f3f3;
   color: #0b1220;
   text-align: left;
 }
 
-.search-result.is-active {
-  background: linear-gradient(
-    135deg,
-    var(--accent-soft-gradient-start),
-    var(--accent-soft-gradient-end)
-  );
+@media (hover: hover) and (pointer: fine) {
+  .search-result:hover {
+    background: var(--ink-100);
+  }
 }
 
 .search-result-label {
