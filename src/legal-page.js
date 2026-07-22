@@ -1,4 +1,5 @@
 import './style.css';
+import './domain-migration-notice.js';
 
 const LANGUAGE_STORAGE_KEY = 'oicmap:lang';
 
