@@ -541,6 +541,120 @@ body[data-app-mode="viewer"] .app-shell {
   backdrop-filter: blur(8px);
 }
 
+.domain-migration-notice {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: max(24px, env(safe-area-inset-top, 0px)) 18px max(24px, env(safe-area-inset-bottom, 0px));
+  background: rgba(11, 18, 32, 0.58);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: domain-migration-backdrop-in 180ms ease-out both;
+}
+
+.domain-migration-notice-card {
+  position: relative;
+  width: min(520px, 100%);
+  padding: 28px 28px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.28),
+    0 8px 24px rgba(11, 18, 32, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  color: var(--ink-900);
+  animation: domain-migration-card-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.domain-migration-notice-title {
+  margin: 0 0 12px;
+  color: var(--ink-900);
+  font-size: clamp(1rem, 3.5vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.domain-migration-notice-copy {
+  margin: 0 0 24px;
+  color: var(--ink-700);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.domain-migration-notice-link {
+  display: flex;
+  width: fit-content;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin-inline: auto;
+  padding: 11px 18px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.domain-migration-notice-link:hover {
+  background: var(--accent-strong, #8d1129);
+  box-shadow: 0 8px 18px rgba(165, 20, 51, 0.22);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 720px) {
+  .domain-migration-notice {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .domain-migration-notice-card {
+    padding: 24px 20px 22px;
+    border-radius: 20px;
+  }
+
+  .domain-migration-notice-title {
+    margin-top: 20px;
+  }
+
+  .domain-migration-notice-copy {
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes domain-migration-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes domain-migration-card-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+body.domain-migration-is-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .domain-migration-notice,
+  .domain-migration-notice-card,
+  .domain-migration-notice-link {
+    animation: none;
+    transition: none;
+  }
+}
+
 .about-dialog-backdrop[hidden] {
   display: none;
 }

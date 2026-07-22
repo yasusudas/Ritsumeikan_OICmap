@@ -35,10 +35,10 @@
       "has": [
         {
           "type": "host",
-          "value": "iris-oic-map.vercel.app"
+          "value": "rits-oic-map.vercel.app"
         }
       ],
-      "destination": "https://rits-oic-map.vercel.app/:path",
+      "destination": "https://rits-oic-map.app/:path?oicmap_migrated=1",
       "permanent": true
     }
   ],
