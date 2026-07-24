@@ -447,8 +447,8 @@ function updateJsonLd() {
   }
 
   const pageUrl = currentLang === 'en'
-    ? 'https://rits-oic-map.vercel.app/en/'
-    : 'https://rits-oic-map.vercel.app/';
+    ? 'https://rits-oic-map.app/en/'
+    : 'https://rits-oic-map.app/';
 
   script.textContent = JSON.stringify(
     {

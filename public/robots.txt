@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /editor/
 
-Sitemap: https://rits-oic-map.vercel.app/sitemap.xml
+Sitemap: https://rits-oic-map.app/sitemap.xml
