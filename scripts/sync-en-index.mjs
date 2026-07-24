@@ -7,7 +7,7 @@ const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const sourcePath = resolve(rootDir, 'index.html');
 const targetPath = resolve(rootDir, 'en/index.html');
 const i18nPath = resolve(rootDir, 'src/i18n.js');
-const siteBaseUrl = 'https://rits-oic-map.vercel.app/';
+const siteBaseUrl = 'https://rits-oic-map.app/';
 const englishUrl = `${siteBaseUrl}en/`;
 
 const shouldCheck = process.argv.includes('--check');

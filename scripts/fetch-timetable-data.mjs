@@ -608,7 +608,7 @@ async function fetchText(url) {
 
 function commonHeaders(url) {
   return {
-    'User-Agent': 'rits-oic-map timetable builder (+https://rits-oic-map.vercel.app/)',
+    'User-Agent': 'rits-oic-map timetable builder (+https://rits-oic-map.app/)',
     Accept: url.endsWith('.json') ? 'application/json,text/plain,*/*' : 'text/html,application/xhtml+xml',
   };
 }

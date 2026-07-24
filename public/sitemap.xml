@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rits-oic-map.vercel.app/</loc>
+    <loc>https://rits-oic-map.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://rits-oic-map.vercel.app/en/</loc>
+    <loc>https://rits-oic-map.app/en/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://rits-oic-map.vercel.app/access/</loc>
+    <loc>https://rits-oic-map.app/access/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://rits-oic-map.vercel.app/en/access/</loc>
+    <loc>https://rits-oic-map.app/en/access/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://rits-oic-map.vercel.app/terms/</loc>
+    <loc>https://rits-oic-map.app/terms/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://rits-oic-map.vercel.app/privacy/</loc>
+    <loc>https://rits-oic-map.app/privacy/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://rits-oic-map.vercel.app/en/terms/</loc>
+    <loc>https://rits-oic-map.app/en/terms/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://rits-oic-map.vercel.app/en/privacy/</loc>
+    <loc>https://rits-oic-map.app/en/privacy/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
