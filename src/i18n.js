@@ -4,7 +4,7 @@ export const LANGUAGE_CHANGE_EVENT = 'oicmap:languagechange';
 const dictionaries = {
   ja: {
     'meta.appName': '立命館OICマップ',
-    'meta.title.viewer': '立命館OICマップ',
+    'meta.title.viewer': '立命館OICマップ | 教室・施設を検索',
     'meta.title.editor': '立命館OICマップ 編集用',
     'meta.title.login': '編集ページログイン',
     'meta.description':
