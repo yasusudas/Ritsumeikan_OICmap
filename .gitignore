@@ -19,3 +19,25 @@ data/syllabus/
 public/search-index 2.json
 scripts/add-amazon-links-to-syllabus.mjs
 scripts/fetch-ritsumei-syllabus.mjs
+
+# Local AI/editor instruction files (not project runtime)
+GEMINI.md
+CODEX.md
+CURSOR.md
+copilot-instructions.md
+.cursorrules
+.cursor/
+.codex/
+.agents/
+.agent/
+.windsurf/
+.cline/
+.roo/
+.aider/
+.continue/
+.kiro/
+.amazonq/
+.junie/
+.openhands/
+.github/copilot-instructions.md
+dot_github/copilot-instructions.md
