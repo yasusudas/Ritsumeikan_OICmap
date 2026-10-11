@@ -118,9 +118,8 @@ if (window.__FILE_MODE__) {
       }
     }
   };
-  const PDF_SUPPORT_ASSET_BASE = import.meta.env.BASE_URL;
   const MANUAL_SEARCH_INDEX_FILENAME = 'manual-search-index.json';
-  const SEARCH_INDEX_URL = `${PDF_SUPPORT_ASSET_BASE}${MANUAL_SEARCH_INDEX_FILENAME}`;
+  const SEARCH_INDEX_URL = `/${MANUAL_SEARCH_INDEX_FILENAME}`;
   const DEFAULT_CONTACT_FORM_EMBED_URL =
     'https://docs.google.com/forms/d/e/1FAIpQLSdRZNEfH7hRLTylhvTLKUIJjXszWI8i3bq2VelAp7sfmH8fhQ/viewform?usp=dialog';
   const CONTACT_FORM_EMBED_URL =
