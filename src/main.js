@@ -1,5 +1,4 @@
 import './style.css';
-import './domain-migration-notice.js';
 import { inject } from '@vercel/analytics';
 import { applyI18n, getLang, getLocale, onLanguageChange, t } from './i18n.js';
 

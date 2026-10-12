@@ -1,74 +1,160 @@
 {
-  "redirects": [
+  "routes": [
     {
-      "source": "/en/terms",
-      "destination": "/en/terms/",
-      "permanent": true
-    },
-    {
-      "source": "/en/privacy",
-      "destination": "/en/privacy/",
-      "permanent": true
-    },
-    {
-      "source": "/terms",
-      "destination": "/terms/",
-      "permanent": true
-    },
-    {
-      "source": "/privacy",
-      "destination": "/privacy/",
-      "permanent": true
-    },
-    {
-      "source": "/en/access",
-      "destination": "/en/access/",
-      "permanent": true
-    },
-    {
-      "source": "/access",
-      "destination": "/access/",
-      "permanent": true
-    },
-    {
-      "source": "/:path((?!google4ddf7f320452e31a\\.html$).*)",
+      "src": "^(?:/((?:index\\.html|(?:en|access|food|terms|privacy|timetable|editor|en/access|en/food|en/terms|en/privacy|en/timetable|editor/login|hidden/timetable)(?:/index\\.html|/)?)?))$",
       "has": [
         {
           "type": "host",
-          "value": "rits-oic-map.vercel.app"
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
         }
       ],
-      "destination": "https://rits-oic-map.app/:path?oicmap_migrated=1",
-      "permanent": true
-    }
-  ],
-  "headers": [
+      "dest": "/legacy-moved.html",
+      "headers": {
+        "X-Robots-Tag": "noindex, follow",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
     {
-      "source": "/assets/(.*)",
-      "headers": [
+      "src": "^/robots\\.txt$",
+      "has": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "type": "host",
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
+        }
+      ],
+      "dest": "/legacy-robots.txt"
+    },
+    {
+      "src": "^/en/terms$",
+      "headers": {
+        "Location": "/en/terms/"
+      },
+      "status": 308,
+      "missing": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
         }
       ]
     },
     {
-      "source": "/manual-search-index.json",
-      "headers": [
+      "src": "^/en/privacy$",
+      "headers": {
+        "Location": "/en/privacy/"
+      },
+      "status": 308,
+      "missing": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=604800"
+          "type": "host",
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
         }
       ]
     },
     {
-      "source": "/sw.js",
-      "headers": [
+      "src": "^/terms$",
+      "headers": {
+        "Location": "/terms/"
+      },
+      "status": 308,
+      "missing": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
+          "type": "host",
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
         }
       ]
+    },
+    {
+      "src": "^/privacy$",
+      "headers": {
+        "Location": "/privacy/"
+      },
+      "status": 308,
+      "missing": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
+        }
+      ]
+    },
+    {
+      "src": "^/en/access$",
+      "headers": {
+        "Location": "/en/access/"
+      },
+      "status": 308,
+      "missing": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
+        }
+      ]
+    },
+    {
+      "src": "^/access$",
+      "headers": {
+        "Location": "/access/"
+      },
+      "status": 308,
+      "missing": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
+        }
+      ]
+    },
+    {
+      "src": "^/assets(?:/(.*))$",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/manual-search-index\\.json$",
+      "headers": {
+        "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/sw\\.js$",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/legacy-moved\\.html$",
+      "headers": {
+        "X-Robots-Tag": "noindex, follow"
+      },
+      "continue": true
+    },
+    {
+      "src": "^(?:/(analytics-init\\.js|legacy-moved\\.js|legacy-moved\\.css|legacy-moved\\.html))$",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      },
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
     }
   ]
 }

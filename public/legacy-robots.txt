@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rits-oic-map.app/sitemap.xml
