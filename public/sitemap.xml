@@ -21,6 +21,9 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://rits-oic-map.app/en/timetable/</loc>
+  </url>
+  <url>
     <loc>https://rits-oic-map.app/terms/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
