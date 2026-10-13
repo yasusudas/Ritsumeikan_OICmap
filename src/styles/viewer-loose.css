@@ -4,8 +4,7 @@
    (body[data-app-mode="viewer"]). No rules or outlines: groups are made
    with whitespace, soft grey fills and type size. Controls float around
    the map instead of sitting in a ruled bar — floors down the left like
-   lift buttons, facilities down the right — and the current floor sits
-   as a large faint numeral in the map's margin.
+   lift buttons, facilities down the right.
    Still flat: no shadows, blur or gradients.
    ===================================================================== */
 
@@ -19,11 +18,6 @@ body[data-app-mode="viewer"] {
 
   --c-accent: var(--ls-red);
   --c-accent-hover: #741424;
-}
-
-/* The floor numeral only exists on the viewer. */
-.floor-mark {
-  display: none;
 }
 
 /* ---------------------------------------------------------------------
@@ -117,6 +111,32 @@ body[data-app-mode="viewer"] .site-menu-toggle {
   margin-right: 0;
   border-radius: 50%;
   background: var(--ls-fill);
+}
+
+body[data-app-mode="viewer"] .site-menu-line {
+  top: calc(50% - 1px);
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+body[data-app-mode="viewer"] .site-menu-toggle .site-menu-line:nth-child(1) {
+  transform: translateY(-4px);
+}
+
+body[data-app-mode="viewer"] .site-menu-toggle .site-menu-line:nth-child(2) {
+  opacity: 1;
+  transform: translateY(4px);
+}
+
+body[data-app-mode="viewer"] .site-menu-toggle[aria-expanded="true"] .site-menu-line:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+body[data-app-mode="viewer"] .site-menu-toggle[aria-expanded="true"] .site-menu-line:nth-child(2) {
+  opacity: 1;
+  transform: rotate(-45deg);
 }
 
 body[data-app-mode="viewer"] .site-menu-panel {
@@ -282,31 +302,8 @@ body[data-app-mode="viewer"] .toilet-ring-legend {
 }
 
 /* ---------------------------------------------------------------------
-   Map: no frame; the current floor as a faint numeral in the margin
+   Map
    --------------------------------------------------------------------- */
-
-body[data-app-mode="viewer"] .viewer {
-  position: relative;
-  z-index: 1;
-  background: transparent;
-}
-
-body[data-app-mode="viewer"] .floor-mark {
-  position: absolute;
-  right: var(--ls-edge);
-  bottom: 40px;
-  z-index: 0;
-  display: block;
-  color: var(--ls-mark);
-  font-family: var(--font-latin);
-  font-size: clamp(140px, 17vw, 280px);
-  font-weight: 800;
-  letter-spacing: -0.06em;
-  line-height: 0.8;
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
-}
 
 /* Search pin: crimson drop that falls in once */
 body[data-app-mode="viewer"] .search-highlight-pin {
@@ -558,14 +555,6 @@ body[data-app-mode="viewer"] .about-dialog-version {
 
   body[data-app-mode="viewer"] .toilet-ring-legend {
     top: calc(100% + 4px);
-  }
-
-  /* The numeral fills the empty band under the floor sheet. */
-  body[data-app-mode="viewer"] .floor-mark {
-    right: auto;
-    left: var(--gutter);
-    bottom: 12px;
-    font-size: 40vw;
   }
 
   body[data-app-mode="viewer"] .site-header .site-menu-panel {
