@@ -1,1 +1,1075 @@
-/* timetable styles — see src/style.css for ownership. */
+/* =====================================================================
+   Timetable pages
+   /timetable/, /en/timetable/   official links, shuttle bus, status links
+   /hidden/timetable/            live departures (sortable), live status
+   Flat: content is separated by whitespace and 1px rules. Railway colors
+   appear only as an 8px square marker.
+   ===================================================================== */
+
+.timetable-main {
+  --timetable-day-link-w: 8.5rem;
+}
+
+html[lang="en"] .timetable-main {
+  --timetable-day-link-w: 11rem;
+}
+
+/* A section whose head sits above a full-width body. */
+.timetable-main .timetable-section-wide {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ---------------------------------------------------------------------
+   Shared pieces
+   --------------------------------------------------------------------- */
+
+.timetable-railway {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 var(--s-2);
+  margin: 0;
+  color: var(--c-ink-2);
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+}
+
+.timetable-railway-mark {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  background: var(--railway-color, var(--c-ink-3));
+}
+
+.timetable-railway-line::before {
+  content: "/";
+  margin-right: var(--s-2);
+  color: var(--c-ink-3);
+}
+
+/* Quiet text link: ink-2, hairline underline, accent on hover. */
+.timetable-quiet-link {
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  text-decoration: underline;
+  text-decoration-color: var(--c-line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition:
+    color var(--dur) var(--ease),
+    text-decoration-color var(--dur) var(--ease);
+}
+
+.timetable-quiet-link:hover {
+  color: var(--c-accent);
+  text-decoration-color: currentColor;
+}
+
+.timetable-quiet-link.external::after {
+  display: inline-block;
+  margin-left: 0.3em;
+  color: var(--c-ink-3);
+  text-decoration: none;
+}
+
+/* Long link labels wrap: keep the marker attached to the last word. */
+.timetable-reference-link.external::after {
+  content: "\00a0↗";
+  color: var(--c-ink-3);
+}
+
+.timetable-quiet-link.external:hover::after,
+.timetable-reference-link.external:hover::after {
+  color: currentColor;
+}
+
+.timetable-inline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timetable-main .btn:disabled {
+  border-color: var(--c-line);
+  background: transparent;
+  color: var(--c-ink-3);
+  cursor: default;
+}
+
+/* ---------------------------------------------------------------------
+   Link page: stations
+   --------------------------------------------------------------------- */
+
+.timetable-station-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--rule-strong);
+}
+
+.timetable-station {
+  display: grid;
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+  gap: var(--s-3) var(--s-6);
+  padding: var(--s-5) 0;
+  border-bottom: var(--rule);
+}
+
+.timetable-station-head {
+  display: grid;
+  align-content: start;
+  gap: var(--s-1);
+}
+
+.timetable-station-name {
+  margin: 0;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-tight);
+}
+
+.timetable-directions {
+  display: grid;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timetable-direction {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s-2) var(--s-4);
+}
+
+.timetable-direction-name {
+  min-width: 0;
+  font-size: var(--fs-base);
+  line-height: var(--lh-snug);
+}
+
+.timetable-direction-links {
+  display: grid;
+  grid-template-columns: repeat(2, var(--timetable-day-link-w));
+  gap: var(--s-2);
+}
+
+.timetable-day-link {
+  justify-content: space-between;
+  padding: 0 var(--s-3) 0 var(--s-4);
+}
+
+.timetable-day-link.external::after {
+  color: var(--c-ink-3);
+  transition: color var(--dur) var(--ease);
+}
+
+.timetable-day-link:hover.external::after {
+  color: currentColor;
+}
+
+/* ---------------------------------------------------------------------
+   Link page: shuttle bus
+   --------------------------------------------------------------------- */
+
+.timetable-shuttle-routes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: var(--rule-strong);
+  border-bottom: var(--rule);
+}
+
+.timetable-shuttle-route {
+  display: grid;
+  align-content: start;
+  gap: var(--s-1);
+  min-width: 0;
+  padding: var(--s-5) var(--s-6) var(--s-5) 0;
+}
+
+.timetable-shuttle-route + .timetable-shuttle-route {
+  padding: var(--s-5) 0 var(--s-5) var(--s-6);
+  border-left: var(--rule);
+}
+
+.timetable-shuttle-path {
+  margin: 0;
+  color: var(--c-ink-3);
+  font-family: var(--font-latin);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.08em;
+}
+
+.timetable-shuttle-destination {
+  margin: 0;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-tight);
+}
+
+.timetable-shuttle-label {
+  margin: var(--s-4) 0 0;
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+}
+
+.timetable-shuttle-next {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 var(--s-3);
+  margin: 0;
+}
+
+.timetable-shuttle-day {
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.timetable-shuttle-day:empty {
+  display: none;
+}
+
+.timetable-shuttle-time {
+  font-family: var(--font-latin);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-medium);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.timetable-shuttle-countdown {
+  margin: 0;
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.timetable-shuttle-countdown:empty {
+  display: none;
+}
+
+.timetable-shuttle-route.is-out-of-service .timetable-shuttle-time {
+  color: var(--c-ink-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: var(--lh-snug);
+}
+
+.timetable-shuttle-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+  margin: var(--s-4) 0 0;
+}
+
+/* ---------------------------------------------------------------------
+   Service status rows (link page: links only; hidden page: live status)
+   --------------------------------------------------------------------- */
+
+.timetable-status-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s-2) var(--s-5);
+}
+
+.timetable-status-line {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  min-width: 0;
+}
+
+.timetable-status-line .timetable-railway-mark {
+  margin-top: 0.55em;
+}
+
+.timetable-status-line-name {
+  margin: 0;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+}
+
+.timetable-status-railway {
+  margin: 0;
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+}
+
+.timetable-status-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--s-1) var(--s-5);
+}
+
+.timetable-status-state {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin: 0;
+  color: var(--c-ink);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  white-space: nowrap;
+}
+
+/* Status indicator dot (ok / warn / danger / unknown). */
+.timetable-status-dot {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-ink-3);
+}
+
+.timetable-status-row.is-ok .timetable-status-dot {
+  background: var(--c-ok);
+}
+
+.timetable-status-row.is-warn .timetable-status-dot {
+  background: var(--c-warn);
+}
+
+.timetable-status-row.is-warn .timetable-status-state {
+  color: var(--c-warn);
+}
+
+.timetable-status-row.is-danger .timetable-status-dot {
+  background: var(--c-danger);
+}
+
+.timetable-status-row.is-danger .timetable-status-state {
+  color: var(--c-danger);
+}
+
+.timetable-status-row.is-unknown .timetable-status-state {
+  color: var(--c-ink-3);
+}
+
+.timetable-status-summary {
+  display: grid;
+  gap: var(--s-1);
+  min-width: 0;
+}
+
+.timetable-status-summary p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  overflow-wrap: anywhere;
+}
+
+.timetable-status-summary .timetable-status-detail {
+  color: var(--c-ink-2);
+  font-size: var(--fs-xs);
+}
+
+.timetable-status-row.is-unknown .timetable-status-summary p {
+  color: var(--c-ink-2);
+}
+
+.timetable-status-message {
+  margin: 0;
+  padding: var(--s-4) 0;
+  border-top: var(--rule-strong);
+  border-bottom: var(--rule);
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+}
+
+.timetable-status-message p {
+  margin: 0;
+}
+
+.timetable-status-message .timetable-inline-links {
+  margin-top: var(--s-3);
+}
+
+.timetable-status-updated {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hidden page: line | status | summary | link */
+.timetable-live-status .timetable-status-row {
+  grid-template-columns: minmax(0, 10rem) minmax(0, 7.5rem) minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--s-2) var(--s-5);
+}
+
+.timetable-live-status .timetable-status-state,
+.timetable-live-status .timetable-status-links {
+  min-height: calc(var(--fs-base) * 1.55);
+}
+
+/* ---------------------------------------------------------------------
+   Official links (link page) and sources (hidden page)
+   --------------------------------------------------------------------- */
+
+.timetable-reference-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-6) var(--s-5);
+}
+
+.timetable-reference-group {
+  display: grid;
+  align-content: start;
+  gap: var(--s-3);
+  min-width: 0;
+  padding-top: var(--s-3);
+  border-top: var(--rule-strong);
+}
+
+.timetable-reference-title {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+}
+
+.timetable-reference-list {
+  display: grid;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timetable-reference-link {
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color var(--dur) var(--ease);
+}
+
+.timetable-reference-link:hover {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+
+.timetable-notes {
+  max-width: var(--measure);
+  margin: 0 0 var(--s-6);
+  padding: 0 0 0 1.1em;
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+}
+
+.timetable-notes li + li {
+  margin-top: var(--s-1);
+}
+
+.timetable-notes li::marker {
+  color: var(--c-ink-3);
+}
+
+.timetable-source-groups {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
+  gap: var(--s-6) var(--s-5);
+}
+
+.timetable-source-groups .timetable-reference-link {
+  font-size: var(--fs-xs);
+}
+
+/* ---------------------------------------------------------------------
+   Hidden page: departures board
+   --------------------------------------------------------------------- */
+
+.timetable-board {
+  padding: var(--s-7) 0;
+  border-bottom: var(--rule);
+}
+
+.timetable-board-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-bottom: var(--s-5);
+}
+
+.timetable-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: var(--rule-strong);
+}
+
+.timetable-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  min-width: 0;
+  padding: var(--s-6) var(--s-6) var(--s-6) 0;
+  border-bottom: var(--rule);
+  background: var(--c-bg);
+}
+
+.timetable-card-grid > .timetable-card:nth-child(2n) {
+  padding: var(--s-6) 0 var(--s-6) var(--s-6);
+  border-left: var(--rule);
+}
+
+.timetable-card-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s-1) var(--s-3);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.timetable-card-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+  margin: -6px 0;
+}
+
+.timetable-card-hide {
+  min-height: 32px;
+  padding: 0 var(--s-2);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  transition: color var(--dur) var(--ease);
+}
+
+.timetable-card-hide:hover {
+  color: var(--c-ink);
+}
+
+.timetable-card-grip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 24px;
+  height: 32px;
+  color: var(--c-ink-3);
+  transition: color var(--dur) var(--ease);
+}
+
+.timetable-card-header:hover .timetable-card-grip {
+  color: var(--c-ink);
+}
+
+.timetable-card-title {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 var(--s-3);
+  margin: 0;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-tight);
+}
+
+.timetable-card-title span {
+  color: var(--c-ink-2);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0;
+}
+
+/* Next departure: the departure time is the primary figure. */
+.timetable-next {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.timetable-next-label,
+.timetable-upcoming-label {
+  display: flex;
+  gap: var(--s-3);
+  margin: 0;
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.5;
+}
+
+.timetable-next-label span {
+  font-weight: var(--fw-regular);
+}
+
+.timetable-next-main {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+}
+
+.timetable-next-time {
+  flex: 0 0 auto;
+  font-family: var(--font-latin);
+  font-size: var(--fs-display);
+  font-weight: var(--fw-medium);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.timetable-next-train {
+  display: grid;
+  gap: var(--s-1);
+  flex: 1 1 10rem;
+  min-width: 0;
+}
+
+.timetable-next-service {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-3);
+  margin: 0;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+}
+
+.timetable-next-service .timetable-train-type {
+  font-size: var(--fs-sm);
+}
+
+.timetable-next-service .timetable-train-type.is-local {
+  min-width: 0;
+  padding: 0;
+}
+
+.timetable-train-note {
+  margin: 0;
+  color: var(--c-ink-2);
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.timetable-next-countdown {
+  margin: 0;
+  color: var(--c-ink-2);
+  font-size: var(--fs-base);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--lh-snug);
+}
+
+/* Train type: short label in a hairline box; local trains as plain text. */
+.timetable-train-type {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 3.4em;
+  padding: 0 0.45em;
+  border: 1px solid var(--c-ink);
+  color: var(--c-ink);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.timetable-train-type.is-local {
+  border-color: transparent;
+  color: var(--c-ink-3);
+}
+
+.timetable-train-type.is-limited {
+  background: var(--c-ink);
+  color: var(--c-bg);
+}
+
+/* Upcoming departures */
+.timetable-upcoming {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.timetable-upcoming-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--rule);
+}
+
+.timetable-upcoming-item {
+  display: grid;
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 2px var(--s-3);
+  padding: var(--s-2) 0;
+  border-bottom: var(--rule);
+}
+
+.timetable-upcoming-item time {
+  font-family: var(--font-latin);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+.timetable-upcoming-train {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-width: 0;
+  font-size: var(--fs-sm);
+}
+
+.timetable-upcoming-train .timetable-destination {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.timetable-upcoming-item .timetable-train-note {
+  grid-column: 2;
+}
+
+/* All departures (details) */
+.timetable-all {
+  margin-top: auto;
+}
+
+.timetable-all summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 40px;
+  color: var(--c-ink);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  list-style: none;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease);
+}
+
+.timetable-all summary::-webkit-details-marker {
+  display: none;
+}
+
+.timetable-all summary::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 var(--s-1);
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--dur) var(--ease);
+}
+
+.timetable-all.is-open summary::after,
+.timetable-all[open]:not(.is-animating) summary::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+}
+
+.timetable-all summary:hover {
+  color: var(--c-accent);
+}
+
+.timetable-all-meta {
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  font-variant-numeric: tabular-nums;
+}
+
+.timetable-hour-list {
+  transition:
+    height 220ms var(--ease),
+    opacity 220ms var(--ease);
+}
+
+.timetable-hour-row {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--s-3);
+  padding: var(--s-2) 0;
+  border-top: var(--rule);
+}
+
+.timetable-hour-row:last-child {
+  border-bottom: var(--rule);
+}
+
+.timetable-hour-label {
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.timetable-minute-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timetable-minute {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s-1);
+}
+
+.timetable-minute time {
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+.timetable-minute-meta {
+  color: var(--c-ink-3);
+  font-size: var(--fs-2xs);
+}
+
+/* Board messages (empty / load error) */
+.timetable-board-message {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--s-1);
+  padding: var(--s-6) 0;
+  border-bottom: var(--rule);
+}
+
+.timetable-board-message p {
+  margin: 0;
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+}
+
+.timetable-board-message .timetable-board-message-title {
+  color: var(--c-ink);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+}
+
+/* Drag to reorder: flat ghost, empty slot in place, subtle movement. */
+.timetable-card.is-dragging {
+  background: var(--c-bg-sub);
+}
+
+.timetable-card.is-dragging > * {
+  visibility: hidden;
+}
+
+.timetable-card-drag-ghost {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 400;
+  margin: 0;
+  padding: var(--s-5);
+  overflow: hidden;
+  border: 1px solid var(--c-ink);
+  background: var(--c-bg);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.timetable-card-drag-ghost.is-settling {
+  transition:
+    transform 160ms var(--ease),
+    opacity 160ms var(--ease);
+}
+
+body.is-timetable-sorting,
+body.is-timetable-sorting * {
+  cursor: grabbing;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ---------------------------------------------------------------------
+   Hidden page: hidden cards + controls
+   --------------------------------------------------------------------- */
+
+.timetable-hidden-panel .section-head .meta-text {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.timetable-empty {
+  margin: 0;
+  padding: var(--s-4) 0;
+  border-top: var(--rule-strong);
+  border-bottom: var(--rule);
+  color: var(--c-ink-3);
+  font-size: var(--fs-sm);
+}
+
+.timetable-hidden-items > li {
+  padding: var(--s-3) 0;
+}
+
+.timetable-hidden-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+
+.timetable-hidden-name {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.timetable-hidden-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 var(--s-2);
+  margin: 0;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+}
+
+.timetable-hidden-title span {
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.timetable-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-4);
+}
+
+/* ---------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .timetable-reference-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .timetable-card-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timetable-card,
+  .timetable-card-grid > .timetable-card:nth-child(2n) {
+    padding: var(--s-5) 0;
+    border-left: 0;
+  }
+
+  .timetable-board {
+    padding: var(--s-6) 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .timetable-station {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-3);
+  }
+
+  .timetable-direction {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-2);
+  }
+
+  .timetable-direction + .timetable-direction {
+    margin-top: var(--s-2);
+  }
+
+  .timetable-direction-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .timetable-source-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timetable-shuttle-routes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timetable-shuttle-route,
+  .timetable-shuttle-route + .timetable-shuttle-route {
+    padding: var(--s-5) 0;
+    border-left: 0;
+  }
+
+  .timetable-shuttle-route + .timetable-shuttle-route {
+    border-top: var(--rule);
+  }
+
+  .timetable-status-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timetable-status-links {
+    justify-content: flex-start;
+    padding-left: calc(8px + var(--s-3));
+  }
+
+  .timetable-live-status .timetable-status-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .timetable-live-status .timetable-status-summary,
+  .timetable-live-status .timetable-status-links {
+    grid-column: 1 / -1;
+    padding-left: calc(8px + var(--s-3));
+  }
+
+  .timetable-live-status .timetable-status-state,
+  .timetable-live-status .timetable-status-links {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .timetable-reference-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timetable-hidden-item {
+    align-items: flex-start;
+  }
+}

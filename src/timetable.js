@@ -166,7 +166,7 @@ function renderLiveServiceStatus() {
 // Shown instead of raw fetch errors. The underlying error is logged to the console.
 function renderLiveServiceStatusUnavailable(sources) {
   const links = sources.length
-    ? sources.map((item) => ({ label: `${item.railway} ${item.line === item.railway ? '運行状況' : item.line}`, url: item.sourceUrl }))
+    ? sources.map((item) => ({ label: `${item.railway} 運行情報`, url: item.sourceUrl }))
     : LIVE_SERVICE_STATUS_FALLBACK_LINKS;
 
   return `
@@ -205,7 +205,7 @@ function renderLiveServiceStatusRow(item) {
         <span class="timetable-railway-mark" style="--railway-color: ${escapeHtml(item.color || 'var(--c-ink-3)')};" aria-hidden="true"></span>
         <div>
           <h3 class="timetable-status-line-name">${escapeHtml(item.line)}</h3>
-          <p class="timetable-status-railway">${escapeHtml(item.railway)}</p>
+          ${item.railway && item.railway !== item.line ? `<p class="timetable-status-railway">${escapeHtml(item.railway)}</p>` : ''}
         </div>
       </div>
       <p class="timetable-status-state">
@@ -1154,7 +1154,7 @@ function formatCountdownLabel(seconds) {
   const restSeconds = totalSeconds % 60;
   if (hours > 0) return `あと${hours}時間${String(minutes).padStart(2, '0')}分`;
   if (minutes > 0) return `あと${minutes}分${String(restSeconds).padStart(2, '0')}秒`;
-  return `あと${restSeconds}秒`;
+  return restSeconds > 0 ? `あと${restSeconds}秒` : 'まもなく発車';
 }
 
 function formatLiveStatusUpdatedAt(value) {

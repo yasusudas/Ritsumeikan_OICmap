@@ -453,7 +453,11 @@ function renderServiceStatusCard() {
           <span class="timetable-railway-mark" style="--railway-color: ${escapeHtml(item.accent)};" aria-hidden="true"></span>
           <div>
             <h3 class="timetable-status-line-name">${escapeHtml(localizeLine(item, 'line'))}</h3>
-            <p class="timetable-status-railway">${escapeHtml(localizeLine(item, 'railway'))}</p>
+            ${
+              localizeLine(item, 'line') === localizeLine(item, 'railway')
+                ? ''
+                : `<p class="timetable-status-railway">${escapeHtml(localizeLine(item, 'railway'))}</p>`
+            }
           </div>
         </div>
         <div class="timetable-status-links">${links}</div>
