@@ -2,21 +2,22 @@
    Timetable pages
    /timetable/, /en/timetable/   official links, shuttle bus, status links
    /hidden/timetable/            live departures (sortable), live status
-   Flat: content is separated by whitespace and 1px rules. Railway colors
-   appear only as an 8px square marker.
+   Loose flat (see loose.css): no rules. Groups are grey sheets and grey
+   rows on white; controls on a grey surface are white pills. Times are
+   set big in Inter. Railway colors appear only as a small square marker.
    ===================================================================== */
 
-.timetable-main {
-  --timetable-day-link-w: 8.5rem;
+/* On body, not main: the drag ghost is appended to body. */
+.timetable-page {
+  --tt-sheet: 26px; /* big blocks: shuttle routes, departure cards */
+  --tt-chip-h: 36px; /* small pill links and buttons */
+  --timetable-day-link-w: 6.5rem; /* min width of a day link */
+  --timetable-day-link-fit: 7.25rem; /* phones: two per row when they fit */
 }
 
-html[lang="en"] .timetable-main {
-  --timetable-day-link-w: 11rem;
-}
-
-/* A section whose head sits above a full-width body. */
-.timetable-main .timetable-section-wide {
-  grid-template-columns: minmax(0, 1fr);
+html[lang="en"] .timetable-page {
+  --timetable-day-link-w: 7.5rem;
+  --timetable-day-link-fit: 9.25rem;
 }
 
 /* ---------------------------------------------------------------------
@@ -38,6 +39,7 @@ html[lang="en"] .timetable-main {
   flex: 0 0 auto;
   width: 8px;
   height: 8px;
+  border-radius: 2px;
   background: var(--railway-color, var(--c-ink-3));
 }
 
@@ -47,39 +49,48 @@ html[lang="en"] .timetable-main {
   color: var(--c-ink-3);
 }
 
-/* Quiet text link: ink-2, hairline underline, accent on hover. */
+/* Small pill link: grey on white, white on a grey row or sheet. */
 .timetable-quiet-link {
-  color: var(--c-ink-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--tt-chip-h);
+  padding: 0 14px 0 16px;
+  border-radius: 999px;
+  background: var(--ls-fill);
+  color: var(--c-ink);
   font-size: var(--fs-sm);
-  line-height: var(--lh-snug);
-  text-decoration: underline;
-  text-decoration-color: var(--c-line);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.3em;
-  transition:
-    color var(--dur) var(--ease),
-    text-decoration-color var(--dur) var(--ease);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--dur) var(--ease);
 }
 
 .timetable-quiet-link:hover {
-  color: var(--c-accent);
-  text-decoration-color: currentColor;
+  background: var(--ls-fill-2);
 }
 
-.timetable-quiet-link.external::after {
-  display: inline-block;
-  margin-left: 0.3em;
+.timetable-status-row .timetable-quiet-link,
+.timetable-status-message .timetable-quiet-link {
+  background: #ffffff;
+}
+
+.timetable-status-row .timetable-quiet-link:hover,
+.timetable-status-message .timetable-quiet-link:hover {
+  background: var(--ls-fill-2);
+}
+
+.timetable-quiet-link.external::after,
+.timetable-reference-link.external::after {
   color: var(--c-ink-3);
-  text-decoration: none;
 }
 
 /* Long link labels wrap: keep the marker attached to the last word. */
 .timetable-reference-link.external::after {
   content: "\00a0↗";
-  color: var(--c-ink-3);
 }
 
-.timetable-quiet-link.external:hover::after,
 .timetable-reference-link.external:hover::after {
   color: currentColor;
 }
@@ -87,7 +98,7 @@ html[lang="en"] .timetable-main {
 .timetable-inline-links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s-2) var(--s-5);
+  gap: var(--s-2);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -95,32 +106,40 @@ html[lang="en"] .timetable-main {
 
 /* ---------------------------------------------------------------------
    Link page: stations
+   Each station is a heading over its direction rows; the rows are grey
+   strips with the day links as white pills.
    --------------------------------------------------------------------- */
 
 .timetable-station-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 28rem), 1fr));
+  gap: 40px 32px;
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: var(--rule-strong);
+}
+
+html[lang="en"] .timetable-station-list {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 34rem), 1fr));
 }
 
 .timetable-station {
   display: grid;
-  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
-  gap: var(--s-3) var(--s-6);
-  padding: var(--s-5) 0;
-  border-bottom: var(--rule);
+  align-content: start;
+  gap: 14px;
+  min-width: 0;
 }
 
 .timetable-station-head {
-  display: grid;
-  align-content: start;
-  gap: var(--s-1);
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 14px;
 }
 
 .timetable-station-name {
   margin: 0;
-  font-size: var(--fs-md);
+  font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-title);
   line-height: var(--lh-tight);
@@ -128,7 +147,7 @@ html[lang="en"] .timetable-main {
 
 .timetable-directions {
   display: grid;
-  gap: var(--s-2);
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -138,33 +157,39 @@ html[lang="en"] .timetable-main {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--s-2) var(--s-4);
+  gap: 10px 16px;
+  padding: 10px 10px 10px 20px;
+  border-radius: var(--ls-row);
+  background: var(--ls-fill);
 }
 
 .timetable-direction-name {
   min-width: 0;
   font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
   line-height: var(--lh-snug);
 }
 
 .timetable-direction-links {
-  display: grid;
-  grid-template-columns: repeat(2, var(--timetable-day-link-w));
-  gap: var(--s-2);
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
 }
 
-.timetable-day-link {
-  justify-content: space-between;
-  padding: 0 var(--s-3) 0 var(--s-4);
+body.subpage .timetable-day-link {
+  min-width: var(--timetable-day-link-w);
+  min-height: 40px;
+  padding: 0 12px;
+  gap: 6px;
+  background: #ffffff;
+}
+
+body.subpage .timetable-day-link:hover {
+  background: var(--ls-fill-2);
 }
 
 .timetable-day-link.external::after {
   color: var(--c-ink-3);
-  transition: color var(--dur) var(--ease);
-}
-
-.timetable-day-link:hover.external::after {
-  color: currentColor;
 }
 
 /* ---------------------------------------------------------------------
@@ -174,21 +199,17 @@ html[lang="en"] .timetable-main {
 .timetable-shuttle-routes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-top: var(--rule-strong);
-  border-bottom: var(--rule);
+  gap: 16px;
 }
 
 .timetable-shuttle-route {
   display: grid;
   align-content: start;
-  gap: var(--s-1);
+  gap: 2px;
   min-width: 0;
-  padding: var(--s-5) var(--s-6) var(--s-5) 0;
-}
-
-.timetable-shuttle-route + .timetable-shuttle-route {
-  padding: var(--s-5) 0 var(--s-5) var(--s-6);
-  border-left: var(--rule);
+  padding: 26px 30px 28px;
+  border-radius: var(--tt-sheet);
+  background: var(--ls-fill);
 }
 
 .timetable-shuttle-path {
@@ -202,14 +223,14 @@ html[lang="en"] .timetable-main {
 
 .timetable-shuttle-destination {
   margin: 0;
-  font-size: var(--fs-md);
+  font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-title);
   line-height: var(--lh-tight);
 }
 
 .timetable-shuttle-label {
-  margin: var(--s-4) 0 0;
+  margin: 22px 0 0;
   color: var(--c-ink-3);
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
@@ -219,7 +240,7 @@ html[lang="en"] .timetable-main {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 0 var(--s-3);
+  gap: 0 10px;
   margin: 0;
 }
 
@@ -235,11 +256,11 @@ html[lang="en"] .timetable-main {
 
 .timetable-shuttle-time {
   font-family: var(--font-latin);
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-medium);
+  font-size: clamp(2.75rem, 2.1rem + 2.4vw, 4rem);
+  font-weight: var(--fw-bold);
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0;
-  line-height: 1.15;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .timetable-shuttle-countdown {
@@ -257,19 +278,26 @@ html[lang="en"] .timetable-main {
   color: var(--c-ink-2);
   font-family: var(--font-sans);
   font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0;
   line-height: var(--lh-snug);
 }
 
 .timetable-shuttle-links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s-2) var(--s-5);
-  margin: var(--s-4) 0 0;
+  gap: var(--s-2);
+  margin: 16px 0 0;
 }
 
 /* ---------------------------------------------------------------------
    Service status rows (link page: links only; hidden page: live status)
+   Rows are .rule-list items: grey strips from loose.css.
    --------------------------------------------------------------------- */
+
+body.subpage .timetable-status-list > .timetable-status-row {
+  padding: 14px 14px 14px 20px;
+}
 
 .timetable-status-row {
   display: grid;
@@ -307,7 +335,7 @@ html[lang="en"] .timetable-main {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: var(--s-1) var(--s-5);
+  gap: 6px;
 }
 
 .timetable-status-state {
@@ -377,11 +405,12 @@ html[lang="en"] .timetable-main {
   color: var(--c-ink-2);
 }
 
+/* Loading / unavailable: one grey strip, links as white pills. */
 .timetable-status-message {
   margin: 0;
-  padding: var(--s-4) 0;
-  border-top: var(--rule-strong);
-  border-bottom: var(--rule);
+  padding: 18px 22px;
+  border-radius: var(--ls-row);
+  background: var(--ls-fill);
   color: var(--c-ink-2);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
@@ -392,7 +421,7 @@ html[lang="en"] .timetable-main {
 }
 
 .timetable-status-message .timetable-inline-links {
-  margin-top: var(--s-3);
+  margin-top: 14px;
 }
 
 .timetable-status-updated {
@@ -400,47 +429,50 @@ html[lang="en"] .timetable-main {
   font-variant-numeric: tabular-nums;
 }
 
-/* Hidden page: line | status | summary | link */
+/* Hidden page: line | status | summary | link. Text cells share the
+   first line with the link pill. */
 .timetable-live-status .timetable-status-row {
   grid-template-columns: minmax(0, 10rem) minmax(0, 7.5rem) minmax(0, 1fr) auto;
   align-items: start;
   gap: var(--s-2) var(--s-5);
 }
 
-.timetable-live-status .timetable-status-state,
+body.subpage .timetable-live-status .timetable-status-list > .timetable-status-row {
+  padding-block: 18px;
+}
+
 .timetable-live-status .timetable-status-links {
-  min-height: calc(var(--fs-base) * 1.55);
+  margin: -7px 0;
 }
 
 /* ---------------------------------------------------------------------
    Official links (link page) and sources (hidden page)
+   Plain columns on white; space, not rules, between the groups.
    --------------------------------------------------------------------- */
 
 .timetable-reference-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--s-6) var(--s-5);
+  gap: 36px 32px;
 }
 
 .timetable-reference-group {
   display: grid;
   align-content: start;
-  gap: var(--s-3);
+  gap: 14px;
   min-width: 0;
-  padding-top: var(--s-3);
-  border-top: var(--rule-strong);
 }
 
 .timetable-reference-title {
   margin: 0;
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
   line-height: var(--lh-snug);
 }
 
 .timetable-reference-list {
   display: grid;
-  gap: var(--s-2);
+  gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -457,7 +489,7 @@ html[lang="en"] .timetable-main {
 }
 
 .timetable-reference-link:hover {
-  color: var(--c-accent);
+  color: var(--ls-red);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.3em;
@@ -465,7 +497,7 @@ html[lang="en"] .timetable-main {
 
 .timetable-notes {
   max-width: var(--measure);
-  margin: 0 0 var(--s-6);
+  margin: 0 0 40px;
   padding: 0 0 0 1.1em;
   color: var(--c-ink-2);
   font-size: var(--fs-sm);
@@ -483,7 +515,7 @@ html[lang="en"] .timetable-main {
 .timetable-source-groups {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
-  gap: var(--s-6) var(--s-5);
+  gap: 36px 32px;
 }
 
 .timetable-source-groups .timetable-reference-link {
@@ -492,11 +524,11 @@ html[lang="en"] .timetable-main {
 
 /* ---------------------------------------------------------------------
    Hidden page: departures board
+   Each card is a grey sheet; its controls are white pills.
    --------------------------------------------------------------------- */
 
 .timetable-board {
-  padding: var(--s-7) 0;
-  border-bottom: var(--rule);
+  padding-top: 48px;
 }
 
 .timetable-board-head {
@@ -505,36 +537,32 @@ html[lang="en"] .timetable-main {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--s-4);
-  margin-bottom: var(--s-5);
+  margin-bottom: 20px;
 }
 
 .timetable-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-top: var(--rule-strong);
+  align-items: start;
+  gap: 16px;
 }
 
 .timetable-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--s-5);
+  gap: 24px;
   min-width: 0;
-  padding: var(--s-6) var(--s-6) var(--s-6) 0;
-  border-bottom: var(--rule);
-  background: var(--c-bg);
-}
-
-.timetable-card-grid > .timetable-card:nth-child(2n) {
-  padding: var(--s-6) 0 var(--s-6) var(--s-6);
-  border-left: var(--rule);
+  padding: 22px 24px 26px 28px;
+  border-radius: var(--tt-sheet);
+  background: var(--ls-fill);
 }
 
 .timetable-card-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--s-1) var(--s-3);
+  gap: 6px var(--s-3);
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
@@ -543,31 +571,34 @@ html[lang="en"] .timetable-main {
 .timetable-card-tools {
   display: flex;
   align-items: center;
-  gap: var(--s-1);
-  margin: -6px 0;
+  gap: 2px;
+  margin: -4px 0;
 }
 
 .timetable-card-hide {
   min-height: 32px;
-  padding: 0 var(--s-2);
+  padding: 0 14px;
   border: 0;
-  border-radius: var(--radius-control);
-  background: transparent;
-  color: var(--c-ink-3);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--c-ink-2);
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
-  transition: color var(--dur) var(--ease);
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
 }
 
 .timetable-card-hide:hover {
+  background: var(--ls-fill-2);
   color: var(--c-ink);
 }
 
 .timetable-card-grip {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
-  width: 24px;
+  justify-content: center;
+  width: 32px;
   height: 32px;
   color: var(--c-ink-3);
   transition: color var(--dur) var(--ease);
@@ -600,7 +631,7 @@ html[lang="en"] .timetable-main {
 /* Next departure: the departure time is the primary figure. */
 .timetable-next {
   display: grid;
-  gap: var(--s-2);
+  gap: 6px;
 }
 
 .timetable-next-label,
@@ -622,16 +653,16 @@ html[lang="en"] .timetable-main {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: var(--s-2) var(--s-5);
+  gap: 4px 20px;
 }
 
 .timetable-next-time {
   flex: 0 0 auto;
   font-family: var(--font-latin);
-  font-size: var(--fs-display);
-  font-weight: var(--fw-medium);
+  font-size: clamp(3rem, 2.3rem + 2.6vw, 4.5rem);
+  font-weight: var(--fw-bold);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
   line-height: 1;
 }
 
@@ -646,20 +677,15 @@ html[lang="en"] .timetable-main {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--s-2) var(--s-3);
+  gap: var(--s-2) 10px;
   margin: 0;
   font-size: var(--fs-md);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-bold);
   line-height: var(--lh-snug);
 }
 
 .timetable-next-service .timetable-train-type {
   font-size: var(--fs-sm);
-}
-
-.timetable-next-service .timetable-train-type.is-local {
-  min-width: 0;
-  padding: 0;
 }
 
 .timetable-train-note {
@@ -678,43 +704,52 @@ html[lang="en"] .timetable-main {
   line-height: var(--lh-snug);
 }
 
-/* Train type: short label in a hairline box; local trains as plain text. */
+/* Train type: local trains as plain grey text; faster trains as a soft
+   crimson pill; limited express solid. */
 .timetable-train-type {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  min-width: 3.4em;
-  padding: 0 0.45em;
-  border: 1px solid var(--c-ink);
+  min-height: 1.75em;
+  padding: 0 0.7em;
+  border-radius: 999px;
+  background: #ffffff;
   color: var(--c-ink);
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
-  line-height: 1.6;
+  line-height: 1.2;
   white-space: nowrap;
 }
 
 .timetable-train-type.is-local {
-  border-color: transparent;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
   color: var(--c-ink-3);
 }
 
-.timetable-train-type.is-limited {
-  background: var(--c-ink);
-  color: var(--c-bg);
+.timetable-train-type.is-semi,
+.timetable-train-type.is-fast {
+  background: var(--ls-red-soft);
+  color: var(--ls-red);
 }
 
-/* Upcoming departures */
+.timetable-train-type.is-limited {
+  background: var(--ls-red);
+  color: #ffffff;
+}
+
+/* Upcoming departures: rows set apart by space */
 .timetable-upcoming {
   display: grid;
-  gap: var(--s-2);
+  gap: 4px;
 }
 
 .timetable-upcoming-list {
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: var(--rule);
 }
 
 .timetable-upcoming-item {
@@ -722,8 +757,7 @@ html[lang="en"] .timetable-main {
   grid-template-columns: 3.75rem minmax(0, 1fr);
   align-items: baseline;
   gap: 2px var(--s-3);
-  padding: var(--s-2) 0;
-  border-bottom: var(--rule);
+  padding: 5px 0;
 }
 
 .timetable-upcoming-item time {
@@ -741,6 +775,10 @@ html[lang="en"] .timetable-main {
   font-size: var(--fs-sm);
 }
 
+.timetable-upcoming-train .timetable-train-type {
+  min-width: 3.6em;
+}
+
 .timetable-upcoming-train .timetable-destination {
   min-width: 0;
   overflow-wrap: anywhere;
@@ -750,7 +788,7 @@ html[lang="en"] .timetable-main {
   grid-column: 2;
 }
 
-/* All departures (details) */
+/* All departures (details): a white pill that opens a white sheet */
 .timetable-all {
   margin-top: auto;
 }
@@ -760,12 +798,15 @@ html[lang="en"] .timetable-main {
   align-items: center;
   gap: var(--s-2);
   min-height: 40px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #ffffff;
   color: var(--c-ink);
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
   list-style: none;
   cursor: pointer;
-  transition: color var(--dur) var(--ease);
+  transition: background-color var(--dur) var(--ease);
 }
 
 .timetable-all summary::-webkit-details-marker {
@@ -790,7 +831,7 @@ html[lang="en"] .timetable-main {
 }
 
 .timetable-all summary:hover {
-  color: var(--c-accent);
+  background: var(--ls-fill-2);
 }
 
 .timetable-all-meta {
@@ -801,6 +842,9 @@ html[lang="en"] .timetable-main {
 }
 
 .timetable-hour-list {
+  margin-top: 12px;
+  border-radius: 20px;
+  background: #ffffff;
   transition:
     height 220ms var(--ease),
     opacity 220ms var(--ease);
@@ -811,12 +855,15 @@ html[lang="en"] .timetable-main {
   grid-template-columns: 3rem minmax(0, 1fr);
   align-items: baseline;
   gap: var(--s-3);
-  padding: var(--s-2) 0;
-  border-top: var(--rule);
+  padding: 7px 20px;
+}
+
+.timetable-hour-row:first-child {
+  padding-top: 16px;
 }
 
 .timetable-hour-row:last-child {
-  border-bottom: var(--rule);
+  padding-bottom: 16px;
 }
 
 .timetable-hour-label {
@@ -858,8 +905,9 @@ html[lang="en"] .timetable-main {
   grid-column: 1 / -1;
   display: grid;
   gap: var(--s-1);
-  padding: var(--s-6) 0;
-  border-bottom: var(--rule);
+  padding: 28px;
+  border-radius: var(--tt-sheet);
+  background: var(--ls-fill);
 }
 
 .timetable-board-message p {
@@ -874,11 +922,8 @@ html[lang="en"] .timetable-main {
   font-weight: var(--fw-bold);
 }
 
-/* Drag to reorder: flat ghost, empty slot in place, subtle movement. */
-.timetable-card.is-dragging {
-  background: var(--c-bg-sub);
-}
-
+/* Drag to reorder: the card leaves an empty grey sheet in place and a
+   slightly darker copy follows the pointer. Flat, no lift. */
 .timetable-card.is-dragging > * {
   visibility: hidden;
 }
@@ -889,10 +934,8 @@ html[lang="en"] .timetable-main {
   left: 0;
   z-index: 400;
   margin: 0;
-  padding: var(--s-5);
   overflow: hidden;
-  border: 1px solid var(--c-ink);
-  background: var(--c-bg);
+  background: var(--ls-fill-2);
   pointer-events: none;
   will-change: transform;
 }
@@ -921,15 +964,12 @@ body.is-timetable-sorting * {
 
 .timetable-empty {
   margin: 0;
-  padding: var(--s-4) 0;
-  border-top: var(--rule-strong);
-  border-bottom: var(--rule);
   color: var(--c-ink-3);
   font-size: var(--fs-sm);
 }
 
-.timetable-hidden-items > li {
-  padding: var(--s-3) 0;
+body.subpage .timetable-hidden-items > li {
+  padding: 12px 12px 12px 20px;
 }
 
 .timetable-hidden-item {
@@ -962,6 +1002,28 @@ body.is-timetable-sorting * {
   font-weight: var(--fw-medium);
 }
 
+body.subpage .timetable-hidden-item .btn {
+  flex: 0 0 auto;
+  min-height: var(--tt-chip-h);
+  padding: 0 16px;
+  background: #ffffff;
+}
+
+body.subpage .timetable-hidden-item .btn:hover {
+  background: var(--ls-fill-2);
+}
+
+/* Page-level actions (reset order, show all): grey pills, not ghosts. */
+body.subpage .timetable-board-head .btn-quiet,
+body.subpage .timetable-controls .btn-quiet {
+  background: var(--ls-fill);
+}
+
+body.subpage .timetable-board-head .btn-quiet:not(:disabled):hover,
+body.subpage .timetable-controls .btn-quiet:not(:disabled):hover {
+  background: var(--ls-fill-2);
+}
+
 .timetable-controls {
   display: flex;
   flex-wrap: wrap;
@@ -983,35 +1045,15 @@ body.is-timetable-sorting * {
   .timetable-card-grid {
     grid-template-columns: minmax(0, 1fr);
   }
-
-  .timetable-card,
-  .timetable-card-grid > .timetable-card:nth-child(2n) {
-    padding: var(--s-5) 0;
-    border-left: 0;
-  }
-
-  .timetable-board {
-    padding: var(--s-6) 0;
-  }
 }
 
 @media (max-width: 720px) {
-  .timetable-station {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--s-3);
+  .timetable-board {
+    padding-top: 40px;
   }
 
-  .timetable-direction {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--s-2);
-  }
-
-  .timetable-direction + .timetable-direction {
-    margin-top: var(--s-2);
-  }
-
-  .timetable-direction-links {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .timetable-board-head {
+    margin-bottom: 16px;
   }
 
   .timetable-source-groups {
@@ -1020,16 +1062,16 @@ body.is-timetable-sorting * {
 
   .timetable-shuttle-routes {
     grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
   }
 
-  .timetable-shuttle-route,
-  .timetable-shuttle-route + .timetable-shuttle-route {
-    padding: var(--s-5) 0;
-    border-left: 0;
+  .timetable-shuttle-route {
+    padding: 22px 24px 24px;
+    border-radius: 24px;
   }
 
-  .timetable-shuttle-route + .timetable-shuttle-route {
-    border-top: var(--rule);
+  .timetable-shuttle-label {
+    margin-top: 16px;
   }
 
   .timetable-status-row {
@@ -1051,18 +1093,55 @@ body.is-timetable-sorting * {
     padding-left: calc(8px + var(--s-3));
   }
 
-  .timetable-live-status .timetable-status-state,
   .timetable-live-status .timetable-status-links {
-    min-height: 0;
+    margin: 4px 0 0;
+  }
+
+  .timetable-card {
+    gap: 20px;
+    padding: 18px 16px 22px 22px;
+    border-radius: 24px;
   }
 }
 
 @media (max-width: 560px) {
   .timetable-reference-grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .timetable-direction {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 14px 12px 12px;
+  }
+
+  .timetable-direction-name {
+    padding-left: 6px;
+  }
+
+  .timetable-direction-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--timetable-day-link-fit)), 1fr));
   }
 
   .timetable-hidden-item {
     align-items: flex-start;
+  }
+
+  .timetable-hour-row {
+    padding-inline: 16px;
+  }
+}
+
+/* Phones: the line name gets its own line under the operator, so a
+   wrapped label never starts with the "/" separator. */
+@media (max-width: 420px) {
+  .timetable-card .timetable-railway-line {
+    flex-basis: 100%;
+    padding-left: 16px;
+  }
+
+  .timetable-card .timetable-railway-line::before {
+    content: none;
   }
 }
