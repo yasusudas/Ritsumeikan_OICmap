@@ -281,6 +281,17 @@ body[data-app-mode="viewer"] .search-icon-button {
     color var(--dur) var(--ease);
 }
 
+/* Icons fill more of the round button; a slightly lighter stroke keeps the
+   rendered line weight where it was at 22px. */
+body[data-app-mode="viewer"] .search-icon-image {
+  width: 28px;
+  height: 28px;
+}
+
+body[data-app-mode="viewer"] svg.search-icon-image {
+  stroke-width: 1.6;
+}
+
 body[data-app-mode="viewer"] .search-icon-button:hover {
   background: var(--ls-fill-2);
   color: var(--c-ink);
