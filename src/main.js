@@ -1,5 +1,6 @@
 import './style.css';
 import { inject } from '@vercel/analytics';
+import { facilityRingsUrl, searchEntriesUrl } from 'virtual:rits-oic-search-data';
 import { applyI18n, getLang, getLocale, onLanguageChange, t } from './i18n.js';
 
 if (window.__FILE_MODE__) {
@@ -118,7 +119,9 @@ if (window.__FILE_MODE__) {
     }
   };
   const MANUAL_SEARCH_INDEX_FILENAME = 'manual-search-index.json';
-  const SEARCH_INDEX_URL = `/${MANUAL_SEARCH_INDEX_FILENAME}`;
+  const EDITOR_SEARCH_DATA_URL = new URL(`/${MANUAL_SEARCH_INDEX_FILENAME}`, window.location.origin).href;
+  const SEARCH_ENTRIES_ASSET_URL = searchEntriesUrl;
+  const FACILITY_RINGS_ASSET_URL = facilityRingsUrl;
   const DEFAULT_CONTACT_FORM_EMBED_URL =
     'https://docs.google.com/forms/d/e/1FAIpQLSdRZNEfH7hRLTylhvTLKUIJjXszWI8i3bq2VelAp7sfmH8fhQ/viewform?usp=dialog';
   const CONTACT_FORM_EMBED_URL =
@@ -128,11 +131,15 @@ if (window.__FILE_MODE__) {
   const MOBILE_MIN_MAP_WIDTH_RATIO = 0.9;
   const VIEWER_MIN_ZOOM = 0.5;
   const SEARCH_RESULT_LIMIT = 18;
+  const SEARCH_INDEX_IDLE_TIMEOUT_MS = 2000;
   const SEARCH_FOCUS_ZOOM = 6;
   const VIEW_ANIMATION_MS = 480;
   const SEARCH_PIN_VERTICAL_OFFSET_RATIO = 0.01;
   const EDITOR_GUIDE_PIN_VERTICAL_OFFSET_RATIO = 0.01;
   const DEFAULT_FACILITY_RING_DIAMETER_WIDTH_PERCENT = 0.8;
+  const FACILITY_AREA_VIEWBOX_SIZE = 1000;
+  const MIN_FACILITY_AREA_VERTEX_COUNT = 3;
+  const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
   const DOUBLE_TAP_SUPPRESSION_WINDOW_MS = 320;
   const MANUAL_POINT_RECT_RATIO = 0.001;
   const LEGACY_MANUAL_STORAGE_KEY = 'campus-map-manual-entries-v4';
@@ -193,8 +200,13 @@ if (window.__FILE_MODE__) {
   const editorRingModeButtons = Array.from(document.querySelectorAll('.editor-ring-mode-button'));
   const editorToiletRingColorTools = document.querySelector('#editor-toilet-ring-color-tools');
   const editorRingColorButtons = Array.from(document.querySelectorAll('.editor-ring-color-button'));
-  const editorRingClearButton = document.querySelector('#editor-ring-clear');
   const editorRingList = document.querySelector('#editor-ring-list');
+  const editorAreaEntrySelect = document.querySelector('#editor-area-entry');
+  const editorAreaNewButton = document.querySelector('#editor-area-new');
+  const editorAreaSaveButton = document.querySelector('#editor-area-save');
+  const editorAreaUndoButton = document.querySelector('#editor-area-undo');
+  const editorAreaCancelButton = document.querySelector('#editor-area-cancel');
+  const editorAreaList = document.querySelector('#editor-area-list');
   const editorJson = document.querySelector('#editor-json');
   const knownFacilityDefinitions = [
     { facilityKey: 'toilet', labelKey: 'facility.toilet' },
@@ -272,10 +284,14 @@ if (window.__FILE_MODE__) {
     floorLoadToken: 0,
     highlightLayer: null,
     ringLayer: null,
+    areaLayer: null,
     editorLayer: null,
     searchReady: false,
     searchLoading: false,
     searchPromise: null,
+    facilityRingsReady: false,
+    facilityRingsLoading: false,
+    facilityRingsPromise: null,
     baseSearchEntries: [],
     baseFacilityRings: [],
     searchEntries: [],
@@ -289,6 +305,9 @@ if (window.__FILE_MODE__) {
     activeEditorRingId: null,
     activeRingEditorFacilityKey: null,
     activeToiletRingColorVariant: DEFAULT_TOILET_RING_COLOR_VARIANT,
+    selectedAreaEntryId: null,
+    areaDraft: null,
+    areaVertexDragIndex: null,
     editMode: false,
     pendingEditorPoint: null,
     dragMoved: false,
@@ -425,15 +444,26 @@ if (window.__FILE_MODE__) {
       return;
     }
 
+    renderFacilityAreas();
     renderFacilityRings();
   }
 
-  function toggleFacilityToggleState(facilityKey) {
+  async function toggleFacilityToggleState(facilityKey) {
     if (!facilityKey || !(facilityKey in state.facilityToggleState)) {
       return;
     }
 
     const nextValue = state.facilityToggleState[facilityKey] === 1 ? 0 : 1;
+
+    if (nextValue === 1 && facilityKey !== 'printer') {
+      try {
+        await ensureFacilityRingsLoaded();
+      } catch (error) {
+        console.warn('Failed to load facility rings.', error);
+        return;
+      }
+    }
+
     setFacilityToggleState(facilityKey, nextValue);
   }
 
@@ -503,6 +533,85 @@ if (window.__FILE_MODE__) {
     state.ringLayer.append(fragment);
   }
 
+  function getFacilityAreaPointsAttribute(polygon) {
+    return polygon
+      .map(
+        (point) =>
+          `${(point.xRatio * FACILITY_AREA_VIEWBOX_SIZE).toFixed(3)},${(point.yRatio * FACILITY_AREA_VIEWBOX_SIZE).toFixed(3)}`
+      )
+      .join(' ');
+  }
+
+  function createFacilityAreaPolygonNode(polygon, className) {
+    const node = document.createElementNS(SVG_NAMESPACE, 'polygon');
+    node.setAttribute('points', getFacilityAreaPointsAttribute(polygon));
+    node.setAttribute('vector-effect', 'non-scaling-stroke');
+    node.classList.add(className);
+    return node;
+  }
+
+  function renderFacilityAreas() {
+    if (!state.areaLayer) {
+      return;
+    }
+
+    state.areaLayer.replaceChildren();
+
+    if (isSpecialFloorActive()) {
+      return;
+    }
+
+    const currentFloorId = getFloorDefinition().id;
+    const areaEntries = state.manualEntries.filter(
+      (entry) => entry.floorId === currentFloorId && entry.polygons.length > 0
+    );
+
+    if (areaEntries.length === 0) {
+      return;
+    }
+
+    const svg = document.createElementNS(SVG_NAMESPACE, 'svg');
+    svg.classList.add('facility-area-svg');
+    svg.setAttribute('viewBox', `0 0 ${FACILITY_AREA_VIEWBOX_SIZE} ${FACILITY_AREA_VIEWBOX_SIZE}`);
+    svg.setAttribute('preserveAspectRatio', 'none');
+
+    areaEntries.forEach((entry) => {
+      entry.polygons.forEach((polygon, polygonIndex) => {
+        const isDraftTarget =
+          isEditorSite &&
+          state.areaDraft?.entryId === entry.id &&
+          state.areaDraft?.polygonIndex === polygonIndex;
+
+        if (isDraftTarget) {
+          return;
+        }
+
+        const group = document.createElementNS(SVG_NAMESPACE, 'g');
+        group.classList.add('facility-area-group');
+        group.dataset.entryId = entry.id;
+        group.dataset.polygonIndex = String(polygonIndex);
+
+        const whiteOutline = createFacilityAreaPolygonNode(polygon, 'facility-area-outline-base');
+        const greenOutline = createFacilityAreaPolygonNode(polygon, 'facility-area-outline');
+        const hitArea = createFacilityAreaPolygonNode(polygon, 'facility-area-hit');
+
+        if (!isEditorSite) {
+          const label = t('editor.areaHoverAria', { label: getLocalizedEntryLabel(entry) });
+          hitArea.setAttribute('tabindex', '0');
+          hitArea.setAttribute('role', 'img');
+          hitArea.setAttribute('aria-label', label);
+        }
+
+        group.append(whiteOutline, greenOutline, hitArea);
+        svg.append(group);
+      });
+    });
+
+    if (svg.childElementCount > 0) {
+      state.areaLayer.append(svg);
+    }
+  }
+
   function getViewportSize() {
     return {
       width: viewer.clientWidth,
@@ -520,7 +629,7 @@ if (window.__FILE_MODE__) {
     }
 
     const topbarHeight = Math.ceil(topbar.getBoundingClientRect().height);
-    const stageHeight = Math.max(getViewportHeight() - topbarHeight, 0);
+    const stageHeight = Math.max(getViewportHeight() - topbarHeight, 0) * (isEditorSite ? 2 : 1);
     appShell.style.setProperty('--map-stage-height', `${stageHeight}px`);
   }
 
@@ -758,8 +867,14 @@ if (window.__FILE_MODE__) {
     };
   }
 
-  function createEntrySearchTerms(label, aliases = []) {
-    return [...new Set([label, ...aliases].map((value) => normalizeSearchValue(value)).filter(Boolean))];
+  function createEntrySearchTerms(label, labelEn = '', aliases = []) {
+    return [
+      ...new Set(
+        [label, labelEn, ...aliases]
+          .map((value) => normalizeSearchValue(value))
+          .filter(Boolean)
+      )
+    ];
   }
 
   function normalizeFacilityRingPoint(point) {
@@ -776,6 +891,92 @@ if (window.__FILE_MODE__) {
     };
   }
 
+  function normalizeFacilityAreaPolygon(polygon) {
+    if (!Array.isArray(polygon)) {
+      return null;
+    }
+
+    const points = polygon
+      .map((point) => normalizeFacilityRingPoint(point))
+      .filter((point) => point !== null);
+    const distinctPointCount = new Set(
+      points.map((point) => `${point.xRatio.toFixed(6)}:${point.yRatio.toFixed(6)}`)
+    ).size;
+
+    return distinctPointCount >= MIN_FACILITY_AREA_VERTEX_COUNT ? points : null;
+  }
+
+  function hydrateFacilityAreaPolygons(source) {
+    if (!Array.isArray(source)) {
+      return [];
+    }
+
+    return source
+      .map((polygon) => normalizeFacilityAreaPolygon(polygon))
+      .filter((polygon) => polygon !== null);
+  }
+
+  function snapFacilityAreaPointToAxis(point, previousPoint) {
+    if (!point || !previousPoint) {
+      return point ? { ...point } : null;
+    }
+
+    const deltaX = Math.abs(point.xRatio - previousPoint.xRatio);
+    const deltaY = Math.abs(point.yRatio - previousPoint.yRatio);
+
+    return deltaX >= deltaY
+      ? { xRatio: point.xRatio, yRatio: previousPoint.yRatio }
+      : { xRatio: previousPoint.xRatio, yRatio: point.yRatio };
+  }
+
+  function snapFacilityAreaVertexToNeighbors(point, points, pointIndex) {
+    if (!point || !Array.isArray(points) || points.length < 3) {
+      return point ? { ...point } : null;
+    }
+
+    const previousPoint = points[(pointIndex - 1 + points.length) % points.length];
+    const nextPoint = points[(pointIndex + 1) % points.length];
+    const horizontalThenVertical = {
+      xRatio: previousPoint.xRatio,
+      yRatio: nextPoint.yRatio
+    };
+    const verticalThenHorizontal = {
+      xRatio: nextPoint.xRatio,
+      yRatio: previousPoint.yRatio
+    };
+    const horizontalThenVerticalDistance =
+      (point.xRatio - horizontalThenVertical.xRatio) ** 2 +
+      (point.yRatio - horizontalThenVertical.yRatio) ** 2;
+    const verticalThenHorizontalDistance =
+      (point.xRatio - verticalThenHorizontal.xRatio) ** 2 +
+      (point.yRatio - verticalThenHorizontal.yRatio) ** 2;
+
+    return horizontalThenVerticalDistance <= verticalThenHorizontalDistance
+      ? horizontalThenVertical
+      : verticalThenHorizontal;
+  }
+
+  function snapFacilityAreaPolygonClosure(points) {
+    if (!Array.isArray(points) || points.length < MIN_FACILITY_AREA_VERTEX_COUNT) {
+      return points?.map((point) => ({ ...point })) ?? [];
+    }
+
+    const nextPoints = points.map((point) => ({ ...point }));
+    const firstPoint = nextPoints[0];
+    const lastPoint = nextPoints[nextPoints.length - 1];
+    nextPoints[nextPoints.length - 1] = snapFacilityAreaVertexToNeighbors(
+      lastPoint,
+      nextPoints,
+      nextPoints.length - 1
+    );
+
+    if (!nextPoints[nextPoints.length - 1]) {
+      nextPoints[nextPoints.length - 1] = { ...firstPoint };
+    }
+
+    return nextPoints;
+  }
+
   function hydrateManualEntry(entry, fallbackFloorId = getFloorDefinition().id) {
     const floorId =
       FLOOR_FILES.find((floor) => floor.id === entry?.floorId)?.id ??
@@ -784,6 +985,7 @@ if (window.__FILE_MODE__) {
     const label = String(entry?.label ?? '').trim();
     const labelEn = String(entry?.labelEn ?? '').trim();
     const rects = Array.isArray(entry?.rects) ? entry.rects.map((rect) => normalizeRect(rect)) : [];
+    const polygons = hydrateFacilityAreaPolygons(entry?.polygons);
 
     if (!label || rects.length === 0) {
       return null;
@@ -796,10 +998,12 @@ if (window.__FILE_MODE__) {
       label,
       labelEn,
       normalized: normalizeSearchValue(label),
+      searchTerms: createEntrySearchTerms(label, labelEn, aliases),
       aliases,
       floorId,
       floorOrder: getFloorOrder(floorId),
       rects,
+      polygons,
       source: 'manual'
     };
   }
@@ -866,6 +1070,7 @@ if (window.__FILE_MODE__) {
       if (!raw) {
         return {
           exists: false,
+          version: 0,
           entries: [],
           facilityRings: []
         };
@@ -874,6 +1079,7 @@ if (window.__FILE_MODE__) {
       const parsed = JSON.parse(raw);
       return {
         exists: true,
+        version: Number.isInteger(parsed?.version) ? parsed.version : 1,
         entries: hydrateManualEntriesCollection(parsed),
         facilityRings: hydrateFacilityRingsCollection(parsed)
       };
@@ -881,6 +1087,7 @@ if (window.__FILE_MODE__) {
       console.warn(`Failed to load editor data from ${storageKey}.`, error);
       return {
         exists: false,
+        version: 0,
         entries: [],
         facilityRings: []
       };
@@ -904,6 +1111,35 @@ if (window.__FILE_MODE__) {
     return hydrateFacilityRingsCollection({
       facilityRings: serializeFacilityRings(rings)
     });
+  }
+
+  function mergeLegacyFacilityAreas(entries, fallbackEntries) {
+    const fallbackById = new Map(fallbackEntries.map((entry) => [entry.id, entry]));
+
+    return entries.map((entry) => {
+      const fallbackEntry = fallbackById.get(entry.id);
+
+      if (!fallbackEntry || fallbackEntry.polygons.length === 0) {
+        return entry;
+      }
+
+      return {
+        ...entry,
+        polygons: fallbackEntry.polygons.map((polygon) => polygon.map((point) => ({ ...point })))
+      };
+    });
+  }
+
+  function upgradeStoredEditorSnapshot(snapshot, fallbackEntries = []) {
+    if (!snapshot?.exists || snapshot.version >= 3) {
+      return snapshot;
+    }
+
+    return {
+      ...snapshot,
+      version: 3,
+      entries: mergeLegacyFacilityAreas(snapshot.entries, fallbackEntries)
+    };
   }
 
   function shouldPreferStoredEditorData(snapshot, fallbackEntries = [], fallbackFacilityRings = []) {
@@ -934,15 +1170,22 @@ if (window.__FILE_MODE__) {
   function getCurrentPublishedEditorData(deployedEntries = [], deployedFacilityRings = []) {
     if (!isEditorSite) {
       return {
-        entries: cloneManualEntries(deployedEntries),
-        facilityRings: cloneFacilityRings(deployedFacilityRings)
+        entries: deployedEntries,
+        facilityRings: deployedFacilityRings
       };
     }
 
-    const legacySnapshot = readStoredEditorData(LEGACY_MANUAL_STORAGE_KEY);
-    const publishedSnapshot = readStoredEditorData(MANUAL_PUBLISHED_STORAGE_KEY);
+    const legacySnapshot = upgradeStoredEditorSnapshot(
+      readStoredEditorData(LEGACY_MANUAL_STORAGE_KEY),
+      deployedEntries
+    );
+    const publishedSnapshot = upgradeStoredEditorSnapshot(
+      readStoredEditorData(MANUAL_PUBLISHED_STORAGE_KEY),
+      deployedEntries
+    );
     const deployedSnapshot = {
       exists: false,
+      version: 3,
       entries: deployedEntries,
       facilityRings: deployedFacilityRings
     };
@@ -965,7 +1208,10 @@ if (window.__FILE_MODE__) {
       return currentPublishedData;
     }
 
-    const draftSnapshot = readStoredEditorData(MANUAL_DRAFT_STORAGE_KEY);
+    const draftSnapshot = upgradeStoredEditorSnapshot(
+      readStoredEditorData(MANUAL_DRAFT_STORAGE_KEY),
+      currentPublishedData.entries
+    );
     return shouldPreferStoredEditorData(
       draftSnapshot,
       currentPublishedData.entries,
@@ -976,7 +1222,17 @@ if (window.__FILE_MODE__) {
   }
 
   function resolveInitialEditorData(deployedEntries = [], deployedFacilityRings = []) {
-    const publishedSnapshot = readStoredEditorData(MANUAL_PUBLISHED_STORAGE_KEY);
+    if (!isEditorSite) {
+      return {
+        entries: deployedEntries,
+        facilityRings: deployedFacilityRings
+      };
+    }
+
+    const publishedSnapshot = upgradeStoredEditorSnapshot(
+      readStoredEditorData(MANUAL_PUBLISHED_STORAGE_KEY),
+      deployedEntries
+    );
     const initialPublishedData = getCurrentPublishedEditorData(deployedEntries, deployedFacilityRings);
 
     if (
@@ -986,11 +1242,10 @@ if (window.__FILE_MODE__) {
       persistEditorData(MANUAL_PUBLISHED_STORAGE_KEY, initialPublishedData);
     }
 
-    if (!isEditorSite) {
-      return initialPublishedData;
-    }
-
-    const draftSnapshot = readStoredEditorData(MANUAL_DRAFT_STORAGE_KEY);
+    const draftSnapshot = upgradeStoredEditorSnapshot(
+      readStoredEditorData(MANUAL_DRAFT_STORAGE_KEY),
+      initialPublishedData.entries
+    );
 
     if (shouldPreferStoredEditorData(draftSnapshot, initialPublishedData.entries, initialPublishedData.facilityRings)) {
       return draftSnapshot;
@@ -1000,18 +1255,66 @@ if (window.__FILE_MODE__) {
     return initialPublishedData;
   }
 
-  async function fetchBundledEditorData() {
-    const response = await fetch(SEARCH_INDEX_URL, { cache: 'no-store' });
+  async function fetchSearchDataAsset(url, expectedCollectionKey, fetchOptions) {
+    const response = await fetch(url, fetchOptions);
 
     if (!response.ok) {
-      throw new Error(`Failed to load search index: ${response.status}`);
+      throw new Error(`Failed to load ${expectedCollectionKey}: ${response.status}`);
     }
 
     const payload = await response.json();
+
+    if (!Array.isArray(payload?.[expectedCollectionKey])) {
+      throw new TypeError(`${expectedCollectionKey} payload must contain an array.`);
+    }
+
+    return payload;
+  }
+
+  async function fetchBundledEditorData() {
+    const payload = await fetchSearchDataAsset(EDITOR_SEARCH_DATA_URL, 'entries', { cache: 'no-store' });
+
     return {
       entries: hydrateManualEntriesCollection(payload),
       facilityRings: hydrateFacilityRingsCollection(payload)
     };
+  }
+
+  async function fetchBundledSearchEntries() {
+    const payload = await fetchSearchDataAsset(SEARCH_ENTRIES_ASSET_URL, 'entries');
+    return hydrateManualEntriesCollection(payload);
+  }
+
+  async function fetchBundledFacilityRings() {
+    const payload = await fetchSearchDataAsset(FACILITY_RINGS_ASSET_URL, 'facilityRings');
+    return hydrateFacilityRingsCollection(payload);
+  }
+
+  async function ensureFacilityRingsLoaded() {
+    if (state.facilityRingsReady) {
+      return state.facilityRings;
+    }
+
+    if (state.facilityRingsLoading && state.facilityRingsPromise) {
+      return state.facilityRingsPromise;
+    }
+
+    state.facilityRingsLoading = true;
+    state.facilityRingsPromise = (async () => {
+      const facilityRings = await fetchBundledFacilityRings();
+      state.baseFacilityRings = facilityRings;
+      state.facilityRings = facilityRings;
+      state.facilityRingsReady = true;
+      state.facilityRingsLoading = false;
+      renderFacilityRings();
+      return state.facilityRings;
+    })().catch((error) => {
+      state.facilityRingsLoading = false;
+      state.facilityRingsPromise = null;
+      throw error;
+    });
+
+    return state.facilityRingsPromise;
   }
 
   function serializeEntries(entries) {
@@ -1026,7 +1329,17 @@ if (window.__FILE_MODE__) {
         yRatio: Number(rect.yRatio.toFixed(6)),
         widthRatio: Number(rect.widthRatio.toFixed(6)),
         heightRatio: Number(rect.heightRatio.toFixed(6))
-      }))
+      })),
+      ...(entry.polygons.length > 0
+        ? {
+            polygons: entry.polygons.map((polygon) =>
+              polygon.map((point) => ({
+                xRatio: Number(point.xRatio.toFixed(6)),
+                yRatio: Number(point.yRatio.toFixed(6))
+              }))
+            )
+          }
+        : {})
     }));
   }
 
@@ -1079,7 +1392,7 @@ if (window.__FILE_MODE__) {
     });
 
     return {
-      version: 2,
+      version: 3,
       entries: serializeEntries(sortedEntries),
       facilityRings: serializeFacilityRings(facilityRings)
     };
@@ -1101,7 +1414,9 @@ if (window.__FILE_MODE__) {
   }
 
   function getEntrySearchTerms(entry) {
-    return createEntrySearchTerms(getLocalizedEntryLabel(entry), entry.aliases);
+    return Array.isArray(entry.searchTerms)
+      ? entry.searchTerms
+      : createEntrySearchTerms(entry.label, entry.labelEn, entry.aliases);
   }
 
   function getEntryHashBase(entry) {
@@ -1485,6 +1800,7 @@ if (window.__FILE_MODE__) {
     );
 
     renderSearchHighlights();
+    renderFacilityAreas();
     renderFacilityRings();
     if (isEditorSite) {
       renderEditorOverlay();
@@ -1736,21 +2052,16 @@ if (window.__FILE_MODE__) {
     return getCurrentFloorEditorRings().filter((ring) => ring.facilityKey === state.activeRingEditorFacilityKey);
   }
 
-  function updateEditorRingClearButtonState() {
-    if (!editorRingClearButton) {
-      return;
-    }
-
-    const isDisabled = !state.activeRingEditorFacilityKey || getEditorVisibleRings().length === 0;
-    editorRingClearButton.disabled = isDisabled;
-  }
-
   function setActiveRingEditorFacilityKey(facilityKey = null) {
     const normalizedFacilityKey =
       facilityKey && editorRingFacilityKeys.has(facilityKey) ? facilityKey : null;
     const nextFacilityKey =
       state.activeRingEditorFacilityKey === normalizedFacilityKey ? null : normalizedFacilityKey;
 
+    if (state.areaDraft) {
+      clearFacilityAreaDraft();
+      renderFacilityAreas();
+    }
     state.activeRingEditorFacilityKey = nextFacilityKey;
     state.activeEditorRingId = null;
 
@@ -1816,25 +2127,14 @@ if (window.__FILE_MODE__) {
     const facilityKey = state.activeRingEditorFacilityKey;
 
     if (!facilityKey) {
-      const empty = document.createElement('div');
-      empty.className = 'editor-empty';
-      empty.textContent = t('editor.noRingTool');
-      editorRingList.replaceChildren(empty);
-      updateEditorRingClearButtonState();
+      editorRingList.replaceChildren();
       return;
     }
 
     const rings = getEditorVisibleRings();
 
     if (rings.length === 0) {
-      const empty = document.createElement('div');
-      empty.className = 'editor-empty';
-      empty.textContent = t('editor.noRings', {
-        floor: getCurrentFloorLabel(),
-        facility: getFacilityLabel(facilityKey)
-      });
-      editorRingList.replaceChildren(empty);
-      updateEditorRingClearButtonState();
+      editorRingList.replaceChildren();
       return;
     }
 
@@ -1893,7 +2193,335 @@ if (window.__FILE_MODE__) {
     });
 
     editorRingList.replaceChildren(fragment);
-    updateEditorRingClearButtonState();
+  }
+
+  function getCurrentFloorAreaEntries() {
+    const currentFloorId = getFloorDefinition().id;
+    return state.manualEntries
+      .filter((entry) => entry.floorId === currentFloorId)
+      .sort((left, right) =>
+        roomCodeCollator.compare(getLocalizedEntryLabel(left), getLocalizedEntryLabel(right))
+      );
+  }
+
+  function getFacilityArea(entryId, polygonIndex) {
+    const entry = getManualEntryById(entryId);
+    const polygon = entry?.polygons?.[Number(polygonIndex)];
+
+    return entry && polygon ? { entry, polygon } : null;
+  }
+
+  function getFacilityAreaCenter(polygon) {
+    if (!polygon?.length) {
+      return null;
+    }
+
+    const total = polygon.reduce(
+      (sum, point) => ({ xRatio: sum.xRatio + point.xRatio, yRatio: sum.yRatio + point.yRatio }),
+      { xRatio: 0, yRatio: 0 }
+    );
+
+    return {
+      xRatio: total.xRatio / polygon.length,
+      yRatio: total.yRatio / polygon.length
+    };
+  }
+
+  function ensureCurrentAreaEntrySelection() {
+    const entries = getCurrentFloorAreaEntries();
+    const selectedEntry = entries.find((entry) => entry.id === state.selectedAreaEntryId);
+
+    if (selectedEntry) {
+      return selectedEntry;
+    }
+
+    const preferredEntry = entries.find((entry) => entry.polygons.length > 0) ?? null;
+    state.selectedAreaEntryId = preferredEntry?.id ?? null;
+    return preferredEntry;
+  }
+
+  function renderEditorAreaEntryOptions() {
+    if (!isEditorSite || !editorAreaEntrySelect) {
+      return;
+    }
+
+    const entries = getCurrentFloorAreaEntries();
+    ensureCurrentAreaEntrySelection();
+    const fragment = document.createDocumentFragment();
+    const placeholder = document.createElement('option');
+    placeholder.value = '';
+    placeholder.textContent =
+      entries.length === 0
+        ? t('editor.areaNoEntries', { floor: getCurrentFloorLabel() })
+        : t('editor.areaSelectPlaceholder');
+    fragment.append(placeholder);
+
+    entries.forEach((entry) => {
+      const option = document.createElement('option');
+      option.value = entry.id;
+      option.textContent = getLocalizedEntryLabel(entry);
+      fragment.append(option);
+    });
+
+    editorAreaEntrySelect.replaceChildren(fragment);
+    editorAreaEntrySelect.value = state.selectedAreaEntryId ?? '';
+    editorAreaEntrySelect.disabled = entries.length === 0 || Boolean(state.areaDraft);
+  }
+
+  function updateEditorAreaButtonStates() {
+    const draftPointCount = state.areaDraft?.points.length ?? 0;
+    const hasDraft = Boolean(state.areaDraft);
+
+    if (editorAreaNewButton) {
+      editorAreaNewButton.disabled = !state.selectedAreaEntryId || hasDraft;
+    }
+    if (editorAreaSaveButton) {
+      editorAreaSaveButton.disabled = !hasDraft || draftPointCount < MIN_FACILITY_AREA_VERTEX_COUNT;
+    }
+    if (editorAreaUndoButton) {
+      editorAreaUndoButton.disabled = !hasDraft || draftPointCount === 0;
+    }
+    if (editorAreaCancelButton) {
+      editorAreaCancelButton.disabled = !hasDraft;
+    }
+  }
+
+  function renderEditorAreaList() {
+    if (!isEditorSite || !editorAreaList) {
+      return;
+    }
+
+    const entries = getCurrentFloorAreaEntries();
+    const areaRows = entries.flatMap((entry) =>
+      entry.polygons.map((polygon, polygonIndex) => ({ entry, polygon, polygonIndex }))
+    );
+
+    if (areaRows.length === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'editor-empty';
+      empty.textContent = t('editor.areaNoAreas', { floor: getCurrentFloorLabel() });
+      editorAreaList.replaceChildren(empty);
+      return;
+    }
+
+    const fragment = document.createDocumentFragment();
+    areaRows.forEach(({ entry, polygon, polygonIndex }) => {
+      const row = document.createElement('div');
+      row.className = 'editor-entry';
+
+      const body = document.createElement('div');
+      body.className = 'editor-entry-body';
+      const label = document.createElement('div');
+      label.className = 'editor-entry-label';
+      label.textContent = t('editor.areaLabel', {
+        label: getLocalizedEntryLabel(entry),
+        index: polygonIndex + 1
+      });
+      const meta = document.createElement('div');
+      meta.className = 'editor-entry-meta';
+      meta.textContent = t('editor.areaMeta', { count: polygon.length });
+      body.append(label, meta);
+
+      const actions = document.createElement('div');
+      actions.className = 'editor-entry-actions';
+      const editButton = document.createElement('button');
+      editButton.type = 'button';
+      editButton.className = 'editor-entry-button';
+      editButton.dataset.action = 'edit-area';
+      editButton.dataset.entryId = entry.id;
+      editButton.dataset.polygonIndex = String(polygonIndex);
+      editButton.textContent = t('editor.areaEdit');
+      const deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.className = 'editor-entry-button';
+      deleteButton.dataset.action = 'delete-area';
+      deleteButton.dataset.entryId = entry.id;
+      deleteButton.dataset.polygonIndex = String(polygonIndex);
+      deleteButton.textContent = t('editor.delete');
+      actions.append(editButton, deleteButton);
+      row.append(body, actions);
+      fragment.append(row);
+    });
+
+    editorAreaList.replaceChildren(fragment);
+  }
+
+  function renderEditorAreaUi() {
+    renderEditorAreaEntryOptions();
+    updateEditorAreaButtonStates();
+    renderEditorAreaList();
+  }
+
+  function clearFacilityAreaDraft() {
+    state.areaDraft = null;
+    state.areaVertexDragIndex = null;
+  }
+
+  function startNewFacilityArea() {
+    const entry = getManualEntryById(state.selectedAreaEntryId);
+
+    if (!entry || entry.floorId !== getFloorDefinition().id) {
+      setEditorFeedback(t('editor.areaSelectRequired'));
+      return;
+    }
+
+    state.activeRingEditorFacilityKey = null;
+    state.activeEditorRingId = null;
+    state.activeEditorPinKey = null;
+    state.pendingEditorPoint = null;
+    state.areaDraft = { entryId: entry.id, polygonIndex: null, points: [] };
+    renderFacilityAreas();
+    refreshEditorUi();
+    setEditorFeedback(t('editor.areaDrawingStarted', { label: getLocalizedEntryLabel(entry) }));
+  }
+
+  function editFacilityArea(entryId, polygonIndex) {
+    const area = getFacilityArea(entryId, polygonIndex);
+
+    if (!area || area.entry.floorId !== getFloorDefinition().id) {
+      return;
+    }
+
+    state.selectedAreaEntryId = entryId;
+    state.activeRingEditorFacilityKey = null;
+    state.activeEditorRingId = null;
+    state.activeEditorPinKey = null;
+    state.pendingEditorPoint = null;
+    state.areaDraft = {
+      entryId,
+      polygonIndex: Number(polygonIndex),
+      points: area.polygon.map((point) => ({ ...point }))
+    };
+    renderFacilityAreas();
+    refreshEditorUi();
+    focusMapPoint(getFacilityAreaCenter(area.polygon));
+    setEditorFeedback(
+      t('editor.areaEditingStarted', { label: getLocalizedEntryLabel(area.entry) })
+    );
+  }
+
+  function saveFacilityAreaDraft() {
+    const draft = state.areaDraft;
+    const entry = draft ? getManualEntryById(draft.entryId) : null;
+
+    if (!draft || !entry) {
+      return;
+    }
+
+    const polygon = normalizeFacilityAreaPolygon(snapFacilityAreaPolygonClosure(draft.points));
+    if (!polygon) {
+      setEditorFeedback(t('editor.areaMinimumVertices'));
+      return;
+    }
+
+    if (Number.isInteger(draft.polygonIndex) && entry.polygons[draft.polygonIndex]) {
+      entry.polygons[draft.polygonIndex] = polygon;
+    } else {
+      entry.polygons.push(polygon);
+    }
+
+    clearFacilityAreaDraft();
+    persistCurrentEditorState();
+    renderFacilityAreas();
+    refreshEditorUi();
+    setEditorFeedback(t('editor.areaSaved', { label: getLocalizedEntryLabel(entry) }));
+  }
+
+  function cancelFacilityAreaDraft({ silent = false } = {}) {
+    if (!state.areaDraft) {
+      return;
+    }
+
+    clearFacilityAreaDraft();
+    renderFacilityAreas();
+    refreshEditorUi();
+
+    if (!silent) {
+      setEditorFeedback(t('editor.areaCanceled'));
+    }
+  }
+
+  function undoFacilityAreaVertex() {
+    if (!state.areaDraft || state.areaDraft.points.length === 0) {
+      return;
+    }
+
+    state.areaDraft.points.pop();
+    refreshEditorUi();
+    setEditorFeedback(t('editor.areaUndoDone', { count: state.areaDraft.points.length }));
+  }
+
+  function deleteFacilityArea(entryId, polygonIndex) {
+    const area = getFacilityArea(entryId, polygonIndex);
+
+    if (!area) {
+      return;
+    }
+
+    area.entry.polygons.splice(Number(polygonIndex), 1);
+    if (state.areaDraft?.entryId === entryId) {
+      clearFacilityAreaDraft();
+    }
+    persistCurrentEditorState();
+    renderFacilityAreas();
+    refreshEditorUi();
+    setEditorFeedback(t('editor.areaDeleted', { label: getLocalizedEntryLabel(area.entry) }));
+  }
+
+  function appendFacilityAreaVertex(point) {
+    const draft = state.areaDraft;
+    const entry = draft ? getManualEntryById(draft.entryId) : null;
+
+    if (!draft || !entry) {
+      return;
+    }
+
+    const previousPoint = draft.points.at(-1) ?? null;
+    draft.points.push(snapFacilityAreaPointToAxis(point, previousPoint));
+    refreshEditorUi();
+    setEditorFeedback(
+      t('editor.areaVertexAdded', {
+        label: getLocalizedEntryLabel(entry),
+        count: draft.points.length
+      })
+    );
+  }
+
+  function appendEditorAreaDraftOverlay(fragment) {
+    const draft = state.areaDraft;
+
+    if (!draft) {
+      return false;
+    }
+
+    const svg = document.createElementNS(SVG_NAMESPACE, 'svg');
+    svg.classList.add('editor-area-draft-svg');
+    svg.setAttribute('viewBox', `0 0 ${FACILITY_AREA_VIEWBOX_SIZE} ${FACILITY_AREA_VIEWBOX_SIZE}`);
+    svg.setAttribute('preserveAspectRatio', 'none');
+
+    if (draft.points.length >= 2) {
+      const shapeName = 'polyline';
+      const shape = document.createElementNS(SVG_NAMESPACE, shapeName);
+      shape.classList.add('editor-area-draft-shape');
+      shape.setAttribute('points', getFacilityAreaPointsAttribute(draft.points));
+      shape.setAttribute('vector-effect', 'non-scaling-stroke');
+      svg.append(shape);
+    }
+
+    fragment.append(svg);
+    const entry = getManualEntryById(draft.entryId);
+    draft.points.forEach((point, pointIndex) => {
+      const handle = document.createElement('button');
+      handle.type = 'button';
+      handle.className = 'editor-area-vertex';
+      handle.dataset.vertexIndex = String(pointIndex);
+      handle.style.left = `${point.xRatio * 100}%`;
+      handle.style.top = `${point.yRatio * 100}%`;
+      handle.setAttribute('aria-label', `${getLocalizedEntryLabel(entry)} / ${pointIndex + 1}`);
+      fragment.append(handle);
+    });
+
+    return true;
   }
 
   function getManualEntryById(entryId) {
@@ -1949,6 +2577,13 @@ if (window.__FILE_MODE__) {
 
   function updateEditorCoords() {
     if (!isEditorSite || !editorCoords) {
+      return;
+    }
+
+    const activeAreaPoint = state.areaDraft?.points.at(-1) ?? null;
+
+    if (activeAreaPoint) {
+      editorCoords.textContent = `x ${activeAreaPoint.xRatio.toFixed(4)} / y ${activeAreaPoint.yRatio.toFixed(4)}`;
       return;
     }
 
@@ -2059,6 +2694,12 @@ if (window.__FILE_MODE__) {
 
     const currentFloorId = getFloorDefinition().id;
     const fragment = document.createDocumentFragment();
+
+    if (appendEditorAreaDraftOverlay(fragment)) {
+      state.editorLayer.append(fragment);
+      return;
+    }
+
     const activeRingFacilityKey = state.activeRingEditorFacilityKey;
     const floorEntries = state.manualEntries.filter((entry) => entry.floorId === currentFloorId);
     const floorRings = activeRingFacilityKey
@@ -2142,10 +2783,12 @@ if (window.__FILE_MODE__) {
     }
     renderEditorRingModeButtons();
     renderEditorRingColorButtons();
+    renderEditorAreaUi();
     updateEditorCoords();
     updateEditorJsonOutput();
     renderEditorList();
     renderEditorRingList();
+    renderFacilityAreas();
     renderEditorOverlay();
   }
 
@@ -2347,6 +2990,10 @@ if (window.__FILE_MODE__) {
   }
 
   async function buildSearchIndex() {
+    if (state.searchReady) {
+      return state.searchEntries;
+    }
+
     if (state.searchLoading && state.searchPromise) {
       return state.searchPromise;
     }
@@ -2356,23 +3003,35 @@ if (window.__FILE_MODE__) {
 
     state.searchPromise = (async () => {
       try {
-        const bundledEditorData = await fetchBundledEditorData();
-        state.baseSearchEntries = bundledEditorData.entries;
-        state.baseFacilityRings = bundledEditorData.facilityRings;
+        if (isEditorSite) {
+          const bundledEditorData = await fetchBundledEditorData();
+          state.baseSearchEntries = bundledEditorData.entries;
+          state.baseFacilityRings = bundledEditorData.facilityRings;
+          state.facilityRingsReady = true;
+        } else {
+          state.baseSearchEntries = await fetchBundledSearchEntries();
+          state.baseFacilityRings = [];
+        }
       } catch (error) {
         console.warn('Failed to load bundled search index.', error);
         state.baseSearchEntries = [];
         state.baseFacilityRings = [];
       }
 
-      const initialEditorData = resolveInitialEditorData(state.baseSearchEntries, state.baseFacilityRings);
-      state.manualEntries = initialEditorData.entries;
-      state.facilityRings = initialEditorData.facilityRings;
+      if (isEditorSite) {
+        const initialEditorData = resolveInitialEditorData(state.baseSearchEntries, state.baseFacilityRings);
+        state.manualEntries = initialEditorData.entries;
+        state.facilityRings = initialEditorData.facilityRings;
+      } else {
+        state.manualEntries = state.baseSearchEntries;
+        state.facilityRings = state.baseFacilityRings;
+      }
       refreshSearchEntries();
       state.searchReady = true;
       state.searchLoading = false;
       renderSearchSuggestions();
       renderSearchHighlights();
+      renderFacilityAreas();
       renderFacilityRings();
       if (isEditorSite) {
         refreshEditorUi();
@@ -2381,6 +3040,31 @@ if (window.__FILE_MODE__) {
     })();
 
     return state.searchPromise;
+  }
+
+  function scheduleSearchIndexWarmup() {
+    if (isEditorSite || state.searchReady || state.searchLoading) {
+      return;
+    }
+
+    const warmSearchIndex = () => {
+      void buildSearchIndex();
+    };
+    const queueWarmup = () => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(warmSearchIndex, { timeout: SEARCH_INDEX_IDLE_TIMEOUT_MS });
+        return;
+      }
+
+      window.setTimeout(warmSearchIndex, 0);
+    };
+
+    if (document.readyState === 'complete') {
+      queueWarmup();
+      return;
+    }
+
+    window.addEventListener('load', queueWarmup, { once: true });
   }
 
   function zoomAt(nextZoom, focalX, focalY) {
@@ -2423,6 +3107,8 @@ if (window.__FILE_MODE__) {
       }
       const highlightLayer = document.createElement('div');
       highlightLayer.className = 'highlight-layer';
+      const areaLayer = document.createElement('div');
+      areaLayer.className = 'facility-area-layer';
       const ringLayer = document.createElement('div');
       ringLayer.className = 'ring-layer';
       let editorLayer = null;
@@ -2431,13 +3117,14 @@ if (window.__FILE_MODE__) {
         editorLayer.className = 'editor-layer';
       }
 
-      mapAsset.append(svgNode, highlightLayer, ringLayer);
+      mapAsset.append(svgNode, areaLayer, highlightLayer, ringLayer);
       if (editorLayer) {
         mapAsset.append(editorLayer);
       }
       canvasLayer.replaceChildren(mapAsset);
 
       state.highlightLayer = highlightLayer;
+      state.areaLayer = areaLayer;
       state.ringLayer = ringLayer;
       state.editorLayer = editorLayer;
       applyMapLayout(asset, { resetZoom, preserveView: Boolean(centerRatios), centerRatios });
@@ -2449,6 +3136,7 @@ if (window.__FILE_MODE__) {
       }
 
       renderSearchHighlights();
+      renderFacilityAreas();
       renderFacilityRings();
       if (isEditorSite) {
         renderEditorOverlay();
@@ -2459,6 +3147,7 @@ if (window.__FILE_MODE__) {
       console.error(error);
       canvasLayer.replaceChildren();
       state.highlightLayer = null;
+      state.areaLayer = null;
       state.ringLayer = null;
       state.editorLayer = null;
       setStatus(t('status.floorError'));
@@ -2474,6 +3163,8 @@ if (window.__FILE_MODE__) {
 
     const wasSpecialFloorActive = deactivateSpecialFloorToggle();
     const shouldResetZoom = resetZoom || wasSpecialFloorActive;
+    clearFacilityAreaDraft();
+    state.selectedAreaEntryId = null;
     state.floorIndex = nextIndex;
     updateTabSelection();
     await renderFloor({ resetZoom: shouldResetZoom, preserveView: !shouldResetZoom });
@@ -2536,6 +3227,8 @@ if (window.__FILE_MODE__) {
       state.activeEditorPinKey = null;
       state.activeEditorRingId = null;
       state.activeRingEditorFacilityKey = null;
+      state.selectedAreaEntryId = null;
+      clearFacilityAreaDraft();
     }
 
     refreshEditorUi();
@@ -2554,8 +3247,15 @@ if (window.__FILE_MODE__) {
       state.activeSearchEntryId = null;
       renderSearchHighlights();
     }
+    if (state.selectedAreaEntryId === entryId) {
+      state.selectedAreaEntryId = null;
+    }
+    if (state.areaDraft?.entryId === entryId) {
+      clearFacilityAreaDraft();
+    }
     persistCurrentEditorState();
     refreshSearchEntries();
+    renderFacilityAreas();
     refreshEditorUi();
     renderSearchSuggestions();
   }
@@ -2862,10 +3562,13 @@ if (window.__FILE_MODE__) {
       state.activeSearchEntryId = null;
       state.activeEditorPinKey = null;
       state.activeEditorRingId = null;
+      state.selectedAreaEntryId = null;
+      clearFacilityAreaDraft();
       state.pendingEditorPoint = null;
       persistCurrentEditorState();
       refreshSearchEntries();
       renderSearchHighlights();
+      renderFacilityAreas();
       renderFacilityRings();
       refreshEditorUi();
       renderSearchSuggestions();
@@ -2925,8 +3628,8 @@ if (window.__FILE_MODE__) {
       return;
     }
 
-    if (state.activeRingEditorFacilityKey) {
-      addFacilityRing(point, state.activeRingEditorFacilityKey);
+    if (state.areaDraft) {
+      appendFacilityAreaVertex(point);
       return;
     }
 
@@ -3072,8 +3775,18 @@ if (window.__FILE_MODE__) {
   }
 
   async function initializeMap() {
-    await Promise.all([buildSearchIndex(), renderFloor({ resetZoom: true })]);
+    const initialHashId = normalizeHashRouteId(getDecodedLocationHash());
+    const requiresImmediateSearchData = Boolean(initialHashId && !STATIC_HASH_ROUTES.has(initialHashId));
+
+    if (isEditorSite || requiresImmediateSearchData) {
+      await Promise.all([buildSearchIndex(), renderFloor({ resetZoom: true })]);
+      await handleLocationHashRoute();
+      return;
+    }
+
+    await renderFloor({ resetZoom: true });
     await handleLocationHashRoute();
+    scheduleSearchIndexWarmup();
   }
 
   function refreshLanguageDependentUi() {
@@ -3090,6 +3803,7 @@ if (window.__FILE_MODE__) {
 
     renderSearchSuggestions();
     renderSearchHighlights();
+    renderFacilityAreas();
     renderFacilityRings();
 
     if (isEditorSite) {
@@ -3190,7 +3904,7 @@ if (window.__FILE_MODE__) {
 
   searchIconButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      toggleFacilityToggleState(button.dataset.facilityKey?.trim());
+      void toggleFacilityToggleState(button.dataset.facilityKey?.trim());
     });
   });
 
@@ -3200,10 +3914,24 @@ if (window.__FILE_MODE__) {
   });
 
   searchInput.addEventListener('focus', () => {
+    if (!state.searchReady) {
+      void buildSearchIndex().then(() => {
+        if (document.activeElement === searchInput) {
+          renderSearchSuggestions();
+        }
+      });
+    }
+
     renderSearchSuggestions();
   });
 
   searchInput.addEventListener('input', () => {
+    if (!state.searchReady) {
+      void buildSearchIndex().then(() => {
+        renderSearchSuggestions();
+      });
+    }
+
     const activeEntry = getActiveSearchEntry();
     const normalizedValue = normalizeSearchValue(searchInput.value);
 
@@ -3219,7 +3947,7 @@ if (window.__FILE_MODE__) {
     renderSearchSuggestions();
   });
 
-  searchInput.addEventListener('keydown', (event) => {
+  searchInput.addEventListener('keydown', async (event) => {
     if (event.key === 'ArrowDown') {
       event.preventDefault();
       if (state.searchSuggestions.length === 0) {
@@ -3250,6 +3978,7 @@ if (window.__FILE_MODE__) {
 
     if (event.key === 'Enter') {
       event.preventDefault();
+      await buildSearchIndex();
       const selectedSuggestion =
         state.searchSuggestions[state.activeSuggestionIndex] ??
         state.searchEntries.find((entry) => getEntrySearchTerms(entry).includes(normalizeSearchValue(searchInput.value)));
@@ -3318,12 +4047,6 @@ if (window.__FILE_MODE__) {
     });
   }
 
-  if (editorRingClearButton) {
-    editorRingClearButton.addEventListener('click', () => {
-      clearFacilityRingsForActiveMode();
-    });
-  }
-
   editorRingModeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       setActiveRingEditorFacilityKey(button.dataset.facilityKey?.trim());
@@ -3335,6 +4058,37 @@ if (window.__FILE_MODE__) {
       setActiveToiletRingColorVariant(button.dataset.ringColorVariant?.trim());
     });
   });
+
+  if (editorAreaEntrySelect) {
+    editorAreaEntrySelect.addEventListener('change', () => {
+      state.selectedAreaEntryId = editorAreaEntrySelect.value || null;
+      refreshEditorUi();
+    });
+  }
+
+  if (editorAreaNewButton) {
+    editorAreaNewButton.addEventListener('click', () => {
+      startNewFacilityArea();
+    });
+  }
+
+  if (editorAreaSaveButton) {
+    editorAreaSaveButton.addEventListener('click', () => {
+      saveFacilityAreaDraft();
+    });
+  }
+
+  if (editorAreaUndoButton) {
+    editorAreaUndoButton.addEventListener('click', () => {
+      undoFacilityAreaVertex();
+    });
+  }
+
+  if (editorAreaCancelButton) {
+    editorAreaCancelButton.addEventListener('click', () => {
+      cancelFacilityAreaDraft();
+    });
+  }
 
   if (editorList) {
     editorList.addEventListener('click', (event) => {
@@ -3378,6 +4132,30 @@ if (window.__FILE_MODE__) {
     });
   }
 
+  if (editorAreaList) {
+    editorAreaList.addEventListener('click', (event) => {
+      const button = event.target.closest('.editor-entry-button');
+
+      if (!button) {
+        return;
+      }
+
+      const { action, entryId, polygonIndex } = button.dataset;
+      if (!entryId || polygonIndex === undefined) {
+        return;
+      }
+
+      if (action === 'edit-area') {
+        editFacilityArea(entryId, Number(polygonIndex));
+        return;
+      }
+
+      if (action === 'delete-area') {
+        deleteFacilityArea(entryId, Number(polygonIndex));
+      }
+    });
+  }
+
   document.addEventListener('pointerdown', (event) => {
     if (siteMenu && isSiteMenuOpen() && !siteMenu.contains(event.target)) {
       setSiteMenuOpen(false);
@@ -3393,7 +4171,10 @@ if (window.__FILE_MODE__) {
 
     searchResults.hidden = true;
 
-    if (isEditorSite && !event.target.closest('.editor-pin-button, .editor-ring-button')) {
+    if (
+      isEditorSite &&
+      !event.target.closest('.editor-pin-button, .editor-ring-button, .editor-area-vertex, .editor-entry-button')
+    ) {
       state.activeEditorPinKey = null;
       state.activeEditorRingId = null;
       refreshEditorUi();
@@ -3511,6 +4292,15 @@ if (window.__FILE_MODE__) {
   );
 
   viewer.addEventListener('mousedown', (event) => {
+    const areaVertex = event.target.closest('.editor-area-vertex');
+
+    if (areaVertex && state.areaDraft) {
+      event.preventDefault();
+      event.stopPropagation();
+      state.areaVertexDragIndex = Number(areaVertex.dataset.vertexIndex);
+      return;
+    }
+
     if (event.target.closest('.editor-pin-button, .editor-ring-button')) {
       return;
     }
@@ -3520,6 +4310,16 @@ if (window.__FILE_MODE__) {
   });
 
   viewer.addEventListener('mouseup', (event) => {
+    if (state.areaVertexDragIndex !== null) {
+      const entry = state.areaDraft ? getManualEntryById(state.areaDraft.entryId) : null;
+      state.areaVertexDragIndex = null;
+      renderEditorOverlay();
+      if (entry) {
+        setEditorFeedback(t('editor.areaVertexMoved', { label: getLocalizedEntryLabel(entry) }));
+      }
+      return;
+    }
+
     if (event.target.closest('.editor-pin-button, .editor-ring-button')) {
       return;
     }
@@ -3529,6 +4329,21 @@ if (window.__FILE_MODE__) {
   });
 
   window.addEventListener('mousemove', (event) => {
+    if (state.areaVertexDragIndex !== null && state.areaDraft) {
+      const point = getMapPointFromClient(event.clientX, event.clientY);
+
+      if (point && state.areaDraft.points[state.areaVertexDragIndex]) {
+        state.areaDraft.points[state.areaVertexDragIndex] = snapFacilityAreaVertexToNeighbors(
+          point,
+          state.areaDraft.points,
+          state.areaVertexDragIndex
+        );
+        renderEditorOverlay();
+        updateEditorCoords();
+      }
+      return;
+    }
+
     if (!state.isDragging) {
       return;
     }
@@ -3546,13 +4361,14 @@ if (window.__FILE_MODE__) {
   });
 
   window.addEventListener('mouseup', () => {
+    state.areaVertexDragIndex = null;
     endDrag();
   });
 
   viewer.addEventListener(
     'touchstart',
     (event) => {
-      if (event.target.closest('.editor-pin-button, .editor-ring-button')) {
+      if (event.target.closest('.editor-pin-button, .editor-ring-button, .editor-area-vertex')) {
         return;
       }
 
@@ -3616,7 +4432,7 @@ if (window.__FILE_MODE__) {
   viewer.addEventListener(
     'touchend',
     (event) => {
-      if (event.target.closest('.editor-pin-button, .editor-ring-button')) {
+      if (event.target.closest('.editor-pin-button, .editor-ring-button, .editor-area-vertex')) {
         return;
       }
 
@@ -3667,7 +4483,7 @@ if (window.__FILE_MODE__) {
   });
 
   window.addEventListener('storage', (event) => {
-    if (event.key !== getActiveManualStorageKey()) {
+    if (!isEditorSite || event.key !== getActiveManualStorageKey()) {
       return;
     }
 
@@ -3693,6 +4509,7 @@ if (window.__FILE_MODE__) {
 
     refreshSearchEntries();
     renderSearchSuggestions();
+    renderFacilityAreas();
     renderFacilityRings();
     if (isEditorSite) {
       refreshEditorUi();

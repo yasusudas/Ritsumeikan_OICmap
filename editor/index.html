@@ -105,7 +105,6 @@
           </div>
         </div>
         <div class="search-panel">
-          <div class="editor-caption" data-i18n="editor.caption">編集用URLです。地図をクリックして検索用テキストと位置を記録できます。</div>
         </div>
         <div id="search-panel" class="search-panel">
           <div class="search-controls">
@@ -368,10 +367,25 @@
                   黄
                 </button>
               </div>
-              <div class="editor-ring-actions">
-                <button id="editor-ring-clear" class="editor-action" type="button" data-i18n="editor.ringClear">選択中施設の現在階リングをクリア</button>
-              </div>
               <div id="editor-ring-list" class="editor-ring-list"></div>
+            </section>
+            <section class="editor-area-tools" aria-label="施設領域編集" data-i18n-aria="editor.areaTools">
+              <div class="editor-section-label" data-i18n="editor.areaSettings">施設領域設定</div>
+              <label class="editor-field">
+                <span class="editor-field-label" data-i18n="editor.areaTarget">対象施設</span>
+                <select id="editor-area-entry" class="editor-input editor-select">
+                  <option value="" data-i18n="editor.areaSelectPlaceholder">施設を選択</option>
+                </select>
+              </label>
+              <div class="editor-area-actions">
+                <button id="editor-area-new" class="editor-action" type="button" data-i18n="editor.areaNew">新しい領域を描く</button>
+                <button id="editor-area-save" class="editor-action editor-action-primary" type="button" data-i18n="editor.areaSave" disabled>
+                  領域を確定
+                </button>
+                <button id="editor-area-undo" class="editor-action" type="button" data-i18n="editor.areaUndo" disabled>最後の頂点を戻す</button>
+                <button id="editor-area-cancel" class="editor-action" type="button" data-i18n="editor.areaCancel" disabled>キャンセル</button>
+              </div>
+              <div id="editor-area-list" class="editor-area-list"></div>
             </section>
             <input id="editor-import-input" type="file" accept="application/json,.json" hidden />
             <div id="editor-feedback" class="editor-feedback" aria-live="polite" data-i18n="editor.feedback.default">

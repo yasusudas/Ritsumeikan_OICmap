@@ -1,6 +1,8 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
+import { searchDataAssetsPlugin } from './scripts/vite-search-data-plugin.mjs';
 import { getRailStatusPayload, RAIL_STATUS_REFRESH_INTERVAL_SECONDS } from './src/server/rail-status.js';
+import { getFoodTrucksPayload, FOOD_TRUCKS_REFRESH_INTERVAL_SECONDS } from './src/server/food-trucks.js';
 
 function railStatusDevApi() {
   return {
@@ -37,9 +39,44 @@ function railStatusDevApi() {
   };
 }
 
+function foodTrucksDevApi() {
+  return {
+    name: 'rits-oic-food-trucks-dev-api',
+    configureServer(server) {
+      server.middlewares.use('/api/food-trucks', async (request, response) => {
+        if (request.method !== 'GET') {
+          response.statusCode = 405;
+          response.setHeader('Content-Type', 'application/json; charset=utf-8');
+          response.end(JSON.stringify({ error: 'Method not allowed' }));
+          return;
+        }
+
+        try {
+          const payload = await getFoodTrucksPayload();
+          response.statusCode = 200;
+          response.setHeader('Content-Type', 'application/json; charset=utf-8');
+          response.setHeader(
+            'Cache-Control',
+            `public, max-age=0, s-maxage=${FOOD_TRUCKS_REFRESH_INTERVAL_SECONDS}, stale-while-revalidate=300`
+          );
+          response.end(JSON.stringify(payload));
+        } catch (error) {
+          response.statusCode = 500;
+          response.setHeader('Content-Type', 'application/json; charset=utf-8');
+          response.end(
+            JSON.stringify({
+              error: error instanceof Error ? error.message : String(error),
+            })
+          );
+        }
+      });
+    }
+  };
+}
+
 export default defineConfig({
   base: './',
-  plugins: [railStatusDevApi()],
+  plugins: [searchDataAssetsPlugin(), railStatusDevApi(), foodTrucksDevApi()],
   build: {
     rollupOptions: {
       input: {

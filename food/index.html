@@ -16,9 +16,10 @@
     <link rel="alternate" hreflang="en" href="https://rits-oic-map.app/en/food/" />
     <link rel="alternate" hreflang="x-default" href="https://rits-oic-map.app/food/" />
     <meta name="theme-color" content="#991c27" />
-    <meta name="description" content="立命館OICマップのOICフードページです。現在準備中です。" />
+    <meta name="description" content="立命館OIC周辺に本日出店しているキッチンカーを確認できます。" />
     <title>OICフード | 立命館OICマップ</title>
     <script type="module" src="/src/legal-page.js"></script>
+    <script type="module" src="/src/food-page.js"></script>
   </head>
   <body class="legal-page food-page">
     <div class="legal-shell">
@@ -58,8 +59,10 @@
           <h1>OICフード</h1>
         </section>
 
-        <section class="legal-content food-content" aria-label="準備中のお知らせ">
-          <p class="food-placeholder">このページは準備中です。<br />お楽しみに🫶🏻</p>
+        <section class="legal-content food-content" aria-label="本日のキッチンカー">
+          <div class="food-board" data-food-trucks aria-live="polite">
+            <p class="food-state">本日のキッチンカーを読み込んでいます…</p>
+          </div>
         </section>
       </main>
 

@@ -1,5 +1,5 @@
-const STATIC_CACHE_NAME = 'rits-oic-map-static-v20';
-const RUNTIME_CACHE_NAME = 'rits-oic-map-runtime-v20';
+const STATIC_CACHE_NAME = 'rits-oic-map-static-v21';
+const RUNTIME_CACHE_NAME = 'rits-oic-map-runtime-v21';
 const APP_SHELL_URLS = [
   '/',
   '/index.html',
@@ -13,14 +13,13 @@ const APP_SHELL_URLS = [
   '/icon/pwa-512-20260605.png'
 ];
 const STATIC_PATH_PREFIXES = ['/assets/', '/cmaps/', '/icon/', '/standard_fonts/', '/hidden/timetable/data/'];
-const STATIC_PATHS = new Set(['/manual-search-index.json']);
 
 function isEditorPath(pathname) {
   return pathname === '/editor' || pathname.startsWith('/editor/');
 }
 
 function isStaticAssetRequest(request, url) {
-  if (STATIC_PATH_PREFIXES.some((prefix) => url.pathname.startsWith(prefix)) || STATIC_PATHS.has(url.pathname)) {
+  if (STATIC_PATH_PREFIXES.some((prefix) => url.pathname.startsWith(prefix))) {
     return true;
   }
 
@@ -31,7 +30,7 @@ async function networkFirst(request) {
   try {
     return await fetch(request);
   } catch (error) {
-    const cachedResponse = await caches.match(request, { ignoreSearch: true });
+    const cachedResponse = await caches.match(request);
     if (cachedResponse) {
       return cachedResponse;
     }
@@ -41,7 +40,7 @@ async function networkFirst(request) {
 }
 
 async function cacheFirst(request) {
-  const cachedResponse = await caches.match(request, { ignoreSearch: true });
+  const cachedResponse = await caches.match(request);
   if (cachedResponse) {
     return cachedResponse;
   }
@@ -52,7 +51,7 @@ async function cacheFirst(request) {
   }
 
   const cache = await caches.open(RUNTIME_CACHE_NAME);
-  cache.put(request, response.clone());
+  await cache.put(request, response.clone());
   return response;
 }
 
