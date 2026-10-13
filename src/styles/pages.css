@@ -79,7 +79,7 @@
   white-space: nowrap;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .access-location-body {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -105,7 +105,7 @@
 }
 
 :lang(en) .access-routes {
-  --route-origin-w: 11.5em;
+  --route-origin-w: 12.5em;
   --route-walk-w: 12em;
 }
 
@@ -123,6 +123,7 @@
 
 .route-map {
   margin: 0;
+  container: route-map / inline-size;
 }
 
 .route-map-caption {
@@ -282,23 +283,19 @@
   line-height: var(--lh-snug);
 }
 
-/* Phones: origin becomes the row label; the line wraps if it must. */
-@media (max-width: 720px) {
-  .route-group {
-    padding: var(--s-4) 0 var(--s-5);
-  }
-
+/* Narrow diagram (phones, tablets, the English labels at mid widths):
+   the origin becomes the row label and the line wraps if it must. The
+   walk keeps its natural width, so arrivals line up within a group; when
+   it wraps it sits right-aligned under the arrival station. */
+@container route-map (max-width: 819px) {
   .route-rows {
-    gap: var(--s-4);
+    gap: var(--s-5);
   }
 
-  /* The walk keeps its natural width, so arrivals line up within a group;
-     if it has to wrap, it sits right-aligned under the arrival station. */
   .route {
     flex-wrap: wrap;
     justify-content: flex-end;
     row-gap: var(--s-2);
-    font-size: var(--fs-sm);
   }
 
   .route-origin {
@@ -321,6 +318,17 @@
   .route-walk .route-leg::after {
     width: var(--s-3);
   }
+}
+
+/* Phones: smaller type, tighter gaps. */
+@media (max-width: 720px) {
+  .route-group {
+    padding: var(--s-4) 0 var(--s-5);
+  }
+
+  .route {
+    font-size: var(--fs-sm);
+  }
 
   .route-leg {
     gap: var(--s-1);
@@ -330,6 +338,11 @@
   .route-leg::before,
   .route-leg::after {
     min-width: var(--s-2);
+  }
+
+  .route-walk .route-leg::before,
+  .route-walk .route-leg::after {
+    width: var(--s-2);
   }
 
   .route-stop {
