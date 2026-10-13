@@ -394,6 +394,10 @@ a {
     font-size: var(--fs-md);
   }
 
+  .site-header .site-menu-item:last-child {
+    border-bottom: 0;
+  }
+
   .site-header .site-menu-item:hover {
     background: transparent;
     color: var(--c-accent);
