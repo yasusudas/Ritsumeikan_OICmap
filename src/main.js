@@ -2,6 +2,7 @@ import './style.css';
 import { inject } from '@vercel/analytics';
 import { facilityRingsUrl, searchEntriesUrl } from 'virtual:rits-oic-search-data';
 import { applyI18n, getLang, getLocale, onLanguageChange, t } from './i18n.js';
+import { getFacilityRingDisplayPoint } from './facility-ring-position.js';
 
 if (window.__FILE_MODE__) {
   console.warn('This app must be opened through a local server, not file://');
@@ -496,6 +497,10 @@ if (window.__FILE_MODE__) {
     return state.facilityRings.find((ring) => ring.id === ringId) ?? null;
   }
 
+  function getLocalizedFacilityRingPoint(ring) {
+    return getFacilityRingDisplayPoint(ring, getMapLanguage());
+  }
+
   function renderFacilityRings() {
     if (!state.ringLayer) {
       return;
@@ -518,12 +523,13 @@ if (window.__FILE_MODE__) {
     const fragment = document.createDocumentFragment();
 
     currentFloorRings.forEach((ring) => {
+      const point = getLocalizedFacilityRingPoint(ring);
       const ringNode = document.createElement('div');
       const diameterSize = getFacilityRingDiameterSize(ring.facilityKey);
       ringNode.className = 'facility-ring';
       ringNode.classList.add(`color-${getFacilityRingVisualVariant(ring.facilityKey, ring.colorVariant)}`);
-      ringNode.style.left = `${ring.xRatio * 100}%`;
-      ringNode.style.top = `${ring.yRatio * 100}%`;
+      ringNode.style.left = `${point.xRatio * 100}%`;
+      ringNode.style.top = `${point.yRatio * 100}%`;
       ringNode.style.width = `${diameterSize.widthPercent}%`;
       ringNode.style.height = `${diameterSize.heightPercent}%`;
       ringNode.setAttribute('aria-hidden', 'true');
@@ -737,14 +743,18 @@ if (window.__FILE_MODE__) {
     return getActiveSpecialFloorDefinition() ?? getFloorDefinition();
   }
 
+  function getMapLanguage() {
+    return isEditorSite ? 'ja' : getLang();
+  }
+
   function getFloorSvgUrl(floor) {
     const urls = floor?.svgUrls ?? {};
-    return (getLang() === 'en' ? urls.en : urls.ja) ?? floor?.svgUrl ?? urls.ja ?? urls.en;
+    return (getMapLanguage() === 'en' ? urls.en : urls.ja) ?? floor?.svgUrl ?? urls.ja ?? urls.en;
   }
 
   function getFloorSvgDimensions(floor) {
     const dimensions = floor?.dimensions ?? {};
-    const localizedDimensions = (getLang() === 'en' ? dimensions.en : dimensions.ja) ?? dimensions.ja ?? dimensions.en;
+    const localizedDimensions = (getMapLanguage() === 'en' ? dimensions.en : dimensions.ja) ?? dimensions.ja ?? dimensions.en;
     const width = Number(localizedDimensions?.width);
     const height = Number(localizedDimensions?.height);
     return width > 0 && height > 0 ? { width, height } : null;
@@ -2093,6 +2103,7 @@ if (window.__FILE_MODE__) {
   }
 
   function createEditorRingHandle(ring, { isActive = false } = {}) {
+    const point = getLocalizedFacilityRingPoint(ring);
     const diameterSize = getFacilityRingDiameterSize(ring.facilityKey);
     const ringButton = document.createElement('button');
     ringButton.type = 'button';
@@ -2111,8 +2122,8 @@ if (window.__FILE_MODE__) {
             facility: getFacilityLabel(ring.facilityKey)
           })
     );
-    ringButton.style.left = `${ring.xRatio * 100}%`;
-    ringButton.style.top = `${ring.yRatio * 100}%`;
+    ringButton.style.left = `${point.xRatio * 100}%`;
+    ringButton.style.top = `${point.yRatio * 100}%`;
     ringButton.style.width = `${diameterSize.widthPercent}%`;
     ringButton.style.height = `${diameterSize.heightPercent}%`;
 
@@ -2145,6 +2156,7 @@ if (window.__FILE_MODE__) {
     const fragment = document.createDocumentFragment();
 
     rings.forEach((ring, index) => {
+      const point = getLocalizedFacilityRingPoint(ring);
       const row = document.createElement('div');
       row.className = 'editor-entry';
 
@@ -2169,8 +2181,8 @@ if (window.__FILE_MODE__) {
       meta.className = 'editor-entry-meta';
       meta.textContent =
         ring.facilityKey === 'toilet' && ring.colorLabel
-          ? `${getFacilityRingColorLabel(ring.facilityKey, ring.colorVariant)} / x ${ring.xRatio.toFixed(4)} / y ${ring.yRatio.toFixed(4)}`
-          : `x ${ring.xRatio.toFixed(4)} / y ${ring.yRatio.toFixed(4)}`;
+          ? `${getFacilityRingColorLabel(ring.facilityKey, ring.colorVariant)} / x ${point.xRatio.toFixed(4)} / y ${point.yRatio.toFixed(4)}`
+          : `x ${point.xRatio.toFixed(4)} / y ${point.yRatio.toFixed(4)}`;
 
       body.append(label, meta);
 
@@ -3454,7 +3466,7 @@ if (window.__FILE_MODE__) {
       state.activeToiletRingColorVariant = normalizeFacilityRingColorVariant(ring.facilityKey, ring.colorVariant);
     }
     state.activeEditorRingId = ring.id;
-    focusMapPoint({ xRatio: ring.xRatio, yRatio: ring.yRatio });
+    focusMapPoint(getLocalizedFacilityRingPoint(ring));
     refreshEditorUi();
     setEditorFeedback(
       ring.facilityKey === 'toilet' && ring.colorLabel

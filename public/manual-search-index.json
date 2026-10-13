@@ -8119,136 +8119,144 @@
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.466493,
-      "yRatio": 0.179927
+      "xRatio": 0.466437,
+      "yRatio": 0.180045
     },
     {
       "id": "ring-waterServer-1F-1776125938619-quemd1",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.204415,
-      "yRatio": 0.369511
+      "xRatio": 0.204479,
+      "yRatio": 0.369706
     },
     {
       "id": "ring-waterServer-1F-1776125916228-8qqif3",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.214694,
-      "yRatio": 0.488312
+      "xRatio": 0.214768,
+      "yRatio": 0.48845
     },
     {
       "id": "ring-waterServer-1F-1776125918411-uw5zv1",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.243215,
-      "yRatio": 0.521669
+      "xRatio": 0.24308,
+      "yRatio": 0.521869
     },
     {
       "id": "ring-waterServer-1F-1776125965593-t9mu5q",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.717086,
-      "yRatio": 0.524445
+      "xRatio": 0.717094,
+      "yRatio": 0.52478
     },
     {
       "id": "ring-escalator-1F-1776125602682-bcorl8",
       "facilityKey": "escalator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.606064,
-      "yRatio": 0.505427
+      "xRatio": 0.606108,
+      "yRatio": 0.505447
     },
     {
       "id": "ring-escalator-1F-1776125607699-vnjdhp",
       "facilityKey": "escalator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.707042,
-      "yRatio": 0.505719
+      "xRatio": 0.706988,
+      "yRatio": 0.505624
     },
     {
       "id": "ring-escalator-1F-1776125630223-u4zsqb",
       "facilityKey": "escalator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.450234,
-      "yRatio": 0.703096
+      "xRatio": 0.450248,
+      "yRatio": 0.703129
     },
     {
       "id": "ring-elevator-1F-1776125548318-w75gjq",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.491798,
-      "yRatio": 0.177656
+      "xRatio": 0.491705,
+      "yRatio": 0.177704
     },
     {
       "id": "ring-elevator-1F-1776125560913-ukot4w",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.259009,
-      "yRatio": 0.365282
+      "xRatio": 0.259069,
+      "yRatio": 0.365277
     },
     {
       "id": "ring-elevator-1F-1776125522194-jzzs33",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.168754,
-      "yRatio": 0.40473
+      "xRatio": 0.168869,
+      "yRatio": 0.404895
     },
     {
       "id": "ring-elevator-1F-1776125532581-aqdrtl",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.103386,
-      "yRatio": 0.406487
+      "xRatio": 0.103338,
+      "yRatio": 0.406412
     },
     {
       "id": "ring-elevator-1F-1776125503236-loyc9z",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.371412,
-      "yRatio": 0.408373
+      "xRatio": 0.371457,
+      "yRatio": 0.408407
     },
     {
       "id": "ring-elevator-1F-1776125511678-0oofc5",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.303997,
-      "yRatio": 0.409106
+      "xRatio": 0.304061,
+      "yRatio": 0.409228
     },
     {
       "id": "ring-elevator-1F-1776125465617-2l83ox",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.718104,
-      "yRatio": 0.478899
+      "xRatio": 0.718109,
+      "yRatio": 0.479105
     },
     {
       "id": "ring-elevator-1F-1776125472000-b5x92w",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.618565,
-      "yRatio": 0.478963
+      "xRatio": 0.618535,
+      "yRatio": 0.479105
     },
     {
       "id": "ring-elevator-1F-1776125486554-q55asr",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.411803,
-      "yRatio": 0.521269
+      "xRatio": 0.411786,
+      "yRatio": 0.521451
+    },
+    {
+      "id": "ring-elevator-1F-1791907415355-kf1ceq",
+      "facilityKey": "elevator",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.445885,
+      "yRatio": 0.623609
     },
     {
       "id": "ring-toilet-1F-1776126039357-322dor",
@@ -8535,847 +8543,847 @@
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.491805,
-      "yRatio": 0.1997
+      "xRatio": 0.49202,
+      "yRatio": 0.199762
     },
     {
       "id": "ring-stairs-1F-1776125770125-xrpnwd",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.416828,
-      "yRatio": 0.234877
+      "xRatio": 0.416771,
+      "yRatio": 0.2349
     },
     {
       "id": "ring-stairs-1F-1776125701332-85fonj",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.343683,
-      "yRatio": 0.347217
+      "xRatio": 0.343676,
+      "yRatio": 0.347505
     },
     {
       "id": "ring-stairs-1F-1776125698807-t9jpcz",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.282633,
-      "yRatio": 0.356519
+      "xRatio": 0.28269,
+      "yRatio": 0.356716
     },
     {
       "id": "ring-stairs-1F-1776125762863-batims",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.475667,
-      "yRatio": 0.364209
+      "xRatio": 0.475911,
+      "yRatio": 0.364213
     },
     {
       "id": "ring-stairs-1F-1776125690591-2w1zol",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.132554,
-      "yRatio": 0.367589
+      "xRatio": 0.13264,
+      "yRatio": 0.367499
     },
     {
       "id": "ring-stairs-1F-1776125811215-4za8kf",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.548803,
-      "yRatio": 0.385202
+      "xRatio": 0.548896,
+      "yRatio": 0.38509
     },
     {
       "id": "ring-stairs-1F-1776125712265-2nz800",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.109802,
-      "yRatio": 0.408188
+      "xRatio": 0.109938,
+      "yRatio": 0.408331
     },
     {
       "id": "ring-stairs-1F-1776125746301-5vjcgq",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.363425,
-      "yRatio": 0.408495
+      "xRatio": 0.363524,
+      "yRatio": 0.40841
     },
     {
       "id": "ring-stairs-1F-1776125725969-bl4xak",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.238825,
-      "yRatio": 0.467742
+      "xRatio": 0.239014,
+      "yRatio": 0.467754
     },
     {
       "id": "ring-stairs-1F-1776125736631-pieh8v",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.308918,
-      "yRatio": 0.488325
+      "xRatio": 0.309137,
+      "yRatio": 0.487951
     },
     {
       "id": "ring-stairs-1F-1776125719011-c6ad7b",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.165339,
-      "yRatio": 0.488525
+      "xRatio": 0.165404,
+      "yRatio": 0.488567
     },
     {
       "id": "ring-stairs-1F-1776125814903-lqdxoq",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.545914,
-      "yRatio": 0.494627
+      "xRatio": 0.545925,
+      "yRatio": 0.494462
     },
     {
       "id": "ring-stairs-1F-1776125866663-ki5qhn",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.784594,
-      "yRatio": 0.503185
+      "xRatio": 0.784797,
+      "yRatio": 0.50316
     },
     {
       "id": "ring-stairs-1F-1776125817619-5dn936",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.622997,
-      "yRatio": 0.505287
+      "xRatio": 0.623035,
+      "yRatio": 0.505252
     },
     {
       "id": "ring-stairs-1F-1776125857597-vsgifj",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.721208,
-      "yRatio": 0.505737
+      "xRatio": 0.721295,
+      "yRatio": 0.505681
     },
     {
       "id": "ring-stairs-1F-1776125849118-rwi1va",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.670881,
-      "yRatio": 0.515647
+      "xRatio": 0.670813,
+      "yRatio": 0.515782
     },
     {
       "id": "ring-stairs-1F-1776125751172-qwfh6d",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.43008,
-      "yRatio": 0.521017
+      "xRatio": 0.430142,
+      "yRatio": 0.521005
     },
     {
       "id": "ring-stairs-1F-1776125755230-4sanxc",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.452184,
-      "yRatio": 0.534257
+      "xRatio": 0.452233,
+      "yRatio": 0.53421
     },
     {
       "id": "ring-stairs-1F-1776125820590-86lm4x",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.553452,
-      "yRatio": 0.53967
+      "xRatio": 0.553536,
+      "yRatio": 0.539752
     },
     {
       "id": "ring-stairs-1F-1776125739973-xn38ec",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.334824,
-      "yRatio": 0.547079
+      "xRatio": 0.334802,
+      "yRatio": 0.547123
     },
     {
       "id": "ring-stairs-1F-1776125832490-l9lu2l",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.604522,
-      "yRatio": 0.55003
+      "xRatio": 0.604575,
+      "yRatio": 0.549814
     },
     {
       "id": "ring-stairs-1F-1776125731227-2v3qcs",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.089028,
-      "yRatio": 0.556872
+      "xRatio": 0.089172,
+      "yRatio": 0.556598
     },
     {
       "id": "ring-stairs-1F-1776125783937-nvqg9r",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.377185,
-      "yRatio": 0.625432
+      "xRatio": 0.377225,
+      "yRatio": 0.625281
     },
     {
       "id": "ring-stairs-1F-1776125795949-ol18ec",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.455301,
-      "yRatio": 0.626582
+      "xRatio": 0.455143,
+      "yRatio": 0.626335
     },
     {
       "id": "ring-stairs-1F-1776125790383-g2j9d7",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.453374,
-      "yRatio": 0.69035
+      "xRatio": 0.45346,
+      "yRatio": 0.690332
     },
     {
       "id": "ring-stairs-1F-1776125787200-wrzhp7",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.376805,
-      "yRatio": 0.72178
+      "xRatio": 0.376815,
+      "yRatio": 0.721892
     },
     {
       "id": "ring-vendingMachine-1F-1776167291720-7s4pdn",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.476057,
-      "yRatio": 0.221127
+      "xRatio": 0.476083,
+      "yRatio": 0.221203
     },
     {
       "id": "ring-vendingMachine-1F-1776167302587-yev7fl",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.437682,
-      "yRatio": 0.392511
+      "xRatio": 0.437797,
+      "yRatio": 0.392588
     },
     {
       "id": "ring-vendingMachine-1F-1776167330637-uimhq7",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.755241,
-      "yRatio": 0.518369
+      "xRatio": 0.755222,
+      "yRatio": 0.518535
     },
     {
       "id": "ring-vendingMachine-1F-1776167309720-loh3yv",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.422201,
-      "yRatio": 0.70422
+      "xRatio": 0.422217,
+      "yRatio": 0.704246
     },
     {
       "id": "ring-vendingMachine-1F-1776167314945-3vh5rz",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "1F",
-      "xRatio": 0.444844,
-      "yRatio": 0.722311
+      "xRatio": 0.444661,
+      "yRatio": 0.722343
     },
     {
       "id": "ring-waterServer-2F-1776127012459-6cp6hf",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.41711,
-      "yRatio": 0.162098
+      "xRatio": 0.417274,
+      "yRatio": 0.162016
     },
     {
       "id": "ring-waterServer-2F-1776126961965-js7t92",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.323723,
-      "yRatio": 0.437338
+      "xRatio": 0.323544,
+      "yRatio": 0.437448
     },
     {
       "id": "ring-waterServer-2F-1776126965623-bmv8a6",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.222931,
-      "yRatio": 0.467481
+      "xRatio": 0.222853,
+      "yRatio": 0.467192
     },
     {
       "id": "ring-waterServer-2F-1776127020467-uxdr8q",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.563968,
-      "yRatio": 0.496964
+      "xRatio": 0.563939,
+      "yRatio": 0.496745
     },
     {
       "id": "ring-escalator-2F-1776126513229-9fade8",
       "facilityKey": "escalator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.606455,
-      "yRatio": 0.495667
+      "xRatio": 0.606675,
+      "yRatio": 0.495723
     },
     {
       "id": "ring-escalator-2F-1776126516500-es8ccr",
       "facilityKey": "escalator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.710613,
-      "yRatio": 0.495849
+      "xRatio": 0.710694,
+      "yRatio": 0.495723
     },
     {
       "id": "ring-escalator-2F-1776126532611-vxulbz",
       "facilityKey": "escalator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.444015,
-      "yRatio": 0.686132
+      "xRatio": 0.444086,
+      "yRatio": 0.686293
     },
     {
       "id": "ring-elevator-2F-1776126415995-i5m3uj",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.257873,
-      "yRatio": 0.359312
+      "xRatio": 0.257841,
+      "yRatio": 0.359457
     },
     {
       "id": "ring-elevator-2F-1776126388271-iuwbbd",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.167137,
-      "yRatio": 0.400075
+      "xRatio": 0.167094,
+      "yRatio": 0.400023
     },
     {
       "id": "ring-elevator-2F-1776126385613-0pbhav",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.10046,
-      "yRatio": 0.401185
+      "xRatio": 0.100515,
+      "yRatio": 0.401402
     },
     {
       "id": "ring-elevator-2F-1776126396646-90u131",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.369414,
-      "yRatio": 0.403571
+      "xRatio": 0.369262,
+      "yRatio": 0.403271
     },
     {
       "id": "ring-elevator-2F-1776126394246-ewkl51",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.302288,
-      "yRatio": 0.404351
+      "xRatio": 0.302286,
+      "yRatio": 0.404259
     },
     {
       "id": "ring-elevator-2F-1776126482447-5k7935",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.720811,
-      "yRatio": 0.467968
+      "xRatio": 0.720889,
+      "yRatio": 0.467907
     },
     {
       "id": "ring-elevator-2F-1776126484547-7y3wnw",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.621566,
-      "yRatio": 0.468558
+      "xRatio": 0.62168,
+      "yRatio": 0.468275
     },
     {
       "id": "ring-elevator-2F-1776126426924-2tc23m",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.407768,
-      "yRatio": 0.523753
+      "xRatio": 0.407716,
+      "yRatio": 0.523659
     },
     {
       "id": "ring-elevator-2F-1776126435674-ugt61s",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.44184,
-      "yRatio": 0.617847
+      "xRatio": 0.441885,
+      "yRatio": 0.617792
     },
     {
       "id": "ring-elevator-2F-1776126449394-apm5xo",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.48233,
-      "yRatio": 0.850062
+      "xRatio": 0.482273,
+      "yRatio": 0.850103
     },
     {
       "id": "ring-toilet-2F-1776127217967-99c1tu",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.655011,
-      "yRatio": 0.334155
+      "xRatio": 0.655159,
+      "yRatio": 0.334297
     },
     {
       "id": "ring-toilet-2F-1776127375423-hhgn6g",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.754416,
-      "yRatio": 0.338719
+      "xRatio": 0.754385,
+      "yRatio": 0.338497
     },
     {
       "id": "ring-toilet-2F-1776127352066-2jbj7m",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.555968,
-      "yRatio": 0.338761
+      "xRatio": 0.555932,
+      "yRatio": 0.338807
     },
     {
       "id": "ring-toilet-2F-1776127052057-hn3sou",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.13209,
-      "yRatio": 0.34012
+      "xRatio": 0.132016,
+      "yRatio": 0.340391
     },
     {
       "id": "ring-toilet-2F-1776127289565-foio3b",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.139012,
-      "yRatio": 0.340252
+      "xRatio": 0.13902,
+      "yRatio": 0.340396
     },
     {
       "id": "ring-toilet-2F-1776127411263-zqgel2",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "2F",
-      "xRatio": 0.214866,
-      "yRatio": 0.35625
+      "xRatio": 0.214965,
+      "yRatio": 0.356487
     },
     {
       "id": "ring-toilet-2F-1776127059265-o6rvo4",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.209327,
-      "yRatio": 0.362058
+      "xRatio": 0.209311,
+      "yRatio": 0.361976
     },
     {
       "id": "ring-toilet-2F-1776127279502-l95zfb",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.264611,
-      "yRatio": 0.36495
+      "xRatio": 0.26457,
+      "yRatio": 0.364978
     },
     {
       "id": "ring-toilet-2F-1776127206984-qeo02e",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.562499,
-      "yRatio": 0.374036
+      "xRatio": 0.56245,
+      "yRatio": 0.374014
     },
     {
       "id": "ring-toilet-2F-1776127359349-130n4b",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.661684,
-      "yRatio": 0.374732
+      "xRatio": 0.661722,
+      "yRatio": 0.374925
     },
     {
       "id": "ring-toilet-2F-1776127222600-grkoxg",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.760968,
-      "yRatio": 0.37516
+      "xRatio": 0.760922,
+      "yRatio": 0.374928
     },
     {
       "id": "ring-toilet-2F-1776127156553-i6ne1a",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.478604,
-      "yRatio": 0.380689
+      "xRatio": 0.478498,
+      "yRatio": 0.380569
     },
     {
       "id": "ring-toilet-2F-1776127310251-2mxegb",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.486591,
-      "yRatio": 0.380692
+      "xRatio": 0.486746,
+      "yRatio": 0.38057
     },
     {
       "id": "ring-toilet-2F-1776127424263-r03t8f",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "2F",
-      "xRatio": 0.179703,
-      "yRatio": 0.42863
+      "xRatio": 0.179897,
+      "yRatio": 0.428693
     },
     {
       "id": "ring-toilet-2F-1776127416922-y12g41",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "2F",
-      "xRatio": 0.358694,
-      "yRatio": 0.429255
+      "xRatio": 0.358704,
+      "yRatio": 0.429466
     },
     {
       "id": "ring-toilet-2F-1776127079069-5bybct",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.370919,
-      "yRatio": 0.434433
+      "xRatio": 0.370837,
+      "yRatio": 0.434658
     },
     {
       "id": "ring-toilet-2F-1776127085135-1uzwkj",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.173769,
-      "yRatio": 0.435882
+      "xRatio": 0.173751,
+      "yRatio": 0.436082
     },
     {
       "id": "ring-toilet-2F-1776127254961-iwqgg4",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.184994,
-      "yRatio": 0.436145
+      "xRatio": 0.184916,
+      "yRatio": 0.43608
     },
     {
       "id": "ring-toilet-2F-1776127275340-7j8ww9",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.360928,
-      "yRatio": 0.438894
+      "xRatio": 0.360905,
+      "yRatio": 0.439081
     },
     {
       "id": "ring-toilet-2F-1776127343479-zo6shz",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.556748,
-      "yRatio": 0.481185
+      "xRatio": 0.556725,
+      "yRatio": 0.481394
     },
     {
       "id": "ring-toilet-2F-1776127087877-vrvikd",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.18288,
-      "yRatio": 0.483839
+      "xRatio": 0.182884,
+      "yRatio": 0.484111
     },
     {
       "id": "ring-toilet-2F-1776127257603-e5mts0",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.199028,
-      "yRatio": 0.484135
+      "xRatio": 0.198971,
+      "yRatio": 0.484111
     },
     {
       "id": "ring-toilet-2F-1776127462283-xwriyr",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "2F",
-      "xRatio": 0.563742,
-      "yRatio": 0.486554
+      "xRatio": 0.563939,
+      "yRatio": 0.486972
     },
     {
       "id": "ring-toilet-2F-1776127228946-7teh22",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.679074,
-      "yRatio": 0.519997
+      "xRatio": 0.679043,
+      "yRatio": 0.519973
     },
     {
       "id": "ring-toilet-2F-1776127367849-oplk0d",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.66396,
-      "yRatio": 0.520022
+      "xRatio": 0.663925,
+      "yRatio": 0.519973
     },
     {
       "id": "ring-toilet-2F-1776127320663-uey3gz",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.451846,
-      "yRatio": 0.715489
+      "xRatio": 0.451844,
+      "yRatio": 0.715839
     },
     {
       "id": "ring-toilet-2F-1776127438391-4ifbu3",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "2F",
-      "xRatio": 0.459329,
-      "yRatio": 0.72076
+      "xRatio": 0.459373,
+      "yRatio": 0.72088
     },
     {
       "id": "ring-toilet-2F-1776127185472-mxm6ac",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.44556,
-      "yRatio": 0.723639
+      "xRatio": 0.44553,
+      "yRatio": 0.723646
     },
     {
       "id": "ring-toilet-2F-1776127442358-uvwmm6",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "2F",
-      "xRatio": 0.410629,
-      "yRatio": 0.733168
+      "xRatio": 0.41064,
+      "yRatio": 0.733344
     },
     {
       "id": "ring-toilet-2F-1776127323809-93ix02",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.419636,
-      "yRatio": 0.760226
+      "xRatio": 0.419561,
+      "yRatio": 0.760273
     },
     {
       "id": "ring-toilet-2F-1776127183031-1z8qvi",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.408136,
-      "yRatio": 0.760428
+      "xRatio": 0.408111,
+      "yRatio": 0.760275
     },
     {
       "id": "ring-toilet-2F-1776127448599-0smlha",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "2F",
-      "xRatio": 0.447845,
-      "yRatio": 0.936412
+      "xRatio": 0.447906,
+      "yRatio": 0.936518
     },
     {
       "id": "ring-toilet-2F-1776127171615-agvrt7",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.4519,
-      "yRatio": 0.949397
+      "xRatio": 0.451961,
+      "yRatio": 0.949573
     },
     {
       "id": "ring-toilet-2F-1776127335213-a9ek31",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "2F",
-      "xRatio": 0.443807,
-      "yRatio": 0.949448
+      "xRatio": 0.443808,
+      "yRatio": 0.949573
     },
     {
       "id": "ring-stairs-2F-1776126625312-gowa6g",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.245029,
-      "yRatio": 0.347522
+      "xRatio": 0.245143,
+      "yRatio": 0.347405
     },
     {
       "id": "ring-stairs-2F-1776126634374-485ebp",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.342497,
-      "yRatio": 0.350675
+      "xRatio": 0.342346,
+      "yRatio": 0.350472
     },
     {
       "id": "ring-stairs-2F-1776126629503-n8f1t2",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.2944,
-      "yRatio": 0.351276
+      "xRatio": 0.294398,
+      "yRatio": 0.351332
     },
     {
       "id": "ring-stairs-2F-1776126627378-737vo6",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.270298,
-      "yRatio": 0.353078
+      "xRatio": 0.270384,
+      "yRatio": 0.352963
     },
     {
       "id": "ring-stairs-2F-1776126615325-0vgl4k",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.472112,
-      "yRatio": 0.366937
+      "xRatio": 0.472274,
+      "yRatio": 0.36698
     },
     {
       "id": "ring-stairs-2F-1776126931671-aet7s4",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.5515,
-      "yRatio": 0.374937
+      "xRatio": 0.551478,
+      "yRatio": 0.374942
     },
     {
       "id": "ring-stairs-2F-1776126926725-vo7aet",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.65066,
-      "yRatio": 0.374937
+      "xRatio": 0.650693,
+      "yRatio": 0.374942
     },
     {
       "id": "ring-stairs-2F-1776126924125-1r1m4d",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.74982,
-      "yRatio": 0.375206
+      "xRatio": 0.749926,
+      "yRatio": 0.374942
     },
     {
       "id": "ring-stairs-2F-1776126560594-xj282d",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.108106,
-      "yRatio": 0.404171
+      "xRatio": 0.108166,
+      "yRatio": 0.403985
     },
     {
       "id": "ring-stairs-2F-1776126575026-5lqp42",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.361707,
-      "yRatio": 0.4042
+      "xRatio": 0.361749,
+      "yRatio": 0.404401
     },
     {
       "id": "ring-stairs-2F-1776126564594-632zex",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.237347,
-      "yRatio": 0.46369
+      "xRatio": 0.237239,
+      "yRatio": 0.463745
     },
     {
       "id": "ring-stairs-2F-1776126730866-28xyvs",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.785212,
-      "yRatio": 0.483083
+      "xRatio": 0.785279,
+      "yRatio": 0.482864
     },
     {
       "id": "ring-stairs-2F-1776126568568-z8mk73",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.307492,
-      "yRatio": 0.483938
+      "xRatio": 0.307365,
+      "yRatio": 0.483942
     },
     {
       "id": "ring-stairs-2F-1776126579518-zc07r0",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.163605,
-      "yRatio": 0.483955
+      "xRatio": 0.163695,
+      "yRatio": 0.484113
     },
     {
       "id": "ring-stairs-2F-1776126915992-ug3g2e",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.548743,
-      "yRatio": 0.48494
+      "xRatio": 0.548745,
+      "yRatio": 0.485148
     },
     {
       "id": "ring-stairs-2F-1776126735024-yev7qc",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.724247,
-      "yRatio": 0.495636
+      "xRatio": 0.724295,
+      "yRatio": 0.495699
     },
     {
       "id": "ring-stairs-2F-1776126743674-d7bjf4",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.626492,
-      "yRatio": 0.495801
+      "xRatio": 0.626483,
+      "yRatio": 0.495732
     },
     {
       "id": "ring-stairs-2F-1776126741191-ml7e4z",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.671574,
-      "yRatio": 0.506371
+      "xRatio": 0.671535,
+      "yRatio": 0.506148
     },
     {
       "id": "ring-stairs-2F-1776126725991-pzgzsm",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.843842,
-      "yRatio": 0.518262
+      "xRatio": 0.844,
+      "yRatio": 0.518286
     },
     {
       "id": "ring-stairs-2F-1776126600271-5iiz51",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.423062,
-      "yRatio": 0.523674
+      "xRatio": 0.423143,
+      "yRatio": 0.523659
     },
     {
       "id": "ring-stairs-2F-1776126912046-apltbl",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.55842,
-      "yRatio": 0.528769
+      "xRatio": 0.558483,
+      "yRatio": 0.528684
     },
     {
       "id": "ring-stairs-2F-1776126604275-gtdvmv",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.450027,
-      "yRatio": 0.534899
+      "xRatio": 0.450126,
+      "yRatio": 0.535125
     },
     {
       "id": "ring-stairs-2F-1776126907346-rz4vix",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.606949,
+      "xRatio": 0.606846,
       "yRatio": 0.540604
     },
     {
@@ -9383,39 +9391,39 @@
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.332964,
-      "yRatio": 0.543268
+      "xRatio": 0.333026,
+      "yRatio": 0.543114
     },
     {
       "id": "ring-stairs-2F-1776126582818-cvb9x3",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.08736,
-      "yRatio": 0.552447
+      "xRatio": 0.087401,
+      "yRatio": 0.552589
     },
     {
       "id": "ring-stairs-2F-1776126652740-7tah25",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.377627,
-      "yRatio": 0.622381
+      "xRatio": 0.377565,
+      "yRatio": 0.622265
     },
     {
       "id": "ring-stairs-2F-1776126656865-kbbwvi",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.451439,
-      "yRatio": 0.623041
+      "xRatio": 0.451377,
+      "yRatio": 0.623008
     },
     {
       "id": "ring-stairs-2F-1776126644920-fsk84s",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.404606,
+      "xRatio": 0.404579,
       "yRatio": 0.623867
     },
     {
@@ -9423,520 +9431,520 @@
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.451673,
-      "yRatio": 0.680847
+      "xRatio": 0.451711,
+      "yRatio": 0.680644
     },
     {
       "id": "ring-stairs-2F-1776126669793-yfm01u",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.404489,
-      "yRatio": 0.718008
+      "xRatio": 0.404579,
+      "yRatio": 0.7178
     },
     {
       "id": "ring-stairs-2F-1776126672343-ujh7hu",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.377627,
-      "yRatio": 0.719494
+      "xRatio": 0.377565,
+      "yRatio": 0.7194
     },
     {
       "id": "ring-stairs-2F-1776126696559-7shmpp",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.48007,
-      "yRatio": 0.834464
+      "xRatio": 0.480302,
+      "yRatio": 0.834386
     },
     {
       "id": "ring-stairs-2F-1776126690717-5ts2zr",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.491459,
-      "yRatio": 0.87282
+      "xRatio": 0.491595,
+      "yRatio": 0.872799
     },
     {
       "id": "ring-stairs-2F-1776126707788-h4s0yy",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.457333,
-      "yRatio": 0.936662
+      "xRatio": 0.45724,
+      "yRatio": 0.936532
     },
     {
       "id": "ring-vendingMachine-2F-1776167562895-bjomry",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.251057,
-      "yRatio": 0.363428
+      "xRatio": 0.251046,
+      "yRatio": 0.363694
     },
     {
       "id": "ring-vendingMachine-2F-1776167617104-akirte",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.655194,
-      "yRatio": 0.422508
+      "xRatio": 0.655159,
+      "yRatio": 0.422605
     },
     {
       "id": "ring-vendingMachine-2F-1776167609862-s87mmn",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.555995,
-      "yRatio": 0.422577
+      "xRatio": 0.555932,
+      "yRatio": 0.422605
     },
     {
       "id": "ring-vendingMachine-2F-1776167625437-zwf9w4",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.754422,
-      "yRatio": 0.422617
+      "xRatio": 0.754385,
+      "yRatio": 0.422605
     },
     {
       "id": "ring-vendingMachine-2F-1776167567187-lysj1e",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.369474,
-      "yRatio": 0.422647
+      "xRatio": 0.369367,
+      "yRatio": 0.422742
     },
     {
       "id": "ring-vendingMachine-2F-1776167587503-8zhb58",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "2F",
-      "xRatio": 0.451998,
-      "yRatio": 0.704009
+      "xRatio": 0.451942,
+      "yRatio": 0.704189
     },
     {
       "id": "ring-waterServer-3F-1776127798927-hux946",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.35042,
-      "yRatio": 0.424541
+      "xRatio": 0.350288,
+      "yRatio": 0.424661
     },
     {
       "id": "ring-waterServer-3F-1776127791915-yxm6hf",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.240314,
-      "yRatio": 0.489957
+      "xRatio": 0.24036,
+      "yRatio": 0.490076
     },
     {
       "id": "ring-waterServer-3F-1776127835788-eqc8va",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.556679,
-      "yRatio": 0.493692
+      "xRatio": 0.556696,
+      "yRatio": 0.493607
     },
     {
       "id": "ring-escalator-3F-1776127607939-30l6oj",
       "facilityKey": "escalator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.606496,
-      "yRatio": 0.495348
+      "xRatio": 0.606456,
+      "yRatio": 0.495375
     },
     {
       "id": "ring-escalator-3F-1776127610993-ooe16u",
       "facilityKey": "escalator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.710557,
-      "yRatio": 0.496548
+      "xRatio": 0.710499,
+      "yRatio": 0.496207
     },
     {
       "id": "ring-elevator-3F-1776127520067-44t29z",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.167045,
-      "yRatio": 0.401059
+      "xRatio": 0.167094,
+      "yRatio": 0.401213
     },
     {
       "id": "ring-elevator-3F-1776127515921-apbiqh",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.100533,
-      "yRatio": 0.402245
+      "xRatio": 0.100515,
+      "yRatio": 0.402297
     },
     {
       "id": "ring-elevator-3F-1776127529471-6sg9av",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.369257,
-      "yRatio": 0.404247
+      "xRatio": 0.369262,
+      "yRatio": 0.404167
     },
     {
       "id": "ring-elevator-3F-1776127525071-wczu37",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.302453,
-      "yRatio": 0.405138
+      "xRatio": 0.302286,
+      "yRatio": 0.405155
     },
     {
       "id": "ring-elevator-3F-1776127573682-qhxi7k",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.621482,
-      "yRatio": 0.467389
+      "xRatio": 0.621462,
+      "yRatio": 0.467449
     },
     {
       "id": "ring-elevator-3F-1776127570499-hk5ff9",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.720648,
-      "yRatio": 0.467389
+      "xRatio": 0.720803,
+      "yRatio": 0.467491
     },
     {
       "id": "ring-elevator-3F-1776127540371-x43thh",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.40921,
-      "yRatio": 0.524347
+      "xRatio": 0.409199,
+      "yRatio": 0.524004
     },
     {
       "id": "ring-elevator-3F-1776127547608-o6verl",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.442618,
-      "yRatio": 0.614274
+      "xRatio": 0.442677,
+      "yRatio": 0.614308
     },
     {
       "id": "ring-elevator-3F-1776127553245-50k8g5",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.483106,
-      "yRatio": 0.851365
+      "xRatio": 0.482958,
+      "yRatio": 0.850915
     },
     {
       "id": "ring-toilet-3F-1776127911914-uv93yx",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.557042,
-      "yRatio": 0.32778
+      "xRatio": 0.557069,
+      "yRatio": 0.327906
     },
     {
       "id": "ring-toilet-3F-1776127915464-ugs74y",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.656952,
-      "yRatio": 0.32778
+      "xRatio": 0.656958,
+      "yRatio": 0.327906
     },
     {
       "id": "ring-toilet-3F-1776128009956-sqywnu",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "3F",
-      "xRatio": 0.652531,
-      "yRatio": 0.338705
+      "xRatio": 0.652486,
+      "yRatio": 0.338933
     },
     {
       "id": "ring-toilet-3F-1776128015497-elwid9",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "3F",
-      "xRatio": 0.552602,
-      "yRatio": 0.338907
+      "xRatio": 0.552598,
+      "yRatio": 0.338933
     },
     {
       "id": "ring-toilet-3F-1776127906597-7bbmoe",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.483625,
-      "yRatio": 0.367234
+      "xRatio": 0.483743,
+      "yRatio": 0.367163
     },
     {
       "id": "ring-toilet-3F-1776127919714-cy2ext",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.76079,
-      "yRatio": 0.374175
+      "xRatio": 0.760888,
+      "yRatio": 0.374288
     },
     {
       "id": "ring-toilet-3F-1776127969916-h8nxvl",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "3F",
-      "xRatio": 0.479869,
-      "yRatio": 0.382253
+      "xRatio": 0.479924,
+      "yRatio": 0.382524
     },
     {
       "id": "ring-toilet-3F-1776128098461-y6hiqy",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "3F",
-      "xRatio": 0.358492,
-      "yRatio": 0.430472
+      "xRatio": 0.35873,
+      "yRatio": 0.430525
     },
     {
       "id": "ring-toilet-3F-1776127877566-lcq138",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.37079,
-      "yRatio": 0.432488
+      "xRatio": 0.370819,
+      "yRatio": 0.432375
     },
     {
       "id": "ring-toilet-3F-1776127956292-fmt1ho",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "3F",
-      "xRatio": 0.362549,
-      "yRatio": 0.439333
+      "xRatio": 0.36251,
+      "yRatio": 0.439604
     },
     {
       "id": "ring-toilet-3F-1776127945225-09rvgt",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "3F",
-      "xRatio": 0.155123,
-      "yRatio": 0.448751
+      "xRatio": 0.15518,
+      "yRatio": 0.448941
     },
     {
       "id": "ring-toilet-3F-1776127864616-yyzgan",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.164669,
-      "yRatio": 0.448795
+      "xRatio": 0.164584,
+      "yRatio": 0.448943
     },
     {
       "id": "ring-toilet-3F-1776128092961-bff2kt",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "3F",
-      "xRatio": 0.161441,
-      "yRatio": 0.459052
+      "xRatio": 0.161478,
+      "yRatio": 0.459202
     },
     {
       "id": "ring-toilet-3F-1776128003494-k3ojm6",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "3F",
-      "xRatio": 0.556494,
-      "yRatio": 0.481769
+      "xRatio": 0.556469,
+      "yRatio": 0.481877
     },
     {
       "id": "ring-toilet-3F-1776128110773-joo85n",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "3F",
-      "xRatio": 0.563544,
-      "yRatio": 0.48724
+      "xRatio": 0.563667,
+      "yRatio": 0.487277
     },
     {
       "id": "ring-toilet-3F-1776127950608-p06zwu",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "3F",
-      "xRatio": 0.225584,
-      "yRatio": 0.489973
+      "xRatio": 0.225633,
+      "yRatio": 0.490076
     },
     {
       "id": "ring-toilet-3F-1776127867366-kifbkq",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.232758,
-      "yRatio": 0.49002
+      "xRatio": 0.232595,
+      "yRatio": 0.490078
     },
     {
       "id": "ring-toilet-3F-1776127931126-2pxhg8",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.678923,
-      "yRatio": 0.520395
+      "xRatio": 0.678911,
+      "yRatio": 0.520321
     },
     {
       "id": "ring-toilet-3F-1776127996931-y1d2nh",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "3F",
-      "xRatio": 0.66363,
-      "yRatio": 0.520487
+      "xRatio": 0.663774,
+      "yRatio": 0.520321
     },
     {
       "id": "ring-toilet-3F-1776127899306-qqx2fu",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.414176,
-      "yRatio": 0.637513
+      "xRatio": 0.414183,
+      "yRatio": 0.637746
     },
     {
       "id": "ring-toilet-3F-1776128116581-e4vppe",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "3F",
-      "xRatio": 0.423266,
-      "yRatio": 0.640781
+      "xRatio": 0.423351,
+      "yRatio": 0.640929
     },
     {
       "id": "ring-toilet-3F-1776127979041-o43uie",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "3F",
-      "xRatio": 0.414099,
-      "yRatio": 0.649762
+      "xRatio": 0.414183,
+      "yRatio": 0.649712
     },
     {
       "id": "ring-toilet-3F-1776128131731-enmjpy",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "3F",
-      "xRatio": 0.438581,
-      "yRatio": 0.934304
+      "xRatio": 0.438699,
+      "yRatio": 0.934504
     },
     {
       "id": "ring-toilet-3F-1776127989569-fun21i",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "3F",
-      "xRatio": 0.44506,
-      "yRatio": 0.953039
+      "xRatio": 0.445036,
+      "yRatio": 0.953275
     },
     {
       "id": "ring-toilet-3F-1776127890004-6o483t",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.453093,
-      "yRatio": 0.95318
+      "xRatio": 0.45306,
+      "yRatio": 0.953278
     },
     {
       "id": "ring-stairs-3F-1776127679515-ay2sc8",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.472196,
-      "yRatio": 0.367259
+      "xRatio": 0.472297,
+      "yRatio": 0.36744
     },
     {
       "id": "ring-stairs-3F-1776127717018-qbikln",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.650461,
-      "yRatio": 0.374884
+      "xRatio": 0.650451,
+      "yRatio": 0.375025
     },
     {
       "id": "ring-stairs-3F-1776127722734-zp965p",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.749775,
-      "yRatio": 0.374884
+      "xRatio": 0.74986,
+      "yRatio": 0.375025
     },
     {
       "id": "ring-stairs-3F-1776127711056-ah0gg4",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.551068,
-      "yRatio": 0.375217
+      "xRatio": 0.551099,
+      "yRatio": 0.375025
     },
     {
       "id": "ring-stairs-3F-1776127629747-iuj45h",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.108183,
-      "yRatio": 0.404947
+      "xRatio": 0.108166,
+      "yRatio": 0.404878
     },
     {
       "id": "ring-stairs-3F-1776127663329-mf67w9",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.361621,
-      "yRatio": 0.405468
+      "xRatio": 0.361749,
+      "yRatio": 0.405296
     },
     {
       "id": "ring-stairs-3F-1776127643912-1u7hf7",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.269122,
-      "yRatio": 0.431728
+      "xRatio": 0.269105,
+      "yRatio": 0.431683
     },
     {
       "id": "ring-stairs-3F-1776127639937-j1wbbj",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.235018,
-      "yRatio": 0.432869
+      "xRatio": 0.235134,
+      "yRatio": 0.433112
     },
     {
       "id": "ring-stairs-3F-1776127650029-xc3fyn",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.276129,
-      "yRatio": 0.450557
+      "xRatio": 0.27614,
+      "yRatio": 0.450553
     },
     {
       "id": "ring-stairs-3F-1776127733646-07goan",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.783939,
-      "yRatio": 0.483279
+      "xRatio": 0.784065,
+      "yRatio": 0.483283
     },
     {
       "id": "ring-stairs-3F-1776127659353-ioaxmr",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.307429,
-      "yRatio": 0.484745
+      "xRatio": 0.307365,
+      "yRatio": 0.484838
     },
     {
       "id": "ring-stairs-3F-1776127635646-i1j7o3",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.16471,
-      "yRatio": 0.484819
+      "xRatio": 0.164584,
+      "yRatio": 0.484838
     },
     {
       "id": "ring-stairs-3F-1776127749484-imcxbl",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.548285,
-      "yRatio": 0.485572
+      "xRatio": 0.548457,
+      "yRatio": 0.485491
     },
     {
       "id": "ring-stairs-3F-1776127742767-zmfkjf",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.625084,
-      "yRatio": 0.495998
+      "xRatio": 0.625236,
+      "yRatio": 0.496184
     },
     {
       "id": "ring-stairs-3F-1776127730863-3atsvp",
@@ -9944,1167 +9952,1175 @@
       "colorVariant": "red",
       "floorId": "3F",
       "xRatio": 0.72412,
-      "yRatio": 0.496294
+      "yRatio": 0.496184
     },
     {
       "id": "ring-stairs-3F-1776127737413-wgopp7",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.671203,
-      "yRatio": 0.501766
+      "xRatio": 0.671271,
+      "yRatio": 0.501706
     },
     {
       "id": "ring-stairs-3F-1776127675036-i20eu5",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.423053,
-      "yRatio": 0.524139
+      "xRatio": 0.423063,
+      "yRatio": 0.524004
     },
     {
       "id": "ring-stairs-3F-1776127684494-hqo8ax",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.451803,
-      "yRatio": 0.623323
+      "xRatio": 0.451932,
+      "yRatio": 0.62322
     },
     {
       "id": "ring-stairs-3F-1776127692890-dz10b2",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.483115,
-      "yRatio": 0.837873
+      "xRatio": 0.482958,
+      "yRatio": 0.837903
     },
     {
       "id": "ring-stairs-3F-1776127696248-e52rng",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.458939,
-      "yRatio": 0.940086
+      "xRatio": 0.45894,
+      "yRatio": 0.940022
     },
     {
       "id": "ring-vendingMachine-3F-1776167676028-zkqkpn",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.681443,
-      "yRatio": 0.396026
+      "xRatio": 0.68142,
+      "yRatio": 0.396125
     },
     {
       "id": "ring-vendingMachine-3F-1776167682679-1m41kd",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.778014,
-      "yRatio": 0.425935
+      "xRatio": 0.777987,
+      "yRatio": 0.426085
     },
     {
       "id": "ring-vendingMachine-3F-1776167643045-qqt7xm",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.245153,
-      "yRatio": 0.438369
+      "xRatio": 0.245144,
+      "yRatio": 0.438492
     },
     {
       "id": "ring-vendingMachine-3F-1776167665454-bokk5i",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "3F",
-      "xRatio": 0.586371,
-      "yRatio": 0.467698
+      "xRatio": 0.586369,
+      "yRatio": 0.467528
+    },
+    {
+      "id": "ring-vendingMachine-3F-1791907415358-6y8rls",
+      "facilityKey": "vendingMachine",
+      "colorVariant": "red",
+      "floorId": "3F",
+      "xRatio": 0.420943,
+      "yRatio": 0.511627
     },
     {
       "id": "ring-escalator-4F-1776128276278-nxw8ad",
       "facilityKey": "escalator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.723834,
-      "yRatio": 0.496021
+      "xRatio": 0.723806,
+      "yRatio": 0.496037
     },
     {
       "id": "ring-escalator-4F-1776128263771-uzmfa6",
       "facilityKey": "escalator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.625865,
-      "yRatio": 0.496074
+      "xRatio": 0.625952,
+      "yRatio": 0.496037
     },
     {
       "id": "ring-elevator-4F-1776128183491-rd2f24",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.167042,
-      "yRatio": 0.400905
+      "xRatio": 0.167094,
+      "yRatio": 0.401111
     },
     {
       "id": "ring-elevator-4F-1776128180112-geqjda",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.10053,
-      "yRatio": 0.402318
+      "xRatio": 0.100515,
+      "yRatio": 0.402297
     },
     {
       "id": "ring-elevator-4F-1776128194049-ify4w8",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.3693,
-      "yRatio": 0.404199
+      "xRatio": 0.369262,
+      "yRatio": 0.404167
     },
     {
       "id": "ring-elevator-4F-1776128190032-cr7d0y",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.302261,
-      "yRatio": 0.40518
+      "xRatio": 0.302286,
+      "yRatio": 0.405155
     },
     {
       "id": "ring-elevator-4F-1776128238059-80duqq",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.621391,
-      "yRatio": 0.46983
+      "xRatio": 0.621384,
+      "yRatio": 0.469927
     },
     {
       "id": "ring-elevator-4F-1776128233680-l7d0md",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.720813,
-      "yRatio": 0.469932
+      "xRatio": 0.72083,
+      "yRatio": 0.469927
     },
     {
       "id": "ring-elevator-4F-1776128205585-4tsxik",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.406382,
-      "yRatio": 0.523491
+      "xRatio": 0.406333,
+      "yRatio": 0.523634
     },
     {
       "id": "ring-elevator-4F-1776128212310-sjxedb",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.443733,
-      "yRatio": 0.613402
+      "xRatio": 0.443742,
+      "yRatio": 0.613396
     },
     {
       "id": "ring-elevator-4F-1776128217931-dklkb5",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.484115,
-      "yRatio": 0.847975
+      "xRatio": 0.484128,
+      "yRatio": 0.848062
     },
     {
       "id": "ring-toilet-4F-1776128690070-96i8jr",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.659526,
-      "yRatio": 0.329754
+      "xRatio": 0.659577,
+      "yRatio": 0.329815
     },
     {
       "id": "ring-toilet-4F-1776128687132-k26vov",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.559701,
-      "yRatio": 0.329876
+      "xRatio": 0.559714,
+      "yRatio": 0.329815
     },
     {
       "id": "ring-toilet-4F-1776128757784-lswnvl",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "4F",
-      "xRatio": 0.652742,
-      "yRatio": 0.339067
+      "xRatio": 0.652746,
+      "yRatio": 0.339332
     },
     {
       "id": "ring-toilet-4F-1776128750588-gv3tg9",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "4F",
-      "xRatio": 0.552896,
-      "yRatio": 0.339182
+      "xRatio": 0.552883,
+      "yRatio": 0.339332
     },
     {
       "id": "ring-toilet-4F-1776128746672-63iury",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "4F",
-      "xRatio": 0.48761,
-      "yRatio": 0.363222
+      "xRatio": 0.487591,
+      "yRatio": 0.363485
     },
     {
       "id": "ring-toilet-4F-1776128693036-1hwbbc",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.762289,
-      "yRatio": 0.369476
+      "xRatio": 0.762265,
+      "yRatio": 0.36969
     },
     {
       "id": "ring-toilet-4F-1776128656734-hkyfpa",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.483342,
-      "yRatio": 0.374792
+      "xRatio": 0.483354,
+      "yRatio": 0.374762
     },
     {
       "id": "ring-toilet-4F-1776128783258-vyb98r",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "4F",
-      "xRatio": 0.304928,
-      "yRatio": 0.438147
+      "xRatio": 0.30503,
+      "yRatio": 0.438232
     },
     {
       "id": "ring-toilet-4F-1776128715419-qwd48u",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "4F",
-      "xRatio": 0.164777,
-      "yRatio": 0.448023
+      "xRatio": 0.164684,
+      "yRatio": 0.448287
     },
     {
       "id": "ring-toilet-4F-1776128776421-g37gi1",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "4F",
-      "xRatio": 0.159921,
-      "yRatio": 0.46238
+      "xRatio": 0.160027,
+      "yRatio": 0.46244
     },
     {
       "id": "ring-toilet-4F-1776128638676-gvlbl3",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.167214,
-      "yRatio": 0.464431
+      "xRatio": 0.167182,
+      "yRatio": 0.464587
     },
     {
       "id": "ring-toilet-4F-1776128729768-s4kkvd",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "4F",
-      "xRatio": 0.424692,
-      "yRatio": 0.707871
+      "xRatio": 0.424683,
+      "yRatio": 0.707929
     },
     {
       "id": "ring-toilet-4F-1776128664321-d3o46x",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.416365,
-      "yRatio": 0.707946
+      "xRatio": 0.416414,
+      "yRatio": 0.707931
     },
     {
       "id": "ring-toilet-4F-1776128793500-85rjgo",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "4F",
-      "xRatio": 0.421885,
-      "yRatio": 0.719297
+      "xRatio": 0.421964,
+      "yRatio": 0.719308
     },
     {
       "id": "ring-toilet-4F-1776128804058-h0ymls",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "4F",
-      "xRatio": 0.440083,
-      "yRatio": 0.934367
+      "xRatio": 0.440048,
+      "yRatio": 0.93449
     },
     {
       "id": "ring-toilet-4F-1776128735768-wo5fce",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "4F",
-      "xRatio": 0.446543,
-      "yRatio": 0.953174
+      "xRatio": 0.446403,
+      "yRatio": 0.953312
     },
     {
       "id": "ring-toilet-4F-1776128674241-svkeao",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.454444,
-      "yRatio": 0.953298
+      "xRatio": 0.454445,
+      "yRatio": 0.953312
     },
     {
       "id": "ring-stairs-4F-1776128421456-m4z5v3",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.473801,
-      "yRatio": 0.368872
+      "xRatio": 0.473896,
+      "yRatio": 0.369049
     },
     {
       "id": "ring-stairs-4F-1776128372080-ffttdp",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.651414,
-      "yRatio": 0.375901
+      "xRatio": 0.651455,
+      "yRatio": 0.375921
     },
     {
       "id": "ring-stairs-4F-1776128375474-5pdsqf",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.750721,
-      "yRatio": 0.375901
+      "xRatio": 0.750874,
+      "yRatio": 0.375921
     },
     {
       "id": "ring-stairs-4F-1776128368904-upjm4f",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.551935,
-      "yRatio": 0.376145
+      "xRatio": 0.55201,
+      "yRatio": 0.375894
     },
     {
       "id": "ring-stairs-4F-1776128302623-fs7dbu",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.107997,
-      "yRatio": 0.404709
+      "xRatio": 0.108166,
+      "yRatio": 0.404878
     },
     {
       "id": "ring-stairs-4F-1776128330206-h54nu7",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.361729,
-      "yRatio": 0.405278
+      "xRatio": 0.361749,
+      "yRatio": 0.405296
     },
     {
       "id": "ring-stairs-4F-1776128325135-kibfst",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.271518,
-      "yRatio": 0.431864
+      "xRatio": 0.271477,
+      "yRatio": 0.431642
     },
     {
       "id": "ring-stairs-4F-1776128334134-pyqtye",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.344657,
-      "yRatio": 0.439419
+      "xRatio": 0.344677,
+      "yRatio": 0.43939
     },
     {
       "id": "ring-stairs-4F-1776128319160-euosyv",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.251121,
-      "yRatio": 0.456297
+      "xRatio": 0.251164,
+      "yRatio": 0.456284
     },
     {
       "id": "ring-stairs-4F-1776128378941-0qjiyb",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.781144,
-      "yRatio": 0.481012
+      "xRatio": 0.781171,
+      "yRatio": 0.480875
     },
     {
       "id": "ring-stairs-4F-1776128313206-sjej7j",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.164679,
-      "yRatio": 0.484885
+      "xRatio": 0.164584,
+      "yRatio": 0.484838
     },
     {
       "id": "ring-stairs-4F-1776128414127-qe6o5a",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.552972,
-      "yRatio": 0.484923
+      "xRatio": 0.553073,
+      "yRatio": 0.485053
     },
     {
       "id": "ring-stairs-4F-1776128337522-wgixcj",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.305372,
-      "yRatio": 0.485278
+      "xRatio": 0.305403,
+      "yRatio": 0.485468
     },
     {
       "id": "ring-stairs-4F-1776128409873-mb43jg",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.608805,
-      "yRatio": 0.496045
+      "xRatio": 0.608911,
+      "yRatio": 0.496037
     },
     {
       "id": "ring-stairs-4F-1776128396153-irvm83",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.711137,
-      "yRatio": 0.496045
+      "xRatio": 0.711175,
+      "yRatio": 0.496037
     },
     {
       "id": "ring-stairs-4F-1776128402853-lg4rs6",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.669305,
-      "yRatio": 0.496412
+      "xRatio": 0.669271,
+      "yRatio": 0.496324
     },
     {
       "id": "ring-stairs-4F-1776128383162-w9k134",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.768871,
-      "yRatio": 0.52049
+      "xRatio": 0.768933,
+      "yRatio": 0.520411
     },
     {
       "id": "ring-stairs-4F-1776128387295-ubbrf0",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.669132,
-      "yRatio": 0.520857
+      "xRatio": 0.669271,
+      "yRatio": 0.520801
     },
     {
       "id": "ring-stairs-4F-1776128342338-fekg2r",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.429062,
-      "yRatio": 0.523432
+      "xRatio": 0.429076,
+      "yRatio": 0.523634
     },
     {
       "id": "ring-stairs-4F-1776128347380-5kg0ni",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.45303,
-      "yRatio": 0.622294
+      "xRatio": 0.453021,
+      "yRatio": 0.622331
     },
     {
       "id": "ring-stairs-4F-1776128352701-wmlmq6",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.484066,
-      "yRatio": 0.834356
+      "xRatio": 0.484128,
+      "yRatio": 0.834427
     },
     {
       "id": "ring-stairs-4F-1776128361101-3tpsbf",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.460354,
-      "yRatio": 0.940102
+      "xRatio": 0.46034,
+      "yRatio": 0.940022
     },
     {
       "id": "ring-vendingMachine-4F-1776167705787-ovjpaw",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.302206,
-      "yRatio": 0.425404
+      "xRatio": 0.302296,
+      "yRatio": 0.425168
     },
     {
       "id": "ring-vendingMachine-4F-1776167722412-x0atnj",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "4F",
-      "xRatio": 0.563825,
-      "yRatio": 0.482727
+      "xRatio": 0.563769,
+      "yRatio": 0.482652
     },
     {
       "id": "ring-waterServer-5F-1776129187633-vnxdue",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.660813,
-      "yRatio": 0.476009
+      "xRatio": 0.660887,
+      "yRatio": 0.475836
     },
     {
       "id": "ring-elevator-5F-1776128865409-175sgi",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.167106,
-      "yRatio": 0.400461
+      "xRatio": 0.167094,
+      "yRatio": 0.400436
     },
     {
       "id": "ring-elevator-5F-1776128860342-7dhumc",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.100506,
-      "yRatio": 0.402247
+      "xRatio": 0.100515,
+      "yRatio": 0.402297
     },
     {
       "id": "ring-elevator-5F-1776128872712-whdup2",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.369364,
-      "yRatio": 0.404251
+      "xRatio": 0.369262,
+      "yRatio": 0.404167
     },
     {
       "id": "ring-elevator-5F-1776128869288-211zkr",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.302237,
-      "yRatio": 0.405232
+      "xRatio": 0.302286,
+      "yRatio": 0.405155
     },
     {
       "id": "ring-elevator-5F-1776128928994-fwr2eu",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.721764,
-      "yRatio": 0.46989
+      "xRatio": 0.721725,
+      "yRatio": 0.469934
     },
     {
       "id": "ring-elevator-5F-1776128925627-w5uy7y",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.621764,
-      "yRatio": 0.470092
+      "xRatio": 0.621788,
+      "yRatio": 0.469934
     },
     {
       "id": "ring-elevator-5F-1776128887224-1hrzmy",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.408283,
-      "yRatio": 0.523729
+      "xRatio": 0.408113,
+      "yRatio": 0.523634
     },
     {
       "id": "ring-elevator-5F-1776128901782-8n9tqq",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.443784,
-      "yRatio": 0.613431
+      "xRatio": 0.443706,
+      "yRatio": 0.613452
     },
     {
       "id": "ring-elevator-5F-1776128907353-opzr1q",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.482699,
-      "yRatio": 0.838269
+      "xRatio": 0.482655,
+      "yRatio": 0.838202
     },
     {
       "id": "ring-toilet-5F-1776130128437-pejp1c",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.668946,
-      "yRatio": 0.349398
+      "xRatio": 0.66897,
+      "yRatio": 0.349316
     },
     {
       "id": "ring-toilet-5F-1776130082729-5unohj",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.570053,
-      "yRatio": 0.349448
+      "xRatio": 0.5702,
+      "yRatio": 0.349316
     },
     {
       "id": "ring-toilet-5F-1776130132360-n8ctav",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.768962,
-      "yRatio": 0.349548
+      "xRatio": 0.768986,
+      "yRatio": 0.349546
     },
     {
       "id": "ring-toilet-5F-1776130085608-mzph0m",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.484678,
-      "yRatio": 0.367946
+      "xRatio": 0.484752,
+      "yRatio": 0.367987
     },
     {
       "id": "ring-toilet-5F-1776130210015-w6hm9z",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "5F",
-      "xRatio": 0.570207,
-      "yRatio": 0.368938
+      "xRatio": 0.570199,
+      "yRatio": 0.368906
     },
     {
       "id": "ring-toilet-5F-1776130213532-se8jie",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "5F",
-      "xRatio": 0.668993,
-      "yRatio": 0.368938
+      "xRatio": 0.668971,
+      "yRatio": 0.368906
     },
     {
       "id": "ring-toilet-5F-1776130218573-51b1hd",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "5F",
-      "xRatio": 0.768893,
-      "yRatio": 0.368998
+      "xRatio": 0.768984,
+      "yRatio": 0.369133
     },
     {
       "id": "ring-toilet-5F-1776130054942-r6qhoh",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.34927,
-      "yRatio": 0.396202
+      "xRatio": 0.349267,
+      "yRatio": 0.396179
     },
     {
       "id": "ring-toilet-5F-1776130236064-mptj8l",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "5F",
-      "xRatio": 0.34274,
-      "yRatio": 0.403582
+      "xRatio": 0.342788,
+      "yRatio": 0.403783
     },
     {
       "id": "ring-toilet-5F-1776130168579-rdngpr",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "5F",
-      "xRatio": 0.350359,
-      "yRatio": 0.414239
+      "xRatio": 0.350339,
+      "yRatio": 0.414254
     },
     {
       "id": "ring-toilet-5F-1776130158521-wirgn2",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "5F",
-      "xRatio": 0.164719,
-      "yRatio": 0.448213
+      "xRatio": 0.164684,
+      "yRatio": 0.448287
     },
     {
       "id": "ring-toilet-5F-1776130046222-6lj6kd",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.30513,
-      "yRatio": 0.448304
+      "xRatio": 0.30503,
+      "yRatio": 0.448287
     },
     {
       "id": "ring-toilet-5F-1776130162063-73rfnj",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "5F",
-      "xRatio": 0.305394,
-      "yRatio": 0.458931
+      "xRatio": 0.305154,
+      "yRatio": 0.458959
     },
     {
       "id": "ring-toilet-5F-1776130231006-iz2hvx",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "5F",
-      "xRatio": 0.159943,
-      "yRatio": 0.462494
+      "xRatio": 0.160027,
+      "yRatio": 0.46244
     },
     {
       "id": "ring-toilet-5F-1776130037643-2h0i7m",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.167237,
-      "yRatio": 0.46457
+      "xRatio": 0.167182,
+      "yRatio": 0.464587
     },
     {
       "id": "ring-toilet-5F-1776130258413-9bqnxo",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "5F",
-      "xRatio": 0.674934,
-      "yRatio": 0.471892
+      "xRatio": 0.674928,
+      "yRatio": 0.472122
     },
     {
       "id": "ring-toilet-5F-1776130199691-ruxxvy",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "5F",
-      "xRatio": 0.667764,
-      "yRatio": 0.47196
+      "xRatio": 0.667683,
+      "yRatio": 0.472122
     },
     {
       "id": "ring-toilet-5F-1776130120419-bmgryk",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.647018,
-      "yRatio": 0.472181
+      "xRatio": 0.647062,
+      "yRatio": 0.471943
     },
     {
       "id": "ring-toilet-5F-1776130184145-j3bd6l",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "5F",
-      "xRatio": 0.484209,
-      "yRatio": 0.484528
+      "xRatio": 0.484096,
+      "yRatio": 0.484585
     },
     {
       "id": "ring-toilet-5F-1776130116085-bow95e",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.555322,
-      "yRatio": 0.498115
+      "xRatio": 0.555391,
+      "yRatio": 0.498174
     },
     {
       "id": "ring-toilet-5F-1776130203099-0rl2jt",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "5F",
-      "xRatio": 0.766552,
-      "yRatio": 0.498115
+      "xRatio": 0.766584,
+      "yRatio": 0.498181
     },
     {
       "id": "ring-toilet-5F-1776130242935-7na5td",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "5F",
-      "xRatio": 0.426178,
-      "yRatio": 0.513042
+      "xRatio": 0.426159,
+      "yRatio": 0.513199
     },
     {
       "id": "ring-toilet-5F-1776130190753-m11zu5",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "5F",
-      "xRatio": 0.427636,
-      "yRatio": 0.704986
+      "xRatio": 0.427623,
+      "yRatio": 0.705149
     },
     {
       "id": "ring-toilet-5F-1776130094874-mfjktv",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.418815,
-      "yRatio": 0.705198
+      "xRatio": 0.418749,
+      "yRatio": 0.705163
     },
     {
       "id": "ring-toilet-5F-1776130249809-szgq07",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "5F",
-      "xRatio": 0.423897,
-      "yRatio": 0.715541
+      "xRatio": 0.424008,
+      "yRatio": 0.715668
     },
     {
       "id": "ring-stairs-5F-1776129131273-nhhqte",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.651931,
-      "yRatio": 0.379211
+      "xRatio": 0.651844,
+      "yRatio": 0.379318
     },
     {
       "id": "ring-stairs-5F-1776129122602-o0w6ac",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.552458,
-      "yRatio": 0.379417
+      "xRatio": 0.55245,
+      "yRatio": 0.379374
     },
     {
       "id": "ring-stairs-5F-1776129148980-lv9mxx",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.751249,
-      "yRatio": 0.379541
+      "xRatio": 0.751235,
+      "yRatio": 0.379605
     },
     {
       "id": "ring-stairs-5F-1776128963350-p83t54",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.108161,
-      "yRatio": 0.404662
+      "xRatio": 0.108166,
+      "yRatio": 0.404878
     },
     {
       "id": "ring-stairs-5F-1776128997337-msrep7",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.361742,
-      "yRatio": 0.405292
+      "xRatio": 0.361749,
+      "yRatio": 0.405296
     },
     {
       "id": "ring-stairs-5F-1776128991483-l1epwh",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.344889,
-      "yRatio": 0.439636
+      "xRatio": 0.344894,
+      "yRatio": 0.439724
     },
     {
       "id": "ring-stairs-5F-1776128974563-3ynxaf",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.2512,
-      "yRatio": 0.454169
+      "xRatio": 0.251164,
+      "yRatio": 0.454062
     },
     {
       "id": "ring-stairs-5F-1776128977779-b80tjl",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.238236,
-      "yRatio": 0.457847
+      "xRatio": 0.238151,
+      "yRatio": 0.457838
     },
     {
       "id": "ring-stairs-5F-1776129143764-1g5wlo",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.783718,
-      "yRatio": 0.479979
+      "xRatio": 0.783708,
+      "yRatio": 0.479958
     },
     {
       "id": "ring-stairs-5F-1776129141780-ap2ukv",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.767789,
-      "yRatio": 0.483514
+      "xRatio": 0.767804,
+      "yRatio": 0.483624
     },
     {
       "id": "ring-stairs-5F-1776129110445-6pbdwt",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.553958,
-      "yRatio": 0.484872
+      "xRatio": 0.554001,
+      "yRatio": 0.485067
     },
     {
       "id": "ring-stairs-5F-1776128970050-c7s50q",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.164599,
-      "yRatio": 0.484914
+      "xRatio": 0.164584,
+      "yRatio": 0.484838
     },
     {
       "id": "ring-stairs-5F-1776128983479-rqwn6x",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.305305,
-      "yRatio": 0.48547
+      "xRatio": 0.305403,
+      "yRatio": 0.485468
     },
     {
       "id": "ring-stairs-5F-1776129136914-gkli54",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.669906,
-      "yRatio": 0.496305
+      "xRatio": 0.669979,
+      "yRatio": 0.496319
     },
     {
       "id": "ring-stairs-5F-1776129085950-ag6h7g",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.42925,
-      "yRatio": 0.523457
+      "xRatio": 0.429238,
+      "yRatio": 0.523687
     },
     {
       "id": "ring-stairs-5F-1776129094899-sbii8e",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.452935,
-      "yRatio": 0.622123
+      "xRatio": 0.452981,
+      "yRatio": 0.622382
     },
     {
       "id": "ring-stairs-5F-1776129100220-10i9x9",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.484072,
-      "yRatio": 0.826066
+      "xRatio": 0.484071,
+      "yRatio": 0.826005
     },
     {
       "id": "ring-vendingMachine-5F-1776167746678-lfca9a",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.162687,
-      "yRatio": 0.42586
+      "xRatio": 0.162721,
+      "yRatio": 0.425774
     },
     {
       "id": "ring-vendingMachine-5F-1776167759970-hrv446",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.653932,
-      "yRatio": 0.47588
+      "xRatio": 0.653862,
+      "yRatio": 0.475836
     },
     {
       "id": "ring-vendingMachine-5F-1776167754453-p86041",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "5F",
-      "xRatio": 0.417292,
-      "yRatio": 0.491715
+      "xRatio": 0.417406,
+      "yRatio": 0.491841
     },
     {
       "id": "ring-waterServer-A-6-9F-1776130435710-kvzjnj",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.266979,
-      "yRatio": 0.442248
+      "xRatio": 0.266902,
+      "yRatio": 0.442188
     },
     {
       "id": "ring-elevator-A-6-9F-1776130323131-01s0tf",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.765673,
-      "yRatio": 0.432331
+      "xRatio": 0.765693,
+      "yRatio": 0.432409
     },
     {
       "id": "ring-elevator-A-6-9F-1776130319690-3ofa3j",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.648484,
-      "yRatio": 0.432526
+      "xRatio": 0.648491,
+      "yRatio": 0.432409
     },
     {
       "id": "ring-elevator-A-6-9F-1776130292762-5rq8ni",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.241616,
-      "yRatio": 0.433396
+      "xRatio": 0.241652,
+      "yRatio": 0.43349
     },
     {
       "id": "ring-elevator-A-6-9F-1776130295803-xe63ah",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.362548,
-      "yRatio": 0.433787
+      "xRatio": 0.362641,
+      "yRatio": 0.43349
     },
     {
       "id": "ring-elevator-A-6-9F-1776130336052-wgp7uw",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.766426,
-      "yRatio": 0.801206
+      "xRatio": 0.766416,
+      "yRatio": 0.801178
     },
     {
       "id": "ring-elevator-A-6-9F-1776130343543-dgo3u8",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.360767,
-      "yRatio": 0.801229
+      "xRatio": 0.360684,
+      "yRatio": 0.801178
     },
     {
       "id": "ring-elevator-A-6-9F-1776130338602-o81kgs",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.648283,
-      "yRatio": 0.801307
+      "xRatio": 0.648279,
+      "yRatio": 0.801181
     },
     {
       "id": "ring-elevator-A-6-9F-1776130346522-7on7q6",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.243552,
-      "yRatio": 0.80133
+      "xRatio": 0.24348,
+      "yRatio": 0.801181
     },
     {
       "id": "ring-toilet-A-6-9F-1776130468942-3a7jx7",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.300946,
-      "yRatio": 0.279705
+      "xRatio": 0.301042,
+      "yRatio": 0.279791
     },
     {
       "id": "ring-toilet-A-6-9F-1776130465563-ya1mzp",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.180534,
-      "yRatio": 0.279769
+      "xRatio": 0.180639,
+      "yRatio": 0.279791
     },
     {
       "id": "ring-toilet-A-6-9F-1776130471292-vhsgjg",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.421826,
-      "yRatio": 0.279945
+      "xRatio": 0.421739,
+      "yRatio": 0.279791
     },
     {
       "id": "ring-toilet-A-6-9F-1776130557405-m8okrk",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.587462,
-      "yRatio": 0.280665
+      "xRatio": 0.587452,
+      "yRatio": 0.280793
     },
     {
       "id": "ring-toilet-A-6-9F-1776130561656-ph09jc",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.705676,
-      "yRatio": 0.280766
+      "xRatio": 0.705607,
+      "yRatio": 0.280793
     },
     {
       "id": "ring-toilet-A-6-9F-1776130564764-vmroji",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.823391,
-      "yRatio": 0.280766
+      "xRatio": 0.82333,
+      "yRatio": 0.280793
     },
     {
       "id": "ring-toilet-A-6-9F-1776130672791-1227yy",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.587521,
-      "yRatio": 0.30599
+      "xRatio": 0.587452,
+      "yRatio": 0.30608
     },
     {
       "id": "ring-toilet-A-6-9F-1776130678070-xv42u8",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.705595,
-      "yRatio": 0.306003
+      "xRatio": 0.705607,
+      "yRatio": 0.30608
     },
     {
       "id": "ring-toilet-A-6-9F-1776130682089-rljtap",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.82336,
-      "yRatio": 0.306199
+      "xRatio": 0.82333,
+      "yRatio": 0.30608
     },
     {
       "id": "ring-toilet-A-6-9F-1776130646327-hgvsvz",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.301211,
-      "yRatio": 0.306423
+      "xRatio": 0.301042,
+      "yRatio": 0.306485
     },
     {
       "id": "ring-toilet-A-6-9F-1776130650410-7g8d20",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.421722,
-      "yRatio": 0.306445
+      "xRatio": 0.421621,
+      "yRatio": 0.306485
     },
     {
       "id": "ring-toilet-A-6-9F-1776130635335-6f2y8i",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.180652,
-      "yRatio": 0.306586
+      "xRatio": 0.18064,
+      "yRatio": 0.306485
     },
     {
       "id": "ring-toilet-A-6-9F-1776130798015-fho4on",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "A-6-9F",
-      "xRatio": 0.699425,
-      "yRatio": 0.432098
+      "xRatio": 0.699496,
+      "yRatio": 0.432342
     },
     {
       "id": "ring-toilet-A-6-9F-1776130578871-mdvp8b",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.709206,
-      "yRatio": 0.432365
+      "xRatio": 0.709312,
+      "yRatio": 0.432342
     },
     {
       "id": "ring-toilet-A-6-9F-1776130687908-ljfx61",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.684113,
-      "yRatio": 0.432422
+      "xRatio": 0.684082,
+      "yRatio": 0.432342
     },
     {
       "id": "ring-toilet-A-6-9F-1776130481983-y6jvur",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.305041,
-      "yRatio": 0.438759
+      "xRatio": 0.304994,
+      "yRatio": 0.438874
     },
     {
       "id": "ring-toilet-A-6-9F-1776130655135-rtbb8k",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.279344,
-      "yRatio": 0.438793
+      "xRatio": 0.279398,
+      "yRatio": 0.438872
     },
     {
       "id": "ring-toilet-A-6-9F-1776130785220-smjnoc",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "A-6-9F",
-      "xRatio": 0.295487,
-      "yRatio": 0.438964
+      "xRatio": 0.295488,
+      "yRatio": 0.438872
     },
     {
       "id": "ring-toilet-A-6-9F-1776130488295-143d59",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.415682,
-      "yRatio": 0.468652
+      "xRatio": 0.415628,
+      "yRatio": 0.468837
     },
     {
       "id": "ring-toilet-A-6-9F-1776130574550-ejhe6x",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.819054,
-      "yRatio": 0.46946
+      "xRatio": 0.819032,
+      "yRatio": 0.469567
     },
     {
       "id": "ring-toilet-A-6-9F-1776130691142-1amddt",
@@ -11112,270 +11128,270 @@
       "colorVariant": "blue",
       "floorId": "A-6-9F",
       "xRatio": 0.569997,
-      "yRatio": 0.469513
+      "yRatio": 0.469567
     },
     {
       "id": "ring-toilet-A-6-9F-1776130660759-ik8bqn",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.163437,
-      "yRatio": 0.469693
+      "xRatio": 0.163387,
+      "yRatio": 0.469618
     },
     {
       "id": "ring-toilet-A-6-9F-1776130509549-f2npvf",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.418047,
-      "yRatio": 0.649428
+      "xRatio": 0.418055,
+      "yRatio": 0.649561
     },
     {
       "id": "ring-toilet-A-6-9F-1776130498645-u03tv6",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.182341,
-      "yRatio": 0.649564
+      "xRatio": 0.182265,
+      "yRatio": 0.649561
     },
     {
       "id": "ring-toilet-A-6-9F-1776130505174-nm6uih",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.300677,
-      "yRatio": 0.649564
+      "xRatio": 0.300596,
+      "yRatio": 0.649561
     },
     {
       "id": "ring-toilet-A-6-9F-1776130541547-0nssqm",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.70547,
-      "yRatio": 0.649806
+      "xRatio": 0.705412,
+      "yRatio": 0.649807
     },
     {
       "id": "ring-toilet-A-6-9F-1776130546105-y9za5y",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.823113,
-      "yRatio": 0.649806
+      "xRatio": 0.823125,
+      "yRatio": 0.649807
     },
     {
       "id": "ring-toilet-A-6-9F-1776130539122-v00cxt",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.587756,
-      "yRatio": 0.650008
+      "xRatio": 0.587699,
+      "yRatio": 0.649807
     },
     {
       "id": "ring-toilet-A-6-9F-1776130729137-zlk3ob",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.418053,
-      "yRatio": 0.674718
+      "xRatio": 0.418055,
+      "yRatio": 0.674851
     },
     {
       "id": "ring-toilet-A-6-9F-1776130731983-ohp2q1",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.300559,
-      "yRatio": 0.674726
+      "xRatio": 0.300596,
+      "yRatio": 0.674851
     },
     {
       "id": "ring-toilet-A-6-9F-1776130736504-qnspy8",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.182214,
-      "yRatio": 0.674899
+      "xRatio": 0.182265,
+      "yRatio": 0.674851
     },
     {
       "id": "ring-toilet-A-6-9F-1776130701628-vteevv",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.587767,
-      "yRatio": 0.675239
+      "xRatio": 0.587698,
+      "yRatio": 0.675099
     },
     {
       "id": "ring-toilet-A-6-9F-1776130696490-zjn96p",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.705523,
-      "yRatio": 0.675239
+      "xRatio": 0.705412,
+      "yRatio": 0.675099
     },
     {
       "id": "ring-toilet-A-6-9F-1776130705633-srxqtr",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.823174,
-      "yRatio": 0.675239
+      "xRatio": 0.823126,
+      "yRatio": 0.675099
     },
     {
       "id": "ring-toilet-A-6-9F-1776130815106-44haml",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "A-6-9F",
-      "xRatio": 0.294301,
-      "yRatio": 0.800818
+      "xRatio": 0.294487,
+      "yRatio": 0.801111
     },
     {
       "id": "ring-toilet-A-6-9F-1776130809473-t4ke8j",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "A-6-9F",
-      "xRatio": 0.69916,
-      "yRatio": 0.80101
+      "xRatio": 0.699286,
+      "yRatio": 0.801111
     },
     {
       "id": "ring-toilet-A-6-9F-1776130743163-a7nhkp",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.279052,
-      "yRatio": 0.801093
+      "xRatio": 0.279073,
+      "yRatio": 0.801113
     },
     {
       "id": "ring-toilet-A-6-9F-1776130519961-3bi655",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.304285,
-      "yRatio": 0.801093
+      "xRatio": 0.304301,
+      "yRatio": 0.801108
     },
     {
       "id": "ring-toilet-A-6-9F-1776130528856-utiyub",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.709199,
-      "yRatio": 0.801134
+      "xRatio": 0.7091,
+      "yRatio": 0.801108
     },
     {
       "id": "ring-toilet-A-6-9F-1776130718566-pdvjvr",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.683771,
-      "yRatio": 0.80124
+      "xRatio": 0.68387,
+      "yRatio": 0.801113
     },
     {
       "id": "ring-toilet-A-6-9F-1776130532536-jrhu3k",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.57016,
-      "yRatio": 0.838134
+      "xRatio": 0.570147,
+      "yRatio": 0.838037
     },
     {
       "id": "ring-toilet-A-6-9F-1776130753641-png42v",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.414005,
-      "yRatio": 0.838262
+      "xRatio": 0.414022,
+      "yRatio": 0.8383
     },
     {
       "id": "ring-toilet-A-6-9F-1776130516674-mwbqhf",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.164368,
-      "yRatio": 0.838319
+      "xRatio": 0.16437,
+      "yRatio": 0.838037
     },
     {
       "id": "ring-toilet-A-6-9F-1776130714591-g5xepw",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "A-6-9F",
-      "xRatio": 0.819095,
-      "yRatio": 0.83836
+      "xRatio": 0.819169,
+      "yRatio": 0.8383
     },
     {
       "id": "ring-stairs-A-6-9F-1776130371221-ck512t",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.419469,
-      "yRatio": 0.448703
+      "xRatio": 0.419492,
+      "yRatio": 0.448869
     },
     {
       "id": "ring-stairs-A-6-9F-1776130367434-l90y4e",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.159732,
-      "yRatio": 0.448977
+      "xRatio": 0.159967,
+      "yRatio": 0.448869
     },
     {
       "id": "ring-stairs-A-6-9F-1776130410324-dcr2ow",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.56799,
-      "yRatio": 0.449942
+      "xRatio": 0.568021,
+      "yRatio": 0.44983
     },
     {
       "id": "ring-stairs-A-6-9F-1776130413532-oieovf",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.82138,
-      "yRatio": 0.45012
+      "xRatio": 0.821274,
+      "yRatio": 0.449832
     },
     {
       "id": "ring-stairs-A-6-9F-1776130391953-4wrd8t",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.82143,
-      "yRatio": 0.818461
+      "xRatio": 0.821412,
+      "yRatio": 0.818601
     },
     {
       "id": "ring-stairs-A-6-9F-1776130385654-jvm7vd",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.567932,
-      "yRatio": 0.818498
+      "xRatio": 0.567985,
+      "yRatio": 0.818601
     },
     {
       "id": "ring-stairs-A-6-9F-1776130381704-0hwivp",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.416267,
-      "yRatio": 0.818834
+      "xRatio": 0.416263,
+      "yRatio": 0.818601
     },
     {
       "id": "ring-stairs-A-6-9F-1776130376046-xz6my7",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.162949,
-      "yRatio": 0.818843
+      "xRatio": 0.163012,
+      "yRatio": 0.818601
     },
     {
       "id": "ring-vendingMachine-A-6-9F-1776167818162-fymojv",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.692825,
-      "yRatio": 0.443128
+      "xRatio": 0.69277,
+      "yRatio": 0.443274
     },
     {
       "id": "ring-vendingMachine-A-6-9F-1776167810054-9t60uc",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "A-6-9F",
-      "xRatio": 0.286762,
+      "xRatio": 0.286803,
       "yRatio": 0.809011
     },
     {
@@ -11383,504 +11399,504 @@
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.164246,
-      "yRatio": 0.290301
+      "xRatio": 0.16413,
+      "yRatio": 0.290365
     },
     {
       "id": "ring-waterServer-H-6-9F-1784772350189-4w059e",
       "facilityKey": "waterServer",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.66418,
-      "yRatio": 0.290301
+      "xRatio": 0.664134,
+      "yRatio": 0.290294
     },
     {
       "id": "ring-elevator-H-6-9F-1776151035184-32dg5n",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.66409,
-      "yRatio": 0.271367
+      "xRatio": 0.664138,
+      "yRatio": 0.271526
     },
     {
       "id": "ring-elevator-H-6-9F-1776151011955-ekvywq",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.164139,
-      "yRatio": 0.271616
+      "xRatio": 0.164134,
+      "yRatio": 0.271609
     },
     {
       "id": "ring-elevator-H-6-9F-1776151029451-aw6zu1",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.579233,
-      "yRatio": 0.273993
+      "xRatio": 0.579236,
+      "yRatio": 0.27389
     },
     {
       "id": "ring-elevator-H-6-9F-1776151006585-yv7va1",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.079296,
-      "yRatio": 0.274263
+      "xRatio": 0.079232,
+      "yRatio": 0.273961
     },
     {
       "id": "ring-elevator-H-6-9F-1776151019738-vdlfrm",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.420058,
-      "yRatio": 0.276183
+      "xRatio": 0.420024,
+      "yRatio": 0.27617
     },
     {
       "id": "ring-elevator-H-6-9F-1776151048509-s5ki04",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.920019,
-      "yRatio": 0.276216
+      "xRatio": 0.92002,
+      "yRatio": 0.276099
     },
     {
       "id": "ring-elevator-H-6-9F-1776151040176-gc3leo",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.835305,
-      "yRatio": 0.27763
+      "xRatio": 0.835261,
+      "yRatio": 0.277726
     },
     {
       "id": "ring-elevator-H-6-9F-1776151015418-b84s47",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.335272,
-      "yRatio": 0.277891
+      "xRatio": 0.335257,
+      "yRatio": 0.277809
     },
     {
       "id": "ring-elevator-H-6-9F-1776151062371-p5yrlc",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.664179,
-      "yRatio": 0.602165
+      "xRatio": 0.664138,
+      "yRatio": 0.602151
     },
     {
       "id": "ring-elevator-H-6-9F-1776151087679-7szlxe",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.164061,
-      "yRatio": 0.602204
+      "xRatio": 0.164134,
+      "yRatio": 0.60224
     },
     {
       "id": "ring-elevator-H-6-9F-1776151058917-otb0gg",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.57925,
-      "yRatio": 0.604387
+      "xRatio": 0.579236,
+      "yRatio": 0.604521
     },
     {
       "id": "ring-elevator-H-6-9F-1776151081121-cumvby",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.079204,
-      "yRatio": 0.604628
+      "xRatio": 0.079232,
+      "yRatio": 0.604586
     },
     {
       "id": "ring-elevator-H-6-9F-1776151071377-wrishm",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.920036,
-      "yRatio": 0.606609
+      "xRatio": 0.92002,
+      "yRatio": 0.606724
     },
     {
       "id": "ring-elevator-H-6-9F-1776151096058-2d339u",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.420062,
-      "yRatio": 0.60685
+      "xRatio": 0.420024,
+      "yRatio": 0.606795
     },
     {
       "id": "ring-elevator-H-6-9F-1776151067525-v1ntnb",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.83525,
-      "yRatio": 0.608326
+      "xRatio": 0.835253,
+      "yRatio": 0.608351
     },
     {
       "id": "ring-elevator-H-6-9F-1776151092720-wgzk02",
       "facilityKey": "elevator",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.335204,
-      "yRatio": 0.608466
+      "xRatio": 0.335257,
+      "yRatio": 0.608435
     },
     {
       "id": "ring-toilet-H-6-9F-1776151347630-fbc0ch",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "H-6-9F",
-      "xRatio": 0.342384,
-      "yRatio": 0.330636
+      "xRatio": 0.342312,
+      "yRatio": 0.330661
     },
     {
       "id": "ring-toilet-H-6-9F-1776151342326-lba18y",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "H-6-9F",
-      "xRatio": 0.160888,
-      "yRatio": 0.332189
+      "xRatio": 0.160951,
+      "yRatio": 0.332324
     },
     {
       "id": "ring-toilet-H-6-9F-1776151395584-v0qsth",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "H-6-9F",
-      "xRatio": 0.661015,
-      "yRatio": 0.332371
+      "xRatio": 0.660947,
+      "yRatio": 0.332241
     },
     {
       "id": "ring-toilet-H-6-9F-1776151391475-nt9znu",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "H-6-9F",
-      "xRatio": 0.842301,
-      "yRatio": 0.332876
+      "xRatio": 0.842317,
+      "yRatio": 0.333072
     },
     {
       "id": "ring-toilet-H-6-9F-1776151288306-50tobs",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.342452,
-      "yRatio": 0.34137
+      "xRatio": 0.342447,
+      "yRatio": 0.341387
     },
     {
       "id": "ring-toilet-H-6-9F-1776151322114-z4lxat",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.842487,
-      "yRatio": 0.343358
+      "xRatio": 0.842451,
+      "yRatio": 0.343263
     },
     {
       "id": "ring-toilet-H-6-9F-1784772318602-np81kb",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "H-6-9F",
-      "xRatio": 0.154543,
-      "yRatio": 0.350534
+      "xRatio": 0.154613,
+      "yRatio": 0.350675
     },
     {
       "id": "ring-toilet-H-6-9F-1776151437275-iv32np",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "H-6-9F",
-      "xRatio": 0.654509,
-      "yRatio": 0.350771
+      "xRatio": 0.654618,
+      "yRatio": 0.350604
     },
     {
       "id": "ring-toilet-H-6-9F-1776151283348-xwwd0j",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.163124,
-      "yRatio": 0.350887
+      "xRatio": 0.163151,
+      "yRatio": 0.350842
     },
     {
       "id": "ring-toilet-H-6-9F-1776151326884-675gm4",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.663158,
-      "yRatio": 0.351016
+      "xRatio": 0.663147,
+      "yRatio": 0.350758
     },
     {
       "id": "ring-toilet-H-6-9F-1776151368717-lqrc92",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "H-6-9F",
-      "xRatio": 0.660991,
-      "yRatio": 0.662841
+      "xRatio": 0.660947,
+      "yRatio": 0.662866
     },
     {
       "id": "ring-toilet-H-6-9F-1776151352730-59gcoy",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "H-6-9F",
-      "xRatio": 0.160909,
-      "yRatio": 0.662908
+      "xRatio": 0.160951,
+      "yRatio": 0.662949
     },
     {
       "id": "ring-toilet-H-6-9F-1776151375621-ubm2x0",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "H-6-9F",
-      "xRatio": 0.842264,
-      "yRatio": 0.663531
+      "xRatio": 0.842317,
+      "yRatio": 0.663697
     },
     {
       "id": "ring-toilet-H-6-9F-1776151359684-qfgkl2",
       "facilityKey": "toilet",
       "colorVariant": "blue",
       "floorId": "H-6-9F",
-      "xRatio": 0.34236,
-      "yRatio": 0.66365
+      "xRatio": 0.342312,
+      "yRatio": 0.66378
     },
     {
       "id": "ring-toilet-H-6-9F-1776151316264-p2ysgt",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.842391,
-      "yRatio": 0.673928
+      "xRatio": 0.842451,
+      "yRatio": 0.673889
     },
     {
       "id": "ring-toilet-H-6-9F-1776151305477-zn32nk",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.342513,
-      "yRatio": 0.674088
+      "xRatio": 0.342447,
+      "yRatio": 0.673972
     },
     {
       "id": "ring-toilet-H-6-9F-1776151428688-r7f1pm",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "H-6-9F",
-      "xRatio": 0.654496,
-      "yRatio": 0.681037
+      "xRatio": 0.654618,
+      "yRatio": 0.681229
     },
     {
       "id": "ring-toilet-H-6-9F-1776151419908-p3q1h6",
       "facilityKey": "toilet",
       "colorVariant": "yellow",
       "floorId": "H-6-9F",
-      "xRatio": 0.154637,
-      "yRatio": 0.681269
+      "xRatio": 0.154613,
+      "yRatio": 0.6813
     },
     {
       "id": "ring-toilet-H-6-9F-1776151311051-2mbc15",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.663063,
-      "yRatio": 0.681285
+      "xRatio": 0.663147,
+      "yRatio": 0.681384
     },
     {
       "id": "ring-toilet-H-6-9F-1776151297585-i2izi7",
       "facilityKey": "toilet",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.163078,
-      "yRatio": 0.681431
+      "xRatio": 0.163151,
+      "yRatio": 0.681467
     },
     {
       "id": "ring-stairs-H-6-9F-1776151117975-mmsi4m",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.089413,
-      "yRatio": 0.276496
+      "xRatio": 0.089412,
+      "yRatio": 0.276794
     },
     {
       "id": "ring-stairs-H-6-9F-1776151203369-u9ard9",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.589317,
-      "yRatio": 0.276544
+      "xRatio": 0.589408,
+      "yRatio": 0.276723
     },
     {
       "id": "ring-stairs-H-6-9F-1776151209698-04olv3",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.910839,
-      "yRatio": 0.277424
+      "xRatio": 0.910865,
+      "yRatio": 0.277435
     },
     {
       "id": "ring-stairs-H-6-9F-1776151126654-6c6j2l",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.410842,
-      "yRatio": 0.277466
+      "xRatio": 0.410861,
+      "yRatio": 0.277518
     },
     {
       "id": "ring-stairs-H-6-9F-1776151139041-jcj35o",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.240336,
-      "yRatio": 0.333196
+      "xRatio": 0.240368,
+      "yRatio": 0.333393
     },
     {
       "id": "ring-stairs-H-6-9F-1776151224965-9ivvsg",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.699237,
-      "yRatio": 0.341946
+      "xRatio": 0.699357,
+      "yRatio": 0.341862
     },
     {
       "id": "ring-stairs-H-6-9F-1776151142908-j3c9gq",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.25405,
-      "yRatio": 0.345216
+      "xRatio": 0.254185,
+      "yRatio": 0.344998
     },
     {
       "id": "ring-stairs-H-6-9F-1776151219490-jrk4vm",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.723523,
-      "yRatio": 0.345857
+      "xRatio": 0.723481,
+      "yRatio": 0.345639
     },
     {
       "id": "ring-stairs-H-6-9F-1776151148341-ong26j",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.160935,
-      "yRatio": 0.378079
+      "xRatio": 0.160942,
+      "yRatio": 0.378268
     },
     {
       "id": "ring-stairs-H-6-9F-1776151228340-syfd05",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.660949,
-      "yRatio": 0.378369
+      "xRatio": 0.660947,
+      "yRatio": 0.378197
     },
     {
       "id": "ring-stairs-H-6-9F-1776151133837-v4eetx",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.338296,
-      "yRatio": 0.379306
+      "xRatio": 0.338306,
+      "yRatio": 0.379337
     },
     {
       "id": "ring-stairs-H-6-9F-1776151216190-ztc5jj",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.8383,
-      "yRatio": 0.379346
+      "xRatio": 0.83831,
+      "yRatio": 0.379254
     },
     {
       "id": "ring-stairs-H-6-9F-1776151237419-0qzxkf",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.589422,
-      "yRatio": 0.607264
+      "xRatio": 0.589408,
+      "yRatio": 0.607336
     },
     {
       "id": "ring-stairs-H-6-9F-1776151159416-rq8onr",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.089338,
-      "yRatio": 0.607536
+      "xRatio": 0.089412,
+      "yRatio": 0.607419
     },
     {
       "id": "ring-stairs-H-6-9F-1776151165795-mrky3l",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.410948,
-      "yRatio": 0.608124
+      "xRatio": 0.410861,
+      "yRatio": 0.608144
     },
     {
       "id": "ring-stairs-H-6-9F-1776151243052-rtkux8",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.910763,
-      "yRatio": 0.608132
+      "xRatio": 0.910865,
+      "yRatio": 0.60806
     },
     {
       "id": "ring-stairs-H-6-9F-1776151180986-zwyvtq",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.242239,
-      "yRatio": 0.663491
+      "xRatio": 0.242132,
+      "yRatio": 0.663495
     },
     {
       "id": "ring-stairs-H-6-9F-1776151258723-iaox6c",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.700062,
-      "yRatio": 0.672766
+      "xRatio": 0.700013,
+      "yRatio": 0.672855
     },
     {
       "id": "ring-stairs-H-6-9F-1776151186370-vtq0ll",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.22262,
-      "yRatio": 0.676446
+      "xRatio": 0.222721,
+      "yRatio": 0.676276
     },
     {
       "id": "ring-stairs-H-6-9F-1776151263889-63xlds",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.660837,
-      "yRatio": 0.708807
+      "xRatio": 0.660947,
+      "yRatio": 0.708822
     },
     {
       "id": "ring-stairs-H-6-9F-1776151189861-w04sjo",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.160823,
-      "yRatio": 0.708957
+      "xRatio": 0.160942,
+      "yRatio": 0.708893
     },
     {
       "id": "ring-stairs-H-6-9F-1776151253431-h8ti8p",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.838283,
-      "yRatio": 0.70985
+      "xRatio": 0.83831,
+      "yRatio": 0.709879
     },
     {
       "id": "ring-stairs-H-6-9F-1776151172861-qhsioy",
       "facilityKey": "stairs",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.338261,
-      "yRatio": 0.709935
+      "xRatio": 0.338306,
+      "yRatio": 0.709962
     },
     {
       "id": "ring-vendingMachine-H-6-9F-1776167849278-vr7t7n",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.664112,
-      "yRatio": 0.634375
+      "xRatio": 0.664134,
+      "yRatio": 0.63443
     },
     {
       "id": "ring-vendingMachine-H-6-9F-1776167838654-tnvklx",
       "facilityKey": "vendingMachine",
       "colorVariant": "red",
       "floorId": "H-6-9F",
-      "xRatio": 0.164129,
-      "yRatio": 0.63441
+      "xRatio": 0.164088,
+      "yRatio": 0.63443
     }
   ]
 }

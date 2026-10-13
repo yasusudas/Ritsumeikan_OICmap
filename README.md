@@ -16,6 +16,8 @@
 
 地図画像はSVGとして管理しています。日本語版は `src/assets/floors/ja/`、英語版は `src/assets/floors/en/` を使います。編集用の完全な検索データは `public/manual-search-index.json` に保存し、閲覧用の検索項目と施設リングはビルド時に別々のハッシュ付きJSONへ生成します。シラバス関連の生成データや取得時の一時解析物はローカル作業用として扱い、GitHubには含めません。
 
+施設リングの編集・保存は日本語SVGの座標を基準にします（H棟はxからviewBox原点の8.5を引いて正規化）。編集画面の地図はUIの言語によらず日本語版を使います。英語版の閲覧時は、SVGから生成した `src/assets/facility-ring-offsets.json` の補正を施設の種類と近くのピクトグラムから自動選択し、保存座標に加えて表示します。リングの追加・再作成時も英語用の位置設定は不要です。SVGを差し替えた場合は、Playwrightを利用できる環境で `node scripts/generate-facility-ring-offsets.mjs` を実行すると補正表を再生成できます。
+
 UIの文言は `src/i18n.js` にまとまっています。日本語と英語の表示を変える場合は、原則としてこの翻訳辞書を更新し、`npm run sync:en` または `npm run build` で英語版HTMLを同期します。
 
 ### 注意
@@ -37,6 +39,8 @@ When you enter a classroom or facility name in the search bar, the corresponding
 ### Data and Structure
 
 Map images are managed as SVGs. The Japanese version uses `src/assets/floors/ja/`, and the English version uses `src/assets/floors/en/`. The complete editable search data remains in `public/manual-search-index.json`; the viewer's search entries and facility rings are emitted as separate hashed JSON assets at build time. Generated syllabus data and one-off scraping captures are treated as local working files and are not included on GitHub.
+
+Facility rings are edited and saved using Japanese SVG coordinates (subtract the 8.5 viewBox x origin for Building H). The editor always displays the Japanese map, regardless of its UI language. The English viewer automatically selects a nearby pictogram of the same facility type from the SVG-derived `src/assets/facility-ring-offsets.json` and adds its offset to the saved coordinates. New or recreated rings need no separate English position settings. After replacing floor SVGs, regenerate the offsets with `node scripts/generate-facility-ring-offsets.mjs` in an environment with Playwright available.
 
 UI text is consolidated in `src/i18n.js`. To change the Japanese and English displays, you should generally update this translation dictionary and sync the English HTML using `npm run sync:en` or `npm run build`.
 
