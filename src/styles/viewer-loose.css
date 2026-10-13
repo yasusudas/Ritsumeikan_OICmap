@@ -1,32 +1,18 @@
 /* =====================================================================
-   Map viewer — "loose" layer
-   A relaxed take on the flat design for the public map page only
-   (body[data-app-mode="viewer"]). No rules or outlines: groups are made
-   with whitespace, soft grey fills and type size. Controls float around
-   the map instead of sitting in a ruled bar — floors down the left like
-   lift buttons, facilities down the right.
-   Still flat: no shadows, blur or gradients.
+   Map viewer — "loose" layer, map-only pieces
+   The shared loose chrome (header, menu, footer, dialogs) is in
+   loose.css. Here: the title, search, floors and facilities. Controls
+   float around the map instead of sitting in a ruled bar — floors down
+   the left like lift buttons, facilities down the right.
    ===================================================================== */
 
 body[data-app-mode="viewer"] {
-  --ls-fill: #f3f3f1;
-  --ls-fill-2: #e9e9e5;
-  --ls-red: #9b1b30; /* Ritsumeikan crimson */
-  --ls-red-soft: #f9e9ec;
-  --ls-mark: #f1f0ed;
   --ls-edge: 24px;
-
-  --c-accent: var(--ls-red);
-  --c-accent-hover: #741424;
 }
 
 /* ---------------------------------------------------------------------
-   Header: no rules, a big title, quiet links
+   Header: a big title; no rule above the tools
    --------------------------------------------------------------------- */
-
-body[data-app-mode="viewer"] .site-header {
-  border-bottom: 0;
-}
 
 body[data-app-mode="viewer"] .topbar-tools {
   border-top: 0;
@@ -47,126 +33,6 @@ body[data-app-mode="viewer"] .app-title-main {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-body[data-app-mode="viewer"] .app-logo {
-  display: block;
-  flex: 0 0 auto;
-  width: 40px;
-  height: 40px;
-  overflow: hidden;
-  border-radius: 12px;
-  background: var(--ls-fill);
-}
-
-body[data-app-mode="viewer"] .app-logo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.08);
-}
-
-body[data-app-mode="viewer"] .site-nav {
-  gap: 28px;
-}
-
-body[data-app-mode="viewer"] .site-nav-link {
-  color: var(--c-ink-3);
-}
-
-body[data-app-mode="viewer"] .site-nav-link:hover {
-  color: var(--c-ink);
-}
-
-body[data-app-mode="viewer"] .site-nav-link[aria-current="page"] {
-  color: var(--ls-red);
-  font-weight: var(--fw-bold);
-}
-
-body[data-app-mode="viewer"] .site-nav-link[aria-current="page"]::after {
-  content: none;
-}
-
-body[data-app-mode="viewer"] .site-nav + .site-header-actions {
-  height: auto;
-  padding-left: var(--s-2);
-  border-left: 0;
-}
-
-body[data-app-mode="viewer"] .lang-toggle {
-  gap: 10px;
-}
-
-body[data-app-mode="viewer"] .lang-toggle-separator {
-  display: none;
-}
-
-body[data-app-mode="viewer"] .lang-toggle-option.is-active {
-  color: var(--c-ink);
-  font-weight: var(--fw-bold);
-}
-
-body[data-app-mode="viewer"] .site-menu-toggle {
-  margin-right: 0;
-  border-radius: 50%;
-  background: var(--ls-fill);
-}
-
-body[data-app-mode="viewer"] .site-menu-line {
-  top: calc(50% - 1px);
-  left: calc(50% - 10px);
-  width: 20px;
-  height: 2px;
-  border-radius: 1px;
-}
-
-body[data-app-mode="viewer"] .site-menu-toggle .site-menu-line:nth-child(1) {
-  transform: translateY(-4px);
-}
-
-body[data-app-mode="viewer"] .site-menu-toggle .site-menu-line:nth-child(2) {
-  opacity: 1;
-  transform: translateY(4px);
-}
-
-body[data-app-mode="viewer"] .site-menu-toggle[aria-expanded="true"] .site-menu-line:nth-child(1) {
-  transform: rotate(45deg);
-}
-
-body[data-app-mode="viewer"] .site-menu-toggle[aria-expanded="true"] .site-menu-line:nth-child(2) {
-  opacity: 1;
-  transform: rotate(-45deg);
-}
-
-body[data-app-mode="viewer"] .site-menu-panel {
-  padding: 10px;
-  border: 0;
-  border-radius: 22px;
-  background: var(--ls-fill);
-}
-
-body[data-app-mode="viewer"] .site-menu-item {
-  border-radius: 14px;
-}
-
-body[data-app-mode="viewer"] .site-menu-item:hover {
-  background: #ffffff;
-}
-
-body[data-app-mode="viewer"] .site-menu-item[aria-current="page"] {
-  color: var(--ls-red);
-  font-weight: var(--fw-bold);
-}
-
-body[data-app-mode="viewer"] .site-menu-divider {
-  height: 0;
-  margin: 6px 0;
-  background: none;
-}
-
-body[data-app-mode="viewer"] .site-menu-meta {
-  border-top: 0;
 }
 
 /* ---------------------------------------------------------------------
@@ -337,56 +203,6 @@ body[data-app-mode="viewer"] .search-highlight-pin {
   }
 }
 
-/* Footer: plain words, no rule */
-body[data-app-mode="viewer"] .site-footer {
-  border-top: 0;
-}
-
-body[data-app-mode="viewer"] .site-footer-links {
-  gap: 4px 22px;
-}
-
-body[data-app-mode="viewer"] .site-footer-link {
-  color: var(--c-ink-3);
-}
-
-/* Dialogs: a soft sheet */
-body[data-app-mode="viewer"] .about-dialog {
-  border: 0;
-  border-radius: 28px;
-}
-
-body[data-app-mode="viewer"] .about-dialog-header {
-  padding: 24px 22px 6px 28px;
-  border-bottom: 0;
-}
-
-body[data-app-mode="viewer"] .about-dialog-title {
-  font-size: 1.25rem;
-}
-
-body[data-app-mode="viewer"] .about-dialog-close {
-  width: 38px;
-  height: 38px;
-  margin-right: 0;
-  border-radius: 50%;
-  background: var(--ls-fill);
-  font-size: 1.25rem;
-}
-
-body[data-app-mode="viewer"] .about-dialog-body {
-  padding: 12px 28px 8px;
-}
-
-body[data-app-mode="viewer"] .about-dialog-footer {
-  padding: 8px 28px 28px;
-}
-
-body[data-app-mode="viewer"] .about-dialog-version {
-  color: var(--ls-red);
-  font-weight: var(--fw-bold);
-}
-
 /* ---------------------------------------------------------------------
    Wide screens (with enough height): the controls float around the map
    --------------------------------------------------------------------- */
@@ -533,12 +349,6 @@ body[data-app-mode="viewer"] .about-dialog-version {
     font-size: 1.0625rem;
   }
 
-  body[data-app-mode="viewer"] .app-logo {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-  }
-
   body[data-app-mode="viewer"] .site-header-inner {
     gap: var(--s-3);
   }
@@ -566,23 +376,6 @@ body[data-app-mode="viewer"] .about-dialog-version {
 
   body[data-app-mode="viewer"] .toilet-ring-legend {
     top: calc(100% + 4px);
-  }
-
-  body[data-app-mode="viewer"] .site-header .site-menu-panel {
-    padding: 4px var(--gutter) 14px;
-    border: 0;
-    border-radius: 0 0 26px 26px;
-    background: var(--ls-fill);
-  }
-
-  body[data-app-mode="viewer"] .site-header .site-menu-item {
-    padding: 14px 4px;
-    border-bottom: 0;
-  }
-
-  body[data-app-mode="viewer"] .site-header .site-menu-item:hover {
-    background: transparent;
-    color: var(--ls-red);
   }
 }
 
@@ -625,11 +418,6 @@ body[data-app-mode="viewer"] .mobile-floor-option[aria-selected="true"] {
 }
 
 @media (max-width: 380px) {
-  body[data-app-mode="viewer"] .app-logo {
-    width: 30px;
-    height: 30px;
-  }
-
   html[lang="en"] body[data-app-mode="viewer"] .app-title {
     font-size: 0.9375rem;
   }
