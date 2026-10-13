@@ -417,8 +417,25 @@ body[data-app-mode="viewer"] .mobile-floor-option[aria-selected="true"] {
   font-weight: var(--fw-bold);
 }
 
+/* Small phones: step the title down so the full name fits */
 @media (max-width: 380px) {
+  body[data-app-mode="viewer"] .app-title {
+    font-size: 1.0625rem;
+    letter-spacing: 0;
+  }
+
   html[lang="en"] body[data-app-mode="viewer"] .app-title {
     font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 340px) {
+  body[data-app-mode="viewer"] .app-title {
+    gap: 8px;
+    font-size: 1rem;
+  }
+
+  html[lang="en"] body[data-app-mode="viewer"] .app-title {
+    font-size: 0.8125rem;
   }
 }

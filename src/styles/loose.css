@@ -203,6 +203,10 @@ body.subpage .site-brand-name {
     border-radius: 10px;
   }
 
+  body.subpage .site-header-inner {
+    gap: var(--s-3);
+  }
+
   body.subpage .site-brand {
     gap: 10px;
     font-size: 1.1875rem;
@@ -213,14 +217,46 @@ body.subpage .site-brand-name {
   }
 }
 
+/* Small phones: step the brand down so the full name fits beside the
+   language toggle and menu button (map title steps in viewer-loose.css). */
 @media (max-width: 380px) {
   :is(body[data-app-mode="viewer"], body.subpage) .app-logo {
     width: 30px;
     height: 30px;
   }
 
+  body.subpage .site-brand {
+    font-size: 1.0625rem;
+    letter-spacing: 0;
+  }
+
   html[lang="en"] body.subpage .site-brand {
     font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 340px) {
+  :is(body[data-app-mode="viewer"], body.subpage) .app-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+  }
+
+  :is(body[data-app-mode="viewer"], body.subpage) .site-header-actions {
+    gap: 8px;
+  }
+
+  :is(body[data-app-mode="viewer"], body.subpage) .lang-toggle {
+    gap: 6px;
+  }
+
+  body.subpage .site-brand {
+    gap: 8px;
+    font-size: 1rem;
+  }
+
+  html[lang="en"] body.subpage .site-brand {
+    font-size: 0.8125rem;
   }
 }
 
