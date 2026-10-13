@@ -80,63 +80,72 @@
       </div>
     </header>
 
-    <main id="main" class="timetable-main" aria-labelledby="timetable-title">
-      <section class="timetable-hero timetable-link-hero">
-        <div>
-          <h1 id="timetable-title">時刻表リンク</h1>
-        </div>
-      </section>
+    <main id="main" class="page timetable-main" aria-labelledby="timetable-title">
+      <div class="page-inner">
+        <header class="page-head">
+          <p class="page-eyebrow">Timetable</p>
+          <h1 id="timetable-title" class="page-title">時刻表リンク</h1>
+          <p class="page-lead">OIC周辺の主要駅の時刻表と運行情報を、各社の公式ページで確認できます。</p>
+        </header>
 
-      <section class="timetable-official-grid" aria-label="駅カード一覧">
-        <div class="timetable-official-card-grid" data-official-card-grid></div>
-      </section>
+        <section class="section timetable-stations" aria-labelledby="stations-title">
+          <div class="section-head">
+            <p class="section-eyebrow">Stations</p>
+            <h2 id="stations-title" class="section-title">駅の時刻表</h2>
+          </div>
+          <div class="section-body">
+            <ul class="timetable-station-list" data-official-card-grid></ul>
+          </div>
+        </section>
 
-      <div data-shuttle-bus-card></div>
+        <section class="section timetable-shuttle" data-shuttle-bus-card aria-labelledby="shuttle-bus-title"></section>
 
-      <div data-service-status-card></div>
+        <section class="section timetable-service" data-service-status-card aria-labelledby="service-status-title"></section>
 
-      <section class="timetable-compliance-panel timetable-source-card" aria-labelledby="source-reference-title">
-        <div class="timetable-source-references timetable-compliance-links">
-          <div class="timetable-source-reference-group">
-            <h2 id="source-reference-title" class="timetable-source-reference-title">公式ページ・利用条件確認先</h2>
-            <div class="timetable-source-reference-category">
-              <h3>時刻表</h3>
-              <ul class="timetable-source-reference-items">
-                <li><a href="https://www.osaka-monorail.co.jp/station/r18_unobe/timetable/" target="_blank" rel="noopener noreferrer">大阪モノレール 宇野辺駅時刻表</a></li>
-                <li><a href="https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/" target="_blank" rel="noopener noreferrer">大阪モノレール 南茨木駅時刻表</a></li>
-                <li><a href="https://www.hankyu.co.jp/station/html/HK-68.html" target="_blank" rel="noopener noreferrer">阪急電鉄 南茨木駅時刻表</a></li>
-                <li><a href="https://timetable.jr-odekake.net/station-timetable/2791011001" target="_blank" rel="noopener noreferrer">JR西日本 茨木駅時刻表</a></li>
+        <section class="section timetable-section-wide timetable-references" aria-labelledby="source-reference-title">
+          <div class="section-head">
+            <p class="section-eyebrow">Official links</p>
+            <h2 id="source-reference-title" class="section-title">公式ページ・利用条件確認先</h2>
+          </div>
+          <div class="section-body timetable-reference-grid">
+            <div class="timetable-reference-group">
+              <h3 class="timetable-reference-title">時刻表</h3>
+              <ul class="timetable-reference-list">
+                <li><a class="timetable-reference-link external" href="https://www.osaka-monorail.co.jp/station/r18_unobe/timetable/" target="_blank" rel="noopener noreferrer">大阪モノレール 宇野辺駅時刻表</a></li>
+                <li><a class="timetable-reference-link external" href="https://www.osaka-monorail.co.jp/station/r19_minami_iba/timetable/" target="_blank" rel="noopener noreferrer">大阪モノレール 南茨木駅時刻表</a></li>
+                <li><a class="timetable-reference-link external" href="https://www.hankyu.co.jp/station/html/HK-68.html" target="_blank" rel="noopener noreferrer">阪急電鉄 南茨木駅時刻表</a></li>
+                <li><a class="timetable-reference-link external" href="https://timetable.jr-odekake.net/station-timetable/2791011001" target="_blank" rel="noopener noreferrer">JR西日本 茨木駅時刻表</a></li>
               </ul>
             </div>
-            <div class="timetable-source-reference-category">
-              <h3>シャトルバス</h3>
-              <ul class="timetable-source-reference-items">
-                <li><a href="https://www.ritsumei.ac.jp/infostudents/shuttlebus/" target="_blank" rel="noopener noreferrer">立命館大学 シャトルバス運行表</a></li>
-                <li><a href="https://www.ritsumei.ac.jp/file.jsp?id=650649" target="_blank" rel="noopener noreferrer">2026年度シャトルバス時刻表</a></li>
-                <li><a href="https://www.ritsumei.ac.jp/file.jsp?id=650650" target="_blank" rel="noopener noreferrer">2026年度シャトルバス運行スケジュール</a></li>
+            <div class="timetable-reference-group">
+              <h3 class="timetable-reference-title">シャトルバス</h3>
+              <ul class="timetable-reference-list">
+                <li><a class="timetable-reference-link external" href="https://www.ritsumei.ac.jp/infostudents/shuttlebus/" target="_blank" rel="noopener noreferrer">立命館大学 シャトルバス運行表</a></li>
+                <li><a class="timetable-reference-link external" href="https://www.ritsumei.ac.jp/file.jsp?id=650649" target="_blank" rel="noopener noreferrer">2026年度シャトルバス時刻表</a></li>
+                <li><a class="timetable-reference-link external" href="https://www.ritsumei.ac.jp/file.jsp?id=650650" target="_blank" rel="noopener noreferrer">2026年度シャトルバス運行スケジュール</a></li>
               </ul>
             </div>
-            <div class="timetable-source-reference-category">
-              <h3>運行情報</h3>
-              <ul class="timetable-source-reference-items">
-                <li><a href="https://www.osaka-monorail.co.jp/" target="_blank" rel="noopener noreferrer">大阪モノレール 運行状況</a></li>
-                <li><a href="https://www.hankyu.co.jp/railinfo/" target="_blank" rel="noopener noreferrer">阪急電鉄 運行情報</a></li>
-                <li><a href="https://trafficinfo.westjr.co.jp/kinki.html" target="_blank" rel="noopener noreferrer">JR西日本 近畿エリア運行情報</a></li>
-                <li><a href="https://www.jr-odekake.net/railroad/traffic_twitter/" target="_blank" rel="noopener noreferrer">JR西日本 列車運行情報 公式X</a></li>
+            <div class="timetable-reference-group">
+              <h3 class="timetable-reference-title">運行情報</h3>
+              <ul class="timetable-reference-list">
+                <li><a class="timetable-reference-link external" href="https://www.osaka-monorail.co.jp/" target="_blank" rel="noopener noreferrer">大阪モノレール 運行状況</a></li>
+                <li><a class="timetable-reference-link external" href="https://www.hankyu.co.jp/railinfo/" target="_blank" rel="noopener noreferrer">阪急電鉄 運行情報</a></li>
+                <li><a class="timetable-reference-link external" href="https://trafficinfo.westjr.co.jp/kinki.html" target="_blank" rel="noopener noreferrer">JR西日本 近畿エリア運行情報</a></li>
+                <li><a class="timetable-reference-link external" href="https://www.jr-odekake.net/railroad/traffic_twitter/" target="_blank" rel="noopener noreferrer">JR西日本 列車運行情報 公式X</a></li>
               </ul>
             </div>
-            <div class="timetable-source-reference-category">
-              <h3>利用条件</h3>
-              <ul class="timetable-source-reference-items">
-                <li><a href="https://www.osaka-monorail.co.jp/siteguide/" target="_blank" rel="noopener noreferrer">大阪モノレール サイトのご利用にあたって</a></li>
-                <li><a href="https://www.hankyu.co.jp/sitepolicy/" target="_blank" rel="noopener noreferrer">阪急電鉄 サイトポリシー</a></li>
-                <li><a href="https://www.jr-odekake.net/use/about.html" target="_blank" rel="noopener noreferrer">JRおでかけネット ご利用にあたって</a></li>
-                <li><a href="https://www.ritsumei.ac.jp/sitepolicy/" target="_blank" rel="noopener noreferrer">立命館大学 サイトポリシー</a></li>
+            <div class="timetable-reference-group">
+              <h3 class="timetable-reference-title">利用条件</h3>
+              <ul class="timetable-reference-list">
+                <li><a class="timetable-reference-link external" href="https://www.osaka-monorail.co.jp/siteguide/" target="_blank" rel="noopener noreferrer">大阪モノレール サイトのご利用にあたって</a></li>
+                <li><a class="timetable-reference-link external" href="https://www.hankyu.co.jp/sitepolicy/" target="_blank" rel="noopener noreferrer">阪急電鉄 サイトポリシー</a></li>
+                <li><a class="timetable-reference-link external" href="https://www.jr-odekake.net/use/about.html" target="_blank" rel="noopener noreferrer">JRおでかけネット ご利用にあたって</a></li>
+                <li><a class="timetable-reference-link external" href="https://www.ritsumei.ac.jp/sitepolicy/" target="_blank" rel="noopener noreferrer">立命館大学 サイトポリシー</a></li>
               </ul>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer">

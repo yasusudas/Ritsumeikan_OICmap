@@ -5,6 +5,25 @@ const LIVE_SERVICE_STATUS_URL = '/api/rail-status';
 const LIVE_SERVICE_STATUS_REFRESH_INTERVAL = 15 * 60 * 1000;
 const STORAGE_KEY = 'rits-oic-map:timetable-layout:v1';
 
+// Status id -> tone used for the small status dot.
+const LIVE_STATUS_TONES = {
+  normal: 'ok',
+  notice: 'warn',
+  delay: 'warn',
+  suspended: 'danger',
+  unknown: 'unknown',
+  error: 'unknown',
+};
+
+const LIVE_SERVICE_STATUS_FALLBACK_LINKS = [
+  { label: '阪急電鉄 運行情報', url: 'https://www.hankyu.co.jp/railinfo/' },
+  { label: '大阪モノレール 運行状況', url: 'https://www.osaka-monorail.co.jp/' },
+  { label: 'JR西日本 運行情報', url: 'https://trafficinfo.westjr.co.jp/kinki.html' },
+];
+
+const GRIP_ICON =
+  '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 8h12M4 12h12"/></svg>';
+
 const elements = {
   cardGrid: document.querySelector('[data-card-grid]'),
   hiddenList: document.querySelector('[data-hidden-list]'),
@@ -33,12 +52,10 @@ let liveServiceStatusState = {
 init().catch((error) => {
   console.error(error);
   if (elements.cardGrid) {
-    elements.cardGrid.innerHTML = `
-      <article class="timetable-card timetable-card-error">
-        <h2>時刻表を読み込めませんでした</h2>
-        <p>通信状態を確認して、もう一度開き直してください。</p>
-      </article>
-    `;
+    elements.cardGrid.innerHTML = renderBoardMessage(
+      '時刻表を読み込めませんでした',
+      '通信状態を確認して、もう一度開き直してください。'
+    );
   }
 });
 
@@ -92,6 +109,9 @@ async function refreshLiveServiceStatus() {
 
   try {
     const payload = await fetchJson(LIVE_SERVICE_STATUS_URL);
+    (payload?.sources || [])
+      .filter((item) => item.status === 'error')
+      .forEach((item) => console.warn(`[rail-status] ${item.id}:`, ...(item.details || [])));
     liveServiceStatusState = {
       payload,
       isLoading: false,
@@ -99,6 +119,7 @@ async function refreshLiveServiceStatus() {
       nextRefreshAt: Date.now() + (payload.refreshIntervalSeconds || 900) * 1000,
     };
   } catch (error) {
+    console.warn('[rail-status]', error);
     liveServiceStatusState = {
       ...liveServiceStatusState,
       isLoading: false,
@@ -113,66 +134,91 @@ async function refreshLiveServiceStatus() {
 function renderLiveServiceStatus() {
   if (!elements.liveServiceStatus) return;
 
-  const { payload, error } = liveServiceStatusState;
+  const { payload, error, isLoading } = liveServiceStatusState;
   const sources = payload?.sources || [];
-  const rows = sources.length
-    ? sources.map(renderLiveServiceStatusRow).join('')
-    : renderLiveServiceStatusPlaceholder(error);
+  const allFailed = sources.length > 0 && sources.every((item) => item.status === 'error');
+  let body;
+
+  if (sources.length && !allFailed) {
+    body = `<ul class="rule-list timetable-status-list">${sources.map(renderLiveServiceStatusRow).join('')}</ul>`;
+  } else if (error || allFailed) {
+    body = renderLiveServiceStatusUnavailable(allFailed ? sources : []);
+  } else {
+    body = `<p class="timetable-status-message">${isLoading ? '運行情報を取得しています…' : '運行情報はまだありません。'}</p>`;
+  }
+
+  const updatedAt = formatLiveStatusUpdatedAt(payload?.generatedAt);
 
   elements.liveServiceStatus.innerHTML = `
-    <div class="timetable-live-status-card">
-      <div class="timetable-live-status-head">
-        <div>
-          <h2>運行情報</h2>
-        </div>
-        <div class="timetable-live-status-meta">
-          <time data-live-status-updated>${escapeHtml(formatLiveStatusUpdatedAt(payload?.generatedAt))}</time>
-        </div>
-      </div>
-      <div class="timetable-live-status-rows">
-        ${rows}
-      </div>
+    <div class="section-head">
+      <p class="section-eyebrow">Service status</p>
+      <h2 id="live-status-title" class="section-title">運行情報</h2>
+      ${
+        updatedAt
+          ? `<p class="meta-text timetable-status-updated"><time datetime="${escapeHtml(payload.generatedAt)}">${escapeHtml(updatedAt)}</time></p>`
+          : ''
+      }
+    </div>
+    <div class="section-body">${body}</div>
+  `;
+}
+
+// Shown instead of raw fetch errors. The underlying error is logged to the console.
+function renderLiveServiceStatusUnavailable(sources) {
+  const links = sources.length
+    ? sources.map((item) => ({ label: `${item.railway} ${item.line === item.railway ? '運行状況' : item.line}`, url: item.sourceUrl }))
+    : LIVE_SERVICE_STATUS_FALLBACK_LINKS;
+
+  return `
+    <div class="timetable-status-message is-unavailable">
+      <p>運行情報を取得できませんでした。各社の公式ページでご確認ください。</p>
+      <ul class="timetable-inline-links">
+        ${links
+          .map(
+            (link) => `
+              <li>
+                <a class="timetable-quiet-link external" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a>
+              </li>
+            `
+          )
+          .join('')}
+      </ul>
     </div>
   `;
 }
 
-function renderLiveServiceStatusPlaceholder(error) {
-  const message = error ? '運行情報を取得できませんでした。' : '運行情報を取得しています。';
-  return `
-    <article class="timetable-live-status-row is-unknown">
-      <div>
-        <p>取得状況</p>
-        <h3>${escapeHtml(message)}</h3>
-        ${error ? `<span class="timetable-live-status-detail">${escapeHtml(error)}</span>` : ''}
-      </div>
-    </article>
-  `;
-}
-
 function renderLiveServiceStatusRow(item) {
-  const details = (item.details || [])
-    .slice(0, 2)
-    .map((detail) => `<span class="timetable-live-status-detail">${escapeHtml(detail)}</span>`)
-    .join('');
+  const status = LIVE_STATUS_TONES[item.status] ? item.status : 'unknown';
+  const isError = status === 'error';
+  const summary = isError ? '取得できませんでした。公式ページでご確認ください。' : item.summary;
+  const details = isError
+    ? ''
+    : (item.details || [])
+        .filter((detail) => detail && detail !== item.summary)
+        .slice(0, 2)
+        .map((detail) => `<p class="timetable-status-detail">${escapeHtml(detail)}</p>`)
+        .join('');
 
   return `
-    <article
-      class="timetable-live-status-row is-${escapeHtml(item.status || 'unknown')}"
-      style="--timetable-railway-color: ${escapeHtml(item.color || '#991c27')};"
-    >
-      <div class="timetable-live-status-title">
-        <p>${escapeHtml(item.railway)}</p>
-        <h3>${escapeHtml(item.line)}</h3>
+    <li class="timetable-status-row is-${escapeHtml(LIVE_STATUS_TONES[status])}">
+      <div class="timetable-status-line">
+        <span class="timetable-railway-mark" style="--railway-color: ${escapeHtml(item.color || 'var(--c-ink-3)')};" aria-hidden="true"></span>
+        <div>
+          <h3 class="timetable-status-line-name">${escapeHtml(item.line)}</h3>
+          <p class="timetable-status-railway">${escapeHtml(item.railway)}</p>
+        </div>
       </div>
-      <div class="timetable-live-status-summary">
-        <span class="timetable-live-status-badge">${escapeHtml(item.statusLabel)}</span>
-        <strong>${escapeHtml(item.summary)}</strong>
+      <p class="timetable-status-state">
+        <span class="timetable-status-dot" aria-hidden="true"></span>${escapeHtml(item.statusLabel || '確認中')}
+      </p>
+      <div class="timetable-status-summary">
+        <p>${escapeHtml(summary)}</p>
         ${details}
       </div>
-      <div class="timetable-live-status-actions">
-        <a href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">公式ページ</a>
+      <div class="timetable-status-links">
+        <a class="timetable-quiet-link external" href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">公式ページ</a>
       </div>
-    </article>
+    </li>
   `;
 }
 
@@ -182,12 +228,11 @@ async function renderCards() {
   const cards = orderedCards().filter((card) => !state.hidden.includes(card.id));
 
   if (!cards.length) {
-    elements.cardGrid.innerHTML = `
-      <article class="timetable-card timetable-card-empty">
-        <h2>表示中のカードがありません</h2>
-        <p>非表示カードを再表示してください。</p>
-      </article>
-    `;
+    activeSchedulesByCardId.clear();
+    elements.cardGrid.innerHTML = renderBoardMessage(
+      '表示中のカードがありません',
+      '下の「非表示カード」から再表示してください。'
+    );
     return;
   }
 
@@ -201,6 +246,15 @@ async function renderCards() {
   updateCountdownDisplays();
 }
 
+function renderBoardMessage(title, text) {
+  return `
+    <div class="timetable-board-message">
+      <p class="timetable-board-message-title">${escapeHtml(title)}</p>
+      <p>${escapeHtml(text)}</p>
+    </div>
+  `;
+}
+
 function renderCard(card, scheduleSet) {
   const railway = manifest.railways.find((item) => item.id === card.railwayId);
   const view = resolveTimetableView(scheduleSet);
@@ -208,68 +262,84 @@ function renderCard(card, scheduleSet) {
   const next = view.next;
   const later = view.later;
   const calendarLabel = schedule.calendar.shortLabelJa || schedule.calendar.labelJa;
+  const nextService = splitServiceType(next.departure.serviceType);
+  const titleId = `timetable-card-title-${card.id}`;
 
   return `
     <article
       class="timetable-card"
       data-card-id="${escapeHtml(card.id)}"
       data-active-schedule-id="${escapeHtml(schedule.id)}"
-      title="ドラッグで並べ替え"
-      style="--timetable-railway-color: ${escapeHtml(railway?.color || '#991c27')}; --timetable-railway-text: ${escapeHtml(railway?.textColor || '#fff')};"
+      aria-labelledby="${escapeHtml(titleId)}"
     >
-      <header class="timetable-card-header">
-        <div>
-          <p class="timetable-railway">${escapeHtml(card.railwayNameJa)} / ${escapeHtml(schedule.line.nameJa)}</p>
-          <h2>${escapeHtml(card.station.nameJa)} <span>${escapeHtml(card.direction.labelJa)}</span></h2>
+      <header class="timetable-card-header" title="ドラッグで並べ替え">
+        <p class="timetable-railway">
+          <span class="timetable-railway-mark" style="--railway-color: ${escapeHtml(railway?.color || 'var(--c-ink-3)')};" aria-hidden="true"></span>${escapeHtml(card.railwayNameJa)}<span class="timetable-railway-line">${escapeHtml(schedule.line.nameJa)}</span>
+        </p>
+        <div class="timetable-card-tools">
+          <button
+            class="timetable-card-hide"
+            type="button"
+            data-hide-card="${escapeHtml(card.id)}"
+            aria-label="${escapeHtml(`${card.station.nameJa} ${card.direction.labelJa}を非表示`)}"
+          >非表示</button>
+          <span class="timetable-card-grip" aria-hidden="true">${GRIP_ICON}</span>
         </div>
+        <h2 id="${escapeHtml(titleId)}" class="timetable-card-title">
+          ${escapeHtml(card.station.nameJa)}<span>${escapeHtml(card.direction.labelJa)}</span>
+        </h2>
       </header>
 
-      <div class="timetable-card-body">
-        <section class="timetable-next" aria-label="次の発車">
-          <div class="timetable-next-meta">
-            <span>${escapeHtml(calendarLabel)}</span>
+      <section class="timetable-next" aria-label="次の発車">
+        <p class="timetable-next-label">次の発車<span>${escapeHtml(calendarLabel)}ダイヤ</span></p>
+        <div class="timetable-next-main">
+          <time class="timetable-next-time" data-next-departure-time>${escapeHtml(next.departure.time)}</time>
+          <div class="timetable-next-train">
+            <p class="timetable-next-service">
+              <span class="timetable-train-type ${serviceClass(nextService.label)}" data-next-service>${escapeHtml(nextService.label)}</span>
+              <span class="timetable-destination" data-next-destination>${escapeHtml(next.departure.destinationJa)}</span>
+            </p>
+            <p class="timetable-train-note" data-next-note${nextService.note ? '' : ' hidden'}>${escapeHtml(nextService.note)}</p>
           </div>
-          <p class="timetable-next-time" data-next-countdown>${escapeHtml(formatCountdownPrecise(next.secondsUntil))}</p>
-          <div class="timetable-next-row">
-            <span class="timetable-train-type ${serviceClass(next.departure.serviceType)}" data-next-service>${escapeHtml(next.departure.serviceType)}</span>
-            <time class="timetable-next-departure" data-next-departure-time>${escapeHtml(next.departure.time)}発</time>
-            <span class="timetable-destination">${escapeHtml(next.departure.destinationJa)}</span>
-          </div>
-        </section>
+        </div>
+        <p class="timetable-next-countdown" data-next-countdown>${escapeHtml(formatCountdownLabel(next.secondsUntil))}</p>
+      </section>
 
-        <section class="timetable-upcoming" aria-label="この後の発車" data-upcoming>
-          ${renderUpcoming(later)}
-        </section>
-      </div>
+      <section class="timetable-upcoming" aria-label="この後の発車">
+        <p class="timetable-upcoming-label">この後</p>
+        <ol class="timetable-upcoming-list" data-upcoming>${renderUpcoming(later)}</ol>
+      </section>
 
       <details class="timetable-all">
-        <summary>全便を見る</summary>
+        <summary>全便を見る<span class="timetable-all-meta">${escapeHtml(calendarLabel)} ${schedule.departures.length}本</span></summary>
         <div class="timetable-hour-list">
           ${renderHourList(schedule.departures)}
         </div>
       </details>
-
-      <div class="timetable-card-footer">
-        <button class="timetable-card-hide" type="button" data-hide-card="${escapeHtml(card.id)}">非表示</button>
-      </div>
     </article>
   `;
 }
 
 function renderUpcoming(later) {
   return later
-    .map(
-      (entry) => `
-        <div class="timetable-upcoming-item">
+    .map((entry) => {
+      const service = splitServiceType(entry.departure.serviceType);
+      return `
+        <li class="timetable-upcoming-item">
           <time>${escapeHtml(entry.departure.time)}</time>
-          <div>
-            <span class="timetable-train-type ${serviceClass(entry.departure.serviceType)}">${escapeHtml(entry.departure.serviceType)}</span>
-            <span>${escapeHtml(entry.departure.destinationJa)}</span>
-          </div>
-        </div>
-      `
-    )
+          <span class="timetable-upcoming-train">
+            <span class="timetable-train-type ${serviceClass(service.label)}">${escapeHtml(service.label)}</span>
+            <span class="timetable-destination">${escapeHtml(entry.departure.destinationJa)}</span>
+          </span>
+          ${service.note ? `<span class="timetable-train-note">${escapeHtml(service.note)}</span>` : ''}
+        </li>
+      `;
+    })
     .join('');
+}
+
+function upcomingKey(later) {
+  return later.map((entry) => `${entry.departure.time}|${entry.departure.serviceType}|${entry.departure.destinationJa}`).join(',');
 }
 
 function updateCountdownDisplays() {
@@ -289,23 +359,41 @@ function updateCountdownDisplays() {
     }
 
     const { next, later } = view;
+    const nextService = splitServiceType(next.departure.serviceType);
     const countdown = cardElement.querySelector('[data-next-countdown]');
     const departureTime = cardElement.querySelector('[data-next-departure-time]');
     const service = cardElement.querySelector('[data-next-service]');
-    const destination = cardElement.querySelector('.timetable-destination');
+    const destination = cardElement.querySelector('[data-next-destination]');
+    const note = cardElement.querySelector('[data-next-note]');
     const upcoming = cardElement.querySelector('[data-upcoming]');
 
-    if (countdown) countdown.textContent = formatCountdownPrecise(next.secondsUntil);
-    if (departureTime) departureTime.textContent = `${next.departure.time}発`;
+    setText(countdown, formatCountdownLabel(next.secondsUntil));
+    setText(departureTime, next.departure.time);
     if (service) {
-      service.className = `timetable-train-type ${serviceClass(next.departure.serviceType)}`;
-      service.textContent = next.departure.serviceType;
+      service.className = `timetable-train-type ${serviceClass(nextService.label)}`;
+      setText(service, nextService.label);
     }
-    if (destination) destination.textContent = next.departure.destinationJa;
-    if (upcoming && !dragState?.active) upcoming.innerHTML = renderUpcoming(later);
+    setText(destination, next.departure.destinationJa);
+    if (note) {
+      setText(note, nextService.note);
+      note.hidden = !nextService.note;
+    }
+    if (upcoming && !dragState?.active) {
+      const key = upcomingKey(later);
+      if (upcoming.dataset.key !== key) {
+        upcoming.innerHTML = renderUpcoming(later);
+        upcoming.dataset.key = key;
+      }
+    }
   });
 
   if (shouldRerender) void renderCards();
+}
+
+function setText(element, value) {
+  if (element && element.textContent !== value) {
+    element.textContent = value;
+  }
 }
 
 function bindCardEvents() {
@@ -518,7 +606,7 @@ function updateDragVisual(x, y) {
 
   const left = x - (dragState.offsetX || 0);
   const top = y - (dragState.offsetY || 0);
-  dragState.ghost.style.transform = `translate3d(${left}px, ${top}px, 0) scale(1.03)`;
+  dragState.ghost.style.transform = `translate3d(${left}px, ${top}px, 0)`;
 }
 
 function finishDragGhost() {
@@ -534,7 +622,7 @@ function finishDragGhost() {
 
   const rect = cardElement.getBoundingClientRect();
   ghost.classList.add('is-settling');
-  ghost.style.transform = `translate3d(${rect.left}px, ${rect.top}px, 0) scale(1)`;
+  ghost.style.transform = `translate3d(${rect.left}px, ${rect.top}px, 0)`;
   ghost.style.opacity = '0';
   window.setTimeout(() => {
     ghost.remove();
@@ -671,8 +759,8 @@ function animateCardPush(previousRects) {
         { transform: 'translate3d(0, 0, 0)' },
       ],
       {
-        duration: 360,
-        easing: 'cubic-bezier(0.18, 0.89, 0.32, 1.14)',
+        duration: 200,
+        easing: 'cubic-bezier(0.2, 0, 0, 1)',
       }
     );
     animation.addEventListener('finish', () => {
@@ -801,21 +889,37 @@ function renderHiddenList() {
   if (!elements.hiddenList || !elements.hiddenCount) return;
   const hiddenCards = orderedCards().filter((card) => state.hidden.includes(card.id));
   elements.hiddenCount.textContent = `${hiddenCards.length}件`;
+  if (elements.showAll) elements.showAll.disabled = !hiddenCards.length;
   if (!hiddenCards.length) {
     elements.hiddenList.innerHTML = '<p class="timetable-empty">非表示にしたカードはありません。</p>';
     return;
   }
 
-  elements.hiddenList.innerHTML = hiddenCards
-    .map(
-      (card) => `
-        <button class="timetable-hidden-item" type="button" data-restore-card="${escapeHtml(card.id)}">
-          <span>${escapeHtml(card.railwayNameJa)}</span>
-          <strong>${escapeHtml(card.station.nameJa)} / ${escapeHtml(card.direction.labelJa)}</strong>
-        </button>
-      `
-    )
-    .join('');
+  elements.hiddenList.innerHTML = `
+    <ul class="rule-list timetable-hidden-items">
+      ${hiddenCards
+        .map((card) => {
+          const railway = manifest.railways.find((item) => item.id === card.railwayId);
+          return `
+            <li class="timetable-hidden-item">
+              <div class="timetable-hidden-name">
+                <p class="timetable-railway">
+                  <span class="timetable-railway-mark" style="--railway-color: ${escapeHtml(railway?.color || 'var(--c-ink-3)')};" aria-hidden="true"></span>${escapeHtml(card.railwayNameJa)}
+                </p>
+                <p class="timetable-hidden-title">${escapeHtml(card.station.nameJa)}<span>${escapeHtml(card.direction.labelJa)}</span></p>
+              </div>
+              <button
+                class="btn btn-quiet"
+                type="button"
+                data-restore-card="${escapeHtml(card.id)}"
+                aria-label="${escapeHtml(`${card.station.nameJa} ${card.direction.labelJa}を再表示`)}"
+              >再表示</button>
+            </li>
+          `;
+        })
+        .join('')}
+    </ul>
+  `;
 
   elements.hiddenList.querySelectorAll('[data-restore-card]').forEach((button) => {
     button.addEventListener('click', () => {
@@ -829,7 +933,7 @@ function renderHiddenList() {
 function renderHourList(departures) {
   const groups = new Map();
   departures.forEach((departure) => {
-    const label = departure.serviceDayOffset ? `翌 ${departure.hour}時` : `${departure.hour}時`;
+    const label = departure.serviceDayOffset ? `翌${departure.hour}時` : `${departure.hour}時`;
     if (!groups.has(label)) groups.set(label, []);
     groups.get(label).push(departure);
   });
@@ -839,19 +943,21 @@ function renderHourList(departures) {
       ([hour, items]) => `
         <div class="timetable-hour-row">
           <span class="timetable-hour-label">${escapeHtml(hour)}</span>
-          <div class="timetable-minute-list">
+          <ul class="timetable-minute-list">
             ${items
-              .map(
-                (item) => `
-                  <span class="timetable-minute-pill">
+              .map((item) => {
+                const meta = [shortService(item.serviceType), item.destinationJa.replace(/行$/, '')]
+                  .filter(Boolean)
+                  .join(' ');
+                return `
+                  <li class="timetable-minute">
                     <time>${escapeHtml(String(item.minute).padStart(2, '0'))}</time>
-                    <span>${escapeHtml(shortService(item.serviceType))}</span>
-                    <span>${escapeHtml(item.destinationJa.replace(/行$/, ''))}</span>
-                  </span>
-                `
-              )
+                    ${meta ? `<span class="timetable-minute-meta">${escapeHtml(meta)}</span>` : ''}
+                  </li>
+                `;
+              })
               .join('')}
-          </div>
+          </ul>
         </div>
       `
     )
@@ -860,13 +966,13 @@ function renderHourList(departures) {
 
 function renderSourceNote() {
   if (!elements.sourceNote) return;
-  const noteItems = (manifest.sourceNotes || []).map((note) => `<p>${escapeHtml(note)}</p>`).join('');
+  const noteItems = (manifest.sourceNotes || []).map((note) => `<li>${escapeHtml(note)}</li>`).join('');
   const referenceGroups = (manifest.sourceReferences || [])
     .map(
       (group) => `
-        <div class="timetable-source-reference-group">
-          <p class="timetable-source-reference-title">${escapeHtml(group.labelJa)}</p>
-          <ul class="timetable-source-reference-items">
+        <div class="timetable-reference-group">
+          <h3 class="timetable-reference-title">${escapeHtml(group.labelJa)}</h3>
+          <ul class="timetable-reference-list">
             ${(group.items || []).map(renderSourceReferenceItem).join('')}
           </ul>
         </div>
@@ -875,11 +981,15 @@ function renderSourceNote() {
     .join('');
 
   elements.sourceNote.innerHTML = `
-    <div class="timetable-source-note-text">
-      ${noteItems}
+    <div class="section-head">
+      <p class="section-eyebrow">Sources</p>
+      <h2 id="source-note-title" class="section-title">出典・注意事項</h2>
     </div>
-    <div class="timetable-source-references">
-      ${referenceGroups}
+    <div class="section-body">
+      ${noteItems ? `<ul class="timetable-notes">${noteItems}</ul>` : ''}
+      <div class="timetable-source-groups">
+        ${referenceGroups}
+      </div>
     </div>
   `;
 }
@@ -887,9 +997,7 @@ function renderSourceNote() {
 function renderSourceReferenceItem(item) {
   return `
     <li>
-      <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">
-        ${escapeHtml(item.labelJa)}
-      </a>
+      <a class="timetable-reference-link external" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.labelJa)}</a>
     </li>
   `;
 }
@@ -1038,21 +1146,32 @@ function serviceSeconds(departure) {
   );
 }
 
-function formatCountdownPrecise(seconds) {
+// "あと8分05秒" / "あと1時間12分": the countdown is secondary to the departure time.
+function formatCountdownLabel(seconds) {
   const totalSeconds = Math.max(0, Math.floor(seconds));
-  const minutes = Math.floor(totalSeconds / 60);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
   const restSeconds = totalSeconds % 60;
-  return `${minutes}:${String(restSeconds).padStart(2, '0')}`;
+  if (hours > 0) return `あと${hours}時間${String(minutes).padStart(2, '0')}分`;
+  if (minutes > 0) return `あと${minutes}分${String(restSeconds).padStart(2, '0')}秒`;
+  return `あと${restSeconds}秒`;
 }
 
 function formatLiveStatusUpdatedAt(value) {
-  if (!value) return '未更新';
+  if (!value) return '';
   const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return '更新済み';
+  if (Number.isNaN(date.getTime())) return '';
   return `${date.toLocaleTimeString('ja-JP', {
     hour: '2-digit',
     minute: '2-digit',
-  })}更新`;
+  })} 更新`;
+}
+
+// "快速（島本・山崎・向日町・桂川・西大路通過）" -> { label: "快速", note: "島本・山崎・向日町・桂川・西大路通過" }
+function splitServiceType(serviceType) {
+  const value = String(serviceType ?? '').trim();
+  const match = value.match(/^(.+?)\s*[（(](.+)[）)]$/);
+  return match ? { label: match[1], note: match[2] } : { label: value, note: '' };
 }
 
 function serviceClass(serviceType) {

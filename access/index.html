@@ -59,72 +59,144 @@
       </div>
     </header>
 
-    <main id="main" class="legal-main access-main">
-      <section class="legal-hero access-hero">
-        <h1>大阪いばらきキャンパスへのアクセス</h1>
-      </section>
+    <main id="main" class="page access-main">
+      <div class="page-inner">
+        <header class="page-head">
+          <p class="page-eyebrow">ACCESS</p>
+          <h1 class="page-title">大阪いばらきキャンパスへのアクセス</h1>
+        </header>
 
-      <article class="legal-content access-content">
-        <section class="access-section">
-          <div class="access-overview-grid">
-            <figure class="access-figure">
-              <img src="/access_img/access1.png" alt="大阪いばらきキャンパス周辺の案内図" />
+        <section class="section access-location" aria-labelledby="access-location-title">
+          <div class="section-head">
+            <p class="section-eyebrow">LOCATION</p>
+            <h2 class="section-title" id="access-location-title">所在地</h2>
+          </div>
+          <div class="section-body access-location-body">
+            <figure class="access-map">
+              <img src="/access_img/access1.png" alt="大阪いばらきキャンパス周辺の案内図" width="719" height="724" />
             </figure>
-          </div>
-          <aside class="access-panel">
-            <p class="access-address">〒567-8570　大阪府茨木市岩倉町2-150</p>
-            <div class="access-info-block">
-              <p class="access-info-heading">大阪いばらきキャンパスへのアクセスに関するお問い合わせ</p>
-              <p class="access-info-copy">TEL 072-665-2020（キャンパスインフォメーション）</p>
-            </div>
-          </aside>
-        </section>
-
-        <section class="access-section">
-          <div class="access-section-heading">
-            <h2>アクセス方法</h2>
-          </div>
-
-          <figure class="access-figure access-figure-narrow">
-            <img src="/access_img/access2.png" alt="主要駅から大阪いばらきキャンパスまでの移動時間イメージ" />
-          </figure>
-
-          <div class="access-route-grid" style="width: 85%; max-width: 860px; margin: 0 auto;">
-            <section class="access-route-group access-route-group-wide" style="width: 100%;">
-              <ul class="access-route-list">
-                <li class="access-route-item">
-                  <p class="access-route-origin">■JR京都駅から</p>
-                  <p class="access-route-detail">JRにて12分、「高槻駅」で乗り換え5分、「茨木駅」下車、徒歩約5分</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■JR大阪駅から</p>
-                  <p class="access-route-detail">JRにて14分、「茨木駅」下車、徒歩約5分</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■阪急京都河原町駅から</p>
-                  <p class="access-route-detail">阪急にて25分、「茨木市駅」で乗り換え2分、「南茨木駅」下車、徒歩約10分</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■阪急大阪梅田駅から</p>
-                  <p class="access-route-detail">阪急にて18分、「南茨木駅」下車、徒歩約10分</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■阪急西宮北口駅から</p>
-                  <p class="access-route-detail">阪急にて9分、「十三駅」で乗り換え14分、「南茨木駅」下車、徒歩約10分</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■大阪モノレール門真市駅から</p>
-                  <p class="access-route-detail">モノレールにて13分、「南茨木駅」下車、徒歩約10分</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■大阪モノレール大阪空港駅から</p>
-                  <p class="access-route-detail">モノレールにて21分、「宇野辺駅」下車、徒歩約10分</p>
-                </li>
-              </ul>
-            </section>
+            <dl class="access-info">
+              <div class="access-info-row">
+                <dt>住所</dt>
+                <dd class="access-address">〒567-8570　大阪府茨木市岩倉町2-150</dd>
+              </div>
+              <div class="access-info-row">
+                <dt>お問い合わせ</dt>
+                <dd>
+                  <p class="access-info-heading">大阪いばらきキャンパスへのアクセスに関するお問い合わせ</p>
+                  <p class="access-info-copy">TEL <a class="access-tel" href="tel:072-665-2020">072-665-2020</a>（キャンパスインフォメーション）</p>
+                </dd>
+              </div>
+            </dl>
           </div>
         </section>
-      </article>
+
+        <section class="section access-routes" aria-labelledby="access-routes-title">
+          <div class="section-head">
+            <p class="section-eyebrow">ROUTES</p>
+            <h2 class="section-title" id="access-routes-title">アクセス方法</h2>
+          </div>
+          <div class="section-body">
+            <figure class="route-map" aria-labelledby="route-map-caption">
+              <figcaption class="route-map-caption" id="route-map-caption">主要駅から大阪いばらきキャンパスまでの所要時間</figcaption>
+
+              <section class="route-group route-group--jr" aria-labelledby="route-group-jr">
+                <h3 class="route-group-title" id="route-group-jr">JR</h3>
+                <ol class="route-rows">
+                  <li class="route">
+                    <span class="route-origin">京都駅</span>
+                    <span class="route-hop"><span class="route-leg">12分</span><span class="route-stop">高槻駅</span></span>
+                    <span class="route-hop"><span class="route-leg">5分</span><span class="route-stop">茨木駅</span></span>
+                    <span class="route-walk"><span class="route-leg">徒歩約5分</span><span class="route-goal">OIC</span></span>
+                  </li>
+                  <li class="route">
+                    <span class="route-origin">大阪駅</span>
+                    <span class="route-hop"><span class="route-leg">14分</span><span class="route-stop">茨木駅</span></span>
+                    <span class="route-walk"><span class="route-leg">徒歩約5分</span><span class="route-goal">OIC</span></span>
+                  </li>
+                  <li class="route">
+                    <span class="route-origin">三ノ宮駅</span>
+                    <span class="route-hop"><span class="route-leg">41分</span><span class="route-stop">茨木駅</span></span>
+                    <span class="route-walk"><span class="route-leg">徒歩約5分</span><span class="route-goal">OIC</span></span>
+                  </li>
+                </ol>
+              </section>
+
+              <section class="route-group route-group--hankyu" aria-labelledby="route-group-hankyu">
+                <h3 class="route-group-title" id="route-group-hankyu">阪急電鉄</h3>
+                <ol class="route-rows">
+                  <li class="route">
+                    <span class="route-origin">京都河原町駅</span>
+                    <span class="route-hop"><span class="route-leg">25分</span><span class="route-stop">茨木市駅</span></span>
+                    <span class="route-hop"><span class="route-leg">2分</span><span class="route-stop">南茨木駅</span></span>
+                    <span class="route-walk"><span class="route-leg">徒歩約10分</span><span class="route-goal">OIC</span></span>
+                  </li>
+                  <li class="route">
+                    <span class="route-origin">大阪梅田駅</span>
+                    <span class="route-hop"><span class="route-leg">18分</span><span class="route-stop">南茨木駅</span></span>
+                    <span class="route-walk"><span class="route-leg">徒歩約10分</span><span class="route-goal">OIC</span></span>
+                  </li>
+                  <li class="route">
+                    <span class="route-origin">西宮北口駅</span>
+                    <span class="route-hop"><span class="route-leg">9分</span><span class="route-stop">十三駅</span></span>
+                    <span class="route-hop"><span class="route-leg">14分</span><span class="route-stop">南茨木駅</span></span>
+                    <span class="route-walk"><span class="route-leg">徒歩約10分</span><span class="route-goal">OIC</span></span>
+                  </li>
+                </ol>
+              </section>
+
+              <section class="route-group route-group--monorail" aria-labelledby="route-group-monorail">
+                <h3 class="route-group-title" id="route-group-monorail">大阪モノレール</h3>
+                <ol class="route-rows">
+                  <li class="route">
+                    <span class="route-origin">門真市駅</span>
+                    <span class="route-hop"><span class="route-leg">13分</span><span class="route-stop">南茨木駅</span></span>
+                    <span class="route-walk"><span class="route-leg">徒歩約10分</span><span class="route-goal">OIC</span></span>
+                  </li>
+                  <li class="route">
+                    <span class="route-origin">大阪空港駅</span>
+                    <span class="route-hop"><span class="route-leg">21分</span><span class="route-stop">宇野辺駅</span></span>
+                    <span class="route-walk"><span class="route-leg">徒歩約10分</span><span class="route-goal">OIC</span></span>
+                  </li>
+                </ol>
+              </section>
+
+              <p class="route-map-note">※所要時間に乗り換え時間は含みません。</p>
+            </figure>
+
+            <dl class="route-list">
+              <div class="route-list-item">
+                <dt class="route-list-origin">JR京都駅から</dt>
+                <dd class="route-list-detail">JRにて12分、「高槻駅」で乗り換え5分、「茨木駅」下車、徒歩約5分</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">JR大阪駅から</dt>
+                <dd class="route-list-detail">JRにて14分、「茨木駅」下車、徒歩約5分</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">阪急京都河原町駅から</dt>
+                <dd class="route-list-detail">阪急にて25分、「茨木市駅」で乗り換え2分、「南茨木駅」下車、徒歩約10分</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">阪急大阪梅田駅から</dt>
+                <dd class="route-list-detail">阪急にて18分、「南茨木駅」下車、徒歩約10分</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">阪急西宮北口駅から</dt>
+                <dd class="route-list-detail">阪急にて9分、「十三駅」で乗り換え14分、「南茨木駅」下車、徒歩約10分</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">大阪モノレール門真市駅から</dt>
+                <dd class="route-list-detail">モノレールにて13分、「南茨木駅」下車、徒歩約10分</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">大阪モノレール大阪空港駅から</dt>
+                <dd class="route-list-detail">モノレールにて21分、「宇野辺駅」下車、徒歩約10分</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer">

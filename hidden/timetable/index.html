@@ -71,34 +71,45 @@
       </div>
     </header>
 
-    <main id="main" class="timetable-main" aria-labelledby="timetable-title">
-      <section class="timetable-hero">
-        <div>
-          <h1 id="timetable-title">キャンパス周辺 時刻表</h1>
-          <p>カードはドラッグで並べ替え可能</p>
-        </div>
-      </section>
+    <main id="main" class="page timetable-main" aria-labelledby="timetable-title">
+      <div class="page-inner">
+        <header class="page-head">
+          <p class="page-eyebrow">Timetable</p>
+          <h1 id="timetable-title" class="page-title">キャンパス周辺 時刻表</h1>
+          <p class="page-lead">OIC周辺の駅の次の発車時刻を、方面ごとに表示します。各ブロックは見出しをドラッグして並べ替えできます。</p>
+        </header>
 
-      <section class="timetable-live-status" data-live-service-status aria-live="polite"></section>
+        <section class="section timetable-live-status" data-live-service-status aria-labelledby="live-status-title" aria-live="polite"></section>
 
-      <section class="timetable-card-grid" data-card-grid aria-live="polite"></section>
+        <section class="timetable-board" aria-labelledby="board-title">
+          <div class="timetable-board-head">
+            <div class="section-head">
+              <p class="section-eyebrow">Departures</p>
+              <h2 id="board-title" class="section-title">次の発車</h2>
+            </div>
+            <button class="btn btn-quiet" type="button" data-reset-layout>初期順に戻す</button>
+          </div>
+          <div class="timetable-card-grid" data-card-grid></div>
+        </section>
 
-      <section class="timetable-source-note" data-source-note aria-label="時刻表データの出典と注意事項"></section>
+        <section class="section timetable-hidden-panel" aria-labelledby="hidden-title">
+          <div class="section-head">
+            <p class="section-eyebrow">Hidden</p>
+            <h2 id="hidden-title" class="section-title">非表示カード</h2>
+            <p class="meta-text" data-hidden-count>0件</p>
+          </div>
+          <div class="section-body">
+            <div class="timetable-hidden-list" data-hidden-list>
+              <p class="timetable-empty">非表示にしたカードはありません。</p>
+            </div>
+            <div class="timetable-controls">
+              <button class="btn btn-quiet" type="button" data-show-all>すべて表示</button>
+            </div>
+          </div>
+        </section>
 
-      <div class="timetable-bottom-controls" aria-label="カード操作">
-        <button class="timetable-tool-button" type="button" data-reset-layout>初期順に戻す</button>
-        <button class="timetable-tool-button" type="button" data-show-all>すべて表示</button>
+        <section class="section timetable-source-note" data-source-note aria-labelledby="source-note-title"></section>
       </div>
-
-      <section class="timetable-hidden-panel" aria-labelledby="hidden-title">
-        <div class="timetable-hidden-header">
-          <h2 id="hidden-title">非表示カード</h2>
-          <p data-hidden-count>0件</p>
-        </div>
-        <div class="timetable-hidden-list" data-hidden-list>
-          <p class="timetable-empty">非表示にしたカードはありません。</p>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">

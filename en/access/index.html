@@ -59,72 +59,144 @@
       </div>
     </header>
 
-    <main id="main" class="legal-main access-main">
-      <section class="legal-hero access-hero">
-        <h1>Access to Osaka Ibaraki Campus</h1>
-      </section>
+    <main id="main" class="page access-main">
+      <div class="page-inner">
+        <header class="page-head">
+          <p class="page-eyebrow">ACCESS</p>
+          <h1 class="page-title">Access to Osaka Ibaraki Campus</h1>
+        </header>
 
-      <article class="legal-content access-content">
-        <section class="access-section">
-          <div class="access-overview-grid">
-            <figure class="access-figure">
-              <img src="/access_img/access1.png" alt="Area map around Osaka Ibaraki Campus" />
+        <section class="section access-location" aria-labelledby="access-location-title">
+          <div class="section-head">
+            <p class="section-eyebrow">LOCATION</p>
+            <h2 class="section-title" id="access-location-title">Location</h2>
+          </div>
+          <div class="section-body access-location-body">
+            <figure class="access-map">
+              <img src="/access_img/access1.png" alt="Area map around Osaka Ibaraki Campus" width="719" height="724" />
             </figure>
-          </div>
-          <aside class="access-panel">
-            <p class="access-address">2-150 Iwakura-cho, Ibaraki, Osaka 567-8570, Japan</p>
-            <div class="access-info-block">
-              <p class="access-info-heading">Inquiries about access to Osaka Ibaraki Campus</p>
-              <p class="access-info-copy">TEL +81-72-665-2020 (Campus Information)</p>
-            </div>
-          </aside>
-        </section>
-
-        <section class="access-section">
-          <div class="access-section-heading">
-            <h2>Access</h2>
-          </div>
-
-          <figure class="access-figure access-figure-narrow">
-            <img src="/access_img/access2.png" alt="Travel-time overview from major stations to Osaka Ibaraki Campus" />
-          </figure>
-
-          <div class="access-route-grid" style="width: 85%; max-width: 860px; margin: 0 auto;">
-            <section class="access-route-group access-route-group-wide" style="width: 100%;">
-              <ul class="access-route-list">
-                <li class="access-route-item">
-                  <p class="access-route-origin">■From JR Kyoto Station</p>
-                  <p class="access-route-detail">12 minutes by JR, transfer at Takatsuki for 5 minutes, get off at Ibaraki Station, then about 5 minutes on foot</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■From JR Osaka Station</p>
-                  <p class="access-route-detail">14 minutes by JR, get off at Ibaraki Station, then about 5 minutes on foot</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■From Hankyu Kyoto-kawaramachi Station</p>
-                  <p class="access-route-detail">25 minutes by Hankyu, transfer at Ibaraki-shi for 2 minutes, get off at Minami-Ibaraki Station, then about 10 minutes on foot</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■From Hankyu Osaka-Umeda Station</p>
-                  <p class="access-route-detail">18 minutes by Hankyu, get off at Minami-Ibaraki Station, then about 10 minutes on foot</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■From Hankyu Nishinomiya-kitaguchi Station</p>
-                  <p class="access-route-detail">9 minutes by Hankyu, transfer at Juso for 14 minutes, get off at Minami-Ibaraki Station, then about 10 minutes on foot</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■From Osaka Monorail Kadomashi Station</p>
-                  <p class="access-route-detail">13 minutes by monorail, get off at Minami-Ibaraki Station, then about 10 minutes on foot</p>
-                </li>
-                <li class="access-route-item">
-                  <p class="access-route-origin">■From Osaka Monorail Osaka Airport Station</p>
-                  <p class="access-route-detail">21 minutes by monorail, get off at Unobe Station, then about 10 minutes on foot</p>
-                </li>
-              </ul>
-            </section>
+            <dl class="access-info">
+              <div class="access-info-row">
+                <dt>Address</dt>
+                <dd class="access-address">2-150 Iwakura-cho, Ibaraki, Osaka 567-8570, Japan</dd>
+              </div>
+              <div class="access-info-row">
+                <dt>Contact</dt>
+                <dd>
+                  <p class="access-info-heading">Inquiries about access to Osaka Ibaraki Campus</p>
+                  <p class="access-info-copy">TEL <a class="access-tel" href="tel:+81-72-665-2020">+81-72-665-2020</a> (Campus Information)</p>
+                </dd>
+              </div>
+            </dl>
           </div>
         </section>
-      </article>
+
+        <section class="section access-routes" aria-labelledby="access-routes-title">
+          <div class="section-head">
+            <p class="section-eyebrow">ROUTES</p>
+            <h2 class="section-title" id="access-routes-title">Access</h2>
+          </div>
+          <div class="section-body">
+            <figure class="route-map" aria-labelledby="route-map-caption">
+              <figcaption class="route-map-caption" id="route-map-caption">Travel times from major stations to Osaka Ibaraki Campus</figcaption>
+
+              <section class="route-group route-group--jr" aria-labelledby="route-group-jr">
+                <h3 class="route-group-title" id="route-group-jr">JR</h3>
+                <ol class="route-rows">
+                  <li class="route">
+                    <span class="route-origin">Kyoto</span>
+                    <span class="route-hop"><span class="route-leg">12 min</span><span class="route-stop">Takatsuki</span></span>
+                    <span class="route-hop"><span class="route-leg">5 min</span><span class="route-stop">Ibaraki</span></span>
+                    <span class="route-walk"><span class="route-leg">5 min walk</span><span class="route-goal">OIC</span></span>
+                  </li>
+                  <li class="route">
+                    <span class="route-origin">Osaka</span>
+                    <span class="route-hop"><span class="route-leg">14 min</span><span class="route-stop">Ibaraki</span></span>
+                    <span class="route-walk"><span class="route-leg">5 min walk</span><span class="route-goal">OIC</span></span>
+                  </li>
+                  <li class="route">
+                    <span class="route-origin">Sannomiya</span>
+                    <span class="route-hop"><span class="route-leg">41 min</span><span class="route-stop">Ibaraki</span></span>
+                    <span class="route-walk"><span class="route-leg">5 min walk</span><span class="route-goal">OIC</span></span>
+                  </li>
+                </ol>
+              </section>
+
+              <section class="route-group route-group--hankyu" aria-labelledby="route-group-hankyu">
+                <h3 class="route-group-title" id="route-group-hankyu">Hankyu Railway</h3>
+                <ol class="route-rows">
+                  <li class="route">
+                    <span class="route-origin">Kyoto-kawaramachi</span>
+                    <span class="route-hop"><span class="route-leg">25 min</span><span class="route-stop">Ibaraki-shi</span></span>
+                    <span class="route-hop"><span class="route-leg">2 min</span><span class="route-stop">Minami-Ibaraki</span></span>
+                    <span class="route-walk"><span class="route-leg">10 min walk</span><span class="route-goal">OIC</span></span>
+                  </li>
+                  <li class="route">
+                    <span class="route-origin">Osaka-Umeda</span>
+                    <span class="route-hop"><span class="route-leg">18 min</span><span class="route-stop">Minami-Ibaraki</span></span>
+                    <span class="route-walk"><span class="route-leg">10 min walk</span><span class="route-goal">OIC</span></span>
+                  </li>
+                  <li class="route">
+                    <span class="route-origin">Nishinomiya-kitaguchi</span>
+                    <span class="route-hop"><span class="route-leg">9 min</span><span class="route-stop">Juso</span></span>
+                    <span class="route-hop"><span class="route-leg">14 min</span><span class="route-stop">Minami-Ibaraki</span></span>
+                    <span class="route-walk"><span class="route-leg">10 min walk</span><span class="route-goal">OIC</span></span>
+                  </li>
+                </ol>
+              </section>
+
+              <section class="route-group route-group--monorail" aria-labelledby="route-group-monorail">
+                <h3 class="route-group-title" id="route-group-monorail">Osaka Monorail</h3>
+                <ol class="route-rows">
+                  <li class="route">
+                    <span class="route-origin">Kadomashi</span>
+                    <span class="route-hop"><span class="route-leg">13 min</span><span class="route-stop">Minami-Ibaraki</span></span>
+                    <span class="route-walk"><span class="route-leg">10 min walk</span><span class="route-goal">OIC</span></span>
+                  </li>
+                  <li class="route">
+                    <span class="route-origin">Osaka Airport</span>
+                    <span class="route-hop"><span class="route-leg">21 min</span><span class="route-stop">Unobe</span></span>
+                    <span class="route-walk"><span class="route-leg">10 min walk</span><span class="route-goal">OIC</span></span>
+                  </li>
+                </ol>
+              </section>
+
+              <p class="route-map-note">Travel times do not include transfer time.</p>
+            </figure>
+
+            <dl class="route-list">
+              <div class="route-list-item">
+                <dt class="route-list-origin">From JR Kyoto Station</dt>
+                <dd class="route-list-detail">12 minutes by JR, transfer at Takatsuki for 5 minutes, get off at Ibaraki Station, then about 5 minutes on foot</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">From JR Osaka Station</dt>
+                <dd class="route-list-detail">14 minutes by JR, get off at Ibaraki Station, then about 5 minutes on foot</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">From Hankyu Kyoto-kawaramachi Station</dt>
+                <dd class="route-list-detail">25 minutes by Hankyu, transfer at Ibaraki-shi for 2 minutes, get off at Minami-Ibaraki Station, then about 10 minutes on foot</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">From Hankyu Osaka-Umeda Station</dt>
+                <dd class="route-list-detail">18 minutes by Hankyu, get off at Minami-Ibaraki Station, then about 10 minutes on foot</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">From Hankyu Nishinomiya-kitaguchi Station</dt>
+                <dd class="route-list-detail">9 minutes by Hankyu, transfer at Juso for 14 minutes, get off at Minami-Ibaraki Station, then about 10 minutes on foot</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">From Osaka Monorail Kadomashi Station</dt>
+                <dd class="route-list-detail">13 minutes by monorail, get off at Minami-Ibaraki Station, then about 10 minutes on foot</dd>
+              </div>
+              <div class="route-list-item">
+                <dt class="route-list-origin">From Osaka Monorail Osaka Airport Station</dt>
+                <dd class="route-list-detail">21 minutes by monorail, get off at Unobe Station, then about 10 minutes on foot</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer">

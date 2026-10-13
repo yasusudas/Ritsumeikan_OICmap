@@ -14,19 +14,25 @@ const LABELS = {
     modeMonorail: '曜日種別を選び、公式ページ内の該当列を確認',
     modeDate: '表示日つきで公式ページへ',
     officialPage: '公式ページ',
+    serviceStatusEyebrow: 'Service status',
     serviceStatusHeading: '運行情報を確認',
+    shuttleEyebrow: 'Shuttle bus',
     shuttleHeading: 'シャトルバス時刻表',
-    shuttleNextDeparture: '次の発車時刻',
+    shuttleNextDeparture: '次の発車',
     shuttleCountdown: '発車まで',
     shuttleTimetablePdf: '時刻表PDF',
     shuttleSchedulePdf: '運行日PDF',
     shuttleNoService: '運行期間外',
-    countdownDay: '日',
-    countdownHour: '時間',
-    countdownMinute: '分',
-    countdownSecond: '秒',
-    openServiceStatus: '公式運行情報を開く',
-    openOfficialX: '公式Xを開く',
+    shuttleDeparting: 'まもなく発車',
+    countdown: (days, hours, minutes) => {
+      if (days > 0) return `あと${days}日${hours}時間`;
+      if (hours > 0) return `あと${hours}時間${minutes}分`;
+      return `あと${minutes}分`;
+    },
+    timetableFor: (station, direction, label) => `${station} ${direction} ${label}の時刻表`,
+    newTab: '（新しいタブで開く）',
+    openServiceStatus: '公式運行情報',
+    openOfficialX: '公式X',
     selectPrompt: '選択してください',
     monorailWeekday: '平日用（月〜金）',
     monorailHoliday: '休日用（土・日・祝日）',
@@ -44,19 +50,25 @@ const LABELS = {
     modeMonorail: 'Choose a day type and check the matching column on the official page',
     modeDate: 'Open the official page with a display date',
     officialPage: 'Official page',
+    serviceStatusEyebrow: 'Service status',
     serviceStatusHeading: 'Service Status',
+    shuttleEyebrow: 'Shuttle bus',
     shuttleHeading: 'Shuttle Bus Timetable',
     shuttleNextDeparture: 'Next departure',
     shuttleCountdown: 'Until departure',
     shuttleTimetablePdf: 'Timetable PDF',
     shuttleSchedulePdf: 'Service schedule PDF',
     shuttleNoService: 'Outside service period',
-    countdownDay: 'd',
-    countdownHour: 'h',
-    countdownMinute: 'm',
-    countdownSecond: 's',
-    openServiceStatus: 'Open official status',
-    openOfficialX: 'Open official X',
+    shuttleDeparting: 'Departing now',
+    countdown: (days, hours, minutes) => {
+      if (days > 0) return `in ${days} d ${hours} h`;
+      if (hours > 0) return `in ${hours} h ${minutes} min`;
+      return `in ${minutes} min`;
+    },
+    timetableFor: (station, direction, label) => `${station}, ${direction}: ${label} timetable`,
+    newTab: ' (opens in a new tab)',
+    openServiceStatus: 'Official status',
+    openOfficialX: 'Official X',
     selectPrompt: 'Select an option',
     monorailWeekday: 'weekday',
     monorailHoliday: 'weekend/holiday',
@@ -368,102 +380,119 @@ function renderOfficialCards() {
 }
 
 function renderOfficialCard(railway, station) {
+  const stationName = `${localizeName(station)}${t('stationSuffix')}`;
   const rows = station.directions
     .map((direction) => {
+      const directionName = localizeName(direction);
       const links = resolveDirectionLinks(direction);
       return `
-        <div class="timetable-official-row">
-          <div>
-            <span>${escapeHtml(localizeName(direction))}</span>
-          </div>
-          <div class="timetable-official-actions">
+        <li class="timetable-direction">
+          <span class="timetable-direction-name">${escapeHtml(directionName)}</span>
+          <span class="timetable-direction-links">
             ${links
               .map(
                 (link) => `
-                  <a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">
-                    ${escapeHtml(link.label)}
-                  </a>
+                  <a
+                    class="btn btn-quiet timetable-day-link external"
+                    href="${escapeHtml(link.url)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="${escapeHtml(`${t('timetableFor')(stationName, directionName, link.label)}${t('newTab')}`)}"
+                  >${escapeHtml(link.label)}</a>
                 `
               )
               .join('')}
-          </div>
-        </div>
+          </span>
+        </li>
       `;
     })
     .join('');
 
   return `
-    <article class="timetable-official-card" style="--timetable-railway-color: ${escapeHtml(railway.accent)};">
-      <p class="timetable-railway">${escapeHtml(localizeName(railway))}</p>
-      <h3>${escapeHtml(localizeName(station))}${escapeHtml(t('stationSuffix'))}</h3>
-      <div class="timetable-official-rows">${rows}</div>
-    </article>
+    <li class="timetable-station">
+      <div class="timetable-station-head">
+        <h3 class="timetable-station-name">${escapeHtml(stationName)}</h3>
+        ${renderRailwayLabel(localizeName(railway), railway.accent)}
+      </div>
+      <ul class="timetable-directions">${rows}</ul>
+    </li>
+  `;
+}
+
+function renderRailwayLabel(name, color) {
+  return `
+    <p class="timetable-railway">
+      <span class="timetable-railway-mark" style="--railway-color: ${escapeHtml(color)};" aria-hidden="true"></span>${escapeHtml(name)}
+    </p>
+  `;
+}
+
+function renderExternalLink(url, label, className = 'timetable-quiet-link') {
+  return `<a class="${className} external" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+}
+
+function renderSectionHead(id, eyebrow, title) {
+  return `
+    <div class="section-head">
+      <p class="section-eyebrow">${escapeHtml(eyebrow)}</p>
+      <h2 id="${escapeHtml(id)}" class="section-title">${escapeHtml(title)}</h2>
+    </div>
   `;
 }
 
 function renderServiceStatusCard() {
   const rows = SERVICE_STATUS_LINKS.map((item) => {
-    const statusLink = `<a href="${escapeHtml(item.statusUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t('openServiceStatus'))}</a>`;
-    const xLink = item.xUrl
-      ? `<a href="${escapeHtml(item.xUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t('openOfficialX'))}</a>`
-      : '';
-    const actionLinks = item.xUrl ? `${statusLink}${xLink}` : statusLink;
+    const links = [
+      renderExternalLink(item.statusUrl, t('openServiceStatus')),
+      item.xUrl ? renderExternalLink(item.xUrl, t('openOfficialX')) : ''
+    ].join('');
 
     return `
-      <div class="timetable-service-status-row" style="--timetable-railway-color: ${escapeHtml(item.accent)};">
-        <div>
-          <p>${escapeHtml(localizeLine(item, 'railway'))}</p>
-          <h3>${escapeHtml(localizeLine(item, 'line'))}</h3>
+      <li class="timetable-status-row">
+        <div class="timetable-status-line">
+          <span class="timetable-railway-mark" style="--railway-color: ${escapeHtml(item.accent)};" aria-hidden="true"></span>
+          <div>
+            <h3 class="timetable-status-line-name">${escapeHtml(localizeLine(item, 'line'))}</h3>
+            <p class="timetable-status-railway">${escapeHtml(localizeLine(item, 'railway'))}</p>
+          </div>
         </div>
-        <div class="timetable-official-actions">
-          ${actionLinks}
-        </div>
-      </div>
+        <div class="timetable-status-links">${links}</div>
+      </li>
     `;
   }).join('');
 
   elements.serviceStatus.innerHTML = `
-    <section class="timetable-service-status-card" aria-labelledby="service-status-title">
-      <div class="timetable-service-status-head">
-        <h2 id="service-status-title">${escapeHtml(t('serviceStatusHeading'))}</h2>
-      </div>
-      <div class="timetable-service-status-rows">${rows}</div>
-    </section>
+    ${renderSectionHead('service-status-title', t('serviceStatusEyebrow'), t('serviceStatusHeading'))}
+    <div class="section-body">
+      <ul class="rule-list timetable-status-list">${rows}</ul>
+    </div>
   `;
 }
 
 function renderShuttleBusCard() {
   const rows = SHUTTLE_BUS.routes.map((route) => `
-    <article class="timetable-shuttle-route" data-shuttle-route="${escapeHtml(route.id)}">
-      <div class="timetable-shuttle-route-head">
-        <p>OIC → ${escapeHtml(localizeShuttleRoute(route, 'shortName'))}</p>
-        <h3>${escapeHtml(localizeShuttleRoute(route, 'destination'))}</h3>
-      </div>
-      <div class="timetable-shuttle-next">
-        <span>${escapeHtml(t('shuttleNextDeparture'))}</span>
-        <time data-shuttle-next="${escapeHtml(route.id)}">--:--</time>
-      </div>
-      <div class="timetable-shuttle-countdown">
-        <span>${escapeHtml(t('shuttleCountdown'))}</span>
-        <strong data-shuttle-countdown="${escapeHtml(route.id)}">--:--</strong>
-      </div>
+    <article class="timetable-shuttle-route" data-shuttle-route="${escapeHtml(route.id)}" aria-labelledby="shuttle-route-${escapeHtml(route.id)}">
+      <p class="timetable-shuttle-path">OIC → ${escapeHtml(localizeShuttleRoute(route, 'shortName'))}</p>
+      <h3 id="shuttle-route-${escapeHtml(route.id)}" class="timetable-shuttle-destination">${escapeHtml(localizeShuttleRoute(route, 'destination'))}</h3>
+      <p class="timetable-shuttle-label">${escapeHtml(t('shuttleNextDeparture'))}</p>
+      <p class="timetable-shuttle-next">
+        <span class="timetable-shuttle-day" data-shuttle-day="${escapeHtml(route.id)}"></span>
+        <time class="timetable-shuttle-time" data-shuttle-next="${escapeHtml(route.id)}">--:--</time>
+      </p>
+      <p class="timetable-shuttle-countdown" data-shuttle-countdown="${escapeHtml(route.id)}"></p>
     </article>
   `).join('');
 
   elements.shuttleBus.innerHTML = `
-    <section class="timetable-shuttle-card" aria-labelledby="shuttle-bus-title" style="--timetable-railway-color: ${escapeHtml(SHUTTLE_BUS.accent)};">
-      <div class="timetable-shuttle-head">
-        <div>
-          <h2 id="shuttle-bus-title">${escapeHtml(t('shuttleHeading'))}</h2>
-        </div>
-        <div class="timetable-official-actions timetable-shuttle-actions">
-          <a href="${escapeHtml(SHUTTLE_BUS.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t('officialPage'))}</a>
-          <a href="${escapeHtml(SHUTTLE_BUS.timetableUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t('shuttleTimetablePdf'))}</a>
-          <a href="${escapeHtml(SHUTTLE_BUS.scheduleUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t('shuttleSchedulePdf'))}</a>
-        </div>
-      </div>
+    ${renderSectionHead('shuttle-bus-title', t('shuttleEyebrow'), t('shuttleHeading'))}
+    <div class="section-body">
       <div class="timetable-shuttle-routes">${rows}</div>
-    </section>
+      <p class="timetable-shuttle-links">
+        ${renderExternalLink(SHUTTLE_BUS.sourceUrl, t('officialPage'))}
+        ${renderExternalLink(SHUTTLE_BUS.timetableUrl, t('shuttleTimetablePdf'))}
+        ${renderExternalLink(SHUTTLE_BUS.scheduleUrl, t('shuttleSchedulePdf'))}
+      </p>
+    </div>
   `;
 
   updateShuttleBusDepartures();
@@ -480,23 +509,32 @@ function updateShuttleBusDepartures() {
 
   SHUTTLE_BUS.routes.forEach((route) => {
     const next = getNextShuttleDeparture(route, now);
+    const routeElement = elements.shuttleBus.querySelector(`[data-shuttle-route="${route.id}"]`);
+    const dayElement = elements.shuttleBus.querySelector(`[data-shuttle-day="${route.id}"]`);
     const nextElement = elements.shuttleBus.querySelector(`[data-shuttle-next="${route.id}"]`);
     const countdownElement = elements.shuttleBus.querySelector(`[data-shuttle-countdown="${route.id}"]`);
 
+    routeElement?.classList.toggle('is-out-of-service', !next);
+
     if (!next) {
-      if (nextElement) nextElement.textContent = t('shuttleNoService');
-      if (countdownElement) countdownElement.textContent = '--:--';
+      setText(dayElement, '');
+      setText(nextElement, t('shuttleNoService'));
+      nextElement?.removeAttribute('datetime');
+      setText(countdownElement, '');
       return;
     }
 
-    if (nextElement) {
-      nextElement.textContent = formatShuttleDepartureLabel(next.date, now);
-    }
-
-    if (countdownElement) {
-      countdownElement.textContent = formatCountdown(next.date.getTime() - now.getTime());
-    }
+    setText(dayElement, formatShuttleDayLabel(next.date, now));
+    setText(nextElement, formatTimeValue(next.date));
+    nextElement?.setAttribute('datetime', `${formatDateValue(next.date)}T${formatTimeValue(next.date)}`);
+    setText(countdownElement, formatCountdown(next.date.getTime() - now.getTime()));
   });
+}
+
+function setText(element, value) {
+  if (element && element.textContent !== value) {
+    element.textContent = value;
+  }
 }
 
 function getNextShuttleDeparture(route, now) {
@@ -534,42 +572,28 @@ function startOfDay(date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
-function formatShuttleDepartureLabel(date, now) {
-  const time = formatTimeValue(date);
+function formatShuttleDayLabel(date, now) {
   const today = startOfDay(now).getTime();
   const departureDay = startOfDay(date).getTime();
 
-  if (departureDay === today) return `${t('today')} ${time}`;
-  if (departureDay === today + ONE_DAY) return `${t('tomorrow')} ${time}`;
-  return `${formatShuttleDate(date)} ${time}`;
+  if (departureDay === today) return t('today');
+  if (departureDay === today + ONE_DAY) return t('tomorrow');
+  return formatShuttleDate(date);
 }
 
 function formatShuttleDate(date) {
-  const month = String(date.getMonth() + 1);
-  const day = String(date.getDate());
-  return PAGE_LANG === 'en' ? `${month}/${day}` : `${month}/${day}`;
+  return `${date.getMonth() + 1}/${date.getDate()}`;
 }
 
+// Minute precision is enough here: the departure time is the primary figure.
 function formatCountdown(milliseconds) {
-  const totalSeconds = Math.max(0, Math.floor(milliseconds / 1000));
-  const days = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-  const parts = [];
+  const totalMinutes = Math.ceil(Math.max(0, milliseconds) / 60000);
+  if (totalMinutes < 1) return t('shuttleDeparting');
 
-  if (days > 0) {
-    parts.push(`${days}${t('countdownDay')}`);
-  }
-
-  if (hours > 0) {
-    parts.push(`${hours}${t('countdownHour')}`);
-  }
-
-  parts.push(`${minutes}${t('countdownMinute')}`);
-  parts.push(`${seconds}${t('countdownSecond')}`);
-
-  return parts.join(' ');
+  const days = Math.floor(totalMinutes / 1440);
+  const hours = Math.floor((totalMinutes % 1440) / 60);
+  const minutes = totalMinutes % 60;
+  return t('countdown')(days, hours, minutes);
 }
 
 function resolveDirectionLinks(direction) {
