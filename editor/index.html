@@ -9,9 +9,11 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
     <link rel="icon" href="/icon/favicon-20260605.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/icon/favicon-20260605.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon-20260605.png" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="robots" content="noindex,nofollow" />
     <title>立命館OICマップ 編集用</title>
     <script>
@@ -62,12 +64,12 @@
 
           document.documentElement.lang = lang;
           document.body.innerHTML = `
-            <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:linear-gradient(180deg,#f6f7fa 0%,#eef0f5 100%);font-family:'Inter Tight','Inter','Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;color:#0b1220;">
-              <section style="max-width:720px;padding:28px;border-radius:24px;background:rgba(255,255,255,0.92);box-shadow:0 24px 50px rgba(11,18,32,0.12);">
-                <h1 style="margin:0 0 16px;font-size:2rem;letter-spacing:-0.022em;">${fileModeText.title}</h1>
-                <p style="margin:0 0 12px;line-height:1.8;">${fileModeText.copy1}</p>
-                <p style="margin:0 0 12px;line-height:1.8;">${fileModeText.copy2}</p>
-                <p style="margin:0;line-height:1.8;">${fileModeText.copy3}</p>
+            <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:#ffffff;font-family:'Inter','Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;color:#111111;">
+              <section style="max-width:640px;padding:32px 0;border-top:1px solid #111111;">
+                <h1 style="margin:0 0 16px;font-size:1.75rem;font-weight:700;letter-spacing:0.02em;">${fileModeText.title}</h1>
+                <p style="margin:0 0 12px;line-height:1.9;">${fileModeText.copy1}</p>
+                <p style="margin:0 0 12px;line-height:1.9;">${fileModeText.copy2}</p>
+                <p style="margin:0;line-height:1.9;">${fileModeText.copy3}</p>
               </section>
             </main>
           `;

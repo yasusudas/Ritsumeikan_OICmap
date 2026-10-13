@@ -93,13 +93,6 @@ html[lang="en"] .timetable-main {
   list-style: none;
 }
 
-.timetable-main .btn:disabled {
-  border-color: var(--c-line);
-  background: transparent;
-  color: var(--c-ink-3);
-  cursor: default;
-}
-
 /* ---------------------------------------------------------------------
    Link page: stations
    --------------------------------------------------------------------- */
