@@ -57,9 +57,20 @@
 }
 
 .search-panel {
-  grid-area: search;
   position: relative;
   min-width: 0;
+}
+
+.topbar-tools-inner > .search-panel {
+  grid-area: search;
+}
+
+.topbar-tools-inner > .floor-tab-stack {
+  grid-area: floors;
+}
+
+.topbar-tools-inner > .search-icon-actions {
+  grid-area: icons;
 }
 
 .search-box {
@@ -87,6 +98,11 @@
 .search-input::placeholder {
   color: var(--c-ink-3);
   opacity: 1;
+}
+
+/* The clear button only appears once there is a query. */
+.search-input:placeholder-shown {
+  padding-right: 12px;
 }
 
 .search-input::-webkit-search-decoration,
@@ -148,7 +164,7 @@
 /* Suggestions: a flat list under the field, rows split by hairlines. */
 .search-results {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 6px);
   left: 0;
   right: 0;
   z-index: 40;
@@ -216,7 +232,6 @@
 
 /* Floor switcher: text tabs (wide screens) / quiet select (phones). */
 .floor-tab-stack {
-  grid-area: floors;
   align-self: stretch;
   display: flex;
   align-items: stretch;
@@ -285,6 +300,15 @@
   outline-offset: -2px;
 }
 
+/* The printer map is not a floor: no tab reads as selected while it shows. */
+body:has(.search-icon-button.is-active[data-facility-key="printer"]) .floor-tab.is-active {
+  color: var(--c-ink-2);
+}
+
+body:has(.search-icon-button.is-active[data-facility-key="printer"]) .floor-tab.is-active::after {
+  content: none;
+}
+
 .mobile-floor-select {
   position: relative;
   display: none;
@@ -335,7 +359,7 @@
 
 .mobile-floor-list {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 6px);
   right: 0;
   z-index: 40;
   display: none;
@@ -386,7 +410,6 @@
 
 /* Facility buttons: single-colour line icons; colour follows state. */
 .search-icon-actions {
-  grid-area: icons;
   display: flex;
   align-items: center;
   gap: var(--s-1);
@@ -838,7 +861,7 @@ body[data-app-mode="viewer"] .toilet-ring-legend {
   }
 
   body[data-app-mode="viewer"] .search-results {
-    top: calc(var(--s-2) + 40px + 4px);
+    top: calc(var(--s-2) + 40px + 6px);
   }
 
   .floor-tab-stack {

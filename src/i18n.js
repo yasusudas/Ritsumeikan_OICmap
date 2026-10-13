@@ -638,8 +638,10 @@ export function applyI18n(root = document) {
     node.setAttribute('title', t(node.dataset.i18nTitle));
   });
 
+  // Internal links: data-localized-href holds the page path; the English site
+  // serves it under /en/. (The en/index.html sync may already have prefixed it.)
   root.querySelectorAll('[data-localized-href]').forEach((node) => {
-    const path = node.dataset.localizedHref;
+    const path = node.dataset.localizedHref.replace(/^\/en(?=\/)/, '');
     node.setAttribute('href', currentLang === 'en' ? `/en${path}` : path);
   });
 
