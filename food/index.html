@@ -57,16 +57,25 @@
       </div>
     </header>
 
-    <main id="main" class="legal-main food-main">
-      <section class="legal-hero food-hero">
-        <h1>OICフード</h1>
-      </section>
+    <main id="main" class="page food-main">
+      <div class="page-inner">
+        <header class="page-head">
+          <p class="page-eyebrow">FOOD</p>
+          <h1 class="page-title">OICフード</h1>
+          <p class="page-lead">立命館OIC周辺に本日出店しているキッチンカーを確認できます。</p>
+        </header>
 
-      <section class="legal-content food-content" aria-label="本日のキッチンカー">
-        <div class="food-board" data-food-trucks aria-live="polite">
-          <p class="food-state">本日のキッチンカーを読み込んでいます…</p>
-        </div>
-      </section>
+        <section class="section food-board" aria-labelledby="food-board-title">
+          <div class="section-head food-board-head">
+            <p class="section-eyebrow">TODAY</p>
+            <h2 class="section-title food-board-title" id="food-board-title">本日のキッチンカー</h2>
+            <p class="food-board-date" data-food-date hidden></p>
+          </div>
+          <div class="section-body food-board-body" data-food-trucks aria-live="polite">
+            <p class="food-state">本日のキッチンカーを読み込んでいます…</p>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer">
