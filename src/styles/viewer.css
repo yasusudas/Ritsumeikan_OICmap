@@ -979,6 +979,22 @@ body[data-app-mode="editor"] .search-box {
   max-width: 420px;
 }
 
+/* Facility buttons match the viewer's: 48px buttons, 28px icons. The search
+   field grows to the same height so the row stays level. */
+body[data-app-mode="editor"] .search-input {
+  height: 48px;
+}
+
+body[data-app-mode="editor"] .search-icon-button {
+  width: 48px;
+  height: 48px;
+}
+
+body[data-app-mode="editor"] .search-icon-image {
+  width: 28px;
+  height: 28px;
+}
+
 body[data-app-mode="editor"] .search-results {
   right: auto;
   width: min(100%, 420px);
@@ -1054,5 +1070,9 @@ body[data-app-mode="editor"] .site-footer p {
 
   body[data-app-mode="editor"] .search-icon-actions {
     flex: 1 1 100%;
+  }
+
+  body[data-app-mode="editor"] .search-icon-button {
+    width: 100%;
   }
 }
