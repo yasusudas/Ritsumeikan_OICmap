@@ -1,0 +1,93 @@
+/* =====================================================================
+   Design tokens
+   Flat, typographic, line-based. No shadows, no blur, no gradients.
+   Separation comes from whitespace and 1px rules, never from cards.
+   ===================================================================== */
+
+:root {
+  /* Color: ink + a single accent. Accent marks selection and links only. */
+  --c-bg: #ffffff;
+  --c-bg-sub: #f4f4f2;
+  --c-ink: #111111;
+  --c-ink-2: #555555;
+  --c-ink-3: #8c8c8c;
+  --c-line: #e2e2df;
+  --c-line-strong: #111111;
+  --c-accent: #991c27;
+  --c-accent-hover: #7e1620;
+  --c-accent-sub: #f6eaeb;
+  --c-on-accent: #ffffff;
+  --c-overlay: rgba(17, 17, 17, 0.4);
+
+  /* Status colors (text on white, AA contrast) */
+  --c-ok: #1d7a46;
+  --c-warn: #8a5a00;
+  --c-danger: #b42318;
+
+  /* Map marker colors (facility rings) */
+  --c-ring-green: #3fae2a;
+  --c-ring-red: #e0394f;
+  --c-ring-blue: #1e88e5;
+  --c-ring-water: #1f9ad6;
+  --c-ring-yellow: #e8ac00;
+  --c-pin: #e8462b;
+
+  /* Typography */
+  --font-sans:
+    "Inter", "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic", system-ui, sans-serif;
+  --font-latin: "Inter", system-ui, sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  --fs-2xs: 0.6875rem; /* 11px */
+  --fs-xs: 0.75rem; /* 12px */
+  --fs-sm: 0.8125rem; /* 13px */
+  --fs-base: 0.9375rem; /* 15px */
+  --fs-md: 1.0625rem; /* 17px */
+  --fs-lg: 1.25rem; /* 20px */
+  --fs-xl: 1.625rem; /* 26px */
+  --fs-2xl: clamp(1.75rem, 1.25rem + 2vw, 2.625rem); /* 28-42px */
+  --fs-display: clamp(2.25rem, 1.5rem + 3vw, 3.5rem); /* 36-56px */
+
+  --lh-tight: 1.3;
+  --lh-snug: 1.55;
+  --lh-body: 1.9;
+  --ls-eyebrow: 0.16em;
+  --ls-title: 0.02em;
+
+  /* Space */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+
+  /* Layout */
+  --container: 1120px;
+  --gutter: 24px;
+  --measure: 40em; /* ~40 Japanese characters per line */
+  --header-h: 60px;
+
+  /* Shape: layout is square; only interactive controls get a small radius. */
+  --radius: 0;
+  --radius-control: 4px;
+  --rule: 1px solid var(--c-line);
+  --rule-strong: 1px solid var(--c-line-strong);
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur: 160ms;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --gutter: 16px;
+    --header-h: 56px;
+  }
+}

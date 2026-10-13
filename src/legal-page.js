@@ -239,6 +239,14 @@ function setupDialogs() {
     if (e.key === 'Escape') {
       if (!aboutBackdrop.hidden) setAboutOpen(false);
       if (!contactBackdrop.hidden) setContactOpen(false);
+      closeMenu();
+    }
+  });
+
+  // Close the menu when clicking outside of it
+  document.addEventListener('click', (e) => {
+    if (menuDetails?.open && e.target instanceof Node && !menuDetails.contains(e.target)) {
+      closeMenu();
     }
   });
 }

@@ -1,0 +1,54 @@
+# デザインガイドライン
+
+フラットで、文字組みと罫線で見せるUI。参考は muuuuu.org に掲載されるような、余白と1pxの線で構成された国内サイト。
+
+## 原則
+
+- **影・ぼかし・グラデーションは使わない。** `box-shadow`、`backdrop-filter`、`linear-gradient`/`radial-gradient` は禁止（地図マーカーの白縁リングのみ例外。下記参照）。
+- **カードを使わない。** 情報のまとまりは「上下の罫線（1px）」と「余白」で区切る。枠で囲んだ箱を積み重ねない。入れ子の箱は絶対に作らない。
+- **角丸は2種類だけ。** レイアウト要素は `0`。ボタン・入力欄などの操作部品だけ `var(--radius-control)`（4px）。ピル型（999px）は使わない。地図上の点（ピン・施設リング）だけ円形可。
+- **文字の太さは3段階。** 本文400、UI・小見出し500、見出し700。800/900は使わない。強弱は主にサイズと色（`--c-ink` / `--c-ink-2` / `--c-ink-3`）でつける。
+- **色はインク＋アクセント1色。** アクセント（`--c-accent` クリムゾン）は「選択中の状態」「リンク」「主要ボタン」にだけ使う。薄い色ベタの背景を多用しない。鉄道会社などのカテゴリ色は、小さな四角や細い線（2〜3px）程度にとどめる。
+- **左揃えが基本。** 全ページで同じコンテナ幅（`--container` 1120px）と左端を使う。長文は1行40字前後（`--measure`）に収める。
+- **見出しの型を統一。** 小さな英字ラベル（`.page-eyebrow` 例: `ACCESS`）＋大きな日本語見出し（`.page-title`）＋必要ならリード文（`.page-lead`）。その下に太い罫線（`--rule-strong`）。
+- **アイコンは線画1系統。** `stroke: currentColor`、線幅1.5〜2px、塗りなし。カラーのピクトグラムや黒丸の塗りアイコンは使わない。
+- **動きは控えめ。** 色の切り替え程度。浮き上がり（translateY）・拡大縮小・脈動アニメーションは使わない。
+- **フォーカスは必ず見える。** `outline: none` で消さない（`:focus-visible` は base.css で一括指定）。
+
+## トークン
+
+`src/styles/tokens.css` を参照。新しい色・サイズ・余白を直書きせず、必ずトークンを使う。
+
+| 用途 | トークン |
+| --- | --- |
+| 背景 / 控えめな面 | `--c-bg` / `--c-bg-sub` |
+| 文字（主・副・補助） | `--c-ink` / `--c-ink-2` / `--c-ink-3` |
+| 罫線（細・強） | `--rule`（`--c-line`）/ `--rule-strong`（`--c-ink`） |
+| アクセント | `--c-accent` / `--c-accent-hover` / `--c-accent-sub` |
+| 文字サイズ | `--fs-2xs`〜`--fs-display` |
+| 余白 | `--s-1`(4) 〜 `--s-9`(96) |
+
+## 共通部品（`src/styles/base.css`）
+
+- ヘッダー: `.site-header` > `.site-header-inner` > `.site-brand` / `.site-nav` / `.site-header-actions`（言語切替 `.lang-toggle`、メニュー `.site-menu`）
+- ナビの項目と順番は全ページ共通: マップ / アクセス / 時刻表 / OICフード（＋メニュー内に「このサイトについて」「お問い合わせ」）。現在のページには `aria-current="page"`。
+- ページ見出し: `.page-head` > `.page-eyebrow` + `.page-title` + `.page-lead`
+- セクション: `.section` > `.section-head`（`.section-eyebrow` + `.section-title`）+ `.section-body`
+- 長文: `.prose`
+- 罫線リスト: `.rule-list`
+- ボタン: `.btn`（線）、`.btn-primary`（アクセント）、`.btn-quiet`（細線）、矢印 `.arrow` / 外部リンク `.external`
+- ダイアログ: `.about-dialog-*`
+- フッター: `.site-footer` > `.site-footer-inner` > `.site-footer-links` + `.site-footer-copy`
+
+## CSSの構成
+
+`src/style.css` は読み込み順だけを持ち、実体は `src/styles/` に分割している。
+
+| ファイル | 担当範囲 |
+| --- | --- |
+| `tokens.css` | デザイントークン |
+| `base.css` | リセット・共通部品 |
+| `viewer.css` | 地図ページ（`/`、`/en/`）と、編集画面と共有する地図レイヤー |
+| `timetable.css` | `/timetable/`、`/hidden/timetable/` |
+| `pages.css` | `/access/`、`/food/`、`/terms/`、`/privacy/` |
+| `editor.css` | `/editor/` の編集ツール |

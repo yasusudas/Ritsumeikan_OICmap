@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400..900&display=swap" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
     <link rel="icon" href="/icon/favicon-20260605.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/icon/favicon-20260605.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon-20260605.png" />
@@ -15,7 +14,7 @@
     <link rel="alternate" hreflang="ja" href="https://rits-oic-map.app/privacy/" />
     <link rel="alternate" hreflang="en" href="https://rits-oic-map.app/en/privacy/" />
     <link rel="alternate" hreflang="x-default" href="https://rits-oic-map.app/privacy/" />
-    <meta name="theme-color" content="#991c27" />
+    <meta name="theme-color" content="#ffffff" />
     <meta
       name="description"
       content="Privacy Policy for Ritsumeikan OIC Map, covering analytics, cookies, local storage, third-party services, and related policies."
@@ -23,151 +22,158 @@
     <title>Privacy Policy | Ritsumeikan OIC Map</title>
     <script type="module" src="/src/legal-page.js"></script>
   </head>
-  <body class="legal-page">
-    <div class="legal-shell">
-      <header class="topbar legal-header">
-        <div class="topbar-glass">
-          <div class="topbar-title-row legal-header-inner">
-          <a class="legal-brand app-title" href="/en/" aria-label="Back to Ritsumeikan OIC Map">
-            <span class="app-title-main">Ritsumeikan OIC Map</span>
-          </a>
-          <div class="topbar-actions">
-            <button class="lang-toggle legal-lang-toggle" data-legal-lang-toggle type="button" aria-label="Switch language" title="Switch language">
-              <span class="lang-toggle-option" data-legal-lang-option="ja">JP</span>
-              <span class="lang-toggle-separator" aria-hidden="true">/</span>
-              <span class="lang-toggle-option is-active" data-legal-lang-option="en" aria-current="true">EN</span>
-            </button>
-            <details class="site-menu legal-menu">
-              <summary class="site-menu-toggle legal-menu-toggle" aria-label="Menu">
-                <span class="site-menu-line" aria-hidden="true"></span>
-                <span class="site-menu-line" aria-hidden="true"></span>
-                <span class="site-menu-line" aria-hidden="true"></span>
-              </summary>
-              <nav class="site-menu-panel legal-menu-panel" aria-label="Page menu">
-                <a class="site-menu-item" href="/en/">Back to map</a>
-                <button class="site-menu-item" type="button" data-dialog="about">About this site</button>
-                <button class="site-menu-item" type="button" data-dialog="contact">Contact</button>
-              </nav>
-            </details>
-          </div>
-          </div>
+  <body class="subpage legal-page privacy-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/en/" aria-label="Ritsumeikan OIC Map home">Ritsumeikan OIC Map</a>
+        <nav class="site-nav" aria-label="Site menu">
+          <a class="site-nav-link" href="/en/">Map</a>
+          <a class="site-nav-link" href="/en/access/">Access</a>
+          <a class="site-nav-link" href="/en/timetable/">Timetable</a>
+          <a class="site-nav-link" href="/en/food/">OIC Food</a>
+        </nav>
+        <div class="site-header-actions">
+          <button class="lang-toggle" data-legal-lang-toggle type="button" aria-label="Switch language" title="Switch language">
+            <span class="lang-toggle-option" data-legal-lang-option="ja">JA</span>
+            <span class="lang-toggle-separator" aria-hidden="true">/</span>
+            <span class="lang-toggle-option is-active" data-legal-lang-option="en" aria-current="true">EN</span>
+          </button>
+          <details class="site-menu legal-menu">
+            <summary class="site-menu-toggle" aria-label="Menu">
+              <span class="site-menu-line" aria-hidden="true"></span>
+              <span class="site-menu-line" aria-hidden="true"></span>
+              <span class="site-menu-line" aria-hidden="true"></span>
+            </summary>
+            <nav class="site-menu-panel" aria-label="Menu">
+              <a class="site-menu-item" href="/en/">Map</a>
+              <a class="site-menu-item" href="/en/access/">Access</a>
+              <a class="site-menu-item" href="/en/timetable/">Timetable</a>
+              <a class="site-menu-item" href="/en/food/">OIC Food</a>
+              <span class="site-menu-divider" aria-hidden="true"></span>
+              <button class="site-menu-item" type="button" data-dialog="about">About this map</button>
+              <button class="site-menu-item" type="button" data-dialog="contact">Contact</button>
+            </nav>
+          </details>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <main class="legal-main">
-        <section class="legal-hero">
-          <h1>Privacy Policy</h1>
-          <p>This policy explains how Ritsumeikan OIC Map handles personal information and data.</p>
+    <main id="main" class="legal-main">
+      <section class="legal-hero">
+        <h1>Privacy Policy</h1>
+        <p>This policy explains how Ritsumeikan OIC Map handles personal information and data.</p>
+      </section>
+
+      <article class="legal-content">
+        <p class="legal-updated">Last updated: September 24, 2026</p>
+
+        <section class="legal-section">
+          <h2>1. Operator</h2>
+          <p>
+            Ritsumeikan OIC Map (the "Service") is an unofficial service developed and operated by an individual. It is not provided or endorsed by Ritsumeikan University or any related organization.
+          </p>
         </section>
 
-        <article class="legal-content">
-          <p class="legal-updated">Last updated: September 24, 2026</p>
+        <section class="legal-section">
+          <h2>2. Information Handled</h2>
+          <p>The following information is handled when you use the Service.</p>
+          <ul>
+            <li>Analytics information such as pages viewed, viewing times, referrers, device and browser information, approximate region, and cookie identifiers</li>
+            <li>Nicknames, email addresses, inquiry messages, and other information entered into the contact form</li>
+            <li>IP addresses and request information sent to the hosting provider when the Service is accessed</li>
+          </ul>
+          <p>Language settings, timetable display settings, editor data, and editor authentication state are also stored in your browser. Section 5 explains this storage.</p>
+        </section>
 
-          <section class="legal-section">
-            <h2>1. Operator</h2>
-            <p>
-              Ritsumeikan OIC Map (the "Service") is an unofficial service developed and operated by an individual. It is not provided or endorsed by Ritsumeikan University or any related organization.
-            </p>
-          </section>
+        <section class="legal-section">
+          <h2>3. Purpose of Use</h2>
+          <p>Information the operator obtains or can access is used for the following purposes.</p>
+          <ul>
+            <li>To provide the Service display, search, and editing features</li>
+            <li>To understand usage, improve features, and investigate defects</li>
+            <li>To respond to inquiries and provide necessary communication</li>
+            <li>To prevent unauthorized use and excessive access</li>
+          </ul>
+        </section>
 
-          <section class="legal-section">
-            <h2>2. Information Handled</h2>
-            <p>The following information is handled when you use the Service.</p>
-            <ul>
-              <li>Analytics information such as pages viewed, viewing times, referrers, device and browser information, approximate region, and cookie identifiers</li>
-              <li>Nicknames, email addresses, inquiry messages, and other information entered into the contact form</li>
-              <li>IP addresses and request information sent to the hosting provider when the Service is accessed</li>
-            </ul>
-            <p>Language settings, timetable display settings, editor data, and editor authentication state are also stored in your browser. Section 5 explains this storage.</p>
-          </section>
+        <section class="legal-section">
+          <h2>4. Data Sent to External Services and Analytics</h2>
+          <p>
+            The Service uses the following external services. Whether information is sent, and its content, depends on the page viewed, browser settings, and each service's settings.
+          </p>
+          <ul>
+            <li>Google Analytics 4 (recipient: Google LLC): When you view the site, information such as the page viewed, viewing time, referrer, device and browser information, and a client ID stored in a cookie is sent to Google to analyze use of the Service. The information sent is not limited to aggregate results; it can distinguish individual visits and sessions.</li>
+            <li>Vercel Web Analytics (recipient: Vercel Inc.): When you view a map page, information such as the page viewed, viewing time, referrer, usage environment, and approximate region is sent to Vercel for aggregate usage analysis. According to Vercel, this analytics feature does not use third-party cookies.</li>
+            <li>Google Forms (recipient: Google LLC): Opening the contact dialog loads the form and sends information about access to the form to Google. Submitted responses are stored in Google Forms and a linked Google Sheet, where the operator reviews them to respond to inquiries.</li>
+            <li>Google Fonts (recipient: Google LLC): Your browser connects to Google to load fonts used to display the page.</li>
+            <li>Vercel hosting (recipient: Vercel Inc.): Access information needed to deliver pages, images, and other files is sent to Vercel.</li>
+          </ul>
+          <p>
+            Vercel Web Analytics privacy information:
+            <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">
+              https://vercel.com/docs/analytics/privacy-policy
+            </a>
+          </p>
+          <p>
+            Google's privacy and data use information:
+            <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">
+              https://policies.google.com/technologies/partner-sites
+            </a>
+          </p>
+        </section>
 
-          <section class="legal-section">
-            <h2>3. Purpose of Use</h2>
-            <p>Information the operator obtains or can access is used for the following purposes.</p>
-            <ul>
-              <li>To provide the Service display, search, and editing features</li>
-              <li>To understand usage, improve features, and investigate defects</li>
-              <li>To respond to inquiries and provide necessary communication</li>
-              <li>To prevent unauthorized use and excessive access</li>
-            </ul>
-          </section>
+        <section class="legal-section">
+          <h2>5. Cookies and Browser Storage</h2>
+          <p>
+            The Service uses local storage for language settings, timetable display settings, and editor data, and session storage for the editor's authentication state. These stored items normally remain in your browser and are not sent to the operator. You can delete them through your browser settings.
+          </p>
+          <p>
+            Google Analytics 4 may use a cookie set for this site (such as _ga) to distinguish visitors and sessions when you view the site. External services, including Google Forms in the contact dialog, may also use cookies or similar technologies.
+          </p>
+        </section>
 
-          <section class="legal-section">
-            <h2>4. Data Sent to External Services and Analytics</h2>
-            <p>
-              The Service uses the following external services. Whether information is sent, and its content, depends on the page viewed, browser settings, and each service's settings.
-            </p>
-            <ul>
-              <li>Google Analytics 4 (recipient: Google LLC): When you view the site, information such as the page viewed, viewing time, referrer, device and browser information, and a client ID stored in a cookie is sent to Google to analyze use of the Service. The information sent is not limited to aggregate results; it can distinguish individual visits and sessions.</li>
-              <li>Vercel Web Analytics (recipient: Vercel Inc.): When you view a map page, information such as the page viewed, viewing time, referrer, usage environment, and approximate region is sent to Vercel for aggregate usage analysis. According to Vercel, this analytics feature does not use third-party cookies.</li>
-              <li>Google Forms (recipient: Google LLC): Opening the contact dialog loads the form and sends information about access to the form to Google. Submitted responses are stored in Google Forms and a linked Google Sheet, where the operator reviews them to respond to inquiries.</li>
-              <li>Google Fonts (recipient: Google LLC): Your browser connects to Google to load fonts used to display the page.</li>
-              <li>Vercel hosting (recipient: Vercel Inc.): Access information needed to deliver pages, images, and other files is sent to Vercel.</li>
-            </ul>
-            <p>
-              Vercel Web Analytics privacy information:
-              <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">
-                https://vercel.com/docs/analytics/privacy-policy
-              </a>
-            </p>
-            <p>
-              Google's privacy and data use information:
-              <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">
-                https://policies.google.com/technologies/partner-sites
-              </a>
-            </p>
-          </section>
+        <section class="legal-section">
+          <h2>6. Disclosure and Processing of Personal Data</h2>
+          <p>
+            Section 4 describes information sent to external services and information entered into the contact form. If the operator discloses personal data it holds to a third party, the operator will obtain the individual's prior consent unless an exception under applicable law applies. When the operator engages an external provider to process personal data as needed to operate the Service, the operator will appropriately supervise that provider.
+          </p>
+        </section>
 
-          <section class="legal-section">
-            <h2>5. Cookies and Browser Storage</h2>
-            <p>
-              The Service uses local storage for language settings, timetable display settings, and editor data, and session storage for the editor's authentication state. These stored items normally remain in your browser and are not sent to the operator. You can delete them through your browser settings.
-            </p>
-            <p>
-              Google Analytics 4 may use a cookie set for this site (such as _ga) to distinguish visitors and sessions when you view the site. External services, including Google Forms in the contact dialog, may also use cookies or similar technologies.
-            </p>
-          </section>
+        <section class="legal-section">
+          <h2>7. Contact Form and External Links</h2>
+          <p>
+            The contact form is displayed as an embedded Google Form within the Service. The operator reviews submitted information in a linked Google Sheet. Information on external sites linked from the Service, such as university materials, is handled under those sites' own policies.
+          </p>
+        </section>
 
-          <section class="legal-section">
-            <h2>6. Disclosure and Processing of Personal Data</h2>
-            <p>
-              Section 4 describes information sent to external services and information entered into the contact form. If the operator discloses personal data it holds to a third party, the operator will obtain the individual's prior consent unless an exception under applicable law applies. When the operator engages an external provider to process personal data as needed to operate the Service, the operator will appropriately supervise that provider.
-            </p>
-          </section>
+        <section class="legal-section">
+          <h2>8. Changes to this Privacy Policy</h2>
+          <p>
+            If this Privacy Policy changes, the updated text and date will be posted on this page. Changes to the purpose of use of personal information already obtained will be made only as permitted by law, with notice, publication, or consent obtained when required.
+          </p>
+        </section>
 
-          <section class="legal-section">
-            <h2>7. Contact Form and External Links</h2>
-            <p>
-              The contact form is displayed as an embedded Google Form within the Service. The operator reviews submitted information in a linked Google Sheet. Information on external sites linked from the Service, such as university materials, is handled under those sites' own policies.
-            </p>
-          </section>
+        <section class="legal-section">
+          <h2>9. Contact</h2>
+          <p>
+            For inquiries about this Privacy Policy, or to request notification of the purpose of use, access to, correction of, or cessation of use of personal data held by the operator, please use "Contact" on the top page. The operator will review the request and respond after verifying your identity where needed.
+          </p>
+        </section>
+      </article>
+    </main>
 
-          <section class="legal-section">
-            <h2>8. Changes to this Privacy Policy</h2>
-            <p>
-              If this Privacy Policy changes, the updated text and date will be posted on this page. Changes to the purpose of use of personal information already obtained will be made only as permitted by law, with notice, publication, or consent obtained when required.
-            </p>
-          </section>
-
-          <section class="legal-section">
-            <h2>9. Contact</h2>
-            <p>
-              For inquiries about this Privacy Policy, or to request notification of the purpose of use, access to, correction of, or cessation of use of personal data held by the operator, please use "Contact" on the top page. The operator will review the request and respond after verifying your identity where needed.
-            </p>
-          </section>
-        </article>
-      </main>
-
-      <footer class="legal-footer">
-        <div class="site-footer">
-          <nav class="site-footer-links" aria-label="Legal links">
-            <a href="/en/terms/">Terms</a>
-            <a href="/en/privacy/">Privacy Policy</a>
-            <span class="footer-portfolio-link">　<a href="https://ichi-portfolio.dev" target="_blank" rel="noopener noreferrer">About the Creator</a></span>
-          </nav>
-          <p>© 2026 Issei Yasuda</p>
-        </div>
-      </footer>
-    </div>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <nav class="site-footer-links" aria-label="Site information">
+          <button class="site-footer-link" type="button" data-dialog="about">About this map</button>
+          <button class="site-footer-link" type="button" data-dialog="contact">Contact</button>
+          <a class="site-footer-link" href="/en/terms/">Terms</a>
+          <a class="site-footer-link" href="/en/privacy/">Privacy Policy</a>
+          <a class="site-footer-link" href="https://ichi-portfolio.dev" target="_blank" rel="noopener noreferrer">About the Creator</a>
+        </nav>
+        <p class="site-footer-copy">© 2026 Issei Yasuda</p>
+      </div>
+    </footer>
   </body>
 </html>

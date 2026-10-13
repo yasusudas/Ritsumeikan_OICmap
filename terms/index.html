@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400..900&display=swap" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
     <link rel="icon" href="/icon/favicon-20260605.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/icon/favicon-20260605.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon-20260605.png" />
@@ -15,7 +14,7 @@
     <link rel="alternate" hreflang="ja" href="https://rits-oic-map.app/terms/" />
     <link rel="alternate" hreflang="en" href="https://rits-oic-map.app/en/terms/" />
     <link rel="alternate" hreflang="x-default" href="https://rits-oic-map.app/terms/" />
-    <meta name="theme-color" content="#991c27" />
+    <meta name="theme-color" content="#ffffff" />
     <meta
       name="description"
       content="立命館OICマップの利用規約。サービスの性質、利用条件、免責事項などを掲載しています。"
@@ -23,121 +22,128 @@
     <title>利用規約 | 立命館OICマップ</title>
     <script type="module" src="/src/legal-page.js"></script>
   </head>
-  <body class="legal-page">
-    <div class="legal-shell">
-      <header class="topbar legal-header">
-        <div class="topbar-glass">
-          <div class="topbar-title-row legal-header-inner">
-          <a class="legal-brand app-title" href="/" aria-label="立命館OICマップへ戻る">
-            <span class="app-title-main">立命館OICマップ</span>
-          </a>
-          <div class="topbar-actions">
-            <button class="lang-toggle legal-lang-toggle" data-legal-lang-toggle type="button" aria-label="言語を切り替え" title="言語を切り替え">
-              <span class="lang-toggle-option is-active" data-legal-lang-option="ja" aria-current="true">JP</span>
-              <span class="lang-toggle-separator" aria-hidden="true">/</span>
-              <span class="lang-toggle-option" data-legal-lang-option="en">EN</span>
-            </button>
-            <details class="site-menu legal-menu">
-              <summary class="site-menu-toggle legal-menu-toggle" aria-label="メニュー">
-                <span class="site-menu-line" aria-hidden="true"></span>
-                <span class="site-menu-line" aria-hidden="true"></span>
-                <span class="site-menu-line" aria-hidden="true"></span>
-              </summary>
-              <nav class="site-menu-panel legal-menu-panel" aria-label="ページメニュー">
-                <a class="site-menu-item" href="/">マップへ戻る</a>
-                <button class="site-menu-item" type="button" data-dialog="about">このサイトについて</button>
-                <button class="site-menu-item" type="button" data-dialog="contact">お問い合わせ</button>
-              </nav>
-            </details>
-          </div>
-          </div>
+  <body class="subpage legal-page terms-page">
+    <a class="skip-link" href="#main">本文へスキップ</a>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/" aria-label="立命館OICマップ トップへ">立命館OICマップ</a>
+        <nav class="site-nav" aria-label="サイトメニュー">
+          <a class="site-nav-link" href="/">マップ</a>
+          <a class="site-nav-link" href="/access/">アクセス</a>
+          <a class="site-nav-link" href="/timetable/">時刻表</a>
+          <a class="site-nav-link" href="/food/">OICフード</a>
+        </nav>
+        <div class="site-header-actions">
+          <button class="lang-toggle" data-legal-lang-toggle type="button" aria-label="言語を切り替え" title="言語を切り替え">
+            <span class="lang-toggle-option is-active" data-legal-lang-option="ja" aria-current="true">JA</span>
+            <span class="lang-toggle-separator" aria-hidden="true">/</span>
+            <span class="lang-toggle-option" data-legal-lang-option="en">EN</span>
+          </button>
+          <details class="site-menu legal-menu">
+            <summary class="site-menu-toggle" aria-label="メニュー">
+              <span class="site-menu-line" aria-hidden="true"></span>
+              <span class="site-menu-line" aria-hidden="true"></span>
+              <span class="site-menu-line" aria-hidden="true"></span>
+            </summary>
+            <nav class="site-menu-panel" aria-label="メニュー">
+              <a class="site-menu-item" href="/">マップ</a>
+              <a class="site-menu-item" href="/access/">アクセス</a>
+              <a class="site-menu-item" href="/timetable/">時刻表</a>
+              <a class="site-menu-item" href="/food/">OICフード</a>
+              <span class="site-menu-divider" aria-hidden="true"></span>
+              <button class="site-menu-item" type="button" data-dialog="about">このサイトについて</button>
+              <button class="site-menu-item" type="button" data-dialog="contact">お問い合わせ</button>
+            </nav>
+          </details>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <main class="legal-main">
-        <section class="legal-hero">
-          <h1>利用規約</h1>
-          <p>立命館OICマップの利用条件を定めています。ご利用前にご確認ください。</p>
+    <main id="main" class="legal-main">
+      <section class="legal-hero">
+        <h1>利用規約</h1>
+        <p>立命館OICマップの利用条件を定めています。ご利用前にご確認ください。</p>
+      </section>
+
+      <article class="legal-content">
+        <p class="legal-updated">最終更新日：2026年9月24日</p>
+
+        <section class="legal-section">
+          <h2>第1条（サービスの性質）</h2>
+          <p>
+            立命館OICマップ（以下「本サービス」）は、立命館大学大阪いばらきキャンパス（OIC）の教室や施設を探すための非公式キャンパスマップです。本サービスは個人が開発・運営するものであり、立命館大学および関連機関が提供・公認するものではありません。
+          </p>
         </section>
 
-        <article class="legal-content">
-          <p class="legal-updated">最終更新日：2026年9月24日</p>
+        <section class="legal-section">
+          <h2>第2条（利用条件）</h2>
+          <p>本サービスは無料で利用できます。ただし、以下の行為を禁止します。</p>
+          <ul>
+            <li>自動化ツール、スクレイピング、クローラー等による過度なアクセス</li>
+            <li>法令で認められる場合を除き、権利者の許諾なく本サービスのコンテンツを複製、転載、販売、商用利用する行為</li>
+            <li>本サービスの運営または他の利用者の利用を妨げる行為</li>
+            <li>法令、公序良俗、大学や施設の利用ルールに反する行為</li>
+          </ul>
+        </section>
 
-          <section class="legal-section">
-            <h2>第1条（サービスの性質）</h2>
-            <p>
-              立命館OICマップ（以下「本サービス」）は、立命館大学大阪いばらきキャンパス（OIC）の教室や施設を探すための非公式キャンパスマップです。本サービスは個人が開発・運営するものであり、立命館大学および関連機関が提供・公認するものではありません。
-            </p>
-          </section>
+        <section class="legal-section">
+          <h2>第3条（情報の正確性について）</h2>
+          <p>
+            本サービスに掲載する教室・施設情報は、公開資料および独自に整理したデータをもとに作成していますが、正確性、完全性、最新性を保証するものではありません。実際の施設利用状況、授業、入構、休講、補講、工事、イベント等の最新情報は、大学公式情報や現地掲示を確認してください。
+          </p>
+        </section>
 
-          <section class="legal-section">
-            <h2>第2条（利用条件）</h2>
-            <p>本サービスは無料で利用できます。ただし、以下の行為を禁止します。</p>
-            <ul>
-              <li>自動化ツール、スクレイピング、クローラー等による過度なアクセス</li>
-              <li>法令で認められる場合を除き、権利者の許諾なく本サービスのコンテンツを複製、転載、販売、商用利用する行為</li>
-              <li>本サービスの運営または他の利用者の利用を妨げる行為</li>
-              <li>法令、公序良俗、大学や施設の利用ルールに反する行為</li>
-            </ul>
-          </section>
+        <section class="legal-section">
+          <h2>第4条（サービスの変更・停止）</h2>
+          <p>
+            運営者は、必要に応じて予告なく本サービスの内容を変更、停止、終了することがあります。これに伴う運営者の責任は、適用される法令に従います。
+          </p>
+        </section>
 
-          <section class="legal-section">
-            <h2>第3条（情報の正確性について）</h2>
-            <p>
-              本サービスに掲載する教室・施設情報は、公開資料および独自に整理したデータをもとに作成していますが、正確性、完全性、最新性を保証するものではありません。実際の施設利用状況、授業、入構、休講、補講、工事、イベント等の最新情報は、大学公式情報や現地掲示を確認してください。
-            </p>
-          </section>
+        <section class="legal-section">
+          <h2>第5条（免責事項）</h2>
+          <p>
+            本サービスに掲載する情報の正確性、完全性、最新性について、運営者は保証しません。情報は変更される場合があります。
+          </p>
+          <p>
+            重要な判断や移動の根拠として本サービスだけを使用せず、大学の公式情報や現地掲示を確認してください。本条は、運営者の故意・過失による損害賠償責任その他法令上免除できない責任を免除するものではありません。
+          </p>
+        </section>
 
-          <section class="legal-section">
-            <h2>第4条（サービスの変更・停止）</h2>
-            <p>
-              運営者は、必要に応じて予告なく本サービスの内容を変更、停止、終了することがあります。これに伴う運営者の責任は、適用される法令に従います。
-            </p>
-          </section>
+        <section class="legal-section">
+          <h2>第6条（知的財産）</h2>
+          <p>
+            本サービスのデザイン、コード、編集データに関する権利は、運営者または正当な権利者に帰属します。ただし、大学が公開する資料、ロゴ、名称、地図情報等の権利は、それぞれの権利者に帰属します。
+          </p>
+        </section>
 
-          <section class="legal-section">
-            <h2>第5条（免責事項）</h2>
-            <p>
-              本サービスに掲載する情報の正確性、完全性、最新性について、運営者は保証しません。情報は変更される場合があります。
-            </p>
-            <p>
-              重要な判断や移動の根拠として本サービスだけを使用せず、大学の公式情報や現地掲示を確認してください。本条は、運営者の故意・過失による損害賠償責任その他法令上免除できない責任を免除するものではありません。
-            </p>
-          </section>
+        <section class="legal-section">
+          <h2>第7条（準拠法・管轄）</h2>
+          <p>
+            本規約は日本法に準拠します。本サービスに関する紛争の管轄裁判所は、適用される法令に従って定まります。
+          </p>
+        </section>
 
-          <section class="legal-section">
-            <h2>第6条（知的財産）</h2>
-            <p>
-              本サービスのデザイン、コード、編集データに関する権利は、運営者または正当な権利者に帰属します。ただし、大学が公開する資料、ロゴ、名称、地図情報等の権利は、それぞれの権利者に帰属します。
-            </p>
-          </section>
+        <section class="legal-section">
+          <h2>お問い合わせ</h2>
+          <p>
+            本規約に関するお問い合わせは、トップページの「お問い合わせ」からご連絡ください。
+          </p>
+        </section>
+      </article>
+    </main>
 
-          <section class="legal-section">
-            <h2>第7条（準拠法・管轄）</h2>
-            <p>
-              本規約は日本法に準拠します。本サービスに関する紛争の管轄裁判所は、適用される法令に従って定まります。
-            </p>
-          </section>
-
-          <section class="legal-section">
-            <h2>お問い合わせ</h2>
-            <p>
-              本規約に関するお問い合わせは、トップページの「お問い合わせ」からご連絡ください。
-            </p>
-          </section>
-        </article>
-      </main>
-
-      <footer class="legal-footer">
-        <div class="site-footer">
-          <nav class="site-footer-links" aria-label="法務リンク">
-            <a href="/terms/">利用規約</a>
-            <a href="/privacy/">プライバシーポリシー</a>
-            <span class="footer-portfolio-link">　<a href="https://ichi-portfolio.dev" target="_blank" rel="noopener noreferrer">制作者について</a></span>
-          </nav>
-          <p>© 2026 Issei Yasuda</p>
-        </div>
-      </footer>
-    </div>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <nav class="site-footer-links" aria-label="サイト情報">
+          <button class="site-footer-link" type="button" data-dialog="about">このサイトについて</button>
+          <button class="site-footer-link" type="button" data-dialog="contact">お問い合わせ</button>
+          <a class="site-footer-link" href="/terms/">利用規約</a>
+          <a class="site-footer-link" href="/privacy/">プライバシーポリシー</a>
+          <a class="site-footer-link" href="https://ichi-portfolio.dev" target="_blank" rel="noopener noreferrer">制作者について</a>
+        </nav>
+        <p class="site-footer-copy">© 2026 Issei Yasuda</p>
+      </div>
+    </footer>
   </body>
 </html>

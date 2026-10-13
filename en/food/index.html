@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400..900&display=swap" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
     <link rel="icon" href="/icon/favicon-20260605.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/icon/favicon-20260605.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon-20260605.png" />
@@ -15,67 +14,72 @@
     <link rel="alternate" hreflang="ja" href="https://rits-oic-map.app/food/" />
     <link rel="alternate" hreflang="en" href="https://rits-oic-map.app/en/food/" />
     <link rel="alternate" hreflang="x-default" href="https://rits-oic-map.app/food/" />
-    <meta name="theme-color" content="#991c27" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="description" content="Check which food trucks are open today around Ritsumeikan OIC." />
     <title>OIC Food | Ritsumeikan OIC Map</title>
     <script type="module" src="/src/legal-page.js"></script>
     <script type="module" src="/src/food-page.js"></script>
   </head>
-  <body class="legal-page food-page">
-    <div class="legal-shell">
-      <header class="topbar legal-header">
-        <div class="topbar-glass">
-          <div class="topbar-title-row legal-header-inner">
-            <a class="legal-brand app-title" href="/en/" aria-label="Back to Ritsumeikan OIC Map">
-              <span class="app-title-main">Ritsumeikan OIC Map</span>
-            </a>
-            <div class="topbar-actions">
-              <button class="lang-toggle legal-lang-toggle" data-legal-lang-toggle type="button" aria-label="Switch language" title="Switch language">
-                <span class="lang-toggle-option" data-legal-lang-option="ja">JP</span>
-                <span class="lang-toggle-separator" aria-hidden="true">/</span>
-                <span class="lang-toggle-option is-active" data-legal-lang-option="en" aria-current="true">EN</span>
-              </button>
-              <details class="site-menu legal-menu">
-                <summary class="site-menu-toggle legal-menu-toggle" aria-label="Menu">
-                  <span class="site-menu-line" aria-hidden="true"></span>
-                  <span class="site-menu-line" aria-hidden="true"></span>
-                  <span class="site-menu-line" aria-hidden="true"></span>
-                </summary>
-                <nav class="site-menu-panel legal-menu-panel" aria-label="Page menu">
-                  <a class="site-menu-item" href="/en/">Back to map</a>
-                  <a class="site-menu-item" href="/en/access/">Access</a>
-                  <a class="site-menu-item" href="/en/timetable/">Timetable</a>
-                  <button class="site-menu-item" type="button" data-dialog="about">About this map</button>
-                  <button class="site-menu-item" type="button" data-dialog="contact">Contact</button>
-                </nav>
-              </details>
-            </div>
-          </div>
+  <body class="subpage food-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/en/" aria-label="Ritsumeikan OIC Map home">Ritsumeikan OIC Map</a>
+        <nav class="site-nav" aria-label="Site menu">
+          <a class="site-nav-link" href="/en/">Map</a>
+          <a class="site-nav-link" href="/en/access/">Access</a>
+          <a class="site-nav-link" href="/en/timetable/">Timetable</a>
+          <a class="site-nav-link" href="/en/food/" aria-current="page">OIC Food</a>
+        </nav>
+        <div class="site-header-actions">
+          <button class="lang-toggle" data-legal-lang-toggle type="button" aria-label="Switch language" title="Switch language">
+            <span class="lang-toggle-option" data-legal-lang-option="ja">JA</span>
+            <span class="lang-toggle-separator" aria-hidden="true">/</span>
+            <span class="lang-toggle-option is-active" data-legal-lang-option="en" aria-current="true">EN</span>
+          </button>
+          <details class="site-menu legal-menu">
+            <summary class="site-menu-toggle" aria-label="Menu">
+              <span class="site-menu-line" aria-hidden="true"></span>
+              <span class="site-menu-line" aria-hidden="true"></span>
+              <span class="site-menu-line" aria-hidden="true"></span>
+            </summary>
+            <nav class="site-menu-panel" aria-label="Menu">
+              <a class="site-menu-item" href="/en/">Map</a>
+              <a class="site-menu-item" href="/en/access/">Access</a>
+              <a class="site-menu-item" href="/en/timetable/">Timetable</a>
+              <a class="site-menu-item" href="/en/food/" aria-current="page">OIC Food</a>
+              <span class="site-menu-divider" aria-hidden="true"></span>
+              <button class="site-menu-item" type="button" data-dialog="about">About this map</button>
+              <button class="site-menu-item" type="button" data-dialog="contact">Contact</button>
+            </nav>
+          </details>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <main class="legal-main food-main">
-        <section class="legal-hero food-hero">
-          <h1>OIC Food</h1>
-        </section>
+    <main id="main" class="legal-main food-main">
+      <section class="legal-hero food-hero">
+        <h1>OIC Food</h1>
+      </section>
 
-        <section class="legal-content food-content" aria-label="Today's food trucks">
-          <div class="food-board" data-food-trucks aria-live="polite">
-            <p class="food-state">Loading today’s food trucks…</p>
-          </div>
-        </section>
-      </main>
-
-      <footer class="legal-footer">
-        <div class="site-footer">
-          <nav class="site-footer-links" aria-label="Legal links">
-            <a href="/en/terms/">Terms of Use</a>
-            <a href="/en/privacy/">Privacy Policy</a>
-            <span class="footer-portfolio-link">　<a href="https://ichi-portfolio.dev" target="_blank" rel="noopener noreferrer">About the Creator</a></span>
-          </nav>
-          <p>© 2026 Issei Yasuda</p>
+      <section class="legal-content food-content" aria-label="Today's food trucks">
+        <div class="food-board" data-food-trucks aria-live="polite">
+          <p class="food-state">Loading today’s food trucks…</p>
         </div>
-      </footer>
-    </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <nav class="site-footer-links" aria-label="Site information">
+          <button class="site-footer-link" type="button" data-dialog="about">About this map</button>
+          <button class="site-footer-link" type="button" data-dialog="contact">Contact</button>
+          <a class="site-footer-link" href="/en/terms/">Terms</a>
+          <a class="site-footer-link" href="/en/privacy/">Privacy Policy</a>
+          <a class="site-footer-link" href="https://ichi-portfolio.dev" target="_blank" rel="noopener noreferrer">About the Creator</a>
+        </nav>
+        <p class="site-footer-copy">© 2026 Issei Yasuda</p>
+      </div>
+    </footer>
   </body>
 </html>
