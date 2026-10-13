@@ -33,7 +33,7 @@ test('canonical search data passes fatal validation with the known warnings', as
 
   assert.deepEqual(report.errors, []);
   assert.equal(report.stats.entries, 548);
-  assert.equal(report.stats.facilityRings, 470);
+  assert.equal(report.stats.facilityRings, 471);
   assert.equal(report.stats.sameFloorLabelGroups, 8);
   assert.equal(report.stats.legacyWhiteRings, 0);
   assert.equal(report.warnings.filter((warning) => warning.code === 'same-floor-label').length, 8);
