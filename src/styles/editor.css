@@ -1,1 +1,722 @@
-/* editor styles — see src/style.css for ownership. */
+/* =====================================================================
+   Editor tools (/editor/): header row, edit panel and its controls, and
+   the editing markers drawn over the map. The page/topbar/map layout is
+   in viewer.css; nothing here depends on it.
+   Flat: 1px rules, bordered controls, no shadows, no lift or scale.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   Header row: title + language toggle + logout
+   --------------------------------------------------------------------- */
+
+.editor-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  min-height: 40px;
+}
+
+.editor-header-actions {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--s-4);
+}
+
+.editor-logout-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 var(--s-3);
+  border: var(--rule);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--c-ink);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  transition: border-color var(--dur) var(--ease);
+}
+
+.editor-logout-button:hover {
+  border-color: var(--c-ink);
+}
+
+/* ---------------------------------------------------------------------
+   Panel: three columns on wide screens (record | rings | areas), then
+   the status line, the entry list and the JSON output. One column below.
+   --------------------------------------------------------------------- */
+
+.editor-shell {
+  display: block;
+  min-width: 0;
+}
+
+.editor-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  border-top: var(--rule-strong);
+}
+
+.editor-panel[hidden] {
+  display: none;
+}
+
+.editor-meta,
+.editor-grid,
+.editor-actions {
+  padding-top: var(--s-4);
+}
+
+.editor-actions {
+  padding-bottom: var(--s-5);
+}
+
+.editor-ring-tools,
+.editor-area-tools {
+  display: grid;
+  align-content: start;
+  gap: var(--s-3);
+  min-width: 0;
+  padding: var(--s-4) 0 var(--s-5);
+  border-top: var(--rule);
+}
+
+.editor-feedback {
+  padding: var(--s-3) 0;
+  border-top: var(--rule);
+}
+
+@media (min-width: 1024px) {
+  .editor-panel {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-areas:
+      "meta     rings    areas"
+      "fields   rings    areas"
+      "actions  rings    areas"
+      "feedback feedback feedback"
+      "list     list     json";
+    column-gap: var(--s-6);
+  }
+
+  .editor-meta {
+    grid-area: meta;
+  }
+
+  .editor-grid {
+    grid-area: fields;
+  }
+
+  .editor-actions {
+    grid-area: actions;
+    align-self: start;
+  }
+
+  .editor-ring-tools,
+  .editor-area-tools {
+    padding-left: var(--s-6);
+    border-top: 0;
+    border-left: var(--rule);
+  }
+
+  .editor-ring-tools {
+    grid-area: rings;
+  }
+
+  .editor-area-tools {
+    grid-area: areas;
+  }
+
+  .editor-feedback {
+    grid-area: feedback;
+  }
+
+  .editor-list {
+    grid-area: list;
+  }
+
+  .editor-json {
+    grid-area: json;
+    align-self: start;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Read-outs and labels
+   --------------------------------------------------------------------- */
+
+.editor-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-1) 0;
+}
+
+.editor-chip {
+  color: var(--c-ink-2);
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+
+:lang(ja) .editor-chip {
+  font-family: var(--font-sans);
+}
+
+.editor-chip:first-child {
+  color: var(--c-ink);
+  font-weight: var(--fw-bold);
+}
+
+.editor-chip + .editor-chip {
+  margin-left: var(--s-3);
+  padding-left: var(--s-3);
+  border-left: var(--rule);
+}
+
+.editor-section-label {
+  color: var(--c-ink);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  line-height: 1.4;
+}
+
+.editor-caption,
+.editor-area-help {
+  margin: 0;
+  color: var(--c-ink-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+}
+
+.editor-area-help.is-active {
+  color: var(--c-accent);
+}
+
+.editor-feedback {
+  min-height: 1.4em;
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+}
+
+/* ---------------------------------------------------------------------
+   Fields
+   --------------------------------------------------------------------- */
+
+.editor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-3);
+}
+
+.editor-field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.editor-field-label {
+  color: var(--c-ink-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+}
+
+.editor-input {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  padding: 0 var(--s-3);
+  border: 1px solid var(--c-ink-3);
+  border-radius: var(--radius-control);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-size: var(--fs-base);
+  line-height: 1.4;
+  transition: border-color var(--dur) var(--ease);
+}
+
+.editor-input::placeholder {
+  color: var(--c-ink-3);
+}
+
+.editor-input:hover,
+.editor-input:focus {
+  border-color: var(--c-ink);
+}
+
+.editor-select {
+  padding-right: 36px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' fill='none' stroke='%23555555' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------------
+   Buttons: the shared .btn look, re-implemented on the editor classes.
+   --------------------------------------------------------------------- */
+
+.editor-actions,
+.editor-area-actions,
+.editor-ring-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.editor-action,
+.editor-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 var(--s-3);
+  border: var(--rule-strong);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--c-ink);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.editor-action:not(:disabled):hover,
+.editor-toggle:hover {
+  background: var(--c-ink);
+  color: var(--c-bg);
+}
+
+.editor-action-primary,
+.editor-toggle.is-active {
+  border-color: var(--c-accent);
+  background: var(--c-accent);
+  color: var(--c-on-accent);
+}
+
+.editor-action-primary:not(:disabled):hover,
+.editor-toggle.is-active:hover {
+  border-color: var(--c-accent-hover);
+  background: var(--c-accent-hover);
+  color: var(--c-on-accent);
+}
+
+.editor-action:disabled {
+  border-color: var(--c-line);
+  background: transparent;
+  color: var(--c-ink-3);
+  cursor: not-allowed;
+}
+
+/* Toggles (ring target, toilet ring colour): thin border, accent when on. */
+.editor-ring-mode-buttons,
+.editor-toilet-ring-color-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.editor-toilet-ring-color-tools[hidden] {
+  display: none;
+}
+
+.editor-ring-mode-button,
+.editor-ring-color-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 var(--s-3);
+  border: var(--rule);
+  border-radius: var(--radius-control);
+  background: var(--c-bg);
+  color: var(--c-ink-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  white-space: nowrap;
+  transition:
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.editor-ring-mode-button:hover,
+.editor-ring-color-button:hover {
+  border-color: var(--c-ink);
+  color: var(--c-ink);
+}
+
+.editor-ring-mode-button.is-active,
+.editor-ring-mode-button[aria-pressed="true"],
+.editor-ring-color-button.is-active {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+
+/* Colour key: a small square in the ring colour before the label. */
+.editor-ring-color-button::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--swatch, var(--c-ink-3));
+}
+
+.editor-ring-color-button[data-ring-color-variant="red"] {
+  --swatch: var(--c-ring-red);
+}
+
+.editor-ring-color-button[data-ring-color-variant="blue"] {
+  --swatch: var(--c-ring-blue);
+}
+
+.editor-ring-color-button[data-ring-color-variant="yellow"] {
+  --swatch: var(--c-ring-yellow);
+}
+
+/* ---------------------------------------------------------------------
+   Lists (recorded labels, rings, areas): hairline rows, scroll inside.
+   --------------------------------------------------------------------- */
+
+.editor-list,
+.editor-ring-list,
+.editor-area-list {
+  display: grid;
+  align-content: start;
+  min-width: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.editor-ring-list,
+.editor-area-list {
+  max-height: 200px;
+}
+
+.editor-ring-list:not(:empty),
+.editor-area-list:not(:empty) {
+  border-top: var(--rule);
+}
+
+.editor-list {
+  max-height: 280px;
+  margin-bottom: var(--s-5);
+  border-top: var(--rule-strong);
+}
+
+.editor-entry,
+.editor-empty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  min-width: 0;
+  padding: var(--s-2) 0;
+  border-bottom: var(--rule);
+}
+
+.editor-empty {
+  color: var(--c-ink-3);
+  font-size: var(--fs-sm);
+}
+
+.editor-entry-body {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.editor-entry-label {
+  overflow: hidden;
+  color: var(--c-ink);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.editor-entry-meta {
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+}
+
+.editor-entry-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: var(--s-1);
+}
+
+.editor-entry-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 var(--s-2);
+  border: var(--rule);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--c-ink);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: border-color var(--dur) var(--ease);
+}
+
+.editor-entry-button:hover {
+  border-color: var(--c-ink);
+}
+
+.editor-json {
+  display: block;
+  width: 100%;
+  min-height: 160px;
+  margin-bottom: var(--s-5);
+  padding: var(--s-3);
+  border: 1px solid var(--c-ink-3);
+  border-radius: var(--radius-control);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font:
+    var(--fs-xs) / 1.6 ui-monospace,
+    "SFMono-Regular",
+    Menlo,
+    Consolas,
+    monospace;
+  resize: vertical;
+}
+
+.editor-json:focus {
+  border-color: var(--c-ink);
+}
+
+@media (min-width: 1024px) {
+  .editor-json {
+    min-height: 0;
+    height: 280px;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Editing markers over the map. Flat shapes with a white edge for
+   legibility on the busy floor map; no drop shadows, glows or scaling.
+   --------------------------------------------------------------------- */
+
+.editor-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Recorded label pins: flat teardrop whose tip sits on the point. */
+.editor-pin-button,
+.editor-pending-dot {
+  position: absolute;
+  z-index: 3;
+  width: 18px;
+  height: 18px;
+  margin: -22px 0 0 -9px;
+  padding: 0;
+  border: 2px solid var(--c-bg);
+  border-radius: 50% 50% 50% 0;
+  background: var(--c-accent);
+  transform: rotate(-45deg);
+}
+
+.editor-pin-button {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.editor-pin-button.is-active,
+.editor-pending-dot {
+  background: var(--c-pin);
+}
+
+.editor-pending-dot {
+  pointer-events: none;
+}
+
+/* Where the viewer will show the label: dashed outline, same shape. */
+.editor-guide-pin {
+  position: absolute;
+  z-index: 1;
+  width: 16px;
+  height: 16px;
+  margin: -19px 0 0 -8px;
+  border: 2px dashed var(--c-accent);
+  border-radius: 50% 50% 50% 0;
+  background: transparent;
+  opacity: 0.6;
+  transform: rotate(-45deg);
+  pointer-events: none;
+}
+
+.editor-guide-pin.is-active,
+.editor-guide-pin.is-pending {
+  border-color: var(--c-pin);
+  opacity: 0.85;
+}
+
+/* Ring handles: dashed ring in the facility colour + white edge. */
+.editor-ring-button {
+  position: absolute;
+  z-index: 2;
+  padding: 0;
+  border: 2px dashed var(--ring-color, var(--c-ring-green));
+  border-radius: 50%;
+  outline: 2px solid var(--c-bg);
+  outline-offset: 0;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.editor-ring-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--ring-color, var(--c-ring-green));
+}
+
+.editor-ring-button.color-red {
+  --ring-color: var(--c-ring-red);
+}
+
+.editor-ring-button.color-blue {
+  --ring-color: var(--c-ring-blue);
+}
+
+.editor-ring-button.color-water-server {
+  --ring-color: var(--c-ring-water);
+}
+
+.editor-ring-button.color-yellow {
+  --ring-color: var(--c-ring-yellow);
+}
+
+.editor-ring-button.is-active {
+  --ring-color: var(--c-pin);
+  border-style: solid;
+}
+
+.editor-ring-button:focus-visible,
+.editor-pin-button:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+/* Area drawing: dashed outline, vertices as plain dots with a white edge. */
+.editor-area-draft-svg {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.editor-area-draft-shape {
+  fill: var(--c-pin);
+  fill-opacity: 0.08;
+  stroke: var(--c-pin);
+  stroke-width: 2.5px;
+  stroke-dasharray: 8 6;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.editor-area-vertex {
+  position: absolute;
+  z-index: 5;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  padding: 0;
+  border: 2px solid var(--c-bg);
+  border-radius: 50%;
+  background: var(--c-pin);
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+}
+
+.editor-area-vertex:active {
+  cursor: grabbing;
+}
+
+.editor-area-vertex:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+/* Popover for the selected pin: a plain ruled label, no shadow. */
+.editor-pin-popover {
+  position: absolute;
+  z-index: 6;
+  min-width: 140px;
+  max-width: min(240px, 46vw);
+  padding: var(--s-2) var(--s-3);
+  border: var(--rule-strong);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  transform: translate(-50%, calc(-100% - 30px));
+  pointer-events: none;
+}
+
+.editor-pin-popover-label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  line-height: 1.4;
+}
+
+.editor-pin-popover-meta {
+  margin-top: 2px;
+  color: var(--c-ink-2);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------------------
+   Phones
+   --------------------------------------------------------------------- */
+
+@media (max-width: 720px) {
+  .editor-header-row {
+    align-items: flex-start;
+  }
+
+  .editor-action {
+    flex: 1 1 auto;
+  }
+
+  .editor-list {
+    max-height: 240px;
+  }
+}

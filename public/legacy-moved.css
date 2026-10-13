@@ -1,112 +1,171 @@
-* { box-sizing: border-box; }
-:root { --ink-900: #0b1220; --ink-700: #334155; --accent: #b01635; --accent-strong: #8d1129; }
-body { margin: 0; background: #e8edf4; color: var(--ink-900); font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; }
-.domain-migration-notice-copy { text-align: center; }
-.domain-migration-notice-url { margin: 0 0 24px; text-align: center; overflow-wrap: anywhere; }
-.domain-migration-notice-link:focus-visible { outline: 3px solid #0b1220; outline-offset: 4px; }
-.domain-migration-notice {
+/* Legacy-domain notice. Served standalone (not processed by Vite), so the
+   few design tokens it needs are defined here, mirroring src/styles/tokens.css.
+   Flat page: no overlay, no shadow, no animation. */
+
+:root {
+  --c-bg: #ffffff;
+  --c-ink: #111111;
+  --c-ink-2: #555555;
+  --c-ink-3: #8c8c8c;
+  --c-line: #e2e2df;
+  --c-accent: #991c27;
+  --c-accent-hover: #7e1620;
+  --c-on-accent: #ffffff;
+  --font-sans:
+    "Inter", "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic", system-ui, sans-serif;
+  --font-latin: "Inter", system-ui, sans-serif;
+  --gutter: 24px;
+  --container: 1120px;
+  --radius-control: 4px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
   min-height: 100vh;
   min-height: 100dvh;
-  display: grid;
-  place-items: center;
-  padding: max(24px, env(safe-area-inset-top, 0px)) 18px max(24px, env(safe-area-inset-bottom, 0px));
-  background: rgba(11, 18, 32, 0.58);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  animation: domain-migration-backdrop-in 180ms ease-out both;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.55;
+  font-feature-settings: "palt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.domain-migration-notice-card {
-  position: relative;
-  width: min(520px, 100%);
-  padding: 28px 28px 30px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow:
-    0 28px 80px rgba(0, 0, 0, 0.28),
-    0 8px 24px rgba(11, 18, 32, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.92);
-  color: var(--ink-900);
-  animation: domain-migration-card-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
 }
 
-.domain-migration-notice-title {
+.notice {
+  width: min(100% - var(--gutter) * 2, var(--container));
+  margin-inline: auto;
+  padding:
+    max(clamp(64px, 18vh, 160px), env(safe-area-inset-top, 0px))
+    0
+    max(64px, env(safe-area-inset-bottom, 0px));
+}
+
+.notice-inner {
+  max-width: 560px;
+}
+
+.notice-eyebrow {
   margin: 0 0 12px;
-  color: var(--ink-900);
-  font-size: clamp(1rem, 3.5vw, 1.6rem);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 1.25;
-  text-align: center;
+  color: var(--c-ink-3);
+  font-family: var(--font-latin);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
 }
 
-.domain-migration-notice-copy {
-  margin: 0 0 8px;
-  color: var(--ink-700);
-  font-size: 0.98rem;
-  font-weight: 600;
-  line-height: 1.8;
+.notice-title {
+  margin: 0;
+  font-size: clamp(1.75rem, 1.25rem + 2vw, 2.625rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
 }
 
-.domain-migration-notice-link {
-  display: flex;
-  width: fit-content;
-  min-height: 48px;
+.notice-copy {
+  margin: 16px 0 0;
+  color: var(--c-ink-2);
+  line-height: 1.9;
+}
+
+.notice-url {
+  display: grid;
+  gap: 6px;
+  margin: 40px 0 0;
+  padding: 16px 0 20px;
+  border-top: 1px solid var(--c-ink);
+  border-bottom: 1px solid var(--c-line);
+}
+
+.notice-url-label {
+  color: var(--c-ink-3);
+  font-family: var(--font-latin);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.notice-url-value {
+  margin: 0;
+  font-family: var(--font-latin);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.notice-link {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  margin-inline: auto;
-  padding: 11px 18px;
-  border-radius: 12px;
-  background: var(--accent);
-  color: #ffffff;
-  font-size: 0.92rem;
-  font-weight: 800;
+  gap: 8px;
+  min-height: 48px;
+  margin-top: 32px;
+  padding: 0 24px;
+  border: 1px solid var(--c-accent);
+  border-radius: var(--radius-control);
+  background: var(--c-accent);
+  color: var(--c-on-accent);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.2;
   text-decoration: none;
-  transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+  transition:
+    background-color 160ms cubic-bezier(0.2, 0, 0, 1),
+    border-color 160ms cubic-bezier(0.2, 0, 0, 1);
 }
 
-.domain-migration-notice-link:hover {
-  background: var(--accent-strong, #8d1129);
-  transform: translateY(-1px);
+.notice-link::after {
+  content: "→";
+  font-family: var(--font-latin);
+  font-weight: 400;
+}
+
+.notice-link:hover {
+  border-color: var(--c-accent-hover);
+  background: var(--c-accent-hover);
 }
 
 @media (max-width: 720px) {
-  .domain-migration-notice {
-    padding-right: 14px;
-    padding-left: 14px;
+  :root {
+    --gutter: 16px;
   }
 
-  .domain-migration-notice-card {
-    padding: 24px 20px 22px;
-    border-radius: 20px;
+  .notice-url-value {
+    font-size: 1.0625rem;
   }
 
-  .domain-migration-notice-title {
-    margin-top: 20px;
+  .notice-link {
+    width: 100%;
   }
-
-  .domain-migration-notice-copy {
-    font-size: 0.9rem;
-  }
-}
-
-@keyframes domain-migration-backdrop-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes domain-migration-card-in {
-  from { opacity: 0; transform: translateY(14px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .domain-migration-notice,
-  .domain-migration-notice-card,
-  .domain-migration-notice-link {
-    animation: none;
+  .notice-link {
     transition: none;
   }
 }

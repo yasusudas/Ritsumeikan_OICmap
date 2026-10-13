@@ -1610,10 +1610,14 @@ if (window.__FILE_MODE__) {
     // Safe height excludes the floating top bar / footer so the whole floor can
     // open inside the readable zone (not hidden behind the menu).
     const safeHeight = Math.max(viewport.height - insets.top - insets.bottom - MAP_PADDING, 80);
+    // Phones: the landscape floor sheets are width-limited, so let them run
+    // edge to edge; the sheet's own page margin is the breathing room.
+    const isNarrowViewer = !isEditorSite && viewport.width <= MOBILE_MAP_VIEWPORT_MAX_WIDTH;
+    const safeWidth = isNarrowViewer ? viewport.width : availableWidth;
     // Contain = whole floor visible. Cover = map fills the frame edge-to-edge.
     const containScale = Math.min(availableWidth / intrinsicWidth, availableHeight / intrinsicHeight);
     const coverScale = Math.max(viewport.width / intrinsicWidth, viewport.height / intrinsicHeight);
-    const safeContainScale = Math.min(availableWidth / intrinsicWidth, safeHeight / intrinsicHeight);
+    const safeContainScale = Math.min(safeWidth / intrinsicWidth, safeHeight / intrinsicHeight);
 
     return { containScale, coverScale, safeContainScale, insetTop: insets.top, insetBottom: insets.bottom };
   }
@@ -3690,6 +3694,23 @@ if (window.__FILE_MODE__) {
     }
   }
 
+  // Dialogs can be opened from the menu or from the footer links; focus goes
+  // back to whichever control opened them, or to the menu toggle when that
+  // control is no longer visible (e.g. the closed menu panel).
+  let lastDialogOpener = null;
+
+  function restoreDialogOpenerFocus() {
+    const opener = lastDialogOpener;
+    lastDialogOpener = null;
+
+    if (opener?.isConnected && opener.getClientRects().length > 0 && !opener.closest('[hidden]')) {
+      opener.focus();
+      return;
+    }
+
+    siteMenuToggle?.focus();
+  }
+
   function setAboutDialogOpen(isOpen, { restoreFocus = false } = {}) {
     if (!aboutDialog) {
       return;
@@ -3706,7 +3727,7 @@ if (window.__FILE_MODE__) {
     }
 
     if (restoreFocus) {
-      siteMenuToggle?.focus();
+      restoreDialogOpenerFocus();
     }
   }
 
@@ -3738,7 +3759,7 @@ if (window.__FILE_MODE__) {
     }
 
     if (restoreFocus) {
-      siteMenuToggle?.focus();
+      restoreDialogOpenerFocus();
     }
   }
 
@@ -3843,6 +3864,19 @@ if (window.__FILE_MODE__) {
       setContactFormDialogOpen(true);
     });
   }
+
+  document.querySelectorAll('[data-dialog]').forEach((button) => {
+    button.addEventListener('click', () => {
+      lastDialogOpener = button;
+
+      if (button.dataset.dialog === 'contact') {
+        setContactFormDialogOpen(true);
+        return;
+      }
+
+      setAboutDialogOpen(true);
+    });
+  });
 
   if (aboutDialogCloseButton) {
     aboutDialogCloseButton.addEventListener('click', () => {

@@ -96,12 +96,12 @@
 
           document.documentElement.lang = lang;
           document.body.innerHTML = `
-            <main style="min-height:100vh;display:grid;place-items:center;margin:0;padding:24px;background:linear-gradient(180deg,#f6f7fa 0%,#eef0f5 100%);font-family:'Inter Tight','Inter','Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;color:#0b1220;">
-              <section style="max-width:720px;padding:28px;border-radius:24px;background:rgba(255,255,255,0.92);box-shadow:0 24px 50px rgba(11,18,32,0.12);">
-                <h1 style="margin:0 0 16px;font-size:2rem;letter-spacing:-0.022em;">${fileModeText.title}</h1>
-                <p style="margin:0 0 12px;line-height:1.8;">${fileModeText.copy1}</p>
-                <p style="margin:0 0 12px;line-height:1.8;">${fileModeText.copy2}</p>
-                <p style="margin:0;line-height:1.8;">${fileModeText.copy3}</p>
+            <main style="min-height:100vh;margin:0;padding:64px 24px;background:#ffffff;font-family:'Inter','Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;color:#111111;">
+              <section style="max-width:640px;margin:0 auto;padding-top:24px;border-top:1px solid #111111;">
+                <h1 style="margin:0 0 24px;font-size:1.625rem;font-weight:700;letter-spacing:0.02em;line-height:1.3;">${fileModeText.title}</h1>
+                <p style="margin:0 0 12px;line-height:1.9;">${fileModeText.copy1}</p>
+                <p style="margin:0 0 12px;line-height:1.9;">${fileModeText.copy2}</p>
+                <p style="margin:0;line-height:1.9;">${fileModeText.copy3}</p>
               </section>
             </main>
           `;
@@ -113,202 +113,163 @@
   </head>
   <body data-app-mode="viewer">
     <div class="app-shell">
-      <header class="topbar">
-        <div class="topbar-glass">
-          <div class="topbar-title-row">
-            <h1 class="app-title">
-              <span class="app-title-main" data-i18n="app.title.viewer">Ritsumeikan OIC Map</span>
-            </h1>
-            <div class="topbar-actions">
-              <button class="lang-toggle" data-lang-toggle type="button" aria-label="Switch language">EN</button>
-              <div id="site-menu" class="site-menu">
-                <button
-                  id="site-menu-toggle"
-                  class="site-menu-toggle"
-                  type="button"
-                  aria-label="Open menu"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  aria-controls="site-menu-panel"
-                  data-i18n-aria="menu.open"
-                  data-i18n-title="menu.open"
-                  title="Open menu"
-                >
-                  <span class="site-menu-line" aria-hidden="true"></span>
-                  <span class="site-menu-line" aria-hidden="true"></span>
-                  <span class="site-menu-line" aria-hidden="true"></span>
-                </button>
-                <div id="site-menu-panel" class="site-menu-panel" role="menu" hidden>
-                  <a class="site-menu-item" href="/en/access/" role="menuitem" data-i18n="menu.access">
-                    Access
-                  </a>
-                  <a class="site-menu-item" href="/timetable/" role="menuitem" data-i18n="menu.timetable">
-                    Timetable
-                  </a>
-                  <button id="about-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.about">
-                    About this map
-                  </button>
-                  <button id="contact-form-menu-button" class="site-menu-item" type="button" role="menuitem" data-i18n="menu.contactForm">
-                    Contact
-                  </button>
+      <header class="topbar site-header">
+        <div class="site-header-inner topbar-bar">
+          <h1 class="app-title">
+            <span class="app-title-main" data-i18n="app.title.viewer">Ritsumeikan OIC Map</span>
+          </h1>
+          <nav class="site-nav" aria-label="Site menu" data-i18n-aria="menu.siteNav">
+            <a class="site-nav-link" href="/" data-localized-href="/" aria-current="page" data-i18n="menu.map">Map</a>
+            <a class="site-nav-link" href="/en/access/" data-localized-href="/en/access/" data-i18n="menu.access">Access</a>
+            <a class="site-nav-link" href="/timetable/" data-localized-href="/timetable/" data-i18n="menu.timetable">Timetable</a>
+            <a class="site-nav-link" href="/en/food/" data-localized-href="/en/food/" data-i18n="menu.food">OIC Food</a>
+          </nav>
+          <div class="site-header-actions topbar-actions">
+            <button class="lang-toggle" data-lang-toggle type="button" aria-label="Switch language">
+              <span class="lang-toggle-option" data-lang-option="ja">JA</span>
+              <span class="lang-toggle-separator" aria-hidden="true">/</span>
+              <span class="lang-toggle-option" data-lang-option="en">EN</span>
+            </button>
+            <div id="site-menu" class="site-menu">
+              <button
+                id="site-menu-toggle"
+                class="site-menu-toggle"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="site-menu-panel"
+                data-i18n-aria="menu.open"
+                data-i18n-title="menu.open"
+                title="Open menu"
+              >
+                <span class="site-menu-line" aria-hidden="true"></span>
+                <span class="site-menu-line" aria-hidden="true"></span>
+                <span class="site-menu-line" aria-hidden="true"></span>
+              </button>
+              <nav id="site-menu-panel" class="site-menu-panel" aria-label="Menu" data-i18n-aria="menu.label" hidden>
+                <a class="site-menu-item" href="/" data-localized-href="/" aria-current="page" data-i18n="menu.map">Map</a>
+                <a class="site-menu-item" href="/en/access/" data-localized-href="/en/access/" data-i18n="menu.access">Access</a>
+                <a class="site-menu-item" href="/timetable/" data-localized-href="/timetable/" data-i18n="menu.timetable">Timetable</a>
+                <a class="site-menu-item" href="/en/food/" data-localized-href="/en/food/" data-i18n="menu.food">OIC Food</a>
+                <span class="site-menu-divider" aria-hidden="true"></span>
+                <button id="about-menu-button" class="site-menu-item" type="button" data-i18n="menu.about">About this map</button>
+                <button id="contact-form-menu-button" class="site-menu-item" type="button" data-i18n="menu.contactForm">Contact</button>
+                <div class="site-menu-meta">
+                  <a class="site-menu-meta-link" href="/en/terms/" data-localized-href="/en/terms/" data-i18n="footer.terms">Terms</a>
+                  <a class="site-menu-meta-link" href="/en/privacy/" data-localized-href="/en/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
+                  <a class="site-menu-meta-link" href="https://ichi-portfolio.dev" target="_blank" rel="noopener noreferrer" data-i18n="footer.creator">About the Creator</a>
                 </div>
-              </div>
+              </nav>
             </div>
           </div>
-          <div id="search-panel" class="search-panel">
-            <div class="search-controls">
-              <div class="mobile-quick-actions" role="group" aria-label="Quick links" data-i18n-aria="quickActions.label">
-                <a class="mobile-quick-action" href="/en/food/">
-                  <img class="mobile-quick-action-icon" src="/iconsvg/quick-actions/food.svg" alt="" aria-hidden="true" />
-                  <span data-i18n="quickActions.food">OIC Food</span>
-                </a>
-                <a class="mobile-quick-action" href="/timetable/">
-                  <img class="mobile-quick-action-icon mobile-quick-action-icon-bus" src="/iconsvg/quick-actions/bus.svg" alt="" aria-hidden="true" />
-                  <img class="mobile-quick-action-icon" src="/iconsvg/quick-actions/train.svg" alt="" aria-hidden="true" />
-                  <span data-i18n="quickActions.timetable">Timetable</span>
-                </a>
-              </div>
+        </div>
+        <div class="topbar-tools">
+          <div class="topbar-tools-inner">
+            <div id="search-panel" class="search-panel">
               <div class="search-box">
                 <svg class="search-leading-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <circle cx="11" cy="11" r="7"></circle>
-                  <path d="m20 20-3.5-3.5"></path>
+                  <circle cx="11" cy="11" r="6.5"></circle>
+                  <path d="m20 20-4.4-4.4"></path>
                 </svg>
                 <input
                   id="search-input"
                   class="search-input"
                   type="search"
-                  placeholder="Search by room or facility name"
+                  placeholder="Search rooms"
+                  aria-label="Search rooms"
                   data-i18n-placeholder="search.placeholder"
+                  data-i18n-aria="search.placeholder"
                   autocomplete="off"
                   autocapitalize="characters"
                   spellcheck="false"
                   enterkeyhint="search"
                 />
                 <button id="search-clear" class="search-clear" type="button" aria-label="Clear search" data-i18n-aria="search.clear" hidden>
-                  ×
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"></path></svg>
                 </button>
               </div>
-              <div class="search-icon-actions" role="group" aria-label="Facility filters" data-i18n-aria="search.facilityActions">
-                <button
-                  class="search-icon-button"
-                  type="button"
-                  data-facility-key="toilet"
-                  aria-label="Restroom"
-                  data-i18n-aria="facility.toilet"
-                  aria-pressed="false"
-                >
-                  <img class="search-icon-image" src="/iconsvg/toilet.svg" alt="" aria-hidden="true" />
-                </button>
-                <button
-                  class="search-icon-button"
-                  type="button"
-                  data-facility-key="waterServer"
-                  aria-label="Water Dispenser"
-                  data-i18n-aria="facility.waterServer"
-                  aria-pressed="false"
-                >
-                  <img class="search-icon-image" src="/iconsvg/water-server.svg" alt="" aria-hidden="true" />
-                </button>
-                <button
-                  class="search-icon-button"
-                  type="button"
-                  data-facility-key="vendingMachine"
-                  aria-label="Vending Machine"
-                  data-i18n-aria="facility.vendingMachine"
-                  aria-pressed="false"
-                >
-                  <img class="search-icon-image" src="/iconsvg/vending-machine.svg" alt="" aria-hidden="true" />
-                </button>
-                <button
-                  class="search-icon-button"
-                  type="button"
-                  data-facility-key="printer"
-                  aria-label="Printer"
-                  data-i18n-aria="facility.printer"
-                  aria-pressed="false"
-                >
-                  <img class="search-icon-image" src="/iconsvg/printer.svg" alt="" aria-hidden="true" />
-                </button>
-                <button
-                  class="search-icon-button"
-                  type="button"
-                  data-facility-key="stairs"
-                  aria-label="Staircase"
-                  data-i18n-aria="facility.stairs"
-                  aria-pressed="false"
-                >
-                  <img class="search-icon-image" src="/iconsvg/stairs.svg" alt="" aria-hidden="true" />
-                </button>
-                <button
-                  class="search-icon-button"
-                  type="button"
-                  data-facility-key="elevator"
-                  aria-label="Elevator"
-                  data-i18n-aria="facility.elevator"
-                  aria-pressed="false"
-                >
-                  <img class="search-icon-image" src="/iconsvg/elevator.svg" alt="" aria-hidden="true" />
-                </button>
-              </div>
+              <div id="search-results" class="search-results" role="listbox" hidden></div>
             </div>
-            <div id="search-results" class="search-results" role="listbox" hidden></div>
-          </div>
-        </div>
-        <div class="floor-tab-stack">
-          <div class="mobile-floor-select" data-mobile-floor-select>
-            <span class="mobile-floor-label">
-              <span class="mobile-floor-label-line" data-i18n="floor.selected">Selected</span>
-              <span class="mobile-floor-label-line" data-i18n="floor.floor">Floor</span>
-            </span>
-            <button
-              class="mobile-floor-toggle"
-              type="button"
-              aria-expanded="false"
-              aria-controls="mobile-floor-list"
-              data-mobile-floor-toggle
-            >
-              <span class="mobile-floor-current" data-mobile-floor-current>1F</span>
-              <svg class="mobile-floor-chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-                <path d="M5 7.5 10 12.5 15 7.5" />
-              </svg>
-            </button>
-            <div
-              id="mobile-floor-list"
-              class="mobile-floor-list"
-              role="listbox"
-              aria-label="Floor selector"
-              aria-hidden="true"
-              data-i18n-aria="floor.primaryNav"
-              data-mobile-floor-list
-            >
-              <button class="mobile-floor-option" data-mobile-floor-option data-floor="1F" data-i18n="floor.1F" role="option" tabindex="-1" type="button">1F</button>
-              <button class="mobile-floor-option" data-mobile-floor-option data-floor="2F" data-i18n="floor.2F" role="option" tabindex="-1" type="button">2F</button>
-              <button class="mobile-floor-option" data-mobile-floor-option data-floor="3F" data-i18n="floor.3F" role="option" tabindex="-1" type="button">3F</button>
-              <button class="mobile-floor-option" data-mobile-floor-option data-floor="4F" data-i18n="floor.4F" role="option" tabindex="-1" type="button">4F</button>
-              <button class="mobile-floor-option" data-mobile-floor-option data-floor="5F" data-i18n="floor.5F" role="option" tabindex="-1" type="button">5F</button>
-              <button class="mobile-floor-option mobile-floor-option-wide" data-mobile-floor-option data-floor="A-6-9F" data-i18n="floor.A-6-9F" role="option" tabindex="-1" type="button">
-                Bldg. A 6F-9F
+            <div class="floor-tab-stack">
+              <div class="mobile-floor-select" data-mobile-floor-select>
+                <button
+                  class="mobile-floor-toggle"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="mobile-floor-list"
+                  data-mobile-floor-toggle
+                >
+                  <span class="mobile-floor-current" data-mobile-floor-current>1F</span>
+                  <svg class="mobile-floor-chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                    <path d="M5 7.5 10 12.5 15 7.5" />
+                  </svg>
+                </button>
+                <div
+                  id="mobile-floor-list"
+                  class="mobile-floor-list"
+                  role="listbox"
+                  aria-label="Floor selector"
+                  aria-hidden="true"
+                  data-i18n-aria="floor.primaryNav"
+                  data-mobile-floor-list
+                >
+                  <button class="mobile-floor-option" data-mobile-floor-option data-floor="1F" data-i18n="floor.1F" role="option" tabindex="-1" type="button">1F</button>
+                  <button class="mobile-floor-option" data-mobile-floor-option data-floor="2F" data-i18n="floor.2F" role="option" tabindex="-1" type="button">2F</button>
+                  <button class="mobile-floor-option" data-mobile-floor-option data-floor="3F" data-i18n="floor.3F" role="option" tabindex="-1" type="button">3F</button>
+                  <button class="mobile-floor-option" data-mobile-floor-option data-floor="4F" data-i18n="floor.4F" role="option" tabindex="-1" type="button">4F</button>
+                  <button class="mobile-floor-option" data-mobile-floor-option data-floor="5F" data-i18n="floor.5F" role="option" tabindex="-1" type="button">5F</button>
+                  <button class="mobile-floor-option mobile-floor-option-wide" data-mobile-floor-option data-floor="A-6-9F" data-i18n="floor.A-6-9F" role="option" tabindex="-1" type="button">Bldg. A 6F–9F</button>
+                  <button class="mobile-floor-option mobile-floor-option-wide" data-mobile-floor-option data-floor="H-6-9F" data-i18n="floor.H-6-9F" role="option" tabindex="-1" type="button">Bldg. H 6F–9F</button>
+                </div>
+              </div>
+              <nav class="floor-tabs floor-tabs-primary" aria-label="Floor selector" data-i18n-aria="floor.primaryNav">
+                <button class="floor-tab" data-floor="1F" type="button">1F</button>
+                <button class="floor-tab" data-floor="2F" type="button">2F</button>
+                <button class="floor-tab" data-floor="3F" type="button">3F</button>
+                <button class="floor-tab" data-floor="4F" type="button">4F</button>
+                <button class="floor-tab" data-floor="5F" type="button">5F</button>
+              </nav>
+              <nav class="floor-tabs floor-tabs-secondary" aria-label="Upper-floor building selector" data-i18n-aria="floor.secondaryNav">
+                <button class="floor-tab floor-tab-wide" data-floor="A-6-9F" type="button" data-i18n="floor.A-6-9F">Bldg. A 6F–9F</button>
+                <button class="floor-tab floor-tab-wide" data-floor="H-6-9F" type="button" data-i18n="floor.H-6-9F">Bldg. H 6F–9F</button>
+              </nav>
+            </div>
+            <div class="search-icon-actions" role="group" aria-label="Facility filters" data-i18n-aria="search.facilityActions">
+              <button class="search-icon-button" type="button" data-facility-key="toilet" aria-label="Restroom" title="Restroom" data-i18n-aria="facility.toilet" data-i18n-title="facility.toilet" aria-pressed="false">
+                <svg class="search-icon-image" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="7" cy="4.5" r="2"/><path d="M4.5 21V11a2.5 2.5 0 0 1 5 0v10"/><circle cx="17" cy="4.5" r="2"/><path d="M17 8.5 13.5 17h7L17 8.5Z"/><path d="M17 17v4"/></svg>
               </button>
-              <button class="mobile-floor-option mobile-floor-option-wide" data-mobile-floor-option data-floor="H-6-9F" data-i18n="floor.H-6-9F" role="option" tabindex="-1" type="button">
-                Bldg. H 6F-9F
+              <button class="search-icon-button" type="button" data-facility-key="waterServer" aria-label="Water Dispenser" title="Water Dispenser" data-i18n-aria="facility.waterServer" data-i18n-title="facility.waterServer" aria-pressed="false">
+                <svg class="search-icon-image" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3c2.9 3.6 6 6.9 6 10.5a6 6 0 0 1-12 0C6 9.9 9.1 6.6 12 3Z"/><path d="M9.25 14.25a2.9 2.9 0 0 0 2.25 2.6"/></svg>
+              </button>
+              <button class="search-icon-button" type="button" data-facility-key="vendingMachine" aria-label="Vending Machine" title="Vending Machine" data-i18n-aria="facility.vendingMachine" data-i18n-title="facility.vendingMachine" aria-pressed="false">
+                <svg class="search-icon-image" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="2.5" width="14" height="19" rx="1"/><path d="M8.5 5.5v4M12 5.5v4M15.5 5.5v4"/><path d="M5 12.5h14"/><path d="M15.5 15v1.5"/><path d="M8.5 18.5h4.5"/></svg>
+              </button>
+              <button class="search-icon-button" type="button" data-facility-key="printer" aria-label="Printer" title="Printer" data-i18n-aria="facility.printer" data-i18n-title="facility.printer" aria-pressed="false">
+                <svg class="search-icon-image" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 8V3.5h10V8"/><path d="M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-6A1.5 1.5 0 0 1 4.5 8h15A1.5 1.5 0 0 1 21 9.5v6a1.5 1.5 0 0 1-1.5 1.5H17"/><path d="M7 13.5h10v7H7z"/><path d="M17.5 11h.01"/></svg>
+              </button>
+              <button class="search-icon-button" type="button" data-facility-key="stairs" aria-label="Staircase" title="Staircase" data-i18n-aria="facility.stairs" data-i18n-title="facility.stairs" aria-pressed="false">
+                <svg class="search-icon-image" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 20.5h4.5V16H12v-4.5h4.5V7H21"/></svg>
+              </button>
+              <button class="search-icon-button" type="button" data-facility-key="elevator" aria-label="Elevator" title="Elevator" data-i18n-aria="facility.elevator" data-i18n-title="facility.elevator" aria-pressed="false">
+                <svg class="search-icon-image" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="m8.5 10 3.5-3.5 3.5 3.5"/><path d="m8.5 14 3.5 3.5 3.5-3.5"/></svg>
               </button>
             </div>
           </div>
-          <nav class="floor-tabs floor-tabs-primary" aria-label="Floor selector" data-i18n-aria="floor.primaryNav">
-            <button class="floor-tab" data-floor="1F" type="button">1F</button>
-            <button class="floor-tab" data-floor="2F" type="button">2F</button>
-            <button class="floor-tab" data-floor="3F" type="button">3F</button>
-            <button class="floor-tab" data-floor="4F" type="button">4F</button>
-            <button class="floor-tab" data-floor="5F" type="button">5F</button>
-          </nav>
-          <nav class="floor-tabs floor-tabs-secondary" aria-label="Upper-floor building selector" data-i18n-aria="floor.secondaryNav">
-            <button class="floor-tab floor-tab-wide" data-floor="A-6-9F" type="button" data-i18n="floor.A-6-9F">Bldg. A 6F-9F</button>
-            <button class="floor-tab floor-tab-wide" data-floor="H-6-9F" type="button" data-i18n="floor.H-6-9F">Bldg. H 6F-9F</button>
-          </nav>
         </div>
-        <span id="toilet-ring-legend" class="toilet-ring-legend" data-i18n="search.toiletLegend" hidden>
-          Blue rings mark men's restrooms, red rings mark women's restrooms, and yellow rings mark accessible restrooms.
-        </span>
+        <div id="toilet-ring-legend" class="toilet-ring-legend" role="note" aria-label="Restroom colors" data-i18n-aria="legend.toilet" hidden>
+          <span class="toilet-ring-legend-item">
+            <span class="toilet-ring-legend-swatch is-blue" aria-hidden="true"></span>
+            <span data-i18n="legend.toiletMen">Men</span>
+          </span>
+          <span class="toilet-ring-legend-item">
+            <span class="toilet-ring-legend-swatch is-red" aria-hidden="true"></span>
+            <span data-i18n="legend.toiletWomen">Women</span>
+          </span>
+          <span class="toilet-ring-legend-item">
+            <span class="toilet-ring-legend-swatch is-yellow" aria-hidden="true"></span>
+            <span data-i18n="legend.toiletAccessible">Accessible</span>
+          </span>
+        </div>
       </header>
 
       <main class="map-stage">
@@ -320,12 +281,16 @@
       </main>
 
       <footer class="site-footer">
-        <nav class="site-footer-links" aria-label="Legal links" data-i18n-aria="footer.legalNav">
-          <a href="/en/terms/" data-i18n="footer.terms">Terms</a>
-          <a href="/en/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
-          <span class="footer-portfolio-link">　<a href="https://ichi-portfolio.dev" target="_blank" rel="noopener noreferrer" data-i18n="footer.creator">About the Creator</a></span>
-        </nav>
-        <p data-i18n="footer.copyrightSimple">© 2026 Issei Yasuda</p>
+        <div class="site-footer-inner">
+          <nav class="site-footer-links" aria-label="Site information" data-i18n-aria="footer.siteInfo">
+            <button class="site-footer-link" type="button" data-dialog="about" data-i18n="menu.about">About this map</button>
+            <button class="site-footer-link" type="button" data-dialog="contact" data-i18n="menu.contactForm">Contact</button>
+            <a class="site-footer-link" href="/en/terms/" data-localized-href="/en/terms/" data-i18n="footer.terms">Terms</a>
+            <a class="site-footer-link" href="/en/privacy/" data-localized-href="/en/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
+            <a class="site-footer-link" href="https://ichi-portfolio.dev" target="_blank" rel="noopener noreferrer" data-i18n="footer.creator">About the Creator</a>
+          </nav>
+          <p class="site-footer-copy" data-i18n="footer.copyrightSimple">© 2026 Issei Yasuda</p>
+        </div>
       </footer>
     </div>
     <div id="about-dialog" class="about-dialog-backdrop" hidden>
@@ -348,7 +313,7 @@
           </p>
         </div>
         <footer class="about-dialog-footer">
-          <p class="about-dialog-version">Ver. 2.9</p>
+          <p class="about-dialog-version">Ver. 3.0</p>
         </footer>
       </section>
     </div>

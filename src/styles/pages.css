@@ -1,1 +1,567 @@
-/* pages styles — see src/style.css for ownership. */
+/* =====================================================================
+   Content pages: /access/, /food/, /terms/, /privacy/ (+ /en/)
+   Built on the shared scaffold in base.css (.page, .page-head, .section,
+   .prose). Flat: whitespace and 1px rules only — no cards, no shadows.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   Access: location (map + address list)
+   --------------------------------------------------------------------- */
+
+.access-location-body {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: var(--s-6) var(--s-7);
+  align-items: start;
+}
+
+.access-map {
+  margin: 0;
+}
+
+.access-map img {
+  width: 100%;
+  height: auto;
+  border: var(--rule);
+}
+
+.access-info {
+  margin: 0;
+  border-top: var(--rule-strong);
+}
+
+.access-info-row {
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-4) 0 var(--s-5);
+  border-bottom: var(--rule);
+}
+
+.access-info dt {
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+}
+
+.access-info dd {
+  margin: 0;
+  line-height: var(--lh-body);
+}
+
+.access-info dd p {
+  margin: 0;
+}
+
+.access-address {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+}
+
+.access-info-heading {
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+}
+
+.access-info-copy {
+  margin-top: var(--s-1);
+}
+
+.access-info-note {
+  white-space: nowrap;
+}
+
+.access-tel {
+  font-family: var(--font-latin);
+  font-weight: var(--fw-medium);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .access-location-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .access-map {
+    max-width: 560px;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Access: route diagram (replaces the old raster infographic)
+   Each row: origin ─ ride ─ (transfer ─ ride ─) arrival ┈ walk ┈ OIC.
+   Railway colors appear only as the 2px line and a small square.
+   --------------------------------------------------------------------- */
+
+.access-routes {
+  /* Railway marker colors, matched to the campus area map image. */
+  --line-jr: #ef844a;
+  --line-hankyu: #2bb7b3;
+  --line-monorail: #036eb8;
+  --route-origin-w: 7.5em;
+  --route-walk-w: 12.5em;
+}
+
+:lang(en) .access-routes {
+  --route-origin-w: 11.5em;
+  --route-walk-w: 12em;
+}
+
+.route-group--jr {
+  --route-color: var(--line-jr);
+}
+
+.route-group--hankyu {
+  --route-color: var(--line-hankyu);
+}
+
+.route-group--monorail {
+  --route-color: var(--line-monorail);
+}
+
+.route-map {
+  margin: 0;
+}
+
+.route-map-caption {
+  margin: 0 0 var(--s-4);
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+}
+
+.route-group {
+  padding: var(--s-5) 0 var(--s-6);
+  border-top: var(--rule);
+}
+
+.route-group:first-of-type {
+  border-top: var(--rule-strong);
+}
+
+.route-group-title {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin: 0 0 var(--s-4);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+.route-group-title::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  background: var(--route-color);
+}
+
+.route-rows {
+  display: grid;
+  gap: var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  min-height: 28px;
+  font-size: var(--fs-base);
+  line-height: 1.4;
+}
+
+.route-origin,
+.route-hop,
+.route-walk,
+.route-leg {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+/* Origin: fixed column so transfers and arrivals line up row to row.
+   Its line runs from the name to the column edge and joins the first leg. */
+.route-origin {
+  flex: 0 0 var(--route-origin-w);
+  gap: var(--s-2);
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+}
+
+.route-origin::after {
+  content: "";
+  flex: 1 1 auto;
+  min-width: var(--s-2);
+  height: 2px;
+  background: var(--route-color);
+}
+
+.route-hop {
+  flex: 1 1 0;
+}
+
+.route-leg {
+  flex: 1 1 auto;
+  gap: var(--s-2);
+  color: var(--c-ink);
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+:lang(ja) .route-leg {
+  font-family: var(--font-sans);
+}
+
+.route-leg::before,
+.route-leg::after {
+  content: "";
+  flex: 1 1 auto;
+  min-width: var(--s-3);
+  height: 2px;
+  background: var(--route-color);
+}
+
+.route-stop {
+  flex: 0 0 auto;
+  padding: 0 var(--s-2);
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
+}
+
+/* Walk: a dotted ink line, then the campus as the terminal. */
+.route-walk {
+  flex: 0 0 var(--route-walk-w);
+}
+
+.route-walk .route-leg {
+  color: var(--c-ink-2);
+  font-weight: var(--fw-regular);
+}
+
+.route-walk .route-leg::before,
+.route-walk .route-leg::after {
+  height: 0;
+  background: none;
+  border-top: 2px dotted var(--c-ink-3);
+}
+
+.route-goal {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  padding-left: var(--s-2);
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+}
+
+.route-goal::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--c-accent);
+}
+
+.route-map-note {
+  margin: 0;
+  padding-top: var(--s-3);
+  border-top: var(--rule);
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-snug);
+}
+
+/* Phones: origin becomes the row label; the line wraps if it must. */
+@media (max-width: 720px) {
+  .route-group {
+    padding: var(--s-4) 0 var(--s-5);
+  }
+
+  .route-rows {
+    gap: var(--s-4);
+  }
+
+  /* The walk keeps its natural width, so arrivals line up within a group;
+     if it has to wrap, it sits right-aligned under the arrival station. */
+  .route {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    row-gap: var(--s-2);
+    font-size: var(--fs-sm);
+  }
+
+  .route-origin {
+    flex: 0 0 100%;
+  }
+
+  .route-origin::after {
+    display: none;
+  }
+
+  .route-hop {
+    flex: 1 0 auto;
+  }
+
+  .route-walk {
+    flex: 0 0 auto;
+  }
+
+  .route-walk .route-leg::before,
+  .route-walk .route-leg::after {
+    width: var(--s-3);
+  }
+
+  .route-leg {
+    gap: var(--s-1);
+    font-size: var(--fs-xs);
+  }
+
+  .route-leg::before,
+  .route-leg::after {
+    min-width: var(--s-2);
+  }
+
+  .route-stop {
+    padding: 0 6px;
+  }
+
+  .route-goal {
+    padding-left: 6px;
+    font-size: var(--fs-xs);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Access: route list (text). Origin | detail, separated by hairlines.
+   --------------------------------------------------------------------- */
+
+.route-list {
+  margin: var(--s-7) 0 0;
+  border-top: var(--rule-strong);
+}
+
+.route-list-item {
+  display: grid;
+  grid-template-columns: minmax(0, 15em) minmax(0, 1fr);
+  gap: var(--s-1) var(--s-5);
+  padding: var(--s-4) 0;
+  border-bottom: var(--rule);
+}
+
+:lang(en) .route-list-item {
+  grid-template-columns: minmax(0, 17em) minmax(0, 1fr);
+}
+
+.route-list-origin {
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-body);
+}
+
+.route-list-detail {
+  margin: 0;
+  color: var(--c-ink-2);
+  line-height: var(--lh-body);
+}
+
+@media (max-width: 720px) {
+  .route-list {
+    margin-top: var(--s-6);
+  }
+
+  .route-list-item,
+  :lang(en) .route-list-item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Terms / Privacy: heading column + ~40-character prose column
+   --------------------------------------------------------------------- */
+
+.legal-updated {
+  margin: var(--s-2) 0 0;
+}
+
+.legal-section {
+  padding: var(--s-6) 0;
+}
+
+.legal-section-title {
+  margin: 0;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-snug);
+}
+
+.legal-section .prose li::marker {
+  color: var(--c-ink-3);
+}
+
+:lang(en) .legal-section .prose {
+  max-width: 36em;
+}
+
+@media (max-width: 900px) {
+  .legal-section {
+    row-gap: var(--s-3);
+  }
+}
+
+@media (min-width: 901px) {
+  .legal-section-title {
+    position: sticky;
+    top: calc(var(--header-h) + var(--s-5));
+    align-self: start;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Food: today's food trucks
+   --------------------------------------------------------------------- */
+
+.food-board-date {
+  margin: var(--s-1) 0 0;
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.food-board-date[hidden] {
+  display: none;
+}
+
+.food-state {
+  margin: 0;
+  padding: var(--s-1) 0;
+  color: var(--c-ink-2);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+}
+
+.food-state.is-error {
+  color: var(--c-danger);
+}
+
+.food-trucks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: var(--s-6) var(--s-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.food-truck {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--s-1);
+  min-width: 0;
+}
+
+.food-truck-thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin-bottom: var(--s-2);
+  overflow: hidden;
+  background: var(--c-bg-sub);
+}
+
+.food-truck-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.food-truck-thumb.is-empty {
+  display: grid;
+  place-items: center;
+}
+
+.food-truck-noimage {
+  color: var(--c-ink-3);
+  font-family: var(--font-latin);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-eyebrow);
+}
+
+.food-truck-name {
+  margin: 0;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  overflow-wrap: anywhere;
+}
+
+.food-truck-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* The whole item is the link's hit area; hover only underlines the name. */
+.food-truck-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.food-truck-link.external::after {
+  margin-left: 0.25em;
+  color: var(--c-ink-3);
+  font-size: 0.85em;
+}
+
+.food-truck-link:hover,
+.food-truck-link:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.food-truck-meta {
+  margin: 0;
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+}
+
+.food-source {
+  margin: var(--s-7) 0 0;
+  padding-top: var(--s-3);
+  border-top: var(--rule);
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-snug);
+}
+
+@media (max-width: 720px) {
+  .food-trucks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-5) var(--s-4);
+  }
+
+  .food-truck-name {
+    font-size: var(--fs-sm);
+  }
+
+  .food-truck-meta {
+    font-size: var(--fs-xs);
+  }
+
+  .food-source {
+    margin-top: var(--s-6);
+  }
+}

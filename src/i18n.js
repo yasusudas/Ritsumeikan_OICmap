@@ -17,9 +17,13 @@ const dictionaries = {
 
     'menu.open': 'メニューを開く',
     'menu.close': 'メニューを閉じる',
+    'menu.label': 'メニュー',
+    'menu.siteNav': 'サイトメニュー',
+    'menu.map': 'マップ',
     'menu.about': 'このサイトについて',
     'menu.access': 'アクセス',
     'menu.timetable': '時刻表',
+    'menu.food': 'OICフード',
     'menu.contactForm': 'お問い合わせ',
 
     'about.title': 'このサイトについて',
@@ -70,6 +74,10 @@ const dictionaries = {
     'search.feedback.showing': '{label} を {floor} で表示中',
     'search.feedback.matches': '{count} 件の候補',
     'search.toiletLegend': '青色は男子トイレ、赤色は女子トイレ、黄色は多目的トイレです',
+    'legend.toilet': 'トイレの色分け',
+    'legend.toiletMen': '男性',
+    'legend.toiletWomen': '女性',
+    'legend.toiletAccessible': '多目的',
 
     'quickActions.label': 'クイックリンク',
     'quickActions.food': 'OICフード',
@@ -88,8 +96,8 @@ const dictionaries = {
     'floor.3F': '3F',
     'floor.4F': '4F',
     'floor.5F': '5F',
-    'floor.A-6-9F': 'A棟6,7,8,9F',
-    'floor.H-6-9F': 'H棟6,7,8,9F',
+    'floor.A-6-9F': 'A棟 6–9F',
+    'floor.H-6-9F': 'H棟 6–9F',
     'floor.printerMap': 'プリンター',
     'floor.selected': '選択中の',
     'floor.floor': 'フロア',
@@ -207,6 +215,7 @@ const dictionaries = {
     'login.error.incorrect': 'パスワードが違います。',
 
     'footer.legalNav': '法務リンク',
+    'footer.siteInfo': 'サイト情報',
     'footer.terms': '利用規約',
     'footer.privacy': 'プライバシーポリシー',
     'footer.creator': '制作者について',
@@ -227,9 +236,13 @@ const dictionaries = {
 
     'menu.open': 'Open menu',
     'menu.close': 'Close menu',
+    'menu.label': 'Menu',
+    'menu.siteNav': 'Site menu',
+    'menu.map': 'Map',
     'menu.about': 'About this map',
     'menu.access': 'Access',
     'menu.timetable': 'Timetable',
+    'menu.food': 'OIC Food',
     'menu.contactForm': 'Contact',
 
     'about.title': 'About this map',
@@ -265,7 +278,7 @@ const dictionaries = {
     'fileMode.login.copy':
       'This login page must be opened through a local server. After running <code>npm run dev</code>, open <code>http://127.0.0.1:5173/editor/login/</code>.',
 
-    'search.placeholder': 'Search by room or facility name',
+    'search.placeholder': 'Search rooms',
     'search.clear': 'Clear search',
     'search.facilityActions': 'Facility filters',
     'search.feedback.default': '',
@@ -281,6 +294,10 @@ const dictionaries = {
     'search.feedback.matches': '{count} match{suffix}',
     'search.toiletLegend':
       "Blue rings mark men's restrooms, red rings mark women's restrooms, and yellow rings mark accessible restrooms.",
+    'legend.toilet': 'Restroom colors',
+    'legend.toiletMen': 'Men',
+    'legend.toiletWomen': 'Women',
+    'legend.toiletAccessible': 'Accessible',
 
     'quickActions.label': 'Quick links',
     'quickActions.food': 'OIC Food',
@@ -299,8 +316,8 @@ const dictionaries = {
     'floor.3F': '3F',
     'floor.4F': '4F',
     'floor.5F': '5F',
-    'floor.A-6-9F': 'Bldg. A 6F-9F',
-    'floor.H-6-9F': 'Bldg. H 6F-9F',
+    'floor.A-6-9F': 'Bldg. A 6F–9F',
+    'floor.H-6-9F': 'Bldg. H 6F–9F',
     'floor.printerMap': 'Printer Map',
     'floor.selected': 'Selected',
     'floor.floor': 'Floor',
@@ -418,6 +435,7 @@ const dictionaries = {
     'login.error.incorrect': 'Incorrect password.',
 
     'footer.legalNav': 'Legal links',
+    'footer.siteInfo': 'Site information',
     'footer.terms': 'Terms',
     'footer.privacy': 'Privacy Policy',
     'footer.creator': 'About the Creator',
@@ -541,10 +559,11 @@ function updateLanguageToggles(root = document) {
       const jpOption = document.createElement('span');
       jpOption.className = 'lang-toggle-option';
       jpOption.dataset.langOption = 'ja';
-      jpOption.textContent = 'JP';
+      jpOption.textContent = 'JA';
 
       const separator = document.createElement('span');
       separator.className = 'lang-toggle-separator';
+      separator.setAttribute('aria-hidden', 'true');
       separator.textContent = '/';
 
       const enOption = document.createElement('span');
@@ -617,6 +636,11 @@ export function applyI18n(root = document) {
 
   root.querySelectorAll('[data-i18n-title]').forEach((node) => {
     node.setAttribute('title', t(node.dataset.i18nTitle));
+  });
+
+  root.querySelectorAll('[data-localized-href]').forEach((node) => {
+    const path = node.dataset.localizedHref;
+    node.setAttribute('href', currentLang === 'en' ? `/en${path}` : path);
   });
 
   applyDocumentMeta();
