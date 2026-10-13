@@ -163,6 +163,7 @@ if (window.__FILE_MODE__) {
   const mobileFloorSelect = document.querySelector('[data-mobile-floor-select]');
   const mobileFloorToggle = document.querySelector('[data-mobile-floor-toggle]');
   const mobileFloorCurrent = document.querySelector('[data-mobile-floor-current]');
+  const floorMarks = Array.from(document.querySelectorAll('[data-floor-mark]'));
   const mobileFloorList = document.querySelector('[data-mobile-floor-list]');
   const mobileFloorOptions = Array.from(document.querySelectorAll('[data-mobile-floor-option]'));
   const searchPanel = document.querySelector('#search-panel');
@@ -1866,6 +1867,14 @@ if (window.__FILE_MODE__) {
     if (mobileFloorCurrent) {
       mobileFloorCurrent.textContent = displayLabel;
     }
+
+    // Decorative floor numeral behind the map: a short form of the label.
+    const markLabel = getActiveSpecialFloorFacilityKey() === 'printer'
+      ? 'P'
+      : activeFloorId.replace(/^([AH])-6-9F$/, '$1');
+    floorMarks.forEach((element) => {
+      element.textContent = markLabel;
+    });
 
     mobileFloorOptions.forEach((button) => {
       const isActive = button.dataset.floor === activeFloorId;

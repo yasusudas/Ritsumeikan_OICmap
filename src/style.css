@@ -1,12 +1,14 @@
 /* Entry stylesheet. Each partial owns one area of the site.
    tokens/base: design system + shared components
    viewer:      map page (/ and /en/) and the map layer shared with the editor
+   viewer-loose: relaxed flat layer on top of viewer.css (map page only)
    timetable:   /timetable/ and /hidden/timetable/
    pages:       /access/, /food/, /terms/, /privacy/
    editor:      /editor/ tools */
 @import "./styles/tokens.css";
 @import "./styles/base.css";
 @import "./styles/viewer.css";
+@import "./styles/viewer-loose.css";
 @import "./styles/timetable.css";
 @import "./styles/pages.css";
 @import "./styles/editor.css";
