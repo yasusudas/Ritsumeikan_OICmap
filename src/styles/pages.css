@@ -1,17 +1,21 @@
 /* =====================================================================
    Content pages: /access/, /food/, /terms/, /privacy/ (+ /en/)
    Built on the shared scaffold in base.css (.page, .page-head, .section,
-   .prose). Flat: whitespace and 1px rules only — no cards, no shadows.
+   .prose) and the loose layer in loose.css (stacked sections, grey pill
+   buttons). No rules or outlines: groups are made with whitespace, soft
+   grey sheets and type size. Still flat: no shadows, blur or gradients.
    ===================================================================== */
 
 /* ---------------------------------------------------------------------
-   Access: location (map + address list)
+   Access: location (map + address)
+   The map is a rounded image; the address and phone number sit on a
+   grey sheet beside it (below it on narrow screens).
    --------------------------------------------------------------------- */
 
 .access-location-body {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: var(--s-6) var(--s-7);
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 24px 40px;
   align-items: start;
 }
 
@@ -20,79 +24,133 @@
 }
 
 .access-map img {
+  display: block;
   width: 100%;
   height: auto;
-  border: var(--rule);
+  border-radius: 28px;
 }
 
 .access-info {
+  display: grid;
+  gap: 32px;
   margin: 0;
-  border-top: var(--rule-strong);
+  padding: 32px 32px 36px;
+  border-radius: 28px;
+  background: var(--ls-fill);
 }
 
 .access-info-row {
   display: grid;
-  gap: var(--s-2);
-  padding: var(--s-4) 0 var(--s-5);
-  border-bottom: var(--rule);
+  gap: 8px;
 }
 
 .access-info dt {
   color: var(--c-ink-3);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
   line-height: 1.4;
 }
 
 .access-info dd {
   margin: 0;
-  line-height: var(--lh-body);
+  line-height: var(--lh-snug);
 }
 
 .access-info dd p {
   margin: 0;
 }
 
+/* The address wraps only between its phrases (after the postcode in
+   Japanese), never inside "2-150". */
 .access-address {
-  font-size: var(--fs-md);
-  font-weight: var(--fw-medium);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.02em;
+}
+
+.access-address-part {
+  white-space: nowrap;
 }
 
 .access-info-heading {
   color: var(--c-ink-2);
   font-size: var(--fs-sm);
-  line-height: var(--lh-snug);
+  text-wrap: balance;
 }
 
 .access-info-copy {
-  margin-top: var(--s-1);
-}
-
-.access-info-note {
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  margin-top: 10px;
+  color: var(--c-ink-3);
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.06em;
 }
 
 .access-tel {
   font-family: var(--font-latin);
-  font-weight: var(--fw-medium);
+  font-size: 1.625rem;
+  font-weight: var(--fw-bold);
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
   white-space: nowrap;
 }
 
-@media (max-width: 1100px) {
+.access-info-note {
+  flex: 1 0 100%;
+  color: var(--c-ink-2);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  letter-spacing: 0;
+}
+
+@media (max-width: 1000px) {
+  .access-location-body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+  }
+
+  .access-info {
+    padding-inline: 28px;
+  }
+}
+
+@media (max-width: 760px) {
   .access-location-body {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .access-map {
-    max-width: 560px;
+  .access-map img {
+    border-radius: 24px;
+  }
+
+  .access-info {
+    gap: 26px;
+    padding: 24px 22px 28px;
+    border-radius: 24px;
+  }
+
+  .access-address {
+    font-size: var(--fs-md);
+  }
+
+  .access-tel {
+    font-size: 1.5rem;
   }
 }
 
 /* ---------------------------------------------------------------------
-   Access: route diagram (replaces the old raster infographic)
-   Each row: origin ─ ride ─ (transfer ─ ride ─) arrival ┈ walk ┈ OIC.
-   Railway colors appear only as the 2px line and a small square.
+   Access: route diagram
+   One grey sheet; railways are separated by space. Each row:
+   origin ─ ride ─ (transfer ─ ride ─) arrival ┈ walk ┈ OIC.
+   The railway colors are content: the 2px line and a dot per railway.
    --------------------------------------------------------------------- */
 
 .access-routes {
@@ -101,12 +159,12 @@
   --line-hankyu: #2bb7b3;
   --line-monorail: #036eb8;
   --route-origin-w: 7.5em;
-  --route-walk-w: 12.5em;
+  --route-walk-w: 13em;
 }
 
 :lang(en) .access-routes {
   --route-origin-w: 12.5em;
-  --route-walk-w: 12em;
+  --route-walk-w: 12.5em;
 }
 
 .route-group--jr {
@@ -123,31 +181,29 @@
 
 .route-map {
   margin: 0;
+  padding: 32px 40px 30px;
+  border-radius: 28px;
+  background: var(--ls-fill);
   container: route-map / inline-size;
 }
 
 .route-map-caption {
-  margin: 0 0 var(--s-4);
+  margin: 0 0 28px;
   color: var(--c-ink-2);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
 }
 
-.route-group {
-  padding: var(--s-5) 0 var(--s-6);
-  border-top: var(--rule);
-}
-
-.route-group:first-of-type {
-  border-top: var(--rule-strong);
+.route-group + .route-group {
+  margin-top: 40px;
 }
 
 .route-group-title {
   display: flex;
   align-items: center;
-  gap: var(--s-2);
-  margin: 0 0 var(--s-4);
-  font-size: var(--fs-sm);
+  gap: 10px;
+  margin: 0 0 18px;
+  font-size: var(--fs-base);
   font-weight: var(--fw-bold);
   letter-spacing: 0.04em;
   line-height: 1.4;
@@ -158,12 +214,13 @@
   flex: 0 0 auto;
   width: 10px;
   height: 10px;
+  border-radius: 50%;
   background: var(--route-color);
 }
 
 .route-rows {
   display: grid;
-  gap: var(--s-4);
+  gap: 18px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -200,6 +257,7 @@
   flex: 1 1 auto;
   min-width: var(--s-2);
   height: 2px;
+  border-radius: 1px;
   background: var(--route-color);
 }
 
@@ -207,6 +265,7 @@
   flex: 1 1 0;
 }
 
+/* Minutes on the line, in Inter. */
 .route-leg {
   flex: 1 1 auto;
   gap: var(--s-2);
@@ -228,6 +287,7 @@
   flex: 1 1 auto;
   min-width: var(--s-3);
   height: 2px;
+  border-radius: 1px;
   background: var(--route-color);
 }
 
@@ -238,7 +298,7 @@
   white-space: nowrap;
 }
 
-/* Walk: a dotted ink line, then the campus as the terminal. */
+/* Walk: a dotted grey line, then the campus as a white chip. */
 .route-walk {
   flex: 0 0 var(--route-walk-w);
 }
@@ -251,33 +311,26 @@
 .route-walk .route-leg::before,
 .route-walk .route-leg::after {
   height: 0;
-  background: none;
   border-top: 2px dotted var(--c-ink-3);
+  border-radius: 0;
+  background: none;
 }
 
 .route-goal {
-  display: inline-flex;
   flex: 0 0 auto;
-  align-items: center;
-  gap: 6px;
-  padding-left: var(--s-2);
+  margin-left: var(--s-2);
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #ffffff;
   font-family: var(--font-latin);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
-  letter-spacing: 0.04em;
-}
-
-.route-goal::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background: var(--c-accent);
+  letter-spacing: 0.06em;
+  line-height: 1.4;
 }
 
 .route-map-note {
-  margin: 0;
-  padding-top: var(--s-3);
-  border-top: var(--rule);
+  margin: 32px 0 0;
   color: var(--c-ink-3);
   font-size: var(--fs-xs);
   line-height: var(--lh-snug);
@@ -289,13 +342,13 @@
    it wraps it sits right-aligned under the arrival station. */
 @container route-map (max-width: 819px) {
   .route-rows {
-    gap: var(--s-5);
+    gap: 22px;
   }
 
   .route {
     flex-wrap: wrap;
     justify-content: flex-end;
-    row-gap: var(--s-2);
+    row-gap: 6px;
   }
 
   .route-origin {
@@ -320,10 +373,23 @@
   }
 }
 
-/* Phones: smaller type, tighter gaps. */
+/* Phones: a tighter sheet, smaller type. */
 @media (max-width: 720px) {
-  .route-group {
-    padding: var(--s-4) 0 var(--s-5);
+  .route-map {
+    padding: 24px 20px 22px;
+    border-radius: 24px;
+  }
+
+  .route-map-caption {
+    margin-bottom: 22px;
+  }
+
+  .route-group + .route-group {
+    margin-top: 32px;
+  }
+
+  .route-group-title {
+    margin-bottom: 14px;
   }
 
   .route {
@@ -350,69 +416,87 @@
   }
 
   .route-goal {
-    padding-left: 6px;
-    font-size: var(--fs-xs);
+    margin-left: 6px;
+    padding: 2px 8px;
+    font-size: var(--fs-2xs);
+  }
+
+  .route-map-note {
+    margin-top: 26px;
+  }
+}
+
+@media (max-width: 360px) {
+  .route-map {
+    padding-inline: 16px;
+  }
+
+  .access-tel {
+    font-size: 1.375rem;
   }
 }
 
 /* ---------------------------------------------------------------------
-   Access: route list (text). Origin | detail, separated by hairlines.
+   Access: route list (text). Origin above its description, laid out in
+   loose columns with space between; no rows or rules.
    --------------------------------------------------------------------- */
 
 .route-list {
-  margin: var(--s-7) 0 0;
-  border-top: var(--rule-strong);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 28px 48px;
+  margin: 48px 0 0;
 }
 
 .route-list-item {
   display: grid;
-  grid-template-columns: minmax(0, 15em) minmax(0, 1fr);
-  gap: var(--s-1) var(--s-5);
-  padding: var(--s-4) 0;
-  border-bottom: var(--rule);
-}
-
-:lang(en) .route-list-item {
-  grid-template-columns: minmax(0, 17em) minmax(0, 1fr);
+  align-content: start;
+  gap: 4px;
 }
 
 .route-list-origin {
+  font-size: var(--fs-base);
   font-weight: var(--fw-bold);
-  line-height: var(--lh-body);
+  line-height: var(--lh-snug);
 }
 
 .route-list-detail {
   margin: 0;
   color: var(--c-ink-2);
-  line-height: var(--lh-body);
+  font-size: var(--fs-sm);
+  line-height: 1.8;
 }
 
 @media (max-width: 720px) {
   .route-list {
-    margin-top: var(--s-6);
-  }
-
-  .route-list-item,
-  :lang(en) .route-list-item {
-    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    margin-top: 36px;
   }
 }
 
 /* ---------------------------------------------------------------------
-   Terms / Privacy: heading column + ~40-character prose column
+   Terms / Privacy: calm long-form text. Articles stack with space above
+   their headings; the text keeps a ~40-character measure.
    --------------------------------------------------------------------- */
 
 .legal-updated {
-  margin: var(--s-2) 0 0;
+  margin: 4px 0 0;
+  font-variant-numeric: tabular-nums;
 }
 
-.legal-section {
-  padding: var(--s-6) 0;
+.legal-content {
+  padding-top: 8px;
+}
+
+body.subpage .legal-section {
+  gap: 14px;
+  padding-top: 52px;
 }
 
 .legal-section-title {
+  max-width: var(--measure);
   margin: 0;
-  font-size: var(--fs-md);
+  font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-title);
   line-height: var(--lh-snug);
@@ -426,17 +510,14 @@
   max-width: 36em;
 }
 
-@media (max-width: 900px) {
-  .legal-section {
-    row-gap: var(--s-3);
+@media (max-width: 720px) {
+  body.subpage .legal-section {
+    gap: 10px;
+    padding-top: 40px;
   }
-}
 
-@media (min-width: 901px) {
   .legal-section-title {
-    position: sticky;
-    top: calc(var(--header-h) + var(--s-5));
-    align-self: start;
+    font-size: var(--fs-md);
   }
 }
 
@@ -445,9 +526,10 @@
    --------------------------------------------------------------------- */
 
 .food-board-date {
-  margin: var(--s-1) 0 0;
+  margin: 2px 0 0;
   color: var(--c-ink-2);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
   font-variant-numeric: tabular-nums;
 }
 
@@ -455,12 +537,15 @@
   display: none;
 }
 
+/* Loading, empty and error messages share one grey sheet. */
 .food-state {
   margin: 0;
-  padding: var(--s-1) 0;
+  padding: 40px 36px;
+  border-radius: var(--ls-sheet);
+  background: var(--ls-fill);
   color: var(--c-ink-2);
-  font-size: var(--fs-base);
-  line-height: var(--lh-body);
+  font-size: var(--fs-md);
+  line-height: var(--lh-snug);
 }
 
 .food-state.is-error {
@@ -469,8 +554,8 @@
 
 .food-trucks {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
-  gap: var(--s-6) var(--s-5);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+  gap: 36px 24px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -480,19 +565,26 @@
   position: relative;
   display: grid;
   align-content: start;
-  gap: var(--s-1);
+  gap: 4px;
   min-width: 0;
 }
 
 .food-truck-thumb {
   position: relative;
   aspect-ratio: 4 / 3;
-  margin-bottom: var(--s-2);
+  margin-bottom: 10px;
   overflow: hidden;
-  background: var(--c-bg-sub);
+  border-radius: var(--ls-sheet);
+  background: var(--ls-fill);
+  transition: background-color var(--dur) var(--ease);
+}
+
+.food-truck.has-link:hover .food-truck-thumb {
+  background: var(--ls-fill-2);
 }
 
 .food-truck-image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -513,7 +605,8 @@
 
 .food-truck-name {
   margin: 0;
-  font-size: var(--fs-base);
+  padding: 0 4px;
+  font-size: var(--fs-md);
   font-weight: var(--fw-bold);
   line-height: var(--lh-snug);
   overflow-wrap: anywhere;
@@ -524,7 +617,7 @@
   text-decoration: none;
 }
 
-/* The whole item is the link's hit area; hover only underlines the name. */
+/* The whole item is the link's hit area; hover underlines the name. */
 .food-truck-link::before {
   content: "";
   position: absolute;
@@ -546,28 +639,37 @@
 
 .food-truck-meta {
   margin: 0;
-  color: var(--c-ink-2);
+  padding: 0 4px;
+  color: var(--c-ink-3);
   font-size: var(--fs-sm);
   line-height: var(--lh-snug);
 }
 
 .food-source {
-  margin: var(--s-7) 0 0;
-  padding-top: var(--s-3);
-  border-top: var(--rule);
+  margin: 40px 0 0;
   color: var(--c-ink-3);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   line-height: var(--lh-snug);
 }
 
 @media (max-width: 720px) {
+  .food-state {
+    padding: 28px 24px;
+    font-size: var(--fs-base);
+  }
+
   .food-trucks {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--s-5) var(--s-4);
+    gap: 28px 14px;
+  }
+
+  .food-truck-thumb {
+    margin-bottom: 8px;
+    border-radius: 18px;
   }
 
   .food-truck-name {
-    font-size: var(--fs-sm);
+    font-size: var(--fs-base);
   }
 
   .food-truck-meta {
@@ -575,6 +677,7 @@
   }
 
   .food-source {
-    margin-top: var(--s-6);
+    margin-top: 32px;
+    font-size: var(--fs-xs);
   }
 }
