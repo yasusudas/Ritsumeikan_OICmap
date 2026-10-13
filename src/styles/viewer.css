@@ -643,6 +643,8 @@ svg.search-icon-image {
   stroke-width: 2.5px;
 }
 
+/* Focus on a hit polygon is shown by the area outline turning accent
+   (below) instead of a bounding-box ring around the SVG shape. */
 .facility-area-hit {
   fill: transparent;
   stroke: none;
