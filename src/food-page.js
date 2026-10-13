@@ -5,6 +5,7 @@ const FOOD_TRUCKS_URL = '/api/food-trucks';
 const REFRESH_INTERVAL_MS = 30 * 60 * 1000;
 
 const container = document.querySelector('[data-food-trucks]');
+const dateSlot = document.querySelector('[data-food-date]');
 const LANG = (document.documentElement.lang || '').toLowerCase().startsWith('en') ? 'en' : 'ja';
 
 const WEEKDAYS_JA = ['日', '月', '火', '水', '木', '金', '土'];
@@ -13,17 +14,19 @@ const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
 
 const STRINGS = {
   ja: {
-    title: '本日のキッチンカー',
     empty: '本日の出店予定はありません。',
     error: '本日のキッチンカー情報を取得できませんでした。',
     source: 'データ提供',
+    noImage: 'NO IMAGE',
+    metaSeparator: ' / ',
     spots: { terrace: 'テラス', plaza: 'プラザ' },
   },
   en: {
-    title: "Today's Food Trucks",
     empty: 'No food trucks are scheduled today.',
     error: 'Could not load today’s food trucks.',
     source: 'Source',
+    noImage: 'NO IMAGE',
+    metaSeparator: ' / ',
     spots: { terrace: 'Terrace', plaza: 'Plaza' },
   },
 };
@@ -76,52 +79,47 @@ function renderState(message, modifier = '') {
 
 function renderTruck(truck) {
   const image = safeHttpUrl(truck.image);
+  // 画像は装飾扱い(名前は直下の見出しで読める)。
   const thumb = image
-    ? `<img class="food-truck-thumb" src="${escapeHtml(image)}" alt="${escapeHtml(truck.name)}" loading="lazy" decoding="async" />`
-    : `<div class="food-truck-thumb food-truck-thumb--empty" aria-hidden="true">🍴</div>`;
+    ? `<img class="food-truck-image" src="${escapeHtml(image)}" alt="" loading="lazy" decoding="async" />`
+    : `<span class="food-truck-noimage" aria-hidden="true">${escapeHtml(t.noImage)}</span>`;
 
-  const tags = [truck.type, spotLabel(truck.spot)]
-    .filter(Boolean)
-    .map((tag) => `<span class="food-truck-tag">${escapeHtml(tag)}</span>`)
-    .join('');
+  const meta = [truck.type, spotLabel(truck.spot)].filter(Boolean).map(escapeHtml).join(t.metaSeparator);
 
   const href = safeHttpUrl(truck.sourceUrl);
   const name = href
-    ? `<a class="food-truck-name" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(truck.name)}</a>`
-    : `<span class="food-truck-name">${escapeHtml(truck.name)}</span>`;
+    ? `<a class="food-truck-link external" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(truck.name)}</a>`
+    : escapeHtml(truck.name);
 
   return `
-    <article class="food-truck-card">
-      <div class="food-truck-thumb-wrap">${thumb}</div>
-      <div class="food-truck-body">
-        ${name}
-        ${tags ? `<div class="food-truck-tags">${tags}</div>` : ''}
-      </div>
-    </article>
+    <li class="food-truck${href ? ' has-link' : ''}">
+      <div class="food-truck-thumb${image ? '' : ' is-empty'}">${thumb}</div>
+      <h3 class="food-truck-name">${name}</h3>
+      ${meta ? `<p class="food-truck-meta">${meta}</p>` : ''}
+    </li>
   `;
+}
+
+function renderDate(dateText) {
+  if (!dateSlot) return;
+  dateSlot.textContent = dateText;
+  dateSlot.hidden = !dateText;
 }
 
 function render(payload) {
   const trucks = Array.isArray(payload?.trucks) ? payload.trucks : [];
-  const dateText = formatDate(payload?.date);
-
-  const head = `
-    <div class="food-board-head">
-      <h2 class="food-board-title">${escapeHtml(t.title)}</h2>
-      ${dateText ? `<p class="food-board-date">${escapeHtml(dateText)}</p>` : ''}
-    </div>
-  `;
+  renderDate(formatDate(payload?.date));
 
   const body = trucks.length
-    ? `<div class="food-trucks-grid">${trucks.map(renderTruck).join('')}</div>`
+    ? `<ul class="food-trucks">${trucks.map(renderTruck).join('')}</ul>`
     : renderState(t.empty, 'is-empty');
 
   const sourceUrl = safeHttpUrl(payload?.source?.url);
   const source = sourceUrl
-    ? `<p class="food-board-source">${escapeHtml(t.source)}: <a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(payload.source?.name || sourceUrl)}</a></p>`
+    ? `<p class="food-source">${escapeHtml(t.source)}: <a class="text-link external" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(payload.source?.name || sourceUrl)}</a></p>`
     : '';
 
-  container.innerHTML = `${head}${body}${source}`;
+  container.innerHTML = `${body}${source}`;
 }
 
 async function refresh() {
@@ -129,6 +127,7 @@ async function refresh() {
   try {
     render(await fetchJson(FOOD_TRUCKS_URL));
   } catch (error) {
+    renderDate('');
     container.innerHTML = renderState(t.error, 'is-error');
   }
 }
