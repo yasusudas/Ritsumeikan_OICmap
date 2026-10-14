@@ -119,6 +119,9 @@ const dictionaries = {
     'status.loading': '読み込み中...',
     'status.floorLoading': '{floor} を読み込み中...',
     'status.floorError': '地図の読み込みに失敗しました',
+    'status.ringsError': '{facility}の位置情報を読み込めませんでした。',
+    'status.retryMap': '地図を再読み込み',
+    'status.retryRings': '位置情報を再読み込み',
 
     'editor.logout': 'ログアウト',
     'editor.caption': '編集用URLです。地図をクリックして検索用テキストと位置を記録できます。',
@@ -349,6 +352,9 @@ const dictionaries = {
     'status.loading': 'Loading...',
     'status.floorLoading': 'Loading {floor}...',
     'status.floorError': 'Failed to load the map.',
+    'status.ringsError': 'Could not load locations for {facility}.',
+    'status.retryMap': 'Reload map',
+    'status.retryRings': 'Reload locations',
 
     'editor.logout': 'Log Out',
     'editor.caption': 'This is the editor URL. Click the map to record searchable labels and their positions.',
@@ -681,8 +687,14 @@ export function setLang(lang, { persist = true, notify = true } = {}) {
       if (persist) {
         try { window.localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLang); } catch {}
       }
-      window.location.href = nextLang === 'en' ? '/en/' : '/';
-      return nextLang;
+      if (document.body?.dataset.appMode === 'viewer') {
+        const target = new URL(window.location.href);
+        target.pathname = nextLang === 'en' ? '/en/' : '/';
+        window.history.replaceState(window.history.state, '', `${target.pathname}${target.search}${target.hash}`);
+      } else {
+        window.location.href = nextLang === 'en' ? '/en/' : '/';
+        return nextLang;
+      }
     }
   }
 

@@ -289,6 +289,7 @@ if (window.__FILE_MODE__) {
     pinchStartCenterX: 0,
     pinchStartCenterY: 0,
     floorLoadToken: 0,
+    floorLoadError: null,
     highlightLayer: null,
     ringLayer: null,
     areaLayer: null,
@@ -300,6 +301,8 @@ if (window.__FILE_MODE__) {
     facilityRingsReady: false,
     facilityRingsLoading: false,
     facilityRingsPromise: null,
+    facilityRingsFailedKey: null,
+    facilityToggleRequestId: 0,
     baseSearchEntries: [],
     baseFacilityRings: [],
     searchEntries: [],
@@ -334,6 +337,50 @@ if (window.__FILE_MODE__) {
     ),
     facilityReturnFloorId: null
   };
+
+  const assetLoadFeedback = document.createElement('div');
+  assetLoadFeedback.className = 'map-load-feedback';
+  assetLoadFeedback.hidden = true;
+  viewer.append(assetLoadFeedback);
+  ['mousedown', 'touchstart', 'click', 'wheel'].forEach((type) => {
+    assetLoadFeedback.addEventListener(type, (event) => event.stopPropagation());
+  });
+
+  function renderAssetLoadFeedback() {
+    assetLoadFeedback.replaceChildren();
+    assetLoadFeedback.hidden = !state.floorLoadError && !state.facilityRingsFailedKey;
+    if (assetLoadFeedback.hidden) {
+      return;
+    }
+
+    assetLoadFeedback.style.top = `${computeViewerSafeInsets().top + 16}px`;
+    const addRetry = (message, label, retry) => {
+      const row = document.createElement('div');
+      row.className = 'map-load-error';
+      const copy = document.createElement('p');
+      copy.textContent = message;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'map-load-retry';
+      button.textContent = label;
+      button.addEventListener('click', retry);
+      row.append(copy, button);
+      assetLoadFeedback.append(row);
+    };
+
+    if (state.floorLoadError) {
+      const options = state.floorLoadError;
+      addRetry(t('status.floorError'), t('status.retryMap'), () => {
+        void renderFloor({ ...options, retry: true });
+      });
+    }
+    if (state.facilityRingsFailedKey) {
+      const key = state.facilityRingsFailedKey;
+      addRetry(t('status.ringsError', { facility: getFacilityLabel(key) }), t('status.retryRings'), () => {
+        void toggleFacilityToggleState(key);
+      });
+    }
+  }
 
   function registerViewerServiceWorker() {
     if (appMode !== 'viewer' || !('serviceWorker' in navigator) || !window.isSecureContext) {
@@ -511,17 +558,26 @@ if (window.__FILE_MODE__) {
     }
 
     const nextValue = state.facilityToggleState[facilityKey] === 1 ? 0 : 1;
+    const requestId = ++state.facilityToggleRequestId;
+    state.facilityRingsFailedKey = null;
+    renderAssetLoadFeedback();
 
     if (nextValue === 1 && facilityKey !== 'printer') {
       try {
         await ensureFacilityRingsLoaded();
       } catch (error) {
         console.warn('Failed to load facility rings.', error);
+        if (requestId === state.facilityToggleRequestId) {
+          state.facilityRingsFailedKey = facilityKey;
+          renderAssetLoadFeedback();
+        }
         return;
       }
     }
 
-    await setFacilityToggleState(facilityKey, nextValue);
+    if (requestId === state.facilityToggleRequestId) {
+      await setFacilityToggleState(facilityKey, nextValue);
+    }
   }
 
   window.__facilityToggleState = state.facilityToggleState;
@@ -1689,10 +1745,14 @@ if (window.__FILE_MODE__) {
 
   let isFirstFloorImage = true;
 
-  function createFloorImageNode(floor) {
+  function createFloorImageNode(floor, { retry = false } = {}) {
     const image = document.createElement('img');
     image.className = 'floor-svg';
-    image.src = getFloorSvgUrl(floor);
+    const url = new URL(getFloorSvgUrl(floor));
+    if (retry) {
+      url.searchParams.set('retry', Date.now());
+    }
+    image.src = url.href;
     image.alt = '';
     image.draggable = false;
     image.setAttribute('aria-hidden', 'true');
@@ -1925,6 +1985,9 @@ if (window.__FILE_MODE__) {
 
   function scheduleMapRelayout() {
     updateMapStageHeight();
+    if (!assetLoadFeedback.hidden) {
+      renderAssetLoadFeedback();
+    }
 
     if (!state.intrinsicWidth || !state.intrinsicHeight) {
       return;
@@ -3091,6 +3154,21 @@ if (window.__FILE_MODE__) {
     );
   }
 
+  function scrollActiveSearchSuggestionIntoView() {
+    const active = searchResults.querySelector('.search-result.is-active');
+    if (!active || searchResults.hidden) {
+      return;
+    }
+    const row = active.getBoundingClientRect();
+    const listTop = searchResults.getBoundingClientRect().top + searchResults.clientTop;
+    const listBottom = listTop + searchResults.clientHeight;
+    if (row.top < listTop) {
+      searchResults.scrollTop -= listTop - row.top;
+    } else if (row.bottom > listBottom) {
+      searchResults.scrollTop += row.bottom - listBottom;
+    }
+  }
+
   function clearActiveSearchSelection({ clearInput = false, clearHash = true } = {}) {
     state.activeSearchEntryId = null;
     renderSearchHighlights();
@@ -3237,10 +3315,12 @@ if (window.__FILE_MODE__) {
     updateView();
   }
 
-  async function renderFloor({ resetZoom = false, preserveView = false } = {}) {
+  async function renderFloor({ resetZoom = false, preserveView = false, retry = false } = {}) {
     const floor = getRenderedFloorDefinition();
     const floorLoadToken = ++state.floorLoadToken;
     const centerRatios = preserveView ? captureViewportCenterRatios() : null;
+    state.floorLoadError = null;
+    renderAssetLoadFeedback();
 
     setStatus(t('status.floorLoading', { floor: getFloorLabel(floor) }));
 
@@ -3251,11 +3331,16 @@ if (window.__FILE_MODE__) {
         return;
       }
 
+      const svgNode = createFloorImageNode(floor, { retry });
+      await svgNode.decode();
+      if (floorLoadToken !== state.floorLoadToken) {
+        return;
+      }
+
       const mapAsset = document.createElement('article');
       mapAsset.className = 'map-asset';
 
       const enableFloorFade = !getPrefersReducedMotion();
-      const svgNode = createFloorImageNode(floor);
       if (enableFloorFade) {
         svgNode.style.opacity = '0';
       }
@@ -3298,12 +3383,17 @@ if (window.__FILE_MODE__) {
         renderEditorRingList();
       }
     } catch (error) {
+      if (floorLoadToken !== state.floorLoadToken) {
+        return;
+      }
       console.error(error);
       canvasLayer.replaceChildren();
       state.highlightLayer = null;
       state.areaLayer = null;
       state.ringLayer = null;
       state.editorLayer = null;
+      state.floorLoadError = { resetZoom, preserveView };
+      renderAssetLoadFeedback();
       setStatus(t('status.floorError'));
     }
   }
@@ -3961,6 +4051,7 @@ if (window.__FILE_MODE__) {
   }
 
   function refreshLanguageDependentUi() {
+    const wereSearchResultsVisible = !searchResults.hidden;
     roomCodeCollator = new Intl.Collator(getLocale(), { numeric: true, sensitivity: 'base' });
     applyI18n();
     updateTabSelection();
@@ -3974,9 +4065,11 @@ if (window.__FILE_MODE__) {
     }
 
     renderSearchSuggestions();
+    searchResults.hidden = !wereSearchResultsVisible;
     renderSearchHighlights();
     renderFacilityAreas();
     renderFacilityRings();
+    renderAssetLoadFeedback();
 
     if (isEditorSite) {
       refreshEditorUi();
@@ -4160,6 +4253,7 @@ if (window.__FILE_MODE__) {
 
       state.activeSuggestionIndex = (state.activeSuggestionIndex + 1) % state.searchSuggestions.length;
       renderSearchSuggestions();
+      scrollActiveSearchSuggestionIntoView();
       return;
     }
 
@@ -4172,6 +4266,7 @@ if (window.__FILE_MODE__) {
       state.activeSuggestionIndex =
         (state.activeSuggestionIndex - 1 + state.searchSuggestions.length) % state.searchSuggestions.length;
       renderSearchSuggestions();
+      scrollActiveSearchSuggestionIntoView();
       return;
     }
 

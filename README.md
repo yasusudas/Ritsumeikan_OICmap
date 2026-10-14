@@ -10,6 +10,8 @@
 
 閲覧用サイトでは、1Fから5Fに加えて、A棟6から9F、H棟6から9F、プリンター案内図を切り替えて表示できます。地図はスマートフォンではピンチ操作、PCではホイールやドラッグ操作で拡大、縮小、移動できます。
 
+言語を切り替えても、表示中の階、検索結果、施設選択、拡大位置を維持します。地図や施設の位置情報の読み込みに失敗した場合は、地図上のボタンから再試行できます。検索候補は上下キーで選択でき、選択中の候補が見えるように一覧がスクロールします。
+
 検索欄に教室名や施設名を入力すると、該当する場所が地図上でハイライトされます。通信に失敗した場合は、検索欄の「再試行」から読み込み直せます。施設アイコンを使うと、トイレ、ウォーターサーバー、自販機、階段・エスカレーター、エレベーターを確認できます。「その他」からプリンター案内図やAED、ATM、授乳スペースを選べます。施設ボタンをもう一度押すとリングが消え、別の施設を押すと表示が切り替わります。ATMは1F、授乳スペースは2Fへ自動で切り替わり、解除すると選択前の階に戻ります。両者を切り替えた場合も、最初に開いていた階に戻ります。
 
 ### データと構成
@@ -35,6 +37,8 @@ Ritsumeikan OIC Map is an unofficial campus map for browsing classrooms and faci
 ### Features
 
 On the viewing site, you can switch between displays for the 1st to 5th floors, as well as Building A floors 6 to 9, Building H floors 6 to 9, and a printer guide map. You can zoom in/out and move the map using pinch gestures on smartphones, or by using the mouse wheel and dragging on a PC.
+
+Switching languages retains the current floor, search result, selected facility, zoom, and map position. If the map or facility locations fail to load, use the retry buttons over the map. Use the up/down arrow keys to select search suggestions; the list scrolls to keep the selected result visible.
 
 When you enter a classroom or facility name in the search bar, the corresponding location will be highlighted on the map. If loading fails, use “Try again” in the search panel to retry. Facility icons show restrooms, water dispensers, vending machines, stairs and escalators, and elevators. The More menu contains the printer guide, AEDs, ATMs, and the nursing space. Select a facility again to hide its rings, or select another facility to switch the display. Selecting ATMs switches to 1F, and selecting the nursing space switches to 2F. Deselecting returns to the previous floor, even after switching between these two facilities.
 
