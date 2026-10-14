@@ -121,6 +121,7 @@ if (window.__FILE_MODE__) {
     }
   };
   const MANUAL_SEARCH_INDEX_FILENAME = 'manual-search-index.json';
+  const FACILITY_FLOOR_BY_KEY = { atm: '1F', nursingRoom: '2F' };
   const EDITOR_SEARCH_DATA_URL = new URL(`/${MANUAL_SEARCH_INDEX_FILENAME}`, window.location.origin).href;
   const SEARCH_ENTRIES_ASSET_URL = searchEntriesUrl;
   const FACILITY_RINGS_ASSET_URL = facilityRingsUrl;
@@ -294,6 +295,7 @@ if (window.__FILE_MODE__) {
     editorLayer: null,
     searchReady: false,
     searchLoading: false,
+    searchLoadError: false,
     searchPromise: null,
     facilityRingsReady: false,
     facilityRingsLoading: false,
@@ -330,7 +332,7 @@ if (window.__FILE_MODE__) {
         .filter(Boolean)
         .map((facilityKey) => [facilityKey, 0])
     ),
-    nursingRoomReturnFloorId: null
+    facilityReturnFloorId: null
   };
 
   function registerViewerServiceWorker() {
@@ -462,22 +464,17 @@ if (window.__FILE_MODE__) {
     }
 
     const normalizedNextValue = nextValue === 1 ? 1 : 0;
-    const wasNursingRoomActive = state.facilityToggleState.nursingRoom === 1;
-    const isNursingRoomNextActive = facilityKey === 'nursingRoom' && normalizedNextValue === 1;
-
-    if (wasNursingRoomActive && !isNursingRoomNextActive) {
-      const returnFloorId = state.nursingRoomReturnFloorId;
-      state.nursingRoomReturnFloorId = null;
-
-      if (returnFloorId && returnFloorId !== getFloorDefinition().id) {
-        await setActiveFloor(returnFloorId, { resetZoom: true });
-      }
-    }
-
     const wasSpecialFloorActive = isSpecialFloorActive();
+    const wasFacilityFloorActive = Object.keys(FACILITY_FLOOR_BY_KEY)
+      .some((key) => state.facilityToggleState[key] === 1);
+    const facilityFloorId = normalizedNextValue === 1 ? FACILITY_FLOOR_BY_KEY[facilityKey] : null;
 
-    if (!wasNursingRoomActive && isNursingRoomNextActive) {
-      state.nursingRoomReturnFloorId = getFloorDefinition().id;
+    if (facilityFloorId && !wasFacilityFloorActive) {
+      state.facilityReturnFloorId = getFloorDefinition().id;
+    }
+    const nextFloorId = facilityFloorId || (wasFacilityFloorActive ? state.facilityReturnFloorId : null);
+    if (!facilityFloorId) {
+      state.facilityReturnFloorId = null;
     }
 
     Object.keys(state.facilityToggleState).forEach((key) => {
@@ -494,8 +491,8 @@ if (window.__FILE_MODE__) {
     renderFacilityToggleButtons();
     updateMobileFloorSelection();
 
-    if (isNursingRoomNextActive && getFloorDefinition().id !== '2F') {
-      await setActiveFloor('2F', { resetZoom: true });
+    if (nextFloorId && getFloorDefinition().id !== nextFloorId) {
+      await setActiveFloor(nextFloorId, { resetZoom: true, preserveSpecialFloor: true });
       return;
     }
 
@@ -2920,6 +2917,7 @@ if (window.__FILE_MODE__) {
     const query = searchInput.value.trim();
     const previousActiveEntryId = state.searchSuggestions[state.activeSuggestionIndex]?.id ?? null;
     searchClearButton.hidden = query.length === 0;
+    searchResults.setAttribute('role', state.searchLoading || state.searchLoadError ? 'group' : 'listbox');
 
     if (!query) {
       searchResults.hidden = true;
@@ -2942,6 +2940,26 @@ if (window.__FILE_MODE__) {
       } else {
         setSearchFeedback(t('search.feedback.default'));
       }
+      return;
+    }
+
+    if (state.searchLoading || state.searchLoadError) {
+      const message = document.createElement('div');
+      message.className = 'search-result-empty';
+      message.setAttribute('role', 'status');
+      message.textContent = t(state.searchLoading ? 'search.feedback.loading' : 'search.feedback.loadError');
+      searchResults.replaceChildren(message);
+      if (state.searchLoadError) {
+        const retry = document.createElement('button');
+        retry.type = 'button';
+        retry.className = 'search-result';
+        retry.dataset.searchRetry = '';
+        retry.textContent = t('search.retry');
+        searchResults.append(retry);
+      }
+      searchResults.hidden = false;
+      state.searchSuggestions = [];
+      state.activeSuggestionIndex = -1;
       return;
     }
 
@@ -3092,7 +3110,9 @@ if (window.__FILE_MODE__) {
     }
 
     state.searchLoading = true;
+    state.searchLoadError = false;
     setSearchFeedback(t('search.feedback.loading'));
+    renderSearchSuggestions();
 
     state.searchPromise = (async () => {
       try {
@@ -3103,12 +3123,14 @@ if (window.__FILE_MODE__) {
           state.facilityRingsReady = true;
         } else {
           state.baseSearchEntries = await fetchBundledSearchEntries();
-          state.baseFacilityRings = [];
         }
       } catch (error) {
         console.warn('Failed to load bundled search index.', error);
-        state.baseSearchEntries = [];
-        state.baseFacilityRings = [];
+        state.searchLoadError = true;
+        state.searchLoading = false;
+        state.searchPromise = null;
+        renderSearchSuggestions();
+        return state.searchEntries;
       }
 
       if (isEditorSite) {
@@ -3117,7 +3139,6 @@ if (window.__FILE_MODE__) {
         state.facilityRings = initialEditorData.facilityRings;
       } else {
         state.manualEntries = state.baseSearchEntries;
-        state.facilityRings = state.baseFacilityRings;
       }
       refreshSearchEntries();
       state.searchReady = true;
@@ -3247,14 +3268,14 @@ if (window.__FILE_MODE__) {
     }
   }
 
-  async function setActiveFloor(floorId, { resetZoom = true } = {}) {
+  async function setActiveFloor(floorId, { resetZoom = true, preserveSpecialFloor = false } = {}) {
     const nextIndex = FLOOR_FILES.findIndex((floor) => floor.id === floorId);
 
     if (nextIndex < 0) {
       return;
     }
 
-    const wasSpecialFloorActive = deactivateSpecialFloorToggle();
+    const wasSpecialFloorActive = !preserveSpecialFloor && deactivateSpecialFloorToggle();
     const shouldResetZoom = resetZoom || wasSpecialFloorActive;
     clearFacilityAreaDraft();
     state.selectedAreaEntryId = null;
@@ -4012,7 +4033,7 @@ if (window.__FILE_MODE__) {
 
       setMobileFloorListOpen(false);
 
-      if (!floorId || floorId === getFloorDefinition().id) {
+      if (!floorId || (floorId === getFloorDefinition().id && !isSpecialFloorActive())) {
         return;
       }
 
@@ -4133,6 +4154,11 @@ if (window.__FILE_MODE__) {
   });
 
   searchResults.addEventListener('click', (event) => {
+    if (event.target.closest('[data-search-retry]')) {
+      void buildSearchIndex();
+      return;
+    }
+
     const button = event.target.closest('.search-result');
 
     if (!button) {
