@@ -8,8 +8,7 @@
 
 body[data-app-mode="viewer"] {
   --ls-edge: 24px;
-  /* Pop-in timing shared by the More options and the floor list */
-  --ls-pop-dur: 120ms;
+  /* Per-option delay; the shared pop-in duration is defined in loose.css. */
   --ls-pop-step: 25ms;
 }
 

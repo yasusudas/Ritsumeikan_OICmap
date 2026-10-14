@@ -16,6 +16,7 @@
   --ls-red-soft: #f9e9ec;
   --ls-sheet: 22px; /* menus, panels, dialogs */
   --ls-row: 14px; /* rows inside a sheet */
+  --ls-pop-dur: 120ms; /* shared menu, floor list and facility timing */
 
   --c-accent: var(--ls-red);
   --c-accent-hover: #741424;
@@ -124,6 +125,7 @@ body.subpage .site-brand-name {
   width: 20px;
   height: 2px;
   border-radius: 1px;
+  transition-duration: var(--ls-pop-dur);
 }
 
 :is(body[data-app-mode="viewer"], body.subpage) .site-menu-line:nth-child(1) {
@@ -151,6 +153,39 @@ body.subpage .site-brand-name {
   border: 0;
   border-radius: var(--ls-sheet);
   background: var(--ls-fill);
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition:
+    opacity var(--ls-pop-dur) var(--ease),
+    transform var(--ls-pop-dur) var(--ease),
+    display var(--ls-pop-dur) allow-discrete;
+}
+
+body[data-app-mode="viewer"] .site-menu-panel:not([hidden]),
+body.subpage .site-menu[open] .site-menu-panel {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* Keep native details content visible until its closing transition ends. */
+body.subpage .site-menu::details-content {
+  transition: content-visibility var(--ls-pop-dur) allow-discrete;
+}
+
+@starting-style {
+  body[data-app-mode="viewer"] .site-menu-panel:not([hidden]),
+  body.subpage .site-menu[open] .site-menu-panel {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.subpage .site-menu::details-content {
+    transition: none;
+  }
 }
 
 :is(body[data-app-mode="viewer"], body.subpage) .site-menu-item {
