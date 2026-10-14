@@ -501,7 +501,8 @@ if (window.__FILE_MODE__) {
     const selectedKey = searchIconButtons.find((button) =>
       facilityMorePanel?.contains(button) && state.facilityToggleState[button.dataset.facilityKey] === 1
     )?.dataset.facilityKey;
-    const label = selectedKey ? t(`facility.${selectedKey}`) : null;
+    const foodActive = typeof foodGuide !== 'undefined' && foodGuide?.browse;
+    const label = foodActive ? t('food.title') : selectedKey ? t(`facility.${selectedKey}`) : null;
     facilityMoreToggle.classList.toggle('is-active', Boolean(label));
     const toggleLabel = label ? t('facility.moreSelected', { label }) : t('facility.more');
     facilityMoreToggle.setAttribute('aria-label', toggleLabel);
@@ -4872,9 +4873,10 @@ if (window.__FILE_MODE__) {
             gesture: state.isDragging || state.isPinching };
         },
         refreshMap() { return renderFloor({ resetZoom: false, preserveView: true }); },
+        refreshMore() { renderFacilityMoreSelection(); },
         async prepare() {
           setSiteMenuOpen(false); setFacilityMoreOpen(false); setMobileFloorListOpen(false);
-          clearActiveSearchSelection(); searchResults.hidden = true;
+          clearActiveSearchSelection(); searchResults.hidden = true; searchInput.blur();
           for (const [key, active] of Object.entries(state.facilityToggleState)) if (active) await setFacilityToggleState(key, 0);
         },
         async select(entry, fromSearch, isCurrent) {

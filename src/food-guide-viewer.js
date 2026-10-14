@@ -48,14 +48,16 @@ export class FoodGuideViewer {
       narrow: innerWidth <= 720,
       keyboard: false,
     });
-    this.placeholder = document.createComment('Food button position');
-    toolbar.prepend(this.placeholder);
+    this.morePanel = document.querySelector('#facility-more-panel');
+    this.moreToggle = document.querySelector('#facility-more-toggle');
     this.button = document.createElement('button');
     this.button.type = 'button';
-    this.button.className = 'search-icon-button food-action-button';
+    this.button.className =
+      'search-icon-button facility-more-option food-action-button';
     this.button.innerHTML =
       foodIcon + '<span class="food-button-label"></span>';
-    toolbar.insertBefore(this.button, this.placeholder.nextSibling);
+    this.morePanel.prepend(this.button);
+    this.morePanel.classList.add('has-food-option');
     this.overlay = document.createElement('div');
     this.overlay.className = 'food-pin-layer';
     viewer.append(this.overlay);
@@ -84,8 +86,10 @@ export class FoodGuideViewer {
     });
     this.panel.addEventListener('click', (event) => this.panelClick(event));
     this.panel.addEventListener('pointerdown', (event) => {
-      if (event.target.closest('.food-sheet-handle'))
-        this.swipe = { id: event.pointerId, y: event.clientY };
+      const handle = event.target.closest('.food-sheet-handle');
+      if (!handle) return;
+      this.swipe = { id: event.pointerId, y: event.clientY };
+      handle.setPointerCapture(event.pointerId);
     });
     this.panel.addEventListener('pointerup', (event) => {
       if (!this.swipe || this.swipe.id !== event.pointerId) return;
@@ -180,7 +184,9 @@ export class FoodGuideViewer {
           fetch(this.dataUrl, { cache: 'no-cache' }),
         ]);
         if (!response.ok) throw Error('Food information unavailable');
-        this.places = validateFoodPlaces(await response.json(), entries);
+        const payload = await response.json();
+        this.places = validateFoodPlaces(payload, entries);
+        this.sizeReferenceId = payload.pinSizeReferenceEntryId;
         this.entries = new Map(entries.map((entry) => [entry.id, entry]));
         this.ready = true;
         this.error = null;
@@ -240,6 +246,13 @@ export class FoodGuideViewer {
     if (this.keyboard) this.panel.querySelector('h2')?.focus();
   }
   async select(id, { keyboard = false, fromSearch = false } = {}) {
+    if (
+      !fromSearch &&
+      this.selected === id &&
+      this.panelMode &&
+      this.panelMode !== 'list'
+    )
+      return true;
     const token = ++this.action;
     if (!(await this.load()) || token !== this.action) return false;
     const place = this.getPlace(id);
@@ -251,6 +264,8 @@ export class FoodGuideViewer {
     this.keyboard = keyboard;
     if (keyboard) this.opener = document.activeElement;
     this.selected = id;
+    this.minimumCompactHeight = 0;
+    this.panel.scrollTop = 0;
     this.panelMode = this.narrow ? 'compact' : 'detail';
     this.hideHover();
     this.panel.querySelector('.food-panel-body')?.scrollTo(0, 0);
@@ -266,6 +281,7 @@ export class FoodGuideViewer {
     }
     if (token !== this.action) return true;
     this.renderPanel();
+    this.panel.scrollTop = 0;
     this.renderAreas();
     this.render();
     this.reveal();
@@ -287,21 +303,39 @@ export class FoodGuideViewer {
     });
   }
   close({ clearHash = true } = {}) {
-    ++this.action;
+    const token = ++this.action;
     this.selected = null;
     this.browse = false;
     this.panelMode = null;
     this.hideHover();
-    this.panel.hidden = true;
+    clearTimeout(this.closeTimer);
+    this.closing = !this.panel.hidden;
+    this.panel.inert = true;
+    this.panel.setAttribute('aria-hidden', 'true');
+    const finish = () => {
+      if (this.action !== token || this.panelMode) return;
+      this.closing = false;
+      this.panel.hidden = true;
+      this.panel.classList.remove('is-closing');
+    };
+    if (
+      this.closing &&
+      !matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      this.panel.classList.add('is-closing');
+      this.closeTimer = setTimeout(finish, 120);
+    } else finish();
     this.host.clearSelection(clearHash);
     this.renderAreas();
     this.render();
     this.scheduleHours();
     if (this.keyboard) {
       const origin =
-        this.opener?.isConnected && !this.opener.hidden
+        this.opener?.isConnected &&
+        !this.opener.closest('[hidden]') &&
+        this.opener.getClientRects().length
           ? this.opener
-          : this.button;
+          : this.moreToggle;
       origin.focus();
     }
     this.keyboard = false;
@@ -337,6 +371,7 @@ export class FoodGuideViewer {
     this.render();
   }
   resize() {
+    this.minimumCompactHeight = 0;
     const narrow = innerWidth <= 720;
     if (narrow !== this.narrow && this.selected && this.panelMode)
       this.panelMode = narrow ? 'compact' : 'detail';
@@ -351,48 +386,23 @@ export class FoodGuideViewer {
     });
   }
   layoutButton() {
-    // Measure the original six-control layout, not the layout after inserting Food.
-    this.button.remove();
-    this.toolbar.classList.remove('has-food-button');
-    this.toolbar.style.removeProperty('--facility-button-size');
-    const width = innerWidth,
-      height = innerHeight,
-      rect = this.toolbar.getBoundingClientRect();
-    const vertical = width >= 1240 && height >= 700;
-    let fits = false;
-    if (width <= 720) fits = rect.width >= 346;
-    else if (vertical) {
-      const size = Math.max(40, Math.min(48, (height - 300) / 11));
-      const insets = this.host.map().insets;
-      fits = size * 11 + 10 * 10 <= height - insets.top - insets.bottom - 32;
-      if (fits)
-        this.toolbar.style.setProperty('--facility-button-size', `${size}px`);
-    } else {
-      const controls = [...this.toolbar.children].filter((n) =>
-        n.matches('.search-icon-button,.facility-more'),
-      );
-      const size = controls[0]?.getBoundingClientRect().width || 44;
-      const gap = parseFloat(getComputedStyle(this.toolbar).gap) || 8;
-      const row = this.toolbar.parentElement.getBoundingClientRect();
-      const search = document
-        .querySelector('#search-panel')
-        .getBoundingClientRect();
-      fits = 7 * size + 6 * gap <= row.right - search.right - 16;
-    }
-    this.button.classList.toggle('is-independent', !fits);
-    document.body.classList.toggle('food-button-independent', !fits);
-    if (fits) {
-      this.toolbar.insertBefore(this.button, this.placeholder.nextSibling);
-      this.toolbar.classList.add('has-food-button');
-    } else {
-      this.viewer.append(this.button);
-      this.button.style.top = `${this.host.map().insets.top + 8}px`;
-    }
-    if (fits) this.button.style.removeProperty('top');
     this.button.setAttribute('aria-label', t('food.find'));
     this.button.title = t('food.title');
     this.button.querySelector('.food-button-label').textContent =
       t('food.title');
+    const vertical = innerWidth >= 1240 && innerHeight >= 700;
+    if (vertical)
+      this.toolbar.style.setProperty(
+        '--facility-button-size',
+        `${Math.max(40, Math.min(48, (innerHeight - 300) / 11))}px`,
+      );
+    else this.toolbar.style.removeProperty('--facility-button-size');
+    const bottom = this.moreToggle.getBoundingClientRect().bottom;
+    const available = Math.max(
+      48,
+      innerHeight - this.host.map().insets.bottom - bottom - 24,
+    );
+    this.morePanel.style.setProperty('--food-more-available', `${available}px`);
   }
   panelGeometry() {
     const map = this.host.map(),
@@ -401,13 +411,23 @@ export class FoodGuideViewer {
     const top = rect.top + map.insets.top + 8;
     const safe = parseFloat(getComputedStyle(this.panel).paddingBottom) || 0;
     const available = Math.max(0, h - top - map.insets.bottom - safe);
-    this.shortScreen = available < 340;
+    this.shortScreen =
+      available < 340 ||
+      (this.minimumCompactHeight || 0) - 32 > Math.min(320, available - 120);
     if (this.narrow) {
       if (this.shortScreen && this.panelMode === 'compact')
         this.panelMode = 'detail';
       const height =
         this.panelMode === 'compact'
-          ? Math.min(Math.max(Math.round(h * 0.33), 220), 320, available - 120)
+          ? Math.min(
+              Math.max(
+                Math.round(h * 0.33),
+                220,
+                this.minimumCompactHeight || 0,
+              ),
+              320,
+              available - 120,
+            )
           : available;
       return {
         left: 0,
@@ -446,14 +466,27 @@ export class FoodGuideViewer {
   renderPanel() {
     this.button.setAttribute('aria-pressed', String(this.browse));
     this.button.classList.toggle('is-active', this.browse);
+    this.host.refreshMore?.();
     if (!this.panelMode) {
-      this.panel.hidden = true;
+      if (!this.closing) this.panel.hidden = true;
       return;
     }
+    clearTimeout(this.closeTimer);
+    this.closing = false;
+    this.panel.classList.remove('is-closing');
+    this.panel.inert = false;
+    this.panel.removeAttribute('aria-hidden');
     this.panel.hidden = false;
     this.positionPanel();
     const oldScroll =
       this.panel.querySelector('.food-panel-body')?.scrollTop || 0;
+    const previousMode = this.renderedMode;
+    const focused = this.panel.contains(document.activeElement)
+      ? document.activeElement
+      : null;
+    const focusAction = focused?.dataset.foodAction;
+    const focusStore = focused?.dataset.foodSelect;
+    const focusHeading = focused?.id === 'food-panel-title';
     const handle = this.narrow
       ? `<div class="food-sheet-handle" aria-hidden="true"><span></span></div>`
       : '';
@@ -512,8 +545,31 @@ export class FoodGuideViewer {
     this.wireImageFallback(this.panel);
     const scroller = this.panel.querySelector('.food-panel-body');
     scroller.scrollTop =
-      this.panelMode === 'list' ? this.listScroll : oldScroll;
+      this.panelMode === 'list' && previousMode !== 'list'
+        ? this.listScroll
+        : oldScroll;
+    this.renderedMode = this.panelMode;
     this.renderHours();
+    if (this.panelMode === 'compact') {
+      this.minimumCompactHeight =
+        this.panel.querySelector('.food-sheet-handle').offsetHeight +
+        this.panel.querySelector('.food-panel-header').offsetHeight +
+        this.panel.querySelector('.food-panel-footer').offsetHeight +
+        64;
+      this.positionPanel();
+      if (this.panelMode !== 'compact') {
+        this.renderPanel();
+        return;
+      }
+    }
+    const nextFocus = focusAction
+      ? this.panel.querySelector(`[data-food-action="${focusAction}"]`)
+      : focusStore
+        ? this.panel.querySelector(`[data-food-select="${focusStore}"]`)
+        : focusHeading
+          ? this.panel.querySelector('h2')
+          : null;
+    nextFocus?.focus({ preventScroll: true });
   }
   panelClick(event) {
     const selected = event.target.closest('[data-food-select]');
@@ -599,11 +655,12 @@ export class FoodGuideViewer {
             day: 'numeric',
             weekday: 'short',
           }).format(new Date(day.date + 'T00:00:00+09:00'));
+          const periods = compact ? day.periods.slice(0, 1) : day.periods;
           let copy = day.closed
             ? t('food.closedDay')
             : day.allDay
               ? t('food.allDay')
-              : day.periods
+              : periods
                   .map((period) =>
                     `${period.label ? (t('food.period.' + period.label) === 'food.period.' + period.label ? period.label : t('food.period.' + period.label)) : ''} ${period.start}–${period.end}`.trim(),
                   )
@@ -614,7 +671,7 @@ export class FoodGuideViewer {
           );
           return (
             heading +
-            `<p>${escape(date)} ${escape(copy)}</p><a class="food-hours-source" href="${escape(month?.url || this.hours.payload.source.url)}" target="_blank" rel="noopener noreferrer">${escape(t('food.coopSource'))} ↗</a>`
+            `<p>${escape(date)} ${escape(copy)}</p>${compact ? '' : `<a class="food-hours-source" href="${escape(month?.url || this.hours.payload.source.url)}" target="_blank" rel="noopener noreferrer">${escape(t('food.coopSource'))} ↗</a>`}`
           );
         }
         const versions = selectHoursVersions(service.hours);
@@ -623,6 +680,7 @@ export class FoodGuideViewer {
         return (
           heading +
           versions
+            .slice(0, compact ? 1 : undefined)
             .map((version) => {
               const period = [version.validFrom, version.validThrough]
                 .filter(Boolean)
@@ -635,6 +693,8 @@ export class FoodGuideViewer {
                     : period
                       ? period
                       : '';
+              if (compact)
+                return `<p>${version.kind === 'temporary' ? `<strong>${escape(t('food.temporary'))}</strong> ` : ''}${escape(local(version.text).split(/。|\.(?:\s|$)/)[0])}</p>`;
               return `${title ? `<h4>${escape(title)}</h4>` : ''}<p>${escape(local(version.text))}</p>`;
             })
             .join('')
@@ -657,50 +717,44 @@ export class FoodGuideViewer {
     );
   }
 
-  obstacles() {
-    const origin = this.viewer.getBoundingClientRect(),
-      result = [];
-    const add = (element) => {
-      if (!element || element.hidden || !element.getClientRects().length)
-        return;
-      const r = element.getBoundingClientRect();
-      if (r.width && r.height)
-        result.push({
-          x: r.left - origin.left,
-          y: r.top - origin.top,
-          width: r.width,
-          height: r.height,
-        });
-    };
-    if (this.panelMode && !this.narrow) add(this.panel);
-    if (this.button.classList.contains('is-independent')) add(this.button);
-    if (innerWidth >= 1240 && innerHeight >= 700) {
-      add(this.toolbar);
-      add(document.querySelector('.floor-tab-stack'));
-    }
-    document.querySelectorAll('.search-highlight-pin').forEach(add);
-    return result;
-  }
   renderAreas() {
     const map = this.host.map(),
       layer = map.areaLayer;
     if (!this.ready || !layer) return;
-    layer.replaceChildren();
-    if (map.floorId !== '1F') return;
-    const svg = document.createElementNS(NS, 'svg');
-    svg.classList.add('facility-area-svg', 'food-area-svg');
-    svg.setAttribute('viewBox', '0 0 1000 1000');
-    svg.setAttribute('preserveAspectRatio', 'none');
-    for (const place of this.places) {
-      const entry = this.entries.get(place.entryId),
-        offset = place.areaOffset[getLang()];
-      for (const polygon of entry.polygons) {
+    if (map.floorId !== '1F') {
+      layer.replaceChildren();
+      return;
+    }
+    const lang = getLang();
+    let svg = layer.querySelector('.food-area-svg');
+    if (!svg || svg.dataset.lang !== lang) {
+      svg = document.createElementNS(NS, 'svg');
+      svg.classList.add('facility-area-svg', 'food-area-svg');
+      svg.dataset.lang = lang;
+      svg.setAttribute('viewBox', '0 0 1000 1000');
+      svg.setAttribute('preserveAspectRatio', 'none');
+      const areas = this.places.flatMap((place) =>
+        this.entries
+          .get(place.entryId)
+          .polygons.map((polygon) => ({ place, polygon })),
+      );
+      const area = (polygon) =>
+        Math.abs(
+          polygon.reduce((sum, p, i) => {
+            const q = polygon[(i + 1) % polygon.length];
+            return sum + p.xRatio * q.yRatio - q.xRatio * p.yRatio;
+          }, 0),
+        );
+      // Smaller overlapping store areas receive the hit, as specified.
+      areas.sort(
+        (a, b) =>
+          area(b.polygon) - area(a.polygon) || b.place.order - a.place.order,
+      );
+      for (const { place, polygon } of areas) {
+        const offset = place.areaOffset[lang];
         const group = document.createElementNS(NS, 'g');
         group.classList.add('food-area');
         group.dataset.foodPlace = place.entryId;
-        if (this.browse) group.classList.add('is-browsing');
-        if (this.hovered === place.entryId) group.classList.add('is-hovered');
-        if (this.selected === place.entryId) group.classList.add('is-selected');
         for (const cls of [
           'food-area-halo',
           'food-area-outline',
@@ -723,20 +777,28 @@ export class FoodGuideViewer {
         }
         svg.append(group);
       }
+      layer.replaceChildren(svg);
     }
-    layer.append(svg);
+    // Keep pointer targets mounted while hover/selection styles change.
+    for (const group of svg.querySelectorAll('.food-area')) {
+      const id = group.dataset.foodPlace;
+      group.classList.toggle('is-browsing', this.browse);
+      group.classList.toggle('is-hovered', this.hovered === id);
+      group.classList.toggle('is-selected', this.selected === id);
+    }
   }
+
   render() {
     const map = this.host.map();
     this.button.setAttribute('aria-pressed', String(this.browse));
     this.button.classList.toggle('is-active', this.browse);
-    const derived = this.derivedUrl(map.floorId, getLang());
-    const available =
-      this.ready &&
-      derived &&
-      map.image &&
-      new URL(map.image.src).pathname ===
-        new URL(derived, location.href).pathname;
+    this.host.refreshMore?.();
+    const imagePath = map.image ? new URL(map.image.src).pathname : null;
+    const displayLang = ['ja', 'en'].find(
+      (lang) =>
+        imagePath === new URL(this.floorUrls[lang], location.href).pathname,
+    );
+    const available = this.ready && map.floorId === '1F' && displayLang;
     this.overlay.hidden = !available;
     if (!available) {
       this.overlay
@@ -747,10 +809,10 @@ export class FoodGuideViewer {
     const points = this.places.map((place) => ({
       id: place.entryId,
       order: place.order,
-      x: map.x + map.width * place.anchor[getLang()].xRatio,
-      y: map.y + map.height * place.anchor[getLang()].yRatio,
+      x: map.x + map.width * place.anchor[displayLang].xRatio,
+      y: map.y + map.height * place.anchor[displayLang].yRatio,
     }));
-    this.layout = placeFoodMarkers(points, map.width);
+    this.layout = placeFoodMarkers(points, map.width, this.sizeReferenceId);
     const used = new Set();
     for (const marker of this.layout.markers) {
       used.add(marker.id);
@@ -790,7 +852,10 @@ export class FoodGuideViewer {
         );
       }
       button.classList.toggle('is-selected', this.selected === marker.id);
-      button.classList.toggle('is-hovered', this.hovered === marker.id);
+      button.classList.toggle(
+        'is-hovered',
+        this.hovered === marker.id && !this.hoverKeyboard,
+      );
       const previous = [...used].slice(-2, -1)[0];
       const sibling = previous ? this.nodes.get(previous) : null;
       if (sibling && sibling.nextElementSibling !== button)
@@ -830,6 +895,7 @@ export class FoodGuideViewer {
     }
   }
   pointerDown(event) {
+    if (event.button !== undefined && event.button !== 0) return;
     if (event.target.closest('.food-action-button')) return;
     if (this.pointer) {
       this.pointer.cancelled = true;
@@ -870,14 +936,14 @@ export class FoodGuideViewer {
       this.close();
   }
   cancelGesture() {
-    if (this.pointer) this.pointer.cancelled = true;
+    this.pointer = null;
     this.hideHover();
   }
   hasPointerTarget() {
     return Boolean(this.pointer?.marker || this.pointer?.place);
   }
   hoverEvent(event) {
-    if (event.pointerType !== 'mouse' || this.panelMode) return;
+    if (event.pointerType !== 'mouse' || this.panelMode || this.pointer) return;
     const id = event.target.closest('[data-food-place]')?.dataset.foodPlace;
     if (id) {
       this.hoverPosition = { x: event.clientX, y: event.clientY };
@@ -901,6 +967,7 @@ export class FoodGuideViewer {
     clearTimeout(this.hoverTimer);
     this.hideHover();
     this.hovered = id;
+    this.hoverKeyboard = keyboard;
     this.renderAreas();
     if (!keyboard) this.nodes.get(id)?.classList.add('is-hovered');
     this.hoverTimer = setTimeout(

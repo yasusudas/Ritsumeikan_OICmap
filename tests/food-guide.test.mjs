@@ -44,6 +44,7 @@ test('all eight image pins correspond to existing first-floor search entries', (
 test('invalid stores, missing images and mixed co-op/manual hours fail before publication', () => {
   for (const change of [
     (p) => (p.places[0].entryId = 'missing'),
+    (p) => (p.pinSizeReferenceEntryId = 'missing'),
     (p) => (p.places[0].mark = null),
     (p) => (p.places[1].services[0].hours = [p.places[0].services[0].hours[0]]),
     (p) => p.places[0].services[0].hours.push(p.places[0].services[0].hours[0]),
@@ -255,4 +256,193 @@ test('a single tap selects, while eight-pixel movement, a second pointer and can
     assert.equal(Boolean(g.opened), action === 'tap');
     assert.equal(g.closed, undefined);
   }
+});
+
+test('a cancelled pointer does not prevent the next tap from opening a store', () => {
+  const { g, target } = gesture();
+  g.pointerDown({ target, pointerId: 1, clientX: 10, clientY: 10 });
+  g.cancelGesture();
+  g.pointerDown({ target, pointerId: 2, clientX: 10, clientY: 10 });
+  g.pointerUp({ target, pointerId: 2, clientX: 10, clientY: 10 });
+  assert.equal(g.opened, true);
+});
+
+test('pictogram removal preserves a compound-path leader dot and an adjacent ATM', () => {
+  const svg =
+    '<svg viewBox="0 0 40 30"><path fill="#000" d="M21 20 A1 1 0 1 1 19 20 A1 1 0 1 1 21 20 Z M7 5 A2 2 0 1 1 3 5 A2 2 0 1 1 7 5 Z"/><path fill="#fff" d="M4.5 4 L5.5 4 L5.5 6 L4.5 6 Z"/><circle fill="#000" cx="12" cy="5" r="2"/><path id="leader" d="M7 5 L18 20"/></svg>';
+  const derived = removeFoodPictograms(
+    svg,
+    [{ legacyPictogram: { ja: { cx: 5, cy: 5, diameter: 4 } } }],
+    'ja',
+  );
+  assert.match(derived, /M21 20/);
+  assert.doesNotMatch(derived, /M7 5 A2/);
+  assert.doesNotMatch(derived, /fill="#fff"/);
+  assert.match(derived, /<circle fill="#000" cx="12" cy="5" r="2"\/>/);
+  assert.match(derived, /<path id="leader" d="M7 5 L18 20"\/>/);
+});
+
+test('every pin uses Minamen Cafe size at each zoom without moving its anchor', () => {
+  const reference = payload.places.find(
+    (p) => p.entryId === payload.pinSizeReferenceEntryId,
+  );
+  assert.equal(reference.name.ja, 'みなめんcafe');
+  for (const width of [320, 390, 1190.55, 11905]) {
+    const points = payload.places.map((p) => ({
+      id: p.entryId,
+      order: p.order,
+      x: p.anchor.ja.xRatio * width,
+      y: p.anchor.ja.yRatio * width * 0.707,
+    }));
+    const ref = points.find((p) => p.id === reference.entryId);
+    const expected = Math.min(
+      40,
+      width * 0.035,
+      ...points
+        .filter((p) => p !== ref)
+        .map((p) => Math.hypot(p.x - ref.x, p.y - ref.y) * 0.8),
+    );
+    const { markers } = placeFoodMarkers(points, width, reference.entryId);
+    assert.equal(new Set(markers.map((m) => m.size)).size, 1);
+    assert.equal(markers[0].size, expected);
+  }
+});
+
+test('hover and selection retain mounted polygon targets until the map language changes', () => {
+  class Element {
+    constructor() {
+      this.children = [];
+      this.dataset = {};
+      this.classes = new Set();
+      this.classList = {
+        add: (...names) => names.forEach((n) => this.classes.add(n)),
+        toggle: (name, on) =>
+          on ? this.classes.add(name) : this.classes.delete(name),
+      };
+    }
+    setAttribute() {}
+    append(child) {
+      this.children.push(child);
+    }
+    replaceChildren(...children) {
+      this.children = children;
+    }
+    querySelector(selector) {
+      return this.querySelectorAll(selector)[0] ?? null;
+    }
+    querySelectorAll(selector) {
+      return this.children.flatMap((child) => [
+        ...(child.classes.has(selector.slice(1)) ? [child] : []),
+        ...child.querySelectorAll(selector),
+      ]);
+    }
+  }
+  const context = vm.createContext({
+    lang: 'ja',
+    NS: '',
+    document: { createElementNS: () => new Element() },
+  });
+  const code = viewerSource.slice(
+    viewerSource.indexOf('  renderAreas() {'),
+    viewerSource.indexOf('  render() {'),
+  );
+  vm.runInContext(
+    `const getLang = () => lang; this.Areas=class{${code}}`,
+    context,
+  );
+  const layer = new Element(),
+    map = { floorId: '1F', areaLayer: layer };
+  const viewer = new context.Areas();
+  Object.assign(viewer, {
+    ready: true,
+    places: payload.places,
+    entries: new Map(entries.map((e) => [e.id, e])),
+    host: { map: () => map },
+  });
+  viewer.renderAreas();
+  const targets = layer.querySelectorAll('.food-area-hit');
+  assert.equal(targets.length, 8);
+  viewer.hovered = payload.places[0].entryId;
+  viewer.renderAreas();
+  viewer.hovered = null;
+  viewer.browse = true;
+  viewer.selected = payload.places[1].entryId;
+  viewer.renderAreas();
+  assert.deepEqual(layer.querySelectorAll('.food-area-hit'), targets);
+  assert.equal(layer.querySelectorAll('.is-selected').length, 1);
+  context.lang = 'en';
+  viewer.renderAreas();
+  assert.notEqual(layer.querySelectorAll('.food-area-hit')[0], targets[0]);
+  map.floorId = '2F';
+  viewer.renderAreas();
+  assert.equal(layer.children.length, 0);
+});
+
+test('mouse hover over a store polygon requests the same overview as its pin', () => {
+  const context = vm.createContext({});
+  const code = viewerSource.slice(
+    viewerSource.indexOf('  hoverEvent(event) {'),
+    viewerSource.indexOf('  leaveEvent(event) {'),
+  );
+  vm.runInContext(`this.Hover=class{${code}}`, context);
+  const viewer = new context.Hover();
+  const calls = [];
+  viewer.showHover = (id) => calls.push(id);
+  const target = {
+    closest: () => ({ dataset: { foodPlace: payload.places[2].entryId } }),
+  };
+  for (const pointerType of ['touch', 'pen', 'mouse'])
+    viewer.hoverEvent({ target, pointerType, clientX: 100, clientY: 200 });
+  assert.deepEqual(calls, [payload.places[2].entryId]);
+  viewer.pointer = { cancelled: true };
+  viewer.hoverEvent({ target, pointerType: 'mouse' });
+  assert.equal(calls.length, 1);
+  viewer.pointer = null;
+  viewer.panelMode = 'detail';
+  viewer.hoverEvent({ target, pointerType: 'mouse' });
+  assert.equal(calls.length, 1);
+});
+
+test('closing finishes after the fade and cannot hide a newly selected card', () => {
+  let finish;
+  const context = vm.createContext({
+    matchMedia: () => ({ matches: false }),
+    clearTimeout: () => {},
+    setTimeout: (fn) => {
+      finish = fn;
+    },
+  });
+  const code = viewerSource.slice(
+    viewerSource.indexOf('  close({'),
+    viewerSource.indexOf('  externalChange()'),
+  );
+  vm.runInContext(`this.Close=class{${code}}`, context);
+  const viewer = new context.Close();
+  Object.assign(viewer, {
+    action: 0,
+    panelMode: 'detail',
+    panel: {
+      hidden: false,
+      classList: { add() {}, remove() {} },
+      setAttribute() {},
+    },
+    hideHover() {},
+    renderAreas() {},
+    render() {},
+    scheduleHours() {},
+    host: { clearSelection() {} },
+  });
+  viewer.close();
+  assert.equal(viewer.panelMode, null);
+  assert.equal(viewer.panel.inert, true);
+  assert.equal(viewer.panel.hidden, false);
+  finish();
+  assert.equal(viewer.panel.hidden, true);
+  viewer.panel.hidden = false;
+  viewer.panelMode = 'detail';
+  viewer.close();
+  viewer.action++;
+  viewer.panelMode = 'detail';
+  finish();
+  assert.equal(viewer.panel.hidden, false);
 });

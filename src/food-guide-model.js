@@ -173,6 +173,7 @@ export function validateFoodPlaces(payload, entries) {
         }
     }
   }
+  if (!ids.has(payload.pinSizeReferenceEntryId)) fail('pin size reference');
   return payload.places.slice().sort((a, b) => a.order - b.order);
 }
 
@@ -227,7 +228,11 @@ export function rectanglesOverlap(a, b, gap = 4) {
 }
 
 // Keep all eight pins at their true anchor; scale to separate neighboring icons.
-export function placeFoodMarkers(points, mapWidth = 1190.55) {
+export function placeFoodMarkers(
+  points,
+  mapWidth = 1190.55,
+  referenceId = null,
+) {
   const sizes = new Map(
     points.map((p) => [
       p.id,
@@ -240,6 +245,8 @@ export function placeFoodMarkers(points, mapWidth = 1190.55) {
       ),
     ]),
   );
+  const commonSize = sizes.get(referenceId) ?? Math.min(...sizes.values());
+  for (const point of points) sizes.set(point.id, commonSize);
   const hit = 48;
   const clip = (polygon, nx, ny, d) => {
     const out = [];

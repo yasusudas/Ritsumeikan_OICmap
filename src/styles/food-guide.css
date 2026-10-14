@@ -1,4 +1,4 @@
-/* Food guide: specification 1.5. Image pins stay at the true map anchors. */
+/* Food guide: specification 1.8. Image pins stay at the true map anchors. */
 body[data-app-mode='viewer'] {
   --food-green: #009e73;
   --food-pin-size: 40px;
@@ -147,17 +147,6 @@ body[data-app-mode='viewer'] {
   stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-body[data-app-mode='viewer'] .food-action-button.is-independent {
-  position: absolute;
-  left: 12px;
-  width: 48px;
-  height: 48px;
-  aspect-ratio: auto;
-  z-index: 50;
-  border: 0;
-  border-radius: 50%;
-  background: var(--ls-fill);
 }
 .food-button-label {
   display: none;
@@ -407,11 +396,6 @@ body[data-app-mode='viewer'] .food-action-button.is-independent {
 .food-panel.is-compact .food-panel-footer .food-text-control {
   display: none;
 }
-@media (max-width: 720px) {
-  body[data-app-mode='viewer'] .search-icon-actions.has-food-button {
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-  }
-}
 @media (max-height: 520px) and (min-width: 721px) {
   .food-panel {
     overflow-y: auto;
@@ -429,12 +413,6 @@ body[data-app-mode='viewer'] .food-action-button.is-independent {
   .food-pin:hover .food-badge,
   .food-pin:active .food-badge {
     transform: none;
-  }
-}
-
-@media (min-width: 1240px) and (min-height: 700px) {
-  body.food-button-independent .floor-tab-stack {
-    top: calc(100% + 76px);
   }
 }
 
@@ -475,11 +453,49 @@ body[data-app-mode='viewer'] .food-action-button.is-independent {
     transform: none;
   }
 }
-.food-panel:not([hidden]) {
+.food-panel:not([hidden]):not(.is-closing) {
   animation: food-panel-open var(--food-motion) ease;
+}
+@keyframes food-panel-close {
+  to {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.food-panel.is-closing {
+  pointer-events: none;
+  animation: food-panel-close var(--food-motion) ease both;
 }
 @media (prefers-reduced-motion: reduce) {
   .food-panel {
     animation: none !important;
   }
+}
+
+.food-panel.has-short-space .food-panel-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--ls-fill);
+}
+.food-panel.is-compact .food-panel-body {
+  padding-bottom: 8px;
+}
+
+body[data-app-mode='viewer'] .facility-more-panel.has-food-option {
+  max-height: var(--food-more-available);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  transition-duration: calc(var(--ls-pop-dur) + 4 * var(--ls-pop-step));
+}
+body[data-app-mode='viewer']
+  .facility-more-panel.has-food-option
+  .facility-more-option:nth-child(5) {
+  --more-i: 4;
+}
+body[data-app-mode='viewer']
+  .facility-more-panel.has-food-option[hidden]
+  .facility-more-option {
+  --more-stagger: calc((4 - var(--more-i, 0)) * var(--ls-pop-step));
 }
