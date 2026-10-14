@@ -130,8 +130,6 @@ if (window.__FILE_MODE__) {
     (import.meta.env.VITE_CONTACT_FORM_EMBED_URL || DEFAULT_CONTACT_FORM_EMBED_URL).trim();
   const MAP_PADDING = 32;
   const MOBILE_MAP_VIEWPORT_MAX_WIDTH = 720;
-  const MOBILE_MIN_MAP_WIDTH_RATIO = 0.9;
-  const VIEWER_MIN_ZOOM = 0.5;
   const SEARCH_RESULT_LIMIT = 18;
   const SEARCH_INDEX_IDLE_TIMEOUT_MS = 2000;
   const SEARCH_FOCUS_ZOOM = 6;
@@ -1676,15 +1674,6 @@ if (window.__FILE_MODE__) {
     return { containScale, coverScale, safeContainScale, insetTop: insets.top, insetBottom: insets.bottom };
   }
 
-  function getViewerMinZoom(baseWidth) {
-    const { width } = getViewportSize();
-    if (width <= MOBILE_MAP_VIEWPORT_MAX_WIDTH && baseWidth > 0) {
-      return clamp((width * MOBILE_MIN_MAP_WIDTH_RATIO) / baseWidth, 0.01, 1);
-    }
-
-    return VIEWER_MIN_ZOOM;
-  }
-
   function updateCanvasLayerBaseSize() {
     canvasLayer.style.width = `${state.baseWidth}px`;
     canvasLayer.style.height = `${state.baseHeight}px`;
@@ -1828,8 +1817,11 @@ if (window.__FILE_MODE__) {
     state.safeInsetBottom = fit.insetBottom;
 
     if (useFillFit) {
-      state.minZoom = getViewerMinZoom(state.baseWidth);
-      state.initialZoom = clamp(fit.safeContainScale / baseScale, state.minZoom, 1);
+      // The opening view (the whole floor inside the readable zone, clear of
+      // the header and footer) is also as far as the map zooms out, on
+      // desktops and phones alike.
+      state.initialZoom = clamp(fit.safeContainScale / baseScale, 0.01, 1);
+      state.minZoom = state.initialZoom;
     } else {
       state.initialZoom = 1;
       state.minZoom = 1;
