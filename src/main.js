@@ -512,9 +512,10 @@ if (window.__FILE_MODE__) {
       return;
     }
 
-    const currentFloorRings = getCurrentFloorFacilityRings().filter(
-      (ring) => state.facilityToggleState[ring.facilityKey] === 1
-    );
+    const currentFloorRings = getCurrentFloorFacilityRings().filter((ring) => {
+      const toggleKey = ring.facilityKey === 'escalator' ? 'stairs' : ring.facilityKey;
+      return state.facilityToggleState[toggleKey] === 1;
+    });
 
     if (currentFloorRings.length === 0) {
       return;
