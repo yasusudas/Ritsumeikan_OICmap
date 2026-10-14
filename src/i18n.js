@@ -88,6 +88,7 @@ const dictionaries = {
     'facility.vendingMachine': '自販機',
     'facility.printer': 'プリンター',
     'facility.stairs': '階段',
+    'facility.stairsAndEscalators': '階段・エスカレーター',
     'facility.escalator': 'エスカレーター',
     'facility.elevator': 'エレベーター',
 
@@ -308,6 +309,7 @@ const dictionaries = {
     'facility.vendingMachine': 'Vending Machine',
     'facility.printer': 'Printer',
     'facility.stairs': 'Staircase',
+    'facility.stairsAndEscalators': 'Stairs & Escalators',
     'facility.escalator': 'Escalator',
     'facility.elevator': 'Elevator',
 
