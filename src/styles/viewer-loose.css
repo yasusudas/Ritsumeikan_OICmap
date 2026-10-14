@@ -230,11 +230,50 @@ body[data-app-mode="viewer"] .facility-more-panel {
   top: calc(100% + var(--s-2));
   right: 0;
   width: 100%;
+  gap: var(--s-2);
 }
 
 body[data-app-mode="viewer"] .facility-more-panel:not([hidden]) {
   display: grid;
-  gap: var(--s-2);
+}
+
+/* The options drop in one after another (top first) when the panel opens
+   and lift away in reverse (bottom first) when it closes: a short fade with
+   a 6px slide, no scaling. The panel keeps its box until the last option
+   has gone; browsers without discrete display transitions just show/hide. */
+body[data-app-mode="viewer"] .facility-more-panel {
+  transition: display 240ms allow-discrete;
+}
+
+body[data-app-mode="viewer"] .facility-more-option {
+  --more-stagger: calc(var(--more-i, 0) * 40ms);
+  transition:
+    opacity 160ms var(--ease) var(--more-stagger),
+    transform 160ms var(--ease) var(--more-stagger),
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+body[data-app-mode="viewer"] .facility-more-option:nth-child(2) {
+  --more-i: 1;
+}
+
+body[data-app-mode="viewer"] .facility-more-option:nth-child(3) {
+  --more-i: 2;
+}
+
+body[data-app-mode="viewer"] .facility-more-panel[hidden] .facility-more-option {
+  --more-stagger: calc((2 - var(--more-i, 0)) * 40ms);
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+@starting-style {
+  body[data-app-mode="viewer"] .facility-more-panel:not([hidden]) .facility-more-option {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
 }
 
 body[data-app-mode="viewer"] .toilet-ring-legend {
