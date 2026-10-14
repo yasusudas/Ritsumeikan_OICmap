@@ -180,46 +180,48 @@ body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] {
   color: var(--ls-red);
 }
 
-/* While the panel is open the three dots fold into an X, like the menu
-   button, so a second press reads as "close": the outer dots slide in and
-   fade while two lines grow and turn to 45°. */
-body[data-app-mode="viewer"] .facility-more-icon :is(.more-dot, .more-cross) {
+/* While the panel is open the three dots join up into an upward chevron:
+   the middle dot rises, the outer dots drop, and lines draw between them,
+   so the button reads as "fold the panel back up". Closing retracts the
+   lines first, then the dots settle back into a row. */
+body[data-app-mode="viewer"] .facility-more-icon .more-dot {
   transform-box: fill-box;
   transform-origin: center;
+  transition: transform var(--dur) var(--ease) 80ms;
+}
+
+body[data-app-mode="viewer"] .facility-more-icon .more-fold {
+  stroke-width: 1.75;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
   transition:
-    transform var(--dur) var(--ease),
+    stroke-dashoffset var(--dur) var(--ease),
     opacity var(--dur) var(--ease);
 }
 
-body[data-app-mode="viewer"] .facility-more-icon .more-cross {
-  stroke-width: 1.75;
-  opacity: 0;
-  transform: scaleX(0.2);
-}
-
 body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-dot {
-  opacity: 0;
-  transform: scale(0.4);
+  transition-delay: 0ms;
 }
 
 body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-dot-left {
-  transform: translateX(7px) scale(0.4);
+  transform: translate(1.5px, 3px) scale(0.58);
+}
+
+body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-dot-mid {
+  transform: translateY(-3.5px) scale(0.58);
 }
 
 body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-dot-right {
-  transform: translateX(-7px) scale(0.4);
+  transform: translate(-1.5px, 3px) scale(0.58);
 }
 
-body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-cross {
+body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-fold {
+  stroke-dashoffset: 0;
   opacity: 1;
-}
-
-body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-cross-a {
-  transform: rotate(45deg);
-}
-
-body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-cross-b {
-  transform: rotate(-45deg);
+  transition:
+    stroke-dashoffset var(--dur) var(--ease) 80ms,
+    opacity 0ms linear 80ms;
 }
 
 body[data-app-mode="viewer"] .facility-more-panel {
