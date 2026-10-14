@@ -507,6 +507,25 @@ body[data-app-mode="viewer"] .search-highlight-pin {
   }
 }
 
+/* Keep room codes and upper-floor labels readable on narrow phones. */
+@media (max-width: 375px) {
+  body[data-app-mode="viewer"] .topbar-tools-inner {
+    column-gap: var(--s-1);
+  }
+
+  body[data-app-mode="viewer"] .search-input {
+    padding-left: 36px;
+  }
+
+  body[data-app-mode="viewer"] .search-input:not(:placeholder-shown) {
+    padding-right: 44px;
+  }
+
+  body[data-app-mode="viewer"] .search-leading-icon {
+    left: 12px;
+  }
+}
+
 @media (max-height: 520px) and (orientation: landscape) and (min-width: 721px) {
   body[data-app-mode="viewer"] .topbar-tools-inner {
     grid-template-columns: minmax(0, 1fr) auto max-content;
