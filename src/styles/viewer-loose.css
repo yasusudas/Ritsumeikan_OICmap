@@ -8,6 +8,9 @@
 
 body[data-app-mode="viewer"] {
   --ls-edge: 24px;
+  /* Pop-in timing shared by the More options and the floor list */
+  --ls-pop-dur: 120ms;
+  --ls-pop-step: 25ms;
 }
 
 /* ---------------------------------------------------------------------
@@ -242,14 +245,14 @@ body[data-app-mode="viewer"] .facility-more-panel:not([hidden]) {
    a 6px slide, no scaling. The panel keeps its box until the last option
    has gone; browsers without discrete display transitions just show/hide. */
 body[data-app-mode="viewer"] .facility-more-panel {
-  transition: display 280ms allow-discrete;
+  transition: display calc(var(--ls-pop-dur) + 3 * var(--ls-pop-step)) allow-discrete;
 }
 
 body[data-app-mode="viewer"] .facility-more-option {
-  --more-stagger: calc(var(--more-i, 0) * 40ms);
+  --more-stagger: calc(var(--more-i, 0) * var(--ls-pop-step));
   transition:
-    opacity 160ms var(--ease) var(--more-stagger),
-    transform 160ms var(--ease) var(--more-stagger),
+    opacity var(--ls-pop-dur) var(--ease) var(--more-stagger),
+    transform var(--ls-pop-dur) var(--ease) var(--more-stagger),
     background-color var(--dur) var(--ease),
     color var(--dur) var(--ease);
 }
@@ -267,7 +270,7 @@ body[data-app-mode="viewer"] .facility-more-option:nth-child(4) {
 }
 
 body[data-app-mode="viewer"] .facility-more-panel[hidden] .facility-more-option {
-  --more-stagger: calc((3 - var(--more-i, 0)) * 40ms);
+  --more-stagger: calc((3 - var(--more-i, 0)) * var(--ls-pop-step));
   opacity: 0;
   transform: translateY(-6px);
   pointer-events: none;
@@ -535,6 +538,35 @@ body[data-app-mode="viewer"] .mobile-floor-toggle {
 body[data-app-mode="viewer"] .mobile-floor-select.is-open .mobile-floor-toggle {
   background: var(--ls-red);
   color: #ffffff;
+}
+
+/* The floor list drops in as one sheet (fade + 6px) at the same speed as
+   the More options, lifts away the same way, and the chevron turns with it. */
+body[data-app-mode="viewer"] .mobile-floor-chevron {
+  transition: transform var(--ls-pop-dur) var(--ease);
+}
+
+body[data-app-mode="viewer"] .mobile-floor-list {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition:
+    opacity var(--ls-pop-dur) var(--ease),
+    transform var(--ls-pop-dur) var(--ease),
+    display var(--ls-pop-dur) allow-discrete;
+}
+
+body[data-app-mode="viewer"] .mobile-floor-select.is-open .mobile-floor-list {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+@starting-style {
+  body[data-app-mode="viewer"] .mobile-floor-select.is-open .mobile-floor-list {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
 }
 
 body[data-app-mode="viewer"] .mobile-floor-list {
