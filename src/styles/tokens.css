@@ -25,11 +25,11 @@
   --c-danger: #b42318;
 
   /* Map marker colors (facility rings) */
-  --c-ring-green: #3fae2a;
-  --c-ring-red: #e0394f;
-  --c-ring-blue: #1e88e5;
+  --c-ring-green: #009e73;
+  --c-ring-red: #ff4b00;
+  --c-ring-blue: #005aff;
   --c-ring-water: #1f9ad6;
-  --c-ring-yellow: #e8ac00;
+  --c-ring-yellow: #ffcc00;
   --c-pin: #e8462b;
 
   /* Typography */
