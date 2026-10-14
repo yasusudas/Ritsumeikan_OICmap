@@ -2268,6 +2268,8 @@
       "floorId": "2F",
       "label": "ラーニングスタジオ",
       "labelEn": "Learning Studio",
+      "locationHint": "B棟",
+      "locationHintEn": "Bldg. B",
       "aliases": [],
       "rects": [
         {
@@ -2283,6 +2285,8 @@
       "floorId": "2F",
       "label": "ラーニングスタジオ",
       "labelEn": "Learning Studio",
+      "locationHint": "C棟",
+      "locationHintEn": "Bldg. C",
       "aliases": [],
       "rects": [
         {
@@ -5012,6 +5016,8 @@
       "floorId": "5F",
       "label": "アネックス",
       "labelEn": "Annex",
+      "locationHint": "A棟・AN側",
+      "locationHintEn": "Bldg. A · AN side",
       "aliases": [],
       "rects": [
         {
@@ -5027,6 +5033,8 @@
       "floorId": "5F",
       "label": "アネックス",
       "labelEn": "Annex",
+      "locationHint": "A棟・AS側",
+      "locationHintEn": "Bldg. A · AS side",
       "aliases": [],
       "rects": [
         {
@@ -5087,6 +5095,8 @@
       "floorId": "5F",
       "label": "ラーニングスタジオ",
       "labelEn": "Learning Studio",
+      "locationHint": "A棟・AS側",
+      "locationHintEn": "Bldg. A · AS side",
       "aliases": [],
       "rects": [
         {
@@ -5102,6 +5112,8 @@
       "floorId": "5F",
       "label": "ラーニングスタジオ",
       "labelEn": "Learning Studio",
+      "locationHint": "A棟・AN側",
+      "locationHintEn": "Bldg. A · AN side",
       "aliases": [],
       "rects": [
         {
@@ -5162,6 +5174,8 @@
       "floorId": "5F",
       "label": "共同実験室",
       "labelEn": "Shared Laboratory",
+      "locationHint": "H棟・H504付近",
+      "locationHintEn": "Bldg. H · Near H504",
       "aliases": [],
       "rects": [
         {
@@ -5177,6 +5191,8 @@
       "floorId": "5F",
       "label": "共同実験室",
       "labelEn": "Shared Laboratory",
+      "locationHint": "H棟・H502付近",
+      "locationHintEn": "Bldg. H · Near H502",
       "aliases": [],
       "rects": [
         {
@@ -6208,6 +6224,8 @@
       "floorId": "A-6-9F",
       "label": "ひらめきラウンジ(6F)",
       "labelEn": "Hirameki Lounge (6F)",
+      "locationHint": "A棟・AN側",
+      "locationHintEn": "Bldg. A · AN side",
       "aliases": [],
       "rects": [
         {
@@ -6223,6 +6241,8 @@
       "floorId": "A-6-9F",
       "label": "ひらめきラウンジ(6F)",
       "labelEn": "Hirameki Lounge (6F)",
+      "locationHint": "A棟・AS側",
+      "locationHintEn": "Bldg. A · AS side",
       "aliases": [],
       "rects": [
         {
@@ -6238,6 +6258,8 @@
       "floorId": "A-6-9F",
       "label": "ひらめきラウンジ(7F)",
       "labelEn": "Hirameki Lounge (7F)",
+      "locationHint": "A棟・AS側",
+      "locationHintEn": "Bldg. A · AS side",
       "aliases": [],
       "rects": [
         {
@@ -6253,6 +6275,8 @@
       "floorId": "A-6-9F",
       "label": "ひらめきラウンジ(7F)",
       "labelEn": "Hirameki Lounge (7F)",
+      "locationHint": "A棟・AN側",
+      "locationHintEn": "Bldg. A · AN side",
       "aliases": [],
       "rects": [
         {
@@ -6268,6 +6292,8 @@
       "floorId": "A-6-9F",
       "label": "ひらめきラウンジ(8F)",
       "labelEn": "Hirameki Lounge (8F)",
+      "locationHint": "A棟・AN側",
+      "locationHintEn": "Bldg. A · AN side",
       "aliases": [],
       "rects": [
         {
@@ -6283,6 +6309,8 @@
       "floorId": "A-6-9F",
       "label": "ひらめきラウンジ(8F)",
       "labelEn": "Hirameki Lounge (8F)",
+      "locationHint": "A棟・AS側",
+      "locationHintEn": "Bldg. A · AS side",
       "aliases": [],
       "rects": [
         {
@@ -6298,6 +6326,8 @@
       "floorId": "A-6-9F",
       "label": "ひらめきラウンジ(9F)",
       "labelEn": "Hirameki Lounge (9F)",
+      "locationHint": "A棟・AS側",
+      "locationHintEn": "Bldg. A · AS side",
       "aliases": [],
       "rects": [
         {
@@ -6313,6 +6343,8 @@
       "floorId": "A-6-9F",
       "label": "ひらめきラウンジ(9F)",
       "labelEn": "Hirameki Lounge (9F)",
+      "locationHint": "A棟・AN側",
+      "locationHintEn": "Bldg. A · AN side",
       "aliases": [],
       "rects": [
         {

@@ -117,6 +117,7 @@ function searchViewer(fetchEntries) {
     normalizeSearchValue: value => value.toLowerCase(),
     getEntrySearchTerms: entry => [entry.label.toLowerCase()],
     getLocalizedEntryLabel: entry => entry.label, getEntryFloorLabel: entry => entry.floorId,
+    getLocalizedEntryLocationHint: entry => entry.locationHint || '',
     SEARCH_RESULT_LIMIT: 18,
     fetchBundledSearchEntries: fetchEntries,
     refreshSearchEntries: () => { state.searchEntries = state.manualEntries; },

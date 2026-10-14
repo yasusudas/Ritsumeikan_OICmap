@@ -27,7 +27,7 @@ function createRing(overrides = {}) {
   };
 }
 
-test('canonical search data passes fatal validation with the known warnings', async () => {
+test('canonical search data distinguishes same-floor names without warnings', async () => {
   const payload = await readCanonicalSearchData();
   const report = validateSearchData(payload);
 
@@ -36,7 +36,7 @@ test('canonical search data passes fatal validation with the known warnings', as
   assert.equal(report.stats.facilityRings, 514);
   assert.equal(report.stats.sameFloorLabelGroups, 8);
   assert.equal(report.stats.legacyWhiteRings, 0);
-  assert.equal(report.warnings.filter((warning) => warning.code === 'same-floor-label').length, 8);
+  assert.deepEqual(report.warnings, []);
   assert.equal(report.warnings.filter((warning) => warning.code === 'legacy-color-white').length, 0);
 });
 

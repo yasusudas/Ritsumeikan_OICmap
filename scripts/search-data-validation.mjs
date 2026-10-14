@@ -253,12 +253,21 @@ export function validateSearchData(payload) {
     } else {
       const labelKey = `${entry.floorId}\u0000${normalizeSearchValue(entry.label)}`;
       const owners = sameFloorLabelOwners.get(labelKey) ?? [];
-      owners.push({ id: entry.id, label: entry.label, index: entryIndex });
+      owners.push({ id: entry.id, label: entry.label, index: entryIndex,
+        locationHint: entry.locationHint, locationHintEn: entry.locationHintEn });
       sameFloorLabelOwners.set(labelKey, owners);
     }
 
     if (entry.labelEn !== undefined && typeof entry.labelEn !== 'string') {
       errors.push(createIssue('invalid-label-en', `${path}.labelEn`, 'labelEnは文字列である必要があります。'));
+    }
+
+    if (entry.locationHint !== undefined || entry.locationHintEn !== undefined) {
+      for (const key of ['locationHint', 'locationHintEn']) {
+        if (typeof entry[key] !== 'string' || !entry[key].trim()) {
+          errors.push(createIssue('invalid-location-hint', `${path}.${key}`, '場所の補足は日英とも空でない文字列にしてください。'));
+        }
+      }
     }
 
     if (entry.aliases !== undefined && (!Array.isArray(entry.aliases) || entry.aliases.some((alias) => typeof alias !== 'string'))) {
@@ -404,11 +413,18 @@ export function validateSearchData(payload) {
     }
 
     stats.sameFloorLabelGroups += 1;
+    const hasDistinctHints = ['locationHint', 'locationHintEn'].every((key) => {
+      const hints = owners.map((owner) => typeof owner[key] === 'string' ? normalizeSearchValue(owner[key]) : '');
+      return hints.every(Boolean) && new Set(hints).size === owners.length;
+    });
+    if (hasDistinctHints) {
+      return;
+    }
     warnings.push(
       createIssue(
         'same-floor-label',
         `entries[${owners[0].index}].label`,
-        `同一階・同一ラベル「${owners[0].label}」が${owners.length}件あります。`,
+        `同一階・同一ラベル「${owners[0].label}」が${owners.length}件あり、場所の補足で区別できません。`,
         { ids: owners.map((owner) => owner.id) }
       )
     );

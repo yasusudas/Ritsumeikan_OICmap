@@ -807,6 +807,12 @@ if (window.__FILE_MODE__) {
     return getLang() === 'en' && englishLabel ? englishLabel : entry.label;
   }
 
+  function getLocalizedEntryLocationHint(entry) {
+    return getLang() === 'en'
+      ? entry.locationHintEn || entry.locationHint || ''
+      : entry.locationHint || '';
+  }
+
   function getActiveSpecialFloorFacilityKey() {
     return Object.keys(SPECIAL_FLOOR_FILES_BY_FACILITY).find(
       (facilityKey) => state.facilityToggleState[facilityKey] === 1
@@ -1073,6 +1079,8 @@ if (window.__FILE_MODE__) {
       getFloorDefinition().id;
     const label = String(entry?.label ?? '').trim();
     const labelEn = String(entry?.labelEn ?? '').trim();
+    const locationHint = String(entry?.locationHint ?? '').trim();
+    const locationHintEn = String(entry?.locationHintEn ?? '').trim();
     const rects = Array.isArray(entry?.rects) ? entry.rects.map((rect) => normalizeRect(rect)) : [];
     const polygons = hydrateFacilityAreaPolygons(entry?.polygons);
 
@@ -1086,8 +1094,10 @@ if (window.__FILE_MODE__) {
       id: String(entry?.id ?? createManualEntryId(floorId)),
       label,
       labelEn,
+      ...(locationHint ? { locationHint } : {}),
+      ...(locationHintEn ? { locationHintEn } : {}),
       normalized: normalizeSearchValue(label),
-      searchTerms: createEntrySearchTerms(label, labelEn, aliases),
+      searchTerms: createEntrySearchTerms(label, labelEn, [...aliases, locationHint, locationHintEn]),
       aliases,
       floorId,
       floorOrder: getFloorOrder(floorId),
@@ -1220,14 +1230,29 @@ if (window.__FILE_MODE__) {
   }
 
   function upgradeStoredEditorSnapshot(snapshot, fallbackEntries = []) {
-    if (!snapshot?.exists || snapshot.version >= 3) {
+    if (!snapshot?.exists) {
       return snapshot;
     }
 
+    const fallbackById = new Map(fallbackEntries.map((entry) => [entry.id, entry]));
+    const entries = snapshot.version >= 3
+      ? snapshot.entries
+      : mergeLegacyFacilityAreas(snapshot.entries, fallbackEntries);
+
     return {
       ...snapshot,
-      version: 3,
-      entries: mergeLegacyFacilityAreas(snapshot.entries, fallbackEntries)
+      version: Math.max(3, snapshot.version),
+      entries: entries.map((entry) => {
+        const fallback = fallbackById.get(entry.id);
+        if (!fallback?.locationHint || fallback.floorId !== entry.floorId || fallback.label !== entry.label) {
+          return entry;
+        }
+        return hydrateManualEntry({
+          ...entry,
+          locationHint: entry.locationHint || fallback.locationHint,
+          locationHintEn: entry.locationHintEn || fallback.locationHintEn
+        });
+      })
     };
   }
 
@@ -1412,6 +1437,8 @@ if (window.__FILE_MODE__) {
       floorId: entry.floorId,
       label: entry.label,
       ...(entry.labelEn ? { labelEn: entry.labelEn } : {}),
+      ...(entry.locationHint ? { locationHint: entry.locationHint } : {}),
+      ...(entry.locationHintEn ? { locationHintEn: entry.locationHintEn } : {}),
       aliases: entry.aliases,
       rects: entry.rects.map((rect) => ({
         xRatio: Number(rect.xRatio.toFixed(6)),
@@ -1505,7 +1532,9 @@ if (window.__FILE_MODE__) {
   function getEntrySearchTerms(entry) {
     return Array.isArray(entry.searchTerms)
       ? entry.searchTerms
-      : createEntrySearchTerms(entry.label, entry.labelEn, entry.aliases);
+      : createEntrySearchTerms(entry.label, entry.labelEn, [
+          ...entry.aliases, entry.locationHint || '', entry.locationHintEn || ''
+        ]);
   }
 
   function getEntryHashBase(entry) {
@@ -3033,11 +3062,22 @@ if (window.__FILE_MODE__) {
       label.className = 'search-result-label';
       label.textContent = getLocalizedEntryLabel(entry);
 
+      const locationHint = getLocalizedEntryLocationHint(entry);
+      const content = document.createElement('span');
+      content.className = 'search-result-content';
+      content.append(label);
+      if (locationHint) {
+        const hint = document.createElement('span');
+        hint.className = 'search-result-location';
+        hint.textContent = locationHint;
+        content.append(hint);
+      }
+
       const floor = document.createElement('span');
       floor.className = 'search-result-floor';
       floor.textContent = getEntryFloorLabel(entry);
 
-      button.append(label, floor);
+      button.append(content, floor);
       fragment.append(button);
     });
 

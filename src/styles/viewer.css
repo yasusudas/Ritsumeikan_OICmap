@@ -215,6 +215,21 @@
   overflow-wrap: anywhere;
 }
 
+.search-result-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.search-result-location {
+  color: var(--c-ink-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
 .search-result-floor {
   flex: 0 0 auto;
   color: var(--c-ink-3);

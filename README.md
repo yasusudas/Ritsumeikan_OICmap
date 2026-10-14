@@ -20,6 +20,8 @@
 
 UIの文言は `src/i18n.js` にまとまっています。日本語と英語の表示を変える場合は、原則としてこの翻訳辞書を更新し、`npm run sync:en` または `npm run build` で英語版HTMLを同期します。
 
+同じ階・同じ名前の検索候補8組には、`locationHint` / `locationHintEn` に棟名や近くの教室などの補足を持たせ、候補の下段に表示します。補足も検索対象ですが、施設名・ID・個別URLは維持します。編集時の読み込み・保存・書き出しでも補足を保持します。
+
 ### 注意
 
 このマップは立命館大学公式のサービスではありません。地図情報は、立命館大学「立命館大学 大阪いばらきキャンパス フロアガイド 日本語」(2025年3月発行、OIC地域連携課)をもとにした非公式の案内です。
@@ -43,6 +45,8 @@ Map images are managed as SVGs. The Japanese version uses `src/assets/floors/ja/
 Facility rings are edited and saved using Japanese SVG coordinates (subtract the 8.5 viewBox x origin for Building H). The editor always displays the Japanese map, regardless of its UI language. The English viewer automatically selects a nearby pictogram of the same facility type from the SVG-derived `src/assets/facility-ring-offsets.json` and adds its offset to the saved coordinates. New or recreated rings need no separate English position settings. Ring radii also follow each language’s individual pictogram sizes, with the colored stroke centered on the circle’s edge. After replacing floor SVGs, regenerate the offsets with `node scripts/generate-facility-ring-offsets.mjs` in an environment with Playwright available.
 
 UI text is consolidated in `src/i18n.js`. To change the Japanese and English displays, you should generally update this translation dictionary and sync the English HTML using `npm run sync:en` or `npm run build`.
+
+The eight groups of same-floor, same-name search results include building or nearby-room hints in `locationHint` / `locationHintEn`, displayed below each result name. Hints are searchable; facility names, IDs, and individual URLs remain unchanged. The editor preserves these hints when loading, saving, and exporting data.
 
 ### Disclaimer
 
