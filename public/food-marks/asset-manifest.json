@@ -1,0 +1,48 @@
+{
+  "tool": "Built-in image_gen",
+  "createdAt": "2026-10-14",
+  "style": "Original food motifs, transparent background, no letters, no official logos",
+  "icons": [
+    {
+      "key": "lion",
+      "subject": "a simple golden fork and knife framing a small roast beef plate",
+      "color": "dark amber and warm gold"
+    },
+    {
+      "key": "cafeteria",
+      "subject": "a simple deep green lunch tray with a rice bowl and one side dish",
+      "color": "deep green and mint"
+    },
+    {
+      "key": "food-park",
+      "subject": "a coral red awning above three simple food bowls",
+      "color": "dark coral and orange"
+    },
+    {
+      "key": "meal-shop",
+      "subject": "a teal grocery tote holding a triangular rice ball",
+      "color": "deep teal and light blue"
+    },
+    {
+      "key": "mini-meal-shop",
+      "subject": "a mustard yellow rectangular bento box with three clear compartments",
+      "color": "dark mustard and warm yellow"
+    },
+    {
+      "key": "coffee",
+      "subject": "a simple deep green takeaway coffee cup with a curved handle and one short steam line",
+      "color": "forest green and cream"
+    },
+    {
+      "key": "convenience",
+      "subject": "a simple orange convenience-store shopping basket containing a sandwich and a drink carton",
+      "color": "dark orange and green"
+    },
+    {
+      "key": "ramen",
+      "subject": "a burgundy noodle bowl with two dark chopsticks and a small curl of noodles",
+      "color": "burgundy and warm cream"
+    }
+  ],
+  "promptTemplate": "Use case: logo-brand. Asset type: tiny food-place map icon. Generate one original flat pictorial icon: {subject}. Color palette: {color}. Transparent background. Square composition, one centered large bold silhouette filling 85 percent of the image; very thick simple shapes, crisp edges, readable at 16 pixels. Consistent friendly geometric vector-like style. No writing, no letters, no numbers, no logos, no brand emblems, no decorative border, no pin shape, no shadows, no gradients, no realistic detail. This is a temporary generic icon for an unofficial campus map, not an official brand logo."
+}

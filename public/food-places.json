@@ -1,0 +1,1019 @@
+{
+  "version": 1,
+  "places": [
+    {
+      "entryId": "manual-1F-1775276107988-dvmwti",
+      "order": 1,
+      "name": {
+        "ja": "GARDEN TERRACE LION",
+        "en": "GARDEN TERRACE LION"
+      },
+      "shortLabel": {
+        "ja": [
+          "LION"
+        ],
+        "en": [
+          "LION"
+        ]
+      },
+      "building": {
+        "ja": "B棟",
+        "en": "Building B"
+      },
+      "summary": {
+        "ja": "創作洋食とビールのレストラン。昼は週替わりランチ、夜はローストビーフなど。",
+        "en": "Western-style restaurant with weekly lunch specials, draft beer and roast beef."
+      },
+      "mark": {
+        "src": "/food-marks/lion.png",
+        "fallbackSrc": "/food-marks/lion-fallback.svg",
+        "createdAt": "2026-10-14",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-14"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.48379740456091724,
+          "yRatio": 0.8542077943674352
+        },
+        "en": {
+          "xRatio": 0.4836151358615766,
+          "yRatio": 0.8540094311608405
+        }
+      },
+      "legacyPictogram": {
+        "ja": {
+          "cx": 575.985,
+          "cy": 719.149,
+          "diameter": 8.094
+        },
+        "en": {
+          "cx": 575.768,
+          "cy": 718.982,
+          "diameter": 8.09
+        }
+      },
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "restaurant",
+          "name": {
+            "ja": "レストラン",
+            "en": "Restaurant"
+          },
+          "coopScheduleName": null,
+          "hours": [
+            {
+              "kind": "regular",
+              "validFrom": null,
+              "validThrough": null,
+              "text": {
+                "ja": "11:30–15:00（ランチL.O. 14:30）、17:00–21:00（料理L.O. 20:00）。12/29〜1/3休。",
+                "en": "11:30–15:00 (lunch last order 14:30), 17:00–21:00 (food last order 20:00). Closed Dec 29–Jan 3."
+              },
+              "sourceUrl": "https://www.ginzalion.jp/shop/brand/lion/shop50.html",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "usage": {
+            "eatIn": "yes",
+            "takeaway": "unknown",
+            "outsideFood": "unknown",
+            "publicAccess": "unknown"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        }
+      ],
+      "links": {
+        "menu": null,
+        "hours": "https://www.ginzalion.jp/shop/brand/lion/shop50.html",
+        "official": "https://www.ginzalion.jp/shop/brand/lion/shop50.html"
+      },
+      "sources": [
+        {
+          "url": "https://www.ginzalion.jp/shop/brand/lion/shop50.html",
+          "title": "GARDEN TERRACE LION",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services",
+            "links"
+          ]
+        },
+        {
+          "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
+          "title": "立命館大学 OIC Food Map",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "summary",
+            "services.usage"
+          ]
+        }
+      ]
+    },
+    {
+      "entryId": "manual-1F-1775169473186-pk43y5",
+      "order": 2,
+      "name": {
+        "ja": "OIC Cafeteria",
+        "en": "OIC Cafeteria"
+      },
+      "shortLabel": {
+        "ja": [
+          "OIC",
+          "食堂"
+        ],
+        "en": [
+          "OIC",
+          "Cafe-",
+          "teria"
+        ]
+      },
+      "building": {
+        "ja": "C棟",
+        "en": "Building C"
+      },
+      "summary": {
+        "ja": "生協の食堂。主菜・副菜・麺・丼などを週替わりで提供。",
+        "en": "The co-op cafeteria, with mains, sides, noodles and rice bowls on a weekly menu."
+      },
+      "mark": {
+        "src": "/food-marks/cafeteria.png",
+        "fallbackSrc": "/food-marks/cafeteria-fallback.svg",
+        "createdAt": "2026-10-14",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-14"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.4556079123094368,
+          "yRatio": 0.4409934789580586
+        },
+        "en": {
+          "xRatio": 0.45543404308932844,
+          "yRatio": 0.44095071802729574
+        }
+      },
+      "legacyPictogram": {
+        "ja": {
+          "cx": 542.424,
+          "cy": 371.268,
+          "diameter": 8.09
+        },
+        "en": {
+          "cx": 542.217,
+          "cy": 371.232,
+          "diameter": 8.09
+        }
+      },
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "cafeteria",
+          "name": {
+            "ja": "食堂",
+            "en": "Cafeteria"
+          },
+          "coopScheduleName": "OIC Cafeteria",
+          "hours": [],
+          "usage": {
+            "eatIn": "unknown",
+            "takeaway": "unknown",
+            "outsideFood": "unknown",
+            "publicAccess": "unknown"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        },
+        {
+          "id": "cafe",
+          "name": {
+            "ja": "OIC Café",
+            "en": "OIC Café"
+          },
+          "coopScheduleName": "OIC Cafeteria内OIC Café",
+          "hours": [],
+          "usage": {
+            "eatIn": "unknown",
+            "takeaway": "unknown",
+            "outsideFood": "unknown",
+            "publicAccess": "unknown"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        }
+      ],
+      "links": {
+        "menu": "https://west2-univ.jp/sp/index.php?t=650337",
+        "hours": "https://www.ritsco-op.jp/schedule/index.html#s03",
+        "official": "https://www.ritsco-op.jp/shop/shop_365.html"
+      },
+      "sources": [
+        {
+          "url": "https://www.ritsco-op.jp/shop/shop_365.html",
+          "title": "立命館生協",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services",
+            "links"
+          ]
+        },
+        {
+          "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
+          "title": "立命館大学 OIC Food Map",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "summary",
+            "services.usage"
+          ]
+        }
+      ]
+    },
+    {
+      "entryId": "manual-1F-1775192332480-hoosj7",
+      "order": 3,
+      "name": {
+        "ja": "OIC FOOD PARK",
+        "en": "OIC FOOD PARK"
+      },
+      "shortLabel": {
+        "ja": [
+          "FOOD",
+          "PARK"
+        ],
+        "en": [
+          "FOOD",
+          "PARK"
+        ]
+      },
+      "building": {
+        "ja": "H棟",
+        "en": "Building H"
+      },
+      "summary": {
+        "ja": "アジアン・鉄鍋・パスタ・カレー・オムライス・クレープの6ブースのフードコート。",
+        "en": "Food court with six booths: Asian dishes, iron-pot dishes, pasta, curry, omurice and crepes."
+      },
+      "mark": {
+        "src": "/food-marks/food-park.png",
+        "fallbackSrc": "/food-marks/food-park-fallback.svg",
+        "createdAt": "2026-10-14",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-14"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.22222334215278652,
+          "yRatio": 0.44038413569468693
+        },
+        "en": {
+          "xRatio": 0.2221401873083869,
+          "yRatio": 0.44034375037118867
+        }
+      },
+      "legacyPictogram": {
+        "ja": {
+          "cx": 264.568,
+          "cy": 370.755,
+          "diameter": 8.082
+        },
+        "en": {
+          "cx": 264.469,
+          "cy": 370.721,
+          "diameter": 8.078
+        }
+      },
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "foodpark",
+          "name": {
+            "ja": "フードコート",
+            "en": "Food court"
+          },
+          "coopScheduleName": null,
+          "hours": [
+            {
+              "kind": "regular",
+              "validFrom": null,
+              "validThrough": null,
+              "text": {
+                "ja": "月–金 11:00–17:00。土日祝休。",
+                "en": "Mon–Fri 11:00–17:00. Closed weekends and public holidays."
+              },
+              "sourceUrl": "https://oic-foodpark.nadeshico1000.jp/access",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "usage": {
+            "eatIn": "yes",
+            "takeaway": "yes",
+            "outsideFood": "unknown",
+            "publicAccess": "yes"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        }
+      ],
+      "links": {
+        "menu": "https://oic-foodpark.nadeshico1000.jp/menu",
+        "hours": "https://oic-foodpark.nadeshico1000.jp/access",
+        "official": "https://oic-foodpark.nadeshico1000.jp/"
+      },
+      "sources": [
+        {
+          "url": "https://oic-foodpark.nadeshico1000.jp/",
+          "title": "OIC FOOD PARK",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services",
+            "links"
+          ]
+        },
+        {
+          "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
+          "title": "立命館大学 OIC Food Map",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "summary",
+            "services.usage"
+          ]
+        }
+      ]
+    },
+    {
+      "entryId": "manual-1F-1775192494050-2avkfe",
+      "order": 4,
+      "name": {
+        "ja": "OIC Meal Shop",
+        "en": "OIC Meal Shop"
+      },
+      "shortLabel": {
+        "ja": [
+          "Meal",
+          "Shop"
+        ],
+        "en": [
+          "Meal",
+          "Shop"
+        ]
+      },
+      "building": {
+        "ja": "C棟",
+        "en": "Building C"
+      },
+      "summary": {
+        "ja": "生協のコンビニ。弁当・おにぎり・パン・菓子・飲料、ハラール食品も。",
+        "en": "Co-op convenience store with bento, rice balls, bread, snacks, drinks and some halal items."
+      },
+      "mark": {
+        "src": "/food-marks/meal-shop.png",
+        "fallbackSrc": "/food-marks/meal-shop-fallback.svg",
+        "createdAt": "2026-10-14",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-14"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.46063332073411456,
+          "yRatio": 0.524064901590469
+        },
+        "en": {
+          "xRatio": 0.46045861156608286,
+          "yRatio": 0.5239888821580017
+        }
+      },
+      "legacyPictogram": null,
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "shop",
+          "name": {
+            "ja": "売店",
+            "en": "Shop"
+          },
+          "coopScheduleName": "OIC Meal Shop",
+          "hours": [],
+          "usage": {
+            "eatIn": "unknown",
+            "takeaway": "unknown",
+            "outsideFood": "unknown",
+            "publicAccess": "unknown"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        }
+      ],
+      "links": {
+        "menu": null,
+        "hours": "https://www.ritsco-op.jp/schedule/index.html#s03",
+        "official": "https://www.ritsco-op.jp/shop/shop_365.html"
+      },
+      "sources": [
+        {
+          "url": "https://www.ritsco-op.jp/shop/shop_365.html",
+          "title": "立命館生協",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services",
+            "links"
+          ]
+        },
+        {
+          "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
+          "title": "立命館大学 OIC Food Map",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "summary",
+            "services.usage"
+          ]
+        }
+      ]
+    },
+    {
+      "entryId": "manual-1F-1775168091518-86hkqm",
+      "order": 5,
+      "name": {
+        "ja": "OIC Mini Meal Shop",
+        "en": "OIC Mini Meal Shop"
+      },
+      "shortLabel": {
+        "ja": [
+          "みにみる"
+        ],
+        "en": [
+          "Mini",
+          "Meal"
+        ]
+      },
+      "building": {
+        "ja": "G棟",
+        "en": "Building G"
+      },
+      "summary": {
+        "ja": "24時間営業の無人コンビニ。開講期の昼は弁当も販売。",
+        "en": "Unstaffed 24-hour convenience store. Bento lunches are sold at midday during term."
+      },
+      "mark": {
+        "src": "/food-marks/mini-meal-shop.png",
+        "fallbackSrc": "/food-marks/mini-meal-shop-fallback.svg",
+        "createdAt": "2026-10-14",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-14"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.34329259585905675,
+          "yRatio": 0.3295204836736391
+        },
+        "en": {
+          "xRatio": 0.34316324387887953,
+          "yRatio": 0.3295204836736391
+        }
+      },
+      "legacyPictogram": {
+        "ja": {
+          "cx": 408.707,
+          "cy": 277.42,
+          "diameter": 7.89
+        },
+        "en": {
+          "cx": 408.553,
+          "cy": 277.42,
+          "diameter": 7.887
+        }
+      },
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "shop",
+          "name": {
+            "ja": "無人コンビニ",
+            "en": "Unstaffed convenience store"
+          },
+          "coopScheduleName": "OIC Mini Meal Shop みにみる（コンビニ）",
+          "hours": [],
+          "usage": {
+            "eatIn": "unknown",
+            "takeaway": "unknown",
+            "outsideFood": "unknown",
+            "publicAccess": "unknown"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        },
+        {
+          "id": "bento",
+          "name": {
+            "ja": "弁当販売",
+            "en": "Bento takeaway"
+          },
+          "coopScheduleName": "OIC Mini Meal Shop みにみる（テイクアウト）",
+          "hours": [],
+          "usage": {
+            "eatIn": "unknown",
+            "takeaway": "yes",
+            "outsideFood": "unknown",
+            "publicAccess": "unknown"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        }
+      ],
+      "links": {
+        "menu": null,
+        "hours": "https://www.ritsco-op.jp/schedule/index.html#s03",
+        "official": "https://www.ritsco-op.jp/shop/shop_365.html"
+      },
+      "sources": [
+        {
+          "url": "https://www.ritsco-op.jp/shop/shop_365.html",
+          "title": "立命館生協",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services",
+            "links"
+          ]
+        },
+        {
+          "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
+          "title": "立命館大学 OIC Food Map",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "summary",
+            "services.usage"
+          ]
+        }
+      ]
+    },
+    {
+      "entryId": "manual-1F-1775276070168-w74szt",
+      "order": 6,
+      "name": {
+        "ja": "スターバックスコーヒー",
+        "en": "Starbucks Coffee"
+      },
+      "shortLabel": {
+        "ja": [
+          "Star-",
+          "bucks"
+        ],
+        "en": [
+          "Star-",
+          "bucks"
+        ]
+      },
+      "building": {
+        "ja": "B棟",
+        "en": "Building B"
+      },
+      "summary": {
+        "ja": "コーヒーと軽食のカフェ。モバイルオーダーに対応。",
+        "en": "Coffeehouse serving coffee drinks and light food, with Mobile Order & Pay."
+      },
+      "mark": {
+        "src": "/food-marks/coffee.png",
+        "fallbackSrc": "/food-marks/coffee-fallback.svg",
+        "createdAt": "2026-10-14",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-14"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.48379740456091724,
+          "yRatio": 0.7509935977384219
+        },
+        "en": {
+          "xRatio": 0.4836151358615766,
+          "yRatio": 0.750833244248061
+        }
+      },
+      "legacyPictogram": {
+        "ja": {
+          "cx": 575.985,
+          "cy": 632.254,
+          "diameter": 8.094
+        },
+        "en": {
+          "cx": 575.768,
+          "cy": 632.119,
+          "diameter": 8.09
+        }
+      },
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "coffee",
+          "name": {
+            "ja": "カフェ",
+            "en": "Coffeehouse"
+          },
+          "coopScheduleName": null,
+          "hours": [
+            {
+              "kind": "regular",
+              "validFrom": null,
+              "validThrough": null,
+              "text": {
+                "ja": "月–金 8:00–20:00、土日祝 9:00–18:00。不定休。",
+                "en": "Mon–Fri 08:00–20:00; weekends and holidays 09:00–18:00. Irregular closing days."
+              },
+              "sourceUrl": "https://store.starbucks.co.jp/detail-2058/",
+              "checkedAt": "2026-10-14"
+            },
+            {
+              "kind": "temporary",
+              "validFrom": "2026-10-07",
+              "validThrough": "2026-11-22",
+              "text": {
+                "ja": "10:00–19:00。",
+                "en": "10:00–19:00."
+              },
+              "sourceUrl": "https://store.starbucks.co.jp/detail-2058/",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "usage": {
+            "eatIn": "yes",
+            "takeaway": "unknown",
+            "outsideFood": "unknown",
+            "publicAccess": "unknown"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        }
+      ],
+      "links": {
+        "menu": null,
+        "hours": "https://store.starbucks.co.jp/detail-2058/",
+        "official": "https://store.starbucks.co.jp/detail-2058/"
+      },
+      "sources": [
+        {
+          "url": "https://store.starbucks.co.jp/detail-2058/",
+          "title": "スターバックスコーヒー",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services",
+            "links"
+          ]
+        },
+        {
+          "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
+          "title": "立命館大学 OIC Food Map",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "summary",
+            "services.usage"
+          ]
+        }
+      ]
+    },
+    {
+      "entryId": "manual-1F-1775276194346-agkncx",
+      "order": 7,
+      "name": {
+        "ja": "セブン-イレブン",
+        "en": "7-Eleven"
+      },
+      "shortLabel": {
+        "ja": [
+          "7-",
+          "Eleven"
+        ],
+        "en": [
+          "7-",
+          "Eleven"
+        ]
+      },
+      "building": {
+        "ja": "A棟",
+        "en": "Building A"
+      },
+      "summary": {
+        "ja": "学内のコンビニ。昼休みに向けて弁当やホットスナックを用意。",
+        "en": "On-campus convenience store with bento and hot snacks for the lunch break."
+      },
+      "mark": {
+        "src": "/food-marks/convenience.png",
+        "fallbackSrc": "/food-marks/convenience-fallback.svg",
+        "createdAt": "2026-10-14",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-14"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.5867481416152199,
+          "yRatio": 0.5611908919217475
+        },
+        "en": {
+          "xRatio": 0.5865263953634875,
+          "yRatio": 0.5611029944529571
+        }
+      },
+      "legacyPictogram": {
+        "ja": {
+          "cx": 698.553,
+          "cy": 472.461,
+          "diameter": 8.082
+        },
+        "en": {
+          "cx": 698.289,
+          "cy": 472.387,
+          "diameter": 8.078
+        }
+      },
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "shop",
+          "name": {
+            "ja": "売店",
+            "en": "Shop"
+          },
+          "coopScheduleName": null,
+          "hours": [
+            {
+              "kind": "regular",
+              "validFrom": null,
+              "validThrough": null,
+              "text": {
+                "ja": "月–金 8:00–19:00、土日祝 8:00–18:00。",
+                "en": "Mon–Fri 08:00–19:00; weekends and holidays 08:00–18:00."
+              },
+              "sourceUrl": "https://seven-eleven.areamarker.com/711map/info/361979",
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "usage": {
+            "eatIn": "unknown",
+            "takeaway": "unknown",
+            "outsideFood": "unknown",
+            "publicAccess": "unknown"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        }
+      ],
+      "links": {
+        "menu": null,
+        "hours": "https://seven-eleven.areamarker.com/711map/info/361979",
+        "official": "https://seven-eleven.areamarker.com/711map/info/361979"
+      },
+      "sources": [
+        {
+          "url": "https://seven-eleven.areamarker.com/711map/info/361979",
+          "title": "セブン-イレブン",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services",
+            "links"
+          ]
+        },
+        {
+          "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
+          "title": "立命館大学 OIC Food Map",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "summary",
+            "services.usage"
+          ]
+        }
+      ]
+    },
+    {
+      "entryId": "manual-1F-1775276166712-57ri6c",
+      "order": 8,
+      "name": {
+        "ja": "みなめんcafe",
+        "en": "Minamen Cafe"
+      },
+      "shortLabel": {
+        "ja": [
+          "みなめん"
+        ],
+        "en": [
+          "Minamen"
+        ]
+      },
+      "building": {
+        "ja": "A棟",
+        "en": "Building A"
+      },
+      "summary": {
+        "ja": "人気ラーメン店「人類みな麺類」の姉妹店。大きなマグ型の器のラーメン。",
+        "en": "Sister shop of Jinrui Mina Menrui, serving light-broth ramen in large mug-style bowls."
+      },
+      "mark": {
+        "src": "/food-marks/ramen.png",
+        "fallbackSrc": "/food-marks/ramen-fallback.svg",
+        "createdAt": "2026-10-14",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-14"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.5626895132501785,
+          "yRatio": 0.5611908919217475
+        },
+        "en": {
+          "xRatio": 0.5624778463735248,
+          "yRatio": 0.5611053700602217
+        }
+      },
+      "legacyPictogram": {
+        "ja": {
+          "cx": 669.91,
+          "cy": 472.461,
+          "diameter": 8.094
+        },
+        "en": {
+          "cx": 669.658,
+          "cy": 472.389,
+          "diameter": 8.09
+        }
+      },
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "ramen",
+          "name": {
+            "ja": "ラーメン",
+            "en": "Ramen"
+          },
+          "coopScheduleName": null,
+          "hours": [],
+          "usage": {
+            "eatIn": "unknown",
+            "takeaway": "yes",
+            "outsideFood": "unknown",
+            "publicAccess": "unknown"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        }
+      ],
+      "links": {
+        "menu": null,
+        "hours": "https://www.instagram.com/minamen.cafe/",
+        "official": "https://www.instagram.com/minamen.cafe/"
+      },
+      "sources": [
+        {
+          "url": "https://www.instagram.com/minamen.cafe/",
+          "title": "みなめんcafe",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services",
+            "links"
+          ]
+        },
+        {
+          "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
+          "title": "立命館大学 OIC Food Map",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "summary",
+            "services.usage"
+          ]
+        }
+      ]
+    }
+  ]
+}

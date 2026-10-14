@@ -4,6 +4,8 @@ import { facilityRingsUrl, searchEntriesUrl } from 'virtual:rits-oic-search-data
 import { applyI18n, getLang, getLocale, onLanguageChange, t } from './i18n.js';
 import { getFacilityRingDisplayPoint, getFacilityRingDiameterRatio } from './facility-ring-position.js';
 import { initBrandFit } from './brand-fit.js';
+import { FoodGuideViewer } from './food-guide-viewer.js';
+import { foodDataUrl, foodFloorUrls } from 'virtual:rits-oic-food-data';
 
 if (window.__FILE_MODE__) {
   console.warn('This app must be opened through a local server, not file://');
@@ -265,6 +267,7 @@ if (window.__FILE_MODE__) {
   );
   const contactFormEmbedUrl = normalizeGoogleFormEmbedUrl(CONTACT_FORM_EMBED_URL);
 
+  let foodGuide = null;
   const state = {
     floorIndex: 0,
     zoom: 1,
@@ -553,6 +556,7 @@ if (window.__FILE_MODE__) {
   }
 
   async function toggleFacilityToggleState(facilityKey) {
+    if (typeof foodGuide !== 'undefined') foodGuide?.externalChange();
     if (!facilityKey || !(facilityKey in state.facilityToggleState)) {
       return;
     }
@@ -696,6 +700,10 @@ if (window.__FILE_MODE__) {
       return;
     }
 
+    if (typeof foodGuide !== 'undefined' && foodGuide?.ready) {
+      foodGuide.renderAreas();
+      return;
+    }
     state.areaLayer.replaceChildren();
 
     if (isSpecialFloorActive()) {
@@ -889,6 +897,8 @@ if (window.__FILE_MODE__) {
   }
 
   function getFloorSvgUrl(floor) {
+    const derived = typeof foodGuide !== 'undefined' && foodGuide?.derivedUrl(floor?.id, getMapLanguage());
+    if (derived) return new URL(derived, window.location.href).href;
     const urls = floor?.svgUrls ?? {};
     return (getMapLanguage() === 'en' ? urls.en : urls.ja) ?? floor?.svgUrl ?? urls.ja ?? urls.en;
   }
@@ -1813,6 +1823,7 @@ if (window.__FILE_MODE__) {
 
     const percent = Math.round(state.zoom * 100);
     setStatus(`${getFloorLabel(getRenderedFloorDefinition())} | ${percent}%`);
+    if (typeof foodGuide !== 'undefined') foodGuide?.render();
   }
 
   function scheduleViewRender() {
@@ -1839,6 +1850,11 @@ if (window.__FILE_MODE__) {
     const scaledWidth = state.baseWidth * zoom;
     const scaledHeight = state.baseHeight * zoom;
     const next = { x, y };
+
+    // A food card may require moving a fitted map away from the viewport centre.
+    if (typeof foodGuide !== 'undefined' && foodGuide?.selected) {
+      return { x: clamp(x, 48 - scaledWidth, viewportWidth - 48), y: clamp(y, top + 48 - scaledHeight, viewportHeight - bottom - 48) };
+    }
 
     if (scaledWidth <= viewportWidth) {
       next.x = (viewportWidth - scaledWidth) / 2;
@@ -2119,6 +2135,7 @@ if (window.__FILE_MODE__) {
     }
 
     const activeEntry = getActiveSearchEntry();
+    if (typeof foodGuide !== 'undefined' && foodGuide?.ready && foodGuide.isStore(activeEntry?.id)) return;
 
     if (!activeEntry || activeEntry.floorId !== getFloorDefinition().id) {
       return;
@@ -3193,6 +3210,7 @@ if (window.__FILE_MODE__) {
     if (!entry) {
       return;
     }
+    if (typeof foodGuide !== 'undefined' && foodGuide && await foodGuide.search(entry)) return;
 
     state.activeSearchEntryId = entry.id;
     searchInput.value = getLocalizedEntryLabel(entry);
@@ -3399,6 +3417,7 @@ if (window.__FILE_MODE__) {
   }
 
   async function setActiveFloor(floorId, { resetZoom = true, preserveSpecialFloor = false } = {}) {
+    if (typeof foodGuide !== 'undefined') foodGuide?.externalChange();
     const nextIndex = FLOOR_FILES.findIndex((floor) => floor.id === floorId);
 
     if (nextIndex < 0) {
@@ -3901,9 +3920,11 @@ if (window.__FILE_MODE__) {
 
   function endDrag() {
     state.isDragging = false;
+    if (typeof foodGuide !== 'undefined') foodGuide?.render();
   }
 
   function beginPinch(touches) {
+    if (typeof foodGuide !== 'undefined') foodGuide?.cancelGesture();
     cancelViewAnimation();
     const center = getTouchCenter(touches);
     state.isPinching = true;
@@ -4054,6 +4075,7 @@ if (window.__FILE_MODE__) {
     const wereSearchResultsVisible = !searchResults.hidden;
     roomCodeCollator = new Intl.Collator(getLocale(), { numeric: true, sensitivity: 'base' });
     applyI18n();
+    if (typeof foodGuide !== 'undefined') foodGuide?.languageChanged();
     updateTabSelection();
     setSiteMenuOpen(isSiteMenuOpen());
     renderFacilityMoreSelection();
@@ -4163,6 +4185,7 @@ if (window.__FILE_MODE__) {
   mobileFloorOptions.forEach((button) => {
     button.addEventListener('click', () => {
       const floorId = button.dataset.floor;
+      if (typeof foodGuide !== 'undefined') foodGuide?.externalChange();
 
       setMobileFloorListOpen(false);
 
@@ -4206,6 +4229,7 @@ if (window.__FILE_MODE__) {
   });
 
   searchClearButton.addEventListener('click', () => {
+    if (typeof foodGuide !== 'undefined') foodGuide?.externalChange();
     clearActiveSearchSelection({ clearInput: true });
     searchInput.focus();
   });
@@ -4223,6 +4247,7 @@ if (window.__FILE_MODE__) {
   });
 
   searchInput.addEventListener('input', () => {
+    if (typeof foodGuide !== 'undefined') foodGuide?.externalChange();
     if (!state.searchReady) {
       void buildSearchIndex().then(() => {
         renderSearchSuggestions();
@@ -4594,6 +4619,7 @@ if (window.__FILE_MODE__) {
   viewer.addEventListener(
     'wheel',
     (event) => {
+      if (typeof foodGuide !== 'undefined') foodGuide?.cancelGesture();
       event.preventDefault();
       const rect = viewer.getBoundingClientRect();
       const focalX = event.clientX - rect.left;
@@ -4614,7 +4640,7 @@ if (window.__FILE_MODE__) {
       return;
     }
 
-    if (event.target.closest('.editor-pin-button, .editor-ring-button')) {
+    if (event.target.closest('.editor-pin-button, .editor-ring-button, .food-action-button')) {
       return;
     }
 
@@ -4633,7 +4659,7 @@ if (window.__FILE_MODE__) {
       return;
     }
 
-    if (event.target.closest('.editor-pin-button, .editor-ring-button')) {
+    if (event.target.closest('.editor-pin-button, .editor-ring-button, .food-action-button')) {
       return;
     }
 
@@ -4681,7 +4707,7 @@ if (window.__FILE_MODE__) {
   viewer.addEventListener(
     'touchstart',
     (event) => {
-      if (event.target.closest('.editor-pin-button, .editor-ring-button, .editor-area-vertex')) {
+      if (event.target.closest('.editor-pin-button, .editor-ring-button, .editor-area-vertex, .food-action-button')) {
         return;
       }
 
@@ -4745,7 +4771,7 @@ if (window.__FILE_MODE__) {
   viewer.addEventListener(
     'touchend',
     (event) => {
-      if (event.target.closest('.editor-pin-button, .editor-ring-button, .editor-area-vertex')) {
+      if (event.target.closest('.editor-pin-button, .editor-ring-button, .editor-area-vertex, .food-action-button')) {
         return;
       }
 
@@ -4833,5 +4859,47 @@ if (window.__FILE_MODE__) {
   updateTabSelection();
   initBrandFit();
   updateMapStageHeight();
+  if (!isEditorSite) {
+    foodGuide = new FoodGuideViewer({
+      viewer, toolbar: document.querySelector('.search-icon-actions'), dataUrl: foodDataUrl, floorUrls: foodFloorUrls,
+      host: {
+        async entries() { await buildSearchIndex(); return state.manualEntries; },
+        map() {
+          return { floorId: getRenderedFloorDefinition().id, insets: computeViewerSafeInsets(), areaLayer: state.areaLayer,
+            image: canvasLayer.querySelector('.floor-svg'), x: state.x, y: state.y,
+            width: state.baseWidth * state.zoom, height: state.baseHeight * state.zoom,
+            baseWidth: state.baseWidth, baseHeight: state.baseHeight, zoom: state.zoom, maxZoom: state.maxZoom,
+            gesture: state.isDragging || state.isPinching };
+        },
+        refreshMap() { return renderFloor({ resetZoom: false, preserveView: true }); },
+        async prepare() {
+          setSiteMenuOpen(false); setFacilityMoreOpen(false); setMobileFloorListOpen(false);
+          clearActiveSearchSelection(); searchResults.hidden = true;
+          for (const [key, active] of Object.entries(state.facilityToggleState)) if (active) await setFacilityToggleState(key, 0);
+        },
+        async select(entry, fromSearch, isCurrent) {
+          await this.prepare();
+          if (!isCurrent()) return;
+          if (getFloorDefinition().id !== entry.floorId || isSpecialFloorActive()) await setActiveFloor(entry.floorId, { resetZoom: false });
+          if (!isCurrent()) return;
+          state.activeSearchEntryId = entry.id;
+          if (fromSearch) searchInput.value = getLocalizedEntryLabel(entry);
+          renderSearchHighlights(); replaceLocationHash(entry.hashId);
+        },
+        clearSelection(clearHash = true) {
+          const entry = getActiveSearchEntry();
+          if (foodGuide?.isStore(entry?.id)) clearActiveSearchSelection({ clearHash });
+        },
+        pan(x, y) { cancelViewAnimation(); state.x = x; state.y = y; flushViewRender(); },
+        zoom(zoom, xRatio, yRatio) {
+          cancelViewAnimation(); state.zoom = zoom;
+          const size = getViewportSize(), inset = computeViewerSafeInsets();
+          state.x = size.width / 2 - state.baseWidth * zoom * xRatio;
+          state.y = inset.top + (size.height - inset.top - inset.bottom) / 2 - state.baseHeight * zoom * yRatio;
+          clampPosition(); flushViewRender();
+        }
+      }
+    });
+  }
   void initializeMap();
 }

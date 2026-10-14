@@ -1,8 +1,10 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
+import { foodDataAssetsPlugin } from './scripts/vite-food-data-plugin.mjs';
 import { searchDataAssetsPlugin } from './scripts/vite-search-data-plugin.mjs';
 import { getRailStatusPayload, RAIL_STATUS_REFRESH_INTERVAL_SECONDS } from './src/server/rail-status.js';
 import { getFoodTrucksPayload, FOOD_TRUCKS_REFRESH_INTERVAL_SECONDS } from './src/server/food-trucks.js';
+import { getCoopHoursPayload, COOP_HOURS_REFRESH_INTERVAL_SECONDS } from './src/server/coop-hours.js';
 
 function railStatusDevApi() {
   return {
@@ -74,9 +76,44 @@ function foodTrucksDevApi() {
   };
 }
 
+function coopHoursDevApi() {
+  return {
+    name: 'rits-oic-coop-hours-dev-api',
+    configureServer(server) {
+      server.middlewares.use('/api/coop-hours', async (request, response) => {
+        if (request.method !== 'GET') {
+          response.statusCode = 405;
+          response.setHeader('Content-Type', 'application/json; charset=utf-8');
+          response.end(JSON.stringify({ error: 'Method not allowed' }));
+          return;
+        }
+
+        try {
+          const payload = await getCoopHoursPayload();
+          response.statusCode = 200;
+          response.setHeader('Content-Type', 'application/json; charset=utf-8');
+          response.setHeader(
+            'Cache-Control',
+            `public, max-age=0, s-maxage=${COOP_HOURS_REFRESH_INTERVAL_SECONDS}, stale-while-revalidate=3600`
+          );
+          response.end(JSON.stringify(payload));
+        } catch (error) {
+          response.statusCode = 500;
+          response.setHeader('Content-Type', 'application/json; charset=utf-8');
+          response.end(
+            JSON.stringify({
+              error: error instanceof Error ? error.message : String(error),
+            })
+          );
+        }
+      });
+    }
+  };
+}
+
 export default defineConfig({
   base: './',
-  plugins: [searchDataAssetsPlugin(), railStatusDevApi(), foodTrucksDevApi()],
+  plugins: [searchDataAssetsPlugin(), foodDataAssetsPlugin(), railStatusDevApi(), foodTrucksDevApi(), coopHoursDevApi()],
   build: {
     rollupOptions: {
       input: {

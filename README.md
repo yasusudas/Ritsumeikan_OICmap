@@ -14,11 +14,15 @@
 
 検索欄に教室名や施設名を入力すると、該当する場所が地図上でハイライトされます。通信に失敗した場合は、検索欄の「再試行」から読み込み直せます。施設アイコンを使うと、トイレ、ウォーターサーバー、自販機、階段・エスカレーター、エレベーターを確認できます。「その他」からプリンター案内図やAED、ATM、授乳スペースを選べます。施設ボタンをもう一度押すとリングが消え、別の施設を押すと表示が切り替わります。ATMは1F、授乳スペースは2Fへ自動で切り替わり、解除すると選択前の階に戻ります。両者を切り替えた場合も、最初に開いていた階に戻ります。
 
+1Fの8店舗は画像ピンから食事案内を開けます。「食事」ボタンの一覧・施設検索・個別URLからも同じカードを表示します。営業時間は適用期間付きで管理し、生協店舗は月別の公式営業カレンダーから今日の予定を取得します。
+
 ### データと構成
 
 地図画像はSVGとして管理しています。日本語版は `src/assets/floors/ja/`、英語版は `src/assets/floors/en/` を使います。編集用の完全な検索データは `public/manual-search-index.json` に保存し、閲覧用の検索項目と施設リングはビルド時に別々のハッシュ付きJSONへ生成します。シラバス関連の生成データや取得時の一時解析物はローカル作業用として扱い、GitHubには含めません。
 
 施設リングの編集・保存は日本語SVGの座標を基準にします（H棟はxからviewBox原点の8.5を引いて正規化）。編集画面の地図はUIの言語によらず日本語版を使います。英語版の閲覧時は、SVGから生成した `src/assets/facility-ring-offsets.json` の補正を施設の種類と近くのピクトグラムから自動選択し、保存座標に加えて表示します。リングの追加・再作成時も英語用の位置設定は不要です。リングの半径も同じデータから各言語のピクトグラムに合わせ、色付きの線の中心が円の輪郭に重なります。SVGを差し替えた場合は、Playwrightを利用できる環境で `node scripts/generate-facility-ring-offsets.mjs` を実行すると補正表を再生成できます。
+
+食事情報は `public/food-places.json`、独自画像は `public/food-marks/`、仕様は `docs/food-guide-spec.md` で管理します。閲覧用1F SVGはビルド時に旧食事ピクトグラム7個だけを除去して生成し、元SVGと編集画面を維持します。`/api/coop-hours` は生協の当月・翌月カレンダーを解析します。詳細は `docs/food-guide-implementation.md` を参照してください。
 
 UIの文言は `src/i18n.js` にまとまっています。日本語と英語の表示を変える場合は、原則としてこの翻訳辞書を更新し、`npm run sync:en` または `npm run build` で英語版HTMLを同期します。
 
@@ -41,6 +45,8 @@ On the viewing site, you can switch between displays for the 1st to 5th floors, 
 Switching languages retains the current floor, search result, selected facility, zoom, and map position. If the map or facility locations fail to load, use the retry buttons over the map. Use the up/down arrow keys to select search suggestions; the list scrolls to keep the selected result visible.
 
 When you enter a classroom or facility name in the search bar, the corresponding location will be highlighted on the map. If loading fails, use “Try again” in the search panel to retry. Facility icons show restrooms, water dispensers, vending machines, stairs and escalators, and elevators. The More menu contains the printer guide, AEDs, ATMs, and the nursing space. Select a facility again to hide its rings, or select another facility to switch the display. Selecting ATMs switches to 1F, and selecting the nursing space switches to 2F. Deselecting returns to the previous floor, even after switching between these two facilities.
+
+Eight first-floor food places have individual image pins, a shared detail card, and a Food list. Co-op hours come from the official monthly calendar; other hours support regular and temporary validity periods.
 
 ### Data and Structure
 
