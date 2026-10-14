@@ -193,6 +193,86 @@ export function containsPoint(point, polygon) {
   return inside;
 }
 
+export function formatFoodCalendarDate(isoDate, lang) {
+  return new Intl.DateTimeFormat(lang === 'en' ? 'en' : 'ja', {
+    timeZone: 'Asia/Tokyo',
+    month: 'numeric',
+    day: 'numeric',
+    weekday: 'short',
+  }).format(new Date(`${isoDate}T00:00:00+09:00`));
+}
+
+function translatedPeriod(label, translate) {
+  const key = `food.period.${label}`;
+  const value = translate(key);
+  return value === key ? label : value;
+}
+
+export function describeFoodServiceHours(
+  service,
+  {
+    text,
+    translate,
+    lang = 'ja',
+    payload = null,
+    loading = false,
+    compact = false,
+    now = new Date(),
+  } = {},
+) {
+  if (service.coopScheduleName) {
+    const day = calendarDay(payload, service.coopScheduleName, now);
+    if (!day) {
+      return {
+        kind: 'message',
+        text: translate(loading ? 'food.hoursLoading' : 'food.hoursUnknown'),
+      };
+    }
+    const periods = compact ? day.periods.slice(0, 1) : day.periods;
+    let copy = day.closed
+      ? translate('food.closedDay')
+      : day.allDay
+        ? translate('food.allDay')
+        : periods
+            .map((period) =>
+              `${period.label ? translatedPeriod(period.label, translate) : ''} ${period.start}–${period.end}`.trim(),
+            )
+            .join('、');
+    if (!copy) copy = day.text;
+    const month = payload.months?.find((item) => item.month === day.date.slice(0, 7));
+    return {
+      kind: 'coop',
+      dateLabel: formatFoodCalendarDate(day.date, lang),
+      text: copy,
+      sourceUrl: month?.url || payload.source?.url || '',
+    };
+  }
+  const versions = selectHoursVersions(service.hours, japaneseDate(now));
+  if (!versions.length) {
+    return { kind: 'message', text: translate('food.hoursUnknown') };
+  }
+  const shown = versions.slice(0, compact ? 1 : undefined);
+  return {
+    kind: 'versions',
+    versions: shown.map((version) => {
+      const period = [version.validFrom, version.validThrough].filter(Boolean).join('〜');
+      const title =
+        version.kind === 'temporary'
+          ? translate('food.temporary') + (period ? ` (${period})` : '')
+          : versions.some((item) => item.kind === 'temporary')
+            ? translate('food.regular')
+            : period || '';
+      const full = text(version.text);
+      return {
+        kind: version.kind,
+        title,
+        text: full,
+        sentence: full.split(/。|\.(?:\s|$)/)[0],
+      };
+    }),
+  };
+}
+
 export function selectHoursVersions(hours, date = japaneseDate()) {
   const active = hours.filter(
     (h) =>

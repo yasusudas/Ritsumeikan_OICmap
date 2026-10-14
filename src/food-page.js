@@ -1,10 +1,20 @@
-// /food と /en/food 共用: NomNom! 由来の「本日のキッチンカー」を /api/food-trucks から取得して描画する。
+// /food と /en/food 共用。常設店舗は地図と同じデータ、キッチンカーは別 API。
 // 表示言語は <html lang> から判定する(legal-page.js と同じ方針)。
+
+import { foodDataUrl } from 'virtual:rits-oic-food-data';
+import { CoopHoursClient, japaneseDate } from './food-guide-model.js';
+import {
+  foodPlacesReady,
+  renderFoodHours,
+  renderFoodPlaceList,
+  renderFoodPlaceStatus,
+} from './food-place-cards.js';
 
 const FOOD_TRUCKS_URL = '/api/food-trucks';
 const REFRESH_INTERVAL_MS = 30 * 60 * 1000;
 
 const container = document.querySelector('[data-food-trucks]');
+const placesRoot = document.querySelector('[data-food-places]');
 const dateSlot = document.querySelector('[data-food-date]');
 const LANG = (document.documentElement.lang || '').toLowerCase().startsWith('en') ? 'en' : 'ja';
 
@@ -136,3 +146,106 @@ if (container) {
   refresh();
   window.setInterval(refresh, REFRESH_INTERVAL_MS);
 }
+
+let places = [];
+let placesLoaded = false;
+let awaitingHours = false;
+let hoursTimer = 0;
+const hours = new CoopHoursClient({
+  changed() {
+    awaitingHours = false;
+    paintHours();
+    scheduleHours();
+  },
+});
+
+function placesNeedCoop() {
+  return placesLoaded && places.some((place) => place.services.some((service) => service.coopScheduleName));
+}
+
+function hourOptions() {
+  return {
+    lang: LANG,
+    payload: hours.payload,
+    loading: awaitingHours || (Boolean(hours.pending) && !hours.error),
+    now: new Date(),
+  };
+}
+
+function paintHours() {
+  if (!placesRoot || !placesLoaded) return;
+  for (const place of places) {
+    const node = placesRoot.querySelector(`[data-food-hours="${CSS.escape(place.entryId)}"]`);
+    if (node) node.innerHTML = renderFoodHours(place, hourOptions());
+  }
+}
+
+function bindMarkFallback() {
+  placesRoot?.querySelectorAll('[data-food-fallback]').forEach((img) => {
+    img.addEventListener(
+      'error',
+      () => {
+        img.src = img.dataset.foodFallback;
+      },
+      { once: true },
+    );
+  });
+}
+
+function scheduleHours() {
+  window.clearTimeout(hoursTimer);
+  if (!placesNeedCoop() || document.visibilityState !== 'visible') return;
+  const today = japaneseDate();
+  hoursTimer = window.setTimeout(() => {
+    paintHours();
+    if (japaneseDate() !== today || hours.needsRefresh()) void hours.refresh();
+    else scheduleHours();
+  }, Math.min(hours.nextCheck(), 2_147_483_647));
+}
+
+function requestHours() {
+  void hours.refresh().then((result) => {
+    if (result === null) {
+      awaitingHours = false;
+      paintHours();
+      scheduleHours();
+    }
+  });
+}
+
+async function loadPlaces() {
+  if (!placesRoot) return;
+  placesLoaded = false;
+  places = [];
+  placesRoot.innerHTML = renderFoodPlaceStatus(LANG, 'loading');
+  try {
+    const response = await fetch(foodDataUrl, { cache: 'no-cache' });
+    if (!response.ok) throw new Error('Food places unavailable');
+    const payload = await response.json();
+    const next = Array.isArray(payload?.places) ? payload.places : [];
+    if (!foodPlacesReady(next)) throw new Error('Food places incomplete');
+    places = next.slice().sort((a, b) => a.order - b.order);
+    awaitingHours = places.some((place) => place.services.some((service) => service.coopScheduleName));
+    placesLoaded = true;
+    placesRoot.innerHTML = renderFoodPlaceList(places, hourOptions());
+    bindMarkFallback();
+    if (placesNeedCoop()) requestHours();
+  } catch {
+    places = [];
+    placesLoaded = false;
+    awaitingHours = false;
+    placesRoot.innerHTML = renderFoodPlaceStatus(LANG, 'error');
+  }
+}
+
+placesRoot?.addEventListener('click', (event) => {
+  if (event.target.closest('[data-food-places-retry]')) void loadPlaces();
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'visible' || !placesNeedCoop()) return;
+  paintHours();
+  requestHours();
+});
+
+if (placesRoot) void loadPlaces();

@@ -14,7 +14,7 @@
 
 検索欄に教室名や施設名を入力すると、該当する場所が地図上でハイライトされます。通信に失敗した場合は、検索欄の「再試行」から読み込み直せます。施設アイコンを使うと、トイレ、ウォーターサーバー、自販機、階段・エスカレーター、エレベーターを確認できます。「その他」には食事、プリンター案内図、AED、ATM、授乳スペースをこの順に格納しています。施設ボタンをもう一度押すとリングが消え、別の施設を押すと表示が切り替わります。ATMは1F、授乳スペースは2Fへ自動で切り替わり、解除すると選択前の階に戻ります。両者を切り替えた場合も、最初に開いていた階に戻ります。
 
-1Fの8店舗は画像ピンと店舗領域全体から食事案内を開けます。PCでは領域内のホバーでも概要を表示します。全ピンはみなめんcafe基準の同一サイズで、地図の倍率に追従します。「その他」内の「食事」ボタンの一覧・施設検索・個別URLからも同じカードを表示します。営業時間は適用期間付きで管理し、生協店舗は月別の公式営業カレンダーから今日の予定を取得します。
+1Fの8店舗は画像ピンと店舗領域全体から食事案内を開けます。PCでは領域内のホバーでも概要を表示します。全ピンはみなめんcafe基準の同一サイズで、地図の倍率に追従します。「その他」内の「食事」ボタンの一覧・施設検索・個別URLからも同じカードを表示します。営業時間は適用期間付きで管理し、生協店舗は月別の公式営業カレンダーから今日の予定を取得します。OICフードページでは、同じ8店舗をキッチンカーより前に並べ、各店舗から地図の店舗カードを開けます。
 
 ### データと構成
 
@@ -46,7 +46,7 @@ Switching languages retains the current floor, search result, selected facility,
 
 When you enter a classroom or facility name in the search bar, the corresponding location will be highlighted on the map. If loading fails, use “Try again” in the search panel to retry. Facility icons show restrooms, water dispensers, vending machines, stairs and escalators, and elevators. The More menu contains Food, the printer guide, AEDs, ATMs, and the nursing space, in that order. Select a facility again to hide its rings, or select another facility to switch the display. Selecting ATMs switches to 1F, and selecting the nursing space switches to 2F. Deselecting returns to the previous floor, even after switching between these two facilities.
 
-Eight first-floor food places have individual image pins and clickable store areas. Hovering anywhere inside a store area shows an overview. All pins use the same size as Minamen Cafe and scale with the map. A shared detail card also opens from search or a direct URL; the Food list is inside More. Co-op hours come from the official monthly calendar; other hours support regular and temporary validity periods.
+Eight first-floor food places have individual image pins and clickable store areas. Hovering anywhere inside a store area shows an overview. All pins use the same size as Minamen Cafe and scale with the map. A shared detail card also opens from search or a direct URL; the Food list is inside More. Co-op hours come from the official monthly calendar; other hours support regular and temporary validity periods. The OIC Food page lists those eight places ahead of today’s food trucks, and each place links back to its map card.
 
 ### Data and Structure
 

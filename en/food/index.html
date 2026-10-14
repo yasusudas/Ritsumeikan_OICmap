@@ -15,7 +15,7 @@
     <link rel="alternate" hreflang="en" href="https://rits-oic-map.app/en/food/" />
     <link rel="alternate" hreflang="x-default" href="https://rits-oic-map.app/food/" />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="Check which food trucks are open today around Ritsumeikan OIC." />
+    <meta name="description" content="See the campus food places at Ritsumeikan OIC and which food trucks are open today." />
     <title>OIC Food | Ritsumeikan OIC Map</title>
     <script type="module" src="/src/legal-page.js"></script>
     <script type="module" src="/src/food-page.js"></script>
@@ -61,8 +61,18 @@
         <header class="page-head">
           <p class="page-eyebrow">FOOD</p>
           <h1 class="page-title">OIC Food</h1>
-          <p class="page-lead">Check which food trucks are open today around Ritsumeikan OIC.</p>
+          <p class="page-lead">See the campus food places and which food trucks are open today.</p>
         </header>
+
+        <section class="section food-places" aria-labelledby="food-places-title">
+          <div class="section-head">
+            <p class="section-eyebrow">CAMPUS</p>
+            <h2 class="section-title" id="food-places-title">Campus food places</h2>
+          </div>
+          <div class="section-body" data-food-places>
+            <p class="food-state">Loading food places…</p>
+          </div>
+        </section>
 
         <section class="section food-board" aria-labelledby="food-board-title">
           <div class="section-head food-board-head">

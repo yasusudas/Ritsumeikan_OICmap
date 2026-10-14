@@ -1,9 +1,8 @@
-import { getLang, getLocale, t } from './i18n.js';
+import { getLang, t } from './i18n.js';
 import {
   validateFoodPlaces,
   placeFoodMarkers,
-  selectHoursVersions,
-  calendarDay,
+  describeFoodServiceHours,
   japaneseDate,
   CoopHoursClient,
   FOOD_GESTURE_DISTANCE,
@@ -635,6 +634,7 @@ export class FoodGuideViewer {
       place = this.getPlace(this.selected);
     if (!root || !place) return;
     const compact = this.panelMode === 'compact';
+    const loading = Boolean(this.hours.pending) && !this.hours.error;
     root.innerHTML = place.services
       .slice(0, compact ? 1 : undefined)
       .map((service) => {
@@ -642,60 +642,33 @@ export class FoodGuideViewer {
           place.services.length > 1 && !compact
             ? `<h4>${escape(local(service.name))}</h4>`
             : '';
-        if (service.coopScheduleName) {
-          const day = calendarDay(this.hours.payload, service.coopScheduleName);
-          if (!day)
-            return (
-              heading +
-              `<p>${escape(t(this.hours.pending && !this.hours.error ? 'food.hoursLoading' : 'food.hoursUnknown'))}</p>`
-            );
-          const date = new Intl.DateTimeFormat(getLocale(), {
-            timeZone: 'Asia/Tokyo',
-            month: 'numeric',
-            day: 'numeric',
-            weekday: 'short',
-          }).format(new Date(day.date + 'T00:00:00+09:00'));
-          const periods = compact ? day.periods.slice(0, 1) : day.periods;
-          let copy = day.closed
-            ? t('food.closedDay')
-            : day.allDay
-              ? t('food.allDay')
-              : periods
-                  .map((period) =>
-                    `${period.label ? (t('food.period.' + period.label) === 'food.period.' + period.label ? period.label : t('food.period.' + period.label)) : ''} ${period.start}–${period.end}`.trim(),
-                  )
-                  .join('、');
-          if (!copy) copy = day.text;
-          const month = this.hours.payload.months.find(
-            (m) => m.month === day.date.slice(0, 7),
-          );
-          return (
-            heading +
-            `<p>${escape(date)} ${escape(copy)}</p>${compact ? '' : `<a class="food-hours-source" href="${escape(month?.url || this.hours.payload.source.url)}" target="_blank" rel="noopener noreferrer">${escape(t('food.coopSource'))} ↗</a>`}`
-          );
+        const block = describeFoodServiceHours(service, {
+          text: local,
+          translate: t,
+          lang: getLang(),
+          payload: this.hours.payload,
+          loading,
+          compact,
+        });
+        if (block.kind === 'message') return `${heading}<p>${escape(block.text)}</p>`;
+        if (block.kind === 'coop') {
+          const source = compact
+            ? ''
+            : `<a class="food-hours-source" href="${escape(block.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escape(t('food.coopSource'))} ↗</a>`;
+          return `${heading}<p>${escape(block.dateLabel)} ${escape(block.text)}</p>${source}`;
         }
-        const versions = selectHoursVersions(service.hours);
-        if (!versions.length)
-          return heading + `<p>${escape(t('food.hoursUnknown'))}</p>`;
         return (
           heading +
-          versions
-            .slice(0, compact ? 1 : undefined)
+          block.versions
             .map((version) => {
-              const period = [version.validFrom, version.validThrough]
-                .filter(Boolean)
-                .join('〜');
-              const title =
-                version.kind === 'temporary'
-                  ? t('food.temporary') + (period ? ` (${period})` : '')
-                  : versions.some((v) => v.kind === 'temporary')
-                    ? t('food.regular')
-                    : period
-                      ? period
-                      : '';
-              if (compact)
-                return `<p>${version.kind === 'temporary' ? `<strong>${escape(t('food.temporary'))}</strong> ` : ''}${escape(local(version.text).split(/。|\.(?:\s|$)/)[0])}</p>`;
-              return `${title ? `<h4>${escape(title)}</h4>` : ''}<p>${escape(local(version.text))}</p>`;
+              if (compact) {
+                const prefix =
+                  version.kind === 'temporary'
+                    ? `<strong>${escape(t('food.temporary'))}</strong> `
+                    : '';
+                return `<p>${prefix}${escape(version.sentence)}</p>`;
+              }
+              return `${version.title ? `<h4>${escape(version.title)}</h4>` : ''}<p>${escape(version.text)}</p>`;
             })
             .join('')
         );

@@ -42,6 +42,59 @@ function createHashSlugPart(value, fallback = '') {
   return normalizeHashRouteId(value) || normalizeHashRouteId(fallback) || 'location';
 }
 
+function entryHashBase(entry) {
+  return `${createHashSlugPart(entry.floorId, entry.floorId)}-${createHashSlugPart(entry.label, entry.id)}`;
+}
+
+function assignEntryHashIds(entries) {
+  const baseCounts = new Map();
+  for (const entry of entries) {
+    const base = entryHashBase(entry);
+    baseCounts.set(base, (baseCounts.get(base) ?? 0) + 1);
+  }
+  const seen = new Map();
+  const hashById = new Map();
+  for (const entry of entries) {
+    const base = entryHashBase(entry);
+    const seenCount = (seen.get(base) ?? 0) + 1;
+    seen.set(base, seenCount);
+    hashById.set(entry.id, baseCounts.get(base) > 1 ? `${base}-${seenCount}` : base);
+  }
+  return hashById;
+}
+
+export function indexSearchRoutes(entries) {
+  const usable = (Array.isArray(entries) ? entries : []).filter(
+    (entry) => isRecord(entry) && String(entry.id ?? '').trim() && String(entry.label ?? '').trim()
+  );
+  const hashById = assignEntryHashIds(usable);
+  const routes = new Map();
+  const addRoute = (rawRoute, entry) => {
+    const route = normalizeHashRouteId(rawRoute);
+    if (!route || STATIC_HASH_ROUTES.has(route) || routes.has(route)) return;
+    routes.set(route, entry);
+  };
+  for (const entry of usable) {
+    addRoute(hashById.get(entry.id), entry);
+    addRoute(entry.id, entry);
+  }
+  const labelOwners = new Map();
+  for (const entry of usable) {
+    const aliases = Array.isArray(entry.aliases) ? entry.aliases : [];
+    for (const value of [entry.label, entry.labelEn, ...aliases]) {
+      const route = normalizeHashRouteId(value);
+      if (!route || STATIC_HASH_ROUTES.has(route)) continue;
+      const existing = labelOwners.get(route);
+      if (existing === undefined) labelOwners.set(route, entry);
+      else if (existing !== entry) labelOwners.set(route, null);
+    }
+  }
+  for (const [route, entry] of labelOwners) {
+    if (entry) addRoute(route, entry);
+  }
+  return { hashById, routes };
+}
+
 function validateRatio(value, path, errors, { positive = false } = {}) {
   if (!Number.isFinite(value)) {
     errors.push(createIssue('invalid-coordinate', path, '座標は有限の数値である必要があります。'));
@@ -69,29 +122,11 @@ function collectHashRouteErrors(entries, errors) {
   const usableEntries = entries
     .map((entry, index) => ({ entry, index, ownerKey: `${index}:${entry?.id ?? ''}` }))
     .filter(({ entry }) => isRecord(entry) && String(entry.id ?? '').trim() && String(entry.label ?? '').trim());
-  const baseCounts = new Map();
-
-  const getHashBase = ({ entry }) => {
-    const floorSlug = createHashSlugPart(entry.floorId, entry.floorId);
-    const labelSlug = createHashSlugPart(entry.label, entry.id);
-    return `${floorSlug}-${labelSlug}`;
-  };
-
-  usableEntries.forEach((item) => {
-    const base = getHashBase(item);
-    baseCounts.set(base, (baseCounts.get(base) ?? 0) + 1);
-  });
-
-  const seenBaseCounts = new Map();
-  const entriesWithHash = usableEntries.map((item) => {
-    const base = getHashBase(item);
-    const seenCount = (seenBaseCounts.get(base) ?? 0) + 1;
-    seenBaseCounts.set(base, seenCount);
-    return {
-      ...item,
-      hashId: baseCounts.get(base) > 1 ? `${base}-${seenCount}` : base
-    };
-  });
+  const hashById = assignEntryHashIds(usableEntries.map((item) => item.entry));
+  const entriesWithHash = usableEntries.map((item) => ({
+    ...item,
+    hashId: hashById.get(item.entry.id)
+  }));
 
   const routeOwners = new Map();
   const reportedCollisions = new Set();

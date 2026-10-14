@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { validateFoodPlaces } from '../src/food-guide-model.js';
 import { removeFoodPictograms } from './food-map-svg.mjs';
+import { indexSearchRoutes } from './search-data-validation.mjs';
 
 const virtual = 'virtual:rits-oic-food-data';
 const source = new URL('../public/food-places.json', import.meta.url);
@@ -24,6 +25,14 @@ export function foodDataAssetsPlugin() {
       ),
     ]);
     validateFoodPlaces(payload, search.entries);
+    const routes = indexSearchRoutes(search.entries);
+    const places = payload.places.map((place) => {
+      const mapHash = routes.hashById.get(place.entryId);
+      if (!mapHash || routes.routes.get(mapHash)?.id !== place.entryId) {
+        throw new Error(`Food map link does not resolve: ${place.entryId}`);
+      }
+      return { ...place, mapHash };
+    });
     await Promise.all(
       payload.places.map(async (place) => {
         for (const key of ['src', 'fallbackSrc']) {
@@ -43,7 +52,7 @@ export function foodDataAssetsPlugin() {
       }),
     );
     return {
-      places: JSON.stringify(payload),
+      places: JSON.stringify({ ...payload, places }),
       ja: removeFoodPictograms(ja, payload.places, 'ja'),
       en: removeFoodPictograms(en, payload.places, 'en'),
     };
