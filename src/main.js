@@ -2,7 +2,7 @@ import './style.css';
 import { inject } from '@vercel/analytics';
 import { facilityRingsUrl, searchEntriesUrl } from 'virtual:rits-oic-search-data';
 import { applyI18n, getLang, getLocale, onLanguageChange, t } from './i18n.js';
-import { getFacilityRingDisplayPoint } from './facility-ring-position.js';
+import { getFacilityRingDisplayPoint, getFacilityRingDiameterRatio } from './facility-ring-position.js';
 import { initBrandFit } from './brand-fit.js';
 
 if (window.__FILE_MODE__) {
@@ -175,7 +175,6 @@ if (window.__FILE_MODE__) {
   const facilityMore = document.querySelector('#facility-more');
   const facilityMoreToggle = document.querySelector('#facility-more-toggle');
   const facilityMorePanel = document.querySelector('#facility-more-panel');
-  const facilityMoreOptions = Array.from(document.querySelectorAll('[data-more-facility-key]'));
   const siteMenu = document.querySelector('#site-menu');
   const siteMenuToggle = document.querySelector('#site-menu-toggle');
   const siteMenuPanel = document.querySelector('#site-menu-panel');
@@ -219,7 +218,10 @@ if (window.__FILE_MODE__) {
     { facilityKey: 'printer', labelKey: 'facility.printer' },
     { facilityKey: 'stairs', labelKey: 'facility.stairs' },
     { facilityKey: 'escalator', labelKey: 'facility.escalator' },
-    { facilityKey: 'elevator', labelKey: 'facility.elevator' }
+    { facilityKey: 'elevator', labelKey: 'facility.elevator' },
+    { facilityKey: 'aed', labelKey: 'facility.aed' },
+    { facilityKey: 'atm', labelKey: 'facility.atm' },
+    { facilityKey: 'nursingRoom', labelKey: 'facility.nursingRoom' }
   ];
   const facilityButtonDefinitions = searchIconButtons
     .map((button) => {
@@ -322,7 +324,6 @@ if (window.__FILE_MODE__) {
     initialZoom: 1,
     safeInsetTop: 0,
     safeInsetBottom: 0,
-    moreFacilityKey: null,
     facilityToggleState: Object.fromEntries(
       searchIconButtons
         .map((button) => button.dataset.facilityKey?.trim())
@@ -444,14 +445,10 @@ if (window.__FILE_MODE__) {
       return;
     }
 
-    const selectedMapFacility = searchIconButtons.find((button) =>
+    const selectedKey = searchIconButtons.find((button) =>
       facilityMorePanel?.contains(button) && state.facilityToggleState[button.dataset.facilityKey] === 1
     )?.dataset.facilityKey;
-    const selectedKey = state.moreFacilityKey || selectedMapFacility;
     const label = selectedKey ? t(`facility.${selectedKey}`) : null;
-    facilityMoreOptions.forEach((button) => {
-      button.setAttribute('aria-pressed', String(button.dataset.moreFacilityKey === state.moreFacilityKey));
-    });
     facilityMoreToggle.classList.toggle('is-active', Boolean(label));
     const toggleLabel = label ? t('facility.moreSelected', { label }) : t('facility.more');
     facilityMoreToggle.setAttribute('aria-label', toggleLabel);
@@ -465,7 +462,6 @@ if (window.__FILE_MODE__) {
 
     const wasSpecialFloorActive = isSpecialFloorActive();
     const normalizedNextValue = nextValue === 1 ? 1 : 0;
-    state.moreFacilityKey = null;
 
     Object.keys(state.facilityToggleState).forEach((key) => {
       state.facilityToggleState[key] = normalizedNextValue === 1 && key === facilityKey ? 1 : 0;
@@ -515,8 +511,11 @@ if (window.__FILE_MODE__) {
   window.__facilityRingDiameterWidthPercentByFacility = FACILITY_RING_DIAMETER_WIDTH_PERCENT_BY_FACILITY;
   window.__toiletRingColorVariantOptions = TOILET_RING_COLOR_VARIANT_OPTIONS;
 
-  function getFacilityRingDiameterSize(facilityKey) {
-    const widthPercent = Number(FACILITY_RING_DIAMETER_WIDTH_PERCENT_BY_FACILITY[facilityKey]);
+  function getFacilityRingDiameterSize(ring) {
+    const measuredDiameter = getFacilityRingDiameterRatio(ring, getMapLanguage());
+    const widthPercent = measuredDiameter === null
+      ? Number(FACILITY_RING_DIAMETER_WIDTH_PERCENT_BY_FACILITY[ring.facilityKey])
+      : measuredDiameter * 100;
 
     const normalizedWidthPercent =
       Number.isFinite(widthPercent) && widthPercent > 0 ? widthPercent : DEFAULT_FACILITY_RING_DIAMETER_WIDTH_PERCENT;
@@ -540,6 +539,24 @@ if (window.__FILE_MODE__) {
 
   function getLocalizedFacilityRingPoint(ring) {
     return getFacilityRingDisplayPoint(ring, getMapLanguage());
+  }
+
+  function createFacilityRingOutline() {
+    const namespace = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(namespace, 'svg');
+    svg.classList.add('facility-ring-outline');
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    for (const className of ['facility-ring-halo', 'facility-ring-line']) {
+      const circle = document.createElementNS(namespace, 'circle');
+      circle.classList.add(className);
+      circle.setAttribute('cx', '50');
+      circle.setAttribute('cy', '50');
+      circle.setAttribute('r', '50');
+      svg.append(circle);
+    }
+    return svg;
   }
 
   function renderFacilityRings() {
@@ -567,7 +584,7 @@ if (window.__FILE_MODE__) {
     currentFloorRings.forEach((ring) => {
       const point = getLocalizedFacilityRingPoint(ring);
       const ringNode = document.createElement('div');
-      const diameterSize = getFacilityRingDiameterSize(ring.facilityKey);
+      const diameterSize = getFacilityRingDiameterSize(ring);
       ringNode.className = 'facility-ring';
       ringNode.classList.add(`color-${getFacilityRingVisualVariant(ring.facilityKey, ring.colorVariant)}`);
       ringNode.style.left = `${point.xRatio * 100}%`;
@@ -575,6 +592,7 @@ if (window.__FILE_MODE__) {
       ringNode.style.width = `${diameterSize.widthPercent}%`;
       ringNode.style.height = `${diameterSize.heightPercent}%`;
       ringNode.setAttribute('aria-hidden', 'true');
+      ringNode.append(createFacilityRingOutline());
       fragment.append(ringNode);
     });
 
@@ -2140,7 +2158,7 @@ if (window.__FILE_MODE__) {
 
   function createEditorRingHandle(ring, { isActive = false } = {}) {
     const point = getLocalizedFacilityRingPoint(ring);
-    const diameterSize = getFacilityRingDiameterSize(ring.facilityKey);
+    const diameterSize = getFacilityRingDiameterSize(ring);
     const ringButton = document.createElement('button');
     ringButton.type = 'button';
     ringButton.className = 'editor-ring-button';
@@ -2162,6 +2180,7 @@ if (window.__FILE_MODE__) {
     ringButton.style.top = `${point.yRatio * 100}%`;
     ringButton.style.width = `${diameterSize.widthPercent}%`;
     ringButton.style.height = `${diameterSize.heightPercent}%`;
+    ringButton.append(createFacilityRingOutline());
 
     if (isActive) {
       ringButton.classList.add('is-active');
@@ -4002,20 +4021,6 @@ if (window.__FILE_MODE__) {
       setFacilityMoreOpen(true);
       facilityMorePanel?.querySelector('button')?.focus();
     }
-  });
-
-  facilityMoreOptions.forEach((button) => {
-    button.addEventListener('click', () => {
-      const nextKey = state.moreFacilityKey === button.dataset.moreFacilityKey ? null : button.dataset.moreFacilityKey;
-      const activeKey = Object.keys(state.facilityToggleState).find((key) => state.facilityToggleState[key] === 1);
-      if (activeKey) {
-        setFacilityToggleState(activeKey, 0);
-      }
-      // These choices are UI-only until their map locations are added.
-      state.moreFacilityKey = nextKey;
-      renderFacilityMoreSelection();
-      setFacilityMoreOpen(false, { focusToggle: true });
-    });
   });
 
   facilityMore?.addEventListener('focusout', (event) => {

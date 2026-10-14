@@ -580,10 +580,9 @@
   position: absolute;
   z-index: 2;
   padding: 0;
-  border: 2px dashed var(--ring-color, var(--c-ring-green));
+  border: 0;
   border-radius: 50%;
-  outline: 2px solid var(--c-bg);
-  outline-offset: 0;
+  outline: 0;
   background: transparent;
   transform: translate(-50%, -50%);
   pointer-events: auto;
@@ -620,7 +619,19 @@
 
 .editor-ring-button.is-active {
   --ring-color: var(--c-pin);
-  border-style: solid;
+}
+
+.editor-ring-button .facility-ring-halo {
+  stroke-width: 6px;
+}
+
+.editor-ring-button .facility-ring-line {
+  stroke-width: 2px;
+  stroke-dasharray: 4 3;
+}
+
+.editor-ring-button.is-active .facility-ring-line {
+  stroke-dasharray: none;
 }
 
 .editor-ring-button:focus-visible,

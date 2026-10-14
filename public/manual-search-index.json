@@ -8795,6 +8795,118 @@
       "yRatio": 0.722343
     },
     {
+      "id": "ring-aed-1F-1791945036142-v2grlj",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.491941,
+      "yRatio": 0.214874
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-zusvks",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.475634,
+      "yRatio": 0.245525
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-mzb44u",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.244479,
+      "yRatio": 0.345078
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-5hze78",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.321657,
+      "yRatio": 0.359394
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-xxlbyw",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.763552,
+      "yRatio": 0.362377
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-r01ss4",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.162363,
+      "yRatio": 0.399313
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-1hndsg",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.31522,
+      "yRatio": 0.399313
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-tyrvb7",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.80361,
+      "yRatio": 0.48986
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-nw0dnf",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.591228,
+      "yRatio": 0.491869
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-lplnso",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.693311,
+      "yRatio": 0.512211
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-uttd03",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.468829,
+      "yRatio": 0.521945
+    },
+    {
+      "id": "ring-aed-1F-1791945036142-nehm4f",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.44264,
+      "yRatio": 0.635524
+    },
+    {
+      "id": "ring-atm-1F-1791945036142-gr7ux9",
+      "facilityKey": "atm",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.486658,
+      "yRatio": 0.360194
+    },
+    {
+      "id": "ring-atm-1F-1791945036142-t09xoz",
+      "facilityKey": "atm",
+      "colorVariant": "red",
+      "floorId": "1F",
+      "xRatio": 0.594084,
+      "yRatio": 0.5612
+    },
+    {
       "id": "ring-waterServer-2F-1776127012459-6cp6hf",
       "facilityKey": "waterServer",
       "colorVariant": "red",
@@ -9523,6 +9635,70 @@
       "yRatio": 0.704189
     },
     {
+      "id": "ring-aed-2F-1791945036142-glsuk2",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "2F",
+      "xRatio": 0.482772,
+      "yRatio": 0.162016
+    },
+    {
+      "id": "ring-aed-2F-1791945036142-w8p2g6",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "2F",
+      "xRatio": 0.314288,
+      "yRatio": 0.394329
+    },
+    {
+      "id": "ring-aed-2F-1791945036142-76s98u",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "2F",
+      "xRatio": 0.160661,
+      "yRatio": 0.394329
+    },
+    {
+      "id": "ring-aed-2F-1791945036142-9atptg",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "2F",
+      "xRatio": 0.642581,
+      "yRatio": 0.479446
+    },
+    {
+      "id": "ring-aed-2F-1791945036142-eu5flk",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "2F",
+      "xRatio": 0.741943,
+      "yRatio": 0.479446
+    },
+    {
+      "id": "ring-aed-2F-1791945036142-meh35e",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "2F",
+      "xRatio": 0.486378,
+      "yRatio": 0.511452
+    },
+    {
+      "id": "ring-aed-2F-1791945036142-jsctt4",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "2F",
+      "xRatio": 0.439237,
+      "yRatio": 0.629253
+    },
+    {
+      "id": "ring-nursingRoom-2F-1791945036142-bajzus",
+      "facilityKey": "nursingRoom",
+      "colorVariant": "red",
+      "floorId": "2F",
+      "xRatio": 0.43779,
+      "yRatio": 0.719721
+    },
+    {
       "id": "ring-waterServer-3F-1776127798927-hux946",
       "facilityKey": "waterServer",
       "colorVariant": "red",
@@ -10035,6 +10211,54 @@
       "yRatio": 0.511627
     },
     {
+      "id": "ring-aed-3F-1791945036142-07qlmj",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "3F",
+      "xRatio": 0.156827,
+      "yRatio": 0.395096
+    },
+    {
+      "id": "ring-aed-3F-1791945036142-7a7z3h",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "3F",
+      "xRatio": 0.314182,
+      "yRatio": 0.395096
+    },
+    {
+      "id": "ring-aed-3F-1791945036142-3ppib3",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "3F",
+      "xRatio": 0.64152,
+      "yRatio": 0.479532
+    },
+    {
+      "id": "ring-aed-3F-1791945036142-1q9fau",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "3F",
+      "xRatio": 0.761351,
+      "yRatio": 0.479532
+    },
+    {
+      "id": "ring-aed-3F-1791945036142-y3agp4",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "3F",
+      "xRatio": 0.43931,
+      "yRatio": 0.625196
+    },
+    {
+      "id": "ring-aed-3F-1791945036142-g2irav",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "3F",
+      "xRatio": 0.464842,
+      "yRatio": 0.847741
+    },
+    {
       "id": "ring-escalator-4F-1776128276278-nxw8ad",
       "facilityKey": "escalator",
       "colorVariant": "red",
@@ -10449,6 +10673,30 @@
       "floorId": "4F",
       "xRatio": 0.563769,
       "yRatio": 0.482652
+    },
+    {
+      "id": "ring-aed-4F-1791945036142-xgjm3u",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "4F",
+      "xRatio": 0.641257,
+      "yRatio": 0.481749
+    },
+    {
+      "id": "ring-aed-4F-1791945036142-3cx8z5",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "4F",
+      "xRatio": 0.741435,
+      "yRatio": 0.481749
+    },
+    {
+      "id": "ring-aed-4F-1791945036142-ilhuqb",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "4F",
+      "xRatio": 0.440365,
+      "yRatio": 0.624312
     },
     {
       "id": "ring-waterServer-5F-1776129187633-vnxdue",
@@ -10889,6 +11137,38 @@
       "floorId": "5F",
       "xRatio": 0.417406,
       "yRatio": 0.491841
+    },
+    {
+      "id": "ring-aed-5F-1791945036142-r0o60c",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "5F",
+      "xRatio": 0.31318,
+      "yRatio": 0.395105
+    },
+    {
+      "id": "ring-aed-5F-1791945036142-7ddtn8",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "5F",
+      "xRatio": 0.679127,
+      "yRatio": 0.482246
+    },
+    {
+      "id": "ring-aed-5F-1791945036142-g03k8h",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "5F",
+      "xRatio": 0.414692,
+      "yRatio": 0.510948
+    },
+    {
+      "id": "ring-aed-5F-1791945036142-s2cjnr",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "5F",
+      "xRatio": 0.440331,
+      "yRatio": 0.624361
     },
     {
       "id": "ring-waterServer-A-6-9F-1776130435710-kvzjnj",
@@ -11395,6 +11675,38 @@
       "yRatio": 0.809011
     },
     {
+      "id": "ring-aed-A-6-9F-1791945036142-5rq15u",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "A-6-9F",
+      "xRatio": 0.671958,
+      "yRatio": 0.440227
+    },
+    {
+      "id": "ring-aed-A-6-9F-1791945036142-ar33og",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "A-6-9F",
+      "xRatio": 0.289513,
+      "yRatio": 0.451049
+    },
+    {
+      "id": "ring-aed-A-6-9F-1791945036142-ebbi02",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "A-6-9F",
+      "xRatio": 0.26695,
+      "yRatio": 0.808999
+    },
+    {
+      "id": "ring-aed-A-6-9F-1791945036142-kc3vxn",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "A-6-9F",
+      "xRatio": 0.671747,
+      "yRatio": 0.808999
+    },
+    {
       "id": "ring-waterServer-H-6-9F-1784772333860-e0mowm",
       "facilityKey": "waterServer",
       "colorVariant": "red",
@@ -11897,6 +12209,22 @@
       "floorId": "H-6-9F",
       "xRatio": 0.164088,
       "yRatio": 0.63443
+    },
+    {
+      "id": "ring-aed-H-6-9F-1791945036142-0loydi",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "H-6-9F",
+      "xRatio": 0.349662,
+      "yRatio": 0.596105
+    },
+    {
+      "id": "ring-aed-H-6-9F-1791945036142-pawzi9",
+      "facilityKey": "aed",
+      "colorVariant": "red",
+      "floorId": "H-6-9F",
+      "xRatio": 0.849649,
+      "yRatio": 0.596105
     }
   ]
 }

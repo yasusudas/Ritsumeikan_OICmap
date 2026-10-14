@@ -709,31 +709,53 @@ body[data-app-mode="editor"] .facility-area-outline {
   background: var(--c-bg);
 }
 
-/* Facility rings: coloured ring + thin white separation edge (outline). */
+/* The SVG stroke is centered on the measured pictogram circumference. */
 .facility-ring {
+  --ring-color: var(--c-ring-green);
   position: absolute;
-  border: 3px solid var(--c-ring-green);
-  border-radius: 50%;
-  outline: 2px solid var(--c-bg);
-  outline-offset: 0;
-  background: transparent;
   transform: translate(-50%, -50%);
 }
 
+.facility-ring-outline {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.facility-ring-outline circle {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.facility-ring-halo {
+  stroke: var(--c-bg);
+  stroke-width: 7px;
+}
+
+.facility-ring-line {
+  stroke: var(--ring-color, var(--c-ring-green));
+  stroke-width: 3px;
+}
+
 .facility-ring.color-red {
-  border-color: var(--c-ring-red);
+  --ring-color: var(--c-ring-red);
 }
 
 .facility-ring.color-blue {
-  border-color: var(--c-ring-blue);
+  --ring-color: var(--c-ring-blue);
 }
 
 .facility-ring.color-water-server {
-  border-color: var(--c-ring-water);
+  --ring-color: var(--c-ring-water);
 }
 
 .facility-ring.color-yellow {
-  border-color: var(--c-ring-yellow);
+  --ring-color: var(--c-ring-yellow);
 }
 
 /* Editor status readout over the map. */

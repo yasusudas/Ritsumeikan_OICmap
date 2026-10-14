@@ -105,11 +105,14 @@ function measureSvg() {
   }
   const discs = all.filter((element) => !['rgb(255, 255, 255)', 'none'].includes(element.fill) && isDiscShape(element));
   const whites = all.filter((element) => element.fill === 'rgb(255, 255, 255)' && element.w < 7.5 && element.h < 7.5);
+  // Bilingual AEDs in the English SVGs use a red heart on white inside a red rim.
+  const aedHearts = all.filter((element) => element.fill === 'rgb(164, 41, 49)' && element.w < 7.5 && element.h < 7.5);
   return {
     viewBox: root.getAttribute('viewBox').split(/\s+/).map(Number),
     discs: discs.map((disc) => ({
       ...disc,
-      figs: whites.filter((white) => Math.abs(white.cx - disc.cx) < disc.w * 0.3 && Math.abs(white.cy - disc.cy) < disc.h * 0.3)
+      figs: (disc.fill === 'rgb(164, 41, 49)' ? [...whites, ...aedHearts] : whites)
+        .filter((figure) => Math.abs(figure.cx - disc.cx) < disc.w * 0.3 && Math.abs(figure.cy - disc.cy) < disc.h * 0.3)
         .map(({ w, h }) => ({ w, h }))
     }))
   };
@@ -124,7 +127,12 @@ function classify(disc) {
     if (has(4.97, 5.66)) return ['toilet', 'yellow'];
     if ([5.01, 6.05].some((h) => has(2.55, h))) return ['toilet', 'blue'];
   }
+  if (disc.fill === 'rgb(164, 41, 49)' && has(5.34, 5.04)) return ['aed', 'red'];
   if (!['rgb(34, 24, 21)', 'rgb(34, 31, 32)'].includes(disc.fill)) return null;
+  // The bottle is split differently in each language. Include the second
+  // contour to distinguish it from the similarly sized shop pictogram.
+  if ((has(4.61, 5.66) && has(0.94, 1.05)) || (has(4.08, 4.59) && has(1.84, 1.73))) return ['nursingRoom', 'red'];
+  if (has(5.22, 4.76)) return ['atm', 'red'];
   if (has(3.25, 4.61)) return ['waterServer', 'red'];
   if (has(3.08, 5.31)) return ['vendingMachine', 'red'];
   if ([3.73, 6.03].some((h) => has(3.75, h))) return ['elevator', 'red'];
@@ -180,9 +188,11 @@ try {
       const distance = (other) => Math.hypot(icon.cx - viewBox[0] - (other.cx - enViewBox[0]), icon.cy - viewBox[1] - (other.cy - enViewBox[1]));
       const candidates = en.filter((other) => other.kind.join('/') === icon.kind.join('/')).sort((a, b) => distance(a) - distance(b));
       const match = candidates[0];
+      // The 1F bilingual AED is shifted by 2.49 SVG units; visually verified.
+      const maxDistance = icon.kind[0] === 'aed' ? 3 : 2;
       // Distinct nearest neighbors realize the sum of all per-row minima, so this
       // is also the minimum-cost one-to-one assignment. Stop on any ambiguity.
-      if (!match || used.has(match) || distance(match) > 2 || (candidates[1] && distance(candidates[1]) <= 2)) {
+      if (!match || used.has(match) || distance(match) > maxDistance || (candidates[1] && distance(candidates[1]) <= maxDistance)) {
         throw new Error(`${floorId} ${icon.kind}: ambiguous or distant pictogram; inspect the SVGs`);
       }
       used.add(match);
@@ -191,7 +201,12 @@ try {
       const ex = round((match.cx - enViewBox[0]) / enViewBox[2]);
       const ey = round((match.cy - enViewBox[1]) / enViewBox[3]);
       const [facility, color] = icon.kind;
-      ((points[facility] ??= {})[color] ??= []).push([x, y, round(ex - x), round(ey - y)]);
+      // Japanese anchor, English offset, then each language's disc diameter
+      // normalized against its own viewBox width.
+      ((points[facility] ??= {})[color] ??= []).push([
+        x, y, round(ex - x), round(ey - y),
+        round(icon.w / viewBox[2]), round(match.w / enViewBox[2])
+      ]);
     }
     output[floorId] = { file, viewBox, svgSha256: hashes, points };
     console.log(`${floorId}: ${ja.length} pictograms`);

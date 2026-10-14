@@ -4,12 +4,7 @@ import floorOffsets from './assets/facility-ring-offsets.json' with { type: 'jso
 // offsets belong to pictograms, so deleting/recreating a ring needs no setup.
 const MAX_PICTOGRAM_DISTANCE = 6;
 
-export function getFacilityRingDisplayPoint(ring, language) {
-  const point = { xRatio: ring.xRatio, yRatio: ring.yRatio };
-  if (language !== 'en') {
-    return point;
-  }
-
+function findNearestPictogram(ring) {
   const floor = floorOffsets[ring.floorId];
   const color = ring.facilityKey === 'toilet' ? ring.colorVariant : 'red';
   const candidates = floor?.points[ring.facilityKey]?.[color] ?? [];
@@ -17,8 +12,8 @@ export function getFacilityRingDisplayPoint(ring, language) {
   let nearestDistance = MAX_PICTOGRAM_DISTANCE ** 2;
 
   for (const candidate of candidates) {
-    const dx = (point.xRatio - candidate[0]) * floor.viewBox[2];
-    const dy = (point.yRatio - candidate[1]) * floor.viewBox[3];
+    const dx = (ring.xRatio - candidate[0]) * floor.viewBox[2];
+    const dy = (ring.yRatio - candidate[1]) * floor.viewBox[3];
     const distance = dx * dx + dy * dy;
     if (distance < nearestDistance) {
       nearest = candidate;
@@ -26,7 +21,18 @@ export function getFacilityRingDisplayPoint(ring, language) {
     }
   }
 
+  return nearest;
+}
+
+export function getFacilityRingDisplayPoint(ring, language) {
+  const point = { xRatio: ring.xRatio, yRatio: ring.yRatio };
+  const nearest = language === 'en' ? findNearestPictogram(ring) : null;
   return nearest
     ? { xRatio: point.xRatio + nearest[2], yRatio: point.yRatio + nearest[3] }
     : point;
+}
+
+export function getFacilityRingDiameterRatio(ring, language) {
+  const nearest = findNearestPictogram(ring);
+  return nearest?.[language === 'en' ? 5 : 4] ?? null;
 }

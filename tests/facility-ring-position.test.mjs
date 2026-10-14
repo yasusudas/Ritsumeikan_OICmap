@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import offsets from '../src/assets/facility-ring-offsets.json' with { type: 'json' };
-import { getFacilityRingDisplayPoint } from '../src/facility-ring-position.js';
+import { getFacilityRingDisplayPoint, getFacilityRingDiameterRatio } from '../src/facility-ring-position.js';
 import { readCanonicalSearchData } from '../scripts/search-data-runtime.mjs';
 
 const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-10);
@@ -24,6 +24,9 @@ test('English offsets match the current floor SVGs and cover every saved ring', 
       const en = getFacilityRingDisplayPoint(ring, 'en');
       near(en.xRatio, ring.xRatio + point[2]);
       near(en.yRatio, ring.yRatio + point[3]);
+      near(getFacilityRingDiameterRatio(ring, 'ja'), point[4]);
+      near(getFacilityRingDiameterRatio(ring, 'en'), point[5]);
+      assert.ok(point[4] > 0 && point[5] > 0);
       assert.equal(ring.positionEn, undefined);
     }
   }
@@ -56,9 +59,46 @@ test('H building uses viewBox-relative coordinates and keeps toilet variants sep
   }
 });
 
+test('additional facilities cover actual pictograms and retain automatic English correction after editing', async () => {
+  const { facilityRings } = await readCanonicalSearchData();
+  const expected = {
+    aed: { '1F': 12, '2F': 7, '3F': 6, '4F': 3, '5F': 4, 'A-6-9F': 4, 'H-6-9F': 2 },
+    atm: { '1F': 2 },
+    nursingRoom: { '2F': 1 }
+  };
+  for (const [facilityKey, counts] of Object.entries(expected)) {
+    for (const [floorId, floor] of Object.entries(offsets)) {
+      const rings = facilityRings.filter((ring) => ring.facilityKey === facilityKey && ring.floorId === floorId);
+      assert.equal(rings.length, counts[floorId] ?? 0, `${facilityKey} ${floorId}`);
+      assert.equal(floor.points[facilityKey]?.red.length ?? 0, rings.length);
+      for (const ring of rings) {
+        const original = getFacilityRingDisplayPoint(ring, 'en');
+        const edited = { ...ring, id: 'recreated-ring', xRatio: ring.xRatio + 0.0001, yRatio: ring.yRatio - 0.0001 };
+        const translated = getFacilityRingDisplayPoint(edited, 'en');
+        near(translated.xRatio - original.xRatio, 0.0001);
+        near(translated.yRatio - original.yRatio, -0.0001);
+        for (const lang of ['ja', 'en']) {
+          near(getFacilityRingDiameterRatio(edited, lang), getFacilityRingDiameterRatio(ring, lang));
+        }
+      }
+    }
+  }
+});
+
+test('ring diameter follows individual pictograms and the standardized 5F AED', () => {
+  for (const [floorId, x, diameter] of [['1F', 825.422, 8.094], ['5F', 524.24, 8.09]]) {
+    const floor = offsets[floorId];
+    const p = floor.points.aed.red.find(([px]) => Math.abs(px * floor.viewBox[2] - x) < 0.1);
+    const ring = { floorId, facilityKey: 'aed', colorVariant: 'red', xRatio: p[0], yRatio: p[1] };
+    assert.ok(Math.abs(getFacilityRingDiameterRatio(ring, 'ja') * floor.viewBox[2] - diameter) < 0.01);
+    assert.ok(Math.abs(getFacilityRingDiameterRatio(ring, 'en') * floor.viewBox[2] - diameter) < 0.01);
+  }
+});
+
 test('unknown or distant pictograms retain the Japanese coordinates', () => {
   for (const overrides of [{}, { floorId: 'unknown' }, { facilityKey: 'printer' }]) {
     const ring = { floorId: '1F', facilityKey: 'toilet', colorVariant: 'red', xRatio: 0.01, yRatio: 0.01, ...overrides };
     assert.deepEqual(getFacilityRingDisplayPoint(ring, 'en'), { xRatio: 0.01, yRatio: 0.01 });
+    assert.equal(getFacilityRingDiameterRatio(ring, 'en'), null);
   }
 });

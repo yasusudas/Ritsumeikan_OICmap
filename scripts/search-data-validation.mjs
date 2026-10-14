@@ -6,7 +6,10 @@ export const KNOWN_FACILITY_KEYS = new Set([
   'printer',
   'stairs',
   'escalator',
-  'elevator'
+  'elevator',
+  'aed',
+  'atm',
+  'nursingRoom'
 ]);
 
 const STATIC_HASH_ROUTES = new Set(['about', 'contact']);
