@@ -1,4 +1,5 @@
 import './style.css';
+import { initBrandFit } from './brand-fit.js';
 
 const LANGUAGE_STORAGE_KEY = 'oicmap:lang';
 
@@ -256,6 +257,7 @@ function setupDialogs() {
 function init() {
   setupLegalLanguageToggles();
   setupDialogs();
+  initBrandFit();
 }
 
 if (document.readyState === 'loading') {

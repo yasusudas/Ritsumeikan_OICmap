@@ -40,6 +40,7 @@ const dictionaries = {
     'contactForm.unconfigured': 'フォームURLがまだ設定されていません。Google Forms の埋め込みURLを設定してください。',
 
     'app.title.viewer': '立命館OICマップ',
+    'app.title.short': 'OICマップ',
     'app.title.editor': '立命館OICマップ 編集用',
 
     'fileMode.viewer.title': '立命館OICマップ',
@@ -266,6 +267,7 @@ const dictionaries = {
     'contactForm.unconfigured': 'The form URL is not configured yet. Set the Google Forms embed URL to enable this form.',
 
     'app.title.viewer': 'Ritsumeikan OIC Map',
+    'app.title.short': 'OIC Map',
     'app.title.editor': 'Ritsumeikan OIC Map Editor',
 
     'fileMode.viewer.title': 'Ritsumeikan OIC Map',

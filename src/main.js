@@ -3,6 +3,7 @@ import { inject } from '@vercel/analytics';
 import { facilityRingsUrl, searchEntriesUrl } from 'virtual:rits-oic-search-data';
 import { applyI18n, getLang, getLocale, onLanguageChange, t } from './i18n.js';
 import { getFacilityRingDisplayPoint } from './facility-ring-position.js';
+import { initBrandFit } from './brand-fit.js';
 
 if (window.__FILE_MODE__) {
   console.warn('This app must be opened through a local server, not file://');
@@ -4650,6 +4651,7 @@ if (window.__FILE_MODE__) {
 
   setMobileFloorListOpen(false);
   updateTabSelection();
+  initBrandFit();
   updateMapStageHeight();
   void initializeMap();
 }
