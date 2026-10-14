@@ -180,6 +180,48 @@ body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] {
   color: var(--ls-red);
 }
 
+/* While the panel is open the three dots fold into an X, like the menu
+   button, so a second press reads as "close": the outer dots slide in and
+   fade while two lines grow and turn to 45°. */
+body[data-app-mode="viewer"] .facility-more-icon :is(.more-dot, .more-cross) {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform var(--dur) var(--ease),
+    opacity var(--dur) var(--ease);
+}
+
+body[data-app-mode="viewer"] .facility-more-icon .more-cross {
+  stroke-width: 1.75;
+  opacity: 0;
+  transform: scaleX(0.2);
+}
+
+body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-dot {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-dot-left {
+  transform: translateX(7px) scale(0.4);
+}
+
+body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-dot-right {
+  transform: translateX(-7px) scale(0.4);
+}
+
+body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-cross {
+  opacity: 1;
+}
+
+body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-cross-a {
+  transform: rotate(45deg);
+}
+
+body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] .more-cross-b {
+  transform: rotate(-45deg);
+}
+
 body[data-app-mode="viewer"] .facility-more-panel {
   position: absolute;
   z-index: 5;
