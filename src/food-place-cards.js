@@ -116,7 +116,7 @@ export function renderFoodHours(place, { lang, payload = null, loading = false, 
       if (block.kind === 'message') return `${heading}<p>${escapeHtml(block.text)}</p>`;
       if (block.kind === 'coop') {
         const source = isHttpUrl(block.sourceUrl)
-          ? `<a class="food-place-source external" href="${escapeHtml(block.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(translate('food.coopSource'))}</a>`
+          ? `<a class="food-place-source external" href="${escapeHtml(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${translate('food.coopSource')} ${translate('food.external')}`)}">${escapeHtml(translate('food.coopSource'))}</a>`
           : '';
         return `${heading}<p>${escapeHtml(block.dateLabel)} ${escapeHtml(block.text)}</p>${source}`;
       }
@@ -187,7 +187,7 @@ function renderCard(place, options) {
       ${place.sources
         .map(
           (source) =>
-            `<p><a class="text-link external" href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.title)}</a> · ${escapeHtml(source.checkedAt)}</p>`,
+            `<p><a class="text-link external" href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${source.title} ${foodPageText(lang, 'food.external')}`)}">${escapeHtml(source.title)}</a> · ${escapeHtml(source.checkedAt)}</p>`,
         )
         .join('')}
       <p>${escapeHtml(foodPageText(lang, 'food.markNotice'))}</p>

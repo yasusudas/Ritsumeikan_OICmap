@@ -532,7 +532,7 @@ export class FoodGuideViewer {
               `<a class="food-control" href="${escape(place.links[key])}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.link.' + key) + ' ' + t('food.external'))}">${escape(t('food.link.' + key))}<span aria-hidden="true">↗</span></a>`,
           )
           .join('')}</div>`;
-        body += `<div class="food-sources">${place.sources.map((source) => `<p><a href="${escape(source.url)}" target="_blank" rel="noopener noreferrer">${escape(source.title)}</a> · ${escape(source.checkedAt)}</p>`).join('')}<p>${escape(t('food.markNotice'))}</p></div>`;
+        body += `<div class="food-sources">${place.sources.map((source) => `<p><a href="${escape(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(source.title + ' ' + t('food.external'))}">${escape(source.title)}</a> · ${escape(source.checkedAt)}</p>`).join('')}<p>${escape(t('food.markNotice'))}</p></div>`;
       }
       const primary =
         this.panelMode === 'compact'
@@ -654,7 +654,7 @@ export class FoodGuideViewer {
         if (block.kind === 'coop') {
           const source = compact
             ? ''
-            : `<a class="food-hours-source" href="${escape(block.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escape(t('food.coopSource'))} ↗</a>`;
+            : `<a class="food-hours-source" href="${escape(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.coopSource') + ' ' + t('food.external'))}">${escape(t('food.coopSource'))}<span aria-hidden="true"> ↗</span></a>`;
           return `${heading}<p>${escape(block.dateLabel)} ${escape(block.text)}</p>${source}`;
         }
         return (

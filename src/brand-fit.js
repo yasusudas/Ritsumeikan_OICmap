@@ -14,6 +14,17 @@
 // device width: on resize, after web fonts load, and when the language switch
 // rewrites the name.
 
+function fitToWidth(node) {
+  node.style.fontSize = '';
+  const available = node.clientWidth;
+  const needed = node.scrollWidth;
+  if (available <= 1 || needed - available <= 1) return;
+  const size = Number.parseFloat(getComputedStyle(node).fontSize);
+  if (!Number.isFinite(size) || size <= 0) return;
+  const next = Math.max(12, size * (available / needed));
+  if (next < size - 0.5) node.style.fontSize = `${next}px`;
+}
+
 function fitBrand(box) {
   const full = box.querySelector('[data-brand-full]');
   const short = box.querySelector('[data-brand-short]');
@@ -23,12 +34,17 @@ function fitBrand(box) {
 
   // Measure the full name in its normal state. Both class changes happen in
   // the same frame, so the browser never paints the intermediate state.
+  full.style.fontSize = '';
+  short.style.fontSize = '';
   full.classList.remove('visually-hidden');
   short.hidden = true;
   const isCut = full.scrollWidth - full.clientWidth > 1;
   full.classList.toggle('visually-hidden', isCut);
   short.hidden = !isCut;
   box.classList.toggle('is-brand-compact', isCut);
+  // At large text sizes the short name can still overflow. Scale it down
+  // instead of ending in an ellipsis.
+  if (isCut) fitToWidth(short);
 }
 
 export function initBrandFit(root = document) {
@@ -45,7 +61,11 @@ export function initBrandFit(root = document) {
   if ('ResizeObserver' in window) {
     const resizeObserver = new ResizeObserver(fitAll);
     boxes.forEach((box) => {
-      resizeObserver.observe(box.closest('.site-header-inner') ?? box.parentElement ?? box);
+      const header = box.closest('.site-header-inner') ?? box.parentElement ?? box;
+      resizeObserver.observe(header);
+      // Text-only zoom widens the language toggle without resizing the header.
+      const actions = header.querySelector('.site-header-actions');
+      if (actions) resizeObserver.observe(actions);
     });
   } else {
     window.addEventListener('resize', fitAll);

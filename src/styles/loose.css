@@ -76,6 +76,7 @@ body.subpage .site-brand-name {
 
 :is(body[data-app-mode="viewer"], body.subpage) .site-nav-link {
   color: var(--c-ink-3);
+  font-size: var(--fs-base);
 }
 
 :is(body[data-app-mode="viewer"], body.subpage) .site-nav-link:hover {
@@ -98,11 +99,12 @@ body.subpage .site-brand-name {
 }
 
 :is(body[data-app-mode="viewer"], body.subpage) .lang-toggle {
-  gap: 10px;
+  gap: 0.35em;
+  font-size: var(--fs-sm);
 }
 
 :is(body[data-app-mode="viewer"], body.subpage) .lang-toggle-separator {
-  display: none;
+  color: var(--c-ink-3);
 }
 
 :is(body[data-app-mode="viewer"], body.subpage) .lang-toggle-option.is-active {

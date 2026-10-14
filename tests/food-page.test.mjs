@@ -75,6 +75,7 @@ test('campus cards keep every comparison field and do not absorb the food-truck 
     assert.equal([...html.matchAll(new RegExp(label, 'g'))].length >= 8, true, label);
   }
   assert.match(html, /目印は本サイト作成/);
+  assert.match(html, /aria-label="GARDEN TERRACE LION （新しいタブで開く）"/);
   assert.equal([...html.matchAll(/class="btn btn-primary food-place-map"/g)].length, 8);
   assert.doesNotMatch(html, /food-place-map"[^>]*target=/);
   const seven = html.slice(html.indexOf('セブン-イレブン'), html.indexOf('みなめんcafe'));
