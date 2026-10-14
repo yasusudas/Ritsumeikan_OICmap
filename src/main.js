@@ -172,7 +172,11 @@ if (window.__FILE_MODE__) {
   const searchFeedback = document.querySelector('#search-feedback');
   const searchResults = document.querySelector('#search-results');
   const toiletRingLegend = document.querySelector('#toilet-ring-legend');
-  const searchIconButtons = Array.from(document.querySelectorAll('.search-icon-button'));
+  const searchIconButtons = Array.from(document.querySelectorAll('.search-icon-button[data-facility-key]'));
+  const facilityMore = document.querySelector('#facility-more');
+  const facilityMoreToggle = document.querySelector('#facility-more-toggle');
+  const facilityMorePanel = document.querySelector('#facility-more-panel');
+  const facilityMoreOptions = Array.from(document.querySelectorAll('[data-more-facility-key]'));
   const siteMenu = document.querySelector('#site-menu');
   const siteMenuToggle = document.querySelector('#site-menu-toggle');
   const siteMenuPanel = document.querySelector('#site-menu-panel');
@@ -319,6 +323,7 @@ if (window.__FILE_MODE__) {
     initialZoom: 1,
     safeInsetTop: 0,
     safeInsetBottom: 0,
+    moreFacilityKey: null,
     facilityToggleState: Object.fromEntries(
       searchIconButtons
         .map((button) => button.dataset.facilityKey?.trim())
@@ -416,6 +421,38 @@ if (window.__FILE_MODE__) {
       const isToiletActive = state.facilityToggleState.toilet === 1;
       toiletRingLegend.hidden = !isToiletActive;
     }
+    renderFacilityMoreSelection();
+  }
+
+  function isFacilityMoreOpen() {
+    return Boolean(facilityMorePanel && !facilityMorePanel.hidden);
+  }
+
+  function setFacilityMoreOpen(isOpen, { focusToggle = false } = {}) {
+    if (!facilityMoreToggle || !facilityMorePanel) {
+      return;
+    }
+
+    facilityMorePanel.hidden = !isOpen;
+    facilityMoreToggle.setAttribute('aria-expanded', String(isOpen));
+    if (!isOpen && focusToggle) {
+      facilityMoreToggle.focus();
+    }
+  }
+
+  function renderFacilityMoreSelection() {
+    if (!facilityMoreToggle) {
+      return;
+    }
+
+    const label = state.moreFacilityKey ? t(`facility.${state.moreFacilityKey}`) : null;
+    facilityMoreOptions.forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.dataset.moreFacilityKey === state.moreFacilityKey));
+    });
+    facilityMoreToggle.classList.toggle('is-active', Boolean(label));
+    const toggleLabel = label ? t('facility.moreSelected', { label }) : t('facility.more');
+    facilityMoreToggle.setAttribute('aria-label', toggleLabel);
+    facilityMoreToggle.setAttribute('title', toggleLabel);
   }
 
   function setFacilityToggleState(facilityKey, nextValue) {
@@ -425,6 +462,7 @@ if (window.__FILE_MODE__) {
 
     const wasSpecialFloorActive = isSpecialFloorActive();
     const normalizedNextValue = nextValue === 1 ? 1 : 0;
+    state.moreFacilityKey = null;
 
     Object.keys(state.facilityToggleState).forEach((key) => {
       state.facilityToggleState[key] = normalizedNextValue === 1 && key === facilityKey ? 1 : 0;
@@ -3828,6 +3866,7 @@ if (window.__FILE_MODE__) {
     applyI18n();
     updateTabSelection();
     setSiteMenuOpen(isSiteMenuOpen());
+    renderFacilityMoreSelection();
     refreshSearchEntries();
 
     const activeEntry = getActiveSearchEntry();
@@ -3951,8 +3990,41 @@ if (window.__FILE_MODE__) {
 
   searchIconButtons.forEach((button) => {
     button.addEventListener('click', () => {
+      setFacilityMoreOpen(false);
       void toggleFacilityToggleState(button.dataset.facilityKey?.trim());
     });
+  });
+
+  facilityMoreToggle?.addEventListener('click', () => {
+    setFacilityMoreOpen(!isFacilityMoreOpen());
+  });
+
+  facilityMoreToggle?.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      setFacilityMoreOpen(true);
+      facilityMoreOptions[0]?.focus();
+    }
+  });
+
+  facilityMoreOptions.forEach((button) => {
+    button.addEventListener('click', () => {
+      const nextKey = state.moreFacilityKey === button.dataset.moreFacilityKey ? null : button.dataset.moreFacilityKey;
+      const activeKey = Object.keys(state.facilityToggleState).find((key) => state.facilityToggleState[key] === 1);
+      if (activeKey) {
+        setFacilityToggleState(activeKey, 0);
+      }
+      // These choices are UI-only until their map locations are added.
+      state.moreFacilityKey = nextKey;
+      renderFacilityMoreSelection();
+      setFacilityMoreOpen(false, { focusToggle: true });
+    });
+  });
+
+  facilityMore?.addEventListener('focusout', (event) => {
+    if (!facilityMore.contains(event.relatedTarget)) {
+      setFacilityMoreOpen(false);
+    }
   });
 
   searchClearButton.addEventListener('click', () => {
@@ -4204,6 +4276,9 @@ if (window.__FILE_MODE__) {
   }
 
   document.addEventListener('pointerdown', (event) => {
+    if (facilityMore && isFacilityMoreOpen() && !facilityMore.contains(event.target)) {
+      setFacilityMoreOpen(false);
+    }
     if (siteMenu && isSiteMenuOpen() && !siteMenu.contains(event.target)) {
       setSiteMenuOpen(false);
     }
@@ -4248,6 +4323,12 @@ if (window.__FILE_MODE__) {
     if (isMobileFloorListOpen()) {
       event.preventDefault();
       setMobileFloorListOpen(false, { focusToggle: true });
+      return;
+    }
+
+    if (isFacilityMoreOpen()) {
+      event.preventDefault();
+      setFacilityMoreOpen(false, { focusToggle: true });
       return;
     }
 

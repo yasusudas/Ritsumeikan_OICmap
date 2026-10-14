@@ -169,6 +169,30 @@ body[data-app-mode="viewer"] .search-icon-button[aria-pressed="true"] {
   color: #ffffff;
 }
 
+body[data-app-mode="viewer"] .facility-more {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] {
+  background: var(--ls-red-soft);
+  color: var(--ls-red);
+}
+
+body[data-app-mode="viewer"] .facility-more-panel {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + var(--s-2));
+  right: 0;
+  width: 100%;
+}
+
+body[data-app-mode="viewer"] .facility-more-panel:not([hidden]) {
+  display: grid;
+  gap: var(--s-2);
+}
+
 body[data-app-mode="viewer"] .toilet-ring-legend {
   gap: 4px 14px;
   padding: 8px 16px;
@@ -214,7 +238,7 @@ body[data-app-mode="viewer"] .search-highlight-pin {
 }
 
 /* Wide enough that the side columns clear the floor sheet */
-@media (min-width: 1240px) and (min-height: 521px) {
+@media (min-width: 1240px) and (min-height: 700px) {
 
   /* Row 2 holds only the search field, under the title. */
   body[data-app-mode="viewer"] .topbar-tools-inner {
@@ -283,14 +307,23 @@ body[data-app-mode="viewer"] .search-highlight-pin {
     margin: -3.5px 0 0;
   }
 
-  /* Facilities: round buttons down the right edge */
+  /* Facilities down the right edge, with More beside the final Printer button. */
   body[data-app-mode="viewer"] .search-icon-actions {
     position: absolute;
     top: calc(100% + 20px);
     right: var(--ls-edge);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 48px);
     gap: 10px;
+  }
+
+  body[data-app-mode="viewer"] .search-icon-actions > .search-icon-button {
+    grid-column: 1;
+  }
+
+  body[data-app-mode="viewer"] .facility-more {
+    grid-column: 2;
+    grid-row: 6;
   }
 
   body[data-app-mode="viewer"] .search-icon-button {
@@ -300,13 +333,18 @@ body[data-app-mode="viewer"] .search-highlight-pin {
 
   body[data-app-mode="viewer"] .toilet-ring-legend {
     top: calc(100% + 26px);
-    right: calc(var(--ls-edge) + 48px + 14px);
+    right: calc(var(--ls-edge) + 48px * 2 + 10px + 14px);
   }
 }
 
-/* Mid widths: one relaxed toolbar row under the title */
+/* Mid widths: search and facilities above the floor tabs */
 @media (min-width: 721px) and (max-width: 1239px) {
   body[data-app-mode="viewer"] .topbar-tools-inner {
+    grid-template-columns: minmax(0, 1fr) max-content;
+    grid-template-areas:
+      "search icons"
+      "floors floors";
+    padding-top: var(--s-2);
     padding-bottom: 12px;
   }
 
@@ -366,16 +404,41 @@ body[data-app-mode="viewer"] .search-highlight-pin {
   }
 
   body[data-app-mode="viewer"] .search-icon-actions {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: var(--s-1);
     justify-items: center;
   }
 
   body[data-app-mode="viewer"] .search-icon-button {
-    width: 46px;
-    height: 46px;
+    width: min(46px, 100%);
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  body[data-app-mode="viewer"] .facility-more {
+    width: 100%;
+    max-width: 46px;
   }
 
   body[data-app-mode="viewer"] .toilet-ring-legend {
     top: calc(100% + 4px);
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) and (min-width: 721px) {
+  body[data-app-mode="viewer"] .topbar-tools-inner {
+    grid-template-columns: minmax(0, 1fr) auto max-content;
+    grid-template-areas: "search floors icons";
+    column-gap: var(--s-2);
+  }
+
+  body[data-app-mode="viewer"] .search-icon-actions {
+    gap: var(--s-1);
+  }
+
+  body[data-app-mode="viewer"] .search-icon-button {
+    width: 40px;
+    height: 40px;
   }
 }
 
