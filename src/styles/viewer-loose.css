@@ -526,8 +526,9 @@ body[data-app-mode="viewer"] .search-highlight-pin {
 
 /* Floor select (phones and short landscape screens) */
 body[data-app-mode="viewer"] .mobile-floor-toggle {
+  gap: var(--s-1);
   height: 44px;
-  padding: 0 14px 0 18px;
+  padding: 0 var(--s-3);
   border: 0;
   border-radius: 999px;
   background: var(--ls-red-soft);
