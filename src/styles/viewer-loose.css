@@ -242,7 +242,7 @@ body[data-app-mode="viewer"] .facility-more-panel:not([hidden]) {
    a 6px slide, no scaling. The panel keeps its box until the last option
    has gone; browsers without discrete display transitions just show/hide. */
 body[data-app-mode="viewer"] .facility-more-panel {
-  transition: display 240ms allow-discrete;
+  transition: display 280ms allow-discrete;
 }
 
 body[data-app-mode="viewer"] .facility-more-option {
@@ -262,8 +262,12 @@ body[data-app-mode="viewer"] .facility-more-option:nth-child(3) {
   --more-i: 2;
 }
 
+body[data-app-mode="viewer"] .facility-more-option:nth-child(4) {
+  --more-i: 3;
+}
+
 body[data-app-mode="viewer"] .facility-more-panel[hidden] .facility-more-option {
-  --more-stagger: calc((2 - var(--more-i, 0)) * 40ms);
+  --more-stagger: calc((3 - var(--more-i, 0)) * 40ms);
   opacity: 0;
   transform: translateY(-6px);
   pointer-events: none;
@@ -390,33 +394,25 @@ body[data-app-mode="viewer"] .search-highlight-pin {
     margin: -3.5px 0 0;
   }
 
-  /* Facilities down the right edge, with More beside the final Printer button. */
+  /* One column, including More. Leave room for all four expanded options. */
   body[data-app-mode="viewer"] .search-icon-actions {
+    --facility-button-size: clamp(40px, calc((100dvh - 300px) / 10), 48px);
     position: absolute;
     top: calc(100% + 20px);
     right: var(--ls-edge);
-    display: grid;
-    grid-template-columns: repeat(2, 48px);
+    display: flex;
+    flex-direction: column;
     gap: 10px;
   }
 
-  body[data-app-mode="viewer"] .search-icon-actions > .search-icon-button {
-    grid-column: 1;
-  }
-
-  body[data-app-mode="viewer"] .facility-more {
-    grid-column: 2;
-    grid-row: 6;
-  }
-
   body[data-app-mode="viewer"] .search-icon-button {
-    width: 48px;
-    height: 48px;
+    width: var(--facility-button-size);
+    height: var(--facility-button-size);
   }
 
   body[data-app-mode="viewer"] .toilet-ring-legend {
     top: calc(100% + 26px);
-    right: calc(var(--ls-edge) + 48px * 2 + 10px + 14px);
+    right: calc(var(--ls-edge) + 48px + 14px);
   }
 }
 
@@ -487,7 +483,7 @@ body[data-app-mode="viewer"] .search-highlight-pin {
   }
 
   body[data-app-mode="viewer"] .search-icon-actions {
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: var(--s-1);
     justify-items: center;
   }

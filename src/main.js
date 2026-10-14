@@ -445,7 +445,11 @@ if (window.__FILE_MODE__) {
       return;
     }
 
-    const label = state.moreFacilityKey ? t(`facility.${state.moreFacilityKey}`) : null;
+    const selectedMapFacility = searchIconButtons.find((button) =>
+      facilityMorePanel?.contains(button) && state.facilityToggleState[button.dataset.facilityKey] === 1
+    )?.dataset.facilityKey;
+    const selectedKey = state.moreFacilityKey || selectedMapFacility;
+    const label = selectedKey ? t(`facility.${selectedKey}`) : null;
     facilityMoreOptions.forEach((button) => {
       button.setAttribute('aria-pressed', String(button.dataset.moreFacilityKey === state.moreFacilityKey));
     });
@@ -3990,7 +3994,7 @@ if (window.__FILE_MODE__) {
 
   searchIconButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      setFacilityMoreOpen(false);
+      setFacilityMoreOpen(false, { focusToggle: Boolean(facilityMorePanel?.contains(button)) });
       void toggleFacilityToggleState(button.dataset.facilityKey?.trim());
     });
   });
@@ -4003,7 +4007,7 @@ if (window.__FILE_MODE__) {
     if (event.key === 'ArrowDown') {
       event.preventDefault();
       setFacilityMoreOpen(true);
-      facilityMoreOptions[0]?.focus();
+      facilityMorePanel?.querySelector('button')?.focus();
     }
   });
 

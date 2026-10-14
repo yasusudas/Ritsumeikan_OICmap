@@ -95,7 +95,7 @@ const dictionaries = {
     'facility.moreHeading': 'その他の施設',
     'facility.moreSelected': 'その他：{label}',
     'facility.aed': 'AED',
-    'facility.nursingRoom': '授乳室',
+    'facility.nursingRoom': '授乳スペース',
     'facility.atm': 'ATM',
 
     'floor.1F': '1F',
@@ -322,7 +322,7 @@ const dictionaries = {
     'facility.moreHeading': 'More facilities',
     'facility.moreSelected': 'More: {label}',
     'facility.aed': 'AED',
-    'facility.nursingRoom': 'Nursing Room',
+    'facility.nursingRoom': 'Nursing Space',
     'facility.atm': 'ATM',
 
     'floor.1F': '1F',
