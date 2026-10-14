@@ -329,7 +329,8 @@ if (window.__FILE_MODE__) {
         .map((button) => button.dataset.facilityKey?.trim())
         .filter(Boolean)
         .map((facilityKey) => [facilityKey, 0])
-    )
+    ),
+    nursingRoomReturnFloorId: null
   };
 
   function registerViewerServiceWorker() {
@@ -455,13 +456,29 @@ if (window.__FILE_MODE__) {
     facilityMoreToggle.setAttribute('title', toggleLabel);
   }
 
-  function setFacilityToggleState(facilityKey, nextValue) {
+  async function setFacilityToggleState(facilityKey, nextValue) {
     if (!facilityKey || !(facilityKey in state.facilityToggleState)) {
       return;
     }
 
-    const wasSpecialFloorActive = isSpecialFloorActive();
     const normalizedNextValue = nextValue === 1 ? 1 : 0;
+    const wasNursingRoomActive = state.facilityToggleState.nursingRoom === 1;
+    const isNursingRoomNextActive = facilityKey === 'nursingRoom' && normalizedNextValue === 1;
+
+    if (wasNursingRoomActive && !isNursingRoomNextActive) {
+      const returnFloorId = state.nursingRoomReturnFloorId;
+      state.nursingRoomReturnFloorId = null;
+
+      if (returnFloorId && returnFloorId !== getFloorDefinition().id) {
+        await setActiveFloor(returnFloorId, { resetZoom: true });
+      }
+    }
+
+    const wasSpecialFloorActive = isSpecialFloorActive();
+
+    if (!wasNursingRoomActive && isNursingRoomNextActive) {
+      state.nursingRoomReturnFloorId = getFloorDefinition().id;
+    }
 
     Object.keys(state.facilityToggleState).forEach((key) => {
       state.facilityToggleState[key] = normalizedNextValue === 1 && key === facilityKey ? 1 : 0;
@@ -476,6 +493,11 @@ if (window.__FILE_MODE__) {
 
     renderFacilityToggleButtons();
     updateMobileFloorSelection();
+
+    if (isNursingRoomNextActive && getFloorDefinition().id !== '2F') {
+      await setActiveFloor('2F', { resetZoom: true });
+      return;
+    }
 
     if (wasSpecialFloorActive !== isNextSpecialFloorActive) {
       void renderFloor({ resetZoom: true });
@@ -502,7 +524,7 @@ if (window.__FILE_MODE__) {
       }
     }
 
-    setFacilityToggleState(facilityKey, nextValue);
+    await setFacilityToggleState(facilityKey, nextValue);
   }
 
   window.__facilityToggleState = state.facilityToggleState;
