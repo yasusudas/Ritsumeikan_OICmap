@@ -1810,12 +1810,12 @@
         ]
       },
       "building": {
-        "ja": "TERRACE GATE前",
-        "en": "In front of TERRACE GATE"
+        "ja": "セミナーハウス出入口前",
+        "en": "Seminar House entrance"
       },
       "summary": {
-        "ja": "TERRACE GATE前のOICランチストリート。出店するキッチンカーは日によって異なる。",
-        "en": "OIC Lunch Street in front of TERRACE GATE. Which kitchen cars come depends on the day."
+        "ja": "セミナーハウス出入口前のOICランチストリート。出店するキッチンカーは日によって異なる。",
+        "en": "OIC Lunch Street by the Seminar House entrance. Which kitchen cars come depends on the day."
       },
       "mark": {
         "src": "/food-marks/kitchen-car.svg",

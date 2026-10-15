@@ -8233,9 +8233,7 @@
         "ランチストリート",
         "セミナーハウス",
         "セミナーハウス出入口",
-        "Seminar House",
-        "TERRACE GATE",
-        "テラスゲート"
+        "Seminar House"
       ],
       "rects": [
         {
@@ -8245,8 +8243,8 @@
           "heightRatio": 0.001
         }
       ],
-      "locationHint": "TERRACE GATE前",
-      "locationHintEn": "In front of TERRACE GATE"
+      "locationHint": "セミナーハウス出入口前",
+      "locationHintEn": "Seminar House entrance"
     }
   ],
   "facilityRings": [
