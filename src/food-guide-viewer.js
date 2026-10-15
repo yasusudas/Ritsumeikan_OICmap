@@ -20,6 +20,9 @@ const escape = (value) =>
       ],
   );
 const local = (value) => value?.[getLang()] ?? value?.ja ?? '';
+const setAttribute = (node, name, value) => {
+  if (node.getAttribute(name) !== value) node.setAttribute(name, value);
+};
 const foodIcon =
   '<svg class="search-icon-image" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 2v7m3-7v7M2 2v7c0 2 6 2 6 0M5 11v11M17 2c-4 3-4 9 0 10h3V2h-3Zm3 10v10"/></svg>';
 
@@ -48,6 +51,8 @@ export class FoodGuideViewer {
       listScroll: 0,
       action: 0,
       nodes: new Map(),
+      // Last values written to each pin, so a pan frame only moves it.
+      drawn: new Map(),
       layout: null,
       pointer: null,
       internalNavigation: false,
@@ -411,12 +416,12 @@ export class FoodGuideViewer {
     this.morePanel.style.setProperty('--food-more-available', `${available}px`);
   }
   panelGeometry() {
-    const map = this.host.map(),
+    const insets = this.host.map().insets,
       rect = this.viewer.getBoundingClientRect();
     const h = window.visualViewport?.height || innerHeight;
-    const top = rect.top + map.insets.top + 8;
+    const top = rect.top + insets.top + 8;
     const safe = parseFloat(getComputedStyle(this.panel).paddingBottom) || 0;
-    const available = Math.max(0, h - top - map.insets.bottom - safe);
+    const available = Math.max(0, h - top - insets.bottom - safe);
     this.shortScreen =
       available < 340 ||
       (this.minimumCompactHeight || 0) - 32 > Math.min(320, available - 120);
@@ -437,10 +442,10 @@ export class FoodGuideViewer {
           : available;
       return {
         left: 0,
-        top: h - map.insets.bottom - safe - height,
+        top: h - insets.bottom - safe - height,
         width: innerWidth,
         height,
-        bottom: map.insets.bottom + safe,
+        bottom: insets.bottom + safe,
       };
     }
     const rail = this.toolbar.getBoundingClientRect();
@@ -452,7 +457,7 @@ export class FoodGuideViewer {
       left: right - 320,
       top: top + 4,
       width: 320,
-      maxHeight: Math.max(0, h - map.insets.bottom - top - 16),
+      maxHeight: Math.max(0, h - insets.bottom - top - 16),
     };
   }
   positionPanel() {
@@ -757,16 +762,25 @@ export class FoodGuideViewer {
     }
   }
 
+  // Runs on every pan and zoom frame, so it writes only what changed.
   render() {
     const map = this.host.map();
-    this.button.setAttribute('aria-pressed', String(this.browse));
+    setAttribute(this.button, 'aria-pressed', String(this.browse));
     this.button.classList.toggle('is-active', this.browse);
-    this.host.refreshMore?.();
-    const imagePath = map.image ? new URL(map.image.src).pathname : null;
-    const displayLang = ['ja', 'en'].find(
-      (lang) =>
-        imagePath === new URL(this.floorUrls[lang], location.href).pathname,
-    );
+    if (this.moreBrowse !== this.browse) {
+      this.moreBrowse = this.browse;
+      this.host.refreshMore?.();
+    }
+    const imageSrc = map.image?.src ?? null;
+    if (imageSrc !== this.imageSrc) {
+      const imagePath = imageSrc ? new URL(imageSrc).pathname : null;
+      this.imageSrc = imageSrc;
+      this.displayLang = ['ja', 'en'].find(
+        (lang) =>
+          imagePath === new URL(this.floorUrls[lang], location.href).pathname,
+      );
+    }
+    const displayLang = this.displayLang;
     const available = this.ready && map.floorId === '1F' && displayLang;
     this.overlay.hidden = !available;
     if (!available) {
@@ -793,30 +807,42 @@ export class FoodGuideViewer {
         this.nodes.set(marker.id, button);
         this.overlay.append(button);
       }
-      button.hidden = false;
-      button.style.left = `${marker.x}px`;
-      button.style.top = `${marker.y}px`;
-      button.style.setProperty('--food-pin-size', `${marker.size}px`);
-      button.style.setProperty('--food-tail', `${marker.tail}px`);
-      button.style.setProperty('--food-pin-hit', `${marker.hit}px`);
-      button.style.clipPath = `polygon(${marker.clip})`;
+      if (button.hidden) button.hidden = false;
+      // The tip sits at the anchor: the pin box is moved, never laid out
+      // again, while the map is only panned.
+      const drawn = this.drawn.get(marker.id) ?? {};
+      const transform = `translate3d(${marker.x - marker.hit / 2}px, ${marker.y - marker.hit}px, 0)`;
+      if (drawn.transform !== transform)
+        button.style.transform = drawn.transform = transform;
+      const geometry = `${marker.size}|${marker.hit}|${marker.clip}`;
+      if (drawn.geometry !== geometry) {
+        drawn.geometry = geometry;
+        button.style.setProperty('--food-pin-size', `${marker.size}px`);
+        button.style.setProperty('--food-tail', `${marker.tail}px`);
+        button.style.setProperty('--food-pin-hit', `${marker.hit}px`);
+        button.style.clipPath = `polygon(${marker.clip})`;
+      }
+      this.drawn.set(marker.id, drawn);
       {
         const place = this.getPlace(marker.id);
-        button.dataset.foodPlace = marker.id;
+        if (button.dataset.foodPlace !== marker.id)
+          button.dataset.foodPlace = marker.id;
         const lang = button.dataset.lang;
         if (lang !== getLang() || !button.firstChild) {
           button.innerHTML = this.markerVisual(place);
           button.dataset.lang = getLang();
           this.wireImageFallback(button);
         }
-        button.setAttribute(
+        setAttribute(
+          button,
           'aria-label',
           t('food.pin', {
             name: local(place.name),
             building: local(place.building),
           }),
         );
-        button.setAttribute(
+        setAttribute(
+          button,
           'aria-pressed',
           String(this.selected === marker.id),
         );
@@ -839,11 +865,12 @@ export class FoodGuideViewer {
       point = this.getPlace(this.selected).anchor[getLang()];
     const x = map.x + map.width * point.xRatio,
       y = map.y + map.height * point.yRatio;
-    const frame = this.viewer.getBoundingClientRect();
+    const frame = this.viewer.getBoundingClientRect(),
+      insets = map.insets;
     let left = 16,
       right = frame.width - 16,
-      top = map.insets.top + 68,
-      bottom = frame.height - map.insets.bottom - 16;
+      top = insets.top + 68,
+      bottom = frame.height - insets.bottom - 16;
     if (this.panelMode) {
       const r = this.panel.getBoundingClientRect();
       if (this.narrow) bottom = Math.min(bottom, r.top - frame.top - 16);

@@ -10,9 +10,6 @@
 
 body[data-app-mode='viewer'] {
   --food-pin-size: 40px;
-  /* A tight contact shadow plus a soft one, following the pin's outline. */
-  --food-pin-shadow: drop-shadow(0 1px 1px rgb(17 17 17 / 18%))
-    drop-shadow(0 3px 6px rgb(17 17 17 / 10%));
   --food-motion: var(--ls-pop-dur);
 }
 
@@ -27,8 +24,12 @@ body[data-app-mode='viewer'] {
   pointer-events: none;
 }
 
+/* Placed by a transform only and kept on its own layer, so panning the map
+   moves the pins without drawing them again. */
 .food-pin {
   position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -37,10 +38,10 @@ body[data-app-mode='viewer'] {
   padding: 0 0 var(--food-tail, 6px);
   border: 0;
   background: transparent;
-  transform: translate(-50%, -100%);
   pointer-events: auto;
   touch-action: none;
   cursor: pointer;
+  will-change: transform;
 }
 
 .food-pin.is-selected,
@@ -61,6 +62,22 @@ body[data-app-mode='viewer'] {
   transition: transform var(--food-motion) var(--ease);
 }
 
+/* The shadow under the pin: a tight contact shadow plus a soft one along its
+   outline (drop-shadow 0 1px 1px 18% and 0 3px 6px 10% for a 40px pin),
+   baked into pin-shadow.png. A CSS filter here was blurred again on every
+   zoom frame, which phones could not keep up with. The image covers the
+   40×46 pin plus a margin of 10 left/right, 8 above and 14 below. */
+.food-badge:not(.is-heading)::before {
+  position: absolute;
+  top: -20%;
+  left: -25%;
+  width: 150%;
+  height: 170%;
+  background: url('/food-marks/pin-shadow.png') 0 0 / 100% 100% no-repeat;
+  content: '';
+  pointer-events: none;
+}
+
 /* Head and tail drawn as one white shape with a hairline edge. */
 .food-pin-shape {
   position: absolute;
@@ -73,7 +90,6 @@ body[data-app-mode='viewer'] {
   stroke: color-mix(in srgb, var(--c-ink) 14%, transparent);
   stroke-width: 1px;
   vector-effect: non-scaling-stroke;
-  filter: var(--food-pin-shadow);
 }
 
 .food-badge img {

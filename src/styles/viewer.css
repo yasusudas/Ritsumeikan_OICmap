@@ -653,6 +653,13 @@ svg.search-icon-image {
   pointer-events: none;
 }
 
+/* Area outlines and fills change on hover, selection and the food list.
+   On their own layer they redraw without redrawing the floor SVG under
+   them, which phones (WebKit) do slowly. */
+.facility-area-layer {
+  will-change: transform;
+}
+
 /* Facility area outlines (hover / focus on pointer devices). */
 .facility-area-svg {
   position: absolute;

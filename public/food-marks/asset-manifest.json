@@ -2,6 +2,8 @@
   "tool": "Built-in image_gen",
   "createdAt": "2026-10-14",
   "style": "Original food motifs, transparent background, no letters, no official logos",
+  "pngSize": "The generated PNGs (1254x1254) were downscaled to 256x256 on 2026-10-15 so phones can redraw the pins while zooming; the originals remain in git history (commit 148d3c5).",
+  "pinShadow": "pin-shadow.png is the pin body and its shadow, rendered from the pin outline (not generated with image_gen), 2026-10-15.",
   "icons": [
     {
       "key": "lion",

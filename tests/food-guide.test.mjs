@@ -202,6 +202,88 @@ test('hovering the shared area lifts both café and cafeteria pins; hovering a p
   assert.deepEqual([...viewer.hoverPins()], []);
 });
 
+test('panning only moves the pins; their size and hit area are rewritten when the zoom changes', () => {
+  class Node {
+    constructor(parent) {
+      Object.assign(this, { parent, children: [], dataset: {}, attributes: {}, hidden: false, firstChild: null });
+      this.writes = [];
+      this.style = {
+        setProperty: (name, value) => this.writes.push([name, value]),
+        set transform(value) {
+          this.value = value;
+        },
+        get transform() {
+          return this.value;
+        },
+      };
+      this.classList = { toggle() {} };
+    }
+    get nextElementSibling() {
+      const list = this.parent.children;
+      return list[list.indexOf(this) + 1] ?? null;
+    }
+    get firstElementChild() {
+      return this.children[0] ?? null;
+    }
+    getAttribute(name) {
+      return this.attributes[name] ?? null;
+    }
+    setAttribute(name, value) {
+      this.attributes[name] = value;
+    }
+    append(child) {
+      child.parent = this;
+      this.children.push(child);
+    }
+    prepend(child) {
+      this.children = [child, ...this.children.filter((c) => c !== child)];
+    }
+    after(child) {
+      const list = this.parent.children.filter((c) => c !== child);
+      list.splice(list.indexOf(this) + 1, 0, child);
+      this.parent.children = list;
+    }
+  }
+  const code = viewerSource.slice(viewerSource.indexOf('  render() {'), viewerSource.indexOf('  reveal() {'));
+  const context = vm.createContext({ URL, location: { href: 'http://map.test/' }, placeFoodMarkers });
+  vm.runInContext(
+    `const getLang = () => 'ja', t = (key) => key, local = (value) => value?.ja ?? '';
+     const setAttribute = (node, name, value) => { if (node.getAttribute(name) !== value) node.setAttribute(name, value); };
+     this.Pins = class { ${code} }`,
+    context,
+  );
+  const overlay = new Node(null);
+  const map = { floorId: '1F', image: { src: 'http://map.test/1F.svg' }, x: 0, y: 0, width: 1190.55, height: 841.89 };
+  const viewer = Object.assign(new context.Pins(), {
+    ready: true,
+    places: payload.places,
+    sizeReferenceId: payload.pinSizeReferenceEntryId,
+    floorUrls: { ja: '/1F.svg', en: '/en-1F.svg' },
+    nodes: new Map(),
+    drawn: new Map(),
+    overlay,
+    button: new Node(null),
+    host: { map: () => map },
+    getPlace: (id) => payload.places.find((p) => p.entryId === id),
+    markerVisual: () => '',
+    wireImageFallback() {},
+    hoverPins: () => [],
+  });
+  context.document = { createElement: () => new Node(overlay) };
+  viewer.render();
+  const writes = () => [...viewer.nodes.values()].reduce((sum, node) => sum + node.writes.length, 0);
+  const sized = writes();
+  assert.equal(sized, payload.places.length * 3);
+  const before = [...viewer.nodes.values()].map((node) => node.style.transform);
+  Object.assign(map, { x: 37, y: -12 });
+  viewer.render();
+  assert.equal(writes(), sized, 'a pan does not rewrite pin sizes');
+  [...viewer.nodes.values()].forEach((node, i) => assert.notEqual(node.style.transform, before[i]));
+  Object.assign(map, { width: 1190.55 * 4, height: 841.89 * 4 });
+  viewer.render();
+  assert.equal(writes(), sized * 2, 'a zoom rewrites every pin once');
+});
+
 test('overlapping hit rectangles are divided between neighboring store centres', () => {
   const { markers } = placeFoodMarkers(
     [

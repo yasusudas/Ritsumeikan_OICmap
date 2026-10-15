@@ -137,6 +137,8 @@ if (window.__FILE_MODE__) {
   const SEARCH_INDEX_IDLE_TIMEOUT_MS = 2000;
   const SEARCH_FOCUS_ZOOM = 6;
   const VIEW_ANIMATION_MS = 480;
+  // Touch screens redraw the map at its new size once the zoom has been still this long.
+  const ZOOM_RASTER_SETTLE_MS = 140;
   const SEARCH_PIN_VERTICAL_OFFSET_RATIO = 0.01;
   const EDITOR_GUIDE_PIN_VERTICAL_OFFSET_RATIO = 0.01;
   const DEFAULT_FACILITY_RING_DIAMETER_WIDTH_PERCENT = 0.8;
@@ -329,6 +331,8 @@ if (window.__FILE_MODE__) {
     viewRenderFrame: 0,
     viewAnimationFrame: 0,
     mapRelayoutFrame: 0,
+    renderedZoom: 0,
+    zoomRasterTimer: 0,
     initialZoom: 1,
     safeInsetTop: 0,
     safeInsetBottom: 0,
@@ -1832,13 +1836,39 @@ if (window.__FILE_MODE__) {
   function updateCanvasLayerBaseSize() {
     canvasLayer.style.width = `${state.baseWidth}px`;
     canvasLayer.style.height = `${state.baseHeight}px`;
+    // The layer no longer has the size of any zoom, so the next frame sets it.
+    state.renderedZoom = 0;
   }
 
-  function flushViewRender() {
+  // Resizing the layer makes the browser redraw the whole floor SVG. Phones
+  // (WebKit) took 100–300 ms per redraw, so every pinch frame stalled. On
+  // touch screens a changing zoom scales the last drawn layer instead, and
+  // the sharp redraw happens once the map has been still for a moment.
+  function shouldDeferZoomRaster() {
+    return !isEditorSite && Boolean(window.matchMedia?.('(pointer: coarse)').matches);
+  }
+
+  function commitZoomRaster() {
+    state.zoomRasterTimer = 0;
+    if (state.renderedZoom !== state.zoom) {
+      flushViewRender({ commit: true });
+    }
+  }
+
+  function flushViewRender({ commit = false } = {}) {
     state.viewRenderFrame = 0;
-    canvasLayer.style.width = `${state.baseWidth * state.zoom}px`;
-    canvasLayer.style.height = `${state.baseHeight * state.zoom}px`;
-    canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0)`;
+    window.clearTimeout(state.zoomRasterTimer);
+    state.zoomRasterTimer = 0;
+    if (!commit && state.renderedZoom > 0 && state.renderedZoom !== state.zoom && shouldDeferZoomRaster()) {
+      const scale = state.zoom / state.renderedZoom;
+      canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${scale})`;
+      state.zoomRasterTimer = window.setTimeout(commitZoomRaster, ZOOM_RASTER_SETTLE_MS);
+    } else {
+      state.renderedZoom = state.zoom;
+      canvasLayer.style.width = `${state.baseWidth * state.zoom}px`;
+      canvasLayer.style.height = `${state.baseHeight * state.zoom}px`;
+      canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0)`;
+    }
 
     const percent = Math.round(state.zoom * 100);
     setStatus(`${getFloorLabel(getRenderedFloorDefinition())} | ${percent}%`);
@@ -4893,7 +4923,8 @@ if (window.__FILE_MODE__) {
       host: {
         async entries() { await buildSearchIndex(); return state.manualEntries; },
         map() {
-          return { floorId: getRenderedFloorDefinition().id, insets: computeViewerSafeInsets(), areaLayer: state.areaLayer,
+          // insets measures the page, so it is read only when asked for (not on every pan frame).
+          return { floorId: getRenderedFloorDefinition().id, get insets() { return computeViewerSafeInsets(); }, areaLayer: state.areaLayer,
             image: canvasLayer.querySelector('.floor-svg'), x: state.x, y: state.y,
             width: state.baseWidth * state.zoom, height: state.baseHeight * state.zoom,
             baseWidth: state.baseWidth, baseHeight: state.baseHeight, zoom: state.zoom, maxZoom: state.maxZoom,
