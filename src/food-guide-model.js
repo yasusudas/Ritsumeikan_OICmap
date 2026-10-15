@@ -25,9 +25,9 @@ export function validateFoodPlaces(payload, entries) {
   if (
     payload?.version !== 1 ||
     !Array.isArray(payload.places) ||
-    payload.places.length !== 8
+    !payload.places.length
   )
-    fail('expected eight places');
+    fail('expected places');
   const byId = new Map(entries.map((entry) => [entry.id, entry]));
   const ids = new Set(),
     orders = new Set();
@@ -38,9 +38,13 @@ export function validateFoodPlaces(payload, entries) {
     );
   for (const place of payload.places) {
     const entry = byId.get(place.entryId);
+    // A place inside another (OIC Café in OIC Cafeteria) has its own search
+    // entry and pin but shares the other place's store area.
+    const areaEntry = byId.get(place.areaEntryId ?? place.entryId);
     if (
       entry?.floorId !== '1F' ||
-      !entry?.polygons?.length ||
+      areaEntry?.floorId !== '1F' ||
+      !areaEntry?.polygons?.length ||
       ids.has(place.entryId)
     )
       fail(`unknown/duplicate entry ${place.entryId}`);
@@ -48,7 +52,7 @@ export function validateFoodPlaces(payload, entries) {
     if (
       !Number.isInteger(place.order) ||
       place.order < 1 ||
-      place.order > 8 ||
+      place.order > payload.places.length ||
       orders.has(place.order)
     )
       fail('invalid order');
@@ -80,7 +84,7 @@ export function validateFoodPlaces(payload, entries) {
       if (![offset?.xRatio, offset?.yRatio].every(Number.isFinite))
         fail('area offset');
       if (
-        !entry.polygons.some((p) =>
+        !areaEntry.polygons.some((p) =>
           containsPoint(
             {
               x: anchor.xRatio - offset.xRatio,
@@ -137,7 +141,7 @@ export function validateFoodPlaces(payload, entries) {
       )
         fail('mixed hours sources');
       for (const key of ['eatIn', 'takeaway', 'outsideFood', 'publicAccess']) {
-        if (!['yes', 'no', 'unknown'].includes(service.usage?.[key]))
+        if (!['yes', 'no', 'unknown', 'na'].includes(service.usage?.[key]))
           fail('usage');
         if (
           service.usageNotes?.[key] !== null &&
@@ -177,6 +181,14 @@ export function validateFoodPlaces(payload, entries) {
       validateServiceStatus(service, fail);
     }
   }
+  for (const place of payload.places)
+    if (
+      place.areaEntryId !== undefined &&
+      !payload.places.some(
+        (owner) => owner.entryId === place.areaEntryId && owner.areaEntryId === undefined,
+      )
+    )
+      fail(`${place.entryId}: shared area must belong to another place`);
   if (!ids.has(payload.pinSizeReferenceEntryId)) fail('pin size reference');
   return payload.places.slice().sort((a, b) => a.order - b.order);
 }
@@ -436,7 +448,12 @@ export function rectanglesOverlap(a, b, gap = 4) {
   );
 }
 
-// Keep all eight pins at their true anchor; scale to separate neighboring icons.
+// Diameter of the map's round facility pictograms: 8.094 units of the
+// 1190.55-unit floor viewBox. Zoomed in, pins grow to match them.
+export const FOOD_PIN_MIN_DIAMETER_RATIO = 8.094 / 1190.55;
+
+// Keep every pin at its true anchor; scale to separate neighboring icons,
+// but never draw them smaller than the facility pictograms around them.
 export function placeFoodMarkers(
   points,
   mapWidth = 1190.55,
@@ -454,9 +471,13 @@ export function placeFoodMarkers(
       ),
     ]),
   );
-  const commonSize = sizes.get(referenceId) ?? Math.min(...sizes.values());
+  const commonSize = Math.max(
+    sizes.get(referenceId) ?? Math.min(...sizes.values()),
+    mapWidth * FOOD_PIN_MIN_DIAMETER_RATIO,
+  );
   for (const point of points) sizes.set(point.id, commonSize);
-  const hit = 48;
+  // 48px fits pins up to 40px; larger pins need room for the tail, ring and lift.
+  const hit = commonSize > 40 ? Math.ceil(commonSize * 1.3 + 4) : 48;
   const clip = (polygon, nx, ny, d) => {
     const out = [];
     for (let i = 0; i < polygon.length; i++) {

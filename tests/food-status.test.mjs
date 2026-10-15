@@ -147,7 +147,6 @@ test('two services are judged independently and the wording is not a live open s
   );
   assert.match(html, /営業時間内/);
   assert.match(html, /営業時間外/);
-  assert.match(html, /登録された営業時間に基づく目安/);
   assert.doesNotMatch(html, /営業中/);
 });
 

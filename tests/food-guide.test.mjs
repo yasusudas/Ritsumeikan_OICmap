@@ -8,6 +8,7 @@ import {
   selectHoursVersions,
   calendarDay,
   placeFoodMarkers,
+  FOOD_PIN_MIN_DIAMETER_RATIO,
   CoopHoursClient,
 } from '../src/food-guide-model.js';
 import { removeFoodPictograms } from '../scripts/food-map-svg.mjs';
@@ -23,22 +24,45 @@ const entries = JSON.parse(
 ).entries;
 const clone = () => structuredClone(payload);
 
-test('all eight image pins correspond to existing first-floor search entries', () => {
+test('every image pin corresponds to an existing first-floor search entry', () => {
   const places = validateFoodPlaces(payload, entries);
-  assert.equal(places.length, 8);
-  assert.equal(new Set(places.map((p) => p.mark.src)).size, 8);
+  assert.equal(places.length, 9);
+  assert.equal(new Set(places.map((p) => p.mark.src)).size, 9);
   for (const place of places)
     for (const key of ['src', 'fallbackSrc']) {
       const bytes = readFileSync(
         new URL('../public' + place.mark[key], import.meta.url),
       );
-      if (key === 'src') assert.equal(bytes.subarray(1, 4).toString(), 'PNG');
+      if (place.mark[key].endsWith('.png'))
+        assert.equal(bytes.subarray(1, 4).toString(), 'PNG');
       else
         assert.doesNotMatch(
           bytes.toString(),
           /<(?:text|script|image|use)\b|href=/,
         );
     }
+});
+
+test('OIC Café has its own pin and search entry but shares the cafeteria area', () => {
+  const places = validateFoodPlaces(payload, entries);
+  const cafeteria = places.find((p) => p.name.ja === 'OIC Cafeteria');
+  const cafe = places.find((p) => p.name.ja === 'OIC Café');
+  assert.equal(cafe.order, cafeteria.order + 1);
+  assert.equal(cafe.areaEntryId, cafeteria.entryId);
+  assert.equal(entries.find((e) => e.id === cafe.entryId).polygons, undefined);
+  assert.deepEqual(cafeteria.services.map((s) => s.id), ['cafeteria']);
+  assert.deepEqual(cafe.services.map((s) => s.coopScheduleName), ['OIC Cafeteria内OIC Café']);
+  // Side by side: same height, as far apart as みなめんcafe and セブン-イレブン.
+  const minamen = places.find((p) => p.name.ja === 'みなめんcafe');
+  const seven = places.find((p) => p.name.ja === 'セブン-イレブン');
+  for (const lang of ['ja', 'en']) {
+    assert.equal(cafe.anchor[lang].yRatio, cafeteria.anchor[lang].yRatio);
+    const gap = cafe.anchor[lang].xRatio - cafeteria.anchor[lang].xRatio;
+    assert.ok(gap >= seven.anchor[lang].xRatio - minamen.anchor[lang].xRatio - 1e-6);
+  }
+  const shared = clone();
+  shared.places.find((p) => p.name.ja === 'OIC Café').areaEntryId = 'missing';
+  assert.throws(() => validateFoodPlaces(shared, entries), /Food data/);
 });
 
 test('invalid stores, missing images and mixed co-op/manual hours fail before publication', () => {
@@ -56,7 +80,7 @@ test('invalid stores, missing images and mixed co-op/manual hours fail before pu
 });
 
 test('temporary hours are selected inclusively and expire back to the regular version', () => {
-  const hours = payload.places[5].services[0].hours;
+  const hours = payload.places.find((p) => p.name.ja === 'スターバックスコーヒー').services[0].hours;
   assert.equal(selectHoursVersions(hours, '2026-10-06')[0].kind, 'regular');
   assert.equal(selectHoursVersions(hours, '2026-10-07')[0].kind, 'temporary');
   assert.equal(selectHoursVersions(hours, '2026-11-22')[0].kind, 'temporary');
@@ -111,15 +135,15 @@ test('all pins remain at their original anchors through zoom and pan; no groups 
       y: p.anchor.ja.yRatio * width * 0.707 - 200,
     }));
     const { markers } = placeFoodMarkers(points, width);
-    assert.equal(markers.length, 8);
+    assert.equal(markers.length, payload.places.length);
     for (const m of markers) {
       const p = points.find((p) => p.id === m.id);
       assert.equal(m.x, p.x);
       assert.equal(m.y, p.y);
       assert.equal(m.ids, undefined);
       assert.equal(m.dx, undefined);
-      assert.ok(m.size <= 40);
-      assert.ok(m.size > 0);
+      assert.ok(m.size <= Math.max(40, width * FOOD_PIN_MIN_DIAMETER_RATIO));
+      assert.ok(m.size >= width * FOOD_PIN_MIN_DIAMETER_RATIO);
     }
   }
   const a = placeFoodMarkers(
@@ -137,6 +161,45 @@ test('all pins remain at their original anchors through zoom and pan; no groups 
     640,
   ).markers;
   assert.ok(b[0].size > a[0].size);
+});
+
+test('zoomed-in pins grow to the facility pictogram size and keep room to draw', () => {
+  const width = 11905; // the 1F map at ten times its full width
+  const points = payload.places.map((p) => ({
+    id: p.entryId,
+    order: p.order,
+    x: p.anchor.ja.xRatio * width,
+    y: p.anchor.ja.yRatio * width * 0.707,
+  }));
+  const { markers } = placeFoodMarkers(points, width, payload.pinSizeReferenceEntryId);
+  const pictogram = width * FOOD_PIN_MIN_DIAMETER_RATIO;
+  for (const m of markers) {
+    assert.ok(Math.abs(m.size - pictogram) < 1e-9);
+    assert.ok(m.hit >= m.size + m.tail + m.size * 0.1);
+  }
+  const normal = placeFoodMarkers(points.map((p) => ({ ...p, x: p.x / 10, y: p.y / 10 })), width / 10);
+  assert.equal(normal.markers[0].hit, 48);
+});
+
+test('hovering the shared area lifts both café and cafeteria pins; hovering a pin lifts only that pin', () => {
+  const code = viewerSource.slice(
+    viewerSource.indexOf('  hoverPins() {'),
+    viewerSource.indexOf('  markHoverPins() {'),
+  );
+  const context = vm.createContext({});
+  vm.runInContext(`this.Hover=class{${code}}`, context);
+  const viewer = Object.assign(new context.Hover(), {
+    places: payload.places,
+    getPlace: (id) => payload.places.find((p) => p.entryId === id),
+  });
+  const cafeteria = payload.places.find((p) => p.name.ja === 'OIC Cafeteria');
+  const cafe = payload.places.find((p) => p.name.ja === 'OIC Café');
+  Object.assign(viewer, { hovered: cafeteria.entryId, hoverFromArea: true, hoverKeyboard: false });
+  assert.deepEqual([...viewer.hoverPins()].sort(), [cafeteria.entryId, cafe.entryId].sort());
+  Object.assign(viewer, { hovered: cafe.entryId, hoverFromArea: false });
+  assert.deepEqual([...viewer.hoverPins()], [cafe.entryId]);
+  Object.assign(viewer, { hoverKeyboard: true });
+  assert.deepEqual([...viewer.hoverPins()], []);
 });
 
 test('overlapping hit rectangles are divided between neighboring store centres', () => {
@@ -295,12 +358,15 @@ test('every pin uses Minamen Cafe size at each zoom without moving its anchor', 
       y: p.anchor.ja.yRatio * width * 0.707,
     }));
     const ref = points.find((p) => p.id === reference.entryId);
-    const expected = Math.min(
-      40,
-      width * 0.035,
-      ...points
-        .filter((p) => p !== ref)
-        .map((p) => Math.hypot(p.x - ref.x, p.y - ref.y) * 0.8),
+    const expected = Math.max(
+      Math.min(
+        40,
+        width * 0.035,
+        ...points
+          .filter((p) => p !== ref)
+          .map((p) => Math.hypot(p.x - ref.x, p.y - ref.y) * 0.8),
+      ),
+      width * FOOD_PIN_MIN_DIAMETER_RATIO,
     );
     const { markers } = placeFoodMarkers(points, width, reference.entryId);
     assert.equal(new Set(markers.map((m) => m.size)).size, 1);
@@ -358,6 +424,7 @@ test('hover and selection retain mounted polygon targets until the map language 
     places: payload.places,
     entries: new Map(entries.map((e) => [e.id, e])),
     host: { map: () => map },
+    getPlace: (id) => payload.places.find((p) => p.entryId === id),
   });
   viewer.renderAreas();
   const targets = layer.querySelectorAll('.food-area-hit');
@@ -370,6 +437,14 @@ test('hover and selection retain mounted polygon targets until the map language 
   viewer.renderAreas();
   assert.deepEqual(layer.querySelectorAll('.food-area-hit'), targets);
   assert.equal(layer.querySelectorAll('.is-selected').length, 1);
+  // Selecting the café highlights the cafeteria area it shares.
+  const cafe = payload.places.find((p) => p.areaEntryId);
+  viewer.selected = cafe.entryId;
+  viewer.renderAreas();
+  assert.deepEqual(
+    layer.querySelectorAll('.is-selected').map((group) => group.dataset.foodPlace),
+    [cafe.areaEntryId],
+  );
   context.lang = 'en';
   viewer.renderAreas();
   assert.notEqual(layer.querySelectorAll('.food-area-hit')[0], targets[0]);

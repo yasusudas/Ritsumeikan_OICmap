@@ -70,13 +70,16 @@ test('campus cards keep every comparison field and do not absorb the food-truck 
   assert.match(html, /class="food-place-grid"/);
   assert.doesNotMatch(html, /food-truck/);
   assert.equal(html.indexOf('GARDEN TERRACE LION') < html.indexOf('みなめんcafe'), true);
-  assert.equal([...html.matchAll(/<h3>/g)].length, 8);
-  for (const label of ['営業時間', '利用案内', '店内飲食', '持ち帰り', '購入品以外の持ち込み', '一般の方の利用', '地図で見る']) {
+  assert.equal([...html.matchAll(/<h3>/g)].length, 9);
+  // Three places have no visitor information (all answers 'na') and omit the usage section.
+  for (const label of ['営業時間', '地図で見る']) {
     assert.equal([...html.matchAll(new RegExp(label, 'g'))].length >= 8, true, label);
   }
-  assert.match(html, /目印は本サイト作成/);
+  for (const label of ['利用案内', '店内飲食', '持ち帰り', '購入品以外の持ち込み', '一般の方の利用']) {
+    assert.equal([...html.matchAll(new RegExp(label, 'g'))].length >= 5, true, label);
+  }
   assert.match(html, /aria-label="GARDEN TERRACE LION （新しいタブで開く）"/);
-  assert.equal([...html.matchAll(/class="btn btn-primary food-place-map"/g)].length, 8);
+  assert.equal([...html.matchAll(/class="btn btn-primary food-place-map"/g)].length, 9);
   assert.doesNotMatch(html, /food-place-map"[^>]*target=/);
   const seven = html.slice(html.indexOf('セブン-イレブン'), html.indexOf('みなめんcafe'));
   assert.equal([...seven.matchAll(/class="food-place-link /g)].length, 1);
@@ -150,4 +153,11 @@ test('the food pages place campus stores ahead of today’s trucks and use two c
   }
   assert.match(pagesCss, /@media \(min-width: 721px\)[\s\S]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
   assert.doesNotMatch(pagesCss, /\.food-place[\s\S]{0,400}box-shadow/);
+});
+
+test('a service whose usage answers are all na has no usage section', async () => {
+  const { hasFoodUsage } = await import('../src/food-place-cards.js');
+  const na = { eatIn: 'na', takeaway: 'na', outsideFood: 'na', publicAccess: 'na' };
+  assert.equal(hasFoodUsage({ services: [{ usage: na }] }), false);
+  assert.equal(hasFoodUsage({ services: [{ usage: { ...na, eatIn: 'yes' } }] }), true);
 });

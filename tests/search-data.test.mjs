@@ -32,7 +32,7 @@ test('canonical search data distinguishes same-floor names without warnings', as
   const report = validateSearchData(payload);
 
   assert.deepEqual(report.errors, []);
-  assert.equal(report.stats.entries, 548);
+  assert.equal(report.stats.entries, 549);
   assert.equal(report.stats.facilityRings, 514);
   assert.equal(report.stats.sameFloorLabelGroups, 8);
   assert.equal(report.stats.legacyWhiteRings, 0);

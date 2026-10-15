@@ -11,13 +11,11 @@ export const FOOD_PAGE_COPY = {
     'food.link.hours': '営業時間を確認',
     'food.link.official': '公式サイト',
     'food.external': '（新しいタブで開く）',
-    'food.markNotice': '目印は本サイト作成。公式ロゴではありません。',
     'food.hoursLoading': '営業時間を確認中…',
     'food.hoursUnknown': '公式の営業時間をご確認ください。',
     'food.status.within': '営業時間内',
     'food.status.outside': '営業時間外',
     'food.status.unknown': '営業状況を確認できません',
-    'food.status.basis': '登録された営業時間に基づく目安',
     'food.closedDay': '休業',
     'food.allDay': '24時間',
     'food.coopSource': '生協の営業カレンダー',
@@ -28,7 +26,7 @@ export const FOOD_PAGE_COPY = {
     'food.usage.outsideFood': '購入品以外の持ち込み',
     'food.usage.publicAccess': '一般の方の利用',
     'food.value.yes': '可',
-    'food.value.no': '制限あり',
+    'food.value.no': '不可',
     'food.value.unknown': '未確認',
     'food.period.弁当・ドリンク販売': '弁当・ドリンク販売',
     'food.period.クレープ・ドリンク販売': 'クレープ・ドリンク販売',
@@ -44,13 +42,11 @@ export const FOOD_PAGE_COPY = {
     'food.link.hours': 'Check hours',
     'food.link.official': 'Official website',
     'food.external': '(opens in a new tab)',
-    'food.markNotice': 'Marks created for this site; these are not official logos.',
     'food.hoursLoading': 'Checking hours…',
     'food.hoursUnknown': 'Please check the official hours.',
     'food.status.within': 'Within opening hours',
     'food.status.outside': 'Outside opening hours',
     'food.status.unknown': 'Opening status unavailable',
-    'food.status.basis': 'Estimate from the registered hours',
     'food.closedDay': 'Closed',
     'food.allDay': '24 hours',
     'food.coopSource': 'Co-op calendar',
@@ -61,7 +57,7 @@ export const FOOD_PAGE_COPY = {
     'food.usage.outsideFood': 'Bring outside food',
     'food.usage.publicAccess': 'Public access',
     'food.value.yes': 'Yes',
-    'food.value.no': 'Restricted',
+    'food.value.no': 'Not available',
     'food.value.unknown': 'Unconfirmed',
     'food.period.弁当・ドリンク販売': 'Bento & drinks',
     'food.period.クレープ・ドリンク販売': 'Crepes & drinks',
@@ -89,11 +85,11 @@ export function foodMapPath(mapHash, lang) {
 }
 
 export function foodPlacesReady(places) {
-  if (!Array.isArray(places) || places.length !== 8) return false;
+  if (!Array.isArray(places) || !places.length) return false;
   const orders = new Set();
   return places.every((place) => {
     if (!place?.entryId || typeof place.mapHash !== 'string' || !place.mapHash) return false;
-    if (!Number.isInteger(place.order) || place.order < 1 || place.order > 8 || orders.has(place.order))
+    if (!Number.isInteger(place.order) || place.order < 1 || place.order > places.length || orders.has(place.order))
       return false;
     orders.add(place.order);
     if (!place.name?.ja || !place.name?.en || !place.building?.ja || !place.summary?.ja) return false;
@@ -103,16 +99,18 @@ export function foodPlacesReady(places) {
   });
 }
 
-export function renderFoodStatus(service, { translate, now, fetchFailed = false, payload = null, compact = false } = {}) {
+export function renderFoodStatus(service, { translate, now, fetchFailed = false, payload = null } = {}) {
   const judgment = judgeFoodServiceStatus(service, { now, fetchFailed, payload });
   if (judgment.state === 'disabled') return '';
   const label = escapeHtml(translate(`food.status.${judgment.state}`));
   if (judgment.state === 'unknown') return `<p class="food-status is-unknown">${label}</p>`;
   const chip = `<span class="food-chip${judgment.state === 'within' ? ' is-accent' : ''}">${label}</span>`;
-  const basis = compact
-    ? ''
-    : `<span class="food-status-basis">${escapeHtml(translate('food.status.basis'))}</span>`;
-  return `<p class="food-status">${chip}${basis}</p>`;
+  return `<p class="food-status">${chip}</p>`;
+}
+
+// A service whose four answers are all 'na' has no visitor information to show.
+export function hasFoodUsage(place) {
+  return place.services.some((service) => USAGE_KEYS.some((key) => service.usage[key] !== 'na'));
 }
 
 // Visitor information in one white block. Services with identical answers
@@ -122,6 +120,7 @@ export function renderFoodUsage(place, { translate, text, headingTag = 'h5' }) {
     JSON.stringify(USAGE_KEYS.map((key) => [service.usage[key], text(service.usageNotes?.[key])]));
   const shared = place.services.every((service) => answers(service) === answers(place.services[0]));
   return (shared ? place.services.slice(0, 1) : place.services)
+    .filter((service) => USAGE_KEYS.some((key) => service.usage[key] !== 'na'))
     .map((service) => {
       const heading = shared
         ? ''
@@ -211,10 +210,14 @@ function renderCard(place, options) {
       <h4 class="food-heading">${escapeHtml(foodPageText(lang, 'food.hours'))}</h4>
       <div class="food-place-hours food-hours-list" data-food-hours="${escapeHtml(place.entryId)}">${renderFoodHours(place, options)}</div>
     </section>
-    <section class="food-place-block">
+    ${
+      hasFoodUsage(place)
+        ? `<section class="food-place-block">
       <h4 class="food-heading">${escapeHtml(foodPageText(lang, 'food.usage'))}</h4>
       ${renderFoodUsage(place, { translate: (key) => foodPageText(lang, key), text: (value) => localText(value, lang) })}
-    </section>
+    </section>`
+        : ''
+    }
     <div class="food-place-actions">
       <a class="btn btn-primary food-place-map" href="${escapeHtml(foodMapPath(place.mapHash, lang))}">${escapeHtml(foodPageText(lang, 'food.viewOnMap'))}</a>
       ${links}
@@ -226,7 +229,6 @@ function renderCard(place, options) {
             `<p><a class="food-source-link external" href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${source.title} ${foodPageText(lang, 'food.external')}`)}">${escapeHtml(source.title)}</a><span>${escapeHtml(source.checkedAt)}</span></p>`,
         )
         .join('')}
-      <p class="food-mark-notice">${escapeHtml(foodPageText(lang, 'food.markNotice'))}</p>
     </div>
   </article>`;
 }

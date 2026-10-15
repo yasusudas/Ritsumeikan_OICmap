@@ -331,6 +331,23 @@
       ]
     },
     {
+      "id": "manual-1F-1792029827016-ocafe1",
+      "floorId": "1F",
+      "label": "OIC Café",
+      "aliases": [
+        "OIC Cafe",
+        "OICカフェ"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.467644,
+          "yRatio": 0.440993,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ]
+    },
+    {
       "id": "manual-1F-1775192332480-hoosj7",
       "floorId": "1F",
       "label": "OIC FOOD PARK",

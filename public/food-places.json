@@ -85,10 +85,10 @@
             }
           ],
           "usage": {
-            "eatIn": "yes",
-            "takeaway": "unknown",
-            "outsideFood": "unknown",
-            "publicAccess": "unknown"
+            "eatIn": "na",
+            "takeaway": "na",
+            "outsideFood": "na",
+            "publicAccess": "na"
           },
           "usageNotes": {
             "eatIn": null,
@@ -270,11 +270,11 @@
       },
       "anchor": {
         "ja": {
-          "xRatio": 0.4556079123094368,
+          "xRatio": 0.44357145856956864,
           "yRatio": 0.4409934789580586
         },
         "en": {
-          "xRatio": 0.45543404308932844,
+          "xRatio": 0.44339758934946033,
           "yRatio": 0.44095071802729574
         }
       },
@@ -310,42 +310,10 @@
           "coopScheduleName": "OIC Cafeteria",
           "hours": [],
           "usage": {
-            "eatIn": "unknown",
-            "takeaway": "unknown",
-            "outsideFood": "unknown",
-            "publicAccess": "unknown"
-          },
-          "usageNotes": {
-            "eatIn": null,
-            "takeaway": null,
-            "outsideFood": null,
-            "publicAccess": null
-          },
-          "status": {
-            "assignee": "サイト運営",
-            "sourceUrl": "https://www.ritsco-op.jp/schedule/index.html#s03",
-            "updateProcedure": {
-              "ja": "生協の各店舗営業時間ページを期限前に確認する。その日の時間は取得したカレンダーを使い、取得できない日は営業状況を確認できない表示にする。",
-              "en": "Before the expiry, check the co-op store-hours page. Use the fetched calendar for that day. When the day cannot be fetched, show that the opening status is unavailable."
-            },
-            "exceptionsConfirmed": true,
-            "expiresAt": "2026-11-30T14:59:59.000Z",
-            "exceptions": []
-          }
-        },
-        {
-          "id": "cafe",
-          "name": {
-            "ja": "OIC Café",
-            "en": "OIC Café"
-          },
-          "coopScheduleName": "OIC Cafeteria内OIC Café",
-          "hours": [],
-          "usage": {
-            "eatIn": "unknown",
-            "takeaway": "unknown",
-            "outsideFood": "unknown",
-            "publicAccess": "unknown"
+            "eatIn": "yes",
+            "takeaway": "no",
+            "outsideFood": "no",
+            "publicAccess": "yes"
           },
           "usageNotes": {
             "eatIn": null,
@@ -396,8 +364,123 @@
       ]
     },
     {
-      "entryId": "manual-1F-1775192332480-hoosj7",
+      "entryId": "manual-1F-1792029827016-ocafe1",
+      "areaEntryId": "manual-1F-1775169473186-pk43y5",
       "order": 3,
+      "name": {
+        "ja": "OIC Café",
+        "en": "OIC Café"
+      },
+      "shortLabel": {
+        "ja": [
+          "OIC",
+          "Café"
+        ],
+        "en": [
+          "OIC",
+          "Café"
+        ]
+      },
+      "building": {
+        "ja": "C棟",
+        "en": "Building C"
+      },
+      "summary": {
+        "ja": "OIC Cafeteria内のカフェ。昼は弁当とドリンク、午後はクレープとドリンク。",
+        "en": "Café inside OIC Cafeteria: bento and drinks at lunchtime, crepes and drinks in the afternoon."
+      },
+      "mark": {
+        "src": "/food-marks/cafe.svg",
+        "fallbackSrc": "/food-marks/cafe-fallback.svg",
+        "createdAt": "2026-10-15",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-15"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.467644366049305,
+          "yRatio": 0.4409934789580586
+        },
+        "en": {
+          "xRatio": 0.4674704968291966,
+          "yRatio": 0.44095071802729574
+        }
+      },
+      "legacyPictogram": null,
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "cafe",
+          "name": {
+            "ja": "OIC Café",
+            "en": "OIC Café"
+          },
+          "coopScheduleName": "OIC Cafeteria内OIC Café",
+          "hours": [],
+          "usage": {
+            "eatIn": "yes",
+            "takeaway": "yes",
+            "outsideFood": "no",
+            "publicAccess": "yes"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "sourceUrl": "https://www.ritsco-op.jp/schedule/index.html#s03",
+            "updateProcedure": {
+              "ja": "生協の各店舗営業時間ページを期限前に確認する。その日の時間は取得したカレンダーを使い、取得できない日は営業状況を確認できない表示にする。",
+              "en": "Before the expiry, check the co-op store-hours page. Use the fetched calendar for that day. When the day cannot be fetched, show that the opening status is unavailable."
+            },
+            "exceptionsConfirmed": true,
+            "expiresAt": "2026-11-30T14:59:59.000Z",
+            "exceptions": []
+          }
+        }
+      ],
+      "links": {
+        "menu": null,
+        "hours": "https://www.ritsco-op.jp/schedule/index.html#s03",
+        "official": "https://www.ritsco-op.jp/shop/shop_365.html"
+      },
+      "sources": [
+        {
+          "url": "https://www.ritsco-op.jp/schedule/index.html#s03",
+          "title": "立命館生協 各店舗営業時間",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services"
+          ]
+        },
+        {
+          "url": "https://www.ritsco-op.jp/shop/shop_365.html",
+          "title": "立命館生協",
+          "checkedAt": "2026-10-14",
+          "fields": [
+            "links"
+          ]
+        }
+      ]
+    },
+    {
+      "entryId": "manual-1F-1775192332480-hoosj7",
+      "order": 4,
       "name": {
         "ja": "OIC FOOD PARK",
         "en": "OIC FOOD PARK"
@@ -483,7 +566,7 @@
           "usage": {
             "eatIn": "yes",
             "takeaway": "yes",
-            "outsideFood": "unknown",
+            "outsideFood": "no",
             "publicAccess": "yes"
           },
           "usageNotes": {
@@ -601,7 +684,7 @@
     },
     {
       "entryId": "manual-1F-1775192494050-2avkfe",
-      "order": 4,
+      "order": 5,
       "name": {
         "ja": "OIC Meal Shop",
         "en": "OIC Meal Shop"
@@ -662,10 +745,10 @@
           "coopScheduleName": "OIC Meal Shop",
           "hours": [],
           "usage": {
-            "eatIn": "unknown",
-            "takeaway": "unknown",
-            "outsideFood": "unknown",
-            "publicAccess": "unknown"
+            "eatIn": "no",
+            "takeaway": "yes",
+            "outsideFood": "no",
+            "publicAccess": "yes"
           },
           "usageNotes": {
             "eatIn": null,
@@ -717,7 +800,7 @@
     },
     {
       "entryId": "manual-1F-1775168091518-86hkqm",
-      "order": 5,
+      "order": 6,
       "name": {
         "ja": "OIC Mini Meal Shop",
         "en": "OIC Mini Meal Shop"
@@ -788,10 +871,10 @@
           "coopScheduleName": "OIC Mini Meal Shop みにみる（コンビニ）",
           "hours": [],
           "usage": {
-            "eatIn": "unknown",
-            "takeaway": "unknown",
-            "outsideFood": "unknown",
-            "publicAccess": "unknown"
+            "eatIn": "no",
+            "takeaway": "yes",
+            "outsideFood": "no",
+            "publicAccess": "yes"
           },
           "usageNotes": {
             "eatIn": null,
@@ -820,10 +903,10 @@
           "coopScheduleName": "OIC Mini Meal Shop みにみる（テイクアウト）",
           "hours": [],
           "usage": {
-            "eatIn": "unknown",
+            "eatIn": "no",
             "takeaway": "yes",
-            "outsideFood": "unknown",
-            "publicAccess": "unknown"
+            "outsideFood": "no",
+            "publicAccess": "yes"
           },
           "usageNotes": {
             "eatIn": null,
@@ -875,7 +958,7 @@
     },
     {
       "entryId": "manual-1F-1775276070168-w74szt",
-      "order": 6,
+      "order": 7,
       "name": {
         "ja": "スターバックスコーヒー",
         "en": "Starbucks Coffee"
@@ -1058,10 +1141,10 @@
             }
           ],
           "usage": {
-            "eatIn": "yes",
-            "takeaway": "unknown",
-            "outsideFood": "unknown",
-            "publicAccess": "unknown"
+            "eatIn": "na",
+            "takeaway": "na",
+            "outsideFood": "na",
+            "publicAccess": "na"
           },
           "usageNotes": {
             "eatIn": null,
@@ -1230,7 +1313,7 @@
     },
     {
       "entryId": "manual-1F-1775276194346-agkncx",
-      "order": 7,
+      "order": 8,
       "name": {
         "ja": "セブン-イレブン",
         "en": "7-Eleven"
@@ -1314,10 +1397,10 @@
             }
           ],
           "usage": {
-            "eatIn": "unknown",
-            "takeaway": "unknown",
-            "outsideFood": "unknown",
-            "publicAccess": "unknown"
+            "eatIn": "na",
+            "takeaway": "na",
+            "outsideFood": "na",
+            "publicAccess": "na"
           },
           "usageNotes": {
             "eatIn": null,
@@ -1486,7 +1569,7 @@
     },
     {
       "entryId": "manual-1F-1775276166712-57ri6c",
-      "order": 8,
+      "order": 9,
       "name": {
         "ja": "みなめんcafe",
         "en": "Minamen Cafe"
@@ -1556,10 +1639,10 @@
           "coopScheduleName": null,
           "hours": [],
           "usage": {
-            "eatIn": "unknown",
+            "eatIn": "yes",
             "takeaway": "yes",
-            "outsideFood": "unknown",
-            "publicAccess": "unknown"
+            "outsideFood": "yes",
+            "publicAccess": "yes"
           },
           "usageNotes": {
             "eatIn": null,

@@ -1,5 +1,5 @@
 import { getLang, t } from './i18n.js';
-import { renderFoodStatus, renderFoodUsage } from './food-place-cards.js';
+import { hasFoodUsage, renderFoodStatus, renderFoodUsage } from './food-place-cards.js';
 import {
   validateFoodPlaces,
   placeFoodMarkers,
@@ -22,6 +22,11 @@ const escape = (value) =>
 const local = (value) => value?.[getLang()] ?? value?.ja ?? '';
 const foodIcon =
   '<svg class="search-icon-image" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 2v7m3-7v7M2 2v7c0 2 6 2 6 0M5 11v11M17 2c-4 3-4 9 0 10h3V2h-3Zm3 10v10"/></svg>';
+
+// A 40-unit round head and a 6-unit tail (0.15 of the size, as in
+// placeFoodMarkers) joined along the tangents, with a softened tip.
+const PIN_SHAPE =
+  '<svg class="food-pin-shape" viewBox="0 0 40 46" aria-hidden="true" focusable="false"><path d="M7.22 35.38A20 20 0 1 1 32.78 35.38L21.23 44.98Q20 46 18.77 44.98Z"/></svg>';
 
 export class FoodGuideViewer {
   constructor({ viewer, toolbar, dataUrl, floorUrls, host }) {
@@ -344,8 +349,11 @@ export class FoodGuideViewer {
     if (!this.internalNavigation) this.close();
   }
 
+  // Pins draw the head and the tail as one shape so the edge and shadow run
+  // around both; the card and the list show the mark in a plain circle.
   markerVisual(place, { heading = false } = {}) {
-    return `<span class="food-badge ${heading ? 'is-heading' : ''}"><img src="${escape(place.mark.src)}" alt="" draggable="false"/></span>`;
+    const shape = heading ? '' : PIN_SHAPE;
+    return `<span class="food-badge${heading ? ' is-heading' : ''}">${shape}<img src="${escape(place.mark.src)}" alt="" draggable="false"/></span>`;
   }
   wireImageFallback(root) {
     root.querySelectorAll('.food-badge img').forEach((img) =>
@@ -505,7 +513,8 @@ export class FoodGuideViewer {
       header = `<div class="food-card-brand" data-food-place="${escape(place.entryId)}">${this.markerVisual(place, { heading: true })}<div><h2 id="food-panel-title" tabindex="-1">${escape(local(place.name))}</h2><p class="food-meta">${escape(local(place.building))} · 1F</p></div></div>${close}`;
       body = `<p class="food-description">${escape(local(place.summary))}</p><section class="food-hours"><h3 class="food-heading">${escape(t('food.hours'))}</h3><div class="food-hours-list" data-food-hours></div></section>`;
       if (this.panelMode !== 'compact') {
-        body += `<section class="food-usage"><h3 class="food-heading">${escape(t('food.usage'))}</h3>${renderFoodUsage(place, { translate: t, text: local, headingTag: 'h4' })}</section>`;
+        if (hasFoodUsage(place))
+          body += `<section class="food-usage"><h3 class="food-heading">${escape(t('food.usage'))}</h3>${renderFoodUsage(place, { translate: t, text: local, headingTag: 'h4' })}</section>`;
         const seen = new Set();
         body += `<div class="food-links">${['menu', 'hours', 'official']
           .filter(
@@ -519,13 +528,9 @@ export class FoodGuideViewer {
               `<a class="food-control external" href="${escape(place.links[key])}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.link.' + key) + ' ' + t('food.external'))}">${escape(t('food.link.' + key))}</a>`,
           )
           .join('')}</div>`;
-        body += `<div class="food-sources">${place.sources.map((source) => `<p><a class="food-source-link external" href="${escape(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(source.title + ' ' + t('food.external'))}">${escape(source.title)}</a><span>${escape(source.checkedAt)}</span></p>`).join('')}<p class="food-mark-notice">${escape(t('food.markNotice'))}</p></div>`;
+        body += `<div class="food-sources">${place.sources.map((source) => `<p><a class="food-source-link external" href="${escape(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(source.title + ' ' + t('food.external'))}">${escape(source.title)}</a><span>${escape(source.checkedAt)}</span></p>`).join('')}</div>`;
       }
-      const primary =
-        this.panelMode === 'compact'
-          ? ['expand', t('food.details')]
-          : ['reveal', t('food.reveal')];
-      footer = `<button class="food-control is-primary" data-food-action="${primary[0]}">${escape(primary[1])}</button>${this.narrow && this.panelMode === 'detail' && !this.shortScreen ? `<button class="food-text-control" data-food-action="collapse">${escape(t('food.collapse'))}</button>` : ''}<button class="food-text-control" data-food-action="list">${escape(this.browse ? t('food.backList') : t('food.listTitle'))}</button>`;
+      footer = `${this.panelMode === 'compact' ? `<button class="food-control is-primary" data-food-action="expand">${escape(t('food.details'))}</button>` : ''}${this.narrow && this.panelMode === 'detail' && !this.shortScreen ? `<button class="food-text-control" data-food-action="collapse">${escape(t('food.collapse'))}</button>` : ''}<button class="food-text-control" data-food-action="list">${escape(this.browse ? t('food.backList') : t('food.listTitle'))}</button>`;
     }
     this.panel.innerHTML = `${handle}<header class="food-panel-header">${header}</header><div class="food-panel-body">${body}</div>${footer ? `<footer class="food-panel-footer">${footer}</footer>` : ''}`;
     this.wireImageFallback(this.panel);
@@ -574,17 +579,6 @@ export class FoodGuideViewer {
     }
     if (action === 'expand') this.setDetails(true);
     if (action === 'collapse') this.setDetails(false);
-    if (action === 'reveal') {
-      if (this.narrow && this.shortScreen) {
-        this.panelMode = null;
-        this.panel.hidden = true;
-        this.render();
-        this.reveal();
-      } else {
-        if (this.narrow) this.setDetails(false);
-        this.reveal();
-      }
-    }
     if (action === 'list') {
       if (this.browse) {
         this.selected = null;
@@ -710,11 +704,14 @@ export class FoodGuideViewer {
       svg.dataset.lang = lang;
       svg.setAttribute('viewBox', '0 0 1000 1000');
       svg.setAttribute('preserveAspectRatio', 'none');
-      const areas = this.places.flatMap((place) =>
-        this.entries
-          .get(place.entryId)
-          .polygons.map((polygon) => ({ place, polygon })),
-      );
+      // A place that shares another's area (OIC Café) adds no outline of its own.
+      const areas = this.places
+        .filter((place) => !place.areaEntryId)
+        .flatMap((place) =>
+          this.entries
+            .get(place.entryId)
+            .polygons.map((polygon) => ({ place, polygon })),
+        );
       const area = (polygon) =>
         Math.abs(
           polygon.reduce((sum, p, i) => {
@@ -757,11 +754,17 @@ export class FoodGuideViewer {
       layer.replaceChildren(svg);
     }
     // Keep pointer targets mounted while hover/selection styles change.
+    const areaOf = (id) => {
+      const place = id ? this.getPlace(id) : null;
+      return place ? (place.areaEntryId ?? place.entryId) : null;
+    };
+    const hoveredArea = areaOf(this.hovered),
+      selectedArea = areaOf(this.selected);
     for (const group of svg.querySelectorAll('.food-area')) {
       const id = group.dataset.foodPlace;
       group.classList.toggle('is-browsing', this.browse);
-      group.classList.toggle('is-hovered', this.hovered === id);
-      group.classList.toggle('is-selected', this.selected === id);
+      group.classList.toggle('is-hovered', hoveredArea === id);
+      group.classList.toggle('is-selected', selectedArea === id);
     }
   }
 
@@ -806,6 +809,7 @@ export class FoodGuideViewer {
       button.style.top = `${marker.y}px`;
       button.style.setProperty('--food-pin-size', `${marker.size}px`);
       button.style.setProperty('--food-tail', `${marker.tail}px`);
+      button.style.setProperty('--food-pin-hit', `${marker.hit}px`);
       button.style.clipPath = `polygon(${marker.clip})`;
       {
         const place = this.getPlace(marker.id);
@@ -829,10 +833,7 @@ export class FoodGuideViewer {
         );
       }
       button.classList.toggle('is-selected', this.selected === marker.id);
-      button.classList.toggle(
-        'is-hovered',
-        this.hovered === marker.id && !this.hoverKeyboard,
-      );
+      button.classList.toggle('is-hovered', this.hoverPins().includes(marker.id));
       const previous = [...used].slice(-2, -1)[0];
       const sibling = previous ? this.nodes.get(previous) : null;
       if (sibling && sibling.nextElementSibling !== button)
@@ -924,8 +925,24 @@ export class FoodGuideViewer {
     const id = event.target.closest('[data-food-place]')?.dataset.foodPlace;
     if (id) {
       this.hoverPosition = { x: event.clientX, y: event.clientY };
-      this.showHover(id);
+      this.showHover(id, false, Boolean(event.target.closest('.food-area')));
     }
+  }
+  // Pins lifted by the current hover: the hovered pin, or every pin that
+  // shares the hovered store area (OIC Cafeteria and OIC Café).
+  hoverPins() {
+    const place = this.hovered ? this.getPlace(this.hovered) : null;
+    if (!place || this.hoverKeyboard) return [];
+    if (!this.hoverFromArea) return [place.entryId];
+    const area = place.areaEntryId ?? place.entryId;
+    return this.places
+      .filter((other) => (other.areaEntryId ?? other.entryId) === area)
+      .map((other) => other.entryId);
+  }
+  markHoverPins() {
+    const lifted = new Set(this.hoverPins());
+    for (const [id, node] of this.nodes)
+      node.classList.toggle('is-hovered', lifted.has(id));
   }
   leaveEvent(event) {
     const old = event.target.closest('[data-food-place]')?.dataset.foodPlace,
@@ -936,17 +953,23 @@ export class FoodGuideViewer {
       this.leaveHover();
     }
   }
-  showHover(id, keyboard = false) {
+  showHover(id, keyboard = false, fromArea = false) {
     if (this.panelMode || this.blockedHover === id || !this.getPlace(id))
       return;
     clearTimeout(this.leaveTimer);
-    if (this.hovered === id && !this.tip.hidden) return;
+    if (this.hovered === id && !this.tip.hidden) {
+      // Moving between a pin and its own area keeps the tip but updates the lift.
+      this.hoverFromArea = fromArea;
+      this.markHoverPins();
+      return;
+    }
     clearTimeout(this.hoverTimer);
     this.hideHover();
     this.hovered = id;
     this.hoverKeyboard = keyboard;
+    this.hoverFromArea = fromArea;
     this.renderAreas();
-    if (!keyboard) this.nodes.get(id)?.classList.add('is-hovered');
+    this.markHoverPins();
     this.hoverTimer = setTimeout(
       () => {
         if (this.panelMode || this.hovered !== id) return;
@@ -993,8 +1016,9 @@ export class FoodGuideViewer {
     this.tip.hidden = true;
     const old = this.hovered;
     this.hovered = null;
+    this.hoverFromArea = false;
     this.nodes.get(old)?.removeAttribute('aria-describedby');
-    this.nodes.get(old)?.classList.remove('is-hovered');
+    this.markHoverPins();
     if (old) {
       this.renderAreas();
     }

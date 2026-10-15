@@ -5,12 +5,14 @@
    Follows the loose layer: grey sheets, white controls inside them, pill
    buttons, crimson only for the primary action, links and the "within
    hours" chip. The pins are the one exception the spec allows: a soft
-   shadow and a small lift on hover.
+   shadow and a small lift.
    ===================================================================== */
 
 body[data-app-mode='viewer'] {
   --food-pin-size: 40px;
-  --food-pin-shadow: 0 2px 6px rgb(17 17 17 / 16%);
+  /* A tight contact shadow plus a soft one, following the pin's outline. */
+  --food-pin-shadow: drop-shadow(0 1px 1px rgb(17 17 17 / 18%))
+    drop-shadow(0 3px 6px rgb(17 17 17 / 10%));
   --food-motion: var(--ls-pop-dur);
 }
 
@@ -30,8 +32,8 @@ body[data-app-mode='viewer'] {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: var(--food-pin-hit, 48px);
+  height: var(--food-pin-hit, 48px);
   padding: 0 0 var(--food-tail, 6px);
   border: 0;
   background: transparent;
@@ -54,51 +56,47 @@ body[data-app-mode='viewer'] {
   justify-content: center;
   width: var(--food-pin-size);
   height: var(--food-pin-size);
-  border: clamp(0.5px, calc(var(--food-pin-size) * 0.025), 1px) solid var(--c-line);
   border-radius: 50%;
-  background: var(--c-bg);
   color: var(--c-ink);
-  box-shadow: var(--food-pin-shadow);
   transition: transform var(--food-motion) var(--ease);
 }
 
-.food-pin .food-badge::after {
-  content: "";
+/* Head and tail drawn as one white shape with a hairline edge. */
+.food-pin-shape {
   position: absolute;
-  left: calc(50% - var(--food-pin-size) * 0.1);
-  bottom: calc(-1 * var(--food-tail, 6px));
-  width: calc(var(--food-pin-size) * 0.2);
-  height: var(--food-tail, 6px);
-  background: var(--c-bg);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 115%;
+  overflow: visible;
+  fill: var(--c-bg);
+  stroke: color-mix(in srgb, var(--c-ink) 14%, transparent);
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+  filter: var(--food-pin-shadow);
 }
 
 .food-badge img {
-  width: 80%;
-  height: 80%;
+  position: relative;
+  width: 72%;
+  height: 72%;
   object-fit: contain;
 }
 
-/* The same mark without the pin's edge, inside the card and the list. */
+/* The same mark in a plain white circle, inside the card and the list. */
 .food-badge.is-heading {
-  border: 0;
-  box-shadow: none;
+  background: var(--c-bg);
 }
 
-.food-pin.is-selected .food-badge {
-  box-shadow:
-    0 0 0 calc(var(--food-pin-size) * 0.035) var(--c-bg),
-    0 0 0 calc(var(--food-pin-size) * 0.1) var(--c-ring-green),
-    var(--food-pin-shadow);
-}
-
+/* Hover lifts the pin. Selection adds nothing to the pin itself: the store
+   area outline and the open card show which place is selected. */
 .food-pin.is-hovered .food-badge,
 .food-pin:hover .food-badge {
-  transform: translateY(-2px) scale(1.04);
+  transform: translateY(-2px);
 }
 
 .food-pin:active .food-badge {
-  transform: scale(0.96);
+  transform: none;
 }
 
 .food-pin:focus-visible {
@@ -106,8 +104,8 @@ body[data-app-mode='viewer'] {
 }
 
 .food-pin:focus-visible .food-badge {
-  outline: max(0.5px, calc(var(--food-pin-size) * 0.07)) solid var(--ls-red);
-  outline-offset: max(0.5px, calc(var(--food-pin-size) * 0.035));
+  outline: max(1.5px, calc(var(--food-pin-size) * 0.05)) solid var(--ls-red);
+  outline-offset: max(2px, calc(var(--food-pin-size) * 0.06));
 }
 
 /* ---------------------------------------------------------------------
@@ -389,9 +387,9 @@ body[data-app-mode='viewer'] {
   justify-content: center;
   min-height: 48px;
   padding: 0 16px;
-  border: 0;
+  border: 1px solid var(--c-line);
   border-radius: 999px;
-  background: transparent;
+  background: #fff;
   color: var(--c-ink-2);
   font: inherit;
   font-size: var(--fs-sm);
@@ -404,6 +402,7 @@ body[data-app-mode='viewer'] {
 
 .food-text-control:hover {
   background: var(--c-bg);
+  border-color: var(--c-ink-3);
   color: var(--c-ink);
 }
 
@@ -535,11 +534,6 @@ body[data-app-mode='viewer'] {
   color: var(--c-ink-3);
 }
 
-.food-status-basis {
-  color: var(--c-ink-3);
-  font-size: var(--fs-xs);
-}
-
 .food-source-link {
   display: inline-flex;
   align-items: center;
@@ -616,11 +610,6 @@ body[data-app-mode='viewer'] {
 .food-sources .food-source-link {
   min-height: 0;
   font-size: inherit;
-}
-
-.food-sources .food-mark-notice {
-  min-height: 0;
-  margin-top: var(--s-1);
 }
 
 /* ---------------------------------------------------------------------
