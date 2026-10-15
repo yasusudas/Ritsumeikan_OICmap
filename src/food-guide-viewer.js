@@ -1,5 +1,5 @@
 import { getLang, t } from './i18n.js';
-import { hasFoodUsage, renderFoodStatus, renderFoodUsage } from './food-place-cards.js';
+import { hasFoodUsage, renderFoodLinkButtons, renderFoodLinkRows, renderFoodStatus, renderFoodUsage } from './food-place-cards.js';
 import {
   validateFoodPlaces,
   placeFoodMarkers,
@@ -515,20 +515,9 @@ export class FoodGuideViewer {
       if (this.panelMode !== 'compact') {
         if (hasFoodUsage(place))
           body += `<section class="food-usage"><h3 class="food-heading">${escape(t('food.usage'))}</h3>${renderFoodUsage(place, { translate: t, text: local, headingTag: 'h4' })}</section>`;
-        const seen = new Set();
-        body += `<div class="food-links">${['menu', 'hours', 'official']
-          .filter(
-            (key) =>
-              place.links[key] &&
-              !seen.has(place.links[key]) &&
-              seen.add(place.links[key]),
-          )
-          .map(
-            (key) =>
-              `<a class="food-control external" href="${escape(place.links[key])}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.link.' + key) + ' ' + t('food.external'))}">${escape(t('food.link.' + key))}</a>`,
-          )
-          .join('')}</div>`;
-        body += `<div class="food-sources">${place.sources.map((source) => `<p><a class="food-source-link external" href="${escape(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(source.title + ' ' + t('food.external'))}">${escape(source.title)}</a><span>${escape(source.checkedAt)}</span></p>`).join('')}</div>`;
+        const linkButtons = renderFoodLinkButtons(place, { translate: t, className: 'food-control external' });
+        if (linkButtons) body += `<div class="food-links">${linkButtons}</div>`;
+        body += `<div class="food-sources">${renderFoodLinkRows(place, { translate: t })}${place.sources.map((source) => `<p><a class="food-source-link external" href="${escape(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(source.title + ' ' + t('food.external'))}">${escape(source.title)}</a><span>${escape(source.checkedAt)}</span></p>`).join('')}</div>`;
       }
       footer = `${this.panelMode === 'compact' ? `<button class="food-control is-primary" data-food-action="expand">${escape(t('food.details'))}</button>` : ''}${this.narrow && this.panelMode === 'detail' && !this.shortScreen ? `<button class="food-text-control" data-food-action="collapse">${escape(t('food.collapse'))}</button>` : ''}<button class="food-text-control" data-food-action="list">${escape(this.browse ? t('food.backList') : t('food.listTitle'))}</button>`;
     }
@@ -649,7 +638,7 @@ export class FoodGuideViewer {
           const source = compact
             ? ''
             : `<a class="food-source-link external" href="${escape(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.coopSource') + ' ' + t('food.external'))}">${escape(t('food.coopSource'))}</a>`;
-          return `${heading}<p>${escape(block.dateLabel)} ${escape(block.text)}</p>${status}${source}`;
+          return `${heading}<p>${escape(block.dateLabel)}\n${escape(block.text)}</p>${status}${source}`;
         }
         return (
           heading +

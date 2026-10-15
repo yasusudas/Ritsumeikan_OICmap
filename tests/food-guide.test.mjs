@@ -26,8 +26,8 @@ const clone = () => structuredClone(payload);
 
 test('every image pin corresponds to an existing first-floor search entry', () => {
   const places = validateFoodPlaces(payload, entries);
-  assert.equal(places.length, 9);
-  assert.equal(new Set(places.map((p) => p.mark.src)).size, 9);
+  assert.equal(places.length, 11);
+  assert.equal(new Set(places.map((p) => p.mark.src)).size, 10);
   for (const place of places)
     for (const key of ['src', 'fallbackSrc']) {
       const bytes = readFileSync(
@@ -428,7 +428,8 @@ test('hover and selection retain mounted polygon targets until the map language 
   });
   viewer.renderAreas();
   const targets = layer.querySelectorAll('.food-area-hit');
-  assert.equal(targets.length, 8);
+  // Eight store areas plus the second kitchen-car rectangle (one place, two polygons).
+  assert.equal(targets.length, 10);
   viewer.hovered = payload.places[0].entryId;
   viewer.renderAreas();
   viewer.hovered = null;
@@ -445,6 +446,15 @@ test('hover and selection retain mounted polygon targets until the map language 
     layer.querySelectorAll('.is-selected').map((group) => group.dataset.foodPlace),
     [cafe.areaEntryId],
   );
+  // Hovering either kitchen-car rectangle lights both of them.
+  const kitchenCar = payload.places.find((p) => p.name.ja === 'キッチンカー' && !p.areaEntryId);
+  viewer.selected = null;
+  viewer.hovered = kitchenCar.entryId;
+  viewer.renderAreas();
+  const lit = layer.querySelectorAll('.is-hovered');
+  assert.equal(lit.length, 2);
+  assert.ok(lit.every((group) => group.dataset.foodPlace === kitchenCar.entryId));
+  viewer.hovered = null;
   context.lang = 'en';
   viewer.renderAreas();
   assert.notEqual(layer.querySelectorAll('.food-area-hit')[0], targets[0]);

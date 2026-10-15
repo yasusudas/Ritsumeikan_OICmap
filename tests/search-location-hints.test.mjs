@@ -31,12 +31,12 @@ function viewer() {
   return context;
 }
 
-test('only the eight duplicate groups have distinct Japanese and English location hints', async () => {
+test('only the nine duplicate groups have distinct Japanese and English location hints', async () => {
   const { entries } = await readCanonicalSearchData();
   const groups = Map.groupBy(entries, entry => `${entry.floorId}|${entry.label}`);
   const duplicates = [...groups.values()].filter(group => group.length > 1);
-  assert.equal(duplicates.length, 8);
-  assert.equal(entries.filter(entry => entry.locationHint).length, 16);
+  assert.equal(duplicates.length, 9);
+  assert.equal(entries.filter(entry => entry.locationHint).length, 18);
   for (const group of groups.values()) {
     if (group.length === 1) {
       assert.equal(group[0].locationHint, undefined);

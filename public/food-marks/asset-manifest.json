@@ -49,6 +49,13 @@
       "color": "dusty rose and warm gold",
       "format": "svg",
       "note": "Drawn by hand as SVG in the same flat style (not generated with image_gen), 2026-10-15"
+    },
+    {
+      "key": "kitchen-car",
+      "subject": "a simple mustard-yellow kitchen car with a red awning and a cream serving window",
+      "color": "mustard yellow and red",
+      "format": "svg",
+      "note": "Drawn by hand as SVG in the same flat style (not generated with image_gen), 2026-10-15"
     }
   ],
   "promptTemplate": "Use case: logo-brand. Asset type: tiny food-place map icon. Generate one original flat pictorial icon: {subject}. Color palette: {color}. Transparent background. Square composition, one centered large bold silhouette filling 85 percent of the image; very thick simple shapes, crisp edges, readable at 16 pixels. Consistent friendly geometric vector-like style. No writing, no letters, no numbers, no logos, no brand emblems, no decorative border, no pin shape, no shadows, no gradients, no realistic detail. This is a temporary generic icon for an unofficial campus map, not an official brand logo."

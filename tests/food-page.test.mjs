@@ -70,7 +70,7 @@ test('campus cards keep every comparison field and do not absorb the food-truck 
   assert.match(html, /class="food-place-grid"/);
   assert.doesNotMatch(html, /food-truck/);
   assert.equal(html.indexOf('GARDEN TERRACE LION') < html.indexOf('みなめんcafe'), true);
-  assert.equal([...html.matchAll(/<h3>/g)].length, 9);
+  assert.equal([...html.matchAll(/<h3>/g)].length, 11);
   // Three places have no visitor information (all answers 'na') and omit the usage section.
   for (const label of ['営業時間', '地図で見る']) {
     assert.equal([...html.matchAll(new RegExp(label, 'g'))].length >= 8, true, label);
@@ -79,11 +79,11 @@ test('campus cards keep every comparison field and do not absorb the food-truck 
     assert.equal([...html.matchAll(new RegExp(label, 'g'))].length >= 5, true, label);
   }
   assert.match(html, /aria-label="GARDEN TERRACE LION （新しいタブで開く）"/);
-  assert.equal([...html.matchAll(/class="btn btn-primary food-place-map"/g)].length, 9);
+  assert.equal([...html.matchAll(/class="btn btn-primary food-place-map"/g)].length, 11);
   assert.doesNotMatch(html, /food-place-map"[^>]*target=/);
   const seven = html.slice(html.indexOf('セブン-イレブン'), html.indexOf('みなめんcafe'));
   assert.equal([...seven.matchAll(/class="food-place-link /g)].length, 1);
-  assert.match(seven, /営業時間を確認/);
+  assert.match(seven, /<div class="food-sources">\s*<p><a class="food-source-link external"[^>]*>営業時間を確認<\/a><\/p>/);
   assert.match(html, /11:30–15:00/);
   assert.match(html, /臨時 \(2026-10-07〜2026-11-22\)/);
   assert.match(html, /公式の営業時間をご確認ください。/);

@@ -378,7 +378,7 @@ export function describeFoodServiceHours(
             .map((period) =>
               `${period.label ? translatedPeriod(period.label, translate) : ''} ${period.start}–${period.end}`.trim(),
             )
-            .join('、');
+            .join('\n');
     if (!copy) copy = day.text;
     const month = payload.months?.find((item) => item.month === day.date.slice(0, 7));
     return {
@@ -408,7 +408,7 @@ export function describeFoodServiceHours(
         kind: version.kind,
         title,
         text: full,
-        sentence: full.split(/。|\.(?:\s|$)/)[0],
+        sentence: full.split(/\n|。|\.(?:\s|$)/)[0],
       };
     }),
   };

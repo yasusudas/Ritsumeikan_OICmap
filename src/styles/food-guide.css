@@ -492,6 +492,7 @@ body[data-app-mode='viewer'] {
 
 .food-hours-list p {
   margin: 0;
+  white-space: pre-line;
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
 }

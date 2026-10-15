@@ -68,9 +68,8 @@ test('published hours follow the collected weekday, holiday and co-op calendar',
   assert.equal(judgeFoodServiceStatus(find('セブン-イレブン', 'shop'), { now: at('2026-11-03T03:00:00Z') }).state, 'within');
   assert.equal(judgeFoodServiceStatus(find('セブン-イレブン', 'shop'), { now: at('2026-11-03T09:30:00Z') }).state, 'outside');
   const coffee = find('スターバックスコーヒー', 'coffee');
-  assert.equal(judgeFoodServiceStatus(coffee, { now: at('2026-10-15T03:00:00Z') }).state, 'unknown');
+  assert.equal(judgeFoodServiceStatus(coffee, { now: at('2026-10-15T03:00:00Z') }).state, 'within');
   const temporary = structuredClone(coffee);
-  temporary.status.exceptionsConfirmed = true;
   assert.equal(judgeFoodServiceStatus(temporary, { now: at('2026-10-15T00:30:00Z') }).state, 'outside');
   assert.equal(judgeFoodServiceStatus(temporary, { now: at('2026-10-15T01:30:00Z') }).state, 'within');
   temporary.status.expiresAt = '2027-03-31T15:00:00.000Z';

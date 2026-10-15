@@ -8160,6 +8160,85 @@
           "heightRatio": 0.001
         }
       ]
+    },
+    {
+      "id": "manual-1F-1792100000001-kcar01",
+      "floorId": "1F",
+      "label": "キッチンカー",
+      "labelEn": "Kitchen cars",
+      "aliases": [
+        "空のプラザ",
+        "Sky Plaza"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.514757,
+          "yRatio": 0.584637,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "polygons": [
+        [
+          {
+            "xRatio": 0.494683,
+            "yRatio": 0.55625
+          },
+          {
+            "xRatio": 0.494683,
+            "yRatio": 0.613023
+          },
+          {
+            "xRatio": 0.53483,
+            "yRatio": 0.613023
+          },
+          {
+            "xRatio": 0.53483,
+            "yRatio": 0.55625
+          }
+        ],
+        [
+          {
+            "xRatio": 0.375717,
+            "yRatio": 0.525683
+          },
+          {
+            "xRatio": 0.390869,
+            "yRatio": 0.532769
+          },
+          {
+            "xRatio": 0.38157,
+            "yRatio": 0.572533
+          },
+          {
+            "xRatio": 0.366418,
+            "yRatio": 0.565447
+          }
+        ]
+      ],
+      "locationHint": "空のプラザ",
+      "locationHintEn": "Sky Plaza"
+    },
+    {
+      "id": "manual-1F-1792100000002-kcar02",
+      "floorId": "1F",
+      "label": "キッチンカー",
+      "labelEn": "Kitchen cars",
+      "aliases": [
+        "セミナーハウス",
+        "セミナーハウス出入口",
+        "Seminar House"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.378643,
+          "yRatio": 0.549108,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "locationHint": "セミナーハウス出入口前",
+      "locationHintEn": "Seminar House entrance"
     }
   ],
   "facilityRings": [

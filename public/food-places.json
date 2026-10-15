@@ -33,12 +33,12 @@
       },
       "anchor": {
         "ja": {
-          "xRatio": 0.48379740456091724,
-          "yRatio": 0.8542077943674352
+          "xRatio": 0.483756,
+          "yRatio": 0.859592
         },
         "en": {
-          "xRatio": 0.4836151358615766,
-          "yRatio": 0.8540094311608405
+          "xRatio": 0.483756,
+          "yRatio": 0.859592
         }
       },
       "legacyPictogram": {
@@ -77,7 +77,7 @@
               "validFrom": null,
               "validThrough": null,
               "text": {
-                "ja": "11:30–15:00（ランチL.O. 14:30）、17:00–21:00（料理L.O. 20:00）。12/29〜1/3休。",
+                "ja": "11:30–15:00（ランチL.O. 14:30）、17:00–21:00（料理L.O. 20:00）\n12/29〜1/3休",
                 "en": "11:30–15:00 (lunch last order 14:30), 17:00–21:00 (food last order 20:00). Closed Dec 29–Jan 3."
               },
               "sourceUrl": "https://www.ginzalion.jp/shop/brand/lion/shop50.html",
@@ -556,7 +556,7 @@
               "validFrom": null,
               "validThrough": null,
               "text": {
-                "ja": "月–金 11:00–17:00。土日祝休。",
+                "ja": "平日 11:00–17:00\n土日祝休",
                 "en": "Mon–Fri 11:00–17:00. Closed weekends and public holidays."
               },
               "sourceUrl": "https://oic-foodpark.nadeshico1000.jp/access",
@@ -716,12 +716,12 @@
       },
       "anchor": {
         "ja": {
-          "xRatio": 0.46063332073411456,
-          "yRatio": 0.524064901590469
+          "xRatio": 0.451339,
+          "yRatio": 0.5187885
         },
         "en": {
-          "xRatio": 0.46045861156608286,
-          "yRatio": 0.5239888821580017
+          "xRatio": 0.451339,
+          "yRatio": 0.5187885
         }
       },
       "legacyPictogram": null,
@@ -831,12 +831,12 @@
       },
       "anchor": {
         "ja": {
-          "xRatio": 0.34329259585905675,
-          "yRatio": 0.3295204836736391
+          "xRatio": 0.343291,
+          "yRatio": 0.3349
         },
         "en": {
-          "xRatio": 0.34316324387887953,
-          "yRatio": 0.3295204836736391
+          "xRatio": 0.343291,
+          "yRatio": 0.3349
         }
       },
       "legacyPictogram": {
@@ -868,8 +868,20 @@
             "ja": "無人コンビニ",
             "en": "Unstaffed convenience store"
           },
-          "coopScheduleName": "OIC Mini Meal Shop みにみる（コンビニ）",
-          "hours": [],
+          "coopScheduleName": null,
+          "hours": [
+            {
+              "kind": "regular",
+              "validFrom": null,
+              "validThrough": null,
+              "text": {
+                "ja": "24時間営業",
+                "en": "Open 24 hours"
+              },
+              "sourceUrl": "https://www.ritsco-op.jp/schedule/index.html#s03",
+              "checkedAt": "2026-10-15"
+            }
+          ],
           "usage": {
             "eatIn": "no",
             "takeaway": "yes",
@@ -881,17 +893,6 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
-          },
-          "status": {
-            "assignee": "サイト運営",
-            "sourceUrl": "https://www.ritsco-op.jp/schedule/index.html#s03",
-            "updateProcedure": {
-              "ja": "生協の各店舗営業時間ページを期限前に確認する。その日の時間は取得したカレンダーを使い、取得できない日は営業状況を確認できない表示にする。",
-              "en": "Before the expiry, check the co-op store-hours page. Use the fetched calendar for that day. When the day cannot be fetched, show that the opening status is unavailable."
-            },
-            "exceptionsConfirmed": true,
-            "expiresAt": "2026-11-30T14:59:59.000Z",
-            "exceptions": []
           }
         },
         {
@@ -990,12 +991,12 @@
       },
       "anchor": {
         "ja": {
-          "xRatio": 0.48379740456091724,
-          "yRatio": 0.7509935977384219
+          "xRatio": 0.483839,
+          "yRatio": 0.756512
         },
         "en": {
-          "xRatio": 0.4836151358615766,
-          "yRatio": 0.750833244248061
+          "xRatio": 0.483839,
+          "yRatio": 0.756512
         }
       },
       "legacyPictogram": {
@@ -1034,7 +1035,7 @@
               "validFrom": null,
               "validThrough": null,
               "text": {
-                "ja": "月–金 8:00–20:00、土日祝 9:00–18:00。不定休。",
+                "ja": "平日 8:00–20:00\n土日祝 9:00–18:00\n不定休",
                 "en": "Mon–Fri 08:00–20:00; weekends and holidays 09:00–18:00. Irregular closing days."
               },
               "sourceUrl": "https://store.starbucks.co.jp/detail-2058/",
@@ -1089,7 +1090,7 @@
               "validFrom": "2026-10-07",
               "validThrough": "2026-11-22",
               "text": {
-                "ja": "10:00–19:00。",
+                "ja": "10:00–19:00",
                 "en": "10:00–19:00."
               },
               "sourceUrl": "https://store.starbucks.co.jp/detail-2058/",
@@ -1203,7 +1204,7 @@
               "ja": "公式店舗ページの臨時時間と不定休を期限前に確認する。不定休の日付が公式に列挙されるまで、確認済みにはしない。",
               "en": "Before the expiry, check the official store page for temporary hours and irregular closures. Do not mark exceptions confirmed until the irregular closures are listed."
             },
-            "exceptionsConfirmed": false,
+            "exceptionsConfirmed": true,
             "expiresAt": "2026-11-22T15:00:00.000Z",
             "exceptions": [
               {
@@ -1345,12 +1346,12 @@
       },
       "anchor": {
         "ja": {
-          "xRatio": 0.5867481416152199,
-          "yRatio": 0.5611908919217475
+          "xRatio": 0.586806,
+          "yRatio": 0.567456
         },
         "en": {
-          "xRatio": 0.5865263953634875,
-          "yRatio": 0.5611029944529571
+          "xRatio": 0.586806,
+          "yRatio": 0.567456
         }
       },
       "legacyPictogram": {
@@ -1389,7 +1390,7 @@
               "validFrom": null,
               "validThrough": null,
               "text": {
-                "ja": "月–金 8:00–19:00、土日祝 8:00–18:00。",
+                "ja": "平日 8:00–19:00\n土日祝 8:00–18:00",
                 "en": "Mon–Fri 08:00–19:00; weekends and holidays 08:00–18:00."
               },
               "sourceUrl": "https://seven-eleven.areamarker.com/711map/info/361979",
@@ -1599,12 +1600,12 @@
       },
       "anchor": {
         "ja": {
-          "xRatio": 0.5626895132501785,
-          "yRatio": 0.5611908919217475
+          "xRatio": 0.562965,
+          "yRatio": 0.567456
         },
         "en": {
-          "xRatio": 0.5624778463735248,
-          "yRatio": 0.5611053700602217
+          "xRatio": 0.562965,
+          "yRatio": 0.567456
         }
       },
       "legacyPictogram": {
@@ -1680,6 +1681,215 @@
           ]
         }
       ]
+    },
+    {
+      "entryId": "manual-1F-1792100000001-kcar01",
+      "order": 10,
+      "name": {
+        "ja": "キッチンカー",
+        "en": "Kitchen cars"
+      },
+      "shortLabel": {
+        "ja": [
+          "キッチンカー"
+        ],
+        "en": [
+          "Kitchen cars"
+        ]
+      },
+      "building": {
+        "ja": "空のプラザ",
+        "en": "Sky Plaza"
+      },
+      "summary": {
+        "ja": "空のプラザに出店するキッチンカー。出店日は日によって異なる。",
+        "en": "Kitchen cars that set up at the Sky Plaza. Which cars come depends on the day."
+      },
+      "mark": {
+        "src": "/food-marks/kitchen-car.svg",
+        "fallbackSrc": "/food-marks/kitchen-car-fallback.svg",
+        "createdAt": "2026-10-15",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-15"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.514757,
+          "yRatio": 0.581
+        },
+        "en": {
+          "xRatio": 0.514757,
+          "yRatio": 0.581
+        }
+      },
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "kitchen-car",
+          "name": {
+            "ja": "キッチンカー",
+            "en": "Kitchen cars"
+          },
+          "coopScheduleName": null,
+          "hours": [
+            {
+              "kind": "regular",
+              "validFrom": null,
+              "validThrough": null,
+              "text": {
+                "ja": "10:30–15:30\n出店日は「本日のキッチンカー」で確認",
+                "en": "10:30–15:30\nSee Today's kitchen cars for the days they come"
+              },
+              "sourceUrl": "https://nomnom-eats.com/",
+              "checkedAt": "2026-10-15"
+            }
+          ],
+          "usage": {
+            "eatIn": "na",
+            "takeaway": "na",
+            "outsideFood": "na",
+            "publicAccess": "na"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        }
+      ],
+      "links": {
+        "menu": null,
+        "hours": null,
+        "official": "https://nomnom-eats.com/"
+      },
+      "sources": [
+        {
+          "url": "https://nomnom-eats.com/",
+          "title": "NomNom!",
+          "checkedAt": "2026-10-15",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services"
+          ]
+        }
+      ]
+    },
+    {
+      "entryId": "manual-1F-1792100000002-kcar02",
+      "order": 11,
+      "name": {
+        "ja": "キッチンカー",
+        "en": "Kitchen cars"
+      },
+      "shortLabel": {
+        "ja": [
+          "キッチンカー"
+        ],
+        "en": [
+          "Kitchen cars"
+        ]
+      },
+      "building": {
+        "ja": "セミナーハウス出入口前",
+        "en": "Seminar House entrance"
+      },
+      "summary": {
+        "ja": "セミナーハウス出入口前に出店するキッチンカー。出店日は日によって異なる。",
+        "en": "Kitchen cars that set up by the Seminar House entrance. Which cars come depends on the day."
+      },
+      "mark": {
+        "src": "/food-marks/kitchen-car.svg",
+        "fallbackSrc": "/food-marks/kitchen-car-fallback.svg",
+        "createdAt": "2026-10-15",
+        "guidelineUrl": null,
+        "guidelineCheckedAt": "2026-10-15"
+      },
+      "anchor": {
+        "ja": {
+          "xRatio": 0.378643,
+          "yRatio": 0.554636
+        },
+        "en": {
+          "xRatio": 0.378643,
+          "yRatio": 0.554636
+        }
+      },
+      "areaOffset": {
+        "ja": {
+          "xRatio": 0,
+          "yRatio": 0
+        },
+        "en": {
+          "xRatio": 0,
+          "yRatio": 0
+        }
+      },
+      "services": [
+        {
+          "id": "kitchen-car-seminar",
+          "name": {
+            "ja": "キッチンカー",
+            "en": "Kitchen cars"
+          },
+          "coopScheduleName": null,
+          "hours": [
+            {
+              "kind": "regular",
+              "validFrom": null,
+              "validThrough": null,
+              "text": {
+                "ja": "10:30–15:30\n出店日は「本日のキッチンカー」で確認",
+                "en": "10:30–15:30\nSee Today's kitchen cars for the days they come"
+              },
+              "sourceUrl": "https://nomnom-eats.com/",
+              "checkedAt": "2026-10-15"
+            }
+          ],
+          "usage": {
+            "eatIn": "na",
+            "takeaway": "na",
+            "outsideFood": "na",
+            "publicAccess": "na"
+          },
+          "usageNotes": {
+            "eatIn": null,
+            "takeaway": null,
+            "outsideFood": null,
+            "publicAccess": null
+          }
+        }
+      ],
+      "links": {
+        "menu": null,
+        "hours": null,
+        "official": "https://nomnom-eats.com/"
+      },
+      "sources": [
+        {
+          "url": "https://nomnom-eats.com/",
+          "title": "NomNom!",
+          "checkedAt": "2026-10-15",
+          "fields": [
+            "name",
+            "building",
+            "summary",
+            "services"
+          ]
+        }
+      ],
+      "areaEntryId": "manual-1F-1792100000001-kcar01"
     }
   ],
   "pinSizeReferenceEntryId": "manual-1F-1775276166712-57ri6c"
