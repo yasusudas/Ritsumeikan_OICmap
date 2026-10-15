@@ -139,6 +139,9 @@ if (window.__FILE_MODE__) {
   const VIEW_ANIMATION_MS = 480;
   // Touch screens and Safari redraw the map at its new size once the zoom has been still this long.
   const ZOOM_RASTER_SETTLE_MS = 140;
+  // While the zoom is still changing they also redraw it on every fourth zoom frame, so it never stays
+  // blurry for long (1 in 4 kept 55 fps on the iPhone simulator; 1 in 3 was a little slower, 1 in 5 no faster).
+  const ZOOM_RASTER_EVERY_FRAMES = 4;
   const SEARCH_PIN_VERTICAL_OFFSET_RATIO = 0.01;
   const EDITOR_GUIDE_PIN_VERTICAL_OFFSET_RATIO = 0.01;
   const DEFAULT_FACILITY_RING_DIAMETER_WIDTH_PERCENT = 0.8;
@@ -333,6 +336,8 @@ if (window.__FILE_MODE__) {
     mapRelayoutFrame: 0,
     renderedZoom: 0,
     zoomRasterTimer: 0,
+    zoomFramesSinceRaster: 0,
+    lastFlushedZoom: 0,
     initialZoom: 1,
     safeInsetTop: 0,
     safeInsetBottom: 0,
@@ -1845,7 +1850,8 @@ if (window.__FILE_MODE__) {
   // while zooming), so every zoom frame stalled; Chrome redraws it in a few
   // ms. On touch screens and in WebKit (the only engine with GestureEvent) a
   // changing zoom scales the last drawn layer instead, and the sharp redraw
-  // happens once the map has been still for a moment.
+  // happens every few zoom frames (ZOOM_RASTER_EVERY_FRAMES) and once the map
+  // has been still for a moment.
   function shouldDeferZoomRaster() {
     if (isEditorSite) {
       return false;
@@ -1864,12 +1870,20 @@ if (window.__FILE_MODE__) {
     state.viewRenderFrame = 0;
     window.clearTimeout(state.zoomRasterTimer);
     state.zoomRasterTimer = 0;
-    if (!commit && state.renderedZoom > 0 && state.renderedZoom !== state.zoom && shouldDeferZoomRaster()) {
+    let defer = !commit && state.renderedZoom > 0 && state.renderedZoom !== state.zoom && shouldDeferZoomRaster();
+    // Only frames that change the zoom count: a pan after a pinch waits for the map to settle.
+    if (defer && state.zoom !== state.lastFlushedZoom) {
+      state.zoomFramesSinceRaster += 1;
+      defer = state.zoomFramesSinceRaster < ZOOM_RASTER_EVERY_FRAMES;
+    }
+    state.lastFlushedZoom = state.zoom;
+    if (defer) {
       const scale = state.zoom / state.renderedZoom;
       canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${scale})`;
       state.zoomRasterTimer = window.setTimeout(commitZoomRaster, ZOOM_RASTER_SETTLE_MS);
     } else {
       state.renderedZoom = state.zoom;
+      state.zoomFramesSinceRaster = 0;
       canvasLayer.style.width = `${state.baseWidth * state.zoom}px`;
       canvasLayer.style.height = `${state.baseHeight * state.zoom}px`;
       canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0)`;

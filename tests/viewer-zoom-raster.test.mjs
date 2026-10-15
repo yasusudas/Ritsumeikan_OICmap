@@ -4,6 +4,7 @@ import test from 'node:test';
 import vm from 'node:vm';
 
 const source = readFileSync(new URL('../src/main.js', import.meta.url), 'utf8');
+const every = Number(source.match(/const ZOOM_RASTER_EVERY_FRAMES = (\d+);/)[1]);
 
 function loadFunctions(context, names) {
   for (const name of names) {
@@ -25,8 +26,9 @@ function viewer(window) {
     isEditorSite: false,
     foodGuide: null,
     ZOOM_RASTER_SETTLE_MS: 140,
+    ZOOM_RASTER_EVERY_FRAMES: every,
     canvasLayer: { style: {} },
-    state: { baseWidth: 1000, baseHeight: 700, zoom: 1, x: 0, y: 0, renderedZoom: 0, zoomRasterTimer: 0 },
+    state: { baseWidth: 1000, baseHeight: 700, zoom: 1, x: 0, y: 0, renderedZoom: 0, zoomRasterTimer: 0, zoomFramesSinceRaster: 0, lastFlushedZoom: 0 },
     setStatus() {},
     getFloorLabel: () => '1F',
     getRenderedFloorDefinition: () => ({ id: '1F' }),
@@ -61,3 +63,21 @@ for (const [name, window] of [['Safari on a Mac', safari], ['a touch screen', ph
     assert.doesNotMatch(map.canvasLayer.style.transform, /scale/);
   });
 }
+
+test('while the zoom keeps changing, every few zoom frames are redrawn at their real size; panning does not count', () => {
+  const map = viewer(phone());
+  const widths = [];
+  for (let frame = 1; frame <= every * 2; frame++) {
+    map.state.zoom = 1 + frame / 10;
+    map.flushViewRender();
+    widths.push(map.canvasLayer.style.width);
+    // A pan frame in between keeps the zoom and must not bring the redraw forward.
+    map.state.x += 5;
+    map.flushViewRender();
+  }
+  const redrawn = widths
+    .map((width, i) => (Math.abs(parseFloat(width) - 1000 * (1 + (i + 1) / 10)) < 0.01 ? i + 1 : 0))
+    .filter(Boolean);
+  assert.deepEqual(redrawn, [every, every * 2]);
+  assert.ok(every > 1, 'the drawn map is scaled on the frames in between');
+});
