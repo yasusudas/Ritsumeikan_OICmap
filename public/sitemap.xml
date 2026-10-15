@@ -34,6 +34,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://rits-oic-map.app/sources/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://rits-oic-map.app/en/terms/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -42,5 +47,10 @@
     <loc>https://rits-oic-map.app/en/privacy/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://rits-oic-map.app/en/sources/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>

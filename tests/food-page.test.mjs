@@ -78,7 +78,9 @@ test('campus cards keep every comparison field and do not absorb the food-truck 
   for (const label of ['利用案内', '店内飲食', '持ち帰り', '購入品以外の持ち込み', '一般の方の利用']) {
     assert.equal([...html.matchAll(new RegExp(label, 'g'))].length >= 5, true, label);
   }
-  assert.match(html, /aria-label="GARDEN TERRACE LION （新しいタブで開く）"/);
+  // Sources and rights are listed on the sources page, not repeated on every card.
+  assert.doesNotMatch(html, /aria-label="GARDEN TERRACE LION （新しいタブで開く）"/);
+  assert.doesNotMatch(html, /立命館大学 OIC Food Map/);
   assert.equal([...html.matchAll(/class="btn btn-primary food-place-map"/g)].length, 11);
   assert.doesNotMatch(html, /food-place-map"[^>]*target=/);
   const seven = html.slice(html.indexOf('セブン-イレブン'), html.indexOf('みなめんcafe'));

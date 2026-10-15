@@ -813,3 +813,28 @@ body.subpage .food-place-retry:hover {
     font-size: var(--fs-xs);
   }
 }
+
+/* 情報源・権利関係ページ: 食事場所ごとの出典の一覧 */
+.sources-food {
+  margin: var(--s-5) 0;
+}
+
+.sources-place {
+  margin: 0 0 var(--s-4);
+}
+
+.sources-place-name {
+  margin: 0 0 var(--s-1);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+}
+
+.sources-place ul {
+  margin: 0;
+}
+
+.sources-meta {
+  display: block;
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+}

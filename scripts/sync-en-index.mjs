@@ -174,6 +174,7 @@ function buildEnglishIndex() {
   html = html.replaceAll('href="/food/"', 'href="/en/food/"');
   html = html.replaceAll('href="/terms/"', 'href="/en/terms/"');
   html = html.replaceAll('href="/privacy/"', 'href="/en/privacy/"');
+  html = html.replaceAll('href="/sources/"', 'href="/en/sources/"');
 
   return html;
 }

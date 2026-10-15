@@ -229,15 +229,7 @@ function renderCard(place, options) {
       <a class="btn btn-primary food-place-map" href="${escapeHtml(foodMapPath(place.mapHash, lang))}">${escapeHtml(foodPageText(lang, 'food.viewOnMap'))}</a>
       ${linkButtons}
     </div>
-    <div class="food-sources">
-      ${linkRows}
-      ${place.sources
-        .map(
-          (source) =>
-            `<p><a class="food-source-link external" href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${source.title} ${foodPageText(lang, 'food.external')}`)}">${escapeHtml(source.title)}</a><span>${escapeHtml(source.checkedAt)}</span></p>`,
-        )
-        .join('')}
-    </div>
+    ${linkRows ? `<div class="food-sources">${linkRows}</div>` : ''}
   </article>`;
 }
 

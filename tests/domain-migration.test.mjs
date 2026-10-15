@@ -137,7 +137,7 @@ test('old-host rules run before filesystem; robots remains crawlable plain text'
 test('every built HTML entrypoint is gated on the old host and initializes GA only once', () => {
   const vite = readFileSync(new URL('../vite.config.js', import.meta.url), 'utf8');
   const entries = [...vite.matchAll(/resolve\(__dirname, '([^']+\.html)'\)/g)].map(match => match[1]);
-  assert.equal(entries.length, 15);
+  assert.equal(entries.length, 17);
   const route = new RegExp(config.routes[0].src);
   for (const entry of entries) {
     const path = '/' + entry;

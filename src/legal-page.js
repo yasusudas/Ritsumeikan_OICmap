@@ -22,6 +22,10 @@ function getLegalPageSlug() {
     return 'privacy';
   }
 
+  if (path === '/sources/' || path === '/en/sources/') {
+    return 'sources';
+  }
+
   return 'terms';
 }
 

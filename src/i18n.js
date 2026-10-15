@@ -281,6 +281,7 @@ const dictionaries = {
     'footer.siteInfo': 'サイト情報',
     'footer.terms': '利用規約',
     'footer.privacy': 'プライバシーポリシー',
+    'footer.sources': '情報源・権利',
     'footer.creator': '制作者について',
     'footer.copyrightSimple': '© 2026 Issei Yasuda'
   },
@@ -564,6 +565,7 @@ const dictionaries = {
     'footer.siteInfo': 'Site information',
     'footer.terms': 'Terms',
     'footer.privacy': 'Privacy Policy',
+    'footer.sources': 'Sources & Rights',
     'footer.creator': 'About the Creator',
     'footer.copyrightSimple': '© 2026 Issei Yasuda'
   }

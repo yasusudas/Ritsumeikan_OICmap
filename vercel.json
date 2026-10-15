@@ -1,7 +1,7 @@
 {
   "routes": [
     {
-      "src": "^(?:/((?:index\\.html|(?:en|access|food|terms|privacy|timetable|editor|en/access|en/food|en/terms|en/privacy|en/timetable|editor/login|hidden/timetable)(?:/index\\.html|/)?)?))$",
+      "src": "^(?:/((?:index\\.html|(?:en|access|food|terms|privacy|sources|timetable|editor|en/access|en/food|en/terms|en/privacy|en/sources|en/timetable|editor/login|hidden/timetable)(?:/index\\.html|/)?)?))$",
       "has": [
         {
           "type": "host",
@@ -59,6 +59,21 @@
       ]
     },
     {
+      "src": "^/en/sources$",
+      "headers": {
+        "Location": "/en/sources/"
+      },
+      "status": 308,
+      "missing": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
+        }
+      ]
+    },
+    {
       "src": "^/terms$",
       "headers": {
         "Location": "/terms/"
@@ -77,6 +92,21 @@
       "src": "^/privacy$",
       "headers": {
         "Location": "/privacy/"
+      },
+      "status": 308,
+      "missing": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
+        }
+      ]
+    },
+    {
+      "src": "^/sources$",
+      "headers": {
+        "Location": "/sources/"
       },
       "status": 308,
       "missing": [
