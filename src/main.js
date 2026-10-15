@@ -137,7 +137,7 @@ if (window.__FILE_MODE__) {
   const SEARCH_INDEX_IDLE_TIMEOUT_MS = 2000;
   const SEARCH_FOCUS_ZOOM = 6;
   const VIEW_ANIMATION_MS = 480;
-  // Touch screens redraw the map at its new size once the zoom has been still this long.
+  // Touch screens and Safari redraw the map at its new size once the zoom has been still this long.
   const ZOOM_RASTER_SETTLE_MS = 140;
   const SEARCH_PIN_VERTICAL_OFFSET_RATIO = 0.01;
   const EDITOR_GUIDE_PIN_VERTICAL_OFFSET_RATIO = 0.01;
@@ -1840,12 +1840,17 @@ if (window.__FILE_MODE__) {
     state.renderedZoom = 0;
   }
 
-  // Resizing the layer makes the browser redraw the whole floor SVG. Phones
-  // (WebKit) took 100–300 ms per redraw, so every pinch frame stalled. On
-  // touch screens a changing zoom scales the last drawn layer instead, and
-  // the sharp redraw happens once the map has been still for a moment.
+  // Resizing the layer makes the browser redraw the whole floor SVG. WebKit
+  // took 100–300 ms per redraw (phones, and Safari on a Mac fell to 15 fps
+  // while zooming), so every zoom frame stalled; Chrome redraws it in a few
+  // ms. On touch screens and in WebKit (the only engine with GestureEvent) a
+  // changing zoom scales the last drawn layer instead, and the sharp redraw
+  // happens once the map has been still for a moment.
   function shouldDeferZoomRaster() {
-    return !isEditorSite && Boolean(window.matchMedia?.('(pointer: coarse)').matches);
+    if (isEditorSite) {
+      return false;
+    }
+    return 'GestureEvent' in window || Boolean(window.matchMedia?.('(pointer: coarse)').matches);
   }
 
   function commitZoomRaster() {
