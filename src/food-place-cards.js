@@ -1,4 +1,4 @@
-import { describeFoodServiceHours, isHttpUrl } from './food-guide-model.js';
+import { describeFoodServiceHours, isHttpUrl, judgeFoodServiceStatus } from './food-guide-model.js';
 
 const USAGE_KEYS = ['eatIn', 'takeaway', 'outsideFood', 'publicAccess'];
 const LINK_KEYS = ['menu', 'hours', 'official'];
@@ -14,6 +14,10 @@ export const FOOD_PAGE_COPY = {
     'food.markNotice': '目印は本サイト作成。公式ロゴではありません。',
     'food.hoursLoading': '営業時間を確認中…',
     'food.hoursUnknown': '公式の営業時間をご確認ください。',
+    'food.status.within': '営業時間内',
+    'food.status.outside': '営業時間外',
+    'food.status.unknown': '営業状況を確認できません',
+    'food.status.basis': '登録された営業時間に基づく目安',
     'food.closedDay': '休業',
     'food.allDay': '24時間',
     'food.coopSource': '生協の営業カレンダー',
@@ -25,7 +29,7 @@ export const FOOD_PAGE_COPY = {
     'food.usage.publicAccess': '一般の方の利用',
     'food.value.yes': '可',
     'food.value.no': '制限あり',
-    'food.value.unknown': '公式情報をご確認ください',
+    'food.value.unknown': '未確認',
     'food.period.弁当・ドリンク販売': '弁当・ドリンク販売',
     'food.period.クレープ・ドリンク販売': 'クレープ・ドリンク販売',
     'food.viewOnMap': '地図で見る',
@@ -43,6 +47,10 @@ export const FOOD_PAGE_COPY = {
     'food.markNotice': 'Marks created for this site; these are not official logos.',
     'food.hoursLoading': 'Checking hours…',
     'food.hoursUnknown': 'Please check the official hours.',
+    'food.status.within': 'Within opening hours',
+    'food.status.outside': 'Outside opening hours',
+    'food.status.unknown': 'Opening status unavailable',
+    'food.status.basis': 'Estimate from the registered hours',
     'food.closedDay': 'Closed',
     'food.allDay': '24 hours',
     'food.coopSource': 'Co-op calendar',
@@ -54,7 +62,7 @@ export const FOOD_PAGE_COPY = {
     'food.usage.publicAccess': 'Public access',
     'food.value.yes': 'Yes',
     'food.value.no': 'Restricted',
-    'food.value.unknown': 'Check official information',
+    'food.value.unknown': 'Unconfirmed',
     'food.period.弁当・ドリンク販売': 'Bento & drinks',
     'food.period.クレープ・ドリンク販売': 'Crepes & drinks',
     'food.viewOnMap': 'View on map',
@@ -95,16 +103,50 @@ export function foodPlacesReady(places) {
   });
 }
 
+export function renderFoodStatus(service, { translate, now, fetchFailed = false, payload = null, compact = false } = {}) {
+  const judgment = judgeFoodServiceStatus(service, { now, fetchFailed, payload });
+  if (judgment.state === 'disabled') return '';
+  const label = escapeHtml(translate(`food.status.${judgment.state}`));
+  if (judgment.state === 'unknown') return `<p class="food-status is-unknown">${label}</p>`;
+  const chip = `<span class="food-chip${judgment.state === 'within' ? ' is-accent' : ''}">${label}</span>`;
+  const basis = compact
+    ? ''
+    : `<span class="food-status-basis">${escapeHtml(translate('food.status.basis'))}</span>`;
+  return `<p class="food-status">${chip}${basis}</p>`;
+}
+
+// Visitor information in one white block. Services with identical answers
+// (for example the cafeteria and the café inside it) are shown once.
+export function renderFoodUsage(place, { translate, text, headingTag = 'h5' }) {
+  const answers = (service) =>
+    JSON.stringify(USAGE_KEYS.map((key) => [service.usage[key], text(service.usageNotes?.[key])]));
+  const shared = place.services.every((service) => answers(service) === answers(place.services[0]));
+  return (shared ? place.services.slice(0, 1) : place.services)
+    .map((service) => {
+      const heading = shared
+        ? ''
+        : `<${headingTag} class="food-service-name">${escapeHtml(text(service.name))}</${headingTag}>`;
+      const rows = USAGE_KEYS.map((key) => {
+        const note = service.usageNotes?.[key] ? text(service.usageNotes[key]) : '';
+        return `<div><dt>${escapeHtml(translate(`food.usage.${key}`))}</dt><dd>${escapeHtml(translate(`food.value.${service.usage[key]}`))}${note ? `<span>${escapeHtml(note)}</span>` : ''}</dd></div>`;
+      }).join('');
+      return `${heading}<dl class="food-usage-grid">${rows}</dl>`;
+    })
+    .join('');
+}
+
 function localText(value, lang) {
   return value?.[lang] || value?.ja || '';
 }
 
-export function renderFoodHours(place, { lang, payload = null, loading = false, now = new Date() } = {}) {
+export function renderFoodHours(place, { lang, payload = null, loading = false, fetchFailed = false, now = new Date() } = {}) {
   const translate = (key) => foodPageText(lang, key);
   return place.services
     .map((service) => {
       const heading =
-        place.services.length > 1 ? `<h5>${escapeHtml(localText(service.name, lang))}</h5>` : '';
+        place.services.length > 1
+          ? `<h5 class="food-service-name">${escapeHtml(localText(service.name, lang))}</h5>`
+          : '';
       const block = describeFoodServiceHours(service, {
         text: (value) => localText(value, lang),
         translate,
@@ -113,21 +155,27 @@ export function renderFoodHours(place, { lang, payload = null, loading = false, 
         loading,
         now,
       });
-      if (block.kind === 'message') return `${heading}<p>${escapeHtml(block.text)}</p>`;
+      const status = renderFoodStatus(service, {
+        translate,
+        now,
+        payload,
+        fetchFailed: Boolean(service.coopScheduleName && fetchFailed),
+      });
+      if (block.kind === 'message') return `${heading}<p>${escapeHtml(block.text)}</p>${status}`;
       if (block.kind === 'coop') {
         const source = isHttpUrl(block.sourceUrl)
-          ? `<a class="food-place-source external" href="${escapeHtml(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${translate('food.coopSource')} ${translate('food.external')}`)}">${escapeHtml(translate('food.coopSource'))}</a>`
+          ? `<a class="food-source-link external" href="${escapeHtml(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${translate('food.coopSource')} ${translate('food.external')}`)}">${escapeHtml(translate('food.coopSource'))}</a>`
           : '';
-        return `${heading}<p>${escapeHtml(block.dateLabel)} ${escapeHtml(block.text)}</p>${source}`;
+        return `${heading}<p>${escapeHtml(block.dateLabel)} ${escapeHtml(block.text)}</p>${status}${source}`;
       }
       return (
         heading +
         block.versions
           .map(
             (version) =>
-              `${version.title ? `<h5>${escapeHtml(version.title)}</h5>` : ''}<p>${escapeHtml(version.text)}</p>`,
+              `${version.title ? `<h5 class="food-version-title">${escapeHtml(version.title)}</h5>` : ''}<p>${escapeHtml(version.text)}</p>`,
           )
-          .join('')
+          .join('') + status
       );
     })
     .join('');
@@ -140,25 +188,11 @@ function renderLinks(place, lang) {
   )
     .map((key) => {
       const label = foodPageText(lang, `food.link.${key}`);
-      return `<a class="food-place-link external" href="${escapeHtml(place.links[key])}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${label} ${foodPageText(lang, 'food.external')}`)}">${escapeHtml(label)}</a>`;
+      return `<a class="food-place-link btn external" href="${escapeHtml(place.links[key])}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${label} ${foodPageText(lang, 'food.external')}`)}">${escapeHtml(label)}</a>`;
     })
     .join('');
 }
 
-function renderUsage(place, lang) {
-  return place.services
-    .map((service) => {
-      const heading =
-        place.services.length > 1 ? `<h5>${escapeHtml(localText(service.name, lang))}</h5>` : '';
-      const rows = USAGE_KEYS.map((key) => {
-        const note = service.usageNotes?.[key];
-        const noteText = note ? localText(note, lang) : '';
-        return `<div><dt>${escapeHtml(foodPageText(lang, `food.usage.${key}`))}</dt><dd>${escapeHtml(foodPageText(lang, `food.value.${service.usage[key]}`))}${noteText ? `<span>${escapeHtml(noteText)}</span>` : ''}</dd></div>`;
-      }).join('');
-      return `${heading}<dl class="food-place-usage">${rows}</dl>`;
-    })
-    .join('');
-}
 
 function renderCard(place, options) {
   const { lang } = options;
@@ -174,23 +208,25 @@ function renderCard(place, options) {
     </header>
     <p class="food-place-summary">${escapeHtml(localText(place.summary, lang))}</p>
     <section class="food-place-block">
-      <h4>${escapeHtml(foodPageText(lang, 'food.hours'))}</h4>
-      <div class="food-place-hours" data-food-hours="${escapeHtml(place.entryId)}">${renderFoodHours(place, options)}</div>
+      <h4 class="food-heading">${escapeHtml(foodPageText(lang, 'food.hours'))}</h4>
+      <div class="food-place-hours food-hours-list" data-food-hours="${escapeHtml(place.entryId)}">${renderFoodHours(place, options)}</div>
     </section>
     <section class="food-place-block">
-      <h4>${escapeHtml(foodPageText(lang, 'food.usage'))}</h4>
-      ${renderUsage(place, lang)}
+      <h4 class="food-heading">${escapeHtml(foodPageText(lang, 'food.usage'))}</h4>
+      ${renderFoodUsage(place, { translate: (key) => foodPageText(lang, key), text: (value) => localText(value, lang) })}
     </section>
-    ${links ? `<div class="food-place-links">${links}</div>` : ''}
-    <a class="btn btn-primary food-place-map" href="${escapeHtml(foodMapPath(place.mapHash, lang))}">${escapeHtml(foodPageText(lang, 'food.viewOnMap'))}</a>
-    <div class="food-place-sources">
+    <div class="food-place-actions">
+      <a class="btn btn-primary food-place-map" href="${escapeHtml(foodMapPath(place.mapHash, lang))}">${escapeHtml(foodPageText(lang, 'food.viewOnMap'))}</a>
+      ${links}
+    </div>
+    <div class="food-sources">
       ${place.sources
         .map(
           (source) =>
-            `<p><a class="text-link external" href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${source.title} ${foodPageText(lang, 'food.external')}`)}">${escapeHtml(source.title)}</a> · ${escapeHtml(source.checkedAt)}</p>`,
+            `<p><a class="food-source-link external" href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${source.title} ${foodPageText(lang, 'food.external')}`)}">${escapeHtml(source.title)}</a><span>${escapeHtml(source.checkedAt)}</span></p>`,
         )
         .join('')}
-      <p>${escapeHtml(foodPageText(lang, 'food.markNotice'))}</p>
+      <p class="food-mark-notice">${escapeHtml(foodPageText(lang, 'food.markNotice'))}</p>
     </div>
   </article>`;
 }

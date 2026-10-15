@@ -1,7 +1,10 @@
 // Shared data, geometry and calendar rules. No DOM or network side effects.
 export const FOOD_RETRY_MS = 60_000;
+export const FOOD_STATUS_MS = 60_000;
 export const FOOD_GESTURE_DISTANCE = 8;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
+const CLOCK = /^([01]\d|2[0-3]):[0-5]\d$/;
+const WEEKDAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 export function japaneseDate(now = new Date()) {
   return new Date(now.getTime() + 9 * 3_600_000).toISOString().slice(0, 10);
@@ -171,10 +174,136 @@ export function validateFoodPlaces(payload, entries) {
           )
             fail('overlapping hours versions');
         }
+      validateServiceStatus(service, fail);
     }
   }
   if (!ids.has(payload.pinSizeReferenceEntryId)) fail('pin size reference');
   return payload.places.slice().sort((a, b) => a.order - b.order);
+}
+
+function clockMinutes(value) {
+  const [hour, minute] = value.split(':').map(Number);
+  return hour * 60 + minute;
+}
+
+function intervalCovers(interval, minutes) {
+  const start = clockMinutes(interval.start);
+  const end = clockMinutes(interval.end);
+  if (end > start) return minutes >= start && minutes < end;
+  if (end < start) return minutes >= start;
+  return false;
+}
+
+function overnightSpill(interval, minutes) {
+  const start = clockMinutes(interval.start);
+  const end = clockMinutes(interval.end);
+  return end < start && minutes < end;
+}
+
+function jstParts(now) {
+  const shifted = new Date(now.getTime() + 9 * 3_600_000);
+  return {
+    minutes: shifted.getUTCHours() * 60 + shifted.getUTCMinutes(),
+    weekday: shifted.getUTCDay(),
+  };
+}
+
+function validateIntervals(intervals, fail) {
+  if (!Array.isArray(intervals) || !intervals.length) fail('status intervals');
+  for (const interval of intervals) {
+    if (!CLOCK.test(interval?.start) || !CLOCK.test(interval?.end) || interval.start === interval.end)
+      fail('status clock');
+  }
+}
+
+function validateWeekly(weekly, fail) {
+  if (!weekly || typeof weekly !== 'object' || Array.isArray(weekly)) fail('status weekly');
+  for (const [day, intervals] of Object.entries(weekly)) {
+    if (!WEEKDAYS.includes(day)) fail('status weekday');
+    validateIntervals(intervals, fail);
+  }
+}
+
+function validateServiceStatus(service, fail) {
+  if (service.status === undefined) return;
+  const status = service.status;
+  if (!status || typeof status.assignee !== 'string' || !status.assignee.trim()) fail('status assignee');
+  if (service.coopScheduleName) {
+    if (status.weekly !== undefined) validateWeekly(status.weekly, fail);
+  } else if (service.hours.some((version) => version.days)) {
+    for (const version of service.hours) if (version.days) validateWeekly(version.days, fail);
+    if (status.weekly !== undefined) validateWeekly(status.weekly, fail);
+  } else {
+    validateWeekly(status.weekly, fail);
+  }
+  if (!isHttpUrl(status.sourceUrl)) fail('status source');
+  if (
+    !status.updateProcedure ||
+    typeof status.updateProcedure.ja !== 'string' ||
+    !status.updateProcedure.ja.trim() ||
+    typeof status.updateProcedure.en !== 'string' ||
+    !status.updateProcedure.en.trim()
+  )
+    fail('status procedure');
+  if (typeof status.exceptionsConfirmed !== 'boolean') fail('status confirmation');
+  if (!Number.isFinite(Date.parse(status.expiresAt))) fail('status expiry');
+  if (!Array.isArray(status.exceptions)) fail('status exceptions');
+  for (const exception of status.exceptions) {
+    if (!DATE.test(exception?.date)) fail('status exception date');
+    if (exception.closed === true) continue;
+    validateIntervals(exception.intervals, fail);
+  }
+}
+
+function judgeIntervals(weekly, minutes, weekday) {
+  const todayIntervals = weekly[WEEKDAYS[weekday]] || [];
+  const previousIntervals = weekly[WEEKDAYS[(weekday + 6) % 7]] || [];
+  return (
+    todayIntervals.some((interval) => intervalCovers(interval, minutes)) ||
+    previousIntervals.some((interval) => overnightSpill(interval, minutes))
+  );
+}
+
+export function judgeFoodServiceStatus(service, { now = new Date(), fetchFailed = false, payload = null } = {}) {
+  const status = service?.status;
+  if (!status?.assignee?.trim() || !isHttpUrl(status.sourceUrl)) return { state: 'disabled' };
+  if (
+    !status.updateProcedure?.ja?.trim() ||
+    !status.updateProcedure?.en?.trim() ||
+    !Number.isFinite(Date.parse(status.expiresAt))
+  ) {
+    return { state: 'disabled' };
+  }
+  const hasWeekly = status.weekly && Object.keys(status.weekly).length > 0;
+  const hasVersionDays = (service.hours || []).some((version) => version.days);
+  if (!service.coopScheduleName && !hasWeekly && !hasVersionDays) return { state: 'disabled' };
+  if (fetchFailed || status.exceptionsConfirmed !== true || Date.parse(status.expiresAt) <= now.getTime()) {
+    return { state: 'unknown' };
+  }
+  const { minutes, weekday } = jstParts(now);
+  if (service.coopScheduleName) {
+    if (!payload) return { state: 'disabled' };
+    const day = calendarDay(payload, service.coopScheduleName, now);
+    if (!day) return { state: 'unknown' };
+    if (day.closed) return { state: 'outside' };
+    if (day.allDay) return { state: 'within' };
+    const open = (day.periods || []).some((period) => intervalCovers(period, minutes));
+    return { state: open ? 'within' : 'outside' };
+  }
+  const versions = selectHoursVersions(service.hours || [], japaneseDate(now));
+  if (!versions.length) return { state: 'unknown' };
+  const weekly = versions[0].days || status.weekly;
+  if (!weekly) return { state: 'unknown' };
+  const today = japaneseDate(now);
+  const exception = (status.exceptions || []).find((item) => item.date === today);
+  if (exception) {
+    const open =
+      exception.closed === true
+        ? false
+        : exception.intervals.some((interval) => intervalCovers(interval, minutes));
+    return { state: open ? 'within' : 'outside' };
+  }
+  return { state: judgeIntervals(weekly, minutes, weekday) ? 'within' : 'outside' };
 }
 
 export function containsPoint(point, polygon) {

@@ -2,7 +2,7 @@
 // 表示言語は <html lang> から判定する(legal-page.js と同じ方針)。
 
 import { foodDataUrl } from 'virtual:rits-oic-food-data';
-import { CoopHoursClient, japaneseDate } from './food-guide-model.js';
+import { CoopHoursClient, japaneseDate, FOOD_STATUS_MS } from './food-guide-model.js';
 import {
   foodPlacesReady,
   renderFoodHours,
@@ -163,11 +163,16 @@ function placesNeedCoop() {
   return placesLoaded && places.some((place) => place.services.some((service) => service.coopScheduleName));
 }
 
+function placesNeedStatus() {
+  return placesLoaded && places.some((place) => place.services.some((service) => service.status?.assignee));
+}
+
 function hourOptions() {
   return {
     lang: LANG,
     payload: hours.payload,
     loading: awaitingHours || (Boolean(hours.pending) && !hours.error),
+    fetchFailed: Boolean(hours.error),
     now: new Date(),
   };
 }
@@ -194,13 +199,16 @@ function bindMarkFallback() {
 
 function scheduleHours() {
   window.clearTimeout(hoursTimer);
-  if (!placesNeedCoop() || document.visibilityState !== 'visible') return;
+  const coop = placesNeedCoop();
+  const status = placesNeedStatus();
+  if ((!coop && !status) || document.visibilityState !== 'visible') return;
   const today = japaneseDate();
+  const wait = Math.min(coop ? hours.nextCheck() : FOOD_STATUS_MS, status ? FOOD_STATUS_MS : Infinity);
   hoursTimer = window.setTimeout(() => {
     paintHours();
-    if (japaneseDate() !== today || hours.needsRefresh()) void hours.refresh();
+    if (coop && (japaneseDate() !== today || hours.needsRefresh())) void hours.refresh();
     else scheduleHours();
-  }, Math.min(hours.nextCheck(), 2_147_483_647));
+  }, Math.min(wait, 2_147_483_647));
 }
 
 function requestHours() {
@@ -230,6 +238,7 @@ async function loadPlaces() {
     placesRoot.innerHTML = renderFoodPlaceList(places, hourOptions());
     bindMarkFallback();
     if (placesNeedCoop()) requestHours();
+    else scheduleHours();
   } catch {
     places = [];
     placesLoaded = false;
@@ -243,7 +252,12 @@ placesRoot?.addEventListener('click', (event) => {
 });
 
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState !== 'visible' || !placesNeedCoop()) return;
+  if (document.visibilityState !== 'visible') return;
+  if (placesNeedStatus()) paintHours();
+  if (!placesNeedCoop()) {
+    scheduleHours();
+    return;
+  }
   paintHours();
   requestHours();
 });

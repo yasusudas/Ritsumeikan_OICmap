@@ -95,6 +95,114 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "weekly": {
+              "mon": [
+                {
+                  "start": "11:30",
+                  "end": "15:00"
+                },
+                {
+                  "start": "17:00",
+                  "end": "21:00"
+                }
+              ],
+              "tue": [
+                {
+                  "start": "11:30",
+                  "end": "15:00"
+                },
+                {
+                  "start": "17:00",
+                  "end": "21:00"
+                }
+              ],
+              "wed": [
+                {
+                  "start": "11:30",
+                  "end": "15:00"
+                },
+                {
+                  "start": "17:00",
+                  "end": "21:00"
+                }
+              ],
+              "thu": [
+                {
+                  "start": "11:30",
+                  "end": "15:00"
+                },
+                {
+                  "start": "17:00",
+                  "end": "21:00"
+                }
+              ],
+              "fri": [
+                {
+                  "start": "11:30",
+                  "end": "15:00"
+                },
+                {
+                  "start": "17:00",
+                  "end": "21:00"
+                }
+              ],
+              "sat": [
+                {
+                  "start": "11:30",
+                  "end": "15:00"
+                },
+                {
+                  "start": "17:00",
+                  "end": "21:00"
+                }
+              ],
+              "sun": [
+                {
+                  "start": "11:30",
+                  "end": "15:00"
+                },
+                {
+                  "start": "17:00",
+                  "end": "21:00"
+                }
+              ]
+            },
+            "sourceUrl": "https://www.ginzalion.jp/shop/brand/lion/shop50.html",
+            "updateProcedure": {
+              "ja": "期限前に公式ページを開き、曜日・祝日・臨時休業がこの記録と違うときは記録を更新する。祝日は内閣府の「国民の祝日」一覧（2027-03-22まで転記）と照合する。",
+              "en": "Before the expiry, open the official page and update this record when weekday, holiday, or temporary hours differ. Public holidays are copied from the Cabinet Office list through 2027-03-22."
+            },
+            "exceptionsConfirmed": true,
+            "expiresAt": "2027-03-31T15:00:00.000Z",
+            "exceptions": [
+              {
+                "date": "2026-12-29",
+                "closed": true
+              },
+              {
+                "date": "2026-12-30",
+                "closed": true
+              },
+              {
+                "date": "2026-12-31",
+                "closed": true
+              },
+              {
+                "date": "2027-01-01",
+                "closed": true
+              },
+              {
+                "date": "2027-01-02",
+                "closed": true
+              },
+              {
+                "date": "2027-01-03",
+                "closed": true
+              }
+            ]
           }
         }
       ],
@@ -212,6 +320,17 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "sourceUrl": "https://www.ritsco-op.jp/schedule/index.html#s03",
+            "updateProcedure": {
+              "ja": "生協の各店舗営業時間ページを期限前に確認する。その日の時間は取得したカレンダーを使い、取得できない日は営業状況を確認できない表示にする。",
+              "en": "Before the expiry, check the co-op store-hours page. Use the fetched calendar for that day. When the day cannot be fetched, show that the opening status is unavailable."
+            },
+            "exceptionsConfirmed": true,
+            "expiresAt": "2026-11-30T14:59:59.000Z",
+            "exceptions": []
           }
         },
         {
@@ -233,6 +352,17 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "sourceUrl": "https://www.ritsco-op.jp/schedule/index.html#s03",
+            "updateProcedure": {
+              "ja": "生協の各店舗営業時間ページを期限前に確認する。その日の時間は取得したカレンダーを使い、取得できない日は営業状況を確認できない表示にする。",
+              "en": "Before the expiry, check the co-op store-hours page. Use the fetched calendar for that day. When the day cannot be fetched, show that the opening status is unavailable."
+            },
+            "exceptionsConfirmed": true,
+            "expiresAt": "2026-11-30T14:59:59.000Z",
+            "exceptions": []
           }
         }
       ],
@@ -361,6 +491,82 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "weekly": {
+              "mon": [
+                {
+                  "start": "11:00",
+                  "end": "17:00"
+                }
+              ],
+              "tue": [
+                {
+                  "start": "11:00",
+                  "end": "17:00"
+                }
+              ],
+              "wed": [
+                {
+                  "start": "11:00",
+                  "end": "17:00"
+                }
+              ],
+              "thu": [
+                {
+                  "start": "11:00",
+                  "end": "17:00"
+                }
+              ],
+              "fri": [
+                {
+                  "start": "11:00",
+                  "end": "17:00"
+                }
+              ]
+            },
+            "sourceUrl": "https://oic-foodpark.nadeshico1000.jp/access",
+            "updateProcedure": {
+              "ja": "期限前に公式ページを開き、曜日・祝日・臨時休業がこの記録と違うときは記録を更新する。祝日は内閣府の「国民の祝日」一覧（2027-03-22まで転記）と照合する。",
+              "en": "Before the expiry, open the official page and update this record when weekday, holiday, or temporary hours differ. Public holidays are copied from the Cabinet Office list through 2027-03-22."
+            },
+            "exceptionsConfirmed": true,
+            "expiresAt": "2027-03-31T15:00:00.000Z",
+            "exceptions": [
+              {
+                "date": "2026-11-03",
+                "closed": true
+              },
+              {
+                "date": "2026-11-23",
+                "closed": true
+              },
+              {
+                "date": "2027-01-01",
+                "closed": true
+              },
+              {
+                "date": "2027-01-11",
+                "closed": true
+              },
+              {
+                "date": "2027-02-11",
+                "closed": true
+              },
+              {
+                "date": "2027-02-23",
+                "closed": true
+              },
+              {
+                "date": "2027-03-21",
+                "closed": true
+              },
+              {
+                "date": "2027-03-22",
+                "closed": true
+              }
+            ]
           }
         }
       ],
@@ -466,6 +672,17 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "sourceUrl": "https://www.ritsco-op.jp/schedule/index.html#s03",
+            "updateProcedure": {
+              "ja": "生協の各店舗営業時間ページを期限前に確認する。その日の時間は取得したカレンダーを使い、取得できない日は営業状況を確認できない表示にする。",
+              "en": "Before the expiry, check the co-op store-hours page. Use the fetched calendar for that day. When the day cannot be fetched, show that the opening status is unavailable."
+            },
+            "exceptionsConfirmed": true,
+            "expiresAt": "2026-11-30T14:59:59.000Z",
+            "exceptions": []
           }
         }
       ],
@@ -581,6 +798,17 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "sourceUrl": "https://www.ritsco-op.jp/schedule/index.html#s03",
+            "updateProcedure": {
+              "ja": "生協の各店舗営業時間ページを期限前に確認する。その日の時間は取得したカレンダーを使い、取得できない日は営業状況を確認できない表示にする。",
+              "en": "Before the expiry, check the co-op store-hours page. Use the fetched calendar for that day. When the day cannot be fetched, show that the opening status is unavailable."
+            },
+            "exceptionsConfirmed": true,
+            "expiresAt": "2026-11-30T14:59:59.000Z",
+            "exceptions": []
           }
         },
         {
@@ -602,6 +830,17 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "sourceUrl": "https://www.ritsco-op.jp/schedule/index.html#s03",
+            "updateProcedure": {
+              "ja": "生協の各店舗営業時間ページを期限前に確認する。その日の時間は取得したカレンダーを使い、取得できない日は営業状況を確認できない表示にする。",
+              "en": "Before the expiry, check the co-op store-hours page. Use the fetched calendar for that day. When the day cannot be fetched, show that the opening status is unavailable."
+            },
+            "exceptionsConfirmed": true,
+            "expiresAt": "2026-11-30T14:59:59.000Z",
+            "exceptions": []
           }
         }
       ],
@@ -716,7 +955,51 @@
                 "en": "Mon–Fri 08:00–20:00; weekends and holidays 09:00–18:00. Irregular closing days."
               },
               "sourceUrl": "https://store.starbucks.co.jp/detail-2058/",
-              "checkedAt": "2026-10-14"
+              "checkedAt": "2026-10-14",
+              "days": {
+                "mon": [
+                  {
+                    "start": "08:00",
+                    "end": "20:00"
+                  }
+                ],
+                "tue": [
+                  {
+                    "start": "08:00",
+                    "end": "20:00"
+                  }
+                ],
+                "wed": [
+                  {
+                    "start": "08:00",
+                    "end": "20:00"
+                  }
+                ],
+                "thu": [
+                  {
+                    "start": "08:00",
+                    "end": "20:00"
+                  }
+                ],
+                "fri": [
+                  {
+                    "start": "08:00",
+                    "end": "20:00"
+                  }
+                ],
+                "sat": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ],
+                "sun": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              }
             },
             {
               "kind": "temporary",
@@ -727,7 +1010,51 @@
                 "en": "10:00–19:00."
               },
               "sourceUrl": "https://store.starbucks.co.jp/detail-2058/",
-              "checkedAt": "2026-10-14"
+              "checkedAt": "2026-10-14",
+              "days": {
+                "mon": [
+                  {
+                    "start": "10:00",
+                    "end": "19:00"
+                  }
+                ],
+                "tue": [
+                  {
+                    "start": "10:00",
+                    "end": "19:00"
+                  }
+                ],
+                "wed": [
+                  {
+                    "start": "10:00",
+                    "end": "19:00"
+                  }
+                ],
+                "thu": [
+                  {
+                    "start": "10:00",
+                    "end": "19:00"
+                  }
+                ],
+                "fri": [
+                  {
+                    "start": "10:00",
+                    "end": "19:00"
+                  }
+                ],
+                "sat": [
+                  {
+                    "start": "10:00",
+                    "end": "19:00"
+                  }
+                ],
+                "sun": [
+                  {
+                    "start": "10:00",
+                    "end": "19:00"
+                  }
+                ]
+              }
             }
           ],
           "usage": {
@@ -741,6 +1068,134 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "weekly": {
+              "mon": [
+                {
+                  "start": "08:00",
+                  "end": "20:00"
+                }
+              ],
+              "tue": [
+                {
+                  "start": "08:00",
+                  "end": "20:00"
+                }
+              ],
+              "wed": [
+                {
+                  "start": "08:00",
+                  "end": "20:00"
+                }
+              ],
+              "thu": [
+                {
+                  "start": "08:00",
+                  "end": "20:00"
+                }
+              ],
+              "fri": [
+                {
+                  "start": "08:00",
+                  "end": "20:00"
+                }
+              ],
+              "sat": [
+                {
+                  "start": "09:00",
+                  "end": "18:00"
+                }
+              ],
+              "sun": [
+                {
+                  "start": "09:00",
+                  "end": "18:00"
+                }
+              ]
+            },
+            "sourceUrl": "https://store.starbucks.co.jp/detail-2058/",
+            "updateProcedure": {
+              "ja": "公式店舗ページの臨時時間と不定休を期限前に確認する。不定休の日付が公式に列挙されるまで、確認済みにはしない。",
+              "en": "Before the expiry, check the official store page for temporary hours and irregular closures. Do not mark exceptions confirmed until the irregular closures are listed."
+            },
+            "exceptionsConfirmed": false,
+            "expiresAt": "2026-11-22T15:00:00.000Z",
+            "exceptions": [
+              {
+                "date": "2026-11-03",
+                "intervals": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2026-11-23",
+                "intervals": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-01-01",
+                "intervals": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-01-11",
+                "intervals": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-02-11",
+                "intervals": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-02-23",
+                "intervals": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-03-21",
+                "intervals": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-03-22",
+                "intervals": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              }
+            ]
           }
         }
       ],
@@ -869,6 +1324,134 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "weekly": {
+              "mon": [
+                {
+                  "start": "08:00",
+                  "end": "19:00"
+                }
+              ],
+              "tue": [
+                {
+                  "start": "08:00",
+                  "end": "19:00"
+                }
+              ],
+              "wed": [
+                {
+                  "start": "08:00",
+                  "end": "19:00"
+                }
+              ],
+              "thu": [
+                {
+                  "start": "08:00",
+                  "end": "19:00"
+                }
+              ],
+              "fri": [
+                {
+                  "start": "08:00",
+                  "end": "19:00"
+                }
+              ],
+              "sat": [
+                {
+                  "start": "08:00",
+                  "end": "18:00"
+                }
+              ],
+              "sun": [
+                {
+                  "start": "08:00",
+                  "end": "18:00"
+                }
+              ]
+            },
+            "sourceUrl": "https://seven-eleven.areamarker.com/711map/info/361979",
+            "updateProcedure": {
+              "ja": "期限前に公式ページを開き、曜日・祝日・臨時休業がこの記録と違うときは記録を更新する。祝日は内閣府の「国民の祝日」一覧（2027-03-22まで転記）と照合する。",
+              "en": "Before the expiry, open the official page and update this record when weekday, holiday, or temporary hours differ. Public holidays are copied from the Cabinet Office list through 2027-03-22."
+            },
+            "exceptionsConfirmed": true,
+            "expiresAt": "2027-03-31T15:00:00.000Z",
+            "exceptions": [
+              {
+                "date": "2026-11-03",
+                "intervals": [
+                  {
+                    "start": "08:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2026-11-23",
+                "intervals": [
+                  {
+                    "start": "08:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-01-01",
+                "intervals": [
+                  {
+                    "start": "08:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-01-11",
+                "intervals": [
+                  {
+                    "start": "08:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-02-11",
+                "intervals": [
+                  {
+                    "start": "08:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-02-23",
+                "intervals": [
+                  {
+                    "start": "08:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-03-21",
+                "intervals": [
+                  {
+                    "start": "08:00",
+                    "end": "18:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-03-22",
+                "intervals": [
+                  {
+                    "start": "08:00",
+                    "end": "18:00"
+                  }
+                ]
+              }
+            ]
           }
         }
       ],

@@ -1,381 +1,219 @@
-/* Food guide: specification 1.8. Image pins stay at the true map anchors. */
+/* =====================================================================
+   Food guide — map pins, store card and list, plus the parts shared with
+   the OIC Food page (section labels, status chip, visitor information,
+   source links).
+   Follows the loose layer: grey sheets, white controls inside them, pill
+   buttons, crimson only for the primary action, links and the "within
+   hours" chip. The pins are the one exception the spec allows: a soft
+   shadow and a small lift on hover.
+   ===================================================================== */
+
 body[data-app-mode='viewer'] {
-  --food-green: #009e73;
   --food-pin-size: 40px;
-  --food-pin-shadow: 0 2px 6px rgb(0 0 0 / 18%);
-  --food-motion: 120ms;
+  --food-pin-shadow: 0 2px 6px rgb(17 17 17 / 16%);
+  --food-motion: var(--ls-pop-dur);
 }
+
+/* ---------------------------------------------------------------------
+   Pins (sized and placed by food-guide-viewer.js)
+   --------------------------------------------------------------------- */
+
 .food-pin-layer {
   position: absolute;
   inset: 0;
   z-index: 25;
   pointer-events: none;
 }
+
 .food-pin {
   position: absolute;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   width: 48px;
   height: 48px;
-  padding: 0;
+  padding: 0 0 var(--food-tail, 6px);
   border: 0;
   background: transparent;
   transform: translate(-50%, -100%);
   pointer-events: auto;
   touch-action: none;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: var(--food-tail, 6px);
   cursor: pointer;
 }
+
+.food-pin.is-selected,
+.food-pin:focus-visible {
+  z-index: 1;
+}
+
 .food-badge {
   position: relative;
   display: inline-flex;
   flex: 0 0 auto;
-  width: var(--food-pin-size);
-  height: var(--food-pin-size);
   align-items: center;
   justify-content: center;
-  border: clamp(0.5px, calc(var(--food-pin-size) * 0.025), 1px) solid
-    var(--c-line);
+  width: var(--food-pin-size);
+  height: var(--food-pin-size);
+  border: clamp(0.5px, calc(var(--food-pin-size) * 0.025), 1px) solid var(--c-line);
   border-radius: 50%;
-  background: #fff;
-  color: #252525;
+  background: var(--c-bg);
+  color: var(--c-ink);
   box-shadow: var(--food-pin-shadow);
-  transition: transform var(--food-motion) ease;
+  transition: transform var(--food-motion) var(--ease);
 }
+
 .food-pin .food-badge::after {
-  content: '';
+  content: "";
   position: absolute;
   left: calc(50% - var(--food-pin-size) * 0.1);
   bottom: calc(-1 * var(--food-tail, 6px));
   width: calc(var(--food-pin-size) * 0.2);
   height: var(--food-tail, 6px);
-  background: #fff;
+  background: var(--c-bg);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
+
 .food-badge img {
   width: 80%;
   height: 80%;
   object-fit: contain;
 }
+
+/* The same mark without the pin's edge, inside the card and the list. */
+.food-badge.is-heading {
+  border: 0;
+  box-shadow: none;
+}
+
 .food-pin.is-selected .food-badge {
   box-shadow:
-    0 0 0 calc(var(--food-pin-size) * 0.035) #fff,
-    0 0 0 calc(var(--food-pin-size) * 0.1) var(--food-green),
+    0 0 0 calc(var(--food-pin-size) * 0.035) var(--c-bg),
+    0 0 0 calc(var(--food-pin-size) * 0.1) var(--c-ring-green),
     var(--food-pin-shadow);
 }
+
 .food-pin.is-hovered .food-badge,
 .food-pin:hover .food-badge {
   transform: translateY(-2px) scale(1.04);
 }
+
 .food-pin:active .food-badge {
   transform: scale(0.96);
 }
+
 .food-pin:focus-visible {
   outline: none;
 }
+
 .food-pin:focus-visible .food-badge {
   outline: max(0.5px, calc(var(--food-pin-size) * 0.07)) solid var(--ls-red);
   outline-offset: max(0.5px, calc(var(--food-pin-size) * 0.035));
 }
+
+/* ---------------------------------------------------------------------
+   Store areas: the facility ring green with the map's white edge
+   --------------------------------------------------------------------- */
+
 .food-area-halo,
 .food-area-outline {
-  stroke: transparent;
   fill: transparent;
+  stroke: transparent;
   pointer-events: none;
 }
+
 .food-area-hit {
   fill: transparent;
   stroke: none;
   pointer-events: all;
   cursor: pointer;
 }
+
 .food-area.is-browsing .food-area-halo,
 .food-area.is-hovered .food-area-halo,
 .food-area.is-selected .food-area-halo {
-  stroke: #fff;
+  stroke: var(--c-bg);
   stroke-width: 5.5px;
 }
-.food-area.is-browsing .food-area-outline {
-  stroke: var(--food-green);
-  stroke-width: 1.5px;
-  fill: rgb(0 158 115 / 4%);
-}
+
 .food-area.is-hovered .food-area-halo,
 .food-area.is-selected .food-area-halo {
   stroke-width: 6.5px;
 }
+
+.food-area.is-browsing .food-area-outline {
+  fill: color-mix(in srgb, var(--c-ring-green) 4%, transparent);
+  stroke: var(--c-ring-green);
+  stroke-width: 1.5px;
+}
+
 .food-area.is-hovered .food-area-outline {
-  stroke: var(--food-green);
+  fill: color-mix(in srgb, var(--c-ring-green) 6%, transparent);
+  stroke: var(--c-ring-green);
   stroke-width: 2.5px;
-  fill: rgb(0 158 115 / 6%);
 }
+
 .food-area.is-selected .food-area-outline {
-  stroke: var(--food-green);
+  fill: color-mix(in srgb, var(--c-ring-green) 10%, transparent);
+  stroke: var(--c-ring-green);
   stroke-width: 2.5px;
-  fill: rgb(0 158 115 / 10%);
 }
+
+/* ---------------------------------------------------------------------
+   Hover summary on pointer devices
+   --------------------------------------------------------------------- */
+
 .food-hover-tip {
   position: fixed;
   z-index: 60;
   max-width: 240px;
-  padding: 12px;
-  border-radius: 14px;
+  padding: var(--s-3) 14px;
+  border-radius: var(--ls-row);
   background: var(--ls-fill);
   color: var(--c-ink);
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
 }
+
 .food-hover-tip strong {
-  font-size: 14px;
-}
-.food-hover-tip p {
-  margin: 4px 0 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.food-action-button {
-  position: relative;
-}
-.food-action-button > svg {
-  width: 24px;
-  height: 24px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.food-button-label {
-  display: none;
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 6px 10px;
-  border-radius: 10px;
-  background: var(--ls-fill);
-  font-size: 12px;
-  white-space: nowrap;
-  color: var(--c-ink);
-}
-@media (hover: hover) {
-  .food-action-button:hover .food-button-label {
-    display: block;
-  }
-}
-.food-action-button:focus-visible .food-button-label {
   display: block;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
 }
+
+.food-hover-tip p {
+  display: -webkit-box;
+  margin: var(--s-1) 0 0;
+  overflow: hidden;
+  color: var(--c-ink-2);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* ---------------------------------------------------------------------
+   Store card and list: one grey sheet, like the search results and the
+   phone floor list. Controls inside it are white.
+   --------------------------------------------------------------------- */
+
 .food-panel {
   position: fixed;
   z-index: 55;
   display: flex;
   flex-direction: column;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
   overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   border: 0;
   border-radius: var(--ls-sheet);
   background: var(--ls-fill);
   color: var(--c-ink);
-  box-shadow: none;
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-size: var(--fs-base);
+  line-height: var(--lh-snug);
 }
+
 .food-panel.is-narrow {
   border-radius: 24px 24px 0 0;
 }
-.food-panel-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  flex: 0 0 auto;
-  padding: 16px 16px 12px;
-}
-.food-panel h2 {
-  margin: 0;
-  font-size: 1.0625rem;
-  font-weight: 700;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
-  flex: 1;
-}
-.food-panel h2:focus {
-  outline-offset: 2px;
-}
-.food-close {
-  flex: 0 0 48px;
-  width: 48px;
-  height: 48px;
-  margin-top: -4px;
-  padding: 0;
-  border: 0;
-  border-radius: 14px;
-  background: white;
-  font-size: 24px;
-  line-height: 1;
-  color: var(--c-ink-2);
-}
-.food-card-brand {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-.food-badge.is-heading {
-  border: 0;
-  box-shadow: none;
-}
-.food-card-brand > div {
-  min-width: 0;
-}
-.food-meta {
-  display: block;
-  margin: 2px 0 0;
-  font-size: 0.75rem;
-  color: var(--c-ink-2);
-}
-.food-panel-body {
-  min-height: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: 0 16px 16px;
-  scrollbar-width: thin;
-}
-.food-description {
-  margin: 0 0 16px;
-}
-.food-panel h3 {
-  margin: 16px 0 8px;
-  font-size: 0.875rem;
-  font-weight: 700;
-}
-.food-panel h4 {
-  margin: 12px 0 4px;
-  font-size: 0.8125rem;
-}
-.food-hours p {
-  margin: 4px 0;
-}
-.food-hours small {
-  display: block;
-  margin-top: 8px;
-  color: var(--c-ink-2);
-  font-size: 0.6875rem;
-}
-.food-hours small a,
-.food-sources a {
-  color: var(--ls-red);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.food-hours-tag {
-  display: inline-block;
-  margin-right: 6px;
-  padding: 1px 6px;
-  background: #fff;
-  border-radius: 5px;
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-.food-usage dl {
-  margin: 0;
-}
-.food-usage dl > div {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  gap: 12px;
-  padding: 6px 0;
-}
-.food-usage dt {
-  color: var(--c-ink-2);
-}
-.food-usage dd {
-  margin: 0;
-  overflow-wrap: anywhere;
-}
-.food-usage dd span {
-  display: block;
-  font-size: 0.75rem;
-}
-.food-panel-footer {
-  flex: 0 0 auto;
-  padding: 0 16px 12px;
-}
-.food-control {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  min-height: 48px;
-  margin: 8px 0 0;
-  padding: 10px 12px;
-  border: 0;
-  border-radius: var(--ls-row);
-  background: white;
-  color: var(--c-ink);
-  font: inherit;
-  font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-}
-.food-control.is-primary {
-  background: var(--ls-red);
-  color: #fff;
-}
-.food-text-control {
-  display: block;
-  min-height: 48px;
-  width: 100%;
-  border: 0;
-  background: transparent;
-  color: var(--ls-red);
-  font: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.food-sources {
-  margin-top: 16px;
-  font-size: 0.6875rem;
-  color: var(--c-ink-2);
-  overflow-wrap: anywhere;
-}
-.food-sources p {
-  margin: 6px 0;
-}
-.food-store-row {
-  display: grid;
-  grid-template-columns: 52px minmax(0, 1fr);
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  min-height: 72px;
-  margin-bottom: 8px;
-  padding: 12px;
-  border: 0;
-  border-radius: var(--ls-row);
-  background: white;
-  color: var(--c-ink);
-  font: inherit;
-  text-align: left;
-}
-.food-store-row strong {
-  display: block;
-  overflow-wrap: anywhere;
-}
-.food-list-summary {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin-top: 4px;
-  font-size: 0.75rem;
-  color: var(--c-ink-2);
-}
+
 .food-sheet-handle {
   display: flex;
   flex: 0 0 48px;
@@ -384,44 +222,436 @@ body[data-app-mode='viewer'] {
   width: 100%;
   touch-action: none;
 }
+
 .food-sheet-handle > span {
-  width: 32px;
+  width: 36px;
   height: 4px;
   border-radius: 2px;
-  background: #999;
+  background: var(--c-ink-3);
 }
+
+.food-panel-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-start;
+  gap: var(--s-3);
+  padding: 18px 16px 14px 20px;
+}
+
 .food-panel.is-narrow .food-panel-header {
   padding-top: 0;
 }
+
+.food-panel h2 {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  overflow-wrap: anywhere;
+}
+
+.food-panel h2:focus {
+  outline-offset: 2px;
+}
+
+.food-card-brand {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--s-3);
+  min-width: 0;
+}
+
+.food-card-brand > div {
+  min-width: 0;
+}
+
+.food-meta {
+  display: block;
+  margin: 2px 0 0;
+  color: var(--c-ink-3);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+}
+
+/* Same × as the About dialog, as a white circle inside the grey sheet. */
+.food-close {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: -6px -4px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--font-latin);
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease);
+}
+
+.food-close:hover {
+  background: var(--ls-fill-2);
+}
+
+.food-panel-body {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 20px 16px;
+  scrollbar-width: thin;
+}
+
+.food-description {
+  margin: 0;
+}
+
+.food-hours,
+.food-usage {
+  margin-top: 20px;
+}
+
+.food-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: 20px;
+}
+
+.food-panel-footer {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-1) var(--s-2);
+  padding: 12px 16px 14px;
+}
+
+.food-panel-footer .food-control.is-primary {
+  flex: 1 0 100%;
+}
+
+/* Pill buttons, the same shape and type as the sub-page .btn. */
+.food-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-1);
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.food-control:hover {
+  background: var(--ls-fill-2);
+  color: var(--c-ink);
+}
+
+.food-control.is-primary {
+  background: var(--ls-red);
+  color: var(--c-on-accent);
+}
+
+.food-control.is-primary:hover {
+  background: var(--c-accent-hover);
+  color: var(--c-on-accent);
+}
+
+.food-control.external::after {
+  color: var(--c-ink-3);
+}
+
+/* Quiet secondary actions under the primary button. */
+.food-text-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--c-ink-2);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.food-text-control:hover {
+  background: var(--c-bg);
+  color: var(--c-ink);
+}
+
 .food-panel.is-compact .food-panel-footer .food-text-control {
   display: none;
 }
+
+.food-panel.is-compact .food-panel-body {
+  padding-bottom: 8px;
+}
+
+/* List of all food places */
+.food-store-list {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.food-store-row {
+  display: grid;
+  grid-template-columns: var(--food-pin-size) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--s-3);
+  width: 100%;
+  min-height: 72px;
+  margin: 0;
+  padding: 12px 16px 12px 12px;
+  border: 0;
+  border-radius: var(--ls-row);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.food-store-row strong {
+  display: block;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  overflow-wrap: anywhere;
+  transition: color var(--dur) var(--ease);
+}
+
+/* Like the search results: the hovered name turns crimson. */
+.food-store-row:hover strong {
+  color: var(--ls-red);
+}
+
+.food-list-summary {
+  display: -webkit-box;
+  margin-top: var(--s-1);
+  overflow: hidden;
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* ---------------------------------------------------------------------
+   Shared with the OIC Food page
+   --------------------------------------------------------------------- */
+
+/* Section label inside a store: 営業時間 / 利用案内 */
+.food-heading {
+  margin: 0 0 var(--s-2);
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+}
+
+.food-service-name,
+.food-version-title {
+  margin: 14px 0 2px;
+  color: var(--c-ink);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+}
+
+.food-service-name:first-child,
+.food-version-title:first-child {
+  margin-top: 0;
+}
+
+.food-hours-list p {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.food-hours-list .food-status {
+  margin-top: var(--s-2);
+}
+
+/* Like the timetable badges: white, or crimson tint for emphasis. */
+.food-chip {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 1.75em;
+  padding: 0 0.7em;
+  border-radius: 999px;
+  background: var(--c-bg);
+  color: var(--c-ink-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.food-chip.is-accent {
+  background: var(--ls-red-soft);
+  color: var(--ls-red);
+}
+
+.food-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-2);
+  margin: 0;
+  font-size: var(--fs-sm);
+}
+
+.food-status.is-unknown {
+  color: var(--c-ink-3);
+}
+
+.food-status-basis {
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+}
+
+.food-source-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  color: var(--c-accent);
+  font-size: var(--fs-sm);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  overflow-wrap: anywhere;
+}
+
+.food-source-link:hover {
+  color: var(--c-accent-hover);
+}
+
+.food-usage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3) var(--s-4);
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: var(--ls-row);
+  background: var(--c-bg);
+}
+
+.food-usage-grid + .food-service-name {
+  margin-top: 14px;
+}
+
+.food-usage-grid div {
+  min-width: 0;
+}
+
+.food-usage-grid dt {
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+}
+
+.food-usage-grid dd {
+  margin: 2px 0 0;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  overflow-wrap: anywhere;
+}
+
+.food-usage-grid dd span {
+  display: block;
+  margin-top: 2px;
+  color: var(--c-ink-2);
+  font-size: var(--fs-xs);
+}
+
+.food-sources {
+  display: grid;
+  margin-top: var(--s-4);
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-snug);
+}
+
+/* Each source row keeps a 48px touch height. */
+.food-sources p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--s-2);
+  min-height: 48px;
+  margin: 0;
+}
+
+.food-sources .food-source-link {
+  min-height: 0;
+  font-size: inherit;
+}
+
+.food-sources .food-mark-notice {
+  min-height: 0;
+  margin-top: var(--s-1);
+}
+
+/* ---------------------------------------------------------------------
+   Short screens, motion and the More panel
+   --------------------------------------------------------------------- */
+
 @media (max-height: 520px) and (min-width: 721px) {
   .food-panel {
     overflow-y: auto;
   }
+
   .food-panel-body {
-    overflow: visible;
     flex: 0 0 auto;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .food-badge {
-    transition: none;
-  }
-  .food-pin.is-hovered .food-badge,
-  .food-pin:hover .food-badge,
-  .food-pin:active .food-badge {
-    transform: none;
+    overflow: visible;
   }
 }
 
 .food-panel.has-short-space {
   overflow-y: auto;
 }
+
 .food-panel.has-short-space .food-panel-body {
-  overflow: visible;
   flex: 0 0 auto;
+  overflow: visible;
+}
+
+.food-panel.has-short-space .food-panel-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--ls-fill);
 }
 
 /* Flex layout must not override the native hidden attribute. */
@@ -432,54 +662,49 @@ body[data-app-mode='viewer'] {
   display: none !important;
 }
 
-.food-hours-source {
-  display: inline-block;
-  margin: 4px 0;
-  color: var(--ls-red);
-  font-size: 0.75rem;
-  text-decoration: underline;
-}
-.food-pin.is-selected,
-.food-pin:focus-visible {
-  z-index: 1;
-}
+/* Opens and closes like the other panels: a short fade with a 6px slide. */
 @keyframes food-panel-open {
   from {
     opacity: 0;
     transform: translateY(6px);
   }
+
   to {
     opacity: 1;
     transform: none;
   }
 }
-.food-panel:not([hidden]):not(.is-closing) {
-  animation: food-panel-open var(--food-motion) ease;
-}
+
 @keyframes food-panel-close {
   to {
     opacity: 0;
     transform: translateY(6px);
   }
 }
+
+.food-panel:not([hidden]):not(.is-closing) {
+  animation: food-panel-open var(--food-motion) var(--ease);
+}
+
 .food-panel.is-closing {
   pointer-events: none;
-  animation: food-panel-close var(--food-motion) ease both;
+  animation: food-panel-close var(--food-motion) var(--ease) both;
 }
+
 @media (prefers-reduced-motion: reduce) {
+  .food-badge {
+    transition: none;
+  }
+
+  .food-pin.is-hovered .food-badge,
+  .food-pin:hover .food-badge,
+  .food-pin:active .food-badge {
+    transform: none;
+  }
+
   .food-panel {
     animation: none !important;
   }
-}
-
-.food-panel.has-short-space .food-panel-header {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background: var(--ls-fill);
-}
-.food-panel.is-compact .food-panel-body {
-  padding-bottom: 8px;
 }
 
 body[data-app-mode='viewer'] .facility-more-panel.has-food-option {
@@ -489,13 +714,11 @@ body[data-app-mode='viewer'] .facility-more-panel.has-food-option {
   scrollbar-width: none;
   transition-duration: calc(var(--ls-pop-dur) + 4 * var(--ls-pop-step));
 }
-body[data-app-mode='viewer']
-  .facility-more-panel.has-food-option
-  .facility-more-option:nth-child(5) {
+
+body[data-app-mode='viewer'] .facility-more-panel.has-food-option .facility-more-option:nth-child(5) {
   --more-i: 4;
 }
-body[data-app-mode='viewer']
-  .facility-more-panel.has-food-option[hidden]
-  .facility-more-option {
+
+body[data-app-mode='viewer'] .facility-more-panel.has-food-option[hidden] .facility-more-option {
   --more-stagger: calc((4 - var(--more-i, 0)) * var(--ls-pop-step));
 }

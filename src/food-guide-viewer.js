@@ -1,9 +1,11 @@
 import { getLang, t } from './i18n.js';
+import { renderFoodStatus, renderFoodUsage } from './food-place-cards.js';
 import {
   validateFoodPlaces,
   placeFoodMarkers,
   describeFoodServiceHours,
   japaneseDate,
+  FOOD_STATUS_MS,
   CoopHoursClient,
   FOOD_GESTURE_DISTANCE,
 } from './food-guide-model.js';
@@ -19,7 +21,7 @@ const escape = (value) =>
   );
 const local = (value) => value?.[getLang()] ?? value?.ja ?? '';
 const foodIcon =
-  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2v7m3-7v7M2 2v7c0 2 6 2 6 0M5 11v11M17 2c-4 3-4 9 0 10h3V2h-3Zm3 10v10"/></svg>';
+  '<svg class="search-icon-image" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 2v7m3-7v7M2 2v7c0 2 6 2 6 0M5 11v11M17 2c-4 3-4 9 0 10h3V2h-3Zm3 10v10"/></svg>';
 
 export class FoodGuideViewer {
   constructor({ viewer, toolbar, dataUrl, floorUrls, host }) {
@@ -53,8 +55,7 @@ export class FoodGuideViewer {
     this.button.type = 'button';
     this.button.className =
       'search-icon-button facility-more-option food-action-button';
-    this.button.innerHTML =
-      foodIcon + '<span class="food-button-label"></span>';
+    this.button.innerHTML = foodIcon;
     this.morePanel.prepend(this.button);
     this.morePanel.classList.add('has-food-option');
     this.overlay = document.createElement('div');
@@ -162,9 +163,9 @@ export class FoodGuideViewer {
     window.addEventListener('resize', () => this.resize());
     window.visualViewport?.addEventListener('resize', () => this.resize());
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible' && this.needsHours()) {
+      if (document.visibilityState === 'visible' && (this.needsHours() || this.needsStatus())) {
         this.renderHours();
-        void this.hours.refresh();
+        if (this.needsHours()) void this.hours.refresh();
       }
       this.scheduleHours();
     });
@@ -387,8 +388,6 @@ export class FoodGuideViewer {
   layoutButton() {
     this.button.setAttribute('aria-label', t('food.find'));
     this.button.title = t('food.title');
-    this.button.querySelector('.food-button-label').textContent =
-      t('food.title');
     const vertical = innerWidth >= 1240 && innerHeight >= 700;
     if (vertical)
       this.toolbar.style.setProperty(
@@ -504,21 +503,9 @@ export class FoodGuideViewer {
       const place = this.getPlace(this.selected);
       if (!place) return;
       header = `<div class="food-card-brand" data-food-place="${escape(place.entryId)}">${this.markerVisual(place, { heading: true })}<div><h2 id="food-panel-title" tabindex="-1">${escape(local(place.name))}</h2><p class="food-meta">${escape(local(place.building))} · 1F</p></div></div>${close}`;
-      body = `<p class="food-description">${escape(local(place.summary))}</p><section class="food-hours"><h3>${escape(t('food.hours'))}</h3><div data-food-hours></div></section>`;
+      body = `<p class="food-description">${escape(local(place.summary))}</p><section class="food-hours"><h3 class="food-heading">${escape(t('food.hours'))}</h3><div class="food-hours-list" data-food-hours></div></section>`;
       if (this.panelMode !== 'compact') {
-        body += `<section class="food-usage"><h3>${escape(t('food.usage'))}</h3>${place.services
-          .map(
-            (service) =>
-              `${place.services.length > 1 ? `<h4>${escape(local(service.name))}</h4>` : ''}<dl>${Object.entries(
-                service.usage,
-              )
-                .map(
-                  ([key, value]) =>
-                    `<div><dt>${escape(t('food.usage.' + key))}</dt><dd>${escape(t('food.value.' + value))}${service.usageNotes[key] ? `<span>${escape(local(service.usageNotes[key]))}</span>` : ''}</dd></div>`,
-                )
-                .join('')}</dl>`,
-          )
-          .join('')}</section>`;
+        body += `<section class="food-usage"><h3 class="food-heading">${escape(t('food.usage'))}</h3>${renderFoodUsage(place, { translate: t, text: local, headingTag: 'h4' })}</section>`;
         const seen = new Set();
         body += `<div class="food-links">${['menu', 'hours', 'official']
           .filter(
@@ -529,10 +516,10 @@ export class FoodGuideViewer {
           )
           .map(
             (key) =>
-              `<a class="food-control" href="${escape(place.links[key])}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.link.' + key) + ' ' + t('food.external'))}">${escape(t('food.link.' + key))}<span aria-hidden="true">↗</span></a>`,
+              `<a class="food-control external" href="${escape(place.links[key])}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.link.' + key) + ' ' + t('food.external'))}">${escape(t('food.link.' + key))}</a>`,
           )
           .join('')}</div>`;
-        body += `<div class="food-sources">${place.sources.map((source) => `<p><a href="${escape(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(source.title + ' ' + t('food.external'))}">${escape(source.title)}</a> · ${escape(source.checkedAt)}</p>`).join('')}<p>${escape(t('food.markNotice'))}</p></div>`;
+        body += `<div class="food-sources">${place.sources.map((source) => `<p><a class="food-source-link external" href="${escape(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(source.title + ' ' + t('food.external'))}">${escape(source.title)}</a><span>${escape(source.checkedAt)}</span></p>`).join('')}<p class="food-mark-notice">${escape(t('food.markNotice'))}</p></div>`;
       }
       const primary =
         this.panelMode === 'compact'
@@ -629,6 +616,13 @@ export class FoodGuideViewer {
         this.getPlace(this.selected)?.services.some((s) => s.coopScheduleName),
     );
   }
+  needsStatus() {
+    return Boolean(
+      this.panelMode &&
+        this.selected &&
+        this.getPlace(this.selected)?.services.some((service) => service.status?.assignee),
+    );
+  }
   renderHours() {
     const root = this.panel.querySelector('[data-food-hours]'),
       place = this.getPlace(this.selected);
@@ -640,7 +634,7 @@ export class FoodGuideViewer {
       .map((service) => {
         const heading =
           place.services.length > 1 && !compact
-            ? `<h4>${escape(local(service.name))}</h4>`
+            ? `<h4 class="food-service-name">${escape(local(service.name))}</h4>`
             : '';
         const block = describeFoodServiceHours(service, {
           text: local,
@@ -650,12 +644,18 @@ export class FoodGuideViewer {
           loading,
           compact,
         });
-        if (block.kind === 'message') return `${heading}<p>${escape(block.text)}</p>`;
+        const status = renderFoodStatus(service, {
+          translate: t,
+          payload: this.hours.payload,
+          fetchFailed: Boolean(service.coopScheduleName && this.hours.error),
+          compact,
+        });
+        if (block.kind === 'message') return `${heading}<p>${escape(block.text)}</p>${status}`;
         if (block.kind === 'coop') {
           const source = compact
             ? ''
-            : `<a class="food-hours-source" href="${escape(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.coopSource') + ' ' + t('food.external'))}">${escape(t('food.coopSource'))}<span aria-hidden="true"> ↗</span></a>`;
-          return `${heading}<p>${escape(block.dateLabel)} ${escape(block.text)}</p>${source}`;
+            : `<a class="food-source-link external" href="${escape(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.coopSource') + ' ' + t('food.external'))}">${escape(t('food.coopSource'))}</a>`;
+          return `${heading}<p>${escape(block.dateLabel)} ${escape(block.text)}</p>${status}${source}`;
         }
         return (
           heading +
@@ -664,29 +664,33 @@ export class FoodGuideViewer {
               if (compact) {
                 const prefix =
                   version.kind === 'temporary'
-                    ? `<strong>${escape(t('food.temporary'))}</strong> `
+                    ? `<span class="food-chip is-accent">${escape(t('food.temporary'))}</span> `
                     : '';
                 return `<p>${prefix}${escape(version.sentence)}</p>`;
               }
-              return `${version.title ? `<h4>${escape(version.title)}</h4>` : ''}<p>${escape(version.text)}</p>`;
+              return `${version.title ? `<h4 class="food-version-title">${escape(version.title)}</h4>` : ''}<p>${escape(version.text)}</p>`;
             })
-            .join('')
+            .join('') +
+          status
         );
       })
       .join('');
   }
   scheduleHours() {
     clearTimeout(this.hoursTimer);
-    if (!this.needsHours() || document.visibilityState !== 'visible') return;
+    const hours = this.needsHours();
+    const status = this.needsStatus();
+    if ((!hours && !status) || document.visibilityState !== 'visible') return;
     const currentDay = japaneseDate();
+    const wait = Math.min(hours ? this.hours.nextCheck() : FOOD_STATUS_MS, status ? FOOD_STATUS_MS : Infinity);
     this.hoursTimer = setTimeout(
       () => {
         this.renderHours();
-        if (japaneseDate() !== currentDay || this.hours.needsRefresh())
+        if (hours && (japaneseDate() !== currentDay || this.hours.needsRefresh()))
           void this.hours.refresh();
         else this.scheduleHours();
       },
-      Math.min(this.hours.nextCheck(), 2_147_483_647),
+      Math.min(wait, 2_147_483_647),
     );
   }
 
