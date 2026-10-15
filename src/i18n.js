@@ -43,6 +43,11 @@ const dictionaries = {
     "food.value.unknown": "未確認",
     "food.period.弁当・ドリンク販売": "弁当・ドリンク販売",
     "food.period.クレープ・ドリンク販売": "クレープ・ドリンク販売",
+    "food.trucks": "本日のキッチンカー",
+    "food.trucks.loading": "読み込み中…",
+    "food.trucks.error": "キッチンカー情報を取得できませんでした。",
+    "food.trucks.none": "出店なし",
+    "food.trucks.outOfPeriod": "営業カレンダーの期間外です。最新の出店予定は公式の案内をご確認ください。",
 
     'meta.appName': '立命館OICマップ',
     'meta.title.viewer': '立命館OICマップ | 教室・施設を検索',
@@ -320,6 +325,11 @@ const dictionaries = {
     "food.value.unknown": "Unconfirmed",
     "food.period.弁当・ドリンク販売": "Bento & drinks",
     "food.period.クレープ・ドリンク販売": "Crepes & drinks",
+    "food.trucks": "Today's food trucks",
+    "food.trucks.loading": "Loading…",
+    "food.trucks.error": "Could not load today's food trucks.",
+    "food.trucks.none": "None today",
+    "food.trucks.outOfPeriod": "Today is outside the published schedule. Please check the official announcement.",
 
     'meta.appName': 'Ritsumeikan OIC Map',
     'meta.title.viewer': 'Ritsumeikan OIC Map',

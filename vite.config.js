@@ -54,7 +54,8 @@ function foodTrucksDevApi() {
         }
 
         try {
-          const payload = await getFoodTrucksPayload();
+          const source = new URL(request.url || '/', 'http://localhost').searchParams.get('source');
+          const payload = await getFoodTrucksPayload(source === 'nomnom' ? { source } : {});
           response.statusCode = 200;
           response.setHeader('Content-Type', 'application/json; charset=utf-8');
           response.setHeader(

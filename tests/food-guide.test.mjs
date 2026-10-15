@@ -535,7 +535,16 @@ test('hover and selection retain mounted polygon targets until the map language 
   viewer.renderAreas();
   const lit = layer.querySelectorAll('.is-hovered');
   assert.equal(lit.length, 2);
-  assert.ok(lit.every((group) => group.dataset.foodPlace === kitchenCar.entryId));
+  assert.ok(lit.every((group) => group.dataset.foodArea === kitchenCar.entryId));
+  // Each rectangle selects its own place on click, while hover and highlight stay joined.
+  const second = payload.places.find((p) => p.areaEntryId === kitchenCar.entryId);
+  assert.deepEqual(
+    lit.map((group) => group.dataset.foodPlace).sort(),
+    [kitchenCar.entryId, second.entryId].sort(),
+  );
+  viewer.hovered = second.entryId;
+  viewer.renderAreas();
+  assert.equal(layer.querySelectorAll('.is-hovered').length, 2);
   viewer.hovered = null;
   context.lang = 'en';
   viewer.renderAreas();

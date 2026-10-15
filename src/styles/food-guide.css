@@ -329,8 +329,28 @@ body[data-app-mode='viewer'] {
 }
 
 .food-hours,
-.food-usage {
+.food-usage,
+.food-today {
   margin-top: 20px;
+}
+
+/* Today's food trucks: just the names, one bullet each, under each spot. */
+.food-truck-names {
+  margin: 4px 0 0;
+  padding: 0 0 0 1.2em;
+  list-style: disc;
+}
+
+.food-truck-names li {
+  margin: 0;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.food-muted {
+  margin: 4px 0 0;
+  color: var(--c-ink-3);
+  font-size: var(--fs-sm);
 }
 
 .food-links {
@@ -622,6 +642,10 @@ body[data-app-mode='viewer'] {
   gap: 0 var(--s-2);
   min-height: 48px;
   margin: 0;
+}
+
+.food-sources .food-source-text span {
+  color: inherit;
 }
 
 .food-sources .food-source-link {

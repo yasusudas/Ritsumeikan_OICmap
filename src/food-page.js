@@ -25,19 +25,21 @@ const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
 const STRINGS = {
   ja: {
     empty: '本日の出店予定はありません。',
+    outOfPeriod: '営業カレンダーの期間外です。最新の出店予定は公式の案内をご確認ください。',
     error: '本日のキッチンカー情報を取得できませんでした。',
     source: 'データ提供',
     noImage: 'NO IMAGE',
     metaSeparator: ' / ',
-    spots: { terrace: 'テラス', plaza: 'プラザ' },
+    spots: { terrace: 'TERRACE GATE前', plaza: '空のプラザ' },
   },
   en: {
     empty: 'No food trucks are scheduled today.',
+    outOfPeriod: 'Today is outside the published schedule. Please check the official announcement.',
     error: 'Could not load today’s food trucks.',
     source: 'Source',
     noImage: 'NO IMAGE',
     metaSeparator: ' / ',
-    spots: { terrace: 'Terrace', plaza: 'Plaza' },
+    spots: { terrace: 'In front of TERRACE GATE', plaza: 'Sky Plaza' },
   },
 };
 
@@ -60,6 +62,13 @@ function safeHttpUrl(value) {
   } catch {
     return '';
   }
+}
+
+// 画像は同じサイト内のパス（/lunch-street/…）か http(s) の URL だけを許可する。
+function safeImageUrl(value) {
+  const text = String(value ?? '');
+  if (/^\/(?!\/)[\w./-]+$/.test(text)) return text;
+  return safeHttpUrl(text);
 }
 
 function spotLabel(spot) {
@@ -87,14 +96,18 @@ function renderState(message, modifier = '') {
   return `<p class="food-state ${modifier}">${escapeHtml(message)}</p>`;
 }
 
-function renderTruck(truck) {
-  const image = safeHttpUrl(truck.image);
+function renderTruck(truck, hours) {
+  const image = safeImageUrl(truck.image);
   // 画像は装飾扱い(名前は直下の見出しで読める)。
+  const whole = image.startsWith('/');
   const thumb = image
-    ? `<img class="food-truck-image" src="${escapeHtml(image)}" alt="" loading="lazy" decoding="async" />`
+    ? `<img class="food-truck-image${whole ? ' is-whole' : ''}" src="${escapeHtml(image)}" alt="" loading="lazy" decoding="async" />`
     : `<span class="food-truck-noimage" aria-hidden="true">${escapeHtml(t.noImage)}</span>`;
 
-  const meta = [truck.type, spotLabel(truck.spot)].filter(Boolean).map(escapeHtml).join(t.metaSeparator);
+  const meta = [truck.type, spotLabel(truck.spot), hours]
+    .filter(Boolean)
+    .map(escapeHtml)
+    .join(t.metaSeparator);
 
   const href = safeHttpUrl(truck.sourceUrl);
   const name = href
@@ -103,7 +116,7 @@ function renderTruck(truck) {
 
   return `
     <li class="food-truck${href ? ' has-link' : ''}">
-      <div class="food-truck-thumb${image ? '' : ' is-empty'}">${thumb}</div>
+      <div class="food-truck-thumb${image ? '' : ' is-empty'}${whole ? ' is-whole' : ''}">${thumb}</div>
       <h3 class="food-truck-name">${name}</h3>
       ${meta ? `<p class="food-truck-meta">${meta}</p>` : ''}
     </li>
@@ -120,14 +133,19 @@ function render(payload) {
   const trucks = Array.isArray(payload?.trucks) ? payload.trucks : [];
   renderDate(formatDate(payload?.date));
 
+  const hours = payload?.hours?.start && payload?.hours?.end ? `${payload.hours.start}–${payload.hours.end}` : '';
   const body = trucks.length
-    ? `<ul class="food-trucks">${trucks.map(renderTruck).join('')}</ul>`
-    : renderState(t.empty, 'is-empty');
+    ? `<ul class="food-trucks">${trucks.map((truck) => renderTruck(truck, hours)).join('')}</ul>`
+    : renderState(payload?.outOfPeriod ? t.outOfPeriod : t.empty, 'is-empty');
 
+  // 出典にリンクがないとき（営業カレンダー）は名前だけを示す。
   const sourceUrl = safeHttpUrl(payload?.source?.url);
+  const sourceName = payload?.source?.name || sourceUrl;
   const source = sourceUrl
-    ? `<p class="food-source">${escapeHtml(t.source)}: <a class="text-link external" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(payload.source?.name || sourceUrl)}</a></p>`
-    : '';
+    ? `<p class="food-source">${escapeHtml(t.source)}: <a class="text-link external" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceName)}</a></p>`
+    : sourceName
+      ? `<p class="food-source">${escapeHtml(t.source)}: ${escapeHtml(sourceName)}</p>`
+      : '';
 
   container.innerHTML = `${body}${source}`;
 }

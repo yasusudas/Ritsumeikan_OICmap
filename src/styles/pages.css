@@ -590,6 +590,20 @@ body.subpage .legal-section {
   object-fit: cover;
 }
 
+/* 切り抜いた写真（ラベルの A・b なども含む）は、切らず、枠の背景も付けず、写真の形のまま見せる。
+   枠の高さ（4:3）は他の店舗と同じにそろえ、角丸は写真そのものに付ける。 */
+.food-truck-thumb.is-whole,
+.food-truck.has-link:hover .food-truck-thumb.is-whole {
+  background: none;
+}
+
+.food-truck-image.is-whole {
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
+  border-radius: inherit;
+}
+
 .food-truck-thumb.is-empty {
   display: grid;
   place-items: center;

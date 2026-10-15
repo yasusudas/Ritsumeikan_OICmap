@@ -110,14 +110,14 @@ export function validateFoodPlaces(payload, entries) {
           !isHttpUrl(place.mark.guidelineUrl)))
     )
       fail('mark metadata');
-    if (!isHttpUrl(place.links?.official)) fail('official link');
+    if (place.links?.official !== null && !isHttpUrl(place.links?.official)) fail('official link');
     for (const url of Object.values(place.links))
       if (url !== null && !isHttpUrl(url)) fail('link');
     if (
       !place.sources?.length ||
       place.sources.some(
         (s) =>
-          !isHttpUrl(s.url) ||
+          (s.url !== null && !isHttpUrl(s.url)) ||
           !DATE.test(s.checkedAt) ||
           !s.title ||
           !s.fields?.length,
@@ -153,7 +153,7 @@ export function validateFoodPlaces(payload, entries) {
         if (
           !['regular', 'temporary'].includes(version.kind) ||
           !localized(version.text) ||
-          !isHttpUrl(version.sourceUrl) ||
+          (version.sourceUrl !== null && !isHttpUrl(version.sourceUrl)) ||
           !DATE.test(version.checkedAt)
         )
           fail('hours version');
@@ -189,6 +189,19 @@ export function validateFoodPlaces(payload, entries) {
       )
     )
       fail(`${place.entryId}: shared area must belong to another place`);
+  for (const place of payload.places)
+    if (place.todayTrucks !== undefined && !['plaza', 'terrace'].includes(place.todayTrucks))
+      fail(`${place.entryId}: invalid todayTrucks`);
+  const claimed = new Set();
+  for (const place of payload.places) {
+    if (place.areaPolygon === undefined) continue;
+    const owner = payload.places.find((other) => other.entryId === place.areaEntryId);
+    const count = owner ? byId.get(owner.entryId).polygons.length : 0;
+    const key = `${place.areaEntryId}:${place.areaPolygon}`;
+    if (!Number.isInteger(place.areaPolygon) || place.areaPolygon < 0 || place.areaPolygon >= count || claimed.has(key))
+      fail(`${place.entryId}: invalid areaPolygon`);
+    claimed.add(key);
+  }
   if (!ids.has(payload.pinSizeReferenceEntryId)) fail('pin size reference');
   return payload.places.slice().sort((a, b) => a.order - b.order);
 }

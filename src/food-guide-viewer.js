@@ -11,6 +11,10 @@ import {
 } from './food-guide-model.js';
 
 const NS = 'http://www.w3.org/2000/svg';
+const FOOD_TRUCKS_URL = '/api/food-trucks';
+// Today's cars are fetched again after this long, or when the day changes.
+const FOOD_TRUCKS_FRESH_MS = 10 * 60 * 1000;
+const FOOD_TRUCKS_RETRY_MS = 60 * 1000;
 const escape = (value) =>
   String(value ?? '').replace(
     /[&<>"']/g,
@@ -51,6 +55,8 @@ export class FoodGuideViewer {
       listScroll: 0,
       action: 0,
       nodes: new Map(),
+      // Today's food trucks (OIC Lunch Street), shown on the cards that ask for them.
+      trucks: { payload: null, error: false, loading: false, fetchedAt: 0 },
       // Last values written to each pin, so a pan frame only moves it.
       drawn: new Map(),
       layout: null,
@@ -517,12 +523,17 @@ export class FoodGuideViewer {
       if (!place) return;
       header = `<div class="food-card-brand" data-food-place="${escape(place.entryId)}">${this.markerVisual(place, { heading: true })}<div><h2 id="food-panel-title" tabindex="-1">${escape(local(place.name))}</h2><p class="food-meta">${escape(local(place.building))} · 1F</p></div></div>${close}`;
       body = `<p class="food-description">${escape(local(place.summary))}</p><section class="food-hours"><h3 class="food-heading">${escape(t('food.hours'))}</h3><div class="food-hours-list" data-food-hours></div></section>`;
+      if (place.todayTrucks) {
+        body += this.renderTrucksSection(place.todayTrucks);
+        this.ensureTrucks();
+      }
       if (this.panelMode !== 'compact') {
         if (hasFoodUsage(place))
           body += `<section class="food-usage"><h3 class="food-heading">${escape(t('food.usage'))}</h3>${renderFoodUsage(place, { translate: t, text: local, headingTag: 'h4' })}</section>`;
         const linkButtons = renderFoodLinkButtons(place, { translate: t, className: 'food-control external' });
         if (linkButtons) body += `<div class="food-links">${linkButtons}</div>`;
-        body += `<div class="food-sources">${renderFoodLinkRows(place, { translate: t })}${place.sources.map((source) => `<p><a class="food-source-link external" href="${escape(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(source.title + ' ' + t('food.external'))}">${escape(source.title)}</a><span>${escape(source.checkedAt)}</span></p>`).join('')}</div>`;
+        const hoursLink = renderFoodLinkRows(place, { translate: t });
+        if (hoursLink) body += `<div class="food-sources">${hoursLink}</div>`;
       }
       footer = `${this.panelMode === 'compact' ? `<button class="food-control is-primary" data-food-action="expand">${escape(t('food.details'))}</button>` : ''}${this.narrow && this.panelMode === 'detail' && !this.shortScreen ? `<button class="food-text-control" data-food-action="collapse">${escape(t('food.collapse'))}</button>` : ''}<button class="food-text-control" data-food-action="list">${escape(this.browse ? t('food.backList') : t('food.listTitle'))}</button>`;
     }
@@ -584,6 +595,48 @@ export class FoodGuideViewer {
         this.scheduleHours();
       } else void this.showList();
     }
+  }
+  // "Today's food trucks": the vendor names for this card's own spot, from the same API as the food page.
+  trucksFresh() {
+    const { payload, fetchedAt } = this.trucks;
+    return Boolean(payload) && Date.now() - fetchedAt < FOOD_TRUCKS_FRESH_MS && payload.date === japaneseDate();
+  }
+  ensureTrucks() {
+    const state = this.trucks;
+    if (state.loading || this.trucksFresh()) return;
+    if (state.error && Date.now() - state.fetchedAt < FOOD_TRUCKS_RETRY_MS) return;
+    this.trucks = { ...state, loading: true };
+    fetch(FOOD_TRUCKS_URL, { cache: 'no-cache' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`${FOOD_TRUCKS_URL} returned ${response.status}`);
+        return response.json();
+      })
+      .then((payload) => {
+        this.trucks = { payload, error: false, loading: false, fetchedAt: Date.now() };
+      })
+      .catch(() => {
+        this.trucks = { payload: state.payload, error: true, loading: false, fetchedAt: Date.now() };
+      })
+      .finally(() => {
+        // Only the list changes, so the panel's scroll and focus stay as they are.
+        const node = this.panel.querySelector('[data-food-trucks]');
+        if (node) node.innerHTML = this.renderTrucksBody(node.dataset.foodTrucks);
+      });
+  }
+  renderTrucksSection(spot) {
+    return `<section class="food-today"><h3 class="food-heading">${escape(t('food.trucks'))}</h3><div data-food-trucks="${escape(spot)}">${this.renderTrucksBody(spot)}</div></section>`;
+  }
+  renderTrucksBody(spot) {
+    const { payload, error } = this.trucks;
+    if (!payload)
+      return `<p class="food-muted">${escape(t(error ? 'food.trucks.error' : 'food.trucks.loading'))}</p>`;
+    const trucks = Array.isArray(payload.trucks) ? payload.trucks : [];
+    if (payload.outOfPeriod && !trucks.length)
+      return `<p class="food-muted">${escape(t('food.trucks.outOfPeriod'))}</p>`;
+    const names = trucks.filter((truck) => truck.spot === spot).map((truck) => truck.name);
+    return names.length
+      ? `<ul class="food-truck-names">${names.map((name) => `<li>${escape(name)}</li>`).join('')}</ul>`
+      : `<p class="food-muted">${escape(t('food.trucks.none'))}</p>`;
   }
   setDetails(detail) {
     if (!this.selected) return;
@@ -704,7 +757,18 @@ export class FoodGuideViewer {
         .flatMap((place) =>
           this.entries
             .get(place.entryId)
-            .polygons.map((polygon) => ({ place, polygon })),
+            .polygons.map((polygon, index) => ({
+              place,
+              polygon,
+              // A place sharing this area may claim one polygon as its own (areaPolygon):
+              // hover and highlight stay joined, but a click selects that place.
+              target:
+                this.places.find(
+                  (other) =>
+                    other.areaEntryId === place.entryId &&
+                    other.areaPolygon === index,
+                ) ?? place,
+            })),
         );
       const area = (polygon) =>
         Math.abs(
@@ -718,11 +782,12 @@ export class FoodGuideViewer {
         (a, b) =>
           area(b.polygon) - area(a.polygon) || b.place.order - a.place.order,
       );
-      for (const { place, polygon } of areas) {
+      for (const { place, polygon, target } of areas) {
         const offset = place.areaOffset[lang];
         const group = document.createElementNS(NS, 'g');
         group.classList.add('food-area');
-        group.dataset.foodPlace = place.entryId;
+        group.dataset.foodPlace = target.entryId;
+        group.dataset.foodArea = place.entryId;
         for (const cls of [
           'food-area-halo',
           'food-area-outline',
@@ -755,7 +820,7 @@ export class FoodGuideViewer {
     const hoveredArea = areaOf(this.hovered),
       selectedArea = areaOf(this.selected);
     for (const group of svg.querySelectorAll('.food-area')) {
-      const id = group.dataset.foodPlace;
+      const id = group.dataset.foodArea;
       group.classList.toggle('is-browsing', this.browse);
       group.classList.toggle('is-hovered', hoveredArea === id);
       group.classList.toggle('is-selected', selectedArea === id);

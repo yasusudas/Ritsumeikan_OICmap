@@ -1753,7 +1753,7 @@
                 "ja": "10:30–15:30\n出店日は「本日のキッチンカー」で確認",
                 "en": "10:30–15:30\nSee Today's kitchen cars for the days they come"
               },
-              "sourceUrl": "https://nomnom-eats.com/",
+              "sourceUrl": null,
               "checkedAt": "2026-10-15"
             }
           ],
@@ -1774,12 +1774,12 @@
       "links": {
         "menu": null,
         "hours": null,
-        "official": "https://nomnom-eats.com/"
+        "official": null
       },
       "sources": [
         {
-          "url": "https://nomnom-eats.com/",
-          "title": "NomNom!",
+          "url": null,
+          "title": "OICランチストリート 営業カレンダー（関西移動販売車組合・メルカート）",
           "checkedAt": "2026-10-15",
           "fields": [
             "name",
@@ -1788,7 +1788,8 @@
             "services"
           ]
         }
-      ]
+      ],
+      "todayTrucks": "plaza"
     },
     {
       "entryId": "manual-1F-1792100000002-kcar02",
@@ -1810,12 +1811,12 @@
         ]
       },
       "building": {
-        "ja": "セミナーハウス出入口前",
-        "en": "Seminar House entrance"
+        "ja": "TERRACE GATE前",
+        "en": "In front of TERRACE GATE"
       },
       "summary": {
-        "ja": "セミナーハウス出入口前のOICランチストリート。出店するキッチンカーは日によって異なる。",
-        "en": "OIC Lunch Street by the Seminar House entrance. Which kitchen cars come depends on the day."
+        "ja": "TERRACE GATE前のOICランチストリート。出店するキッチンカーは日によって異なる。",
+        "en": "OIC Lunch Street in front of TERRACE GATE. Which kitchen cars come depends on the day."
       },
       "mark": {
         "src": "/food-marks/kitchen-car.svg",
@@ -1861,7 +1862,7 @@
                 "ja": "10:30–15:30\n出店日は「本日のキッチンカー」で確認",
                 "en": "10:30–15:30\nSee Today's kitchen cars for the days they come"
               },
-              "sourceUrl": "https://nomnom-eats.com/",
+              "sourceUrl": null,
               "checkedAt": "2026-10-15"
             }
           ],
@@ -1882,12 +1883,12 @@
       "links": {
         "menu": null,
         "hours": null,
-        "official": "https://nomnom-eats.com/"
+        "official": null
       },
       "sources": [
         {
-          "url": "https://nomnom-eats.com/",
-          "title": "NomNom!",
+          "url": null,
+          "title": "OICランチストリート 営業カレンダー（関西移動販売車組合・メルカート）",
           "checkedAt": "2026-10-15",
           "fields": [
             "name",
@@ -1897,7 +1898,9 @@
           ]
         }
       ],
-      "areaEntryId": "manual-1F-1792100000001-kcar01"
+      "areaEntryId": "manual-1F-1792100000001-kcar01",
+      "areaPolygon": 1,
+      "todayTrucks": "terrace"
     }
   ],
   "pinSizeReferenceEntryId": "manual-1F-1775276166712-57ri6c"

@@ -1,6 +1,11 @@
 // 「本日のキッチンカー」データ提供モジュール。
 //
-// データソースは NomNom!(https://nomnom-eats.com/)のバックエンド。
+// 現在のデータソースは OICランチストリートの営業カレンダー（lunch-street.js）。
+// NomNom!(https://nomnom-eats.com/)が運用されていないため、その代わりに使っている。
+// NomNom! へ戻すときは、FOOD_TRUCKS_SOURCE を 'nomnom' にする。
+// 切り替えずに試すときは、/api/food-trucks?source=nomnom で NomNom! 版を取得できる。
+//
+// 以下は NomNom! 版の説明。NomNom! のバックエンドは Firebase Firestore を使っている。
 // 同サイトは Firebase Firestore(project: kichen-car-app)を使っており、
 // トップページは schedules コレクションを「その日(JST)」で絞り込み、各 schedule が
 // 参照する kitchens ドキュメントを join して「本日のキッチンカー」を表示している。
@@ -10,7 +15,12 @@
 // API キーは NomNom! のクライアント JS に埋め込まれている公開キーで、秘密情報ではない
 // (Firebase Web SDK の仕様。アクセス制御は先方の Firestore セキュリティルールで担保)。
 
+import { getLunchStreetPayload } from './lunch-street.js';
+
 export const FOOD_TRUCKS_REFRESH_INTERVAL_SECONDS = 30 * 60;
+
+// 'calendar'（OICランチストリートの営業カレンダー）または 'nomnom'。
+export const FOOD_TRUCKS_SOURCE = 'calendar';
 
 const FIREBASE_PROJECT = 'kichen-car-app';
 const FIREBASE_API_KEY = 'AIzaSyBnVIM_Wm_7hL0MPargey7uzsJiCH_qCeQ';
@@ -18,7 +28,12 @@ const FIRESTORE_BASE = `https://firestore.googleapis.com/v1/projects/${FIREBASE_
 const NOMNOM_SHOP_BASE = 'https://nomnom-eats.com/shop';
 const FETCH_TIMEOUT_MS = 12_000;
 
-export async function getFoodTrucksPayload() {
+export async function getFoodTrucksPayload({ source = FOOD_TRUCKS_SOURCE } = {}) {
+  return source === 'nomnom' ? getNomNomTrucksPayload() : getLunchStreetPayload();
+}
+
+// NomNom! のバックエンドから本日分を取得する（現在は運用されていないため使っていない）。
+export async function getNomNomTrucksPayload() {
   const generatedAt = new Date();
   const { start, end, dateLabel } = jstDayWindow(generatedAt);
 
