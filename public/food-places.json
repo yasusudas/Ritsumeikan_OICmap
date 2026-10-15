@@ -1686,15 +1686,19 @@
       "entryId": "manual-1F-1792100000001-kcar01",
       "order": 10,
       "name": {
-        "ja": "キッチンカー",
-        "en": "Kitchen cars"
+        "ja": "OICランチストリート",
+        "en": "OIC Lunch Street"
       },
       "shortLabel": {
         "ja": [
-          "キッチンカー"
+          "OIC",
+          "ランチ",
+          "ストリート"
         ],
         "en": [
-          "Kitchen cars"
+          "OIC",
+          "Lunch",
+          "Street"
         ]
       },
       "building": {
@@ -1702,8 +1706,8 @@
         "en": "Sky Plaza"
       },
       "summary": {
-        "ja": "空のプラザに出店するキッチンカー。出店日は日によって異なる。",
-        "en": "Kitchen cars that set up at the Sky Plaza. Which cars come depends on the day."
+        "ja": "空のプラザのOICランチストリート。出店するキッチンカーは日によって異なる。",
+        "en": "OIC Lunch Street at the Sky Plaza. Which kitchen cars come depends on the day."
       },
       "mark": {
         "src": "/food-marks/kitchen-car.svg",
@@ -1736,8 +1740,8 @@
         {
           "id": "kitchen-car",
           "name": {
-            "ja": "キッチンカー",
-            "en": "Kitchen cars"
+            "ja": "OICランチストリート",
+            "en": "OIC Lunch Street"
           },
           "coopScheduleName": null,
           "hours": [
@@ -1790,24 +1794,28 @@
       "entryId": "manual-1F-1792100000002-kcar02",
       "order": 11,
       "name": {
-        "ja": "キッチンカー",
-        "en": "Kitchen cars"
+        "ja": "OICランチストリート",
+        "en": "OIC Lunch Street"
       },
       "shortLabel": {
         "ja": [
-          "キッチンカー"
+          "OIC",
+          "ランチ",
+          "ストリート"
         ],
         "en": [
-          "Kitchen cars"
+          "OIC",
+          "Lunch",
+          "Street"
         ]
       },
       "building": {
-        "ja": "セミナーハウス出入口前",
-        "en": "Seminar House entrance"
+        "ja": "TERRACE GATE前",
+        "en": "In front of TERRACE GATE"
       },
       "summary": {
-        "ja": "セミナーハウス出入口前に出店するキッチンカー。出店日は日によって異なる。",
-        "en": "Kitchen cars that set up by the Seminar House entrance. Which cars come depends on the day."
+        "ja": "TERRACE GATE前のOICランチストリート。出店するキッチンカーは日によって異なる。",
+        "en": "OIC Lunch Street in front of TERRACE GATE. Which kitchen cars come depends on the day."
       },
       "mark": {
         "src": "/food-marks/kitchen-car.svg",
@@ -1840,8 +1848,8 @@
         {
           "id": "kitchen-car-seminar",
           "name": {
-            "ja": "キッチンカー",
-            "en": "Kitchen cars"
+            "ja": "OICランチストリート",
+            "en": "OIC Lunch Street"
           },
           "coopScheduleName": null,
           "hours": [

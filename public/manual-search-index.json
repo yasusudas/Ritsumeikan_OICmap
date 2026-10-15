@@ -8164,9 +8164,12 @@
     {
       "id": "manual-1F-1792100000001-kcar01",
       "floorId": "1F",
-      "label": "キッチンカー",
-      "labelEn": "Kitchen cars",
+      "label": "OICランチストリート",
+      "labelEn": "OIC Lunch Street",
       "aliases": [
+        "キッチンカー",
+        "Kitchen cars",
+        "ランチストリート",
         "空のプラザ",
         "Sky Plaza"
       ],
@@ -8222,12 +8225,17 @@
     {
       "id": "manual-1F-1792100000002-kcar02",
       "floorId": "1F",
-      "label": "キッチンカー",
-      "labelEn": "Kitchen cars",
+      "label": "OICランチストリート",
+      "labelEn": "OIC Lunch Street",
       "aliases": [
+        "キッチンカー",
+        "Kitchen cars",
+        "ランチストリート",
         "セミナーハウス",
         "セミナーハウス出入口",
-        "Seminar House"
+        "Seminar House",
+        "TERRACE GATE",
+        "テラスゲート"
       ],
       "rects": [
         {
@@ -8237,8 +8245,8 @@
           "heightRatio": 0.001
         }
       ],
-      "locationHint": "セミナーハウス出入口前",
-      "locationHintEn": "Seminar House entrance"
+      "locationHint": "TERRACE GATE前",
+      "locationHintEn": "In front of TERRACE GATE"
     }
   ],
   "facilityRings": [

@@ -529,7 +529,7 @@ test('hover and selection retain mounted polygon targets until the map language 
     [cafe.areaEntryId],
   );
   // Hovering either kitchen-car rectangle lights both of them.
-  const kitchenCar = payload.places.find((p) => p.name.ja === 'キッチンカー' && !p.areaEntryId);
+  const kitchenCar = payload.places.find((p) => p.name.ja === 'OICランチストリート' && !p.areaEntryId);
   viewer.selected = null;
   viewer.hovered = kitchenCar.entryId;
   viewer.renderAreas();
