@@ -25,9 +25,9 @@
         "en": "Western-style restaurant with weekly lunch specials, draft beer and roast beef."
       },
       "mark": {
-        "src": "/food-marks/lion.png",
+        "src": "/food-marks/lion.svg",
         "fallbackSrc": "/food-marks/lion-fallback.svg",
-        "createdAt": "2026-10-14",
+        "createdAt": "2026-10-15",
         "guidelineUrl": null,
         "guidelineCheckedAt": "2026-10-14"
       },
@@ -708,9 +708,9 @@
         "en": "Co-op convenience store with bento, rice balls, bread, snacks, drinks and some halal items."
       },
       "mark": {
-        "src": "/food-marks/meal-shop.png",
+        "src": "/food-marks/meal-shop.svg",
         "fallbackSrc": "/food-marks/meal-shop-fallback.svg",
-        "createdAt": "2026-10-14",
+        "createdAt": "2026-10-15",
         "guidelineUrl": null,
         "guidelineCheckedAt": "2026-10-14"
       },
@@ -823,9 +823,9 @@
         "en": "Unstaffed 24-hour convenience store. Bento lunches are sold at midday during term."
       },
       "mark": {
-        "src": "/food-marks/mini-meal-shop.png",
+        "src": "/food-marks/mini-meal-shop.svg",
         "fallbackSrc": "/food-marks/mini-meal-shop-fallback.svg",
-        "createdAt": "2026-10-14",
+        "createdAt": "2026-10-15",
         "guidelineUrl": null,
         "guidelineCheckedAt": "2026-10-14"
       },
@@ -983,9 +983,9 @@
         "en": "Coffeehouse serving coffee drinks and light food, with Mobile Order & Pay."
       },
       "mark": {
-        "src": "/food-marks/coffee.png",
+        "src": "/food-marks/coffee.svg",
         "fallbackSrc": "/food-marks/coffee-fallback.svg",
-        "createdAt": "2026-10-14",
+        "createdAt": "2026-10-15",
         "guidelineUrl": null,
         "guidelineCheckedAt": "2026-10-14"
       },
@@ -1338,9 +1338,9 @@
         "en": "On-campus convenience store with bento and hot snacks for the lunch break."
       },
       "mark": {
-        "src": "/food-marks/convenience.png",
+        "src": "/food-marks/convenience.svg",
         "fallbackSrc": "/food-marks/convenience-fallback.svg",
-        "createdAt": "2026-10-14",
+        "createdAt": "2026-10-15",
         "guidelineUrl": null,
         "guidelineCheckedAt": "2026-10-14"
       },
@@ -1592,9 +1592,9 @@
         "en": "Sister shop of Jinrui Mina Menrui, serving light-broth ramen in large mug-style bowls."
       },
       "mark": {
-        "src": "/food-marks/ramen.png",
+        "src": "/food-marks/ramen.svg",
         "fallbackSrc": "/food-marks/ramen-fallback.svg",
-        "createdAt": "2026-10-14",
+        "createdAt": "2026-10-15",
         "guidelineUrl": null,
         "guidelineCheckedAt": "2026-10-14"
       },

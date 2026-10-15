@@ -7,8 +7,10 @@
   "icons": [
     {
       "key": "lion",
-      "subject": "a simple golden fork and knife framing a small roast beef plate",
-      "color": "dark amber and warm gold"
+      "subject": "the GINZA LION emblem without the GINZA text: a star between two rampant lions raising beer mugs, with LION below",
+      "color": "two tones: the logo brown #241613 on a white circle",
+      "format": "svg",
+      "note": "Traced from the GARDEN TERRACE LION logo image (394px): the emblem was enlarged 8x, its outlines followed at the 170/255 gray level and simplified, and the star replaced by a 10-point polygon through the traced tips. LION is redrawn from measurements with straight edges and a smooth O; the GINZA text and the GARDEN TERRACE wordmark are left out (replaces the generated lion.png), 2026-10-15. The site owner chose to use the official logo without permission; this is the exception in section 4.4 of the food guide spec."
     },
     {
       "key": "cafeteria",
@@ -22,28 +24,38 @@
     },
     {
       "key": "meal-shop",
-      "subject": "a teal grocery tote holding a triangular rice ball",
-      "color": "deep teal and light blue"
+      "subject": "a co-op convenience store front in one blue family (darker cornice and kickplate, soft ground shadow): a white sign with four rings, glass windows with reflections showing an onigiri with nori, PET bottles, a can and small packs, and a framed sliding glass door",
+      "color": "facade #1E9AD6, cornice, kickplate and door frame #167DB3, the four univ. CO-OP colors (#20ACE8, #F06B03, #FDD104, #009A44) for the rings and goods, glass #DDF2FB",
+      "format": "svg",
+      "note": "Drawn by hand as flat SVG without outlines (replaces the generated meal-shop.png), 2026-10-15. The four rings and goods echo the colors of the univ. CO-OP logo; the logo itself is not reproduced."
     },
     {
       "key": "mini-meal-shop",
-      "subject": "a mustard yellow rectangular bento box with three clear compartments",
-      "color": "dark mustard and warm yellow"
+      "subject": "a bento box in the same view as the earlier generated icon: rice with an umeboshi on the left, broccoli and two cherry tomatoes top right, a grilled meat slab on frilly lettuce bottom right",
+      "color": "box rim #F2B035, front #D48A17, compartment floor #8F5B0C; white rice, umeboshi #C92A41, broccoli #3F9D3B, tomatoes #E63B30, lettuce #8DC44B, meat #A9531F",
+      "format": "svg",
+      "note": "Drawn by hand as flat SVG without outlines, using the earlier generated mini-meal-shop.png as the motif (replaces it), 2026-10-15"
     },
     {
       "key": "coffee",
-      "subject": "a simple deep green takeaway coffee cup with a curved handle and one short steam line",
-      "color": "forest green and cream"
+      "subject": "the Starbucks siren from SVG Repo (starbucks-svgrepo-com.svg), recolored",
+      "color": "single color #00643C (Starbucks green)",
+      "format": "svg",
+      "note": "Taken from SVG Repo at the site owner's request, extra attributes removed and the fill set to #00643C (replaces the generated coffee.png), 2026-10-15. The site owner chose to use the official logo without permission; this is the exception in section 4.4 of the food guide spec."
     },
     {
       "key": "convenience",
-      "subject": "a simple orange convenience-store shopping basket containing a sandwich and a drink carton",
-      "color": "dark orange and green"
+      "subject": "the 7-Eleven logo (circle, keystone, the 7 and ELEVEn) reproduced in its own colors",
+      "color": "the logo colors sampled from the image: green #018837, orange #FF6600, red #FF0000, white",
+      "format": "svg",
+      "note": "Drawn as SVG from the shapes measured on the logo image (replaces the generated convenience.png), 2026-10-15. The site owner chose to use the official logo without permission; this is the exception in section 4.4 of the food guide spec."
     },
     {
       "key": "ramen",
-      "subject": "a burgundy noodle bowl with two dark chopsticks and a small curl of noodles",
-      "color": "burgundy and warm cream"
+      "subject": "Minamen Cafe's ramen in its white mug-style bowl with an angled handle: two chashu slices, a halved egg, green onion and bamboo shoots",
+      "color": "colors sampled from the photo: broth #8e3b01, chashu #eea094/#d0877b, egg #f5ecd3 with yolk #d8360f, green onion #f1efd2/#b5cf6a, bamboo shoots #c48a2a/#a6621a, white bowl, dark brown outline #3b2a20",
+      "format": "svg",
+      "note": "Drawn by hand as SVG from a photo of the shop's ramen, in the photo's colors (replaces the generated ramen.png), 2026-10-15"
     },
     {
       "key": "cafe",
@@ -54,10 +66,10 @@
     },
     {
       "key": "kitchen-car",
-      "subject": "a simple mustard-yellow kitchen car with a red awning and a cream serving window",
-      "color": "mustard yellow and red",
+      "subject": "a kitchen car redrawn as flat filled shapes from a line icon the site owner supplied: van body with a slanted windshield, a roof sign board, a scalloped awning over the serving window with a counter, two wheels and a menu board stand in front",
+      "color": "chosen for this site: body teal #2A9D8F, sign board and tires #264653, awning coral #E76F51 and white, interior #3E2C28, counter #E9C46A, stand #F4A261 with a #FFF6E8 panel, cab glass #BDE4EC, hubs #F1F1EE",
       "format": "svg",
-      "note": "Drawn by hand as SVG in the same flat style (not generated with image_gen), 2026-10-15"
+      "note": "Geometry measured from the supplied line icon (300px) and drawn without outlines, as the site owner asked (replaces the earlier hand-drawn mustard kitchen car), 2026-10-15"
     }
   ],
   "promptTemplate": "Use case: logo-brand. Asset type: tiny food-place map icon. Generate one original flat pictorial icon: {subject}. Color palette: {color}. Transparent background. Square composition, one centered large bold silhouette filling 85 percent of the image; very thick simple shapes, crisp edges, readable at 16 pixels. Consistent friendly geometric vector-like style. No writing, no letters, no numbers, no logos, no brand emblems, no decorative border, no pin shape, no shadows, no gradients, no realistic detail. This is a temporary generic icon for an unofficial campus map, not an official brand logo."
