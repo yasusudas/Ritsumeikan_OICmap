@@ -146,10 +146,10 @@ test('co-op failure hides only co-op hours, while registered hours stay visible'
   assert.match(page, /href="\/en\/#/);
 });
 
-test('the food pages place campus stores ahead of today’s trucks and use two columns from 721px', () => {
+test('the food pages place today’s trucks ahead of the campus stores and use two columns from 721px', () => {
   for (const file of ['../food/index.html', '../en/food/index.html']) {
     const html = readFileSync(new URL(file, import.meta.url), 'utf8');
-    assert.equal(html.indexOf('data-food-places') < html.indexOf('data-food-trucks'), true, file);
+    assert.equal(html.indexOf('data-food-trucks') < html.indexOf('data-food-places'), true, file);
   }
   assert.match(pagesCss, /@media \(min-width: 721px\)[\s\S]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
   assert.doesNotMatch(pagesCss, /\.food-place[\s\S]{0,400}box-shadow/);

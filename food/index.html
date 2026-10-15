@@ -15,7 +15,7 @@
     <link rel="alternate" hreflang="en" href="https://rits-oic-map.app/en/food/" />
     <link rel="alternate" hreflang="x-default" href="https://rits-oic-map.app/food/" />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="立命館OICの学内の食事場所と、本日出店しているキッチンカーを確認できます。" />
+    <meta name="description" content="立命館OICの本日出店しているキッチンカーと、学内の食事場所を確認できます。" />
     <title>OICフード | 立命館OICマップ</title>
     <script type="module" src="/src/legal-page.js"></script>
     <script type="module" src="/src/food-page.js"></script>
@@ -59,29 +59,26 @@
     <main id="main" class="page food-main">
       <div class="page-inner">
         <header class="page-head">
-          <p class="page-eyebrow">FOOD</p>
           <h1 class="page-title">OICフード</h1>
-          <p class="page-lead">学内の食事場所と、本日出店しているキッチンカーを確認できます。</p>
+          <p class="page-lead">本日出店しているキッチンカーと、学内の食事場所を確認できます。</p>
         </header>
-
-        <section class="section food-places" aria-labelledby="food-places-title">
-          <div class="section-head">
-            <p class="section-eyebrow">CAMPUS</p>
-            <h2 class="section-title" id="food-places-title">学内の食事場所</h2>
-          </div>
-          <div class="section-body" data-food-places>
-            <p class="food-state">食事場所を読み込んでいます…</p>
-          </div>
-        </section>
 
         <section class="section food-board" aria-labelledby="food-board-title">
           <div class="section-head food-board-head">
-            <p class="section-eyebrow">TODAY</p>
             <h2 class="section-title food-board-title" id="food-board-title">本日のキッチンカー</h2>
             <p class="food-board-date" data-food-date hidden></p>
           </div>
           <div class="section-body food-board-body" data-food-trucks aria-live="polite">
             <p class="food-state">本日のキッチンカーを読み込んでいます…</p>
+          </div>
+        </section>
+
+        <section class="section food-places" aria-labelledby="food-places-title">
+          <div class="section-head">
+            <h2 class="section-title" id="food-places-title">店舗一覧</h2>
+          </div>
+          <div class="section-body" data-food-places>
+            <p class="food-state">食事場所を読み込んでいます…</p>
           </div>
         </section>
       </div>
