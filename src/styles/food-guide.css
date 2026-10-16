@@ -249,6 +249,21 @@ body[data-app-mode='viewer'] {
   justify-content: center;
   width: 100%;
   touch-action: none;
+  cursor: grab;
+}
+
+.food-panel.is-dragging .food-sheet-handle {
+  cursor: grabbing;
+}
+
+.food-panel.is-dragging {
+  user-select: none;
+}
+
+/* The handle dismiss plays its own slide; the 6px fade would fight it. */
+.food-panel.is-dismissing {
+  animation: none !important;
+  pointer-events: none;
 }
 
 .food-sheet-handle > span {
