@@ -16,7 +16,6 @@ const LABELS = {
     modeMonorail: '曜日種別を選び、公式ページ内の該当列を確認',
     modeDate: '表示日つきで公式ページへ',
     officialPage: '公式ページ',
-    serviceStatusEyebrow: 'Service status',
     serviceStatusHeading: '運行情報を確認',
     timetableFor: (station, direction, label) => `${station} ${direction} ${label}の時刻表`,
     newTab: '（新しいタブで開く）',
@@ -39,7 +38,6 @@ const LABELS = {
     modeMonorail: 'Choose a day type and check the matching column on the official page',
     modeDate: 'Open the official page with a display date',
     officialPage: 'Official page',
-    serviceStatusEyebrow: 'Service status',
     serviceStatusHeading: 'Service Status',
     timetableFor: (station, direction, label) => `${station}, ${direction}: ${label} timetable`,
     newTab: ' (opens in a new tab)',
@@ -371,10 +369,9 @@ function renderExternalLink(url, label, className = 'timetable-quiet-link') {
   return `<a class="${className} external" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
 }
 
-function renderSectionHead(id, eyebrow, title) {
+function renderSectionHead(id, title) {
   return `
     <div class="section-head">
-      <p class="section-eyebrow">${escapeHtml(eyebrow)}</p>
       <h2 id="${escapeHtml(id)}" class="section-title">${escapeHtml(title)}</h2>
     </div>
   `;
@@ -406,7 +403,7 @@ function renderServiceStatusCard() {
   }).join('');
 
   elements.serviceStatus.innerHTML = `
-    ${renderSectionHead('service-status-title', t('serviceStatusEyebrow'), t('serviceStatusHeading'))}
+    ${renderSectionHead('service-status-title', t('serviceStatusHeading'))}
     <div class="section-body">
       <ul class="rule-list timetable-status-list">${rows}</ul>
     </div>

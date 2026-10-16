@@ -96,23 +96,6 @@ a {
 }
 
 /* ---------------------------------------------------------------------
-   Eyebrow: small uppercase Latin label above a Japanese heading
-   --------------------------------------------------------------------- */
-
-.eyebrow,
-.page-eyebrow,
-.section-eyebrow {
-  margin: 0;
-  color: var(--c-ink-3);
-  font-family: var(--font-latin);
-  font-size: var(--fs-2xs);
-  font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-eyebrow);
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-/* ---------------------------------------------------------------------
    Site header (sub pages). The map viewer composes its own header from
    the same pieces (brand, lang toggle, menu).
    --------------------------------------------------------------------- */

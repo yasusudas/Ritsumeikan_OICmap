@@ -158,7 +158,6 @@ function renderLiveServiceStatus() {
 
   elements.liveServiceStatus.innerHTML = `
     <div class="section-head">
-      <p class="section-eyebrow">Service status</p>
       <h2 id="live-status-title" class="section-title">運行情報</h2>
       ${
         updatedAt

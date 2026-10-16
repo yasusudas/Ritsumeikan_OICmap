@@ -74,17 +74,6 @@ body {
   object-fit: cover;
 }
 
-.notice-eyebrow {
-  margin: 0 0 12px;
-  color: var(--c-ink-3);
-  font-family: var(--font-latin);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
 .notice-title {
   margin: 0;
   font-size: clamp(1.75rem, 1.25rem + 2vw, 2.625rem);
