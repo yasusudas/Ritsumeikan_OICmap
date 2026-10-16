@@ -1645,7 +1645,7 @@
               "validFrom": null,
               "validThrough": null,
               "text": {
-                "ja": "平日 10:30–20:30（ラストオーダー20:00）\n土日祝 11:00–20:00（ラストオーダー19:30）",
+                "ja": "平日 10:30–20:30（L.O. 20:00）\n土日祝 11:00–20:00（L.O. 19:30）",
                 "en": "Mon–Fri 10:30–20:30 (last order 20:00); weekends and holidays 11:00–20:00 (last order 19:30)."
               },
               "sourceUrl": null,

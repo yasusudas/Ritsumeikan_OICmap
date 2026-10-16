@@ -11,6 +11,7 @@
 body[data-app-mode='viewer'] {
   --food-pin-size: 40px;
   --food-motion: var(--ls-pop-dur);
+  --food-swoosh: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ---------------------------------------------------------------------
@@ -557,7 +558,7 @@ body[data-app-mode='viewer'] {
 .food-version-title {
   margin: 14px 0 2px;
   color: var(--c-ink);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   font-weight: var(--fw-medium);
   line-height: 1.4;
 }
@@ -769,6 +770,24 @@ body[data-app-mode='viewer'] {
 .food-panel.is-closing {
   pointer-events: none;
   animation: food-panel-close var(--food-motion) var(--ease) both;
+}
+
+/* Phone bottom sheet: opening slides it up from the bottom with a swoosh. The
+   handle drag, its glide and the slide-off dismissal are in the viewer. */
+@keyframes food-sheet-open {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .food-panel.is-narrow:not([hidden]):not(.is-closing) {
+    animation: food-sheet-open 420ms var(--food-swoosh);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
