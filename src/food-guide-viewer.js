@@ -693,15 +693,17 @@ export class FoodGuideViewer {
           fetchFailed: Boolean(service.coopScheduleName && this.hours.error),
           compact,
         });
-        if (block.kind === 'message') return `${heading}<p>${escape(block.text)}</p>${status}`;
+        // The status chip comes first, right under the heading (as on the food page).
+        if (block.kind === 'message') return `${heading}${status}<p>${escape(block.text)}</p>`;
         if (block.kind === 'coop') {
           const source = compact
             ? ''
             : `<a class="food-source-link external" href="${escape(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.coopSource') + ' ' + t('food.external'))}">${escape(t('food.coopSource'))}</a>`;
-          return `${heading}<p>${escape(block.dateLabel)}\n${escape(block.text)}</p>${status}${source}`;
+          return `${heading}${status}<p>${escape(block.dateLabel)}\n${escape(block.text)}</p>${source}`;
         }
         return (
           heading +
+          status +
           block.versions
             .map((version) => {
               if (compact) {
@@ -711,10 +713,10 @@ export class FoodGuideViewer {
                     : '';
                 return `<p>${prefix}${escape(version.sentence)}</p>`;
               }
-              return `${version.title ? `<h4 class="food-version-title">${escape(version.title)}</h4>` : ''}<p>${escape(version.text)}</p>`;
+              const text = block.dateLabel ? `${block.dateLabel}\n${version.text}` : version.text;
+              return `${version.title ? `<h4 class="food-version-title">${escape(version.title)}</h4>` : ''}<p>${escape(text)}</p>`;
             })
-            .join('') +
-          status
+            .join('')
         );
       })
       .join('');

@@ -1740,6 +1740,7 @@
       "services": [
         {
           "id": "kitchen-car",
+          "showToday": true,
           "name": {
             "ja": "OICランチストリート",
             "en": "OIC Lunch Street"
@@ -1751,8 +1752,8 @@
               "validFrom": null,
               "validThrough": null,
               "text": {
-                "ja": "10:30–15:30\n出店日は「本日のキッチンカー」で確認",
-                "en": "10:30–15:30\nSee Today's kitchen cars for the days they come"
+                "ja": "10:30–15:30",
+                "en": "10:30–15:30"
               },
               "sourceUrl": null,
               "checkedAt": "2026-10-15"
@@ -1849,6 +1850,7 @@
       "services": [
         {
           "id": "kitchen-car-seminar",
+          "showToday": true,
           "name": {
             "ja": "OICランチストリート",
             "en": "OIC Lunch Street"
@@ -1860,8 +1862,8 @@
               "validFrom": null,
               "validThrough": null,
               "text": {
-                "ja": "10:30–15:30\n出店日は「本日のキッチンカー」で確認",
-                "en": "10:30–15:30\nSee Today's kitchen cars for the days they come"
+                "ja": "10:30–15:30",
+                "en": "10:30–15:30"
               },
               "sourceUrl": null,
               "checkedAt": "2026-10-15"

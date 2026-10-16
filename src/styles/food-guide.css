@@ -533,8 +533,9 @@ body[data-app-mode='viewer'] {
   overflow-wrap: anywhere;
 }
 
+/* The status chip leads the hours, just under the heading. */
 .food-hours-list .food-status {
-  margin-top: var(--s-2);
+  margin-bottom: var(--s-2);
 }
 
 /* Like the timetable badges: white, or crimson tint for emphasis. */

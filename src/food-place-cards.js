@@ -159,21 +159,23 @@ export function renderFoodHours(place, { lang, payload = null, loading = false, 
         payload,
         fetchFailed: Boolean(service.coopScheduleName && fetchFailed),
       });
-      if (block.kind === 'message') return `${heading}<p>${escapeHtml(block.text)}</p>${status}`;
+      // The status chip comes first, right under the heading, so it sits at the same place on every card.
+      if (block.kind === 'message') return `${heading}${status}<p>${escapeHtml(block.text)}</p>`;
       if (block.kind === 'coop') {
         const source = isHttpUrl(block.sourceUrl)
           ? `<a class="food-source-link external" href="${escapeHtml(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${translate('food.coopSource')} ${translate('food.external')}`)}">${escapeHtml(translate('food.coopSource'))}</a>`
           : '';
-        return `${heading}<p>${escapeHtml(block.dateLabel)}\n${escapeHtml(block.text)}</p>${status}${source}`;
+        return `${heading}${status}<p>${escapeHtml(block.dateLabel)}\n${escapeHtml(block.text)}</p>${source}`;
       }
       return (
         heading +
+        status +
         block.versions
           .map(
             (version) =>
-              `${version.title ? `<h5 class="food-version-title">${escapeHtml(version.title)}</h5>` : ''}<p>${escapeHtml(version.text)}</p>`,
+              `${version.title ? `<h5 class="food-version-title">${escapeHtml(version.title)}</h5>` : ''}<p>${escapeHtml(block.dateLabel ? `${block.dateLabel}\n${version.text}` : version.text)}</p>`,
           )
-          .join('') + status
+          .join('')
       );
     })
     .join('');
@@ -236,7 +238,10 @@ function renderCard(place, options) {
 export function renderFoodPlaceList(places, options) {
   if (!foodPlacesReady(places)) return '';
   const ordered = places.slice().sort((a, b) => a.order - b.order);
-  return `<ul class="food-place-grid">${ordered.map((place) => `<li>${renderCard(place, options)}</li>`).join('')}</ul>`;
+  // The lunch-street spots have short cards; on two columns two of them stack in one cell (pages.css).
+  return `<ul class="food-place-grid">${ordered
+    .map((place) => `<li${place.todayTrucks ? ' class="is-compact"' : ''}>${renderCard(place, options)}</li>`)
+    .join('')}</ul>`;
 }
 
 export function renderFoodPlaceStatus(lang, kind) {

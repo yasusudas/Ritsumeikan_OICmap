@@ -71,6 +71,8 @@ test('campus cards keep every comparison field and do not absorb the food-truck 
   assert.doesNotMatch(html, /food-truck/);
   assert.equal(html.indexOf('GARDEN TERRACE LION') < html.indexOf('みなめんcafe'), true);
   assert.equal([...html.matchAll(/<h3>/g)].length, 11);
+  // The two lunch-street spots are marked so that, on two columns, they stack in one cell.
+  assert.equal([...html.matchAll(/<li class="is-compact">/g)].length, 2);
   // Three places have no visitor information (all answers 'na') and omit the usage section.
   for (const label of ['営業時間', '地図で見る']) {
     assert.equal([...html.matchAll(new RegExp(label, 'g'))].length >= 8, true, label);

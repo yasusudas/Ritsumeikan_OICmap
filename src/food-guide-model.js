@@ -411,6 +411,8 @@ export function describeFoodServiceHours(
   const shown = versions.slice(0, compact ? 1 : undefined);
   return {
     kind: 'versions',
+    // a service open on changing days shows today's date above its hours
+    dateLabel: service.showToday ? formatFoodCalendarDate(japaneseDate(now), lang) : null,
     versions: shown.map((version) => {
       const period = [version.validFrom, version.validThrough].filter(Boolean).join('〜');
       const title =

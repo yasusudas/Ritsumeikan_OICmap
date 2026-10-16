@@ -659,12 +659,6 @@ body.subpage .legal-section {
   line-height: var(--lh-snug);
 }
 
-.food-source {
-  margin: 40px 0 0;
-  color: var(--c-ink-3);
-  font-size: var(--fs-sm);
-  line-height: var(--lh-snug);
-}
 
 /* Campus food places: a grey sheet per place. Section labels, the status
    chip, visitor information and source links are shared with the map
@@ -672,14 +666,18 @@ body.subpage .legal-section {
 .food-place-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  align-items: start;
   gap: 16px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* Places differ a lot in length, so each card keeps its own height. */
+/* Cards side by side share the height of the taller one; the buttons and the
+   hours link sit at the bottom, so they line up across the row. */
+.food-place-grid > li {
+  display: grid;
+}
+
 .food-place {
   display: flex;
   flex-direction: column;
@@ -745,6 +743,7 @@ body.subpage .legal-section {
 /* The primary action first, then the official links, in one row. */
 .food-place-actions {
   display: flex;
+  margin-top: auto;
   flex-wrap: wrap;
   gap: 8px;
 }
@@ -781,6 +780,56 @@ body.subpage .food-place-retry:hover {
   .food-place-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
+  }
+
+  /* A card without the hours link keeps that row's space under its buttons,
+     so they line up with the card beside it: the card gap (20px), the link
+     row's -8px pull-up and its 48px touch height (food-guide.css). */
+  .food-place:not(:has(.food-sources)) .food-place-actions {
+    margin-bottom: calc(20px - 8px + 48px);
+  }
+
+  /* Short cards (the lunch-street spots) stack two to a cell: every other
+     card spans two row tracks and a short one spans one, so two short cards
+     share the height of the card beside them. Inside, the hours and the map
+     button sit side by side to keep the card low. */
+  .food-place-grid > li {
+    grid-row: span 2;
+  }
+
+  .food-place-grid > li.is-compact {
+    grid-row: span 1;
+  }
+
+  .food-place-grid > .is-compact .food-place {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "brand brand"
+      "summary summary"
+      "hours actions";
+    gap: 12px 16px;
+    padding: 20px 24px;
+  }
+
+  .food-place-grid > .is-compact .food-place-brand {
+    grid-area: brand;
+  }
+
+  .food-place-grid > .is-compact .food-place-summary {
+    grid-area: summary;
+  }
+
+  .food-place-grid > .is-compact .food-place-block {
+    grid-area: hours;
+    align-self: end;
+  }
+
+  .food-place-grid > .is-compact .food-place-actions {
+    grid-area: actions;
+    align-self: end;
+    margin: 0;
   }
 }
 

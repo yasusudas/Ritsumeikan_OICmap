@@ -27,7 +27,6 @@ const STRINGS = {
     empty: '本日の出店予定はありません。',
     outOfPeriod: '営業カレンダーの期間外です。最新の出店予定は公式の案内をご確認ください。',
     error: '本日のキッチンカー情報を取得できませんでした。',
-    source: 'データ提供',
     noImage: 'NO IMAGE',
     metaSeparator: ' / ',
     spots: { terrace: 'TERRACE GATE前', plaza: '空のプラザ' },
@@ -36,7 +35,6 @@ const STRINGS = {
     empty: 'No food trucks are scheduled today.',
     outOfPeriod: 'Today is outside the published schedule. Please check the official announcement.',
     error: 'Could not load today’s food trucks.',
-    source: 'Source',
     noImage: 'NO IMAGE',
     metaSeparator: ' / ',
     spots: { terrace: 'In front of TERRACE GATE', plaza: 'Sky Plaza' },
@@ -138,16 +136,8 @@ function render(payload) {
     ? `<ul class="food-trucks">${trucks.map((truck) => renderTruck(truck, hours)).join('')}</ul>`
     : renderState(payload?.outOfPeriod ? t.outOfPeriod : t.empty, 'is-empty');
 
-  // 出典にリンクがないとき（営業カレンダー）は名前だけを示す。
-  const sourceUrl = safeHttpUrl(payload?.source?.url);
-  const sourceName = payload?.source?.name || sourceUrl;
-  const source = sourceUrl
-    ? `<p class="food-source">${escapeHtml(t.source)}: <a class="text-link external" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceName)}</a></p>`
-    : sourceName
-      ? `<p class="food-source">${escapeHtml(t.source)}: ${escapeHtml(sourceName)}</p>`
-      : '';
-
-  container.innerHTML = `${body}${source}`;
+  // 出典は情報源・権利のページ（/sources/）にまとめている。
+  container.innerHTML = body;
 }
 
 async function refresh() {
