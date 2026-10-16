@@ -75,8 +75,8 @@ test('みなめんcafe follows the hours on its notice: handwritten corrections,
   assert.equal(at('2027-01-11T01:45:00Z'), 'outside');
   assert.equal(at('2027-01-11T02:00:00Z'), 'within');
   const text = minamen.hours[0].text;
-  assert.match(text.ja, /平日 10:30–20:30（ラストオーダー20:00）/);
-  assert.match(text.ja, /土日祝 11:00–20:00（ラストオーダー19:30）/);
+  assert.match(text.ja, /平日 10:30–20:30（L\.O\. 20:00）/);
+  assert.match(text.ja, /土日祝 11:00–20:00（L\.O\. 19:30）/);
   assert.match(text.en, /last order 20:00/);
   assert.match(text.en, /last order 19:30/);
 });
