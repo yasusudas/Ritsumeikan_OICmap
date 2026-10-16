@@ -70,6 +70,8 @@ test('invalid stores, missing images and mixed co-op/manual hours fail before pu
     (p) => (p.places[0].entryId = 'missing'),
     (p) => (p.pinSizeReferenceEntryId = 'missing'),
     (p) => (p.places[0].mark = null),
+    (p) => (p.places[0].mark.size = 1.2),
+    (p) => (p.places[0].mark.size = '88%'),
     (p) => (p.places[1].services[0].hours = [p.places[0].services[0].hours[0]]),
     (p) => p.places[0].services[0].hours.push(p.places[0].services[0].hours[0]),
   ]) {

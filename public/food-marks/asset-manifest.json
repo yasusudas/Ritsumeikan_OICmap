@@ -2,7 +2,7 @@
   "tool": "Built-in image_gen",
   "createdAt": "2026-10-14",
   "style": "Original food motifs, transparent background, no letters, no official logos",
-  "pngSize": "The generated PNGs (1254x1254) were downscaled to 256x256 on 2026-10-15 so phones can redraw the pins while zooming; the originals remain in git history (commit 148d3c5).",
+  "pngSize": "The generated PNGs (1254x1254) were downscaled to 256x256 on 2026-10-15 so phones can redraw the pins while zooming; the originals remain in git history (commit 148d3c5). By 2026-10-16 every generated PNG mark had been replaced with an SVG; the entries below describe the current marks.",
   "pinShadow": "pin-shadow.png is the pin body and its shadow, rendered from the pin outline (not generated with image_gen), 2026-10-15.",
   "icons": [
     {
@@ -14,13 +14,17 @@
     },
     {
       "key": "cafeteria",
-      "subject": "a simple deep green lunch tray with a rice bowl and one side dish",
-      "color": "deep green and mint"
+      "subject": "a teishoku on a green cafeteria tray: a white plate with the co-op's red and grey rim strokes holding a hamburg steak with melted cheese sauce and shredded cabbage, a bowl of rice, a bowl of miso soup with tofu, wakame and green onion, and chopsticks",
+      "color": "tray #4FA676 / #2F7A52, plate white with #D4543F and #5D5D5D strokes, patty #8A4626, cheese #F4D681, cabbage #D3E79D, miso bowl #A8352B, soup #C98A45",
+      "format": "svg",
+      "note": "Drawn by hand as flat SVG without outlines, after the OIC Cafeteria photo (hamburg with cheese sauce, co-op tableware) and the old green tray motif (replaces the generated cafeteria.png), 2026-10-16"
     },
     {
       "key": "food-park",
-      "subject": "a coral red awning above three simple food bowls",
-      "color": "dark coral and orange"
+      "subject": "the OIC FOOD PARK text logo from the pillar in the food court: OIC in tall outline letters, FOOD and PARK in a condensed sans, centred on a transparent background (the by.nadeshico line is left out)",
+      "color": "lettering #2C2E31, no background",
+      "format": "svg",
+      "note": "Set in Futura Condensed Medium (a macOS system font), converted to paths with Inkscape and laid out after a photo of the sign; OIC is the same face stretched to 1.45x height and drawn as a 1.05-unit outline; the panel behind the text was removed and the text enlarged to the full icon height at the site owner's request (replaces the generated food-park.png), 2026-10-16. The site owner chose to use the shop's logo; this is the exception in section 4.4 of the food guide spec."
     },
     {
       "key": "meal-shop",
@@ -59,10 +63,10 @@
     },
     {
       "key": "cafe",
-      "subject": "a crepe with cream and a strawberry in a rose paper cone",
-      "color": "dusty rose and warm gold",
+      "subject": "a frappuccino-style iced coffee in a clear plastic cup with a dome lid, whipped cream, caramel drizzle and a pink straw, and in front of it a crepe in a dotted pink paper wrapper with whipped cream, strawberries (one cut in half), chocolate drizzle and a mint leaf",
+      "color": "drink #CFA175 with caramel #E3AC5A, cup and dome #E1ECF1 / #E3EEF3, straw #EC6A86; crepe #EDBB72, paper #F4A7B9 with white dots, strawberries #E2323C",
       "format": "svg",
-      "note": "Drawn by hand as SVG in the same flat style (not generated with image_gen), 2026-10-15"
+      "note": "Drawn by hand as flat SVG without outlines; no brand marks (replaces the earlier single crepe), 2026-10-16"
     },
     {
       "key": "kitchen-car",

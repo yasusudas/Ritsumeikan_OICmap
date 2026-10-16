@@ -107,7 +107,10 @@ export function validateFoodPlaces(payload, entries) {
         !DATE.test(place.mark.createdAt) ||
         !DATE.test(place.mark.guidelineCheckedAt) ||
         (place.mark.guidelineUrl !== null &&
-          !isHttpUrl(place.mark.guidelineUrl)))
+          !isHttpUrl(place.mark.guidelineUrl)) ||
+        // optional share of the pin head the mark fills (default .72)
+        (place.mark.size !== undefined &&
+          !(typeof place.mark.size === 'number' && place.mark.size >= 0.5 && place.mark.size <= 0.95)))
     )
       fail('mark metadata');
     if (place.links?.official !== null && !isHttpUrl(place.links?.official)) fail('official link');

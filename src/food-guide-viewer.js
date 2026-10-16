@@ -364,7 +364,9 @@ export class FoodGuideViewer {
   // around both; the card and the list show the mark in a plain circle.
   markerVisual(place, { heading = false } = {}) {
     const shape = heading ? '' : PIN_SHAPE;
-    return `<span class="food-badge${heading ? ' is-heading' : ''}">${shape}<img src="${escape(place.mark.src)}" alt="" draggable="false"/></span>`;
+    // A mark may fill more of the head than the usual 72% (a tall text logo).
+    const size = place.mark.size ? ` style="--food-mark-size:${Math.round(place.mark.size * 100)}%"` : '';
+    return `<span class="food-badge${heading ? ' is-heading' : ''}"${size}>${shape}<img src="${escape(place.mark.src)}" alt="" draggable="false"/></span>`;
   }
   wireImageFallback(root) {
     root.querySelectorAll('.food-badge img').forEach((img) =>

@@ -94,8 +94,8 @@ body[data-app-mode='viewer'] {
 
 .food-badge img {
   position: relative;
-  width: 72%;
-  height: 72%;
+  width: var(--food-mark-size, 72%);
+  height: var(--food-mark-size, 72%);
   object-fit: contain;
 }
 

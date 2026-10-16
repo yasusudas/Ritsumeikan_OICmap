@@ -262,9 +262,9 @@
         "en": "The co-op cafeteria, with mains, sides, noodles and rice bowls on a weekly menu."
       },
       "mark": {
-        "src": "/food-marks/cafeteria.png",
+        "src": "/food-marks/cafeteria.svg",
         "fallbackSrc": "/food-marks/cafeteria-fallback.svg",
-        "createdAt": "2026-10-14",
+        "createdAt": "2026-10-16",
         "guidelineUrl": null,
         "guidelineCheckedAt": "2026-10-14"
       },
@@ -392,7 +392,7 @@
       "mark": {
         "src": "/food-marks/cafe.svg",
         "fallbackSrc": "/food-marks/cafe-fallback.svg",
-        "createdAt": "2026-10-15",
+        "createdAt": "2026-10-16",
         "guidelineUrl": null,
         "guidelineCheckedAt": "2026-10-15"
       },
@@ -504,9 +504,10 @@
         "en": "Food court with six booths: Asian dishes, iron-pot dishes, pasta, curry, omurice and crepes."
       },
       "mark": {
-        "src": "/food-marks/food-park.png",
+        "src": "/food-marks/food-park.svg",
         "fallbackSrc": "/food-marks/food-park-fallback.svg",
-        "createdAt": "2026-10-14",
+        "size": 0.88,
+        "createdAt": "2026-10-16",
         "guidelineUrl": null,
         "guidelineCheckedAt": "2026-10-14"
       },
