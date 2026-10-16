@@ -324,6 +324,21 @@ body[data-app-mode="viewer"] .search-highlight-pin {
   }
 }
 
+/* Search area: the same crimson as the pin, fading in once */
+body[data-app-mode="viewer"] .search-highlight-area {
+  --search-area-color: var(--ls-red);
+  animation: loose-area-in 360ms ease-out both;
+}
+
+@keyframes loose-area-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* ---------------------------------------------------------------------
    Wide screens (with enough height): the controls float around the map
    --------------------------------------------------------------------- */

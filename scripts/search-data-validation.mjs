@@ -349,12 +349,14 @@ export function validateSearchData(payload) {
       });
     }
 
-    if (entry.polygons !== undefined) {
-      if (!Array.isArray(entry.polygons)) {
-        errors.push(createIssue('invalid-polygons', `${path}.polygons`, 'polygonsは配列である必要があります。'));
+    // polygons: the food and facility hover areas. outlines: the room drawn when search selects it.
+    for (const field of ['polygons', 'outlines']) {
+      if (entry[field] === undefined) continue;
+      if (!Array.isArray(entry[field])) {
+        errors.push(createIssue('invalid-polygons', `${path}.${field}`, `${field}は配列である必要があります。`));
       } else {
-        entry.polygons.forEach((polygon, polygonIndex) => {
-          const polygonPath = `${path}.polygons[${polygonIndex}]`;
+        entry[field].forEach((polygon, polygonIndex) => {
+          const polygonPath = `${path}.${field}[${polygonIndex}]`;
           if (!Array.isArray(polygon) || polygon.length < 3) {
             errors.push(createIssue('invalid-polygon', polygonPath, 'polygonには3点以上が必要です。'));
             return;

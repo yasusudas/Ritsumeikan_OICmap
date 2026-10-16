@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { createSearchRuntimePayloads, readCanonicalSearchData } from '../scripts/search-data-runtime.mjs';
 import { validateSearchData } from '../scripts/search-data-validation.mjs';
@@ -91,4 +92,51 @@ test('validator reports existing cleanup candidates as warnings', () => {
     report.warnings.map((warning) => warning.code).sort(),
     ['legacy-color-white', 'same-floor-label']
   );
+});
+
+test('validator checks search outlines like area polygons', () => {
+  const square = [
+    { xRatio: 0.1, yRatio: 0.1 },
+    { xRatio: 0.2, yRatio: 0.1 },
+    { xRatio: 0.2, yRatio: 0.2 },
+    { xRatio: 0.1, yRatio: 0.2 }
+  ];
+  const valid = validateSearchData({
+    version: 3,
+    entries: [{ ...createEntry({ id: 'entry-a', label: 'Room' }), outlines: [square] }],
+    facilityRings: []
+  });
+  const invalid = validateSearchData({
+    version: 3,
+    entries: [
+      {
+        ...createEntry({ id: 'entry-a', label: 'Room' }),
+        outlines: [square.slice(0, 2), [...square.slice(0, 3), { xRatio: 1.2, yRatio: 0.1 }]]
+      }
+    ],
+    facilityRings: []
+  });
+
+  assert.deepEqual(valid.errors, []);
+  assert.deepEqual(
+    invalid.errors.map((error) => [error.code, error.path]),
+    [
+      ['invalid-polygon', 'entries[0].outlines[0]'],
+      ['coordinate-out-of-range', 'entries[0].outlines[1][3].xRatio']
+    ]
+  );
+});
+
+test('every first-floor place without a food card has a search outline', async () => {
+  const payload = await readCanonicalSearchData();
+  const foodPlaces = JSON.parse(await readFile(new URL('../public/food-places.json', import.meta.url), 'utf8'));
+  const cardIds = new Set(foodPlaces.places.map((place) => place.entryId));
+  const firstFloor = payload.entries.filter((entry) => entry.floorId === '1F');
+  const withoutOutline = firstFloor.filter((entry) => !entry.outlines?.length);
+
+  assert.deepEqual(
+    withoutOutline.filter((entry) => !cardIds.has(entry.id) && !/^ATM$/.test(entry.label)).map((entry) => entry.label),
+    []
+  );
+  assert.equal(firstFloor.filter((entry) => entry.outlines?.length).length, 69);
 });

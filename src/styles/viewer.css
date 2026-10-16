@@ -770,6 +770,38 @@ body[data-app-mode="editor"] .facility-area-outline {
   background: var(--c-bg);
 }
 
+/* Search result area: the searched room's outline in the pin colour,
+   shown in place of the pin. Never a hover target. */
+.search-highlight-area {
+  --search-area-color: var(--c-pin);
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.search-highlight-area polygon {
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+}
+
+/* White separation edge under the coloured line. */
+.search-highlight-area-base {
+  fill: none;
+  stroke: var(--c-bg);
+  stroke-width: 7px;
+}
+
+.search-highlight-area-outline {
+  fill: color-mix(in srgb, var(--search-area-color) 24%, transparent);
+  stroke: var(--search-area-color);
+  stroke-width: 3.5px;
+}
+
 /* The SVG stroke is centered on the measured pictogram circumference. */
 .facility-ring {
   --ring-color: var(--c-ring-green);
