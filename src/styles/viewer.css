@@ -624,6 +624,12 @@ svg.search-icon-image {
   pointer-events: none;
 }
 
+/* Rings in front of the food pins (pin layer z-index 25) and behind the controls (30+). */
+.front-layer {
+  z-index: 26;
+  overflow: hidden;
+}
+
 .map-asset {
   position: relative;
   width: 100%;

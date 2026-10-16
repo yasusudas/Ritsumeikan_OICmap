@@ -86,7 +86,7 @@ function assets() {
   };
   const context = vm.createContext({
     state, isEditorSite: false, console: { error: noop, warn: noop },
-    document: { createElement: element }, canvasLayer: element(), assetLoadFeedback: element(),
+    document: { createElement: element }, canvasLayer: element(), frontLayer: element(), assetLoadFeedback: element(),
     computeViewerSafeInsets: () => ({ top: 100 }), getFacilityLabel: key => key,
     t: key => key, setStatus: noop,
     captureViewportCenterRatios: () => ({ xRatio: 0.4, yRatio: 0.6 }),

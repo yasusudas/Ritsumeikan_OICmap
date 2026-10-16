@@ -164,6 +164,16 @@ if (window.__FILE_MODE__) {
   const isEditorSite = appMode === 'editor';
   const viewer = document.querySelector('#viewer');
   const canvasLayer = document.querySelector('#canvas-layer');
+  // The food pins sit in the viewer above the canvas layer, so rings drawn inside it
+  // would be hidden by a pin standing on them (7-Eleven's over its ATM). On the viewer the
+  // rings go to a layer of their own above the pins that copies the canvas layer's size
+  // and transform (mirrorFrontLayer).
+  const frontLayer = isEditorSite ? null : document.createElement('div');
+  if (frontLayer) {
+    frontLayer.className = 'canvas-layer front-layer';
+    frontLayer.setAttribute('aria-hidden', 'true');
+    canvasLayer.after(frontLayer);
+  }
   const statusElement = document.querySelector('#status');
   const appShell = document.querySelector('.app-shell');
   const topbar = document.querySelector('.topbar');
@@ -1838,9 +1848,21 @@ if (window.__FILE_MODE__) {
     };
   }
 
+  // Keeps the ring layer over the floor image: it changes only when the canvas layer's style does.
+  function mirrorFrontLayer() {
+    if (!frontLayer) {
+      return;
+    }
+    const { width, height, transform } = canvasLayer.style;
+    if (frontLayer.style.width !== width) frontLayer.style.width = width;
+    if (frontLayer.style.height !== height) frontLayer.style.height = height;
+    if (frontLayer.style.transform !== transform) frontLayer.style.transform = transform;
+  }
+
   function updateCanvasLayerBaseSize() {
     canvasLayer.style.width = `${state.baseWidth}px`;
     canvasLayer.style.height = `${state.baseHeight}px`;
+    mirrorFrontLayer();
     // The layer no longer has the size of any zoom, so the next frame sets it.
     state.renderedZoom = 0;
   }
@@ -1888,6 +1910,7 @@ if (window.__FILE_MODE__) {
       canvasLayer.style.height = `${state.baseHeight * state.zoom}px`;
       canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0)`;
     }
+    mirrorFrontLayer();
 
     const percent = Math.round(state.zoom * 100);
     setStatus(`${getFloorLabel(getRenderedFloorDefinition())} | ${percent}%`);
@@ -3451,7 +3474,12 @@ if (window.__FILE_MODE__) {
         editorLayer.className = 'editor-layer';
       }
 
-      mapAsset.append(svgNode, areaLayer, highlightLayer, ringLayer);
+      if (frontLayer) {
+        mapAsset.append(svgNode, areaLayer, highlightLayer);
+        frontLayer.replaceChildren(ringLayer);
+      } else {
+        mapAsset.append(svgNode, areaLayer, highlightLayer, ringLayer);
+      }
       if (editorLayer) {
         mapAsset.append(editorLayer);
       }
@@ -3483,6 +3511,7 @@ if (window.__FILE_MODE__) {
       }
       console.error(error);
       canvasLayer.replaceChildren();
+      frontLayer?.replaceChildren();
       state.highlightLayer = null;
       state.areaLayer = null;
       state.ringLayer = null;

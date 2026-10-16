@@ -28,12 +28,13 @@ function viewer(window) {
     ZOOM_RASTER_SETTLE_MS: 140,
     ZOOM_RASTER_EVERY_FRAMES: every,
     canvasLayer: { style: {} },
+    frontLayer: { style: {} },
     state: { baseWidth: 1000, baseHeight: 700, zoom: 1, x: 0, y: 0, renderedZoom: 0, zoomRasterTimer: 0, zoomFramesSinceRaster: 0, lastFlushedZoom: 0 },
     setStatus() {},
     getFloorLabel: () => '1F',
     getRenderedFloorDefinition: () => ({ id: '1F' }),
   });
-  loadFunctions(context, ['shouldDeferZoomRaster', 'commitZoomRaster', 'flushViewRender']);
+  loadFunctions(context, ['shouldDeferZoomRaster', 'commitZoomRaster', 'flushViewRender', 'mirrorFrontLayer']);
   context.flushViewRender();
   context.settle = () => timers.splice(0).forEach((callback) => callback());
   return context;
@@ -49,6 +50,22 @@ test('Chrome on a computer redraws the map at its new size on every zoom frame',
   map.flushViewRender();
   assert.equal(map.canvasLayer.style.width, '2000px');
   assert.doesNotMatch(map.canvasLayer.style.transform, /scale/);
+});
+
+test('the ring layer in front of the pins always has the canvas layer\'s size and transform', () => {
+  for (const window of [chrome(), safari(), phone()]) {
+    const map = viewer(window);
+    const same = () =>
+      ['width', 'height', 'transform'].every((key) => map.frontLayer.style[key] === map.canvasLayer.style[key]);
+    assert.ok(same());
+    map.state.zoom = 2.5;
+    map.state.x = 40;
+    map.flushViewRender();
+    assert.ok(same(), 'while zooming (scaled or redrawn)');
+    map.settle();
+    assert.ok(same(), 'once the zoom settles');
+    assert.equal(map.frontLayer.style.width, `${1000 * 2.5}px`);
+  }
 });
 
 for (const [name, window] of [['Safari on a Mac', safari], ['a touch screen', phone]]) {
