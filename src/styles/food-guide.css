@@ -250,6 +250,21 @@ body[data-app-mode='viewer'] {
   justify-content: center;
   width: 100%;
   touch-action: none;
+  cursor: grab;
+}
+
+.food-panel.is-dragging .food-sheet-handle {
+  cursor: grabbing;
+}
+
+.food-panel.is-dragging {
+  user-select: none;
+}
+
+/* The handle dismiss plays its own slide; the 6px fade would fight it. */
+.food-panel.is-dismissing {
+  animation: none !important;
+  pointer-events: none;
 }
 
 .food-sheet-handle > span {
@@ -757,20 +772,8 @@ body[data-app-mode='viewer'] {
   animation: food-panel-close var(--food-motion) var(--ease) both;
 }
 
-/* Phone bottom sheet: it follows the finger while the handle is dragged, then
-   glides to where it settles; opening slides it up, closing slides it down. */
-.food-panel.is-narrow.is-dragging {
-  transition: none;
-  will-change: top, height, transform;
-}
-
-.food-panel.is-narrow.is-snapping {
-  transition:
-    top 380ms var(--food-swoosh),
-    height 380ms var(--food-swoosh),
-    transform 380ms var(--food-swoosh);
-}
-
+/* Phone bottom sheet: opening slides it up from the bottom with a swoosh. The
+   handle drag, its glide and the slide-off dismissal are in the viewer. */
 @keyframes food-sheet-open {
   from {
     transform: translateY(100%);
@@ -781,23 +784,9 @@ body[data-app-mode='viewer'] {
   }
 }
 
-@keyframes food-sheet-close {
-  from {
-    transform: translateY(var(--sheet-drag-y, 0px));
-  }
-
-  to {
-    transform: translateY(100%);
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .food-panel.is-narrow:not([hidden]):not(.is-closing) {
     animation: food-sheet-open 420ms var(--food-swoosh);
-  }
-
-  .food-panel.is-narrow.is-closing {
-    animation: food-sheet-close 280ms cubic-bezier(0.5, 0, 0.75, 0) both;
   }
 }
 
