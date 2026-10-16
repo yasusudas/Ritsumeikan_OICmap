@@ -3,6 +3,9 @@ import { mountShuttleBusCard } from './shuttle-bus.js';
 
 const MANIFEST_URL = '/timetable/data/manifest.json';
 const LIVE_SERVICE_STATUS_URL = '/api/rail-status';
+// Japanese holidays, synced on the server from a public ICS calendar (src/server/holidays.js).
+const HOLIDAYS_URL = '/api/holidays';
+const HOLIDAYS_TIMEOUT_MS = 5_000;
 const LIVE_SERVICE_STATUS_REFRESH_INTERVAL = 15 * 60 * 1000;
 const STORAGE_KEY = 'rits-oic-map:timetable-layout:v1';
 
@@ -42,6 +45,7 @@ let state = {
 };
 const scheduleCache = new Map();
 const activeSchedulesByCardId = new Map();
+let japaneseHolidayDates = new Set();
 let dragState = null;
 let liveServiceStatusState = {
   payload: null,
@@ -64,7 +68,7 @@ init().catch((error) => {
 });
 
 async function init() {
-  manifest = await fetchJson(MANIFEST_URL);
+  [manifest, japaneseHolidayDates] = await Promise.all([fetchJson(MANIFEST_URL), loadJapaneseHolidays()]);
   state = normalizeState(loadState(), manifest.cards);
   setupEvents();
   await render();
@@ -1071,16 +1075,25 @@ function timetableCalendarForDate(date) {
 }
 
 function isJapanesePublicHoliday(date) {
-  return japaneseHolidayDateSet().has(localDateKey(date));
+  return japaneseHolidayDates.has(localDateKey(date));
 }
 
-function japaneseHolidayDateSet() {
-  if (!manifest._japaneseHolidayDateSet) {
-    manifest._japaneseHolidayDateSet = new Set(
-      (manifest.holidayCalendar?.holidays || []).map((holiday) => holiday.date)
-    );
+// Without the holiday list only weekends count as holidays, so the board still shows.
+// The browser may reuse the response for a few hours (see api/holidays.js).
+async function loadJapaneseHolidays() {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), HOLIDAYS_TIMEOUT_MS);
+  try {
+    const response = await fetch(HOLIDAYS_URL, { signal: controller.signal });
+    if (!response.ok) throw new Error(`Failed to load ${HOLIDAYS_URL}: ${response.status}`);
+    const payload = await response.json();
+    return new Set((payload.holidays || []).map((holiday) => holiday.date));
+  } catch (error) {
+    console.warn('Japanese holidays unavailable; only weekends use the holiday timetable.', error);
+    return new Set();
+  } finally {
+    window.clearTimeout(timeoutId);
   }
-  return manifest._japaneseHolidayDateSet;
 }
 
 function startOfLocalDate(date) {

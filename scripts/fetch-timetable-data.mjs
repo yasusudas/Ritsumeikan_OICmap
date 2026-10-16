@@ -1,6 +1,8 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { HOLIDAYS_SOURCE } from '../src/server/holidays.js';
+
 const OUTPUT_ROOT = path.resolve('public/timetable/data');
 const GENERATED_AT = new Date().toISOString();
 
@@ -16,8 +18,8 @@ const CALENDARS = {
     monorailSuffix: 'weekday',
     hankyuCode: 'w',
     hankyuDw: '0',
-    jrDate: '20260601',
-    jrRepresentativeDate: '2026-06-01',
+    jrDate: '20261016',
+    jrRepresentativeDate: '2026-10-16',
   },
   holiday: {
     id: 'holiday',
@@ -26,8 +28,8 @@ const CALENDARS = {
     monorailSuffix: 'holiday',
     hankyuCode: 'h',
     hankyuDw: '2',
-    jrDate: '20260607',
-    jrRepresentativeDate: '2026-06-07',
+    jrDate: '20261018',
+    jrRepresentativeDate: '2026-10-18',
   },
 };
 
@@ -141,30 +143,13 @@ const JR_STATION = {
   lineJa: 'JR京都線',
 };
 
+// 祝日は手元に持たない。時刻表のページが /api/holidays（src/server/holidays.js）から取得する。
+// manifest には取得元だけを書く（情報源・権利のページに出す）。
 const HOLIDAY_CALENDAR = {
   country: 'JP',
-  sourceNameJa: '内閣府 国民の祝日',
-  sourceUrl: 'https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv',
-  holidays: [
-    { date: '2026-01-01', nameJa: '元日' },
-    { date: '2026-01-12', nameJa: '成人の日' },
-    { date: '2026-02-11', nameJa: '建国記念の日' },
-    { date: '2026-02-23', nameJa: '天皇誕生日' },
-    { date: '2026-03-20', nameJa: '春分の日' },
-    { date: '2026-04-29', nameJa: '昭和の日' },
-    { date: '2026-05-03', nameJa: '憲法記念日' },
-    { date: '2026-05-04', nameJa: 'みどりの日' },
-    { date: '2026-05-05', nameJa: 'こどもの日' },
-    { date: '2026-05-06', nameJa: '休日' },
-    { date: '2026-07-20', nameJa: '海の日' },
-    { date: '2026-08-11', nameJa: '山の日' },
-    { date: '2026-09-21', nameJa: '敬老の日' },
-    { date: '2026-09-22', nameJa: '休日' },
-    { date: '2026-09-23', nameJa: '秋分の日' },
-    { date: '2026-10-12', nameJa: 'スポーツの日' },
-    { date: '2026-11-03', nameJa: '文化の日' },
-    { date: '2026-11-23', nameJa: '勤労感謝の日' },
-  ],
+  sourceNameJa: HOLIDAYS_SOURCE.nameJa,
+  sourceUrl: HOLIDAYS_SOURCE.url,
+  apiUrl: '/api/holidays',
 };
 
 const SOURCE_REFERENCES = [
@@ -197,19 +182,19 @@ const SOURCE_REFERENCES = [
       },
       {
         labelJa: 'JR茨木駅 高槻・京都方面 平日代表日',
-        url: 'https://timetable.jr-odekake.net/station-timetable/2791011001?date=20260601',
+        url: `${JR_BASE}/station-timetable/2791011001?date=${CALENDARS.weekday.jrDate}`,
       },
       {
         labelJa: 'JR茨木駅 高槻・京都方面 休日代表日',
-        url: 'https://timetable.jr-odekake.net/station-timetable/2791011001?date=20260607',
+        url: `${JR_BASE}/station-timetable/2791011001?date=${CALENDARS.holiday.jrDate}`,
       },
       {
         labelJa: 'JR茨木駅 新大阪・大阪・三ノ宮方面 平日代表日',
-        url: 'https://timetable.jr-odekake.net/station-timetable/2791011002?date=20260601',
+        url: `${JR_BASE}/station-timetable/2791011002?date=${CALENDARS.weekday.jrDate}`,
       },
       {
         labelJa: 'JR茨木駅 新大阪・大阪・三ノ宮方面 休日代表日',
-        url: 'https://timetable.jr-odekake.net/station-timetable/2791011002?date=20260607',
+        url: `${JR_BASE}/station-timetable/2791011002?date=${CALENDARS.holiday.jrDate}`,
       },
     ],
   },
@@ -239,7 +224,7 @@ const SOURCE_REFERENCES = [
       },
       {
         labelJa: 'JR西日本 時刻表ページの注記',
-        url: 'https://timetable.jr-odekake.net/station-timetable/2791011001?date=20260601',
+        url: `${JR_BASE}/station-timetable/2791011001?date=${CALENDARS.weekday.jrDate}`,
       },
     ],
   },
@@ -281,7 +266,7 @@ async function main() {
     sourceNotes: [
       '各社公式または公式表示ページから取得した時刻表データです。',
       '運休、臨時列車、遅延、番線変更は反映されない場合があります。乗車前に各社公式情報を確認してください。',
-      'JR西日本の時刻は代表日として平日 2026-06-01、休日 2026-06-07 の表示を取得しています。',
+      `JR西日本の時刻は代表日として平日 ${CALENDARS.weekday.jrRepresentativeDate}、休日 ${CALENDARS.holiday.jrRepresentativeDate} の表示を取得しています。`,
       '阪急電車の時刻表ページには、データの加工・再利用・再配布に許可が必要である旨が明記されています。',
       'JR西日本の時刻表ページには、JR時刻表データの無断転載・複写・加工を禁じる旨が明記されています。',
     ],

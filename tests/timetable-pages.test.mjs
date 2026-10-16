@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import test from 'node:test';
 
+import { parseJapaneseHolidaysIcs } from '../src/server/holidays.js';
 import { nextShuttleDeparture } from '../src/shuttle-bus.js';
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
@@ -105,4 +106,50 @@ test('on /timetable/ the hidden cards panel is the last block, after the shuttle
   const hidden = at(/<section class="section timetable-hidden-panel"/);
   assert.ok(board < shuttle && shuttle < caution && caution < hidden, 'board → shuttle → caution → hidden cards');
   assert.match(html.slice(hidden), /^<section class="section timetable-hidden-panel"[\s\S]*?<\/section>\s*<\/div>\s*<\/main>/);
+});
+
+test('the timetable data was refetched after JR West\'s October 2026 revision', () => {
+  const manifest = JSON.parse(read('public/timetable/data/manifest.json'));
+  assert.ok(manifest.sourceNotes.includes('JR西日本の時刻は代表日として平日 2026-10-16、休日 2026-10-18 の表示を取得しています。'));
+  for (const file of ['kyoto-weekday', 'kyoto-holiday', 'osaka-kobe-weekday', 'osaka-kobe-holiday']) {
+    const schedule = JSON.parse(read(`public/timetable/data/jr-west/ibaraki/${file}.json`));
+    assert.equal(schedule.revision, '改正日:2026年10月03日', file);
+  }
+  // Returning visitors must not keep the old data from the service worker cache.
+  assert.match(read('public/sw.js'), /rits-oic-map-runtime-v23/);
+  assert.match(read('sources/index.html'), /2026年10月16日に取得/);
+});
+
+test('holidays are not stored: the page reads them from /api/holidays, synced daily from an ICS calendar', () => {
+  const manifest = JSON.parse(read('public/timetable/data/manifest.json'));
+  assert.equal(manifest.holidayCalendar.holidays, undefined);
+  assert.equal(manifest.holidayCalendar.apiUrl, '/api/holidays');
+  assert.match(manifest.holidayCalendar.sourceUrl, /^https:\/\/calendar\.google\.com\//);
+  assert.doesNotMatch(read('scripts/fetch-timetable-data.mjs'), /nameJa: '元日'/);
+
+  const page = read('src/timetable.js');
+  assert.match(page, /const HOLIDAYS_URL = '\/api\/holidays';/);
+  assert.doesNotMatch(page, /holidayCalendar/);
+  // The CDN keeps the answer for a day, so the calendar is fetched about once a day.
+  assert.match(read('api/holidays.js'), /s-maxage=\$\{HOLIDAYS_REFRESH_INTERVAL_SECONDS\}/);
+  assert.match(read('src/server/holidays.js'), /HOLIDAYS_REFRESH_INTERVAL_SECONDS = 24 \* 60 \* 60/);
+  assert.match(read('vite.config.js'), /server\.middlewares\.use\('\/api\/holidays'/);
+});
+
+test('the holiday ICS parser keeps public holidays (祝日) and drops observances (祭日)', () => {
+  const event = (date, summary, kind) =>
+    ['BEGIN:VEVENT', `DTSTART;VALUE=DATE:${date}`, `DTEND;VALUE=DATE:${date}`, `SUMMARY:${summary}`,
+      `DESCRIPTION:${kind}\\nこの祝日を非表示にするには、Google カレンダーの設定 > 日本の祝日 に移動して`,
+      ' ください', 'END:VEVENT'].join('\r\n');
+  const ics = ['BEGIN:VCALENDAR',
+    event('20270322', '春分の日 振替休日', '祝日'),
+    event('20270101', '元日', '祝日'),
+    event('20271225', 'クリスマス', '祭日'),
+    event('20270102', '銀行休業日', '祭日'),
+    'END:VCALENDAR'].join('\r\n');
+  assert.deepEqual(parseJapaneseHolidaysIcs(ics), [
+    { date: '2027-01-01', nameJa: '元日' },
+    { date: '2027-03-22', nameJa: '春分の日 振替休日' },
+  ]);
+  assert.deepEqual(parseJapaneseHolidaysIcs(''), []);
 });
