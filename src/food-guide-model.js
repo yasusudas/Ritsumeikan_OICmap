@@ -64,7 +64,7 @@ export function validateFoodPlaces(payload, entries) {
       place.name.en !== (entry.labelEn || entry.label)
     )
       fail('name differs from search');
-    if (place.summary.ja.length > 60 || place.summary.en.length > 140)
+    if (place.summary.ja.length > 80 || place.summary.en.length > 190)
       fail('summary too long');
     for (const lang of ['ja', 'en']) {
       if (

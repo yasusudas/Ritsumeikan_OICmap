@@ -21,8 +21,8 @@
         "en": "Building B"
       },
       "summary": {
-        "ja": "創作洋食とビールのレストラン。昼は週替わりランチ、夜はローストビーフなど。",
-        "en": "Western-style restaurant with weekly lunch specials, draft beer and roast beef."
+        "ja": "銀座の老舗ビヤホールの一度注ぎビールが味わえる創作洋食店。昼はたっぷりの週替わりランチ、夜はローストビーフも。子連れも歓迎。",
+        "en": "A Western-style restaurant serving the single-pour beer of an old Ginza beer hall. Hearty weekly lunches by day, roast beef at night. Families welcome."
       },
       "mark": {
         "src": "/food-marks/lion.svg",
@@ -227,7 +227,7 @@
         {
           "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
           "title": "立命館大学 OIC Food Map",
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-16",
           "fields": [
             "summary",
             "services.usage"
@@ -258,8 +258,8 @@
         "en": "Building C"
       },
       "summary": {
-        "ja": "生協の食堂。主菜・副菜・麺・丼などを週替わりで提供。",
-        "en": "The co-op cafeteria, with mains, sides, noodles and rice bowls on a weekly menu."
+        "ja": "OIC最大級の生協食堂。主菜・副菜・麺・丼を週替わりで提供し、栄養価とアレルギーも表示。国や地域のフェアも開催。",
+        "en": "The co-op cafeteria, one of the largest on campus. Mains, sides, noodles and rice bowls change weekly, with nutrition and allergy information, plus fairs on countries and regions."
       },
       "mark": {
         "src": "/food-marks/cafeteria.svg",
@@ -355,7 +355,7 @@
         {
           "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
           "title": "立命館大学 OIC Food Map",
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-16",
           "fields": [
             "summary",
             "services.usage"
@@ -500,8 +500,8 @@
         "en": "Building H"
       },
       "summary": {
-        "ja": "アジアン・鉄鍋・パスタ・カレー・オムライス・クレープの6ブースのフードコート。",
-        "en": "Food court with six booths: Asian dishes, iron-pot dishes, pasta, curry, omurice and crepes."
+        "ja": "授業の前後や友達との時間に立ち寄れる、6ブースのフードコート。アジアン・鉄鍋・パスタ・カレー・オムライス・クレープが揃い、モバイルオーダーも使えます。",
+        "en": "A food court of six booths for before or after class or time with friends: Asian dishes, iron-pot dishes, pasta, curry, omurice and crepes, with mobile ordering."
       },
       "mark": {
         "src": "/food-marks/food-park.svg",
@@ -675,7 +675,7 @@
         {
           "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
           "title": "立命館大学 OIC Food Map",
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-16",
           "fields": [
             "summary",
             "services.usage"
@@ -705,8 +705,8 @@
         "en": "Building C"
       },
       "summary": {
-        "ja": "生協のコンビニ。弁当・おにぎり・パン・菓子・飲料、ハラール食品も。",
-        "en": "Co-op convenience store with bento, rice balls, bread, snacks, drinks and some halal items."
+        "ja": "生協のコンビニ。手作り弁当やおにぎり、パン、スイーツ、アイス、飲料のほか、ハラール食品も。",
+        "en": "The co-op convenience store: handmade bento, rice balls, bread, sweets, ice cream and drinks, plus some halal items."
       },
       "mark": {
         "src": "/food-marks/meal-shop.svg",
@@ -791,7 +791,7 @@
         {
           "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
           "title": "立命館大学 OIC Food Map",
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-16",
           "fields": [
             "summary",
             "services.usage"
@@ -820,8 +820,8 @@
         "en": "Building G"
       },
       "summary": {
-        "ja": "24時間営業の無人コンビニ。開講期の昼は弁当も販売。",
-        "en": "Unstaffed 24-hour convenience store. Bento lunches are sold at midday during term."
+        "ja": "24時間365日使える無人コンビニ（通称「みにみる」）。開講期の昼は、あたたかい弁当も販売。",
+        "en": "An unstaffed convenience store open 24 hours, 365 days (nicknamed \"Minimiru\"). Warm bento lunches are also sold at midday during term."
       },
       "mark": {
         "src": "/food-marks/mini-meal-shop.svg",
@@ -950,7 +950,7 @@
         {
           "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
           "title": "立命館大学 OIC Food Map",
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-16",
           "fields": [
             "summary",
             "services.usage"
@@ -980,8 +980,8 @@
         "en": "Building B"
       },
       "summary": {
-        "ja": "コーヒーと軽食のカフェ。モバイルオーダーに対応。",
-        "en": "Coffeehouse serving coffee drinks and light food, with Mobile Order & Pay."
+        "ja": "学生・教職員・地域の人でにぎわうスターバックス。コーヒーと軽食が楽しめ、テラス席は犬連れもOK。モバイルオーダーにも対応。",
+        "en": "A Starbucks busy with students, staff and locals, serving coffee and light food. The terrace seats are open to dogs, and Mobile Order & Pay is available."
       },
       "mark": {
         "src": "/food-marks/coffee.svg",
@@ -1305,7 +1305,7 @@
         {
           "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
           "title": "立命館大学 OIC Food Map",
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-16",
           "fields": [
             "summary",
             "services.usage"
@@ -1335,8 +1335,8 @@
         "en": "Building A"
       },
       "summary": {
-        "ja": "学内のコンビニ。昼休みに向けて弁当やホットスナックを用意。",
-        "en": "On-campus convenience store with bento and hot snacks for the lunch break."
+        "ja": "学内のコンビニ。お昼休みに向けて弁当やホットスナックを多めに用意し、手作りPOPで新商品も紹介。",
+        "en": "The on-campus convenience store, with plenty of bento and hot snacks for the lunch break and handwritten signs for new products."
       },
       "mark": {
         "src": "/food-marks/convenience.svg",
@@ -1561,7 +1561,7 @@
         {
           "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
           "title": "立命館大学 OIC Food Map",
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-16",
           "fields": [
             "summary",
             "services.usage"
@@ -1589,8 +1589,8 @@
         "en": "Building A"
       },
       "summary": {
-        "ja": "人気ラーメン店「人類みな麺類」の姉妹店。大きなマグ型の器のラーメン。",
-        "en": "Sister shop of Jinrui Mina Menrui, serving light-broth ramen in large mug-style bowls."
+        "ja": "行列店「人類みな麺類」の姉妹店。写真映えする大きなマグカップ型の器で、あっさりスープのラーメンが楽しめます。",
+        "en": "Sister shop of the queue-drawing ramen restaurant Jinrui Mina Menrui, serving light-broth ramen in a big mug-style bowl that looks great in photos."
       },
       "mark": {
         "src": "/food-marks/ramen.svg",
@@ -1675,7 +1675,7 @@
         {
           "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
           "title": "立命館大学 OIC Food Map",
-          "checkedAt": "2026-10-14",
+          "checkedAt": "2026-10-16",
           "fields": [
             "summary",
             "services.usage"
@@ -1707,8 +1707,8 @@
         "en": "Sky Plaza"
       },
       "summary": {
-        "ja": "空のプラザのOICランチストリート。出店するキッチンカーは日によって異なる。",
-        "en": "OIC Lunch Street at the Sky Plaza. Which kitchen cars come depends on the day."
+        "ja": "茨木市で人気の手作りお弁当店とキッチンカーが並びます。和・洋・中・エスニック、スイーツなど、出店は日替わりです。",
+        "en": "Popular handmade bento shops from Ibaraki and kitchen cars line up here: Japanese, Western, Chinese, ethnic dishes and sweets, with the lineup changing daily."
       },
       "mark": {
         "src": "/food-marks/kitchen-car.svg",
@@ -1786,8 +1786,15 @@
           "fields": [
             "name",
             "building",
-            "summary",
             "services"
+          ]
+        },
+        {
+          "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
+          "title": "立命館大学 OIC Food Map",
+          "checkedAt": "2026-10-16",
+          "fields": [
+            "summary"
           ]
         }
       ],
@@ -1817,8 +1824,8 @@
         "en": "In front of TERRACE GATE"
       },
       "summary": {
-        "ja": "TERRACE GATE前のOICランチストリート。出店するキッチンカーは日によって異なる。",
-        "en": "OIC Lunch Street in front of TERRACE GATE. Which kitchen cars come depends on the day."
+        "ja": "TERRACE GATE前に日替わりでキッチンカーが出店。和・洋・中・エスニック、スイーツなど種類も豊富です。",
+        "en": "Kitchen cars set up in front of TERRACE GATE, different each day: Japanese, Western, Chinese, ethnic dishes, sweets and more."
       },
       "mark": {
         "src": "/food-marks/kitchen-car.svg",
@@ -1896,8 +1903,15 @@
           "fields": [
             "name",
             "building",
-            "summary",
             "services"
+          ]
+        },
+        {
+          "url": "https://www.ritsumei.ac.jp/facility-rental/oic/foodmap/",
+          "title": "立命館大学 OIC Food Map",
+          "checkedAt": "2026-10-16",
+          "fields": [
+            "summary"
           ]
         }
       ],
