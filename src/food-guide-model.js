@@ -274,7 +274,8 @@ function validateServiceStatus(service, fail) {
   )
     fail('status procedure');
   if (typeof status.exceptionsConfirmed !== 'boolean') fail('status confirmation');
-  if (!Number.isFinite(Date.parse(status.expiresAt))) fail('status expiry');
+  // null = no expiry (the shop's own notice is the source and nothing dated is known); anything else must be a date.
+  if (status.expiresAt !== null && !Number.isFinite(Date.parse(status.expiresAt))) fail('status expiry');
   if (!Array.isArray(status.exceptions)) fail('status exceptions');
   for (const exception of status.exceptions) {
     if (!DATE.test(exception?.date)) fail('status exception date');
@@ -298,14 +299,18 @@ export function judgeFoodServiceStatus(service, { now = new Date(), fetchFailed 
   if (
     !status.updateProcedure?.ja?.trim() ||
     !status.updateProcedure?.en?.trim() ||
-    !Number.isFinite(Date.parse(status.expiresAt))
+    (status.expiresAt !== null && !Number.isFinite(Date.parse(status.expiresAt)))
   ) {
     return { state: 'disabled' };
   }
   const hasWeekly = status.weekly && Object.keys(status.weekly).length > 0;
   const hasVersionDays = (service.hours || []).some((version) => version.days);
   if (!service.coopScheduleName && !hasWeekly && !hasVersionDays) return { state: 'disabled' };
-  if (fetchFailed || status.exceptionsConfirmed !== true || Date.parse(status.expiresAt) <= now.getTime()) {
+  if (
+    fetchFailed ||
+    status.exceptionsConfirmed !== true ||
+    (status.expiresAt !== null && Date.parse(status.expiresAt) <= now.getTime())
+  ) {
     return { state: 'unknown' };
   }
   const { minutes, weekday } = jstParts(now);

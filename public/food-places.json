@@ -1639,7 +1639,63 @@
             "en": "Ramen"
           },
           "coopScheduleName": null,
-          "hours": [],
+          "hours": [
+            {
+              "kind": "regular",
+              "validFrom": null,
+              "validThrough": null,
+              "text": {
+                "ja": "平日 10:30–20:30（ラストオーダー20:00）\n土日祝 11:00–20:00（ラストオーダー19:30）",
+                "en": "Mon–Fri 10:30–20:30 (last order 20:00); weekends and holidays 11:00–20:00 (last order 19:30)."
+              },
+              "sourceUrl": null,
+              "checkedAt": "2026-10-16",
+              "days": {
+                "mon": [
+                  {
+                    "start": "10:30",
+                    "end": "20:30"
+                  }
+                ],
+                "tue": [
+                  {
+                    "start": "10:30",
+                    "end": "20:30"
+                  }
+                ],
+                "wed": [
+                  {
+                    "start": "10:30",
+                    "end": "20:30"
+                  }
+                ],
+                "thu": [
+                  {
+                    "start": "10:30",
+                    "end": "20:30"
+                  }
+                ],
+                "fri": [
+                  {
+                    "start": "10:30",
+                    "end": "20:30"
+                  }
+                ],
+                "sat": [
+                  {
+                    "start": "11:00",
+                    "end": "20:00"
+                  }
+                ],
+                "sun": [
+                  {
+                    "start": "11:00",
+                    "end": "20:00"
+                  }
+                ]
+              }
+            }
+          ],
           "usage": {
             "eatIn": "yes",
             "takeaway": "yes",
@@ -1651,6 +1707,134 @@
             "takeaway": null,
             "outsideFood": null,
             "publicAccess": null
+          },
+          "status": {
+            "assignee": "サイト運営",
+            "sourceUrl": "https://www.instagram.com/minamen.cafe/",
+            "updateProcedure": {
+              "ja": "期限は設けない。営業時間や臨時休業の変更を知ったときは、店頭の営業時間の掲示（手書きの訂正あり）と公式インスタグラムを確認して記録を更新する。祝日は土日祝の時間で営業するものとして例外に入れており、内閣府の「国民の祝日」一覧と照合して 2027-03-22 まで転記した。それ以降の祝日は、その前に追記する。",
+              "en": "No expiry is set. When the hours or a temporary closure change, check the on-site hours notice (it has handwritten corrections) and the official Instagram account, and update this record. Public holidays are entered as exceptions with the weekend and holiday hours, checked against the Cabinet Office list and copied through 2027-03-22; add later holidays before then."
+            },
+            "exceptionsConfirmed": true,
+            "expiresAt": null,
+            "exceptions": [
+              {
+                "date": "2026-11-03",
+                "intervals": [
+                  {
+                    "start": "11:00",
+                    "end": "20:00"
+                  }
+                ]
+              },
+              {
+                "date": "2026-11-23",
+                "intervals": [
+                  {
+                    "start": "11:00",
+                    "end": "20:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-01-01",
+                "intervals": [
+                  {
+                    "start": "11:00",
+                    "end": "20:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-01-11",
+                "intervals": [
+                  {
+                    "start": "11:00",
+                    "end": "20:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-02-11",
+                "intervals": [
+                  {
+                    "start": "11:00",
+                    "end": "20:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-02-23",
+                "intervals": [
+                  {
+                    "start": "11:00",
+                    "end": "20:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-03-21",
+                "intervals": [
+                  {
+                    "start": "11:00",
+                    "end": "20:00"
+                  }
+                ]
+              },
+              {
+                "date": "2027-03-22",
+                "intervals": [
+                  {
+                    "start": "11:00",
+                    "end": "20:00"
+                  }
+                ]
+              }
+            ],
+            "weekly": {
+              "mon": [
+                {
+                  "start": "10:30",
+                  "end": "20:30"
+                }
+              ],
+              "tue": [
+                {
+                  "start": "10:30",
+                  "end": "20:30"
+                }
+              ],
+              "wed": [
+                {
+                  "start": "10:30",
+                  "end": "20:30"
+                }
+              ],
+              "thu": [
+                {
+                  "start": "10:30",
+                  "end": "20:30"
+                }
+              ],
+              "fri": [
+                {
+                  "start": "10:30",
+                  "end": "20:30"
+                }
+              ],
+              "sat": [
+                {
+                  "start": "11:00",
+                  "end": "20:00"
+                }
+              ],
+              "sun": [
+                {
+                  "start": "11:00",
+                  "end": "20:00"
+                }
+              ]
+            }
           }
         }
       ],
@@ -1679,6 +1863,14 @@
           "fields": [
             "summary",
             "services.usage"
+          ]
+        },
+        {
+          "url": null,
+          "title": "みなめんcafe 店頭の営業時間の掲示（写真）",
+          "checkedAt": "2026-10-16",
+          "fields": [
+            "services.hours"
           ]
         }
       ]

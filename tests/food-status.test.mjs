@@ -51,8 +51,34 @@ function service(patch = {}) {
 test('stores without an assignee or a status record stay out of automatic judgment', () => {
   assert.equal(judgeFoodServiceStatus({ hours: [] }).state, 'disabled');
   assert.equal(judgeFoodServiceStatus(service({ status: { ...status, assignee: ' ' } })).state, 'disabled');
-  const minamen = payload.places.find((place) => place.name.ja === 'みなめんcafe');
-  assert.equal(judgeFoodServiceStatus(minamen.services[0]).state, 'disabled');
+});
+
+test('みなめんcafe follows the hours on its notice: handwritten corrections, last order shown only as text', () => {
+  const minamen = payload.places.find((place) => place.name.ja === 'みなめんcafe').services[0];
+  const at = (iso) => judgeFoodServiceStatus(minamen, { now: new Date(iso) }).state;
+  // Weekdays 10:30–20:30 (the printed 8:00–21:00 is struck through).
+  assert.equal(at('2026-10-16T01:00:00Z'), 'outside');
+  assert.equal(at('2026-10-16T01:30:00Z'), 'within');
+  assert.equal(at('2026-10-16T11:29:00Z'), 'within');
+  assert.equal(at('2026-10-16T11:30:00Z'), 'outside');
+  // Weekends 11:00–20:00 (only the printed 9:00 is struck through).
+  assert.equal(at('2026-10-17T01:45:00Z'), 'outside');
+  assert.equal(at('2026-10-17T02:00:00Z'), 'within');
+  assert.equal(at('2026-10-17T11:00:00Z'), 'outside');
+  // A public holiday on a weekday uses the weekend hours.
+  assert.equal(at('2026-11-03T01:45:00Z'), 'outside');
+  assert.equal(at('2026-11-03T02:00:00Z'), 'within');
+  assert.equal(at('2026-11-03T11:15:00Z'), 'outside');
+  // The notice is undated and nothing says it ends, so the record has no expiry (expiresAt: null).
+  assert.equal(minamen.status.expiresAt, null);
+  assert.equal(at('2026-12-01T03:00:00Z'), 'within');
+  assert.equal(at('2027-01-11T01:45:00Z'), 'outside');
+  assert.equal(at('2027-01-11T02:00:00Z'), 'within');
+  const text = minamen.hours[0].text;
+  assert.match(text.ja, /平日 10:30–20:30（ラストオーダー20:00）/);
+  assert.match(text.ja, /土日祝 11:00–20:00（ラストオーダー19:30）/);
+  assert.match(text.en, /last order 20:00/);
+  assert.match(text.en, /last order 19:30/);
 });
 
 test('published hours follow the collected weekday, holiday and co-op calendar', () => {
@@ -126,6 +152,24 @@ test('out of period, expired data, unconfirmed exceptions and fetch failure stay
     judgeFoodServiceStatus(service(), { now: new Date('2026-10-19T02:00:00Z'), fetchFailed: true }).state,
     'unknown',
   );
+});
+
+test('an expiry of null means no expiry; a missing or malformed one is still refused', () => {
+  const noExpiry = service();
+  noExpiry.status.expiresAt = null;
+  noExpiry.hours[0].validThrough = null;
+  assert.equal(judgeFoodServiceStatus(noExpiry, { now: new Date('2031-10-20T02:00:00Z') }).state, 'within');
+  for (const value of [undefined, 'soon', '']) {
+    const broken = service();
+    broken.status.expiresAt = value;
+    assert.equal(judgeFoodServiceStatus(broken, { now: new Date('2026-10-19T02:00:00Z') }).state, 'disabled');
+  }
+  const data = structuredClone(payload);
+  const minamen = data.places.find((place) => place.name.ja === 'みなめんcafe');
+  minamen.services[0].status.expiresAt = 'soon';
+  assert.throws(() => validateFoodPlaces(data, entries), /status expiry/);
+  minamen.services[0].status.expiresAt = null;
+  assert.doesNotThrow(() => validateFoodPlaces(data, entries));
 });
 
 test('two services are judged independently and the wording is not a live open sign', () => {
