@@ -146,7 +146,7 @@ async function fetchOsakaMonorailStatus(source) {
 
   return {
     status,
-    summary: status === 'normal' ? '現在、平常通り運行しています。' : detailTexts[0] || statusText || STATUS_LABELS[status],
+    summary: status === 'normal' ? '現在、平常通り運行しております。' : detailTexts[0] || statusText || STATUS_LABELS[status],
     details: detailTexts.length ? detailTexts : statusText ? [statusText] : [],
     fetchedAt,
   };

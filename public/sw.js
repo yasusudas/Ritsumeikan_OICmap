@@ -12,7 +12,7 @@ const APP_SHELL_URLS = [
   '/icon/pwa-192-20260605.png',
   '/icon/pwa-512-20260605.png'
 ];
-const STATIC_PATH_PREFIXES = ['/assets/', '/cmaps/', '/icon/', '/standard_fonts/', '/hidden/timetable/data/'];
+const STATIC_PATH_PREFIXES = ['/assets/', '/cmaps/', '/icon/', '/standard_fonts/', '/timetable/data/'];
 
 function isEditorPath(pathname) {
   return pathname === '/editor' || pathname.startsWith('/editor/');

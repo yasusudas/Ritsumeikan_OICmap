@@ -104,6 +104,21 @@
       ]
     },
     {
+      "src": "^/hidden/timetable/?$",
+      "headers": {
+        "Location": "/timetable/"
+      },
+      "status": 308,
+      "missing": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "rits-oic-map.vercel.app"
+          }
+        }
+      ]
+    },
+    {
       "src": "^/sources$",
       "headers": {
         "Location": "/sources/"

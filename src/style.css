@@ -4,7 +4,7 @@
    loose:       relaxed flat layer for the public pages (header, menu,
                 footer, dialogs, sub-page basics); not the editor
    viewer-loose: map-only pieces of the loose layer
-   timetable:   /timetable/ and /hidden/timetable/
+   timetable:   /timetable/ (departures) and /en/timetable/ (official links)
    pages:       /access/, /food/, /terms/, /privacy/
    editor:      /editor/ tools */
 @import "./styles/tokens.css";

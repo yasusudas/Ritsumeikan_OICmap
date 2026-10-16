@@ -24,7 +24,7 @@
       name="description"
       content="立命館大学OIC周辺の大阪モノレール、阪急電車、JR西日本の駅時刻表をカード形式で確認できます。"
     />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://rits-oic-map.app/timetable/" />
     <meta property="og:site_name" content="立命館OICマップ" />
@@ -42,7 +42,7 @@
     <title>キャンパス周辺 時刻表 | 立命館OICマップ</title>
     <script type="module" src="/src/timetable.js"></script>
   </head>
-  <body class="subpage timetable-page hidden-timetable-page">
+  <body class="subpage timetable-page timetable-departures-page">
     <a class="skip-link" href="#main">本文へスキップ</a>
     <header class="site-header">
       <div class="site-header-inner">
@@ -115,7 +115,9 @@
           </div>
         </section>
 
-        <section class="section timetable-source-note" data-source-note aria-labelledby="source-note-title"></section>
+        <p class="timetable-caution">
+          運休、臨時列車、遅延、番線の変更は反映されない場合があります。乗車の前に各社の公式の案内をご確認ください。出典と権利については<a href="/sources/">情報源・権利</a>をご覧ください。
+        </p>
       </div>
     </main>
 

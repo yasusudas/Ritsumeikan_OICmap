@@ -1,7 +1,7 @@
 /* =====================================================================
    Timetable pages
-   /timetable/, /en/timetable/   official links, shuttle bus, status links
-   /hidden/timetable/            live departures (sortable), live status
+   /en/timetable/               official links, shuttle bus, status links
+   /timetable/                   live departures (sortable), live status
    Loose flat (see loose.css): no rules. Groups are grey sheets and grey
    rows on white; controls on a grey surface are white pills. Times are
    set big in Inter. Railway colors appear only as a small square marker.
@@ -396,11 +396,6 @@ body.subpage .timetable-status-list > .timetable-status-row {
   overflow-wrap: anywhere;
 }
 
-.timetable-status-summary .timetable-status-detail {
-  color: var(--c-ink-2);
-  font-size: var(--fs-xs);
-}
-
 .timetable-status-row.is-unknown .timetable-status-summary p {
   color: var(--c-ink-2);
 }
@@ -495,31 +490,17 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   text-underline-offset: 0.3em;
 }
 
-.timetable-notes {
-  max-width: var(--measure);
-  margin: 0 0 40px;
-  padding: 0 0 0 1.1em;
-  color: var(--c-ink-2);
-  font-size: var(--fs-sm);
+.timetable-caution {
+  margin: var(--s-7) 0 0;
+  color: var(--c-ink-3);
+  font-size: var(--fs-xs);
   line-height: 1.8;
 }
 
-.timetable-notes li + li {
-  margin-top: var(--s-1);
-}
-
-.timetable-notes li::marker {
-  color: var(--c-ink-3);
-}
-
-.timetable-source-groups {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
-  gap: 36px 32px;
-}
-
-.timetable-source-groups .timetable-reference-link {
-  font-size: var(--fs-xs);
+.timetable-caution a {
+  color: var(--ls-red);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
 }
 
 /* ---------------------------------------------------------------------
@@ -628,7 +609,8 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   letter-spacing: 0;
 }
 
-/* Next departure: the departure time is the primary figure. */
+/* Next departure: the time left is the large figure; the departure time sits
+   in the train row with the train type and the destination. */
 .timetable-next {
   display: grid;
   gap: 6px;
@@ -649,27 +631,19 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   font-weight: var(--fw-regular);
 }
 
-.timetable-next-main {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 4px 20px;
-}
-
-.timetable-next-time {
-  flex: 0 0 auto;
+.timetable-next-countdown {
+  margin: 2px 0 0;
   font-family: var(--font-latin);
-  font-size: clamp(3rem, 2.3rem + 2.6vw, 4.5rem);
+  font-size: clamp(1.95rem, 4.1vw, 2.85rem);
   font-weight: var(--fw-bold);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.025em;
-  line-height: 1;
+  letter-spacing: 0;
+  line-height: 1.1;
 }
 
-.timetable-next-train {
+.timetable-next-main {
   display: grid;
   gap: var(--s-1);
-  flex: 1 1 10rem;
   min-width: 0;
 }
 
@@ -677,7 +651,7 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--s-2) 10px;
+  gap: var(--s-2) 8px;
   margin: 0;
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
@@ -688,6 +662,21 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   font-size: var(--fs-sm);
 }
 
+.timetable-next-time {
+  flex: 0 0 auto;
+  font-family: var(--font-latin);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.timetable-next-time::after {
+  content: '発';
+}
+
 .timetable-train-note {
   margin: 0;
   color: var(--c-ink-2);
@@ -696,12 +685,10 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   overflow-wrap: anywhere;
 }
 
-.timetable-next-countdown {
-  margin: 0;
-  color: var(--c-ink-2);
-  font-size: var(--fs-base);
-  font-variant-numeric: tabular-nums;
-  line-height: var(--lh-snug);
+@media (max-width: 720px) {
+  .timetable-next-countdown {
+    font-size: clamp(2.1rem, 9.2vw, 2.8rem);
+  }
 }
 
 /* Train type: local trains as plain grey text; faster trains as a soft
@@ -1054,10 +1041,6 @@ body.subpage .timetable-controls .btn-quiet:not(:disabled):hover {
 
   .timetable-board-head {
     margin-bottom: 16px;
-  }
-
-  .timetable-source-groups {
-    grid-template-columns: minmax(0, 1fr);
   }
 
   .timetable-shuttle-routes {

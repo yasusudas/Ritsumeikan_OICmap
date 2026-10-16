@@ -138,13 +138,13 @@
         "weekday": {
           "labelJa": "平日",
           "shortLabelJa": "平日",
-          "url": "/hidden/timetable/data/osaka-monorail/unobe/up-weekday.json",
+          "url": "/timetable/data/osaka-monorail/unobe/up-weekday.json",
           "departures": 112
         },
         "holiday": {
           "labelJa": "土曜・休日",
           "shortLabelJa": "休日",
-          "url": "/hidden/timetable/data/osaka-monorail/unobe/up-holiday.json",
+          "url": "/timetable/data/osaka-monorail/unobe/up-holiday.json",
           "departures": 106
         }
       },
@@ -171,13 +171,13 @@
         "weekday": {
           "labelJa": "平日",
           "shortLabelJa": "平日",
-          "url": "/hidden/timetable/data/osaka-monorail/unobe/down-weekday.json",
+          "url": "/timetable/data/osaka-monorail/unobe/down-weekday.json",
           "departures": 116
         },
         "holiday": {
           "labelJa": "土曜・休日",
           "shortLabelJa": "休日",
-          "url": "/hidden/timetable/data/osaka-monorail/unobe/down-holiday.json",
+          "url": "/timetable/data/osaka-monorail/unobe/down-holiday.json",
           "departures": 111
         }
       },
@@ -204,13 +204,13 @@
         "weekday": {
           "labelJa": "平日",
           "shortLabelJa": "平日",
-          "url": "/hidden/timetable/data/osaka-monorail/minami-ibaraki/up-weekday.json",
+          "url": "/timetable/data/osaka-monorail/minami-ibaraki/up-weekday.json",
           "departures": 112
         },
         "holiday": {
           "labelJa": "土曜・休日",
           "shortLabelJa": "休日",
-          "url": "/hidden/timetable/data/osaka-monorail/minami-ibaraki/up-holiday.json",
+          "url": "/timetable/data/osaka-monorail/minami-ibaraki/up-holiday.json",
           "departures": 106
         }
       },
@@ -237,13 +237,13 @@
         "weekday": {
           "labelJa": "平日",
           "shortLabelJa": "平日",
-          "url": "/hidden/timetable/data/osaka-monorail/minami-ibaraki/down-weekday.json",
+          "url": "/timetable/data/osaka-monorail/minami-ibaraki/down-weekday.json",
           "departures": 116
         },
         "holiday": {
           "labelJa": "土曜・休日",
           "shortLabelJa": "休日",
-          "url": "/hidden/timetable/data/osaka-monorail/minami-ibaraki/down-holiday.json",
+          "url": "/timetable/data/osaka-monorail/minami-ibaraki/down-holiday.json",
           "departures": 99
         }
       },
@@ -269,13 +269,13 @@
         "weekday": {
           "labelJa": "平日",
           "shortLabelJa": "平日",
-          "url": "/hidden/timetable/data/hankyu/minami-ibaraki/osaka-weekday.json",
+          "url": "/timetable/data/hankyu/minami-ibaraki/osaka-weekday.json",
           "departures": 208
         },
         "holiday": {
           "labelJa": "土曜・休日",
           "shortLabelJa": "休日",
-          "url": "/hidden/timetable/data/hankyu/minami-ibaraki/osaka-holiday.json",
+          "url": "/timetable/data/hankyu/minami-ibaraki/osaka-holiday.json",
           "departures": 194
         }
       },
@@ -301,13 +301,13 @@
         "weekday": {
           "labelJa": "平日",
           "shortLabelJa": "平日",
-          "url": "/hidden/timetable/data/hankyu/minami-ibaraki/kyoto-weekday.json",
+          "url": "/timetable/data/hankyu/minami-ibaraki/kyoto-weekday.json",
           "departures": 209
         },
         "holiday": {
           "labelJa": "土曜・休日",
           "shortLabelJa": "休日",
-          "url": "/hidden/timetable/data/hankyu/minami-ibaraki/kyoto-holiday.json",
+          "url": "/timetable/data/hankyu/minami-ibaraki/kyoto-holiday.json",
           "departures": 201
         }
       },
@@ -333,13 +333,13 @@
         "weekday": {
           "labelJa": "平日",
           "shortLabelJa": "平日",
-          "url": "/hidden/timetable/data/jr-west/ibaraki/kyoto-weekday.json",
+          "url": "/timetable/data/jr-west/ibaraki/kyoto-weekday.json",
           "departures": 219
         },
         "holiday": {
           "labelJa": "土曜・休日",
           "shortLabelJa": "休日",
-          "url": "/hidden/timetable/data/jr-west/ibaraki/kyoto-holiday.json",
+          "url": "/timetable/data/jr-west/ibaraki/kyoto-holiday.json",
           "departures": 209
         }
       },
@@ -365,13 +365,13 @@
         "weekday": {
           "labelJa": "平日",
           "shortLabelJa": "平日",
-          "url": "/hidden/timetable/data/jr-west/ibaraki/osaka-kobe-weekday.json",
+          "url": "/timetable/data/jr-west/ibaraki/osaka-kobe-weekday.json",
           "departures": 224
         },
         "holiday": {
           "labelJa": "土曜・休日",
           "shortLabelJa": "休日",
-          "url": "/hidden/timetable/data/jr-west/ibaraki/osaka-kobe-holiday.json",
+          "url": "/timetable/data/jr-west/ibaraki/osaka-kobe-holiday.json",
           "departures": 210
         }
       },

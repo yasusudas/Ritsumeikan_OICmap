@@ -1,6 +1,6 @@
 import './legal-page.js';
 
-const MANIFEST_URL = '/hidden/timetable/data/manifest.json';
+const MANIFEST_URL = '/timetable/data/manifest.json';
 const LIVE_SERVICE_STATUS_URL = '/api/rail-status';
 const LIVE_SERVICE_STATUS_REFRESH_INTERVAL = 15 * 60 * 1000;
 const STORAGE_KEY = 'rits-oic-map:timetable-layout:v1';
@@ -29,7 +29,6 @@ const elements = {
   hiddenList: document.querySelector('[data-hidden-list]'),
   hiddenCount: document.querySelector('[data-hidden-count]'),
   liveServiceStatus: document.querySelector('[data-live-service-status]'),
-  sourceNote: document.querySelector('[data-source-note]'),
   resetLayout: document.querySelector('[data-reset-layout]'),
   showAll: document.querySelector('[data-show-all]'),
 };
@@ -86,7 +85,6 @@ function setupEvents() {
 
 async function render() {
   renderHiddenList();
-  renderSourceNote();
   await renderCards();
 }
 
@@ -189,15 +187,16 @@ function renderLiveServiceStatusUnavailable(sources) {
 
 function renderLiveServiceStatusRow(item) {
   const status = LIVE_STATUS_TONES[item.status] ? item.status : 'unknown';
-  const isError = status === 'error';
-  const summary = isError ? '取得できませんでした。公式ページでご確認ください。' : item.summary;
-  const details = isError
-    ? ''
-    : (item.details || [])
-        .filter((detail) => detail && detail !== item.summary)
-        .slice(0, 2)
-        .map((detail) => `<p class="timetable-status-detail">${escapeHtml(detail)}</p>`)
-        .join('');
+  // One line of text per row. When the line runs normally the official texts only restate it
+  // (Hankyu's 「平常運転」, the monorail's 「現在、平常通り運行しております。」), so the summary is enough;
+  // otherwise the official texts are the news, and the state already sits in the label beside them.
+  const officialTexts = (item.details || []).filter(Boolean).slice(0, 2);
+  const text =
+    status === 'error'
+      ? '取得できませんでした。公式ページでご確認ください。'
+      : status === 'normal' || !officialTexts.length
+        ? item.summary
+        : officialTexts.join(' ');
 
   return `
     <li class="timetable-status-row is-${escapeHtml(LIVE_STATUS_TONES[status])}">
@@ -212,8 +211,7 @@ function renderLiveServiceStatusRow(item) {
         <span class="timetable-status-dot" aria-hidden="true"></span>${escapeHtml(item.statusLabel || '確認中')}
       </p>
       <div class="timetable-status-summary">
-        <p>${escapeHtml(summary)}</p>
-        ${details}
+        <p>${escapeHtml(text)}</p>
       </div>
       <div class="timetable-status-links">
         <a class="timetable-quiet-link external" href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">公式ページ</a>
@@ -292,17 +290,15 @@ function renderCard(card, scheduleSet) {
 
       <section class="timetable-next" aria-label="次の発車">
         <p class="timetable-next-label">次の発車<span>${escapeHtml(calendarLabel)}ダイヤ</span></p>
-        <div class="timetable-next-main">
-          <time class="timetable-next-time" data-next-departure-time>${escapeHtml(next.departure.time)}</time>
-          <div class="timetable-next-train">
-            <p class="timetable-next-service">
-              <span class="timetable-train-type ${serviceClass(nextService.label)}" data-next-service>${escapeHtml(nextService.label)}</span>
-              <span class="timetable-destination" data-next-destination>${escapeHtml(next.departure.destinationJa)}</span>
-            </p>
-            <p class="timetable-train-note" data-next-note${nextService.note ? '' : ' hidden'}>${escapeHtml(nextService.note)}</p>
-          </div>
-        </div>
         <p class="timetable-next-countdown" data-next-countdown>${escapeHtml(formatCountdownLabel(next.secondsUntil))}</p>
+        <div class="timetable-next-main">
+          <p class="timetable-next-service">
+            <span class="timetable-train-type ${serviceClass(nextService.label)}" data-next-service>${escapeHtml(nextService.label)}</span>
+            <time class="timetable-next-time" data-next-departure-time>${escapeHtml(next.departure.time)}</time>
+            <span class="timetable-destination" data-next-destination>${escapeHtml(next.departure.destinationJa)}</span>
+          </p>
+          <p class="timetable-train-note" data-next-note${nextService.note ? '' : ' hidden'}>${escapeHtml(nextService.note)}</p>
+        </div>
       </section>
 
       <section class="timetable-upcoming" aria-label="この後の発車">
@@ -964,44 +960,6 @@ function renderHourList(departures) {
     .join('');
 }
 
-function renderSourceNote() {
-  if (!elements.sourceNote) return;
-  const noteItems = (manifest.sourceNotes || []).map((note) => `<li>${escapeHtml(note)}</li>`).join('');
-  const referenceGroups = (manifest.sourceReferences || [])
-    .map(
-      (group) => `
-        <div class="timetable-reference-group">
-          <h3 class="timetable-reference-title">${escapeHtml(group.labelJa)}</h3>
-          <ul class="timetable-reference-list">
-            ${(group.items || []).map(renderSourceReferenceItem).join('')}
-          </ul>
-        </div>
-      `
-    )
-    .join('');
-
-  elements.sourceNote.innerHTML = `
-    <div class="section-head">
-      <p class="section-eyebrow">Sources</p>
-      <h2 id="source-note-title" class="section-title">出典・注意事項</h2>
-    </div>
-    <div class="section-body">
-      ${noteItems ? `<ul class="timetable-notes">${noteItems}</ul>` : ''}
-      <div class="timetable-source-groups">
-        ${referenceGroups}
-      </div>
-    </div>
-  `;
-}
-
-function renderSourceReferenceItem(item) {
-  return `
-    <li>
-      <a class="timetable-reference-link external" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.labelJa)}</a>
-    </li>
-  `;
-}
-
 function orderedCards() {
   const order = ensureOrder();
   const byId = new Map(manifest.cards.map((card) => [card.id, card]));
@@ -1146,7 +1104,7 @@ function serviceSeconds(departure) {
   );
 }
 
-// "あと8分05秒" / "あと1時間12分": the countdown is secondary to the departure time.
+// "あと8分05秒" / "あと1時間12分": the countdown is the large figure; the departure time sits in the train row.
 function formatCountdownLabel(seconds) {
   const totalSeconds = Math.max(0, Math.floor(seconds));
   const hours = Math.floor(totalSeconds / 3600);

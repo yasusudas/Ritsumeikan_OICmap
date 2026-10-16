@@ -849,3 +849,12 @@ body.subpage .food-place-retry:hover {
   color: var(--c-ink-3);
   font-size: var(--fs-xs);
 }
+
+.sources-timetable {
+  margin: var(--s-5) 0;
+}
+
+.sources-notes {
+  margin: 0 0 var(--s-5);
+  color: var(--c-ink-2);
+}

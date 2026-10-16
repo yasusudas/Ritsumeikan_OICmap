@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-const OUTPUT_ROOT = path.resolve('public/hidden/timetable/data');
+const OUTPUT_ROOT = path.resolve('public/timetable/data');
 const GENERATED_AT = new Date().toISOString();
 
 const MONORAIL_API_BASE = 'https://www.osaka-monorail.co.jp/timetable';
@@ -548,7 +548,7 @@ function buildCards(schedules) {
     entry.calendars[schedule.calendar.id] = {
       labelJa: schedule.calendar.labelJa,
       shortLabelJa: schedule.calendar.shortLabelJa,
-      url: `/hidden/timetable/data/${schedule.file}`,
+      url: `/timetable/data/${schedule.file}`,
       departures: schedule.departures.length,
     };
     byCard.set(schedule.cardId, entry);

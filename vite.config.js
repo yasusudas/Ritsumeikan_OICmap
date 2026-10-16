@@ -128,7 +128,6 @@ export default defineConfig({
         access: resolve(__dirname, 'access/index.html'),
         food: resolve(__dirname, 'food/index.html'),
         timetable: resolve(__dirname, 'timetable/index.html'),
-        hiddenTimetable: resolve(__dirname, 'hidden/timetable/index.html'),
         enTerms: resolve(__dirname, 'en/terms/index.html'),
         enPrivacy: resolve(__dirname, 'en/privacy/index.html'),
         enSources: resolve(__dirname, 'en/sources/index.html'),

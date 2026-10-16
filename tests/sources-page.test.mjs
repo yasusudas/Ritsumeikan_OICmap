@@ -30,7 +30,7 @@ test('the sources page exists in both languages and is built, routed and listed 
 });
 
 test('every page footer links to the sources page in its own language', () => {
-  const ja = ['index.html', 'access/index.html', 'food/index.html', 'timetable/index.html', 'terms/index.html', 'privacy/index.html', 'sources/index.html', 'hidden/timetable/index.html', 'editor/index.html'];
+  const ja = ['index.html', 'access/index.html', 'food/index.html', 'timetable/index.html', 'terms/index.html', 'privacy/index.html', 'sources/index.html', 'editor/index.html'];
   const en = ['en/index.html', 'en/access/index.html', 'en/food/index.html', 'en/timetable/index.html', 'en/terms/index.html', 'en/privacy/index.html', 'en/sources/index.html'];
   for (const file of ja) assert.match(read(file), /href="\/sources\/"/, file);
   for (const file of en) assert.match(read(file), /href="\/en\/sources\/"/, file);
