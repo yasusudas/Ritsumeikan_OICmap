@@ -1,4 +1,5 @@
 import './legal-page.js';
+import { mountShuttleBusCard } from './shuttle-bus.js';
 
 const MANIFEST_URL = '/timetable/data/manifest.json';
 const LIVE_SERVICE_STATUS_URL = '/api/rail-status';
@@ -31,6 +32,7 @@ const elements = {
   liveServiceStatus: document.querySelector('[data-live-service-status]'),
   resetLayout: document.querySelector('[data-reset-layout]'),
   showAll: document.querySelector('[data-show-all]'),
+  shuttleBus: document.querySelector('[data-shuttle-bus-card]'),
 };
 
 let manifest = null;
@@ -47,6 +49,9 @@ let liveServiceStatusState = {
   error: null,
   nextRefreshAt: 0,
 };
+
+// The shuttle bus card needs no data file, so it shows even when the manifest fails to load.
+mountShuttleBusCard(elements.shuttleBus, { lang: 'ja' });
 
 init().catch((error) => {
   console.error(error);

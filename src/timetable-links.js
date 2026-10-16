@@ -1,3 +1,5 @@
+import { mountShuttleBusCard } from './shuttle-bus.js';
+
 const TODAY = getJapanDate();
 const ONE_DAY = 24 * 60 * 60 * 1000;
 const PAGE_LANG = getPageLanguage();
@@ -16,19 +18,6 @@ const LABELS = {
     officialPage: '公式ページ',
     serviceStatusEyebrow: 'Service status',
     serviceStatusHeading: '運行情報を確認',
-    shuttleEyebrow: 'Shuttle bus',
-    shuttleHeading: 'シャトルバス時刻表',
-    shuttleNextDeparture: '次の発車',
-    shuttleCountdown: '発車まで',
-    shuttleTimetablePdf: '時刻表PDF',
-    shuttleSchedulePdf: '運行日PDF',
-    shuttleNoService: '運行期間外',
-    shuttleDeparting: 'まもなく発車',
-    countdown: (days, hours, minutes) => {
-      if (days > 0) return `あと${days}日${hours}時間`;
-      if (hours > 0) return `あと${hours}時間${minutes}分`;
-      return `あと${minutes}分`;
-    },
     timetableFor: (station, direction, label) => `${station} ${direction} ${label}の時刻表`,
     newTab: '（新しいタブで開く）',
     openServiceStatus: '公式運行情報',
@@ -52,19 +41,6 @@ const LABELS = {
     officialPage: 'Official page',
     serviceStatusEyebrow: 'Service status',
     serviceStatusHeading: 'Service Status',
-    shuttleEyebrow: 'Shuttle bus',
-    shuttleHeading: 'Shuttle Bus Timetable',
-    shuttleNextDeparture: 'Next departure',
-    shuttleCountdown: 'Until departure',
-    shuttleTimetablePdf: 'Timetable PDF',
-    shuttleSchedulePdf: 'Service schedule PDF',
-    shuttleNoService: 'Outside service period',
-    shuttleDeparting: 'Departing now',
-    countdown: (days, hours, minutes) => {
-      if (days > 0) return `in ${days} d ${hours} h`;
-      if (hours > 0) return `in ${hours} h ${minutes} min`;
-      return `in ${minutes} min`;
-    },
     timetableFor: (station, direction, label) => `${station}, ${direction}: ${label} timetable`,
     newTab: ' (opens in a new tab)',
     openServiceStatus: 'Official status',
@@ -237,40 +213,6 @@ const SERVICE_STATUS_LINKS = [
   }
 ];
 
-const SHUTTLE_BUS = {
-  accent: '#991c27',
-  sourceUrl: 'https://www.ritsumei.ac.jp/infostudents/shuttlebus/',
-  timetableUrl: 'https://www.ritsumei.ac.jp/file.jsp?id=650649',
-  scheduleUrl: 'https://www.ritsumei.ac.jp/file.jsp?id=650650',
-  operationDateRanges: [
-    ['2026-04-01', '2026-04-30'],
-    ['2026-05-01', '2026-05-01'],
-    ['2026-05-07', '2026-05-29'],
-    ['2026-06-01', '2026-06-30'],
-    ['2026-07-01', '2026-07-15'],
-    ['2026-09-28', '2026-09-30'],
-    ['2026-10-01', '2026-10-30'],
-    ['2026-11-02', '2026-11-30'],
-    ['2026-12-01', '2026-12-25']
-  ],
-  routes: [
-    {
-      id: 'bkc',
-      destination: 'びわこ・くさつキャンパス',
-      destinationEn: 'Biwako-Kusatsu Campus',
-      shortName: 'BKC',
-      departures: ['15:05', '16:50', '18:35', '20:10']
-    },
-    {
-      id: 'kinugasa',
-      destination: '衣笠キャンパス',
-      destinationEn: 'Kinugasa Campus',
-      shortName: 'KIC',
-      departures: ['15:00', '16:45', '18:30', '20:05']
-    }
-  ]
-};
-
 const elements = {
   form: document.querySelector('[data-timetable-link-form]'),
   railway: document.querySelector('[data-railway-select]'),
@@ -287,15 +229,13 @@ const elements = {
   serviceStatus: document.querySelector('[data-service-status-card]')
 };
 
-let shuttleBusTimer = null;
-
 function initTimetableLinks() {
   if (elements.cardGrid) {
     renderOfficialCards();
   }
 
   if (elements.shuttleBus) {
-    renderShuttleBusCard();
+    mountShuttleBusCard(elements.shuttleBus, { lang: PAGE_LANG });
   }
 
   if (elements.serviceStatus) {
@@ -473,133 +413,6 @@ function renderServiceStatusCard() {
   `;
 }
 
-function renderShuttleBusCard() {
-  const rows = SHUTTLE_BUS.routes.map((route) => `
-    <article class="timetable-shuttle-route" data-shuttle-route="${escapeHtml(route.id)}" aria-labelledby="shuttle-route-${escapeHtml(route.id)}">
-      <p class="timetable-shuttle-path">OIC → ${escapeHtml(localizeShuttleRoute(route, 'shortName'))}</p>
-      <h3 id="shuttle-route-${escapeHtml(route.id)}" class="timetable-shuttle-destination">${escapeHtml(localizeShuttleRoute(route, 'destination'))}</h3>
-      <p class="timetable-shuttle-label">${escapeHtml(t('shuttleNextDeparture'))}</p>
-      <p class="timetable-shuttle-next">
-        <span class="timetable-shuttle-day" data-shuttle-day="${escapeHtml(route.id)}"></span>
-        <time class="timetable-shuttle-time" data-shuttle-next="${escapeHtml(route.id)}">--:--</time>
-      </p>
-      <p class="timetable-shuttle-countdown" data-shuttle-countdown="${escapeHtml(route.id)}"></p>
-    </article>
-  `).join('');
-
-  elements.shuttleBus.innerHTML = `
-    ${renderSectionHead('shuttle-bus-title', t('shuttleEyebrow'), t('shuttleHeading'))}
-    <div class="section-body">
-      <div class="timetable-shuttle-routes">${rows}</div>
-      <p class="timetable-shuttle-links">
-        ${renderExternalLink(SHUTTLE_BUS.sourceUrl, t('officialPage'))}
-        ${renderExternalLink(SHUTTLE_BUS.timetableUrl, t('shuttleTimetablePdf'))}
-        ${renderExternalLink(SHUTTLE_BUS.scheduleUrl, t('shuttleSchedulePdf'))}
-      </p>
-    </div>
-  `;
-
-  updateShuttleBusDepartures();
-
-  if (!shuttleBusTimer) {
-    shuttleBusTimer = window.setInterval(updateShuttleBusDepartures, 1000);
-  }
-}
-
-function updateShuttleBusDepartures() {
-  if (!elements.shuttleBus) return;
-
-  const now = getJapanNow();
-
-  SHUTTLE_BUS.routes.forEach((route) => {
-    const next = getNextShuttleDeparture(route, now);
-    const routeElement = elements.shuttleBus.querySelector(`[data-shuttle-route="${route.id}"]`);
-    const dayElement = elements.shuttleBus.querySelector(`[data-shuttle-day="${route.id}"]`);
-    const nextElement = elements.shuttleBus.querySelector(`[data-shuttle-next="${route.id}"]`);
-    const countdownElement = elements.shuttleBus.querySelector(`[data-shuttle-countdown="${route.id}"]`);
-
-    routeElement?.classList.toggle('is-out-of-service', !next);
-
-    if (!next) {
-      setText(dayElement, '');
-      setText(nextElement, t('shuttleNoService'));
-      nextElement?.removeAttribute('datetime');
-      setText(countdownElement, '');
-      return;
-    }
-
-    setText(dayElement, formatShuttleDayLabel(next.date, now));
-    setText(nextElement, formatTimeValue(next.date));
-    nextElement?.setAttribute('datetime', `${formatDateValue(next.date)}T${formatTimeValue(next.date)}`);
-    setText(countdownElement, formatCountdown(next.date.getTime() - now.getTime()));
-  });
-}
-
-function setText(element, value) {
-  if (element && element.textContent !== value) {
-    element.textContent = value;
-  }
-}
-
-function getNextShuttleDeparture(route, now) {
-  const today = startOfDay(now);
-
-  for (let offset = 0; offset < 370; offset += 1) {
-    const operationDate = new Date(today.getTime() + offset * ONE_DAY);
-    if (!isShuttleOperationDate(operationDate)) continue;
-
-    for (const time of route.departures) {
-      const candidate = buildDateTime(operationDate, time);
-      if (candidate.getTime() >= now.getTime()) {
-        return { date: candidate, time };
-      }
-    }
-  }
-
-  return null;
-}
-
-function isShuttleOperationDate(date) {
-  const day = date.getDay();
-  if (day === 0 || day === 6) return false;
-
-  const value = formatDateValue(date);
-  return SHUTTLE_BUS.operationDateRanges.some(([start, end]) => value >= start && value <= end);
-}
-
-function buildDateTime(date, time) {
-  const [hours, minutes] = time.split(':').map(Number);
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate(), hours, minutes, 0, 0);
-}
-
-function startOfDay(date) {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-}
-
-function formatShuttleDayLabel(date, now) {
-  const today = startOfDay(now).getTime();
-  const departureDay = startOfDay(date).getTime();
-
-  if (departureDay === today) return t('today');
-  if (departureDay === today + ONE_DAY) return t('tomorrow');
-  return formatShuttleDate(date);
-}
-
-function formatShuttleDate(date) {
-  return `${date.getMonth() + 1}/${date.getDate()}`;
-}
-
-// Minute precision is enough here: the departure time is the primary figure.
-function formatCountdown(milliseconds) {
-  const totalMinutes = Math.ceil(Math.max(0, milliseconds) / 60000);
-  if (totalMinutes < 1) return t('shuttleDeparting');
-
-  const days = Math.floor(totalMinutes / 1440);
-  const hours = Math.floor((totalMinutes % 1440) / 60);
-  const minutes = totalMinutes % 60;
-  return t('countdown')(days, hours, minutes);
-}
-
 function resolveDirectionLinks(direction) {
   if (direction.mode === 'dayType') {
     return [
@@ -702,14 +515,6 @@ function localizeLine(item, key) {
   return PAGE_LANG === 'en' && item[englishKey] ? item[englishKey] : item[key];
 }
 
-function localizeShuttleRoute(route, key) {
-  if (key === 'destination') {
-    return PAGE_LANG === 'en' && route.destinationEn ? route.destinationEn : route.destination;
-  }
-
-  return route[key];
-}
-
 function formatDateValue(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -717,34 +522,8 @@ function formatDateValue(date) {
   return `${year}-${month}-${day}`;
 }
 
-function formatTimeValue(date) {
-  return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
-}
-
 function formatDateCompact(date) {
   return formatDateValue(date).replaceAll('-', '');
-}
-
-function getJapanNow() {
-  const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Tokyo',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hourCycle: 'h23'
-  }).formatToParts(new Date());
-  const value = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return new Date(
-    Number(value.year),
-    Number(value.month) - 1,
-    Number(value.day),
-    Number(value.hour),
-    Number(value.minute),
-    Number(value.second)
-  );
 }
 
 function getJapanDate() {

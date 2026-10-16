@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import test from 'node:test';
 
+import { nextShuttleDeparture } from '../src/shuttle-bus.js';
+
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 const exists = (path) => existsSync(new URL(`../${path}`, import.meta.url));
 
@@ -57,4 +59,50 @@ test('the source notes moved from the timetable page to the sources page', () =>
   assert.ok(manifest.sourceReferences.length >= 3);
   assert.match(read('sources/index.html'), /href="\/timetable\/"/);
   assert.match(read('en/sources/index.html'), /Hankyu's timetable pages state that permission is required/);
+});
+
+test('the shuttle bus card is on /timetable/ and shares one data source with the English links page', () => {
+  const html = read('timetable/index.html');
+  assert.match(html, /<section class="section timetable-shuttle" data-shuttle-bus-card aria-labelledby="shuttle-bus-title">/);
+  assert.match(read('src/timetable.js'), /import \{ mountShuttleBusCard \} from '\.\/shuttle-bus\.js'/);
+  assert.match(read('src/timetable.js'), /mountShuttleBusCard\(elements\.shuttleBus, \{ lang: 'ja' \}\)/);
+  // The English links page uses the same module; the schedule data exists only there.
+  const links = read('src/timetable-links.js');
+  assert.match(links, /import \{ mountShuttleBusCard \} from '\.\/shuttle-bus\.js'/);
+  assert.doesNotMatch(links, /operationDateRanges|departures: \[/);
+  assert.match(read('src/shuttle-bus.js'), /operationDateRanges/);
+  // The reservation buttons: the LINE account from the flyer's QR code, and the manual PDF.
+  assert.match(read('src/shuttle-bus.js'), /reservationUrl: 'https:\/\/lin\.ee\/pZeDOcd'/);
+  assert.match(read('src/shuttle-bus.js'), /manualUrl: 'https:\/\/www\.ritsumei\.ac\.jp\/file\.jsp\?id=705941'/);
+  assert.match(read('src/styles/timetable.css'), /--tt-line-green: #06c755;/);
+  assert.match(read('en/timetable/index.html'), /data-shuttle-bus-card/);
+});
+
+test('the next shuttle departure skips weekends and days outside the service ranges', () => {
+  const at = (y, m, d, hh, mm) => new Date(y, m - 1, d, hh, mm, 0, 0);
+  const time = (date) => date && `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
+
+  // Fri 2026-10-16: before the first bus, between buses, after the last bus.
+  assert.equal(time(nextShuttleDeparture('bkc', at(2026, 10, 16, 10, 0))), '10/16 15:05');
+  assert.equal(time(nextShuttleDeparture('bkc', at(2026, 10, 16, 15, 5))), '10/16 15:05');
+  assert.equal(time(nextShuttleDeparture('bkc', at(2026, 10, 16, 15, 6))), '10/16 16:50');
+  assert.equal(time(nextShuttleDeparture('kinugasa', at(2026, 10, 16, 15, 6))), '10/16 16:45');
+  // After the last bus on Friday the next one is Monday.
+  assert.equal(time(nextShuttleDeparture('kinugasa', at(2026, 10, 16, 20, 6))), '10/19 15:00');
+  // 2026-10-31 (Saturday) is outside every range; 2026-11-01 is Sunday; Monday 11/2 starts again.
+  assert.equal(time(nextShuttleDeparture('bkc', at(2026, 10, 31, 9, 0))), '11/2 15:05');
+  // Past the last service day of the term there is no departure.
+  assert.equal(nextShuttleDeparture('bkc', at(2026, 12, 25, 20, 11)), null);
+  assert.equal(nextShuttleDeparture('unknown', at(2026, 10, 16, 10, 0)), null);
+});
+
+test('on /timetable/ the hidden cards panel is the last block, after the shuttle bus and the caution', () => {
+  const html = read('timetable/index.html');
+  const at = (pattern) => html.search(pattern);
+  const board = at(/data-card-grid/);
+  const shuttle = at(/data-shuttle-bus-card/);
+  const caution = at(/class="timetable-caution"/);
+  const hidden = at(/<section class="section timetable-hidden-panel"/);
+  assert.ok(board < shuttle && shuttle < caution && caution < hidden, 'board → shuttle → caution → hidden cards');
+  assert.match(html.slice(hidden), /^<section class="section timetable-hidden-panel"[\s\S]*?<\/section>\s*<\/div>\s*<\/main>/);
 });

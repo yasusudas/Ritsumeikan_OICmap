@@ -11,6 +11,8 @@
 .timetable-page {
   --tt-sheet: 26px; /* big blocks: shuttle routes, departure cards */
   --tt-chip-h: 36px; /* small pill links and buttons */
+  --tt-line-green: #06c755; /* LINE's green, sampled from LINE's official icon */
+  --tt-line-green-hover: #05b04c;
   --timetable-day-link-w: 6.5rem; /* min width of a day link */
   --timetable-day-link-fit: 7.25rem; /* phones: two per row when they fit */
 }
@@ -49,8 +51,10 @@ html[lang="en"] .timetable-page {
   color: var(--c-ink-3);
 }
 
-/* Small pill link: grey on white, white on a grey row or sheet. */
-.timetable-quiet-link {
+/* Small pill link: grey on white, white on a grey row or sheet. The LINE
+   link (shuttle bus reservation) is the one accent: LINE green. */
+.timetable-quiet-link,
+.timetable-line-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -69,6 +73,19 @@ html[lang="en"] .timetable-page {
 
 .timetable-quiet-link:hover {
   background: var(--ls-fill-2);
+}
+
+.timetable-line-link {
+  background: var(--tt-line-green);
+  color: #ffffff;
+}
+
+.timetable-line-link:hover {
+  background: var(--tt-line-green-hover);
+}
+
+.timetable-line-link.external::after {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .timetable-status-row .timetable-quiet-link,
@@ -193,7 +210,8 @@ body.subpage .timetable-day-link:hover {
 }
 
 /* ---------------------------------------------------------------------
-   Link page: shuttle bus
+   Shuttle bus (/timetable/ and /en/timetable/)
+   Same sheet, padding and type scale as the departure cards.
    --------------------------------------------------------------------- */
 
 .timetable-shuttle-routes {
@@ -207,7 +225,7 @@ body.subpage .timetable-day-link:hover {
   align-content: start;
   gap: 2px;
   min-width: 0;
-  padding: 26px 30px 28px;
+  padding: 22px 28px 26px;
   border-radius: var(--tt-sheet);
   background: var(--ls-fill);
 }
@@ -223,7 +241,7 @@ body.subpage .timetable-day-link:hover {
 
 .timetable-shuttle-destination {
   margin: 0;
-  font-size: var(--fs-lg);
+  font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-title);
   line-height: var(--lh-tight);
@@ -256,10 +274,10 @@ body.subpage .timetable-day-link:hover {
 
 .timetable-shuttle-time {
   font-family: var(--font-latin);
-  font-size: clamp(2.75rem, 2.1rem + 2.4vw, 4rem);
+  font-size: clamp(1.95rem, 4.1vw, 2.85rem);
   font-weight: var(--fw-bold);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   line-height: 1.1;
 }
 
@@ -1049,12 +1067,16 @@ body.subpage .timetable-controls .btn-quiet:not(:disabled):hover {
   }
 
   .timetable-shuttle-route {
-    padding: 22px 24px 24px;
+    padding: 18px 22px 22px;
     border-radius: 24px;
   }
 
   .timetable-shuttle-label {
     margin-top: 16px;
+  }
+
+  .timetable-shuttle-time {
+    font-size: clamp(2.1rem, 9.2vw, 2.8rem);
   }
 
   .timetable-status-row {
