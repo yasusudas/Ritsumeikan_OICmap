@@ -36,6 +36,8 @@ const elements = {
   resetLayout: document.querySelector('[data-reset-layout]'),
   showAll: document.querySelector('[data-show-all]'),
   shuttleBus: document.querySelector('[data-shuttle-bus-card]'),
+  hideDialog: document.querySelector('[data-hide-dialog]'),
+  hideDialogText: document.querySelector('[data-hide-dialog-text]'),
 };
 
 let manifest = null;
@@ -210,10 +212,7 @@ function renderLiveServiceStatusRow(item) {
     <li class="timetable-status-row is-${escapeHtml(LIVE_STATUS_TONES[status])}">
       <div class="timetable-status-line">
         <span class="timetable-railway-mark" style="--railway-color: ${escapeHtml(item.color || 'var(--c-ink-3)')};" aria-hidden="true"></span>
-        <div>
-          <h3 class="timetable-status-line-name">${escapeHtml(item.line)}</h3>
-          ${item.railway && item.railway !== item.line ? `<p class="timetable-status-railway">${escapeHtml(item.railway)}</p>` : ''}
-        </div>
+        <h3 class="timetable-status-line-name">${escapeHtml(item.line)}</h3>
       </div>
       <p class="timetable-status-state">
         <span class="timetable-status-dot" aria-hidden="true"></span>${escapeHtml(item.statusLabel || '確認中')}
@@ -237,7 +236,7 @@ async function renderCards() {
     activeSchedulesByCardId.clear();
     elements.cardGrid.innerHTML = renderBoardMessage(
       '表示中のカードがありません',
-      '下の「非表示カード」から再表示してください。'
+      '最下部の「非表示カード」から再表示してください。'
     );
     return;
   }
@@ -270,7 +269,11 @@ function renderCard(card, scheduleSet) {
   const calendarLabel = schedule.calendar.shortLabelJa || schedule.calendar.labelJa;
   const nextService = splitServiceType(next.departure.serviceType);
   const titleId = `timetable-card-title-${card.id}`;
+  const sheetId = `timetable-card-all-${card.id}`;
 
+  // Laid out like a departure-board widget: the station and the next train on the left with the
+  // time left under them, the trains after it on the right. Both the header and the right-hand
+  // head are drag handles (data-drag-handle).
   return `
     <article
       class="timetable-card"
@@ -278,48 +281,56 @@ function renderCard(card, scheduleSet) {
       data-active-schedule-id="${escapeHtml(schedule.id)}"
       aria-labelledby="${escapeHtml(titleId)}"
     >
-      <header class="timetable-card-header" title="ドラッグで並べ替え">
-        <p class="timetable-railway">
-          <span class="timetable-railway-mark" style="--railway-color: ${escapeHtml(railway?.color || 'var(--c-ink-3)')};" aria-hidden="true"></span>${escapeHtml(card.railwayNameJa)}<span class="timetable-railway-line">${escapeHtml(schedule.line.nameJa)}</span>
-        </p>
-        <div class="timetable-card-tools">
-          <button
-            class="timetable-card-hide"
-            type="button"
-            data-hide-card="${escapeHtml(card.id)}"
-            aria-label="${escapeHtml(`${card.station.nameJa} ${card.direction.labelJa}を非表示`)}"
-          >非表示</button>
-          <span class="timetable-card-grip" aria-hidden="true">${GRIP_ICON}</span>
-        </div>
+      <header class="timetable-card-header" data-drag-handle title="ドラッグで並べ替え">
+        <span class="timetable-railway-mark" style="--railway-color: ${escapeHtml(railway?.color || 'var(--c-ink-3)')};" aria-hidden="true"></span>
+        <p class="timetable-railway">${escapeHtml(cardLineLabel(railway, schedule.line.nameJa))}</p>
         <h2 id="${escapeHtml(titleId)}" class="timetable-card-title">
           ${escapeHtml(card.station.nameJa)}<span>${escapeHtml(card.direction.labelJa)}</span>
         </h2>
       </header>
 
-      <section class="timetable-next" aria-label="次の発車">
-        <p class="timetable-next-label">次の発車<span>${escapeHtml(calendarLabel)}ダイヤ</span></p>
-        <p class="timetable-next-countdown" data-next-countdown>${escapeHtml(formatCountdownLabel(next.secondsUntil))}</p>
-        <div class="timetable-next-main">
-          <p class="timetable-next-service">
-            <span class="timetable-train-type ${serviceClass(nextService.label)}" data-next-service>${escapeHtml(nextService.label)}</span>
-            <time class="timetable-next-time" data-next-departure-time>${escapeHtml(next.departure.time)}</time>
-            <span class="timetable-destination" data-next-destination>${escapeHtml(next.departure.destinationJa)}</span>
-          </p>
-          <p class="timetable-train-note" data-next-note${nextService.note ? '' : ' hidden'}>${escapeHtml(nextService.note)}</p>
+      <div class="timetable-card-side">
+        <div class="timetable-card-sidehead" data-drag-handle title="ドラッグで並べ替え">
+          <p class="timetable-upcoming-label">この後</p>
+          <div class="timetable-card-tools">
+            <button
+              class="timetable-card-hide"
+              type="button"
+              data-hide-card="${escapeHtml(card.id)}"
+              aria-label="${escapeHtml(`${card.station.nameJa} ${card.direction.labelJa}を非表示`)}"
+            >非表示</button>
+            <span class="timetable-card-grip" aria-hidden="true">${GRIP_ICON}</span>
+          </div>
         </div>
+
+        <section class="timetable-upcoming" aria-label="この後の発車">
+          <ol class="timetable-upcoming-list" data-upcoming>${renderUpcoming(later)}</ol>
+        </section>
+      </div>
+
+      <section class="timetable-next" aria-label="次の発車">
+        <p class="timetable-next-service">
+          <time class="timetable-next-time" data-next-departure-time>${escapeHtml(next.departure.time)}</time>
+          <span class="timetable-destination" data-next-destination>${escapeHtml(next.departure.destinationJa)}</span>
+        </p>
+        <p class="timetable-next-badges">
+          <span class="timetable-train-type ${serviceClass(nextService.label)}" data-next-service>${escapeHtml(nextService.label)}</span>
+        </p>
+        <p class="timetable-train-note" data-next-note${nextService.note ? '' : ' hidden'}>${escapeHtml(nextService.note)}</p>
+        <p class="timetable-next-countdown" data-next-countdown role="timer" aria-label="${escapeHtml(formatCountdownLabel(next.secondsUntil))}">${escapeHtml(formatCountdown(next.secondsUntil))}</p>
       </section>
 
-      <section class="timetable-upcoming" aria-label="この後の発車">
-        <p class="timetable-upcoming-label">この後</p>
-        <ol class="timetable-upcoming-list" data-upcoming>${renderUpcoming(later)}</ol>
-      </section>
-
-      <details class="timetable-all">
-        <summary>全便を見る<span class="timetable-all-meta">${escapeHtml(calendarLabel)} ${schedule.departures.length}本</span></summary>
+      <button
+        class="timetable-all-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="${escapeHtml(sheetId)}"
+      >全便を見る<span class="visually-hidden">（${escapeHtml(calendarLabel)} ${schedule.departures.length}本）</span></button>
+      <div class="timetable-all-sheet" id="${escapeHtml(sheetId)}" hidden>
         <div class="timetable-hour-list">
           ${renderHourList(schedule.departures)}
         </div>
-      </details>
+      </div>
     </article>
   `;
 }
@@ -330,12 +341,14 @@ function renderUpcoming(later) {
       const service = splitServiceType(entry.departure.serviceType);
       return `
         <li class="timetable-upcoming-item">
-          <time>${escapeHtml(entry.departure.time)}</time>
-          <span class="timetable-upcoming-train">
-            <span class="timetable-train-type ${serviceClass(service.label)}">${escapeHtml(service.label)}</span>
+          <p class="timetable-upcoming-train">
+            <time>${escapeHtml(entry.departure.time)}</time>
             <span class="timetable-destination">${escapeHtml(entry.departure.destinationJa)}</span>
-          </span>
-          ${service.note ? `<span class="timetable-train-note">${escapeHtml(service.note)}</span>` : ''}
+          </p>
+          <p class="timetable-upcoming-badges">
+            <span class="timetable-train-type ${serviceClass(service.label)}">${escapeHtml(service.label)}</span>
+          </p>
+          ${service.note ? `<p class="timetable-train-note">${escapeHtml(service.note)}</p>` : ''}
         </li>
       `;
     })
@@ -371,7 +384,12 @@ function updateCountdownDisplays() {
     const note = cardElement.querySelector('[data-next-note]');
     const upcoming = cardElement.querySelector('[data-upcoming]');
 
-    setText(countdown, formatCountdownLabel(next.secondsUntil));
+    if (countdown) {
+      setText(countdown, formatCountdown(next.secondsUntil));
+      countdown.classList.toggle('is-long', next.secondsUntil >= 3600);
+      const spoken = formatCountdownLabel(next.secondsUntil);
+      if (countdown.getAttribute('aria-label') !== spoken) countdown.setAttribute('aria-label', spoken);
+    }
     setText(departureTime, next.departure.time);
     if (service) {
       service.className = `timetable-train-type ${serviceClass(nextService.label)}`;
@@ -412,12 +430,37 @@ function setupCardHide(cardElement) {
   const button = cardElement.querySelector('[data-hide-card]');
   if (!button) return;
 
-  button.addEventListener('click', () => {
+  button.addEventListener('click', async () => {
     const cardId = button.dataset.hideCard;
     if (!cardId) return;
+    const card = manifest?.cards.find((item) => item.id === cardId);
+    const label = card ? `${card.station.nameJa} ${card.direction.labelJa}` : 'このカード';
+    const confirmed = await askToHideCard(label);
+    if (!confirmed) return;
+
     state.hidden = [...new Set([...state.hidden, cardId])];
     saveState();
-    void render();
+    await render();
+    elements.hiddenList?.querySelector(`[data-restore-card="${CSS.escape(cardId)}"]`)?.focus();
+  });
+}
+
+function askToHideCard(label) {
+  const dialog = elements.hideDialog;
+  if (!dialog || dialog.open) return Promise.resolve(false);
+  if (elements.hideDialogText) elements.hideDialogText.textContent = label;
+
+  dialog.showModal();
+  return new Promise((resolve) => {
+    const onBackdrop = (event) => {
+      if (event.target === dialog) dialog.close('cancel');
+    };
+    const onClose = () => {
+      dialog.removeEventListener('click', onBackdrop);
+      resolve(dialog.returnValue === 'hide');
+    };
+    dialog.addEventListener('click', onBackdrop);
+    dialog.addEventListener('close', onClose, { once: true });
   });
 }
 
@@ -447,28 +490,31 @@ function setupCardDrag(cardElement) {
     window.addEventListener('pointercancel', onTimetablePointerEnd);
   });
 
-  cardElement.querySelector('.timetable-card-header')?.addEventListener(
-    'touchstart',
-    (event) => {
-      if (dragState || event.touches.length !== 1 || isInteractiveDragTarget(event.target)) return;
-      if (hasAnimatingDetails(cardElement)) return;
-      const touch = event.changedTouches[0];
-      dragState = {
-        input: 'touch',
-        cardElement,
-        touchId: touch.identifier,
-        startX: touch.clientX,
-        startY: touch.clientY,
-        currentX: touch.clientX,
-        currentY: touch.clientY,
-        active: false,
-      };
-      window.addEventListener('touchmove', onTimetableTouchMove, { passive: false });
-      window.addEventListener('touchend', onTimetableTouchEnd);
-      window.addEventListener('touchcancel', onTimetableTouchEnd);
-    },
-    { passive: true }
-  );
+  // Touch drags only start on the header areas, so the rest of the card still scrolls the page.
+  cardElement.querySelectorAll('[data-drag-handle]').forEach((handle) => {
+    handle.addEventListener(
+      'touchstart',
+      (event) => {
+        if (dragState || event.touches.length !== 1 || isInteractiveDragTarget(event.target)) return;
+        if (hasAnimatingDetails(cardElement)) return;
+        const touch = event.changedTouches[0];
+        dragState = {
+          input: 'touch',
+          cardElement,
+          touchId: touch.identifier,
+          startX: touch.clientX,
+          startY: touch.clientY,
+          currentX: touch.clientX,
+          currentY: touch.clientY,
+          active: false,
+        };
+        window.addEventListener('touchmove', onTimetableTouchMove, { passive: false });
+        window.addEventListener('touchend', onTimetableTouchEnd);
+        window.addEventListener('touchcancel', onTimetableTouchEnd);
+      },
+      { passive: true }
+    );
+  });
 }
 
 function onTimetablePointerMove(event) {
@@ -802,50 +848,50 @@ function orderedCardIdsFromDom() {
 
 function isInteractiveDragTarget(target) {
   if (!(target instanceof Element)) return false;
-  return Boolean(target.closest('button, a, input, select, textarea, summary, details'));
+  return Boolean(target.closest('button, a, input, select, textarea, summary, details, .timetable-all-sheet'));
 }
 
 function hasAnimatingDetails(cardElement) {
-  return Boolean(cardElement.querySelector('.timetable-all.is-animating'));
+  return Boolean(cardElement.querySelector('.timetable-all-sheet.is-animating'));
 }
 
+// The 全便を見る button sits in the left column, and the sheet it opens spans the card under
+// both columns, so they are a button and a separate panel rather than one <details>.
 function setupTimetableDetails(cardElement) {
-  cardElement.querySelectorAll('.timetable-all').forEach((details) => {
-    const summary = details.querySelector('summary');
-    const content = details.querySelector('.timetable-hour-list');
-    if (!summary || !content) return;
+  const toggle = cardElement.querySelector('.timetable-all-toggle');
+  const sheet = cardElement.querySelector('.timetable-all-sheet');
+  const content = sheet?.querySelector('.timetable-hour-list');
+  if (!toggle || !sheet || !content) return;
 
-    summary.addEventListener('click', (event) => {
-      event.preventDefault();
-      animateTimetableDetails(details, content, !details.open);
-    });
+  toggle.addEventListener('click', () => {
+    animateTimetableDetails(toggle, sheet, content, sheet.hidden);
   });
 }
 
-function animateTimetableDetails(details, content, shouldOpen) {
-  if (details.dataset.animating === 'true') return;
+function animateTimetableDetails(toggle, sheet, content, shouldOpen) {
+  if (sheet.dataset.animating === 'true') return;
+  toggle.setAttribute('aria-expanded', String(shouldOpen));
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    details.open = shouldOpen;
+    sheet.hidden = !shouldOpen;
     return;
   }
 
-  const targetHeight = getTimetableDetailsHeight(content);
-  details.dataset.animating = 'true';
-  details.classList.add('is-animating');
+  sheet.dataset.animating = 'true';
+  sheet.classList.add('is-animating');
 
   if (shouldOpen) {
-    details.open = true;
+    sheet.hidden = false;
+    const targetHeight = getTimetableDetailsHeight(content);
     content.style.height = '0px';
     content.style.opacity = '0';
     content.style.overflow = 'hidden';
     content.offsetHeight;
-    details.classList.add('is-open');
     window.requestAnimationFrame(() => {
       content.style.height = `${targetHeight}px`;
       content.style.opacity = '1';
     });
-    finishDetailsAnimation(details, content, true);
+    finishDetailsAnimation(sheet, content, true);
     return;
   }
 
@@ -853,22 +899,21 @@ function animateTimetableDetails(details, content, shouldOpen) {
   content.style.opacity = '1';
   content.style.overflow = 'hidden';
   content.offsetHeight;
-  details.classList.remove('is-open');
   window.requestAnimationFrame(() => {
     content.style.height = '0px';
     content.style.opacity = '0';
   });
-  finishDetailsAnimation(details, content, false);
+  finishDetailsAnimation(sheet, content, false);
 }
 
-function finishDetailsAnimation(details, content, isOpen) {
+function finishDetailsAnimation(sheet, content, isOpen) {
   let finished = false;
   const cleanup = () => {
     if (finished) return;
     finished = true;
-    details.open = isOpen;
-    details.classList.remove('is-animating');
-    delete details.dataset.animating;
+    sheet.hidden = !isOpen;
+    sheet.classList.remove('is-animating');
+    delete sheet.dataset.animating;
     content.style.height = '';
     content.style.opacity = '';
     content.style.overflow = '';
@@ -1121,7 +1166,19 @@ function serviceSeconds(departure) {
   );
 }
 
-// "あと8分05秒" / "あと1時間12分": the countdown is the large figure; the departure time sits in the train row.
+// "8:05" / "1:12:05": the time left is the large figure on the card. It has no "あと" in front, so
+// the timer's aria-label carries the spoken form below.
+function formatCountdown(seconds) {
+  const totalSeconds = Math.max(0, Math.floor(seconds));
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const pad = (value) => String(value).padStart(2, '0');
+  return hours > 0
+    ? `${hours}:${pad(minutes)}:${pad(totalSeconds % 60)}`
+    : `${minutes}:${pad(totalSeconds % 60)}`;
+}
+
+// "あと8分05秒" / "あと1時間12分": the spoken form of the countdown.
 function formatCountdownLabel(seconds) {
   const totalSeconds = Math.max(0, Math.floor(seconds));
   const hours = Math.floor(totalSeconds / 3600);
@@ -1147,6 +1204,12 @@ function splitServiceType(serviceType) {
   const value = String(serviceType ?? '').trim();
   const match = value.match(/^(.+?)\s*[（(](.+)[）)]$/);
   return match ? { label: match[1], note: match[2] } : { label: value, note: '' };
+}
+
+// "大阪モノレール本線" and "JR京都線" already name their operator; "京都線" alone does not.
+function cardLineLabel(railway, lineName) {
+  const operator = railway?.shortNameJa;
+  return operator && !lineName.includes(operator) ? `${operator} ${lineName}` : lineName;
 }
 
 function serviceClass(serviceType) {

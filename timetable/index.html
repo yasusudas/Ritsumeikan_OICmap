@@ -82,7 +82,6 @@
       <div class="page-inner">
         <header class="page-head">
           <h1 id="timetable-title" class="page-title">キャンパス周辺 時刻表</h1>
-          <p class="page-lead">OIC周辺の駅の次の発車時刻を、方面ごとに表示します。各ブロックは見出しをドラッグして並べ替えできます。</p>
         </header>
 
         <section class="section timetable-live-status" data-live-service-status aria-labelledby="live-status-title" aria-live="polite"></section>
@@ -133,5 +132,17 @@
         <p class="site-footer-copy">© 2026 Issei Yasuda</p>
       </div>
     </footer>
+
+    <dialog class="timetable-hide-dialog" data-hide-dialog aria-labelledby="timetable-hide-dialog-title" aria-describedby="timetable-hide-dialog-text">
+      <form method="dialog" class="timetable-hide-dialog-form">
+        <h2 id="timetable-hide-dialog-title" class="timetable-hide-dialog-title">非表示にしますか？</h2>
+        <p id="timetable-hide-dialog-text" class="timetable-hide-dialog-name" data-hide-dialog-text>このカード</p>
+        <p class="timetable-hide-dialog-note">最下部の「非表示カード」から再表示できます。</p>
+        <div class="timetable-hide-dialog-actions">
+          <button class="btn" type="submit" value="cancel" autofocus>キャンセル</button>
+          <button class="btn btn-primary" type="submit" value="hide">非表示にする</button>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>

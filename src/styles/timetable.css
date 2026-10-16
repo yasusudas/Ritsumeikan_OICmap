@@ -45,12 +45,6 @@ html[lang="en"] .timetable-page {
   background: var(--railway-color, var(--c-ink-3));
 }
 
-.timetable-railway-line::before {
-  content: "/";
-  margin-right: var(--s-2);
-  color: var(--c-ink-3);
-}
-
 /* Small pill link: grey on white, white on a grey row or sheet. The LINE
    link (shuttle bus reservation) is the one accent: LINE green. */
 .timetable-quiet-link,
@@ -442,11 +436,10 @@ body.subpage .timetable-status-list > .timetable-status-row {
   font-variant-numeric: tabular-nums;
 }
 
-/* Hidden page: line | status | summary | link. Text cells share the
-   first line with the link pill. */
+/* Line, status, summary and the link pill share the vertical center of the row. */
 .timetable-live-status .timetable-status-row {
   grid-template-columns: minmax(0, 10rem) minmax(0, 7.5rem) minmax(0, 1fr) auto;
-  align-items: start;
+  align-items: center;
   gap: var(--s-2) var(--s-5);
 }
 
@@ -546,37 +539,91 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   gap: 16px;
 }
 
+/* A departure-board widget: the station, the next train and the time left on
+   the left, with the 全便を見る pill at its foot; the trains after it on the
+   right, down to the bottom of the card. The pill opens the whole day in a
+   sheet under both columns. */
 .timetable-card {
+  --tt-row-gap: 8px;
+  /* The pill's row: the gap above it, its 4px margin and its 32px height. */
+  --tt-foot: calc(var(--tt-row-gap) + 36px);
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  grid-template-areas:
+    "head side"
+    "next side"
+    "all side";
+  column-gap: 16px;
+  row-gap: var(--tt-row-gap);
+  align-items: start;
   min-width: 0;
-  padding: 22px 24px 26px 28px;
+  padding: 16px 20px 16px 22px;
   border-radius: var(--tt-sheet);
   background: var(--ls-fill);
 }
 
 .timetable-card-header {
+  grid-area: head;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 6px var(--s-3);
+  grid-template-columns: 4px minmax(0, 1fr);
+  column-gap: 9px;
+  align-items: stretch;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
 }
 
+/* The railway color is a slim bar along the line name and the station. */
+.timetable-card-header .timetable-railway-mark {
+  grid-row: 1 / span 2;
+  width: 4px;
+  height: auto;
+  border-radius: 2px;
+}
+
+.timetable-card-header .timetable-railway {
+  grid-column: 2;
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+}
+
+/* The right-hand column: the buttons, then the trains after the next one. It spans
+   both rows on the left, so the list starts right under the buttons. */
+.timetable-card-side {
+  grid-area: side;
+  align-self: stretch;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 4px;
+  min-width: 0;
+}
+
+.timetable-card-sidehead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-2);
+  min-width: 0;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.timetable-card-sidehead .timetable-upcoming-label {
+  margin-top: 2px;
+}
+
 .timetable-card-tools {
   display: flex;
   align-items: center;
-  gap: 2px;
-  margin: -4px 0;
+  gap: 0;
+  margin: -4px -6px 0 auto;
 }
 
 .timetable-card-hide {
   min-height: 32px;
-  padding: 0 14px;
+  padding: 0 11px;
   border: 0;
   border-radius: 999px;
   background: #ffffff;
@@ -597,24 +644,25 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
+  width: 28px;
   height: 32px;
   color: var(--c-ink-3);
   transition: color var(--dur) var(--ease);
 }
 
-.timetable-card-header:hover .timetable-card-grip {
+.timetable-card-header:hover ~ .timetable-card-side .timetable-card-grip,
+.timetable-card-sidehead:hover .timetable-card-grip {
   color: var(--c-ink);
 }
 
 .timetable-card-title {
-  grid-column: 1 / -1;
+  grid-column: 2;
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 0 var(--s-3);
+  gap: 0 var(--s-2);
   margin: 0;
-  font-size: var(--fs-xl);
+  font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-title);
   line-height: var(--lh-tight);
@@ -622,22 +670,23 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
 
 .timetable-card-title span {
   color: var(--c-ink-2);
-  font-size: var(--fs-base);
+  font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
   letter-spacing: 0;
 }
 
-/* Next departure: the time left is the large figure; the departure time sits
-   in the train row with the train type and the destination. */
+/* Next departure: the train on top, the time left as the large figure at the
+   foot of the left column. */
 .timetable-next {
-  display: grid;
-  gap: 6px;
+  grid-area: next;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 
-.timetable-next-label,
 .timetable-upcoming-label {
-  display: flex;
-  gap: var(--s-3);
   margin: 0;
   color: var(--c-ink-3);
   font-size: var(--fs-xs);
@@ -645,54 +694,56 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   line-height: 1.5;
 }
 
-.timetable-next-label span {
-  font-weight: var(--fw-regular);
-}
-
-.timetable-next-countdown {
-  margin: 2px 0 0;
-  font-family: var(--font-latin);
-  font-size: clamp(1.95rem, 4.1vw, 2.85rem);
-  font-weight: var(--fw-bold);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0;
-  line-height: 1.1;
-}
-
-.timetable-next-main {
-  display: grid;
-  gap: var(--s-1);
-  min-width: 0;
-}
-
 .timetable-next-service {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   flex-wrap: wrap;
-  gap: var(--s-2) 8px;
+  gap: 0 var(--s-2);
   margin: 0;
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
   line-height: var(--lh-snug);
 }
 
-.timetable-next-service .timetable-train-type {
-  font-size: var(--fs-sm);
-}
-
 .timetable-next-time {
   flex: 0 0 auto;
   font-family: var(--font-latin);
-  font-size: var(--fs-md);
+  font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0;
-  line-height: 1.2;
+  line-height: 1.3;
   white-space: nowrap;
 }
 
-.timetable-next-time::after {
-  content: '発';
+.timetable-next-badges,
+.timetable-upcoming-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-2);
+  margin: 0;
+}
+
+.timetable-next-badges .timetable-train-type {
+  font-size: var(--fs-sm);
+}
+
+.timetable-next-countdown {
+  margin: auto 0 0;
+  padding-top: 6px;
+  font-family: var(--font-latin);
+  font-size: 2.5rem;
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Over an hour: h:mm:ss needs a smaller figure to stay inside the column. */
+.timetable-next-countdown.is-long {
+  font-size: 1.75rem;
 }
 
 .timetable-train-note {
@@ -701,12 +752,6 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   font-size: var(--fs-xs);
   line-height: 1.6;
   overflow-wrap: anywhere;
-}
-
-@media (max-width: 720px) {
-  .timetable-next-countdown {
-    font-size: clamp(2.1rem, 9.2vw, 2.8rem);
-  }
 }
 
 /* Train type: local trains as plain grey text; faster trains as a soft
@@ -745,43 +790,51 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   color: #ffffff;
 }
 
-/* Upcoming departures: rows set apart by space */
+/* Upcoming departures: three rows packed close, each a train line over its type. */
+/* The rows are spread over the whole height under the buttons, down to the foot of the
+   card beside the 全便を見る pill, and kept a little towards the middle. Together the two
+   gaps between the three rows and the 6px above and below the list hold 12px plus the
+   pill's row (--tt-foot), as the gaps alone did before, so a card is exactly as tall as
+   when the list stopped above the pill's row. */
 .timetable-upcoming {
-  display: grid;
-  gap: 4px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .timetable-upcoming-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: calc(var(--tt-foot) / 2);
   margin: 0;
-  padding: 0;
+  padding: 6px 0;
   list-style: none;
 }
 
 .timetable-upcoming-item {
   display: grid;
-  grid-template-columns: 3.75rem minmax(0, 1fr);
-  align-items: baseline;
-  gap: 2px var(--s-3);
-  padding: 5px 0;
-}
-
-.timetable-upcoming-item time {
-  font-family: var(--font-latin);
-  font-size: var(--fs-md);
-  font-weight: var(--fw-medium);
-  font-variant-numeric: tabular-nums;
+  gap: 1px;
+  line-height: 1.3;
 }
 
 .timetable-upcoming-train {
   display: flex;
-  align-items: center;
-  gap: var(--s-2);
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 var(--s-2);
+  margin: 0;
   min-width: 0;
   font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
 }
 
-.timetable-upcoming-train .timetable-train-type {
-  min-width: 3.6em;
+.timetable-upcoming-train time {
+  font-family: var(--font-latin);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  font-variant-numeric: tabular-nums;
 }
 
 .timetable-upcoming-train .timetable-destination {
@@ -789,36 +842,72 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   overflow-wrap: anywhere;
 }
 
+.timetable-upcoming-badges .timetable-train-type {
+  min-height: 1.5em;
+  padding: 0 0.6em;
+}
+
+.timetable-upcoming-badges .timetable-train-type.is-local {
+  min-height: 0;
+  padding: 0;
+}
+
 .timetable-upcoming-item .timetable-train-note {
-  grid-column: 2;
+  line-height: 1.4;
 }
 
-/* All departures (details): a white pill that opens a white sheet */
-.timetable-all {
-  margin-top: auto;
+/* One size larger where the column has room for it. The lines keep the heights they had at
+   the smaller sizes (15px: 19.5px, 12px: 14.4px, 16.8px), so no card gets taller. */
+@media (min-width: 360px) {
+  .timetable-upcoming-train {
+    font-size: var(--fs-base);
+    line-height: 19.5px;
+  }
+
+  .timetable-upcoming-train time {
+    font-size: var(--fs-md);
+    line-height: inherit;
+  }
+
+  .timetable-upcoming-badges .timetable-train-type {
+    min-height: 18px;
+    font-size: var(--fs-sm);
+    line-height: 14.4px;
+  }
+
+  .timetable-upcoming-badges .timetable-train-type.is-local {
+    min-height: 0;
+  }
+
+  .timetable-upcoming-item .timetable-train-note {
+    font-size: var(--fs-sm);
+    line-height: 16.8px;
+  }
 }
 
-.timetable-all summary {
+/* All departures: a white pill that opens a white sheet under both columns */
+.timetable-all-toggle {
+  grid-area: all;
+  justify-self: start;
+  align-self: end; /* at the foot of the card even when the right column is the taller one */
   display: inline-flex;
   align-items: center;
   gap: var(--s-2);
-  min-height: 40px;
-  padding: 0 18px;
+  min-height: 32px;
+  margin-top: 4px;
+  padding: 0 14px;
+  border: 0;
   border-radius: 999px;
   background: #ffffff;
   color: var(--c-ink);
+  font: inherit;
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
-  list-style: none;
   cursor: pointer;
   transition: background-color var(--dur) var(--ease);
 }
 
-.timetable-all summary::-webkit-details-marker {
-  display: none;
-}
-
-.timetable-all summary::after {
+.timetable-all-toggle::after {
   content: "";
   width: 6px;
   height: 6px;
@@ -829,21 +918,22 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   transition: transform var(--dur) var(--ease);
 }
 
-.timetable-all.is-open summary::after,
-.timetable-all[open]:not(.is-animating) summary::after {
+.timetable-all-toggle[aria-expanded="true"]::after {
   margin-top: 3px;
   transform: rotate(-135deg);
 }
 
-.timetable-all summary:hover {
+.timetable-all-toggle:hover {
   background: var(--ls-fill-2);
 }
 
-.timetable-all-meta {
-  color: var(--c-ink-3);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-regular);
-  font-variant-numeric: tabular-nums;
+.timetable-all-sheet {
+  grid-column: 1 / -1;
+  grid-row: 4;
+}
+
+.timetable-all-sheet .timetable-hour-list {
+  margin-top: 4px;
 }
 
 .timetable-hour-list {
@@ -1088,8 +1178,10 @@ body.subpage .timetable-controls .btn-quiet:not(:disabled):hover {
     padding-left: calc(8px + var(--s-3));
   }
 
+  /* The labels share one left edge, so their dots line up from row to row: the column is
+     as wide as the dot and the longest label (お知らせあり, 運転見合わせ: 6 characters). */
   .timetable-live-status .timetable-status-row {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) calc(8px + var(--s-2) + 6 * var(--fs-sm));
   }
 
   .timetable-live-status .timetable-status-summary,
@@ -1103,8 +1195,9 @@ body.subpage .timetable-controls .btn-quiet:not(:disabled):hover {
   }
 
   .timetable-card {
-    gap: 20px;
-    padding: 18px 16px 22px 22px;
+    --tt-row-gap: 6px;
+    column-gap: 14px;
+    padding: 12px 14px 12px 18px;
     border-radius: 24px;
   }
 }
@@ -1138,15 +1231,67 @@ body.subpage .timetable-controls .btn-quiet:not(:disabled):hover {
   }
 }
 
-/* Phones: the line name gets its own line under the operator, so a
-   wrapped label never starts with the "/" separator. */
-@media (max-width: 420px) {
-  .timetable-card .timetable-railway-line {
-    flex-basis: 100%;
-    padding-left: 16px;
-  }
+/* Hide confirmation. A closed <dialog> takes no space. No border or shadow: the
+   same soft sheet as the other public dialogs, with pill buttons inside. */
+.timetable-hide-dialog {
+  width: min(100% - 32px, 420px);
+  max-height: min(85vh, 480px);
+  margin: auto;
+  padding: 28px;
+  overflow: auto;
+  border: 0;
+  border-radius: 28px;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  box-shadow: none;
+}
 
-  .timetable-card .timetable-railway-line::before {
-    content: none;
+.timetable-hide-dialog::backdrop {
+  background: var(--c-overlay);
+}
+
+.timetable-hide-dialog-form {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.timetable-hide-dialog-title {
+  margin: 0;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-tight);
+}
+
+.timetable-hide-dialog-name,
+.timetable-hide-dialog-note {
+  margin: 0;
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+}
+
+.timetable-hide-dialog-name {
+  color: var(--c-ink);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+}
+
+.timetable-hide-dialog-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.timetable-hide-dialog-actions .btn {
+  width: 100%;
+}
+
+/* Narrow phones: the right-hand head has no room for "この後" beside the buttons. */
+@media (max-width: 374px) {
+  .timetable-card-sidehead .timetable-upcoming-label {
+    display: none;
   }
 }

@@ -381,6 +381,11 @@ body.subpage .section {
   border-bottom: 0;
 }
 
+/* The first block sits closer to the page title than later blocks sit to each other. */
+body.subpage .page-head + .section {
+  padding-top: 32px;
+}
+
 body.subpage .section-head {
   gap: 6px;
 }
@@ -450,6 +455,10 @@ body.subpage .btn:disabled:hover {
   body.subpage .section {
     gap: 16px;
     padding-top: 40px;
+  }
+
+  body.subpage .page-head + .section {
+    padding-top: 24px;
   }
 
   body.subpage .section-title {

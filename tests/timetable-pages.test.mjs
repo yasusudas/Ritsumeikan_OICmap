@@ -9,6 +9,25 @@ import { nextShuttleDeparture } from '../src/shuttle-bus.js';
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 const exists = (path) => existsSync(new URL(`../${path}`, import.meta.url));
 
+test('the departure page has no lead, and hiding a card asks before it hides', () => {
+  const html = read('timetable/index.html');
+  assert.doesNotMatch(html, /class="page-lead"/);
+  assert.doesNotMatch(html, /各ブロックは見出しをドラッグして並べ替えできます/);
+  assert.match(html, /<dialog class="timetable-hide-dialog" data-hide-dialog/);
+  assert.match(html, /非表示にする/);
+  assert.match(html, /value="cancel"/);
+
+  const page = read('src/timetable.js');
+  const hideStart = page.indexOf('function setupCardHide');
+  const hideEnd = page.indexOf('function askToHideCard');
+  const hideBody = page.slice(hideStart, hideEnd);
+  assert.match(hideBody, /const confirmed = await askToHideCard\(label\)/);
+  assert.ok(hideBody.indexOf('await askToHideCard') < hideBody.indexOf('state.hidden'), 'hide waits for the dialog');
+  assert.match(page, /function askToHideCard/);
+  assert.match(page, /dialog\.showModal\(\)/);
+  assert.match(page, /dialog\.returnValue === 'hide'/);
+});
+
 test('/timetable/ shows the departure cards and stays out of search results', () => {
   const html = read('timetable/index.html');
   assert.match(html, /<link rel="canonical" href="https:\/\/rits-oic-map\.app\/timetable\/" \/>/);
