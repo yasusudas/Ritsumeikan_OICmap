@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import test from 'node:test';
 
+import { normalizeMonorailDepartures, parseHankyuDepartures, parseJrDepartures } from '../scripts/fetch-timetable-data.mjs';
 import { parseJapaneseHolidaysIcs } from '../src/server/holidays.js';
 import { nextShuttleDeparture } from '../src/shuttle-bus.js';
 
@@ -116,7 +117,9 @@ test('the timetable data was refetched after JR West\'s October 2026 revision', 
     assert.equal(schedule.revision, '改正日:2026年10月03日', file);
   }
   // Returning visitors must not keep the old data from the service worker cache.
-  assert.match(read('public/sw.js'), /rits-oic-map-runtime-v23/);
+  // v24: the A快速 trains had been stored as 普通 (see the parser tests below).
+  assert.match(read('public/sw.js'), /rits-oic-map-runtime-v24/);
+  assert.match(read('public/sw.js'), /rits-oic-map-static-v24/);
   assert.match(read('sources/index.html'), /2026年10月16日に取得/);
 });
 
@@ -152,4 +155,119 @@ test('the holiday ICS parser keeps public holidays (祝日) and drops observance
     { date: '2027-03-22', nameJa: '春分の日 振替休日' },
   ]);
   assert.deepEqual(parseJapaneseHolidaysIcs(''), []);
+});
+
+// The JR West page: a train-type box can hold an empty <span></span> before the span with the mark.
+const jrItem = (id, typeHtml, minute, destination, minuteClass = ' minute') =>
+  `<div class="minute-item"><a href="/train-timetable/${id}?date=20261016"><div class="minute-box"><span class="train-type">${typeHtml}</span></div>` +
+  `<div class="minute-box"><span class="${minuteClass}">${minute}</span><span></span></div>` +
+  `<div class="minute-box"><span class="destination">${destination}</span></div></a></div>`;
+const jrPage = (items) =>
+  '<div class="revision-date">改正日:2026年10月03日</div>' +
+  `<div class="pc-time-tbl-wrap"><table><tbody><tr class="body-row"><td class="hour">16</td><td class="minutes">${items}</td></tr></tbody></table></div>` +
+  '<div class="notes-wrap"><div class="notes-ttl">行先・経由</div><div class="notes-comment">網 = 網干&emsp;\n 新三 = 新三田&emsp;</div>' +
+  '<div class="notes-ttl">車種別・列車名</div><div class="notes-comment"><span class=" legendOrange">快</span> = 快速&emsp;\n' +
+  ' <span class=" legendOrange">A快う</span> = A快速（うれしート連結）&emsp;\n <span>無印</span> = 普通&emsp;\n </div></div>';
+
+test('the JR parser reads A快速 even when the type box starts with an empty span', () => {
+  const { departures } = parseJrDepartures(
+    jrPage(
+      jrItem(101701, '<span></span><span class=" legendOrange">A快う</span>', 36, '網', ' minute legendOrange') +
+        jrItem(3231, '<span></span>', 40, '新三') +
+        jrItem(5551, '<span class=" legendOrange">快</span>', 42, '網', ' minute legendOrange')
+    )
+  );
+  assert.deepEqual(
+    departures.map((d) => [d.time, d.serviceType, d.destinationJa]),
+    [
+      ['16:36', 'A快速（うれしート連結）', '網干行'],
+      ['16:40', '普通', '新三田行'],
+      ['16:42', '快速', '網干行'],
+    ]
+  );
+});
+
+test('the JR parser stops on a train-type mark that the page legend does not explain', () => {
+  const page = jrPage(jrItem(1, '<span></span><span class=" legendOrange">特</span>', 36, '網'));
+  assert.throws(() => parseJrDepartures(page), /JR train type "特" at 16:36/);
+});
+
+test('every stored JR train has the type that its mark in the official page stands for', () => {
+  const byMark = {
+    '': '普通',
+    快: '快速',
+    A快う: 'A快速（うれしート連結）',
+    '快▲': '快速（島本・山崎・向日町・桂川・西大路通過）',
+  };
+  const manifest = JSON.parse(read('public/timetable/data/manifest.json'));
+  for (const file of ['kyoto-weekday', 'kyoto-holiday', 'osaka-kobe-weekday', 'osaka-kobe-holiday']) {
+    const schedule = JSON.parse(read(`public/timetable/data/jr-west/ibaraki/${file}.json`));
+    for (const departure of schedule.departures) {
+      assert.equal(byMark[departure.raw.serviceCode], departure.serviceType, `${file} ${departure.time}`);
+    }
+    assert.ok(schedule.departures.some((d) => d.serviceType === 'A快速（うれしート連結）'), `${file} has A快速 trains`);
+    // The manifest keeps each file's number of trains; fetch-timetable-data.mjs --only=jr-west relies on it.
+    const card = manifest.cards.find((item) => item.id === schedule.cardId);
+    assert.equal(card.calendars[schedule.calendar.id].departures, schedule.departures.length, file);
+  }
+});
+
+// The Hankyu page: each train links to its detail page and reads ［種別］ with a destination.
+const hankyuItem = (tm, minute, typeHtml, destination) =>
+  `<li><a href="/station/timetable.php?stationName=南茨木&SF=6025&TX=1950110-${tm}&DW=0&TM=${tm}" target="_blank" class="lang_ja_link modal_link ">` +
+  `<p class="timetable_min"><span data-wovn-ignore>${minute}</span><span class="about_alt">分</span></p>` +
+  `<div class="timetable_att">${typeHtml}<p class="timetable_station_name">${destination}</p></div></a></li>`;
+const hankyuPage = (items) =>
+  '<ul><li class="timetable_hour hour_w"><span data-wovn-ignore>16</span><span class="about_alt">時</span></li>' +
+  `<li class="timetable_mins"><ul>${items}</ul></li></ul>`;
+
+test('the Hankyu parser reads the train type and destination of every train', () => {
+  const departures = parseHankyuDepartures(
+    hankyuPage(
+      hankyuItem('1636', 36, '<p class="timetable_train_type">［準急］</p>', '天下茶屋') +
+        hankyuItem('1640', 40, '<p class="timetable_train_type">［普通］</p>', '大阪梅田')
+    ),
+    { hankyuDw: '0' }
+  );
+  assert.deepEqual(
+    departures.map((d) => [d.time, d.serviceType, d.destinationJa, d.raw.tm]),
+    [
+      ['16:36', '準急', '天下茶屋', '1636'],
+      ['16:40', '普通', '大阪梅田', '1640'],
+    ]
+  );
+});
+
+test('the Hankyu parser stops instead of calling a train it cannot read 普通', () => {
+  const run = (typeHtml, destination = '大阪梅田') =>
+    () => parseHankyuDepartures(hankyuPage(hankyuItem('1636', 36, typeHtml, destination)), { hankyuDw: '0' });
+  // No type, a type wrapped in another tag, a type without its brackets, no destination.
+  assert.throws(run(''), /Hankyu train type at 16:36 could not be read/);
+  assert.throws(run('<p class="timetable_train_type"><span>［急行］</span></p>'), /Hankyu train type at 16:36/);
+  assert.throws(run('<p class="timetable_train_type">急行</p>'), /Hankyu train type at 16:36/);
+  assert.throws(run('<p class="timetable_train_type">［普通］</p>', ''), /Hankyu destination at 16:36/);
+  // A train link outside the markup the loop reads.
+  const stray = '<a href="/station/timetable.php?TX=1&TM=1650">16:50</a>';
+  assert.throws(
+    () => parseHankyuDepartures(stray + hankyuPage(hankyuItem('1636', 36, '<p class="timetable_train_type">［普通］</p>', '大阪梅田')), { hankyuDw: '0' }),
+    /links to 2 trains but 1 were read/
+  );
+});
+
+test('the monorail parser stops on a mark that the legend does not explain', () => {
+  const direction = {
+    defaultDestinationJa: '大阪空港',
+    destinationMarks: { 万: '万博記念公園', 千: '千里中央', 南: '南茨木' },
+  };
+  const departures = normalizeMonorailDepartures({ 23: { 57: ['万', '無'] }, 24: { 6: ['万'] }, 5: { 36: [] } }, direction);
+  assert.deepEqual(
+    departures.map((d) => [d.time, d.serviceDayOffset, d.destinationJa, d.notes.length]),
+    [
+      ['05:36', 0, '大阪空港', 0],
+      ['23:57', 0, '万博記念公園', 1],
+      ['00:06', 1, '万博記念公園', 0],
+    ]
+  );
+  assert.throws(() => normalizeMonorailDepartures({ 16: { 37: ['特'] } }, direction), /Monorail mark 特 at 16:37/);
+  assert.throws(() => normalizeMonorailDepartures({ 16: { 37: '千' } }, direction), /Monorail marks at 16:37 are not a list/);
 });

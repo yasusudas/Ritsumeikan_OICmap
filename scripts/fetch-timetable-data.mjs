@@ -1,5 +1,6 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { HOLIDAYS_SOURCE } from '../src/server/holidays.js';
 
@@ -230,26 +231,44 @@ const SOURCE_REFERENCES = [
   },
 ];
 
-main().catch((error) => {
-  console.error(error.stack || error.message || error);
-  process.exitCode = 1;
-});
+// Imported by the tests (for parseJrDepartures); only a direct run fetches anything.
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error.stack || error.message || error);
+    process.exitCode = 1;
+  });
+}
 
+// node scripts/fetch-timetable-data.mjs                 fetch everything and rebuild manifest.json
+// node scripts/fetch-timetable-data.mjs --only=jr-west  fetch one railway; the manifest stays as it is
 async function main() {
+  const fetchers = {
+    'osaka-monorail': fetchMonorailSchedules,
+    hankyu: fetchHankyuSchedules,
+    'jr-west': fetchJrSchedules,
+  };
+  const only = process.argv.find((arg) => arg.startsWith('--only='))?.slice('--only='.length);
+  if (only && !fetchers[only]) {
+    throw new Error(`Unknown --only=${only}. Use one of: ${Object.keys(fetchers).join(', ')}`);
+  }
+
   await mkdir(OUTPUT_ROOT, { recursive: true });
 
-  const schedules = [
-    ...(await fetchMonorailSchedules()),
-    ...(await fetchHankyuSchedules()),
-    ...(await fetchJrSchedules()),
-  ];
+  const schedules = [];
+  for (const [railwayId, fetchSchedules] of Object.entries(fetchers)) {
+    if (!only || only === railwayId) schedules.push(...(await fetchSchedules()));
+  }
+
+  if (only) {
+    // The manifest holds each file's number of trains. If a count changed, it must be rebuilt.
+    await assertCountsMatchManifest(schedules);
+    await writeSchedules(schedules);
+    console.log(`Wrote ${schedules.length} ${only} schedules to ${OUTPUT_ROOT}; manifest.json was not rewritten.`);
+    return;
+  }
 
   const cards = buildCards(schedules);
-  for (const schedule of schedules) {
-    const file = path.join(OUTPUT_ROOT, schedule.file);
-    await mkdir(path.dirname(file), { recursive: true });
-    await writeJson(file, withoutFile(schedule));
-  }
+  await writeSchedules(schedules);
 
   const manifest = {
     schemaVersion: 1,
@@ -275,6 +294,28 @@ async function main() {
   await writeJson(path.join(OUTPUT_ROOT, 'manifest.json'), manifest);
 
   console.log(`Wrote ${schedules.length} schedules and ${cards.length} cards to ${OUTPUT_ROOT}`);
+}
+
+async function writeSchedules(schedules) {
+  for (const schedule of schedules) {
+    const file = path.join(OUTPUT_ROOT, schedule.file);
+    await mkdir(path.dirname(file), { recursive: true });
+    await writeJson(file, withoutFile(schedule));
+  }
+}
+
+async function assertCountsMatchManifest(schedules) {
+  const manifest = JSON.parse(await readFile(path.join(OUTPUT_ROOT, 'manifest.json'), 'utf8'));
+  for (const schedule of schedules) {
+    const card = manifest.cards.find((item) => item.id === schedule.cardId);
+    const expected = card?.calendars?.[schedule.calendar.id]?.departures;
+    if (expected !== schedule.departures.length) {
+      throw new Error(
+        `${schedule.file} has ${schedule.departures.length} trains but manifest.json says ${expected}. ` +
+          'Nothing was written. Run without --only to rebuild the manifest.'
+      );
+    }
+  }
 }
 
 async function fetchMonorailSchedules() {
@@ -390,13 +431,27 @@ async function fetchJrSchedules() {
   return schedules;
 }
 
-function normalizeMonorailDepartures(hourMap, direction) {
+// Marks that only add a note. Every other mark must name a destination in direction.destinationMarks.
+const MONORAIL_NOTE_MARKS = { 無: '万博記念公園駅で彩都線と連絡しない' };
+
+export function normalizeMonorailDepartures(hourMap, direction) {
   const departures = [];
   for (const [rawHour, minutes] of Object.entries(hourMap)) {
     for (const [rawMinute, rawMarks] of Object.entries(minutes ?? {})) {
       const hour = Number(rawHour);
       const minute = Number(rawMinute);
-      const marks = Array.isArray(rawMarks) ? rawMarks : [];
+      if (!Number.isInteger(hour) || !Number.isInteger(minute)) {
+        throw new Error(`Monorail time ${JSON.stringify(rawHour)}:${JSON.stringify(rawMinute)} is not a number.`);
+      }
+      // A mark the legend does not explain must not quietly become the default destination.
+      if (!Array.isArray(rawMarks)) {
+        throw new Error(`Monorail marks at ${formatTime(hour, minute)} are not a list: ${JSON.stringify(rawMarks)}`);
+      }
+      const marks = rawMarks;
+      const unknownMarks = marks.filter((mark) => !(mark in direction.destinationMarks) && !(mark in MONORAIL_NOTE_MARKS));
+      if (unknownMarks.length) {
+        throw new Error(`Monorail mark ${unknownMarks.join(', ')} at ${formatTime(hour, minute)} is not in the legend.`);
+      }
       const destinationJa =
         marks.map((mark) => direction.destinationMarks[mark]).find(Boolean) ??
         direction.defaultDestinationJa;
@@ -408,28 +463,38 @@ function normalizeMonorailDepartures(hourMap, direction) {
         serviceType: '普通',
         destinationJa,
         rawMarks: marks,
-        notes: marks.includes('無') ? ['万博記念公園駅で彩都線と連絡しない'] : [],
+        notes: marks.filter((mark) => mark in MONORAIL_NOTE_MARKS).map((mark) => MONORAIL_NOTE_MARKS[mark]),
       });
     }
   }
   return sortDepartures(departures);
 }
 
-function parseHankyuDepartures(html, calendar) {
+// Every train on the page reads ［普通］, ［準急］ or ［急行］ with a destination. Anything that
+// cannot be read stops the run instead of quietly becoming 普通 (the JR parser once did that).
+export function parseHankyuDepartures(html, calendar) {
   const departures = [];
   const sections = html.split(/<li class="timetable_hour[^"]*"/).slice(1);
   for (const section of sections) {
     const hour = Number(parseText(section.match(/<span data-wovn-ignore>(\d+)<\/span>/)?.[1]));
-    if (!Number.isFinite(hour)) continue;
+    if (!Number.isFinite(hour)) {
+      if (/\/station\/timetable\.php/.test(section)) throw new Error('Hankyu trains were found under an hour that could not be read.');
+      continue;
+    }
 
     for (const match of section.matchAll(/<a\s+href="([^"]*\/station\/timetable\.php[^"]*)"[\s\S]*?<\/a>/g)) {
       const block = match[0];
       const href = htmlDecode(match[1]);
       const minute = Number(parseText(block.match(/<p class="timetable_min"><span data-wovn-ignore>(\d+)<\/span>/)?.[1]));
-      if (!Number.isFinite(minute)) continue;
+      if (!Number.isFinite(minute)) throw new Error(`A Hankyu train at ${hour}時 has no minute that can be read.`);
 
-      const serviceType = parseText(block.match(/<p class="timetable_train_type">([^<]*)<\/p>/)?.[1]).replace(/[［］]/g, '') || '普通';
+      const rawType = block.match(/<p class="timetable_train_type">([^<]*)<\/p>/)?.[1];
+      const serviceType = parseText(rawType).match(/^［(.+)］$/)?.[1];
+      if (!serviceType) {
+        throw new Error(`Hankyu train type at ${formatTime(hour, minute)} could not be read: ${JSON.stringify(rawType ?? null)}`);
+      }
       const destinationJa = parseText(block.match(/<p class="timetable_station_name">([^<]*)<\/p>/)?.[1]);
+      if (!destinationJa) throw new Error(`Hankyu destination at ${formatTime(hour, minute)} could not be read.`);
       const url = new URL(href, HANKYU_BASE);
       departures.push({
         time: formatTime(hour, minute),
@@ -447,10 +512,15 @@ function parseHankyuDepartures(html, calendar) {
       });
     }
   }
+  // Each train links to its detail page; a link the loop above did not read means the markup changed.
+  const links = html.match(/<a\s+href="[^"]*\/station\/timetable\.php/g)?.length ?? 0;
+  if (links !== departures.length) {
+    throw new Error(`The Hankyu page links to ${links} trains but ${departures.length} were read.`);
+  }
   return sortDepartures(departures);
 }
 
-function parseJrDepartures(html) {
+export function parseJrDepartures(html) {
   const destinationMap = parseJrLegendMap(html, '行先・経由');
   const serviceMap = parseJrLegendMap(html, '車種別・列車名');
   const revision = parseText(html.match(/<div class="revision-date">([^<]+)<\/div>/)?.[1]);
@@ -469,9 +539,18 @@ function parseJrDepartures(html) {
       const minute = Number(parseText(block.match(/<span class=" minute[^"]*">(\d+)<\/span>/)?.[1]));
       if (!Number.isFinite(minute)) continue;
 
-      const compactService = stripTags(block.match(/<span class="train-type">([\s\S]*?)<\/span>/)?.[1] ?? '').trim();
+      // The type box can hold an empty <span></span> before the span with the mark
+      // (<span class="train-type"><span></span><span class=" legendOrange">A快う</span></span>),
+      // so read up to the </span> that closes the box, not to the first </span>.
+      const compactService = stripTags(block.match(/<span class="train-type">([\s\S]*?)<\/span>\s*<\/div>/)?.[1] ?? '').trim();
       const destinationCode = parseText(block.match(/<span class="destination">([^<]*)<\/span>/)?.[1]);
-      const serviceType = serviceMap[compactService] ?? compactService.replace(/う$/, '（うれしート連結）') ?? '普通';
+      // An unknown mark must not quietly become 普通: stop so that the legend gets a look.
+      if (!(compactService in serviceMap)) {
+        throw new Error(
+          `JR train type "${compactService}" at ${formatTime(hour, minute)} is not in the page's legend (${Object.keys(serviceMap).join(', ')}).`
+        );
+      }
+      const serviceType = serviceMap[compactService];
       const destinationBase = destinationMap[destinationCode] ?? destinationCode;
       const detailUrl = new URL(href, JR_BASE);
       departures.push({
@@ -479,7 +558,7 @@ function parseJrDepartures(html) {
         hour,
         minute,
         serviceDayOffset: hour < 4 ? 1 : 0,
-        serviceType: serviceType || '普通',
+        serviceType,
         destinationJa: destinationBase.endsWith('行') ? destinationBase : `${destinationBase}行`,
         trainId: detailUrl.pathname.split('/').filter(Boolean).pop() ?? '',
         detailUrl: detailUrl.toString(),

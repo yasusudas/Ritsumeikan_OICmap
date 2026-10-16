@@ -26,7 +26,7 @@
   "source": {
     "pageUrl": "https://timetable.jr-odekake.net/station-timetable/2791011001?date=20261016",
     "stationPageUrl": "https://eki.jr-odekake.net/top?id=0610124",
-    "fetchedAt": "2026-10-15T16:11:16.799Z"
+    "fetchedAt": "2026-10-16T09:12:01.642Z"
   },
   "revision": "改正日:2026年10月03日",
   "notes": [
@@ -81,13 +81,13 @@
       "hour": 6,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "長浜行",
       "trainId": "173211",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/173211?date=20261016",
       "raw": {
         "destinationCode": "浜",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -221,13 +221,13 @@
       "hour": 7,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "50071",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/50071?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -263,13 +263,13 @@
       "hour": 7,
       "minute": 27,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "50161",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/50161?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -361,13 +361,13 @@
       "hour": 7,
       "minute": 56,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "388761",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/388761?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -389,13 +389,13 @@
       "hour": 8,
       "minute": 3,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "129331",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/129331?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -417,13 +417,13 @@
       "hour": 8,
       "minute": 14,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "近江塩津（米原経由）行",
       "trainId": "173131",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/173131?date=20261016",
       "raw": {
         "destinationCode": "塩※",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -459,13 +459,13 @@
       "hour": 8,
       "minute": 24,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "322001",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322001?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -529,13 +529,13 @@
       "hour": 8,
       "minute": 45,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "322011",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322011?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -613,13 +613,13 @@
       "hour": 9,
       "minute": 4,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "322021",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322021?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -669,13 +669,13 @@
       "hour": 9,
       "minute": 22,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "207731",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/207731?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -725,13 +725,13 @@
       "hour": 9,
       "minute": 39,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "322031",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322031?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -767,13 +767,13 @@
       "hour": 9,
       "minute": 53,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "388781",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/388781?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -977,13 +977,13 @@
       "hour": 11,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "322071",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322071?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1019,13 +1019,13 @@
       "hour": 11,
       "minute": 22,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "101881",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/101881?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1103,13 +1103,13 @@
       "hour": 11,
       "minute": 52,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "101921",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/101921?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1145,13 +1145,13 @@
       "hour": 12,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "147481",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147481?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1229,13 +1229,13 @@
       "hour": 12,
       "minute": 37,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "147501",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147501?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1271,13 +1271,13 @@
       "hour": 12,
       "minute": 52,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "147521",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147521?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1481,13 +1481,13 @@
       "hour": 14,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "147601",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147601?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1523,13 +1523,13 @@
       "hour": 14,
       "minute": 22,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "147611",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147611?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1565,13 +1565,13 @@
       "hour": 14,
       "minute": 37,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "147631",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147631?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1607,13 +1607,13 @@
       "hour": 14,
       "minute": 52,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "147651",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147651?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1649,13 +1649,13 @@
       "hour": 15,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "147661",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147661?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1691,13 +1691,13 @@
       "hour": 15,
       "minute": 22,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "147681",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147681?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1733,13 +1733,13 @@
       "hour": 15,
       "minute": 37,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "147701",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147701?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1775,13 +1775,13 @@
       "hour": 15,
       "minute": 52,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "147711",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147711?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1817,13 +1817,13 @@
       "hour": 16,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "147721",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147721?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1859,13 +1859,13 @@
       "hour": 16,
       "minute": 22,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "147731",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147731?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1901,13 +1901,13 @@
       "hour": 16,
       "minute": 37,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "322101",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322101?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -1985,13 +1985,13 @@
       "hour": 17,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "147761",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/147761?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2069,13 +2069,13 @@
       "hour": 17,
       "minute": 37,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "322121",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322121?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2111,13 +2111,13 @@
       "hour": 17,
       "minute": 52,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "322141",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322141?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2153,13 +2153,13 @@
       "hour": 18,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "66461",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/66461?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2195,13 +2195,13 @@
       "hour": 18,
       "minute": 22,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "102131",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/102131?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2237,13 +2237,13 @@
       "hour": 18,
       "minute": 38,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "長浜行",
       "trainId": "372821",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/372821?date=20261016",
       "raw": {
         "destinationCode": "浜",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2279,13 +2279,13 @@
       "hour": 18,
       "minute": 53,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "241441",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/241441?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2321,13 +2321,13 @@
       "hour": 19,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "53441",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/53441?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2363,13 +2363,13 @@
       "hour": 19,
       "minute": 22,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "101931",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/101931?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2405,13 +2405,13 @@
       "hour": 19,
       "minute": 37,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "322161",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322161?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2489,13 +2489,13 @@
       "hour": 20,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "101941",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/101941?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2531,13 +2531,13 @@
       "hour": 20,
       "minute": 22,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "101951",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/101951?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2573,13 +2573,13 @@
       "hour": 20,
       "minute": 37,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "322181",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322181?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2615,13 +2615,13 @@
       "hour": 20,
       "minute": 52,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "193841",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/193841?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2657,13 +2657,13 @@
       "hour": 21,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "101981",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/101981?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2699,13 +2699,13 @@
       "hour": 21,
       "minute": 22,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "102001",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/102001?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2741,13 +2741,13 @@
       "hour": 21,
       "minute": 37,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "322201",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/322201?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2825,13 +2825,13 @@
       "hour": 22,
       "minute": 7,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "106991",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/106991?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2867,13 +2867,13 @@
       "hour": 22,
       "minute": 24,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "107001",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/107001?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2909,13 +2909,13 @@
       "hour": 22,
       "minute": 44,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "76891",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/76891?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2951,13 +2951,13 @@
       "hour": 23,
       "minute": 4,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "米原行",
       "trainId": "102031",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/102031?date=20261016",
       "raw": {
         "destinationCode": "米",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -2993,13 +2993,13 @@
       "hour": 23,
       "minute": 24,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "188721",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/188721?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
@@ -3035,13 +3035,13 @@
       "hour": 23,
       "minute": 47,
       "serviceDayOffset": 0,
-      "serviceType": "普通",
+      "serviceType": "A快速（うれしート連結）",
       "destinationJa": "野洲行",
       "trainId": "102041",
       "detailUrl": "https://timetable.jr-odekake.net/train-timetable/102041?date=20261016",
       "raw": {
         "destinationCode": "野",
-        "serviceCode": ""
+        "serviceCode": "A快う"
       }
     },
     {
