@@ -437,44 +437,6 @@
 }
 
 /* ---------------------------------------------------------------------
-   Access: route list (text). Origin above its description, laid out in
-   loose columns with space between; no rows or rules.
-   --------------------------------------------------------------------- */
-
-.route-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
-  gap: 28px 48px;
-  margin: 48px 0 0;
-}
-
-.route-list-item {
-  display: grid;
-  align-content: start;
-  gap: 4px;
-}
-
-.route-list-origin {
-  font-size: var(--fs-base);
-  font-weight: var(--fw-bold);
-  line-height: var(--lh-snug);
-}
-
-.route-list-detail {
-  margin: 0;
-  color: var(--c-ink-2);
-  font-size: var(--fs-sm);
-  line-height: 1.8;
-}
-
-@media (max-width: 720px) {
-  .route-list {
-    gap: 22px;
-    margin-top: 36px;
-  }
-}
-
-/* ---------------------------------------------------------------------
    Terms / Privacy: calm long-form text. Articles stack with space above
    their headings; the text keeps a ~40-character measure.
    --------------------------------------------------------------------- */
