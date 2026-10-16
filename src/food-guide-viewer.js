@@ -454,6 +454,10 @@ export class FoodGuideViewer {
         this.panelMode = 'detail';
       // A facility card has no details button, so its compact sheet is as tall as the card
       // (measured in renderPanel), up to the screen less the room kept for the map.
+      // `available` stops at the home indicator. The sheet's own padding already
+      // keeps the buttons above it, so the grey has to include that padding and
+      // run to the screen edge. Stopping the box at `available` left a strip of
+      // map under the card.
       const height =
         this.panelMode === 'compact' && this.facilityHeight
           ? Math.min(this.facilityHeight, available - 120)
@@ -467,13 +471,13 @@ export class FoodGuideViewer {
               320,
               available - 120,
             )
-          : available;
+          : available + safe;
       return {
         left: 0,
-        top: h - insets.bottom - safe - height,
+        top: h - insets.bottom - height,
         width: innerWidth,
         height,
-        bottom: insets.bottom + safe,
+        bottom: insets.bottom,
       };
     }
     const rail = this.toolbar.getBoundingClientRect();
