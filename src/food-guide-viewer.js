@@ -1,6 +1,6 @@
 import { getLang, t } from './i18n.js';
 import { hasFoodUsage, renderFoodLinkButtons, renderFoodLinkRows, renderFoodStatus, renderFoodUsage } from './food-place-cards.js';
-import { FACILITY_PLACES, facilityAnchor } from './facility-places.js';
+import { FACILITY_PLACES, FACILITY_TEXT, facilityAnchor } from './facility-places.js';
 import {
   validateFoodPlaces,
   placeFoodMarkers,
@@ -534,10 +534,18 @@ export class FoodGuideViewer {
       const items = this.places;
       body = `<div class="food-store-list">${items.map((place) => `<button class="food-store-row" type="button" data-food-select="${escape(place.entryId)}" data-food-place="${escape(place.entryId)}">${this.markerVisual(place, { heading: true })}<span><strong>${escape(local(place.name))}</strong><span class="food-meta">${escape(local(place.building))} · 1F</span><span class="food-list-summary">${escape(local(place.summary))}</span></span></button>`).join('')}</div>`;
     } else if (this.getFacility(this.selected)) {
-      // A facility card: the icon, the name and place, and a short note.
+      // A facility card: the icon, the name and place, the banks and the hours.
       const facility = this.getFacility(this.selected);
+      const bullets = (items) =>
+        `<ul class="food-bank-list">${items.map((item) => `<li>${escape(local(item))}</li>`).join('')}</ul>`;
       header = `<div class="food-card-brand" data-food-place="${escape(facility.entryId)}"><span class="food-badge is-heading is-facility"><img src="${escape(facility.icon)}" alt="" draggable="false"/></span><div><h2 id="food-panel-title" tabindex="-1">${escape(local(facility.name))}</h2><p class="food-meta">${escape(local(facility.building))} · 1F</p></div></div>${close}`;
-      body = `<p class="food-description">${escape(local(facility.summary))}</p>`;
+      body = facility.institutions?.length
+        ? `<section class="food-hours"><h3 class="food-heading">${escape(local(FACILITY_TEXT.institutions))}</h3>${bullets(facility.institutions)}</section>`
+        : `<p class="food-description">${escape(local(facility.summary))}</p>`;
+      if (facility.hours)
+        body += `<section class="food-hours"><h3 class="food-heading">${escape(local(FACILITY_TEXT.hours))}</h3><div class="food-hours-list"><p>${escape(local(facility.hours)).replace(/–/g, '\u2060–\u2060')}</p></div></section>`;
+      if (facility.hours || facility.institutions?.length)
+        body += `<p class="food-meta">${escape(local(FACILITY_TEXT.note))}</p>`;
     } else {
       const place = this.getPlace(this.selected);
       if (!place) return;

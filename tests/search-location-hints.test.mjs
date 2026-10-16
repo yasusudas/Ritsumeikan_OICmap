@@ -35,7 +35,7 @@ test('only the ten duplicate groups have distinct Japanese and English location 
   const { entries } = await readCanonicalSearchData();
   const groups = Map.groupBy(entries, entry => `${entry.floorId}|${entry.label}`);
   const duplicates = [...groups.values()].filter(group => group.length > 1);
-  // The tenth group is the two 1F ATMs (D棟 and inside 7-Eleven), added 2026-10-16.
+  // The tenth group is the two 1F ATMs (C棟 and inside 7-Eleven), added 2026-10-16.
   assert.equal(duplicates.length, 10);
   assert.equal(entries.filter(entry => entry.locationHint).length, 20);
   for (const group of groups.values()) {

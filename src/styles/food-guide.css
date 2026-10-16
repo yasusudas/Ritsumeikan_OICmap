@@ -556,6 +556,14 @@ body[data-app-mode='viewer'] {
 }
 
 /* The status chip leads the hours, just under the heading. */
+/* The banks of an ATM card, as a short bulleted list. */
+.food-bank-list {
+  margin: 0;
+  padding-left: 1.1em;
+  list-style: disc;
+  overflow-wrap: anywhere;
+}
+
 .food-hours-list .food-status {
   margin-bottom: var(--s-2);
 }
