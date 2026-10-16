@@ -324,6 +324,14 @@ body[data-app-mode='viewer'] {
   scrollbar-width: thin;
 }
 
+/* With no footer (the list), keep a grey band as wide as the side gutter
+   under the scroller, so rows slide away above the sheet's edge rather than
+   out of it. The home-indicator inset already counts towards that band. */
+.food-panel-body:last-child {
+  margin-bottom: max(0px, 20px - env(safe-area-inset-bottom, 0px));
+  padding-bottom: 0;
+}
+
 .food-description {
   margin: 0;
 }
