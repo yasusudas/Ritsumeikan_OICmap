@@ -1,5 +1,6 @@
 import { getLang, t } from './i18n.js';
 import { hasFoodUsage, renderFoodLinkButtons, renderFoodLinkRows, renderFoodStatus, renderFoodUsage } from './food-place-cards.js';
+import { FACILITY_PLACES, facilityAnchor } from './facility-places.js';
 import {
   validateFoodPlaces,
   placeFoodMarkers,
@@ -45,6 +46,8 @@ export class FoodGuideViewer {
       host,
       ready: false,
       places: [],
+      // Facilities that are not food places (the ATM): an area and a card, no pin.
+      facilities: [],
       error: null,
       promise: null,
       browse: false,
@@ -204,6 +207,12 @@ export class FoodGuideViewer {
         this.places = validateFoodPlaces(payload, entries);
         this.sizeReferenceId = payload.pinSizeReferenceEntryId;
         this.entries = new Map(entries.map((entry) => [entry.id, entry]));
+        this.facilities = FACILITY_PLACES.filter(
+          (facility) => this.entries.get(facility.entryId)?.polygons?.length,
+        ).map((facility) => {
+          const anchor = facilityAnchor(this.entries.get(facility.entryId));
+          return { ...facility, anchor: { ja: anchor, en: anchor } };
+        });
         this.ready = true;
         this.error = null;
         await this.host.refreshMap();
@@ -221,14 +230,18 @@ export class FoodGuideViewer {
     })();
     return this.promise;
   }
+  // A place the map cards handle (a food place or a facility), so search selects it here.
   isStore(id) {
-    return this.places.some((place) => place.entryId === id);
+    return Boolean(this.getPlace(id) || this.getFacility(id));
   }
   derivedUrl(floorId, lang) {
     return this.ready && floorId === '1F' ? this.floorUrls[lang] : null;
   }
   getPlace(id) {
     return this.places.find((place) => place.entryId === id);
+  }
+  getFacility(id) {
+    return this.facilities?.find((facility) => facility.entryId === id);
   }
   active() {
     return Boolean(this.panelMode);
@@ -271,7 +284,7 @@ export class FoodGuideViewer {
       return true;
     const token = ++this.action;
     if (!(await this.load()) || token !== this.action) return false;
-    const place = this.getPlace(id);
+    const place = this.getPlace(id) ?? this.getFacility(id);
     if (!place) return false;
     if (this.panelMode === 'list') {
       this.listScroll =
@@ -520,6 +533,11 @@ export class FoodGuideViewer {
       header = `<h2 id="food-panel-title" tabindex="-1">${escape(t('food.listTitle'))}</h2>${close}`;
       const items = this.places;
       body = `<div class="food-store-list">${items.map((place) => `<button class="food-store-row" type="button" data-food-select="${escape(place.entryId)}" data-food-place="${escape(place.entryId)}">${this.markerVisual(place, { heading: true })}<span><strong>${escape(local(place.name))}</strong><span class="food-meta">${escape(local(place.building))} · 1F</span><span class="food-list-summary">${escape(local(place.summary))}</span></span></button>`).join('')}</div>`;
+    } else if (this.getFacility(this.selected)) {
+      // A facility card: the icon, the name and place, and a short note.
+      const facility = this.getFacility(this.selected);
+      header = `<div class="food-card-brand" data-food-place="${escape(facility.entryId)}"><span class="food-badge is-heading is-facility"><img src="${escape(facility.icon)}" alt="" draggable="false"/></span><div><h2 id="food-panel-title" tabindex="-1">${escape(local(facility.name))}</h2><p class="food-meta">${escape(local(facility.building))} · 1F</p></div></div>${close}`;
+      body = `<p class="food-description">${escape(local(facility.summary))}</p>`;
     } else {
       const place = this.getPlace(this.selected);
       if (!place) return;
@@ -552,7 +570,7 @@ export class FoodGuideViewer {
       this.minimumCompactHeight =
         this.panel.querySelector('.food-sheet-handle').offsetHeight +
         this.panel.querySelector('.food-panel-header').offsetHeight +
-        this.panel.querySelector('.food-panel-footer').offsetHeight +
+        (this.panel.querySelector('.food-panel-footer')?.offsetHeight ?? 0) +
         64;
       this.positionPanel();
       if (this.panelMode !== 'compact') {
@@ -750,11 +768,7 @@ export class FoodGuideViewer {
     const lang = getLang();
     let svg = layer.querySelector('.food-area-svg');
     if (!svg || svg.dataset.lang !== lang) {
-      svg = document.createElementNS(NS, 'svg');
-      svg.classList.add('facility-area-svg', 'food-area-svg');
-      svg.dataset.lang = lang;
-      svg.setAttribute('viewBox', '0 0 1000 1000');
-      svg.setAttribute('preserveAspectRatio', 'none');
+      svg = this.areaSvg(['facility-area-svg', 'food-area-svg'], lang);
       // A place that shares another's area (OIC Café) adds no outline of its own.
       const areas = this.places
         .filter((place) => !place.areaEntryId)
@@ -774,61 +788,113 @@ export class FoodGuideViewer {
                 ) ?? place,
             })),
         );
-      const area = (polygon) =>
-        Math.abs(
-          polygon.reduce((sum, p, i) => {
-            const q = polygon[(i + 1) % polygon.length];
-            return sum + p.xRatio * q.yRatio - q.xRatio * p.yRatio;
-          }, 0),
-        );
-      // Smaller overlapping store areas receive the hit, as specified.
-      areas.sort(
-        (a, b) =>
-          area(b.polygon) - area(a.polygon) || b.place.order - a.place.order,
-      );
-      for (const { place, polygon, target } of areas) {
-        const offset = place.areaOffset[lang];
-        const group = document.createElementNS(NS, 'g');
-        group.classList.add('food-area');
-        group.dataset.foodPlace = target.entryId;
-        group.dataset.foodArea = place.entryId;
-        for (const cls of [
-          'food-area-halo',
-          'food-area-outline',
-          'food-area-hit',
-        ]) {
-          const p = document.createElementNS(NS, 'polygon');
-          p.setAttribute(
-            'points',
-            polygon
-              .map(
-                (p) =>
-                  `${(p.xRatio + offset.xRatio) * 1000},${(p.yRatio + offset.yRatio) * 1000}`,
-              )
-              .join(' '),
-          );
-          p.setAttribute('vector-effect', 'non-scaling-stroke');
-          p.classList.add(cls);
-          p.setAttribute('aria-hidden', 'true');
-          group.append(p);
-        }
-        svg.append(group);
-      }
+      this.appendAreas(svg, areas, lang);
       layer.replaceChildren(svg);
+    }
+    // Facility areas (the ATMs) sit on the pin layer, above the pins, so a pin
+    // standing on one (7-Eleven's over its ATM) does not take its hover and
+    // click. render() places this SVG over the map on every frame.
+    let front = this.overlay.querySelector('.food-front-svg');
+    if (!front || front.dataset.lang !== lang) {
+      front?.remove();
+      front = this.areaSvg(['food-front-svg'], lang);
+      this.appendAreas(
+        front,
+        (this.facilities ?? []).flatMap((facility) =>
+          this.entries
+            .get(facility.entryId)
+            .polygons.map((polygon) => ({ place: facility, polygon, target: facility })),
+        ),
+        lang,
+      );
+      this.overlay.append(front);
+      this.frontBox = null;
+      this.placeFrontAreas(map);
     }
     // Keep pointer targets mounted while hover/selection styles change.
     const areaOf = (id) => {
-      const place = id ? this.getPlace(id) : null;
+      const place = id ? (this.getPlace(id) ?? this.getFacility(id)) : null;
       return place ? (place.areaEntryId ?? place.entryId) : null;
     };
     const hoveredArea = areaOf(this.hovered),
       selectedArea = areaOf(this.selected);
-    for (const group of svg.querySelectorAll('.food-area')) {
+    for (const group of [
+      ...svg.querySelectorAll('.food-area'),
+      ...front.querySelectorAll('.food-area'),
+    ]) {
       const id = group.dataset.foodArea;
-      group.classList.toggle('is-browsing', this.browse);
+      // The food list outlines the food places only.
+      group.classList.toggle('is-browsing', this.browse && !group.dataset.facility);
       group.classList.toggle('is-hovered', hoveredArea === id);
       group.classList.toggle('is-selected', selectedArea === id);
     }
+  }
+  areaSvg(classes, lang) {
+    const svg = document.createElementNS(NS, 'svg');
+    svg.classList.add(...classes);
+    svg.dataset.lang = lang;
+    svg.setAttribute('viewBox', '0 0 1000 1000');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    return svg;
+  }
+  // One group per polygon: a white halo, the green outline and the hit target.
+  appendAreas(svg, areas, lang) {
+    const area = (polygon) =>
+      Math.abs(
+        polygon.reduce((sum, p, i) => {
+          const q = polygon[(i + 1) % polygon.length];
+          return sum + p.xRatio * q.yRatio - q.xRatio * p.yRatio;
+        }, 0),
+      );
+    // Smaller overlapping store areas receive the hit, as specified.
+    areas.sort(
+      (a, b) =>
+        area(b.polygon) - area(a.polygon) ||
+        (b.place.order ?? 0) - (a.place.order ?? 0),
+    );
+    for (const { place, polygon, target } of areas) {
+      const offset = place.areaOffset?.[lang] ?? { xRatio: 0, yRatio: 0 };
+      const group = document.createElementNS(NS, 'g');
+      group.classList.add('food-area');
+      group.dataset.foodPlace = target.entryId;
+      group.dataset.foodArea = place.entryId;
+      if (place.kind) group.dataset.facility = place.kind;
+      for (const cls of [
+        'food-area-halo',
+        'food-area-outline',
+        'food-area-hit',
+      ]) {
+        const p = document.createElementNS(NS, 'polygon');
+        p.setAttribute(
+          'points',
+          polygon
+            .map(
+              (p) =>
+                `${(p.xRatio + offset.xRatio) * 1000},${(p.yRatio + offset.yRatio) * 1000}`,
+            )
+            .join(' '),
+        );
+        p.setAttribute('vector-effect', 'non-scaling-stroke');
+        p.classList.add(cls);
+        p.setAttribute('aria-hidden', 'true');
+        group.append(p);
+      }
+      svg.append(group);
+    }
+  }
+  // Lays the facility-area SVG over the map; on a pan only its transform changes.
+  placeFrontAreas(map) {
+    const front = this.overlay.querySelector('.food-front-svg');
+    if (!front) return;
+    const size = `${map.width}|${map.height}`,
+      transform = `translate3d(${map.x}px, ${map.y}px, 0)`;
+    const box = this.frontBox ?? (this.frontBox = {});
+    if (box.size !== size) {
+      box.size = size;
+      front.style.width = `${map.width}px`;
+      front.style.height = `${map.height}px`;
+    }
+    if (box.transform !== transform) front.style.transform = box.transform = transform;
   }
 
   // Runs on every pan and zoom frame, so it writes only what changed.
@@ -858,6 +924,7 @@ export class FoodGuideViewer {
         .forEach((n) => (n.hidden = true));
       return;
     }
+    this.placeFrontAreas(map);
     const points = this.places.map((place) => ({
       id: place.entryId,
       order: place.order,
@@ -931,7 +998,8 @@ export class FoodGuideViewer {
     if (!this.selected) return;
     this.render();
     const map = this.host.map(),
-      point = this.getPlace(this.selected).anchor[getLang()];
+      point = (this.getPlace(this.selected) ?? this.getFacility(this.selected))?.anchor[getLang()];
+    if (!point) return;
     const x = map.x + map.width * point.xRatio,
       y = map.y + map.height * point.yRatio;
     const frame = this.viewer.getBoundingClientRect(),
@@ -1039,7 +1107,11 @@ export class FoodGuideViewer {
     }
   }
   showHover(id, keyboard = false, fromArea = false) {
-    if (this.panelMode || this.blockedHover === id || !this.getPlace(id))
+    if (
+      this.panelMode ||
+      this.blockedHover === id ||
+      !(this.getPlace(id) ?? this.getFacility(id))
+    )
       return;
     clearTimeout(this.leaveTimer);
     if (this.hovered === id && !this.tip.hidden) {
@@ -1058,7 +1130,7 @@ export class FoodGuideViewer {
     this.hoverTimer = setTimeout(
       () => {
         if (this.panelMode || this.hovered !== id) return;
-        const place = this.getPlace(id),
+        const place = this.getPlace(id) ?? this.getFacility(id),
           button = this.nodes.get(id);
         this.tip.innerHTML = `<strong>${escape(local(place.name))}</strong><p>${escape(local(place.summary))}</p>`;
         this.tip.hidden = false;

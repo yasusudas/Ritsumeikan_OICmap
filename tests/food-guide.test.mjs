@@ -270,6 +270,7 @@ test('panning only moves the pins; their size and hit area are rewritten when th
     markerVisual: () => '',
     wireImageFallback() {},
     hoverPins: () => [],
+    placeFrontAreas() {},
   });
   context.document = { createElement: () => new Node(overlay) };
   viewer.render();
@@ -463,6 +464,7 @@ test('hover and selection retain mounted polygon targets until the map language 
     constructor() {
       this.children = [];
       this.dataset = {};
+      this.style = {};
       this.classes = new Set();
       this.classList = {
         add: (...names) => names.forEach((n) => this.classes.add(n)),
@@ -472,7 +474,11 @@ test('hover and selection retain mounted polygon targets until the map language 
     }
     setAttribute() {}
     append(child) {
+      child.parent = this;
       this.children.push(child);
+    }
+    remove() {
+      this.parent.children = this.parent.children.filter((child) => child !== this);
     }
     replaceChildren(...children) {
       this.children = children;
@@ -503,17 +509,35 @@ test('hover and selection retain mounted polygon targets until the map language 
   const layer = new Element(),
     map = { floorId: '1F', areaLayer: layer };
   const viewer = new context.Areas();
+  const overlay = new Element();
+  const facilities = entries
+    .filter((e) => e.label === 'ATM' && e.polygons?.length)
+    .map((e) => ({ entryId: e.id, kind: 'atm' }));
   Object.assign(viewer, {
     ready: true,
     places: payload.places,
+    facilities,
+    overlay,
     entries: new Map(entries.map((e) => [e.id, e])),
     host: { map: () => map },
     getPlace: (id) => payload.places.find((p) => p.entryId === id),
+    getFacility: (id) => facilities.find((f) => f.entryId === id),
   });
   viewer.renderAreas();
   const targets = layer.querySelectorAll('.food-area-hit');
   // Eight store areas plus the second kitchen-car rectangle (one place, two polygons).
   assert.equal(targets.length, 10);
+  // The two ATMs are drawn on the pin layer, above the pins, not under them on the map.
+  assert.equal(facilities.length, 2);
+  const front = overlay.querySelector('.food-front-svg');
+  assert.equal(front.querySelectorAll('.food-area-hit').length, 2);
+  viewer.hovered = facilities[1].entryId;
+  viewer.renderAreas();
+  assert.deepEqual(
+    front.querySelectorAll('.is-hovered').map((group) => group.dataset.foodPlace),
+    [facilities[1].entryId],
+  );
+  assert.equal(layer.querySelectorAll('.is-hovered').length, 0);
   viewer.hovered = payload.places[0].entryId;
   viewer.renderAreas();
   viewer.hovered = null;

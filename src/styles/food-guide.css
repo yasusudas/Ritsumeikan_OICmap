@@ -24,6 +24,20 @@ body[data-app-mode='viewer'] {
   pointer-events: none;
 }
 
+/* Facility areas (the ATMs) on the pin layer, above the pins (a selected pin
+   is z-index 1), so a pin standing on one does not take its hover and click.
+   Sized and moved over the map on every frame by food-guide-viewer.js. */
+.food-front-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
+}
+
 /* Placed by a transform only and kept on its own layer, so panning the map
    moves the pins without drawing them again. */
 .food-pin {

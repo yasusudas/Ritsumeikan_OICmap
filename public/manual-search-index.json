@@ -8247,6 +8247,196 @@
       ],
       "locationHint": "TERRACE GATE前",
       "locationHintEn": "In front of TERRACE GATE"
+    },
+    {
+      "id": "manual-1F-1792118400000-atmd01",
+      "floorId": "1F",
+      "label": "ATM",
+      "labelEn": "ATM",
+      "locationHint": "D棟",
+      "locationHintEn": "Building D",
+      "aliases": [
+        "エーティーエム"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.486628,
+          "yRatio": 0.360134,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "polygons": [
+        [
+          {
+            "xRatio": 0.483325,
+            "yRatio": 0.355
+          },
+          {
+            "xRatio": 0.483325,
+            "yRatio": 0.365269
+          },
+          {
+            "xRatio": 0.489932,
+            "yRatio": 0.365269
+          },
+          {
+            "xRatio": 0.489932,
+            "yRatio": 0.355
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792118400000-atm7e1",
+      "floorId": "1F",
+      "label": "ATM",
+      "labelEn": "ATM",
+      "locationHint": "セブン-イレブン",
+      "locationHintEn": "7-Eleven",
+      "aliases": [
+        "エーティーエム"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.594084,
+          "yRatio": 0.5612,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "polygons": [
+        [
+          {
+            "xRatio": 0.597484,
+            "yRatio": 0.5612
+          },
+          {
+            "xRatio": 0.597419,
+            "yRatio": 0.562138
+          },
+          {
+            "xRatio": 0.597226,
+            "yRatio": 0.56304
+          },
+          {
+            "xRatio": 0.596911,
+            "yRatio": 0.563872
+          },
+          {
+            "xRatio": 0.596488,
+            "yRatio": 0.5646
+          },
+          {
+            "xRatio": 0.595973,
+            "yRatio": 0.565198
+          },
+          {
+            "xRatio": 0.595385,
+            "yRatio": 0.565643
+          },
+          {
+            "xRatio": 0.594748,
+            "yRatio": 0.565916
+          },
+          {
+            "xRatio": 0.594084,
+            "yRatio": 0.566009
+          },
+          {
+            "xRatio": 0.593421,
+            "yRatio": 0.565916
+          },
+          {
+            "xRatio": 0.592783,
+            "yRatio": 0.565643
+          },
+          {
+            "xRatio": 0.592195,
+            "yRatio": 0.565198
+          },
+          {
+            "xRatio": 0.59168,
+            "yRatio": 0.5646
+          },
+          {
+            "xRatio": 0.591257,
+            "yRatio": 0.563872
+          },
+          {
+            "xRatio": 0.590943,
+            "yRatio": 0.56304
+          },
+          {
+            "xRatio": 0.590749,
+            "yRatio": 0.562138
+          },
+          {
+            "xRatio": 0.590684,
+            "yRatio": 0.5612
+          },
+          {
+            "xRatio": 0.590749,
+            "yRatio": 0.560262
+          },
+          {
+            "xRatio": 0.590943,
+            "yRatio": 0.55936
+          },
+          {
+            "xRatio": 0.591257,
+            "yRatio": 0.558529
+          },
+          {
+            "xRatio": 0.59168,
+            "yRatio": 0.5578
+          },
+          {
+            "xRatio": 0.592195,
+            "yRatio": 0.557202
+          },
+          {
+            "xRatio": 0.592783,
+            "yRatio": 0.556758
+          },
+          {
+            "xRatio": 0.593421,
+            "yRatio": 0.556485
+          },
+          {
+            "xRatio": 0.594084,
+            "yRatio": 0.556392
+          },
+          {
+            "xRatio": 0.594748,
+            "yRatio": 0.556485
+          },
+          {
+            "xRatio": 0.595385,
+            "yRatio": 0.556758
+          },
+          {
+            "xRatio": 0.595973,
+            "yRatio": 0.557202
+          },
+          {
+            "xRatio": 0.596488,
+            "yRatio": 0.5578
+          },
+          {
+            "xRatio": 0.596911,
+            "yRatio": 0.558529
+          },
+          {
+            "xRatio": 0.597226,
+            "yRatio": 0.55936
+          },
+          {
+            "xRatio": 0.597419,
+            "yRatio": 0.560262
+          }
+        ]
+      ]
     }
   ],
   "facilityRings": [

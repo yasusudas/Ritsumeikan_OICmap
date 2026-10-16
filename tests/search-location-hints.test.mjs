@@ -31,12 +31,13 @@ function viewer() {
   return context;
 }
 
-test('only the nine duplicate groups have distinct Japanese and English location hints', async () => {
+test('only the ten duplicate groups have distinct Japanese and English location hints', async () => {
   const { entries } = await readCanonicalSearchData();
   const groups = Map.groupBy(entries, entry => `${entry.floorId}|${entry.label}`);
   const duplicates = [...groups.values()].filter(group => group.length > 1);
-  assert.equal(duplicates.length, 9);
-  assert.equal(entries.filter(entry => entry.locationHint).length, 18);
+  // The tenth group is the two 1F ATMs (D棟 and inside 7-Eleven), added 2026-10-16.
+  assert.equal(duplicates.length, 10);
+  assert.equal(entries.filter(entry => entry.locationHint).length, 20);
   for (const group of groups.values()) {
     if (group.length === 1) {
       assert.equal(group[0].locationHint, undefined);
