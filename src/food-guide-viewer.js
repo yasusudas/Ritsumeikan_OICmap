@@ -5,6 +5,7 @@ import {
   validateFoodPlaces,
   placeFoodMarkers,
   describeFoodServiceHours,
+  judgeFoodServiceStatus,
   japaneseDate,
   FOOD_STATUS_MS,
   CoopHoursClient,
@@ -272,6 +273,8 @@ export class FoodGuideViewer {
     this.renderPanel();
     this.renderAreas();
     this.render();
+    if (this.needsHours() && this.hours.needsRefresh()) void this.hours.refresh();
+    this.scheduleHours();
     if (this.keyboard) this.panel.querySelector('h2')?.focus();
   }
   async select(id, { keyboard = false, fromSearch = false } = {}) {
@@ -536,7 +539,7 @@ export class FoodGuideViewer {
     } else if (this.panelMode === 'list') {
       header = `<h2 id="food-panel-title" tabindex="-1">${escape(t('food.listTitle'))}</h2>${close}`;
       const items = this.places;
-      body = `<div class="food-store-list">${items.map((place) => `<button class="food-store-row" type="button" data-food-select="${escape(place.entryId)}" data-food-place="${escape(place.entryId)}">${this.markerVisual(place, { heading: true })}<span><strong>${escape(local(place.name))}</strong><span class="food-meta">${escape(local(place.building))} · 1F</span><span class="food-list-summary">${escape(local(place.summary))}</span></span></button>`).join('')}</div>`;
+      body = `<div class="food-store-list">${items.map((place) => `<button class="food-store-row" type="button" data-food-select="${escape(place.entryId)}" data-food-place="${escape(place.entryId)}">${this.markerVisual(place, { heading: true })}<span><strong>${escape(local(place.name))}</strong><span class="food-meta">${escape(local(place.building))} · 1F</span><span class="food-list-status" data-food-list-status="${escape(place.entryId)}"></span></span></button>`).join('')}</div>`;
     } else if (this.getFacility(this.selected)) {
       // A facility card: the icon, the name and place, the banks and the hours.
       const facility = this.getFacility(this.selected);
@@ -554,7 +557,8 @@ export class FoodGuideViewer {
       const place = this.getPlace(this.selected);
       if (!place) return;
       header = `<div class="food-card-brand" data-food-place="${escape(place.entryId)}">${this.markerVisual(place, { heading: true })}<div><h2 id="food-panel-title" tabindex="-1">${escape(local(place.name))}</h2><p class="food-meta">${escape(local(place.building))} · 1F</p></div></div>${close}`;
-      body = `<p class="food-description">${escape(local(place.summary))}</p><section class="food-hours"><h3 class="food-heading">${escape(t('food.hours'))}</h3><div class="food-hours-list" data-food-hours></div></section>`;
+      // The description lives on the OIC Food page; the map card starts with the hours.
+      body = `<section class="food-hours"><h3 class="food-heading">${escape(t('food.hours'))}</h3><div class="food-hours-list" data-food-hours></div></section>`;
       if (place.todayTrucks) {
         body += this.renderTrucksSection(place.todayTrucks);
         this.ensureTrucks();
@@ -571,6 +575,7 @@ export class FoodGuideViewer {
     }
     this.panel.innerHTML = `${handle}<header class="food-panel-header">${header}</header><div class="food-panel-body">${body}</div>${footer ? `<footer class="food-panel-footer">${footer}</footer>` : ''}`;
     this.wireImageFallback(this.panel);
+    if (this.panelMode === 'list') this.renderListStatus();
     const scroller = this.panel.querySelector('.food-panel-body');
     scroller.scrollTop =
       this.panelMode === 'list' && previousMode !== 'list'
@@ -632,6 +637,7 @@ export class FoodGuideViewer {
         this.renderPanel();
         this.renderAreas();
         this.render();
+        if (this.needsHours() && this.hours.needsRefresh()) void this.hours.refresh();
         this.scheduleHours();
       } else void this.showList();
     }
@@ -690,21 +696,46 @@ export class FoodGuideViewer {
     if (!detail) this.reveal();
   }
 
+  // The places whose hours or open/closed label are on screen: the selected one, or all of them in the list.
+  shownPlaces() {
+    if (!this.panelMode) return [];
+    if (this.selected) return [this.getPlace(this.selected)].filter(Boolean);
+    return this.panelMode === 'list' ? this.places : [];
+  }
   needsHours() {
-    return Boolean(
-      this.panelMode &&
-        this.selected &&
-        this.getPlace(this.selected)?.services.some((s) => s.coopScheduleName),
-    );
+    return this.shownPlaces().some((place) => place.services.some((s) => s.coopScheduleName));
   }
   needsStatus() {
-    return Boolean(
-      this.panelMode &&
-        this.selected &&
-        this.getPlace(this.selected)?.services.some((service) => service.status?.assignee),
+    return this.shownPlaces().some((place) => place.services.some((service) => service.status?.assignee));
+  }
+  // The list shows only an open/closed label per place, where the description used to be. A place with
+  // a service that has no status (the 24-hour unstaffed store next to its bento sales) gets no label.
+  listStatus(place) {
+    const states = place.services.map(
+      (service) =>
+        judgeFoodServiceStatus(service, {
+          payload: this.hours.payload,
+          fetchFailed: Boolean(service.coopScheduleName && this.hours.error),
+        }).state,
     );
+    if (!states.length || states.includes('disabled')) return '';
+    const state = states.includes('within') ? 'within' : states.includes('unknown') ? 'unknown' : 'outside';
+    const label = escape(t(`food.status.${state}`));
+    if (state === 'unknown') return `<span class="food-status is-unknown">${label}</span>`;
+    return `<span class="food-chip${state === 'within' ? ' is-accent' : ''}">${label}</span>`;
+  }
+  renderListStatus() {
+    for (const node of this.panel.querySelectorAll('[data-food-list-status]')) {
+      const place = this.getPlace(node.dataset.foodListStatus);
+      const html = place ? this.listStatus(place) : '';
+      if (node.innerHTML !== html) node.innerHTML = html;
+    }
   }
   renderHours() {
+    if (this.panelMode === 'list') {
+      this.renderListStatus();
+      return;
+    }
     const root = this.panel.querySelector('[data-food-hours]'),
       place = this.getPlace(this.selected);
     if (!root || !place) return;

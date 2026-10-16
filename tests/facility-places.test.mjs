@@ -56,3 +56,15 @@ test('the sources page names where the ATM hours come from, in both languages', 
     assert.match(read(file), /e-map\.ne\.jp\/smt\/smbcbank\/inf\/5811308900000/);
   }
 });
+
+test('the map card and the map list no longer show the description; the list shows only an open/closed label', () => {
+  const viewer = read('src/food-guide-viewer.js');
+  // Store cards start with the hours; the description paragraph is only the fallback of a facility card.
+  assert.doesNotMatch(viewer, /food-description">\$\{escape\(local\(place\.summary\)\)\}/);
+  assert.doesNotMatch(viewer, /food-list-summary/);
+  assert.match(viewer, /data-food-list-status=/);
+  assert.match(viewer, /renderListStatus\(\)/);
+  // The OIC Food page keeps the description.
+  assert.match(read('src/food-place-cards.js'), /class="food-place-summary"/);
+  assert.doesNotMatch(read('src/styles/food-guide.css'), /\.food-list-summary/);
+});

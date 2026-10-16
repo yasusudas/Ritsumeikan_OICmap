@@ -510,15 +510,19 @@ body[data-app-mode='viewer'] {
   color: var(--ls-red);
 }
 
-.food-list-summary {
-  display: -webkit-box;
+/* Only the open/closed label sits under the name in the list (no description). */
+.food-list-status {
+  display: block;
   margin-top: var(--s-1);
-  overflow: hidden;
-  color: var(--c-ink-2);
-  font-size: var(--fs-sm);
-  line-height: var(--lh-snug);
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+}
+
+.food-list-status:empty {
+  display: none;
+}
+
+/* The rows are white, so the label is grey here (white on the grey card). */
+.food-list-status .food-chip:not(.is-accent) {
+  background: var(--ls-fill);
 }
 
 /* ---------------------------------------------------------------------
