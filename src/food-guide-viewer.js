@@ -449,8 +449,12 @@ export class FoodGuideViewer {
     if (this.narrow) {
       if (this.shortScreen && this.panelMode === 'compact')
         this.panelMode = 'detail';
+      // A facility card has no details button, so its compact sheet is as tall as the card
+      // (measured in renderPanel), up to the screen less the room kept for the map.
       const height =
-        this.panelMode === 'compact'
+        this.panelMode === 'compact' && this.facilityHeight
+          ? Math.min(this.facilityHeight, available - 120)
+          : this.panelMode === 'compact'
           ? Math.min(
               Math.max(
                 Math.round(h * 0.33),
@@ -575,6 +579,14 @@ export class FoodGuideViewer {
     this.renderedMode = this.panelMode;
     this.renderHours();
     if (this.panelMode === 'compact') {
+      if (this.getFacility(this.selected)) {
+        const style = this.panel.style,
+          kept = [style.height, style.maxHeight];
+        style.height = 'auto';
+        style.maxHeight = 'none';
+        this.facilityHeight = this.panel.offsetHeight;
+        [style.height, style.maxHeight] = kept;
+      } else this.facilityHeight = 0;
       this.minimumCompactHeight =
         this.panel.querySelector('.food-sheet-handle').offsetHeight +
         this.panel.querySelector('.food-panel-header').offsetHeight +
