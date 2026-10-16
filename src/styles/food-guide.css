@@ -11,6 +11,7 @@
 body[data-app-mode='viewer'] {
   --food-pin-size: 40px;
   --food-motion: var(--ls-pop-dur);
+  --food-swoosh: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ---------------------------------------------------------------------
@@ -542,7 +543,7 @@ body[data-app-mode='viewer'] {
 .food-version-title {
   margin: 14px 0 2px;
   color: var(--c-ink);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   font-weight: var(--fw-medium);
   line-height: 1.4;
 }
@@ -754,6 +755,50 @@ body[data-app-mode='viewer'] {
 .food-panel.is-closing {
   pointer-events: none;
   animation: food-panel-close var(--food-motion) var(--ease) both;
+}
+
+/* Phone bottom sheet: it follows the finger while the handle is dragged, then
+   glides to where it settles; opening slides it up, closing slides it down. */
+.food-panel.is-narrow.is-dragging {
+  transition: none;
+  will-change: top, height, transform;
+}
+
+.food-panel.is-narrow.is-snapping {
+  transition:
+    top 380ms var(--food-swoosh),
+    height 380ms var(--food-swoosh),
+    transform 380ms var(--food-swoosh);
+}
+
+@keyframes food-sheet-open {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes food-sheet-close {
+  from {
+    transform: translateY(var(--sheet-drag-y, 0px));
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .food-panel.is-narrow:not([hidden]):not(.is-closing) {
+    animation: food-sheet-open 420ms var(--food-swoosh);
+  }
+
+  .food-panel.is-narrow.is-closing {
+    animation: food-sheet-close 280ms cubic-bezier(0.5, 0, 0.75, 0) both;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

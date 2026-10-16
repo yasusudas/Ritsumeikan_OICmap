@@ -14,6 +14,9 @@ import {
 
 const NS = 'http://www.w3.org/2000/svg';
 const FOOD_TRUCKS_URL = '/api/food-trucks';
+// Phone sheet motion (keep in step with src/styles/food-guide.css).
+const SHEET_SNAP_MS = 380;
+const SHEET_CLOSE_MS = 280;
 // Today's cars are fetched again after this long, or when the day changes.
 const FOOD_TRUCKS_FRESH_MS = 10 * 60 * 1000;
 const FOOD_TRUCKS_RETRY_MS = 60 * 1000;
@@ -108,22 +111,12 @@ export class FoodGuideViewer {
     this.panel.addEventListener('pointerdown', (event) => {
       const handle = event.target.closest('.food-sheet-handle');
       if (!handle) return;
-      this.swipe = { id: event.pointerId, y: event.clientY };
       handle.setPointerCapture(event.pointerId);
+      this.startSheetDrag(event);
     });
-    this.panel.addEventListener('pointerup', (event) => {
-      if (!this.swipe || this.swipe.id !== event.pointerId) return;
-      const dy = event.clientY - this.swipe.y;
-      this.swipe = null;
-      if (Math.abs(dy) < 48) return;
-      if (dy < 0) this.setDetails(true);
-      else if (this.panelMode === 'detail' && !this.shortScreen)
-        this.setDetails(false);
-      else this.close();
-    });
-    this.panel.addEventListener('pointercancel', () => {
-      this.swipe = null;
-    });
+    this.panel.addEventListener('pointermove', (event) => this.moveSheetDrag(event));
+    this.panel.addEventListener('pointerup', (event) => this.endSheetDrag(event));
+    this.panel.addEventListener('pointercancel', () => this.cancelSheetDrag());
     viewer.addEventListener(
       'pointerdown',
       (event) => this.pointerDown(event),
@@ -349,13 +342,15 @@ export class FoodGuideViewer {
       this.closing = false;
       this.panel.hidden = true;
       this.panel.classList.remove('is-closing');
+      this.panel.style.removeProperty('--sheet-drag-y');
+      this.panel.style.transform = '';
     };
     if (
       this.closing &&
       !matchMedia('(prefers-reduced-motion: reduce)').matches
     ) {
       this.panel.classList.add('is-closing');
-      this.closeTimer = setTimeout(finish, 120);
+      this.closeTimer = setTimeout(finish, this.narrow ? SHEET_CLOSE_MS : 120);
     } else finish();
     this.host.clearSelection(clearHash);
     this.renderAreas();
@@ -439,7 +434,7 @@ export class FoodGuideViewer {
     );
     this.morePanel.style.setProperty('--food-more-available', `${available}px`);
   }
-  panelGeometry() {
+  panelGeometry(mode = this.panelMode) {
     const insets = this.host.map().insets,
       rect = this.viewer.getBoundingClientRect();
     const h = window.visualViewport?.height || innerHeight;
@@ -455,9 +450,9 @@ export class FoodGuideViewer {
       // A facility card has no details button, so its compact sheet is as tall as the card
       // (measured in renderPanel), up to the screen less the room kept for the map.
       const height =
-        this.panelMode === 'compact' && this.facilityHeight
+        mode === 'compact' && this.facilityHeight
           ? Math.min(this.facilityHeight, available - 120)
-          : this.panelMode === 'compact'
+          : mode === 'compact'
           ? Math.min(
               Math.max(
                 Math.round(h * 0.33),
@@ -500,6 +495,7 @@ export class FoodGuideViewer {
       width: `${g.width}px`,
       height: g.height !== undefined ? `${g.height}px` : 'auto',
       maxHeight: g.maxHeight !== undefined ? `${g.maxHeight}px` : 'none',
+      transform: '',
     });
   }
   renderPanel() {
@@ -684,6 +680,95 @@ export class FoodGuideViewer {
       ? `<ul class="food-truck-names">${names.map((name) => `<li>${escape(name)}</li>`).join('')}</ul>`
       : `<p class="food-muted">${escape(t('food.trucks.none'))}</p>`;
   }
+  // --- bottom sheet: it follows the finger, then glides to where it settles ---
+  sheetMotion() {
+    return this.narrow && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+  snapSheet() {
+    if (!this.sheetMotion()) return;
+    clearTimeout(this.snapTimer);
+    this.panel.classList.add('is-snapping');
+    this.snapTimer = setTimeout(
+      () => this.panel.classList.remove('is-snapping'),
+      SHEET_SNAP_MS + 60,
+    );
+  }
+  startSheetDrag(event) {
+    if (!this.panelMode || this.closing) return;
+    clearTimeout(this.snapTimer);
+    this.panel.classList.remove('is-snapping');
+    const start = this.panelGeometry();
+    const detail = this.panelGeometry('detail').height;
+    const compact = this.panelGeometry('compact').height;
+    const canExpand = this.panelMode === 'compact' && this.selected;
+    const canCollapse =
+      this.panelMode === 'detail' && !this.shortScreen && this.selected;
+    this.swipe = {
+      id: event.pointerId,
+      y: event.clientY,
+      bottom: start.top + start.height,
+      height: start.height,
+      // the sheet can grow to the full height from compact, and shrink to compact from full
+      hi: canExpand ? detail : start.height,
+      lo: canCollapse ? Math.min(compact, start.height) : start.height,
+      samples: [{ y: event.clientY, t: event.timeStamp }],
+      dragging: false,
+      offset: 0,
+    };
+  }
+  moveSheetDrag(event) {
+    const swipe = this.swipe;
+    if (!swipe || swipe.id !== event.pointerId) return;
+    const dy = event.clientY - swipe.y;
+    swipe.samples.push({ y: event.clientY, t: event.timeStamp });
+    if (swipe.samples.length > 6) swipe.samples.shift();
+    if (!swipe.dragging && Math.abs(dy) < 4) return;
+    swipe.dragging = true;
+    this.panel.classList.add('is-dragging');
+    const raw = swipe.height - dy;
+    const height = Math.max(swipe.lo, Math.min(swipe.hi, raw));
+    // pulled below the lowest height: the sheet slides off the bottom with the finger
+    swipe.offset = Math.max(0, swipe.lo - raw);
+    Object.assign(this.panel.style, {
+      top: `${swipe.bottom - height}px`,
+      height: `${height}px`,
+      transform: swipe.offset ? `translateY(${swipe.offset}px)` : '',
+    });
+  }
+  endSheetDrag(event) {
+    const swipe = this.swipe;
+    if (!swipe || swipe.id !== event.pointerId) return;
+    this.swipe = null;
+    this.panel.classList.remove('is-dragging');
+    const dy = event.clientY - swipe.y;
+    const first = swipe.samples[0];
+    const velocity = (event.clientY - first.y) / Math.max(1, event.timeStamp - first.t);
+    const up = dy < -48 || velocity < -0.5;
+    const down = dy > 48 || velocity > 0.5;
+    if (!swipe.dragging && !up && !down) return;
+    if (up && this.panelMode === 'compact' && this.selected) {
+      this.setDetails(true);
+    } else if (down) {
+      if (this.panelMode === 'detail' && !this.shortScreen && this.selected)
+        this.setDetails(false);
+      else {
+        this.panel.style.setProperty('--sheet-drag-y', `${swipe.offset}px`);
+        this.close();
+      }
+    } else {
+      // not far enough: settle back where it was
+      this.snapSheet();
+      this.positionPanel();
+    }
+  }
+  cancelSheetDrag() {
+    if (!this.swipe) return;
+    this.swipe = null;
+    this.panel.classList.remove('is-dragging');
+    this.snapSheet();
+    this.positionPanel();
+  }
+
   setDetails(detail) {
     if (!this.selected) return;
     this.panelMode = detail
@@ -691,6 +776,7 @@ export class FoodGuideViewer {
       : this.shortScreen
         ? 'detail'
         : 'compact';
+    this.snapSheet();
     this.renderPanel();
     this.render();
     if (!detail) this.reveal();

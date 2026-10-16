@@ -628,6 +628,7 @@ test('closing finishes after the fade and cannot hide a newly selected card', ()
     panel: {
       hidden: false,
       classList: { add() {}, remove() {} },
+      style: { removeProperty() {}, transform: '' },
       setAttribute() {},
     },
     hideHover() {},
