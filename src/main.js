@@ -136,6 +136,8 @@ if (window.__FILE_MODE__) {
   const SEARCH_RESULT_LIMIT = 18;
   const SEARCH_INDEX_IDLE_TIMEOUT_MS = 2000;
   const SEARCH_FOCUS_ZOOM = 6;
+  // A searched outline may fill at most this share of the visible map.
+  const SEARCH_OUTLINE_FIT_RATIO = 0.7;
   const VIEW_ANIMATION_MS = 480;
   // Touch screens and Safari redraw the map at its new size once the zoom has been still this long.
   const ZOOM_RASTER_SETTLE_MS = 140;
@@ -1170,6 +1172,7 @@ if (window.__FILE_MODE__) {
     const locationHintEn = String(entry?.locationHintEn ?? '').trim();
     const rects = Array.isArray(entry?.rects) ? entry.rects.map((rect) => normalizeRect(rect)) : [];
     const polygons = hydrateFacilityAreaPolygons(entry?.polygons);
+    const outlines = hydrateFacilityAreaPolygons(entry?.outlines);
 
     if (!label || rects.length === 0) {
       return null;
@@ -1190,6 +1193,7 @@ if (window.__FILE_MODE__) {
       floorOrder: getFloorOrder(floorId),
       rects,
       polygons,
+      outlines,
       source: 'manual'
     };
   }
@@ -1331,7 +1335,15 @@ if (window.__FILE_MODE__) {
       version: Math.max(3, snapshot.version),
       entries: entries.map((entry) => {
         const fallback = fallbackById.get(entry.id);
-        if (!fallback?.locationHint || fallback.floorId !== entry.floorId || fallback.label !== entry.label) {
+        if (fallback?.floorId !== entry.floorId) {
+          return entry;
+        }
+        // A draft saved before outlines existed takes them from the published data,
+        // which the editor cannot draw yet.
+        if (entry.outlines.length === 0 && fallback.outlines.length > 0) {
+          entry = { ...entry, outlines: fallback.outlines.map((polygon) => polygon.map((point) => ({ ...point }))) };
+        }
+        if (!fallback.locationHint || fallback.label !== entry.label) {
           return entry;
         }
         return hydrateManualEntry({
@@ -1533,17 +1545,18 @@ if (window.__FILE_MODE__) {
         widthRatio: Number(rect.widthRatio.toFixed(6)),
         heightRatio: Number(rect.heightRatio.toFixed(6))
       })),
-      ...(entry.polygons.length > 0
-        ? {
-            polygons: entry.polygons.map((polygon) =>
-              polygon.map((point) => ({
-                xRatio: Number(point.xRatio.toFixed(6)),
-                yRatio: Number(point.yRatio.toFixed(6))
-              }))
-            )
-          }
-        : {})
+      ...(entry.polygons.length > 0 ? { polygons: serializeFacilityAreaPolygons(entry.polygons) } : {}),
+      ...(entry.outlines.length > 0 ? { outlines: serializeFacilityAreaPolygons(entry.outlines) } : {})
     }));
+  }
+
+  function serializeFacilityAreaPolygons(polygons) {
+    return polygons.map((polygon) =>
+      polygon.map((point) => ({
+        xRatio: Number(point.xRatio.toFixed(6)),
+        yRatio: Number(point.yRatio.toFixed(6))
+      }))
+    );
   }
 
   function cloneManualEntries(entries) {
@@ -2241,6 +2254,12 @@ if (window.__FILE_MODE__) {
       return;
     }
 
+    // A place with a traced outline is shown as its area instead of a pin.
+    if (activeEntry.outlines.length > 0) {
+      state.highlightLayer.append(createSearchHighlightArea(activeEntry.outlines));
+      return;
+    }
+
     const fragment = document.createDocumentFragment();
     activeEntry.rects.forEach((rect, index) => {
       const center = getRectCenter(rect);
@@ -2253,6 +2272,38 @@ if (window.__FILE_MODE__) {
     });
 
     state.highlightLayer.append(fragment);
+  }
+
+  // Search-only: the layer takes no pointer events, so hovering a room never shows it.
+  function createSearchHighlightArea(outlines) {
+    const svg = document.createElementNS(SVG_NAMESPACE, 'svg');
+    svg.classList.add('search-highlight-area');
+    svg.setAttribute('viewBox', `0 0 ${FACILITY_AREA_VIEWBOX_SIZE} ${FACILITY_AREA_VIEWBOX_SIZE}`);
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    // Every white edge goes under every coloured line, so rooms that touch keep both lines.
+    outlines.forEach((polygon) => svg.append(createFacilityAreaPolygonNode(polygon, 'search-highlight-area-base')));
+    outlines.forEach((polygon) => svg.append(createFacilityAreaPolygonNode(polygon, 'search-highlight-area-outline')));
+    return svg;
+  }
+
+  function getOutlineBounds(outlines) {
+    const points = outlines.flat();
+
+    if (points.length === 0) {
+      return null;
+    }
+
+    const xRatios = points.map((point) => point.xRatio);
+    const yRatios = points.map((point) => point.yRatio);
+    const left = Math.min(...xRatios);
+    const top = Math.min(...yRatios);
+    return {
+      xRatio: left,
+      yRatio: top,
+      widthRatio: Math.max(...xRatios) - left,
+      heightRatio: Math.max(...yRatios) - top
+    };
   }
 
   function createEditorPinKey(entryId, rectIndex = 0) {
@@ -3096,13 +3147,22 @@ if (window.__FILE_MODE__) {
       return;
     }
 
-    const focusRect = entry.rects[0];
-    const nextZoom = clamp(targetZoom, state.minZoom, state.maxZoom);
-    const targetX = state.baseWidth * (focusRect.xRatio + focusRect.widthRatio / 2);
-    const targetY = state.baseHeight * (focusRect.yRatio + focusRect.heightRatio / 2);
+    // An outlined place centres on its whole area, zooming out if the area would not fit.
+    const outlineBounds = getOutlineBounds(entry.outlines);
+    const focusRect = outlineBounds ?? entry.rects[0];
     const { width: viewportWidth, height: viewportHeight } = getViewportSize();
     const top = state.safeInsetTop || 0;
-    const focusCenterY = top + (viewportHeight - top - (state.safeInsetBottom || 0)) / 2;
+    const visibleHeight = viewportHeight - top - (state.safeInsetBottom || 0);
+    const fitZoom = outlineBounds
+      ? Math.min(
+          (viewportWidth * SEARCH_OUTLINE_FIT_RATIO) / (state.baseWidth * outlineBounds.widthRatio),
+          (visibleHeight * SEARCH_OUTLINE_FIT_RATIO) / (state.baseHeight * outlineBounds.heightRatio)
+        )
+      : targetZoom;
+    const nextZoom = clamp(Math.min(targetZoom, fitZoom), state.minZoom, state.maxZoom);
+    const targetX = state.baseWidth * (focusRect.xRatio + focusRect.widthRatio / 2);
+    const targetY = state.baseHeight * (focusRect.yRatio + focusRect.heightRatio / 2);
+    const focusCenterY = top + visibleHeight / 2;
 
     animateView(nextZoom, viewportWidth / 2 - targetX * nextZoom, focusCenterY - targetY * nextZoom);
   }
