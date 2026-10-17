@@ -149,3 +149,12 @@ test('every second-floor place has a search outline', async () => {
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
   assert.equal(secondFloor.filter((entry) => entry.outlines?.length).length, 74);
 });
+
+test('every third-floor place has a search outline', async () => {
+  const payload = await readCanonicalSearchData();
+  const thirdFloor = payload.entries.filter((entry) => entry.floorId === '3F');
+  const withoutOutline = thirdFloor.filter((entry) => !entry.outlines?.length);
+
+  assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
+  assert.equal(thirdFloor.filter((entry) => entry.outlines?.length).length, 63);
+});
