@@ -4376,6 +4376,13 @@ if (window.__FILE_MODE__) {
   });
 
   searchInput.addEventListener('keydown', async (event) => {
+    // IME変換中のキー操作は変換の確定・候補選択に使われるため、検索候補の操作として扱わない。
+    // 扱うと確定前に入力欄を書き換えてしまい、IMEが確定した文字列が後ろに合成される。
+    // (Safariは確定後にkeydownを発火するため isComposing が false になり、keyCode 229 で判定する)
+    if (event.isComposing || event.keyCode === 229) {
+      return;
+    }
+
     if (event.key === 'ArrowDown') {
       event.preventDefault();
       if (state.searchSuggestions.length === 0) {
