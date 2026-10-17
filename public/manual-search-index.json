@@ -2917,15 +2917,15 @@
       ]
     },
     {
-      "id": "manual-1F-1775276118609-t56rfz",
+      "id": "manual-1F-1792500000000-mprc1",
       "floorId": "1F",
-      "label": "音楽練習室",
-      "labelEn": "Music Practice Room",
+      "label": "音楽練習室1",
+      "labelEn": "Music Practice Room 1",
       "aliases": [],
       "rects": [
         {
-          "xRatio": 0.387176,
-          "yRatio": 0.758251,
+          "xRatio": 0.371316,
+          "yRatio": 0.757046,
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
@@ -2933,20 +2933,277 @@
       "outlines": [
         [
           {
-            "xRatio": 0.384204,
-            "yRatio": 0.755416
+            "xRatio": 0.360237,
+            "yRatio": 0.731153
           },
           {
-            "xRatio": 0.384204,
-            "yRatio": 0.784035
+            "xRatio": 0.383394,
+            "yRatio": 0.731153
           },
           {
-            "xRatio": 0.393499,
-            "yRatio": 0.78512
+            "xRatio": 0.383394,
+            "yRatio": 0.783939
           },
           {
-            "xRatio": 0.393499,
-            "yRatio": 0.755416
+            "xRatio": 0.360237,
+            "yRatio": 0.781302
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792500000000-mprc2",
+      "floorId": "1F",
+      "label": "音楽練習室2",
+      "labelEn": "Music Practice Room 2",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.402717,
+          "yRatio": 0.770486,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.406384,
+            "yRatio": 0.781468
+          },
+          {
+            "xRatio": 0.41212,
+            "yRatio": 0.781468
+          },
+          {
+            "xRatio": 0.41212,
+            "yRatio": 0.755419
+          },
+          {
+            "xRatio": 0.394314,
+            "yRatio": 0.755419
+          },
+          {
+            "xRatio": 0.394314,
+            "yRatio": 0.785186
+          },
+          {
+            "xRatio": 0.406384,
+            "yRatio": 0.786552
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792500000000-mprc3",
+      "floorId": "1F",
+      "label": "音楽練習室3",
+      "labelEn": "Music Practice Room 3",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.414006,
+          "yRatio": 0.67504,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.41018,
+            "yRatio": 0.665954
+          },
+          {
+            "xRatio": 0.418832,
+            "yRatio": 0.665954
+          },
+          {
+            "xRatio": 0.418832,
+            "yRatio": 0.685125
+          },
+          {
+            "xRatio": 0.41018,
+            "yRatio": 0.685125
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792500000000-mprc4",
+      "floorId": "1F",
+      "label": "音楽練習室4",
+      "labelEn": "Music Practice Room 4",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.414006,
+          "yRatio": 0.695844,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.41018,
+            "yRatio": 0.686277
+          },
+          {
+            "xRatio": 0.418832,
+            "yRatio": 0.686277
+          },
+          {
+            "xRatio": 0.418832,
+            "yRatio": 0.706411
+          },
+          {
+            "xRatio": 0.41018,
+            "yRatio": 0.706411
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792500000000-mprc5",
+      "floorId": "1F",
+      "label": "音楽練習室5",
+      "labelEn": "Music Practice Room 5",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.414006,
+          "yRatio": 0.716001,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.41018,
+            "yRatio": 0.707551
+          },
+          {
+            "xRatio": 0.418832,
+            "yRatio": 0.707551
+          },
+          {
+            "xRatio": 0.418832,
+            "yRatio": 0.725451
+          },
+          {
+            "xRatio": 0.41018,
+            "yRatio": 0.725451
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792500000000-mprc67",
+      "floorId": "1F",
+      "label": "音楽練習室6・7",
+      "labelEn": "Music Practice Room 6 & 7",
+      "aliases": [
+        "音楽練習室6",
+        "音楽練習室7",
+        "音楽練習室6･7"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415026,
+          "yRatio": 0.740191,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412221,
+            "yRatio": 0.731117
+          },
+          {
+            "xRatio": 0.418832,
+            "yRatio": 0.731117
+          },
+          {
+            "xRatio": 0.418832,
+            "yRatio": 0.750264
+          },
+          {
+            "xRatio": 0.412221,
+            "yRatio": 0.750264
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792500000000-mprc8",
+      "floorId": "1F",
+      "label": "音楽練習室8",
+      "labelEn": "Music Practice Room 8",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.406568,
+          "yRatio": 0.740191,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40273,
+            "yRatio": 0.731117
+          },
+          {
+            "xRatio": 0.411406,
+            "yRatio": 0.731117
+          },
+          {
+            "xRatio": 0.411406,
+            "yRatio": 0.750264
+          },
+          {
+            "xRatio": 0.40273,
+            "yRatio": 0.750264
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792500000000-mprc9",
+      "floorId": "1F",
+      "label": "音楽練習室9",
+      "labelEn": "Music Practice Room 9",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.397614,
+          "yRatio": 0.740191,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.394314,
+            "yRatio": 0.731117
+          },
+          {
+            "xRatio": 0.401915,
+            "yRatio": 0.731117
+          },
+          {
+            "xRatio": 0.401915,
+            "yRatio": 0.750264
+          },
+          {
+            "xRatio": 0.394314,
+            "yRatio": 0.750264
           }
         ]
       ]
