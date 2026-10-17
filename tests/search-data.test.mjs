@@ -33,7 +33,7 @@ test('canonical search data distinguishes same-floor names without warnings', as
   const report = validateSearchData(payload);
 
   assert.deepEqual(report.errors, []);
-  assert.equal(report.stats.entries, 942); // 715 + the 227 faculty research offices on the A-building 7F, 8F and 9F (2026-10-17)
+  assert.equal(report.stats.entries, 1021); // 942 + the 79 faculty research offices on the H-building 6F-9F (2026-10-17)
   assert.equal(report.stats.facilityRings, 514);
   assert.equal(report.stats.sameFloorLabelGroups, 10);
   assert.equal(report.stats.legacyWhiteRings, 0);
@@ -257,4 +257,23 @@ test('every A-building 6F-9F place has a search outline', async () => {
 
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
   assert.equal(buildingA.filter((entry) => entry.outlines?.length).length, 329);
+});
+
+test('the H-building 6F-9F faculty research offices are searchable, one outline each', async () => {
+  const payload = await readCanonicalSearchData();
+  const rooms = payload.entries.filter((entry) => entry.floorId === 'H-6-9F' && /^H[6-9]0\d\d$/.test(entry.label));
+  const range = (from, to) => Array.from({ length: to - from + 1 }, (_, i) => from + i);
+  // Right column x001-x009 on every floor; left column x010-x020, except 8F where the grey
+  // block under the column replaces H8010.
+  const numbers = [
+    ...range(6001, 6020), ...range(7001, 7020), ...range(8001, 8009), ...range(8011, 8020), ...range(9001, 9020)
+  ].map((n) => `H${n}`);
+
+  assert.equal(numbers.length, 79);
+  assert.deepEqual(rooms.map((entry) => entry.label).sort(), numbers);
+  for (const entry of rooms) {
+    assert.equal(entry.outlines.length, 1, entry.label);
+    assert.deepEqual(entry.aliases, ['教員研究室']);
+    assert.equal(entry.labelEn, `${entry.label} Faculty Research Office`);
+  }
 });

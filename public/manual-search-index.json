@@ -32157,6 +32157,2929 @@
       ]
     },
     {
+      "id": "manual-H-6-9F-1792226397900-h69qpg",
+      "floorId": "H-6-9F",
+      "label": "H6001",
+      "labelEn": "H6001 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.389545,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.395598
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.395598
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.384492
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.384492
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397901-x8280s",
+      "floorId": "H-6-9F",
+      "label": "H6002",
+      "labelEn": "H6002 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.378445,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.384492
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.384492
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.373398
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.373398
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397902-6cwkjj",
+      "floorId": "H-6-9F",
+      "label": "H6003",
+      "labelEn": "H6003 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.367345,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.373398
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.373398
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.362292
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.362292
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397903-ojni5b",
+      "floorId": "H-6-9F",
+      "label": "H6004",
+      "labelEn": "H6004 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.356245,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.362292
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.362292
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.351198
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.351198
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397904-oee3lt",
+      "floorId": "H-6-9F",
+      "label": "H6005",
+      "labelEn": "H6005 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.345145,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.351198
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.351198
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.340092
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.340092
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397905-nk60x2",
+      "floorId": "H-6-9F",
+      "label": "H6006",
+      "labelEn": "H6006 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.334045,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.340092
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.340092
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.328998
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.328998
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397906-ipqzr1",
+      "floorId": "H-6-9F",
+      "label": "H6007",
+      "labelEn": "H6007 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.322945,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.328998
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.328998
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.317892
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.317892
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397907-r5tlos",
+      "floorId": "H-6-9F",
+      "label": "H6008",
+      "labelEn": "H6008 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.311839,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.317892
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.317892
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.306786
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.306786
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397908-abj8hq",
+      "floorId": "H-6-9F",
+      "label": "H6009",
+      "labelEn": "H6009 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.300739,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.306786
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.306786
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.295692
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.295692
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397909-qpfjzs",
+      "floorId": "H-6-9F",
+      "label": "H6010",
+      "labelEn": "H6010 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.411175,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.417323
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.417323
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.406027
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.406027
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397910-m2kpqg",
+      "floorId": "H-6-9F",
+      "label": "H6011",
+      "labelEn": "H6011 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.399885,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.406027
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.406027
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.394743
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.394743
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397911-wnfcwt",
+      "floorId": "H-6-9F",
+      "label": "H6012",
+      "labelEn": "H6012 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.388595,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.394743
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.394743
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.383447
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.383447
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397912-dbn3ql",
+      "floorId": "H-6-9F",
+      "label": "H6013",
+      "labelEn": "H6013 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.377299,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.383447
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.383447
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.372151
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.372151
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397913-2abro4",
+      "floorId": "H-6-9F",
+      "label": "H6014",
+      "labelEn": "H6014 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.366003,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.372151
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.372151
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.360855
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.360855
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397914-ur460n",
+      "floorId": "H-6-9F",
+      "label": "H6015",
+      "labelEn": "H6015 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.354713,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.360855
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.360855
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.349571
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.349571
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397915-24i1kt",
+      "floorId": "H-6-9F",
+      "label": "H6016",
+      "labelEn": "H6016 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.343423,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.349571
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.349571
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.338275
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.338275
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397916-u1ewxm",
+      "floorId": "H-6-9F",
+      "label": "H6017",
+      "labelEn": "H6017 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.332127,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.338275
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.338275
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.326979
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.326979
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397917-pmav8m",
+      "floorId": "H-6-9F",
+      "label": "H6018",
+      "labelEn": "H6018 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.320831,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.326979
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.326979
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.315683
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.315683
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397918-itvv2a",
+      "floorId": "H-6-9F",
+      "label": "H6019",
+      "labelEn": "H6019 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.309535,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.315683
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.315683
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.304387
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.304387
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397919-nyf4qs",
+      "floorId": "H-6-9F",
+      "label": "H6020",
+      "labelEn": "H6020 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.298244,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.304387
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.304387
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.293102
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.293102
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397920-rrr0jo",
+      "floorId": "H-6-9F",
+      "label": "H7001",
+      "labelEn": "H7001 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.72017,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.726223
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.726223
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.715117
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.715117
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397921-sgiqas",
+      "floorId": "H-6-9F",
+      "label": "H7002",
+      "labelEn": "H7002 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.70907,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.715117
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.715117
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.704023
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.704023
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397922-gwohf1",
+      "floorId": "H-6-9F",
+      "label": "H7003",
+      "labelEn": "H7003 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.69797,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.704023
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.704023
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.692917
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.692917
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397923-svxc6s",
+      "floorId": "H-6-9F",
+      "label": "H7004",
+      "labelEn": "H7004 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.68687,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.692917
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.692917
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.681823
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.681823
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397924-bmbiun",
+      "floorId": "H-6-9F",
+      "label": "H7005",
+      "labelEn": "H7005 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.67577,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.681823
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.681823
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.670717
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.670717
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397925-dympb1",
+      "floorId": "H-6-9F",
+      "label": "H7006",
+      "labelEn": "H7006 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.66467,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.670717
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.670717
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.659623
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.659623
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397926-o883vn",
+      "floorId": "H-6-9F",
+      "label": "H7007",
+      "labelEn": "H7007 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.65357,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.659623
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.659623
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.648517
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.648517
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397927-k2g39t",
+      "floorId": "H-6-9F",
+      "label": "H7008",
+      "labelEn": "H7008 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.642464,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.648517
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.648517
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.637411
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.637411
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397928-t6iico",
+      "floorId": "H-6-9F",
+      "label": "H7009",
+      "labelEn": "H7009 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.415879,
+          "yRatio": 0.631364,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.637411
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.637411
+          },
+          {
+            "xRatio": 0.425778,
+            "yRatio": 0.626317
+          },
+          {
+            "xRatio": 0.40698,
+            "yRatio": 0.626317
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397929-as1vfq",
+      "floorId": "H-6-9F",
+      "label": "H7010",
+      "labelEn": "H7010 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.7418,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.747948
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.747948
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.736652
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.736652
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397930-h4uoo0",
+      "floorId": "H-6-9F",
+      "label": "H7011",
+      "labelEn": "H7011 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.730504,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.736652
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.736652
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.725356
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.725356
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397931-l9z1z0",
+      "floorId": "H-6-9F",
+      "label": "H7012",
+      "labelEn": "H7012 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.719214,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.725356
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.725356
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.714072
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.714072
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397932-xs3w1k",
+      "floorId": "H-6-9F",
+      "label": "H7013",
+      "labelEn": "H7013 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.707924,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.714072
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.714072
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.702776
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.702776
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397933-kaou9h",
+      "floorId": "H-6-9F",
+      "label": "H7014",
+      "labelEn": "H7014 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.696628,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.702776
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.702776
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.69148
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.69148
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397934-kkjmgq",
+      "floorId": "H-6-9F",
+      "label": "H7015",
+      "labelEn": "H7015 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.685332,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.69148
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.69148
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.680184
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.680184
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397935-21oci5",
+      "floorId": "H-6-9F",
+      "label": "H7016",
+      "labelEn": "H7016 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.674042,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.680184
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.680184
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.6689
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.6689
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397936-5fr6hi",
+      "floorId": "H-6-9F",
+      "label": "H7017",
+      "labelEn": "H7017 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.662752,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.6689
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.6689
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.657604
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.657604
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397937-79xoas",
+      "floorId": "H-6-9F",
+      "label": "H7018",
+      "labelEn": "H7018 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.651456,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.657604
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.657604
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.646308
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.646308
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397938-u7hjri",
+      "floorId": "H-6-9F",
+      "label": "H7019",
+      "labelEn": "H7019 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.64016,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.646308
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.646308
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.635012
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.635012
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397939-52e4k4",
+      "floorId": "H-6-9F",
+      "label": "H7020",
+      "labelEn": "H7020 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.082907,
+          "yRatio": 0.62887,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.635012
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.635012
+          },
+          {
+            "xRatio": 0.092579,
+            "yRatio": 0.623728
+          },
+          {
+            "xRatio": 0.074235,
+            "yRatio": 0.623728
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397940-0372nt",
+      "floorId": "H-6-9F",
+      "label": "H8001",
+      "labelEn": "H8001 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.389468,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.395515
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.395515
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.384421
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.384421
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397941-p85n73",
+      "floorId": "H-6-9F",
+      "label": "H8002",
+      "labelEn": "H8002 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.378368,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.384421
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.384421
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.373315
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.373315
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397942-hxnixg",
+      "floorId": "H-6-9F",
+      "label": "H8003",
+      "labelEn": "H8003 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.367268,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.373315
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.373315
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.362221
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.362221
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397943-o83ng8",
+      "floorId": "H-6-9F",
+      "label": "H8004",
+      "labelEn": "H8004 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.356168,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.362221
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.362221
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.351115
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.351115
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397944-82fqq1",
+      "floorId": "H-6-9F",
+      "label": "H8005",
+      "labelEn": "H8005 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.345068,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.351115
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.351115
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.340021
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.340021
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397945-rs3fqb",
+      "floorId": "H-6-9F",
+      "label": "H8006",
+      "labelEn": "H8006 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.333968,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.340021
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.340021
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.328915
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.328915
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397946-gpugud",
+      "floorId": "H-6-9F",
+      "label": "H8007",
+      "labelEn": "H8007 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.322862,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.328915
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.328915
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.317809
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.317809
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397947-hetjzy",
+      "floorId": "H-6-9F",
+      "label": "H8008",
+      "labelEn": "H8008 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.311762,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.317809
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.317809
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.306715
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.306715
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397948-rd5hl5",
+      "floorId": "H-6-9F",
+      "label": "H8009",
+      "labelEn": "H8009 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.300662,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.306715
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.306715
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.295609
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.295609
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397949-tfsvmh",
+      "floorId": "H-6-9F",
+      "label": "H8011",
+      "labelEn": "H8011 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.399802,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.405944
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.405944
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.39466
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.39466
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397950-p3o01h",
+      "floorId": "H-6-9F",
+      "label": "H8012",
+      "labelEn": "H8012 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.388512,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.39466
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.39466
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.383364
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.383364
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397951-9i8goh",
+      "floorId": "H-6-9F",
+      "label": "H8013",
+      "labelEn": "H8013 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.377216,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.383364
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.383364
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.372068
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.372068
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397952-xc05pa",
+      "floorId": "H-6-9F",
+      "label": "H8014",
+      "labelEn": "H8014 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.365926,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.372068
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.372068
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.360783
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.360783
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397953-xy5kqe",
+      "floorId": "H-6-9F",
+      "label": "H8015",
+      "labelEn": "H8015 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.354635,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.360783
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.360783
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.349487
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.349487
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397954-sux56l",
+      "floorId": "H-6-9F",
+      "label": "H8016",
+      "labelEn": "H8016 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.343339,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.349487
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.349487
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.338191
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.338191
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397955-ptxtfe",
+      "floorId": "H-6-9F",
+      "label": "H8017",
+      "labelEn": "H8017 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.332043,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.338191
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.338191
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.326895
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.326895
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397956-uf8nvd",
+      "floorId": "H-6-9F",
+      "label": "H8018",
+      "labelEn": "H8018 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.320753,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.326895
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.326895
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.315611
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.315611
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397957-o33f0e",
+      "floorId": "H-6-9F",
+      "label": "H8019",
+      "labelEn": "H8019 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.309463,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.315611
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.315611
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.304315
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.304315
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397958-1nycj4",
+      "floorId": "H-6-9F",
+      "label": "H8020",
+      "labelEn": "H8020 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.298167,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.304315
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.304315
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.293019
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.293019
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397959-q9keky",
+      "floorId": "H-6-9F",
+      "label": "H9001",
+      "labelEn": "H9001 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.720093,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.72614
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.72614
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.715046
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.715046
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397960-y0k887",
+      "floorId": "H-6-9F",
+      "label": "H9002",
+      "labelEn": "H9002 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.708993,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.715046
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.715046
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.70394
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.70394
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397961-7jzl9t",
+      "floorId": "H-6-9F",
+      "label": "H9003",
+      "labelEn": "H9003 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.697893,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.70394
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.70394
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.692846
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.692846
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397962-ozmcw6",
+      "floorId": "H-6-9F",
+      "label": "H9004",
+      "labelEn": "H9004 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.686793,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.692846
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.692846
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.68174
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.68174
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397963-wmqqfs",
+      "floorId": "H-6-9F",
+      "label": "H9005",
+      "labelEn": "H9005 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.675687,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.68174
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.68174
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.670634
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.670634
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397964-s9v3cr",
+      "floorId": "H-6-9F",
+      "label": "H9006",
+      "labelEn": "H9006 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.664587,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.670634
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.670634
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.65954
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.65954
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397965-ndd931",
+      "floorId": "H-6-9F",
+      "label": "H9007",
+      "labelEn": "H9007 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.653487,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.65954
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.65954
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.648434
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.648434
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397966-oscmqy",
+      "floorId": "H-6-9F",
+      "label": "H9008",
+      "labelEn": "H9008 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.642387,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.648434
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.648434
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.63734
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.63734
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397967-mjskyq",
+      "floorId": "H-6-9F",
+      "label": "H9009",
+      "labelEn": "H9009 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.915875,
+          "yRatio": 0.631287,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.63734
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.63734
+          },
+          {
+            "xRatio": 0.925774,
+            "yRatio": 0.626234
+          },
+          {
+            "xRatio": 0.906976,
+            "yRatio": 0.626234
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397968-t9a9ke",
+      "floorId": "H-6-9F",
+      "label": "H9010",
+      "labelEn": "H9010 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.741729,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.747877
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.747877
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.736581
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.736581
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397969-i85i3t",
+      "floorId": "H-6-9F",
+      "label": "H9011",
+      "labelEn": "H9011 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.730433,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.736581
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.736581
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.725285
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.725285
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397970-4ukb20",
+      "floorId": "H-6-9F",
+      "label": "H9012",
+      "labelEn": "H9012 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.719137,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.725285
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.725285
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.713989
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.713989
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397971-w1nqzj",
+      "floorId": "H-6-9F",
+      "label": "H9013",
+      "labelEn": "H9013 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.707841,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.713989
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.713989
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.702693
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.702693
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397972-lznw2j",
+      "floorId": "H-6-9F",
+      "label": "H9014",
+      "labelEn": "H9014 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.696551,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.702693
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.702693
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.691409
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.691409
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397973-932cqa",
+      "floorId": "H-6-9F",
+      "label": "H9015",
+      "labelEn": "H9015 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.685261,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.691409
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.691409
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.680113
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.680113
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397974-f9yg0w",
+      "floorId": "H-6-9F",
+      "label": "H9016",
+      "labelEn": "H9016 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.673965,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.680113
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.680113
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.668817
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.668817
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397975-5brcb3",
+      "floorId": "H-6-9F",
+      "label": "H9017",
+      "labelEn": "H9017 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.662669,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.668817
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.668817
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.657521
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.657521
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397976-n8a7lr",
+      "floorId": "H-6-9F",
+      "label": "H9018",
+      "labelEn": "H9018 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.651379,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.657521
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.657521
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.646236
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.646236
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397977-538gro",
+      "floorId": "H-6-9F",
+      "label": "H9019",
+      "labelEn": "H9019 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.640088,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.646236
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.646236
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.63494
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.63494
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-H-6-9F-1792226397978-ybolq3",
+      "floorId": "H-6-9F",
+      "label": "H9020",
+      "labelEn": "H9020 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.582903,
+          "yRatio": 0.628792,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.63494
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.63494
+          },
+          {
+            "xRatio": 0.592575,
+            "yRatio": 0.623644
+          },
+          {
+            "xRatio": 0.57423,
+            "yRatio": 0.623644
+          }
+        ]
+      ]
+    },
+    {
       "id": "manual-1F-1792100000001-kcar01",
       "floorId": "1F",
       "label": "OICランチストリート",
