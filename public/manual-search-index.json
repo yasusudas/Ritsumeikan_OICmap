@@ -1348,14 +1348,14 @@
       ]
     },
     {
-      "id": "manual-1F-1775192445219-uqhr0b",
+      "id": "manual-1F-1792300000000-splb01",
       "floorId": "1F",
-      "label": "SP LAB",
+      "label": "SP LAB 1",
       "aliases": [],
       "rects": [
         {
-          "xRatio": 0.335139,
-          "yRatio": 0.491882,
+          "xRatio": 0.329978,
+          "yRatio": 0.491381,
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
@@ -1363,56 +1363,292 @@
       "outlines": [
         [
           {
-            "xRatio": 0.318576,
-            "yRatio": 0.423406
+            "xRatio": 0.32532,
+            "yRatio": 0.481987
           },
           {
-            "xRatio": 0.356147,
-            "yRatio": 0.423406
+            "xRatio": 0.335635,
+            "yRatio": 0.481987
           },
           {
-            "xRatio": 0.356147,
-            "yRatio": 0.394838
+            "xRatio": 0.335635,
+            "yRatio": 0.501776
           },
           {
-            "xRatio": 0.318576,
-            "yRatio": 0.394838
+            "xRatio": 0.32532,
+            "yRatio": 0.501776
           }
-        ],
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792300000000-splb02",
+      "floorId": "1F",
+      "label": "SP LAB 2",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.341174,
+          "yRatio": 0.491381,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.335635,
+            "yRatio": 0.481987
+          },
+          {
+            "xRatio": 0.347713,
+            "yRatio": 0.481987
+          },
+          {
+            "xRatio": 0.347713,
+            "yRatio": 0.501776
+          },
+          {
+            "xRatio": 0.335635,
+            "yRatio": 0.501776
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792300000000-splb03",
+      "floorId": "1F",
+      "label": "SP LAB 3",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.361858,
+          "yRatio": 0.492801,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
         [
           {
             "xRatio": 0.35529,
-            "yRatio": 0.450201
+            "yRatio": 0.484826
           },
           {
-            "xRatio": 0.379085,
-            "yRatio": 0.450201
+            "xRatio": 0.369426,
+            "yRatio": 0.484826
           },
           {
-            "xRatio": 0.379085,
+            "xRatio": 0.369426,
             "yRatio": 0.501776
           },
           {
             "xRatio": 0.35529,
             "yRatio": 0.501776
           }
-        ],
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792300000000-splb04",
+      "floorId": "1F",
+      "label": "SP LAB 4",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.361858,
+          "yRatio": 0.475857,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
         [
           {
-            "xRatio": 0.347712,
-            "yRatio": 0.501773
+            "xRatio": 0.35529,
+            "yRatio": 0.467888
           },
           {
-            "xRatio": 0.325319,
-            "yRatio": 0.501773
+            "xRatio": 0.369426,
+            "yRatio": 0.467888
           },
           {
-            "xRatio": 0.325319,
-            "yRatio": 0.481989
+            "xRatio": 0.369426,
+            "yRatio": 0.484826
           },
           {
-            "xRatio": 0.347712,
-            "yRatio": 0.481989
+            "xRatio": 0.35529,
+            "yRatio": 0.484826
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792300000000-splb05",
+      "floorId": "1F",
+      "label": "SP LAB 5",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.361858,
+          "yRatio": 0.458545,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.35529,
+            "yRatio": 0.450201
+          },
+          {
+            "xRatio": 0.369426,
+            "yRatio": 0.450201
+          },
+          {
+            "xRatio": 0.369426,
+            "yRatio": 0.467888
+          },
+          {
+            "xRatio": 0.35529,
+            "yRatio": 0.467888
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792300000000-splb06",
+      "floorId": "1F",
+      "label": "SP LAB 6",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.350972,
+          "yRatio": 0.408621,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.346798,
+            "yRatio": 0.394838
+          },
+          {
+            "xRatio": 0.356146,
+            "yRatio": 0.394838
+          },
+          {
+            "xRatio": 0.356146,
+            "yRatio": 0.423404
+          },
+          {
+            "xRatio": 0.346798,
+            "yRatio": 0.423404
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792300000000-splb07",
+      "floorId": "1F",
+      "label": "SP LAB 7",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.341733,
+          "yRatio": 0.408621,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.337667,
+            "yRatio": 0.394838
+          },
+          {
+            "xRatio": 0.346798,
+            "yRatio": 0.394838
+          },
+          {
+            "xRatio": 0.346798,
+            "yRatio": 0.423404
+          },
+          {
+            "xRatio": 0.337667,
+            "yRatio": 0.423404
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792300000000-splb08",
+      "floorId": "1F",
+      "label": "SP LAB 8",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.332535,
+          "yRatio": 0.408621,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.328403,
+            "yRatio": 0.394838
+          },
+          {
+            "xRatio": 0.337667,
+            "yRatio": 0.394838
+          },
+          {
+            "xRatio": 0.337667,
+            "yRatio": 0.423404
+          },
+          {
+            "xRatio": 0.328403,
+            "yRatio": 0.423404
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792300000000-splb09",
+      "floorId": "1F",
+      "label": "SP LAB 9",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.322989,
+          "yRatio": 0.408621,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.318575,
+            "yRatio": 0.394838
+          },
+          {
+            "xRatio": 0.328403,
+            "yRatio": 0.394838
+          },
+          {
+            "xRatio": 0.328403,
+            "yRatio": 0.423404
+          },
+          {
+            "xRatio": 0.318575,
+            "yRatio": 0.423404
           }
         ]
       ]
