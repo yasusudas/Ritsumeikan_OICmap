@@ -12,7 +12,7 @@
 
 言語を切り替えても、表示中の階、検索結果、施設選択、拡大位置を維持します。地図や施設の位置情報の読み込みに失敗した場合は、地図上のボタンから再試行できます。検索候補は上下キーで選択でき、選択中の候補が見えるように一覧がスクロールします。
 
-検索欄に教室名や施設名を入力すると、該当する場所が地図上でハイライトされます。1Fでは食事カードを持たない96項目が、ピンの代わりに部屋の外周をピンと同じエンジ色の領域で囲んで表示します（検索で選んだときだけ表示し、ホバーでは出ません）。通信に失敗した場合は、検索欄の「再試行」から読み込み直せます。施設アイコンを使うと、トイレ、ウォーターサーバー、自販機、階段・エスカレーター、エレベーターを確認できます。「その他」には食事、プリンター案内図、AED、ATM、授乳スペースをこの順に格納しています。施設ボタンをもう一度押すとリングが消え、別の施設を押すと表示が切り替わります。ATMは1F、授乳スペースは2Fへ自動で切り替わり、解除すると選択前の階に戻ります。両者を切り替えた場合も、最初に開いていた階に戻ります。
+検索欄に教室名や施設名を入力すると、該当する場所が地図上でハイライトされます。1Fでは食事カードを持たない96項目、2Fでは74項目が、ピンの代わりに部屋の外周をピンと同じエンジ色の領域で囲んで表示します（検索で選んだときだけ表示し、ホバーでは出ません）。通信に失敗した場合は、検索欄の「再試行」から読み込み直せます。施設アイコンを使うと、トイレ、ウォーターサーバー、自販機、階段・エスカレーター、エレベーターを確認できます。「その他」には食事、プリンター案内図、AED、ATM、授乳スペースをこの順に格納しています。施設ボタンをもう一度押すとリングが消え、別の施設を押すと表示が切り替わります。ATMは1F、授乳スペースは2Fへ自動で切り替わり、解除すると選択前の階に戻ります。両者を切り替えた場合も、最初に開いていた階に戻ります。
 
 1Fの8店舗は画像ピンと店舗領域全体から食事案内を開けます。PCでは領域内のホバーでも概要を表示します。全ピンはみなめんcafe基準の同一サイズで、地図の倍率に追従します。「その他」内の「食事」ボタンの一覧・施設検索・個別URLからも同じカードを表示します。営業時間は適用期間付きで管理し、生協店舗は月別の公式営業カレンダーから今日の予定を取得します。OICフードページでは、同じ8店舗をキッチンカーより前に並べ、各店舗から地図の店舗カードを開けます。
 
@@ -26,7 +26,7 @@
 
 UIの文言は `src/i18n.js` にまとまっています。日本語と英語の表示を変える場合は、原則としてこの翻訳辞書を更新し、`npm run sync:en` または `npm run build` で英語版HTMLを同期します。
 
-検索結果の外周は各項目の `outlines`（`polygons` と同じ比率座標の多角形の配列）に保存します。1F分は日本語SVGの部屋の塗りパスから抽出しており、英語SVGも部屋の形状は同一です。`polygons` は食事・ATMのホバー／クリック領域で、`outlines` とは別物です。`outlines` のない項目は従来どおりピンで表示します。
+検索結果の外周は各項目の `outlines`（`polygons` と同じ比率座標の多角形の配列）に保存します。1Fと2Fは日本語SVGの部屋の塗りパスから抽出しています。英語SVGも部屋の形状は同じで、2Fは使った塗りの外接矩形が±0.6以内で一致することを確認しています。`polygons` は食事・ATMのホバー／クリック領域で、`outlines` とは別物です。`outlines` のない項目は従来どおりピンで表示します。
 
 同じ階・同じ名前の検索候補8組には、`locationHint` / `locationHintEn` に棟名や近くの教室などの補足を持たせ、候補の下段に表示します。補足も検索対象ですが、施設名・ID・個別URLは維持します。編集時の読み込み・保存・書き出しでも補足を保持します。
 
@@ -46,7 +46,7 @@ On the viewing site, you can switch between displays for the 1st to 5th floors, 
 
 Switching languages retains the current floor, search result, selected facility, zoom, and map position. If the map or facility locations fail to load, use the retry buttons over the map. Use the up/down arrow keys to select search suggestions; the list scrolls to keep the selected result visible.
 
-When you enter a classroom or facility name in the search bar, the corresponding location will be highlighted on the map. On 1F, the 96 places without a food card show the room's outline in the pin's crimson instead of a pin (only when chosen from search, never on hover). If loading fails, use “Try again” in the search panel to retry. Facility icons show restrooms, water dispensers, vending machines, stairs and escalators, and elevators. The More menu contains Food, the printer guide, AEDs, ATMs, and the nursing space, in that order. Select a facility again to hide its rings, or select another facility to switch the display. Selecting ATMs switches to 1F, and selecting the nursing space switches to 2F. Deselecting returns to the previous floor, even after switching between these two facilities.
+When you enter a classroom or facility name in the search bar, the corresponding location will be highlighted on the map. On 1F, the 96 places without a food card, and on 2F all 74 places, show the room's outline in the pin's crimson instead of a pin (only when chosen from search, never on hover). If loading fails, use “Try again” in the search panel to retry. Facility icons show restrooms, water dispensers, vending machines, stairs and escalators, and elevators. The More menu contains Food, the printer guide, AEDs, ATMs, and the nursing space, in that order. Select a facility again to hide its rings, or select another facility to switch the display. Selecting ATMs switches to 1F, and selecting the nursing space switches to 2F. Deselecting returns to the previous floor, even after switching between these two facilities.
 
 Eight first-floor food places have individual image pins and clickable store areas. Hovering anywhere inside a store area shows an overview. All pins use the same size as Minamen Cafe and scale with the map. A shared detail card also opens from search or a direct URL; the Food list is inside More. Co-op hours come from the official monthly calendar; other hours support regular and temporary validity periods. The OIC Food page lists those eight places ahead of today’s food trucks, and each place links back to its map card.
 
@@ -58,7 +58,7 @@ Facility rings are edited and saved using Japanese SVG coordinates (subtract the
 
 UI text is consolidated in `src/i18n.js`. To change the Japanese and English displays, you should generally update this translation dictionary and sync the English HTML using `npm run sync:en` or `npm run build`.
 
-Search outlines are stored per entry in `outlines` (an array of polygons in the same ratio coordinates as `polygons`). The 1F outlines were taken from the room fill paths of the Japanese SVG; the English SVG has the same room shapes. `polygons` remain the food and ATM hover/click areas and are separate from `outlines`. Entries without `outlines` still show a pin.
+Search outlines are stored per entry in `outlines` (an array of polygons in the same ratio coordinates as `polygons`). The 1F and 2F outlines were taken from the room fill paths of the Japanese SVG. The English SVG has the same room shapes; on 2F, each fill that was used has a bounding box within ±0.6. `polygons` remain the food and ATM hover/click areas and are separate from `outlines`. Entries without `outlines` still show a pin.
 
 The eight groups of same-floor, same-name search results include building or nearby-room hints in `locationHint` / `locationHintEn`, displayed below each result name. Hints are searchable; facility names, IDs, and individual URLs remain unchanged. The editor preserves these hints when loading, saving, and exporting data.
 

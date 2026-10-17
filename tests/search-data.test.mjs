@@ -140,3 +140,12 @@ test('every first-floor place without a food card has a search outline', async (
   );
   assert.equal(firstFloor.filter((entry) => entry.outlines?.length).length, 96);
 });
+
+test('every second-floor place has a search outline', async () => {
+  const payload = await readCanonicalSearchData();
+  const secondFloor = payload.entries.filter((entry) => entry.floorId === '2F');
+  const withoutOutline = secondFloor.filter((entry) => !entry.outlines?.length);
+
+  assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
+  assert.equal(secondFloor.filter((entry) => entry.outlines?.length).length, 74);
+});
