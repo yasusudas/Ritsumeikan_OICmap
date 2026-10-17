@@ -459,20 +459,28 @@
       "outlines": [
         [
           {
-            "xRatio": 0.184723,
-            "yRatio": 0.552227
-          },
-          {
-            "xRatio": 0.152907,
-            "yRatio": 0.552227
-          },
-          {
-            "xRatio": 0.152907,
+            "xRatio": 0.14684,
             "yRatio": 0.515721
           },
           {
-            "xRatio": 0.184723,
+            "xRatio": 0.184721,
             "yRatio": 0.515721
+          },
+          {
+            "xRatio": 0.184721,
+            "yRatio": 0.552222
+          },
+          {
+            "xRatio": 0.152904,
+            "yRatio": 0.552222
+          },
+          {
+            "xRatio": 0.152904,
+            "yRatio": 0.546318
+          },
+          {
+            "xRatio": 0.14684,
+            "yRatio": 0.546318
           }
         ]
       ]
@@ -951,91 +959,83 @@
       "outlines": [
         [
           {
-            "xRatio": 0.332974,
-            "yRatio": 0.338863
+            "xRatio": 0.332972,
+            "yRatio": 0.338868
           },
           {
-            "xRatio": 0.283837,
-            "yRatio": 0.338863
+            "xRatio": 0.283835,
+            "yRatio": 0.338868
           },
           {
-            "xRatio": 0.283837,
+            "xRatio": 0.283835,
             "yRatio": 0.331183
           },
           {
-            "xRatio": 0.192279,
+            "xRatio": 0.192281,
             "yRatio": 0.331183
           },
           {
-            "xRatio": 0.192279,
-            "yRatio": 0.342519
+            "xRatio": 0.192281,
+            "yRatio": 0.342515
           },
           {
-            "xRatio": 0.194093,
-            "yRatio": 0.342519
+            "xRatio": 0.194095,
+            "yRatio": 0.342515
           },
           {
-            "xRatio": 0.194093,
-            "yRatio": 0.361487
+            "xRatio": 0.194095,
+            "yRatio": 0.361484
           },
           {
-            "xRatio": 0.194766,
-            "yRatio": 0.361487
+            "xRatio": 0.194767,
+            "yRatio": 0.361484
           },
           {
-            "xRatio": 0.194766,
-            "yRatio": 0.36775
+            "xRatio": 0.194767,
+            "yRatio": 0.367756
           },
           {
-            "xRatio": 0.203261,
-            "yRatio": 0.36775
+            "xRatio": 0.203259,
+            "yRatio": 0.367756
           },
           {
-            "xRatio": 0.203261,
-            "yRatio": 0.371783
+            "xRatio": 0.203259,
+            "yRatio": 0.366889
           },
           {
-            "xRatio": 0.207218,
-            "yRatio": 0.371783
+            "xRatio": 0.255865,
+            "yRatio": 0.366889
           },
           {
-            "xRatio": 0.207218,
-            "yRatio": 0.366892
+            "xRatio": 0.255865,
+            "yRatio": 0.360166
           },
           {
-            "xRatio": 0.255862,
-            "yRatio": 0.366892
+            "xRatio": 0.261812,
+            "yRatio": 0.360166
           },
           {
-            "xRatio": 0.255862,
-            "yRatio": 0.360165
+            "xRatio": 0.261812,
+            "yRatio": 0.355403
           },
           {
-            "xRatio": 0.261814,
-            "yRatio": 0.360165
+            "xRatio": 0.32569,
+            "yRatio": 0.355403
           },
           {
-            "xRatio": 0.261814,
-            "yRatio": 0.355404
-          },
-          {
-            "xRatio": 0.325693,
-            "yRatio": 0.355404
-          },
-          {
-            "xRatio": 0.325693,
+            "xRatio": 0.32569,
             "yRatio": 0.356828
           },
           {
-            "xRatio": 0.337193,
+            "xRatio": 0.337197,
             "yRatio": 0.356828
           },
           {
-            "xRatio": 0.337193,
+            "xRatio": 0.337197,
             "yRatio": 0.349084
           },
           {
-            "xRatio": 0.332974,
+            "xRatio": 0.332972,
             "yRatio": 0.349084
           }
         ]
@@ -3928,36 +3928,36 @@
       "outlines": [
         [
           {
-            "xRatio": 0.112956,
+            "xRatio": 0.104993,
             "yRatio": 0.394838
           },
           {
-            "xRatio": 0.14019,
+            "xRatio": 0.160405,
             "yRatio": 0.394838
           },
           {
-            "xRatio": 0.14019,
-            "yRatio": 0.402726
+            "xRatio": 0.160405,
+            "yRatio": 0.439642
           },
           {
-            "xRatio": 0.160404,
-            "yRatio": 0.402726
+            "xRatio": 0.110008,
+            "yRatio": 0.439642
           },
           {
-            "xRatio": 0.160404,
-            "yRatio": 0.439645
-          },
-          {
-            "xRatio": 0.110004,
-            "yRatio": 0.439645
-          },
-          {
-            "xRatio": 0.110004,
+            "xRatio": 0.110008,
             "yRatio": 0.416456
           },
           {
             "xRatio": 0.112956,
             "yRatio": 0.416456
+          },
+          {
+            "xRatio": 0.112956,
+            "yRatio": 0.400504
+          },
+          {
+            "xRatio": 0.104993,
+            "yRatio": 0.400504
           }
         ]
       ]
@@ -6290,19 +6290,19 @@
         [
           {
             "xRatio": 0.19224,
-            "yRatio": 0.418784
-          },
-          {
-            "xRatio": 0.212858,
-            "yRatio": 0.418784
-          },
-          {
-            "xRatio": 0.212858,
             "yRatio": 0.389929
+          },
+          {
+            "xRatio": 0.219289,
+            "yRatio": 0.389929
+          },
+          {
+            "xRatio": 0.219289,
+            "yRatio": 0.418784
           },
           {
             "xRatio": 0.19224,
-            "yRatio": 0.389929
+            "yRatio": 0.418784
           }
         ]
       ]
@@ -11049,19 +11049,19 @@
         [
           {
             "xRatio": 0.673504,
-            "yRatio": 0.345066
+            "yRatio": 0.345069
           },
           {
-            "xRatio": 0.694621,
-            "yRatio": 0.345066
+            "xRatio": 0.69462,
+            "yRatio": 0.345069
           },
           {
-            "xRatio": 0.694621,
-            "yRatio": 0.32544
+            "xRatio": 0.69462,
+            "yRatio": 0.286558
           },
           {
             "xRatio": 0.673504,
-            "yRatio": 0.32544
+            "yRatio": 0.286558
           }
         ]
       ]
@@ -14996,36 +14996,28 @@
       "outlines": [
         [
           {
-            "xRatio": 0.437206,
-            "yRatio": 0.516917
+            "xRatio": 0.43721,
+            "yRatio": 0.51692
           },
           {
-            "xRatio": 0.491826,
-            "yRatio": 0.516917
+            "xRatio": 0.491823,
+            "yRatio": 0.51692
           },
           {
-            "xRatio": 0.491826,
-            "yRatio": 0.377717
+            "xRatio": 0.491823,
+            "yRatio": 0.358253
           },
           {
-            "xRatio": 0.477681,
-            "yRatio": 0.377717
+            "xRatio": 0.412246,
+            "yRatio": 0.358253
           },
           {
-            "xRatio": 0.477681,
-            "yRatio": 0.358257
+            "xRatio": 0.412246,
+            "yRatio": 0.530247
           },
           {
-            "xRatio": 0.412247,
-            "yRatio": 0.358257
-          },
-          {
-            "xRatio": 0.412247,
-            "yRatio": 0.530243
-          },
-          {
-            "xRatio": 0.437206,
-            "yRatio": 0.530243
+            "xRatio": 0.43721,
+            "yRatio": 0.530247
           }
         ]
       ]
