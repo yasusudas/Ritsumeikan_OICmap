@@ -30755,6 +30755,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.381866,
+            "yRatio": 0.366841
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.366841
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.395598
+          },
+          {
+            "xRatio": 0.381866,
+            "yRatio": 0.395598
+          }
+        ]
       ]
     },
     {
@@ -30770,6 +30790,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.361337,
+            "yRatio": 0.317654
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.317654
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.366841
+          },
+          {
+            "xRatio": 0.361337,
+            "yRatio": 0.366841
+          }
+        ]
       ]
     },
     {
@@ -30785,6 +30825,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.361337,
+            "yRatio": 0.366841
+          },
+          {
+            "xRatio": 0.381866,
+            "yRatio": 0.366841
+          },
+          {
+            "xRatio": 0.381866,
+            "yRatio": 0.395598
+          },
+          {
+            "xRatio": 0.361337,
+            "yRatio": 0.395598
+          }
+        ]
       ]
     },
     {
@@ -30799,6 +30859,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.329772,
+            "yRatio": 0.346577
+          },
+          {
+            "xRatio": 0.355802,
+            "yRatio": 0.346577
+          },
+          {
+            "xRatio": 0.355802,
+            "yRatio": 0.372899
+          },
+          {
+            "xRatio": 0.329772,
+            "yRatio": 0.372899
+          }
+        ]
       ]
     },
     {
@@ -30813,6 +30893,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.325529
+          },
+          {
+            "xRatio": 0.329772,
+            "yRatio": 0.325529
+          },
+          {
+            "xRatio": 0.329772,
+            "yRatio": 0.372899
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.372899
+          }
+        ]
       ]
     },
     {
@@ -30828,6 +30928,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.284087,
+            "yRatio": 0.349214
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.349214
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.372899
+          },
+          {
+            "xRatio": 0.284087,
+            "yRatio": 0.372899
+          }
+        ]
       ]
     },
     {
@@ -30843,6 +30963,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.284087,
+            "yRatio": 0.325529
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.325529
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.349214
+          },
+          {
+            "xRatio": 0.284087,
+            "yRatio": 0.349214
+          }
+        ]
       ]
     },
     {
@@ -30857,6 +30997,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.192079,
+            "yRatio": 0.325529
+          },
+          {
+            "xRatio": 0.215304,
+            "yRatio": 0.325529
+          },
+          {
+            "xRatio": 0.215304,
+            "yRatio": 0.372115
+          },
+          {
+            "xRatio": 0.192079,
+            "yRatio": 0.372115
+          }
+        ]
       ]
     },
     {
@@ -30871,6 +31031,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.169653,
+            "yRatio": 0.325529
+          },
+          {
+            "xRatio": 0.192079,
+            "yRatio": 0.325529
+          },
+          {
+            "xRatio": 0.192079,
+            "yRatio": 0.372115
+          },
+          {
+            "xRatio": 0.169653,
+            "yRatio": 0.372115
+          }
+        ]
       ]
     },
     {
@@ -30885,6 +31065,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.152241,
+            "yRatio": 0.383993
+          },
+          {
+            "xRatio": 0.169653,
+            "yRatio": 0.383993
+          },
+          {
+            "xRatio": 0.169653,
+            "yRatio": 0.417323
+          },
+          {
+            "xRatio": 0.152241,
+            "yRatio": 0.417323
+          }
+        ]
       ]
     },
     {
@@ -30899,6 +31099,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.369989
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.369989
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.417323
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.417323
+          }
+        ]
       ]
     },
     {
@@ -30913,6 +31133,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.369989
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.369989
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.417323
+          },
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.417323
+          }
+        ]
       ]
     },
     {
@@ -30928,6 +31168,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.317322
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.317322
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.360914
+          },
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.360914
+          }
+        ]
       ]
     },
     {
@@ -30942,6 +31202,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.378909,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.378909,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -30956,6 +31236,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.353761,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.378909,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.378909,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.353761,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -30970,6 +31270,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.330704,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.330704,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -30984,6 +31304,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -30998,6 +31338,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.26177,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.26177,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -31012,6 +31372,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.238478,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.26177,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.26177,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.238478,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -31026,6 +31406,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.215178,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.238478,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.238478,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.215178,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -31040,6 +31440,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.191878,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.215178,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.215178,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.191878,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -31054,6 +31474,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.168586,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.191878,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.191878,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.168586,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -31068,6 +31508,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -31082,6 +31542,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.259309
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.309922
+          },
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.309922
+          }
+        ]
       ]
     },
     {
@@ -31097,6 +31577,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.381866,
+            "yRatio": 0.697455
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.697455
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.726223
+          },
+          {
+            "xRatio": 0.381866,
+            "yRatio": 0.726223
+          }
+        ]
       ]
     },
     {
@@ -31112,6 +31612,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.361337,
+            "yRatio": 0.648279
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.648279
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.697455
+          },
+          {
+            "xRatio": 0.361337,
+            "yRatio": 0.697455
+          }
+        ]
       ]
     },
     {
@@ -31127,6 +31647,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.361337,
+            "yRatio": 0.697455
+          },
+          {
+            "xRatio": 0.381866,
+            "yRatio": 0.697455
+          },
+          {
+            "xRatio": 0.381866,
+            "yRatio": 0.726223
+          },
+          {
+            "xRatio": 0.361337,
+            "yRatio": 0.726223
+          }
+        ]
       ]
     },
     {
@@ -31141,6 +31681,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.329772,
+            "yRatio": 0.678759
+          },
+          {
+            "xRatio": 0.355802,
+            "yRatio": 0.678759
+          },
+          {
+            "xRatio": 0.355802,
+            "yRatio": 0.70274
+          },
+          {
+            "xRatio": 0.329772,
+            "yRatio": 0.70274
+          }
+        ]
       ]
     },
     {
@@ -31155,6 +31715,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.65897
+          },
+          {
+            "xRatio": 0.329764,
+            "yRatio": 0.65897
+          },
+          {
+            "xRatio": 0.329764,
+            "yRatio": 0.70274
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.70274
+          }
+        ]
       ]
     },
     {
@@ -31169,6 +31749,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.65897
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.65897
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.70274
+          },
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.70274
+          }
+        ]
       ]
     },
     {
@@ -31183,6 +31783,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.26177,
+            "yRatio": 0.65897
+          },
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.65897
+          },
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.70274
+          },
+          {
+            "xRatio": 0.26177,
+            "yRatio": 0.70274
+          }
+        ]
       ]
     },
     {
@@ -31197,6 +31817,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.192079,
+            "yRatio": 0.656155
+          },
+          {
+            "xRatio": 0.215304,
+            "yRatio": 0.656155
+          },
+          {
+            "xRatio": 0.215304,
+            "yRatio": 0.702752
+          },
+          {
+            "xRatio": 0.192079,
+            "yRatio": 0.702752
+          }
+        ]
       ]
     },
     {
@@ -31211,6 +31851,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.169653,
+            "yRatio": 0.656155
+          },
+          {
+            "xRatio": 0.192079,
+            "yRatio": 0.656155
+          },
+          {
+            "xRatio": 0.192079,
+            "yRatio": 0.702752
+          },
+          {
+            "xRatio": 0.169653,
+            "yRatio": 0.702752
+          }
+        ]
       ]
     },
     {
@@ -31225,6 +31885,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.152241,
+            "yRatio": 0.714618
+          },
+          {
+            "xRatio": 0.169653,
+            "yRatio": 0.714618
+          },
+          {
+            "xRatio": 0.169653,
+            "yRatio": 0.747948
+          },
+          {
+            "xRatio": 0.152241,
+            "yRatio": 0.747948
+          }
+        ]
       ]
     },
     {
@@ -31239,6 +31919,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.700614
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.700614
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.747948
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.747948
+          }
+        ]
       ]
     },
     {
@@ -31253,6 +31953,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.700614
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.700614
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.747948
+          },
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.747948
+          }
+        ]
       ]
     },
     {
@@ -31268,6 +31988,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.669755
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.669755
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.691539
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.691539
+          }
+        ]
       ]
     },
     {
@@ -31283,6 +32023,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.647947
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.647947
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.669755
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.669755
+          }
+        ]
       ]
     },
     {
@@ -31298,6 +32058,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.669755
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.669755
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.691539
+          },
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.691539
+          }
+        ]
       ]
     },
     {
@@ -31313,6 +32093,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.647947
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.647947
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.669755
+          },
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.669755
+          }
+        ]
       ]
     },
     {
@@ -31327,6 +32127,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.378909,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.402385,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.378909,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31341,6 +32161,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.353761,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.378909,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.378909,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.353761,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31355,6 +32195,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.330704,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.330704,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31369,6 +32229,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.308378,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31383,6 +32263,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.26177,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.28507,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.26177,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31397,6 +32297,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.238478,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.26177,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.26177,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.238478,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31411,6 +32331,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.215178,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.238478,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.238478,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.215178,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31425,6 +32365,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.191878,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.215178,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.215178,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.191878,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31439,6 +32399,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.168586,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.191878,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.191878,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.168586,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31453,6 +32433,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.147386,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31467,6 +32467,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.589935
+          },
+          {
+            "xRatio": 0.122658,
+            "yRatio": 0.640547
+          },
+          {
+            "xRatio": 0.097938,
+            "yRatio": 0.640547
+          }
+        ]
       ]
     },
     {
@@ -31482,6 +32502,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.881861,
+            "yRatio": 0.366758
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.366758
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.395515
+          },
+          {
+            "xRatio": 0.881861,
+            "yRatio": 0.395515
+          }
+        ]
       ]
     },
     {
@@ -31497,6 +32537,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.861341,
+            "yRatio": 0.317571
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.317571
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.366758
+          },
+          {
+            "xRatio": 0.861341,
+            "yRatio": 0.366758
+          }
+        ]
       ]
     },
     {
@@ -31512,6 +32572,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.861341,
+            "yRatio": 0.366758
+          },
+          {
+            "xRatio": 0.881861,
+            "yRatio": 0.366758
+          },
+          {
+            "xRatio": 0.881861,
+            "yRatio": 0.395515
+          },
+          {
+            "xRatio": 0.861341,
+            "yRatio": 0.395515
+          }
+        ]
       ]
     },
     {
@@ -31526,6 +32606,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.829768,
+            "yRatio": 0.348062
+          },
+          {
+            "xRatio": 0.855798,
+            "yRatio": 0.348062
+          },
+          {
+            "xRatio": 0.855798,
+            "yRatio": 0.372044
+          },
+          {
+            "xRatio": 0.829768,
+            "yRatio": 0.372044
+          }
+        ]
       ]
     },
     {
@@ -31541,6 +32641,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.328261
+          },
+          {
+            "xRatio": 0.829768,
+            "yRatio": 0.328261
+          },
+          {
+            "xRatio": 0.829768,
+            "yRatio": 0.372032
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.372032
+          }
+        ]
       ]
     },
     {
@@ -31556,6 +32676,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.747923,
+            "yRatio": 0.328261
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.328261
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.372032
+          },
+          {
+            "xRatio": 0.747923,
+            "yRatio": 0.372032
+          }
+        ]
       ]
     },
     {
@@ -31570,6 +32710,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.669648,
+            "yRatio": 0.325446
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.325446
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.372032
+          },
+          {
+            "xRatio": 0.669648,
+            "yRatio": 0.372032
+          }
+        ]
       ]
     },
     {
@@ -31584,6 +32744,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.652245,
+            "yRatio": 0.38391
+          },
+          {
+            "xRatio": 0.669657,
+            "yRatio": 0.38391
+          },
+          {
+            "xRatio": 0.669657,
+            "yRatio": 0.41724
+          },
+          {
+            "xRatio": 0.652245,
+            "yRatio": 0.41724
+          }
+        ]
       ]
     },
     {
@@ -31599,6 +32779,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.371343
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.371343
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.41724
+          },
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.41724
+          }
+        ]
       ]
     },
     {
@@ -31614,6 +32814,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.325446
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.325446
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.371343
+          },
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.371343
+          }
+        ]
       ]
     },
     {
@@ -31628,6 +32848,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.878913,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.878913,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31642,6 +32882,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.853757,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.878913,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.878913,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.853757,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31656,6 +32916,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.808383,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.8307,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.8307,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.808383,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31670,6 +32950,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.808383,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.808383,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31684,6 +32984,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.761774,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.761774,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31698,6 +33018,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.738474,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.761774,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.761774,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.738474,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31712,6 +33052,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.715182,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.738474,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.738474,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.715182,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31726,6 +33086,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.715182,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.715182,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31740,6 +33120,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.668582,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.668582,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31754,6 +33154,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31768,6 +33188,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.259238
+          },
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.30985
+          },
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.30985
+          }
+        ]
       ]
     },
     {
@@ -31783,6 +33223,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.881861,
+            "yRatio": 0.697383
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.697383
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.72614
+          },
+          {
+            "xRatio": 0.881861,
+            "yRatio": 0.72614
+          }
+        ]
       ]
     },
     {
@@ -31798,6 +33258,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.861341,
+            "yRatio": 0.648196
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.648196
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.697383
+          },
+          {
+            "xRatio": 0.861341,
+            "yRatio": 0.697383
+          }
+        ]
       ]
     },
     {
@@ -31813,6 +33293,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.861341,
+            "yRatio": 0.697383
+          },
+          {
+            "xRatio": 0.881861,
+            "yRatio": 0.697383
+          },
+          {
+            "xRatio": 0.881861,
+            "yRatio": 0.72614
+          },
+          {
+            "xRatio": 0.861341,
+            "yRatio": 0.72614
+          }
+        ]
       ]
     },
     {
@@ -31827,6 +33327,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.829768,
+            "yRatio": 0.678687
+          },
+          {
+            "xRatio": 0.855798,
+            "yRatio": 0.678687
+          },
+          {
+            "xRatio": 0.855798,
+            "yRatio": 0.702669
+          },
+          {
+            "xRatio": 0.829768,
+            "yRatio": 0.702669
+          }
+        ]
       ]
     },
     {
@@ -31842,6 +33362,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.658887
+          },
+          {
+            "xRatio": 0.829776,
+            "yRatio": 0.658887
+          },
+          {
+            "xRatio": 0.829776,
+            "yRatio": 0.702657
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.702657
+          }
+        ]
       ]
     },
     {
@@ -31857,6 +33397,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.747923,
+            "yRatio": 0.658887
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.658887
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.702657
+          },
+          {
+            "xRatio": 0.747923,
+            "yRatio": 0.702657
+          }
+        ]
       ]
     },
     {
@@ -31872,6 +33432,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.722851,
+            "yRatio": 0.679733
+          },
+          {
+            "xRatio": 0.747923,
+            "yRatio": 0.679733
+          },
+          {
+            "xRatio": 0.747923,
+            "yRatio": 0.702657
+          },
+          {
+            "xRatio": 0.722851,
+            "yRatio": 0.702657
+          }
+        ]
       ]
     },
     {
@@ -31887,6 +33467,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.722851,
+            "yRatio": 0.658887
+          },
+          {
+            "xRatio": 0.747923,
+            "yRatio": 0.658887
+          },
+          {
+            "xRatio": 0.747923,
+            "yRatio": 0.679733
+          },
+          {
+            "xRatio": 0.722851,
+            "yRatio": 0.679733
+          }
+        ]
       ]
     },
     {
@@ -31901,6 +33501,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.652236,
+            "yRatio": 0.714535
+          },
+          {
+            "xRatio": 0.669648,
+            "yRatio": 0.714535
+          },
+          {
+            "xRatio": 0.669648,
+            "yRatio": 0.747865
+          },
+          {
+            "xRatio": 0.652236,
+            "yRatio": 0.747865
+          }
+        ]
       ]
     },
     {
@@ -31915,6 +33535,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.700293
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.700293
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.747877
+          },
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.747877
+          }
+        ]
       ]
     },
     {
@@ -31929,6 +33569,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.700293
+          },
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.700293
+          },
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.747877
+          },
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.747877
+          }
+        ]
       ]
     },
     {
@@ -31944,6 +33604,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.648232
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.648232
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.692193
+          },
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.692193
+          }
+        ]
       ]
     },
     {
@@ -31958,6 +33638,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.878913,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.90239,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.878913,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -31972,6 +33672,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.853757,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.878913,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.878913,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.853757,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -31986,6 +33706,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.808383,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.8307,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.8307,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.808383,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -32000,6 +33740,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.808383,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.808383,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -32014,6 +33774,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.761774,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.785074,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.761774,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -32028,6 +33808,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.738474,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.761774,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.761774,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.738474,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -32042,6 +33842,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.715182,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.738474,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.738474,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.715182,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -32056,6 +33876,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.715182,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.715182,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -32070,6 +33910,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.668582,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.668582,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -32084,6 +33944,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.64739,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -32098,6 +33978,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.589863
+          },
+          {
+            "xRatio": 0.622662,
+            "yRatio": 0.640476
+          },
+          {
+            "xRatio": 0.597942,
+            "yRatio": 0.640476
+          }
+        ]
       ]
     },
     {
@@ -32112,6 +34012,42 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.215304,
+            "yRatio": 0.325529
+          },
+          {
+            "xRatio": 0.250783,
+            "yRatio": 0.325529
+          },
+          {
+            "xRatio": 0.250783,
+            "yRatio": 0.372899
+          },
+          {
+            "xRatio": 0.240057,
+            "yRatio": 0.372899
+          },
+          {
+            "xRatio": 0.240057,
+            "yRatio": 0.386606
+          },
+          {
+            "xRatio": 0.213624,
+            "yRatio": 0.386606
+          },
+          {
+            "xRatio": 0.213624,
+            "yRatio": 0.372436
+          },
+          {
+            "xRatio": 0.215304,
+            "yRatio": 0.372436
+          }
+        ]
       ]
     },
     {
@@ -32126,6 +34062,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.215657,
+            "yRatio": 0.656155
+          },
+          {
+            "xRatio": 0.230742,
+            "yRatio": 0.656155
+          },
+          {
+            "xRatio": 0.230742,
+            "yRatio": 0.692323
+          },
+          {
+            "xRatio": 0.215657,
+            "yRatio": 0.692323
+          }
+        ]
       ]
     },
     {
@@ -32140,6 +34096,58 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.328261
+          },
+          {
+            "xRatio": 0.747923,
+            "yRatio": 0.328261
+          },
+          {
+            "xRatio": 0.747923,
+            "yRatio": 0.372424
+          },
+          {
+            "xRatio": 0.764059,
+            "yRatio": 0.372424
+          },
+          {
+            "xRatio": 0.764059,
+            "yRatio": 0.38682
+          },
+          {
+            "xRatio": 0.737667,
+            "yRatio": 0.38682
+          },
+          {
+            "xRatio": 0.737667,
+            "yRatio": 0.372032
+          },
+          {
+            "xRatio": 0.714141,
+            "yRatio": 0.372032
+          },
+          {
+            "xRatio": 0.714141,
+            "yRatio": 0.361615
+          },
+          {
+            "xRatio": 0.694116,
+            "yRatio": 0.361615
+          },
+          {
+            "xRatio": 0.694116,
+            "yRatio": 0.372032
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.372032
+          }
+        ]
       ]
     },
     {
@@ -32154,6 +34162,44 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.669648,
+            "yRatio": 0.656071
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.656071
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.680778
+          },
+          {
+            "xRatio": 0.669648,
+            "yRatio": 0.680778
+          }
+        ],
+        [
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.702657
+          },
+          {
+            "xRatio": 0.71787,
+            "yRatio": 0.702657
+          },
+          {
+            "xRatio": 0.71787,
+            "yRatio": 0.717433
+          },
+          {
+            "xRatio": 0.691882,
+            "yRatio": 0.717433
+          }
+        ]
       ]
     },
     {
