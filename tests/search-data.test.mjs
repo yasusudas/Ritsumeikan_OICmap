@@ -33,7 +33,7 @@ test('canonical search data distinguishes same-floor names without warnings', as
   const report = validateSearchData(payload);
 
   assert.deepEqual(report.errors, []);
-  assert.equal(report.stats.entries, 715); // 580 + H4001–H4045 faculty research offices + 5F faculty research offices 5301–5315 and 5401–5415 (27 rooms) + H5001–H5006 and H5011–H5020 (16 rooms) + OIC Seminar House rooms 5001–5045, 5101, 5102 (47 rooms, 2026-10-17)
+  assert.equal(report.stats.entries, 942); // 715 + the 227 faculty research offices on the A-building 7F, 8F and 9F (2026-10-17)
   assert.equal(report.stats.facilityRings, 514);
   assert.equal(report.stats.sameFloorLabelGroups, 10);
   assert.equal(report.stats.legacyWhiteRings, 0);
@@ -223,5 +223,29 @@ test('the 5F OIC Seminar House rooms are searchable by number, one outline each'
   for (const entry of rooms) {
     assert.equal(entry.outlines.length, 1, entry.label);
     assert.equal(entry.floorId, '5F');
+  }
+});
+
+test('the A-building 7F, 8F and 9F faculty research offices are searchable, one outline each', async () => {
+  const payload = await readCanonicalSearchData();
+  const rooms = payload.entries.filter((entry) => entry.floorId === 'A-6-9F' && /^\d{4}$/.test(entry.label));
+  const range = (from, to) => Array.from({ length: to - from + 1 }, (_, i) => from + i);
+  // The map skips the numbers that sit on toilets, lounges and stairs (x09, x10, 7411-7412, 9301, 9401).
+  const numbers = [
+    ...range(7101, 7109), ...range(7111, 7115), ...range(7201, 7208), ...range(7210, 7215),
+    7410, ...range(7413, 7415), ...range(7501, 7509), ...range(7511, 7515), ...range(7601, 7608), ...range(7610, 7615),
+    ...range(8101, 8109), ...range(8111, 8115), ...range(8201, 8208), ...range(8210, 8215),
+    8410, ...range(8501, 8509), ...range(8511, 8515), ...range(8601, 8608), ...range(8610, 8615),
+    ...range(9001, 9028), ...range(9101, 9109), ...range(9111, 9115), ...range(9201, 9208), ...range(9210, 9215),
+    ...range(9302, 9309), ...range(9311, 9315), ...range(9402, 9408), ...range(9410, 9415),
+    ...range(9501, 9509), ...range(9511, 9515), ...range(9601, 9608), ...range(9610, 9615)
+  ].map(String);
+
+  assert.equal(numbers.length, 227);
+  assert.deepEqual(rooms.map((entry) => entry.label).sort(), numbers);
+  for (const entry of rooms) {
+    assert.equal(entry.outlines.length, 1, entry.label);
+    assert.deepEqual(entry.aliases, ['教員研究室']);
+    assert.equal(entry.labelEn, `${entry.label} Faculty Research Office`);
   }
 });
