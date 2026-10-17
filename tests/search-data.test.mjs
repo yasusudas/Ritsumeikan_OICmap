@@ -33,7 +33,7 @@ test('canonical search data distinguishes same-floor names without warnings', as
   const report = validateSearchData(payload);
 
   assert.deepEqual(report.errors, []);
-  assert.equal(report.stats.entries, 580); // 551 + the two ATM areas (2026-10-16) + ESORA, Terrace and the Chamber of Commerce + SP LAB split into 1-9 + Staff Room split into 1-10 + Music Practice Room split into 1-9
+  assert.equal(report.stats.entries, 625); // 580 + H4001–H4045 faculty research offices (2026-10-17)
   assert.equal(report.stats.facilityRings, 514);
   assert.equal(report.stats.sameFloorLabelGroups, 10);
   assert.equal(report.stats.legacyWhiteRings, 0);
@@ -157,4 +157,13 @@ test('every third-floor place has a search outline', async () => {
 
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
   assert.equal(thirdFloor.filter((entry) => entry.outlines?.length).length, 63);
+});
+
+test('every fourth-floor place has a search outline', async () => {
+  const payload = await readCanonicalSearchData();
+  const fourthFloor = payload.entries.filter((entry) => entry.floorId === '4F');
+  const withoutOutline = fourthFloor.filter((entry) => !entry.outlines?.length);
+
+  assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
+  assert.equal(fourthFloor.filter((entry) => entry.outlines?.length).length, 105);
 });
