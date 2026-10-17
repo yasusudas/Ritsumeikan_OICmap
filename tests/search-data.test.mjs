@@ -249,3 +249,12 @@ test('the A-building 7F, 8F and 9F faculty research offices are searchable, one 
     assert.equal(entry.labelEn, `${entry.label} Faculty Research Office`);
   }
 });
+
+test('every A-building 6F-9F place has a search outline', async () => {
+  const payload = await readCanonicalSearchData();
+  const buildingA = payload.entries.filter((entry) => entry.floorId === 'A-6-9F');
+  const withoutOutline = buildingA.filter((entry) => !entry.outlines?.length);
+
+  assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
+  assert.equal(buildingA.filter((entry) => entry.outlines?.length).length, 329);
+});
