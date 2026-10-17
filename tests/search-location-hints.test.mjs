@@ -20,7 +20,7 @@ function viewer() {
   for (const name of [
     'normalizeSearchValue', 'normalizeHashRouteId', 'createHashSlugPart',
     'getFloorOrder', 'getEntryFloorLabel', 'sanitizeAliases', 'normalizeRect',
-    'createEntrySearchTerms', 'hydrateManualEntry', 'serializeEntries',
+    'createEntrySearchTerms', 'hydrateManualEntry', 'serializeFacilityAreaPolygons', 'serializeEntries',
     'getLocalizedEntryLocationHint', 'getEntrySearchTerms', 'getEntryHashBase',
     'addEntryHashRoute', 'assignSearchEntryHashRoutes', 'upgradeStoredEditorSnapshot'
   ]) {
