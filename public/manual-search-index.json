@@ -10223,6 +10223,139 @@
           }
         ]
       ]
+    },
+    {
+      "id": "manual-1F-1792200000000-chmbr1",
+      "floorId": "1F",
+      "label": "茨木商工会議所",
+      "labelEn": "Ibaraki Chamber of Commerce and Industry",
+      "aliases": [
+        "商工会議所",
+        "Chamber of Commerce"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.454752,
+          "yRatio": 0.927175,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.418832,
+            "yRatio": 0.952911
+          },
+          {
+            "xRatio": 0.465935,
+            "yRatio": 0.952911
+          },
+          {
+            "xRatio": 0.465935,
+            "yRatio": 0.94371
+          },
+          {
+            "xRatio": 0.472248,
+            "yRatio": 0.94371
+          },
+          {
+            "xRatio": 0.472248,
+            "yRatio": 0.952911
+          },
+          {
+            "xRatio": 0.492279,
+            "yRatio": 0.952911
+          },
+          {
+            "xRatio": 0.492279,
+            "yRatio": 0.903013
+          },
+          {
+            "xRatio": 0.418833,
+            "yRatio": 0.903013
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792200000000-esora1",
+      "floorId": "1F",
+      "label": "ESORA",
+      "aliases": [
+        "エソラ"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.178829,
+          "yRatio": 0.332916,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.16484,
+            "yRatio": 0.321574
+          },
+          {
+            "xRatio": 0.192281,
+            "yRatio": 0.321574
+          },
+          {
+            "xRatio": 0.192281,
+            "yRatio": 0.346007
+          },
+          {
+            "xRatio": 0.149746,
+            "yRatio": 0.346007
+          },
+          {
+            "xRatio": 0.154979,
+            "yRatio": 0.340401
+          },
+          {
+            "xRatio": 0.16484,
+            "yRatio": 0.340401
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792200000000-terac1",
+      "floorId": "1F",
+      "label": "テラス",
+      "labelEn": "Terrace",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.233509,
+          "yRatio": 0.325196,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.283837,
+            "yRatio": 0.321579
+          },
+          {
+            "xRatio": 0.192279,
+            "yRatio": 0.321579
+          },
+          {
+            "xRatio": 0.192279,
+            "yRatio": 0.330524
+          },
+          {
+            "xRatio": 0.283837,
+            "yRatio": 0.330524
+          }
+        ]
+      ]
     }
   ],
   "facilityRings": [

@@ -33,7 +33,7 @@ test('canonical search data distinguishes same-floor names without warnings', as
   const report = validateSearchData(payload);
 
   assert.deepEqual(report.errors, []);
-  assert.equal(report.stats.entries, 553); // 551 + the two ATM areas (2026-10-16)
+  assert.equal(report.stats.entries, 556); // 551 + the two ATM areas (2026-10-16) + ESORA, Terrace and the Chamber of Commerce
   assert.equal(report.stats.facilityRings, 514);
   assert.equal(report.stats.sameFloorLabelGroups, 10);
   assert.equal(report.stats.legacyWhiteRings, 0);
@@ -138,5 +138,5 @@ test('every first-floor place without a food card has a search outline', async (
     withoutOutline.filter((entry) => !cardIds.has(entry.id) && !/^ATM$/.test(entry.label)).map((entry) => entry.label),
     []
   );
-  assert.equal(firstFloor.filter((entry) => entry.outlines?.length).length, 69);
+  assert.equal(firstFloor.filter((entry) => entry.outlines?.length).length, 72);
 });
