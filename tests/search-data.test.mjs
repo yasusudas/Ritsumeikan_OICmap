@@ -33,7 +33,7 @@ test('canonical search data distinguishes same-floor names without warnings', as
   const report = validateSearchData(payload);
 
   assert.deepEqual(report.errors, []);
-  assert.equal(report.stats.entries, 625); // 580 + H4001–H4045 faculty research offices (2026-10-17)
+  assert.equal(report.stats.entries, 652); // 580 + H4001–H4045 faculty research offices + A-building 5F faculty research offices 5301–5315 and 5401–5415 (27 rooms, 2026-10-17)
   assert.equal(report.stats.facilityRings, 514);
   assert.equal(report.stats.sameFloorLabelGroups, 10);
   assert.equal(report.stats.legacyWhiteRings, 0);
@@ -166,4 +166,31 @@ test('every fourth-floor place has a search outline', async () => {
 
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
   assert.equal(fourthFloor.filter((entry) => entry.outlines?.length).length, 105);
+});
+
+test('every fifth-floor place has a search outline', async () => {
+  const payload = await readCanonicalSearchData();
+  const fifthFloor = payload.entries.filter((entry) => entry.floorId === '5F');
+  const withoutOutline = fifthFloor.filter((entry) => !entry.outlines?.length);
+
+  assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
+  assert.equal(fifthFloor.filter((entry) => entry.outlines?.length).length, 100);
+});
+
+test('the 5F A-building faculty research offices are searchable, one outline each', async () => {
+  const payload = await readCanonicalSearchData();
+  const fifthFloor = payload.entries.filter((entry) => entry.floorId === '5F');
+  // The map draws no rooms numbered 5309, 5310 or 5409, so they are not entries.
+  const numbers = [
+    ...[1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15].map((n) => 5300 + n),
+    ...[1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15].map((n) => 5400 + n)
+  ].map(String);
+  const offices = fifthFloor.filter((entry) => /^5[34]\d\d$/.test(entry.label));
+
+  assert.deepEqual(offices.map((entry) => entry.label).sort(), numbers);
+  for (const entry of offices) {
+    assert.equal(entry.outlines.length, 1, entry.label);
+    assert.deepEqual(entry.aliases, ['教員研究室']);
+    assert.equal(entry.labelEn, `${entry.label} Faculty Research Office`);
+  }
 });

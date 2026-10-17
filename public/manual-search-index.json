@@ -12625,6 +12625,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.759257,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.739253,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.739253,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.759257,
+            "yRatio": 0.50478
+          }
+        ]
       ]
     },
     {
@@ -12639,6 +12659,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.475832
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.475832
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.458265
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.458265
+          }
+        ]
       ]
     },
     {
@@ -12653,6 +12693,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.4401
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.4401
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.457068
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.457068
+          }
+        ]
       ]
     },
     {
@@ -12667,6 +12727,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.438898
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.438898
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.421935
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.421935
+          }
+        ]
       ]
     },
     {
@@ -12681,6 +12761,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.420733
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.420733
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.403765
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.403765
+          }
+        ]
       ]
     },
     {
@@ -12695,6 +12795,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.402568
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.402568
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.3856
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.3856
+          }
+        ]
       ]
     },
     {
@@ -12709,6 +12829,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.343261
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.343261
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.308537
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.308537
+          }
+        ]
       ]
     },
     {
@@ -12723,6 +12863,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.718828,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.738403,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.738403,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.718828,
+            "yRatio": 0.48486
+          }
+        ]
       ]
     },
     {
@@ -12737,6 +12897,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.475832
+          },
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.475832
+          },
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.4401
+          },
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.4401
+          }
+        ]
       ]
     },
     {
@@ -12751,6 +12931,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.3856
+          },
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.3856
+          },
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.420733
+          },
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.420733
+          }
+        ]
       ]
     },
     {
@@ -12765,6 +12965,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.308537
+          },
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.308537
+          },
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.343261
+          },
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.343261
+          }
+        ]
       ]
     },
     {
@@ -12779,6 +12999,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.584308,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.60431,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.60431,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.584309,
+            "yRatio": 0.48486
+          }
+        ]
       ]
     },
     {
@@ -12793,6 +13033,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.47585
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.47585
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.45832
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.45832
+          }
+        ]
       ]
     },
     {
@@ -12807,6 +13067,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.440147
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.440147
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.457138
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.457138
+          }
+        ]
       ]
     },
     {
@@ -12821,6 +13101,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.421972
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.421972
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.438964
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.438964
+          }
+        ]
       ]
     },
     {
@@ -12835,6 +13135,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.403793
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.403793
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.420789
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.420789
+          }
+        ]
       ]
     },
     {
@@ -12849,6 +13169,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.385618
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.385618
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.402614
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.402614
+          }
+        ]
       ]
     },
     {
@@ -12863,6 +13203,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.563366,
+            "yRatio": 0.343791
+          },
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.343791
+          },
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.307887
+          },
+          {
+            "xRatio": 0.563366,
+            "yRatio": 0.307887
+          }
+        ]
       ]
     },
     {
@@ -12877,6 +13237,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.583456,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.583456,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.48486
+          }
+        ]
       ]
     },
     {
@@ -12891,6 +13271,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.545386,
+            "yRatio": 0.47585
+          },
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.47585
+          },
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.440169
+          },
+          {
+            "xRatio": 0.545386,
+            "yRatio": 0.440169
+          }
+        ]
       ]
     },
     {
@@ -12905,6 +13305,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.385512
+          },
+          {
+            "xRatio": 0.545385,
+            "yRatio": 0.385512
+          },
+          {
+            "xRatio": 0.545385,
+            "yRatio": 0.420789
+          },
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.420789
+          }
+        ]
       ]
     },
     {
@@ -12919,6 +13339,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.307887
+          },
+          {
+            "xRatio": 0.545385,
+            "yRatio": 0.307887
+          },
+          {
+            "xRatio": 0.545385,
+            "yRatio": 0.343791
+          },
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.343791
+          }
+        ]
       ]
     },
     {
@@ -12934,6 +13374,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.466214,
+            "yRatio": 0.629699
+          },
+          {
+            "xRatio": 0.48345,
+            "yRatio": 0.629699
+          },
+          {
+            "xRatio": 0.48345,
+            "yRatio": 0.771469
+          },
+          {
+            "xRatio": 0.466214,
+            "yRatio": 0.771469
+          }
+        ]
       ]
     },
     {
@@ -12949,6 +13409,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.433246,
+            "yRatio": 0.629699
+          },
+          {
+            "xRatio": 0.41601,
+            "yRatio": 0.629699
+          },
+          {
+            "xRatio": 0.41601,
+            "yRatio": 0.700034
+          },
+          {
+            "xRatio": 0.433246,
+            "yRatio": 0.700034
+          }
+        ]
       ]
     },
     {
@@ -12964,6 +13444,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.433243,
+            "yRatio": 0.748896
+          },
+          {
+            "xRatio": 0.41601,
+            "yRatio": 0.748896
+          },
+          {
+            "xRatio": 0.41601,
+            "yRatio": 0.771469
+          },
+          {
+            "xRatio": 0.433243,
+            "yRatio": 0.771469
+          }
+        ]
       ]
     },
     {
@@ -12978,6 +13478,34 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.316719,
+            "yRatio": 0.41952
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.41952
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.498331
+          },
+          {
+            "xRatio": 0.35508,
+            "yRatio": 0.498331
+          },
+          {
+            "xRatio": 0.35508,
+            "yRatio": 0.477794
+          },
+          {
+            "xRatio": 0.316719,
+            "yRatio": 0.477794
+          }
+        ]
       ]
     },
     {
@@ -12992,6 +13520,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.458386
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.458386
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.466283
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.466283
+          }
+        ]
       ]
     },
     {
@@ -13006,6 +13554,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.449287
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.449287
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.45718
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.45718
+          }
+        ]
       ]
     },
     {
@@ -13020,6 +13588,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.710928,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.717976,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.717976,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.710928,
+            "yRatio": 0.50478
+          }
+        ]
       ]
     },
     {
@@ -13034,6 +13622,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.661101,
+            "yRatio": 0.488457
+          },
+          {
+            "xRatio": 0.605162,
+            "yRatio": 0.488457
+          },
+          {
+            "xRatio": 0.605162,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.661101,
+            "yRatio": 0.50478
+          }
+        ]
       ]
     },
     {
@@ -13048,6 +13656,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.297798,
+            "yRatio": 0.48042
+          },
+          {
+            "xRatio": 0.280923,
+            "yRatio": 0.48042
+          },
+          {
+            "xRatio": 0.280923,
+            "yRatio": 0.443056
+          },
+          {
+            "xRatio": 0.297798,
+            "yRatio": 0.443056
+          }
+        ]
       ]
     },
     {
@@ -13062,6 +13690,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.261761,
+            "yRatio": 0.461816
+          },
+          {
+            "xRatio": 0.280926,
+            "yRatio": 0.461816
+          },
+          {
+            "xRatio": 0.280926,
+            "yRatio": 0.480407
+          },
+          {
+            "xRatio": 0.261761,
+            "yRatio": 0.480407
+          }
+        ]
       ]
     },
     {
@@ -13076,6 +13724,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.261761,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.280926,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.280926,
+            "yRatio": 0.461816
+          },
+          {
+            "xRatio": 0.261761,
+            "yRatio": 0.461816
+          }
+        ]
       ]
     },
     {
@@ -13090,6 +13758,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.207501,
+            "yRatio": 0.461816
+          },
+          {
+            "xRatio": 0.22694,
+            "yRatio": 0.461816
+          },
+          {
+            "xRatio": 0.22694,
+            "yRatio": 0.479801
+          },
+          {
+            "xRatio": 0.207501,
+            "yRatio": 0.479801
+          }
+        ]
       ]
     },
     {
@@ -13104,6 +13792,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.207501,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.22694,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.22694,
+            "yRatio": 0.461816
+          },
+          {
+            "xRatio": 0.207501,
+            "yRatio": 0.461816
+          }
+        ]
       ]
     },
     {
@@ -13118,6 +13826,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.189186,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.207501,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.207501,
+            "yRatio": 0.479801
+          },
+          {
+            "xRatio": 0.189186,
+            "yRatio": 0.479801
+          }
+        ]
       ]
     },
     {
@@ -13132,6 +13860,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.171488,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.189186,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.189186,
+            "yRatio": 0.479801
+          },
+          {
+            "xRatio": 0.171488,
+            "yRatio": 0.479801
+          }
+        ]
       ]
     },
     {
@@ -13146,6 +13894,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.171484,
+            "yRatio": 0.51547
+          },
+          {
+            "xRatio": 0.157752,
+            "yRatio": 0.51547
+          },
+          {
+            "xRatio": 0.157752,
+            "yRatio": 0.48918
+          },
+          {
+            "xRatio": 0.171484,
+            "yRatio": 0.48918
+          }
+        ]
       ]
     },
     {
@@ -13161,6 +13929,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.114922,
+            "yRatio": 0.479025
+          },
+          {
+            "xRatio": 0.153925,
+            "yRatio": 0.479025
+          },
+          {
+            "xRatio": 0.153925,
+            "yRatio": 0.515471
+          },
+          {
+            "xRatio": 0.114922,
+            "yRatio": 0.515471
+          }
+        ]
       ]
     },
     {
@@ -13176,6 +13964,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.114922,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.153925,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.153925,
+            "yRatio": 0.479025
+          },
+          {
+            "xRatio": 0.114922,
+            "yRatio": 0.479025
+          }
+        ]
       ]
     },
     {
@@ -13190,6 +13998,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.280926,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.298534,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.298534,
+            "yRatio": 0.430745
+          },
+          {
+            "xRatio": 0.280926,
+            "yRatio": 0.430745
+          }
+        ]
       ]
     },
     {
@@ -13204,6 +14032,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.262539,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.280926,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.280926,
+            "yRatio": 0.430745
+          },
+          {
+            "xRatio": 0.262539,
+            "yRatio": 0.430745
+          }
+        ]
       ]
     },
     {
@@ -13218,6 +14066,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.244163,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.262539,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.262539,
+            "yRatio": 0.430745
+          },
+          {
+            "xRatio": 0.244163,
+            "yRatio": 0.430745
+          }
+        ]
       ]
     },
     {
@@ -13232,6 +14100,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.225782,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.244163,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.244163,
+            "yRatio": 0.430745
+          },
+          {
+            "xRatio": 0.225782,
+            "yRatio": 0.430745
+          }
+        ]
       ]
     },
     {
@@ -13246,6 +14134,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.207406,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.225782,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.225782,
+            "yRatio": 0.430745
+          },
+          {
+            "xRatio": 0.207406,
+            "yRatio": 0.430745
+          }
+        ]
       ]
     },
     {
@@ -13260,6 +14168,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.189029,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.207406,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.207406,
+            "yRatio": 0.430745
+          },
+          {
+            "xRatio": 0.189029,
+            "yRatio": 0.430745
+          }
+        ]
       ]
     },
     {
@@ -13274,6 +14202,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.170648,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.189029,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.189029,
+            "yRatio": 0.430745
+          },
+          {
+            "xRatio": 0.170648,
+            "yRatio": 0.430745
+          }
+        ]
       ]
     },
     {
@@ -13288,6 +14236,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.134423,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.153925,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.153925,
+            "yRatio": 0.430745
+          },
+          {
+            "xRatio": 0.134423,
+            "yRatio": 0.430745
+          }
+        ]
       ]
     },
     {
@@ -13302,6 +14270,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.114922,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.134423,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.134423,
+            "yRatio": 0.430745
+          },
+          {
+            "xRatio": 0.114922,
+            "yRatio": 0.430745
+          }
+        ]
       ]
     },
     {
@@ -13316,6 +14304,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.480015
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.480015
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.498331
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.498331
+          }
+        ]
       ]
     },
     {
@@ -13330,6 +14338,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.462269
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.462269
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.480015
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.480015
+          }
+        ]
       ]
     },
     {
@@ -13344,6 +14372,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.444512
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.444512
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.462269
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.462269
+          }
+        ]
       ]
     },
     {
@@ -13358,6 +14406,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.41952
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.41952
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.444512
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.444512
+          }
+        ]
       ]
     },
     {
@@ -13372,6 +14440,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.326639,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.335904,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.335904,
+            "yRatio": 0.41952
+          },
+          {
+            "xRatio": 0.326639,
+            "yRatio": 0.41952
+          }
+        ]
       ]
     },
     {
@@ -13386,6 +14474,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.316719,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.326639,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.326639,
+            "yRatio": 0.41952
+          },
+          {
+            "xRatio": 0.316719,
+            "yRatio": 0.41952
+          }
+        ]
       ]
     },
     {
@@ -13400,6 +14508,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.226937,
+            "yRatio": 0.443056
+          },
+          {
+            "xRatio": 0.247211,
+            "yRatio": 0.443056
+          },
+          {
+            "xRatio": 0.247211,
+            "yRatio": 0.470927
+          },
+          {
+            "xRatio": 0.226937,
+            "yRatio": 0.470927
+          }
+        ]
       ]
     },
     {
@@ -13415,6 +14543,42 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.437206,
+            "yRatio": 0.516917
+          },
+          {
+            "xRatio": 0.491826,
+            "yRatio": 0.516917
+          },
+          {
+            "xRatio": 0.491826,
+            "yRatio": 0.377717
+          },
+          {
+            "xRatio": 0.477681,
+            "yRatio": 0.377717
+          },
+          {
+            "xRatio": 0.477681,
+            "yRatio": 0.358257
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.358257
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.530243
+          },
+          {
+            "xRatio": 0.437206,
+            "yRatio": 0.530243
+          }
+        ]
       ]
     },
     {
@@ -13429,6 +14593,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.791264,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.774146,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.774146,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.791264,
+            "yRatio": 0.50478
+          }
+        ]
       ]
     },
     {
@@ -13443,6 +14627,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.535447,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.545386,
+            "yRatio": 0.48486
+          },
+          {
+            "xRatio": 0.545386,
+            "yRatio": 0.50478
+          },
+          {
+            "xRatio": 0.535447,
+            "yRatio": 0.50478
+          }
+        ]
       ]
     },
     {
@@ -13460,6 +14664,98 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.402568
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.402568
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.3856
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.3856
+          }
+        ],
+        [
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.420733
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.420733
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.403765
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.403765
+          }
+        ],
+        [
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.438898
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.438898
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.421935
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.421935
+          }
+        ],
+        [
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.4401
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.4401
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.457068
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.457068
+          }
+        ],
+        [
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.475832
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.475832
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.458265
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.458265
+          }
+        ]
       ]
     },
     {
@@ -13477,6 +14773,98 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.385618
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.385618
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.402614
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.402614
+          }
+        ],
+        [
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.403793
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.403793
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.420789
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.420789
+          }
+        ],
+        [
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.421972
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.421972
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.438964
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.438964
+          }
+        ],
+        [
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.440147
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.440147
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.457138
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.457138
+          }
+        ],
+        [
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.47585
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.47585
+          },
+          {
+            "xRatio": 0.577473,
+            "yRatio": 0.45832
+          },
+          {
+            "xRatio": 0.563454,
+            "yRatio": 0.45832
+          }
+        ]
       ]
     },
     {
@@ -13492,6 +14880,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.47651,
+            "yRatio": 0.913597
+          },
+          {
+            "xRatio": 0.469525,
+            "yRatio": 0.913597
+          },
+          {
+            "xRatio": 0.469525,
+            "yRatio": 0.846291
+          },
+          {
+            "xRatio": 0.47651,
+            "yRatio": 0.846291
+          }
+        ]
       ]
     },
     {
@@ -13507,6 +14915,80 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.41952
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.41952
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.444512
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.444512
+          }
+        ],
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.444512
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.444512
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.462269
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.462269
+          }
+        ],
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.462269
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.462269
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.480015
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.480015
+          }
+        ],
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.480015
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.480015
+          },
+          {
+            "xRatio": 0.373533,
+            "yRatio": 0.498331
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.498331
+          }
+        ]
       ]
     },
     {
@@ -13522,6 +15004,34 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.43721,
+            "yRatio": 0.49453
+          },
+          {
+            "xRatio": 0.424748,
+            "yRatio": 0.49453
+          },
+          {
+            "xRatio": 0.424748,
+            "yRatio": 0.506487
+          },
+          {
+            "xRatio": 0.427376,
+            "yRatio": 0.506487
+          },
+          {
+            "xRatio": 0.427376,
+            "yRatio": 0.516917
+          },
+          {
+            "xRatio": 0.43721,
+            "yRatio": 0.516917
+          }
+        ]
       ]
     },
     {
@@ -13539,6 +15049,80 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.307887
+          },
+          {
+            "xRatio": 0.545385,
+            "yRatio": 0.307887
+          },
+          {
+            "xRatio": 0.545385,
+            "yRatio": 0.343791
+          },
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.343791
+          }
+        ],
+        [
+          {
+            "xRatio": 0.563366,
+            "yRatio": 0.343791
+          },
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.343791
+          },
+          {
+            "xRatio": 0.577474,
+            "yRatio": 0.307887
+          },
+          {
+            "xRatio": 0.563366,
+            "yRatio": 0.307887
+          }
+        ],
+        [
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.385512
+          },
+          {
+            "xRatio": 0.545385,
+            "yRatio": 0.385512
+          },
+          {
+            "xRatio": 0.545385,
+            "yRatio": 0.420789
+          },
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.420789
+          }
+        ],
+        [
+          {
+            "xRatio": 0.545386,
+            "yRatio": 0.47585
+          },
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.47585
+          },
+          {
+            "xRatio": 0.559494,
+            "yRatio": 0.440169
+          },
+          {
+            "xRatio": 0.545386,
+            "yRatio": 0.440169
+          }
+        ]
       ]
     },
     {
@@ -13556,6 +15140,80 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.308537
+          },
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.308537
+          },
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.343261
+          },
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.343261
+          }
+        ],
+        [
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.343261
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.343261
+          },
+          {
+            "xRatio": 0.77642,
+            "yRatio": 0.308537
+          },
+          {
+            "xRatio": 0.762312,
+            "yRatio": 0.308537
+          }
+        ],
+        [
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.3856
+          },
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.3856
+          },
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.420733
+          },
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.420733
+          }
+        ],
+        [
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.475832
+          },
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.475832
+          },
+          {
+            "xRatio": 0.758289,
+            "yRatio": 0.4401
+          },
+          {
+            "xRatio": 0.744184,
+            "yRatio": 0.4401
+          }
+        ]
       ]
     },
     {
@@ -13571,6 +15229,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.470955,
+            "yRatio": 0.492368
+          },
+          {
+            "xRatio": 0.459143,
+            "yRatio": 0.492368
+          },
+          {
+            "xRatio": 0.459143,
+            "yRatio": 0.474561
+          },
+          {
+            "xRatio": 0.470955,
+            "yRatio": 0.474561
+          }
+        ]
       ]
     },
     {
@@ -13586,6 +15264,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.457302,
+            "yRatio": 0.516918
+          },
+          {
+            "xRatio": 0.437163,
+            "yRatio": 0.516918
+          },
+          {
+            "xRatio": 0.437163,
+            "yRatio": 0.486035
+          },
+          {
+            "xRatio": 0.457302,
+            "yRatio": 0.486035
+          }
+        ]
       ]
     },
     {
@@ -13601,6 +15299,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.475506
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.475506
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.483891
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.483891
+          }
+        ]
       ]
     },
     {
@@ -13618,6 +15336,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.207501,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.22694,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.22694,
+            "yRatio": 0.479801
+          },
+          {
+            "xRatio": 0.207501,
+            "yRatio": 0.479801
+          }
+        ]
       ]
     },
     {
@@ -13635,6 +15373,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.261761,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.280926,
+            "yRatio": 0.443051
+          },
+          {
+            "xRatio": 0.280926,
+            "yRatio": 0.480407
+          },
+          {
+            "xRatio": 0.261761,
+            "yRatio": 0.480407
+          }
+        ]
       ]
     },
     {
@@ -13650,6 +15408,26 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.463094,
+            "yRatio": 0.771451
+          },
+          {
+            "xRatio": 0.437783,
+            "yRatio": 0.771451
+          },
+          {
+            "xRatio": 0.437783,
+            "yRatio": 0.739079
+          },
+          {
+            "xRatio": 0.463094,
+            "yRatio": 0.739079
+          }
+        ]
       ]
     },
     {
@@ -13665,6 +15443,1025 @@
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.242922,
+            "yRatio": 0.48093
+          },
+          {
+            "xRatio": 0.263773,
+            "yRatio": 0.48093
+          },
+          {
+            "xRatio": 0.263773,
+            "yRatio": 0.491235
+          },
+          {
+            "xRatio": 0.242922,
+            "yRatio": 0.491235
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632820-2wnmd4",
+      "floorId": "5F",
+      "label": "5301",
+      "labelEn": "5301 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.443632,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.44808
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.44808
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.440183
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.440183
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632821-qx6mgm",
+      "floorId": "5F",
+      "label": "5302",
+      "labelEn": "5302 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.434533,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.438981
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.438981
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.431085
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.431085
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632822-wsmkeo",
+      "floorId": "5F",
+      "label": "5303",
+      "labelEn": "5303 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.425432,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.429878
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.429878
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.421985
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.421985
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632823-xo3o3w",
+      "floorId": "5F",
+      "label": "5304",
+      "labelEn": "5304 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.416331,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.420779
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.420779
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.412883
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.412883
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632824-gxhk7c",
+      "floorId": "5F",
+      "label": "5305",
+      "labelEn": "5305 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.407232,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.411681
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.411681
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.403784
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.403784
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632825-u1sg4v",
+      "floorId": "5F",
+      "label": "5306",
+      "labelEn": "5306 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.398134,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.402582
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.402582
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.394686
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.394686
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632826-arw361",
+      "floorId": "5F",
+      "label": "5307",
+      "labelEn": "5307 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.389031,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.393479
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.393479
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.385582
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.385582
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632827-kn28d3",
+      "floorId": "5F",
+      "label": "5308",
+      "labelEn": "5308 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.379931,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.384379
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.384379
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.376483
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.376483
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632828-6cfbaa",
+      "floorId": "5F",
+      "label": "5311",
+      "labelEn": "5311 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.338846,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.343294
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.343294
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.335398
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.335398
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632829-rq4dvn",
+      "floorId": "5F",
+      "label": "5312",
+      "labelEn": "5312 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.329746,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.334194
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.334194
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.326298
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.326298
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632830-gh7ffg",
+      "floorId": "5F",
+      "label": "5313",
+      "labelEn": "5313 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.320643,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.325091
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.325091
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.317195
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.317195
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632831-2902q7",
+      "floorId": "5F",
+      "label": "5314",
+      "labelEn": "5314 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.311545,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.315993
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.315993
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.308096
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.308096
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632832-z9td1t",
+      "floorId": "5F",
+      "label": "5315",
+      "labelEn": "5315 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.669557,
+          "yRatio": 0.302142,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.298394
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.298394
+          },
+          {
+            "xRatio": 0.663004,
+            "yRatio": 0.306889
+          },
+          {
+            "xRatio": 0.67711,
+            "yRatio": 0.306889
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632833-dc56kw",
+      "floorId": "5F",
+      "label": "5401",
+      "labelEn": "5401 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651336,
+          "yRatio": 0.457285,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.449287
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.449287
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.466283
+          },
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.466283
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632834-ylomwz",
+      "floorId": "5F",
+      "label": "5402",
+      "labelEn": "5402 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651336,
+          "yRatio": 0.443632,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.440183
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.440183
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.44808
+          },
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.44808
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632835-t0auyr",
+      "floorId": "5F",
+      "label": "5403",
+      "labelEn": "5403 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651336,
+          "yRatio": 0.434533,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.431085
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.431085
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.438981
+          },
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.438981
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632836-qqvudp",
+      "floorId": "5F",
+      "label": "5404",
+      "labelEn": "5404 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651336,
+          "yRatio": 0.425433,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.421986
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.421986
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.429879
+          },
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.429879
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632837-4u3ryh",
+      "floorId": "5F",
+      "label": "5405",
+      "labelEn": "5405 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651336,
+          "yRatio": 0.416331,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.412883
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.412883
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.420779
+          },
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.420779
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632838-t2qybr",
+      "floorId": "5F",
+      "label": "5406",
+      "labelEn": "5406 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651336,
+          "yRatio": 0.407232,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.403783
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.403783
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.41168
+          },
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.41168
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632839-yo592j",
+      "floorId": "5F",
+      "label": "5407",
+      "labelEn": "5407 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651336,
+          "yRatio": 0.398133,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.394685
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.394685
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.402581
+          },
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.402581
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632840-9y6nv9",
+      "floorId": "5F",
+      "label": "5408",
+      "labelEn": "5408 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651336,
+          "yRatio": 0.389029,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.385581
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.385581
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.393478
+          },
+          {
+            "xRatio": 0.65889,
+            "yRatio": 0.393478
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632841-ml9cs0",
+      "floorId": "5F",
+      "label": "5410",
+      "labelEn": "5410 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651268,
+          "yRatio": 0.348243,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.644782,
+            "yRatio": 0.352991
+          },
+          {
+            "xRatio": 0.658753,
+            "yRatio": 0.352991
+          },
+          {
+            "xRatio": 0.658753,
+            "yRatio": 0.344496
+          },
+          {
+            "xRatio": 0.644782,
+            "yRatio": 0.344496
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632842-25piyz",
+      "floorId": "5F",
+      "label": "5411",
+      "labelEn": "5411 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651267,
+          "yRatio": 0.338845,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.658752,
+            "yRatio": 0.335397
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.335397
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.343293
+          },
+          {
+            "xRatio": 0.658752,
+            "yRatio": 0.343293
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632843-b0a2tv",
+      "floorId": "5F",
+      "label": "5412",
+      "labelEn": "5412 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651267,
+          "yRatio": 0.329746,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.658752,
+            "yRatio": 0.326298
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.326298
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.334194
+          },
+          {
+            "xRatio": 0.658752,
+            "yRatio": 0.334194
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632844-xo90x1",
+      "floorId": "5F",
+      "label": "5413",
+      "labelEn": "5413 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651267,
+          "yRatio": 0.320643,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.658752,
+            "yRatio": 0.317195
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.317195
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.325091
+          },
+          {
+            "xRatio": 0.658752,
+            "yRatio": 0.325091
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632845-kiua0t",
+      "floorId": "5F",
+      "label": "5414",
+      "labelEn": "5414 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651267,
+          "yRatio": 0.311545,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.658752,
+            "yRatio": 0.308096
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.308096
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.315993
+          },
+          {
+            "xRatio": 0.658752,
+            "yRatio": 0.315993
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792221632846-mkbtz7",
+      "floorId": "5F",
+      "label": "5415",
+      "labelEn": "5415 Faculty Research Office",
+      "aliases": [
+        "教員研究室"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.651267,
+          "yRatio": 0.300258,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.658752,
+            "yRatio": 0.294626
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.294626
+          },
+          {
+            "xRatio": 0.644781,
+            "yRatio": 0.306889
+          },
+          {
+            "xRatio": 0.658752,
+            "yRatio": 0.306889
+          }
+        ]
       ]
     },
     {
