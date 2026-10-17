@@ -17057,6 +17057,1604 @@
       ]
     },
     {
+      "id": "manual-5F-1792224417879-zittsd",
+      "floorId": "5F",
+      "label": "5001",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.482167,
+          "yRatio": 0.469808,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.4745
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.4745
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.466116
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.466116
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417880-06sfmg",
+      "floorId": "5F",
+      "label": "5002",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.482167,
+          "yRatio": 0.460189,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.464881
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.464881
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.456497
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.456497
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417881-h6e1fa",
+      "floorId": "5F",
+      "label": "5003",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.482167,
+          "yRatio": 0.450573,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.455267
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.455267
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.446879
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.446879
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417882-32pfib",
+      "floorId": "5F",
+      "label": "5004",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.482167,
+          "yRatio": 0.440958,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.44565
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.44565
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.437265
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.437265
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417883-qk8ex2",
+      "floorId": "5F",
+      "label": "5005",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.482167,
+          "yRatio": 0.431339,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.436031
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.436031
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.427646
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.427646
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417884-77czfo",
+      "floorId": "5F",
+      "label": "5006",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.482167,
+          "yRatio": 0.421725,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.426417
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.426417
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.418032
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.418032
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417885-yvxi4f",
+      "floorId": "5F",
+      "label": "5007",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.482167,
+          "yRatio": 0.412108,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.416803
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.416803
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.408414
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.408414
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417886-fs344u",
+      "floorId": "5F",
+      "label": "5008",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.482167,
+          "yRatio": 0.402492,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.407185
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.407185
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.3988
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.3988
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417887-lpql3q",
+      "floorId": "5F",
+      "label": "5009",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.482167,
+          "yRatio": 0.392873,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.397566
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.397566
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.389181
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.389181
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417888-v9drue",
+      "floorId": "5F",
+      "label": "5010",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.482167,
+          "yRatio": 0.382947,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.387947
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.387947
+          },
+          {
+            "xRatio": 0.488968,
+            "yRatio": 0.378946
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.378946
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417889-hgmyxw",
+      "floorId": "5F",
+      "label": "5011",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.464867,
+          "yRatio": 0.469808,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.4745
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.4745
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.466116
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.466116
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417890-9loovm",
+      "floorId": "5F",
+      "label": "5012",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.464867,
+          "yRatio": 0.460189,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.464881
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.464881
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.456497
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.456497
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417891-u6huy5",
+      "floorId": "5F",
+      "label": "5013",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.464867,
+          "yRatio": 0.450573,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.455267
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.455267
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.446879
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.446879
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417892-ikcrkj",
+      "floorId": "5F",
+      "label": "5014",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.464867,
+          "yRatio": 0.440958,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.44565
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.44565
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.437265
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.437265
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417893-k59apc",
+      "floorId": "5F",
+      "label": "5015",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.464867,
+          "yRatio": 0.431339,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.436031
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.436031
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.427646
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.427646
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417894-h4jtbh",
+      "floorId": "5F",
+      "label": "5016",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.464867,
+          "yRatio": 0.421725,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.426417
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.426417
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.418032
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.418032
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417895-87ffzw",
+      "floorId": "5F",
+      "label": "5017",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.464867,
+          "yRatio": 0.412108,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.416803
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.416803
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.408414
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.408414
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417896-d8buab",
+      "floorId": "5F",
+      "label": "5018",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.464867,
+          "yRatio": 0.402492,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.407185
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.407185
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.3988
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.3988
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417897-3nqigm",
+      "floorId": "5F",
+      "label": "5019",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.464867,
+          "yRatio": 0.392873,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.397566
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.397566
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.389181
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.389181
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417898-x8yurv",
+      "floorId": "5F",
+      "label": "5020",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.464867,
+          "yRatio": 0.382947,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.387947
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.387947
+          },
+          {
+            "xRatio": 0.47167,
+            "yRatio": 0.378946
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.378946
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417899-uf99lr",
+      "floorId": "5F",
+      "label": "5021",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.431356,
+          "yRatio": 0.469808,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.4745
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.4745
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.466116
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.466116
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417900-6gtkqp",
+      "floorId": "5F",
+      "label": "5022",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.431356,
+          "yRatio": 0.460189,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.464881
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.464881
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.456497
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.456497
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417901-bx12nf",
+      "floorId": "5F",
+      "label": "5023",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.431356,
+          "yRatio": 0.450573,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.455267
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.455267
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.446879
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.446879
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417902-enqstz",
+      "floorId": "5F",
+      "label": "5024",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.431356,
+          "yRatio": 0.440958,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.44565
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.44565
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.437265
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.437265
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417903-269dfp",
+      "floorId": "5F",
+      "label": "5025",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.431356,
+          "yRatio": 0.431339,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.436031
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.436031
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.427646
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.427646
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417904-t3utta",
+      "floorId": "5F",
+      "label": "5026",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.431356,
+          "yRatio": 0.421725,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.426417
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.426417
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.418032
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.418032
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417905-jmrics",
+      "floorId": "5F",
+      "label": "5027",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.431356,
+          "yRatio": 0.412108,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.416803
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.416803
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.408414
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.408414
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417906-w3sfkr",
+      "floorId": "5F",
+      "label": "5028",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.431356,
+          "yRatio": 0.402492,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.407185
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.407185
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.3988
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.3988
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417907-krrk0z",
+      "floorId": "5F",
+      "label": "5029",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.431356,
+          "yRatio": 0.392873,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.397566
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.397566
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.389181
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.389181
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417908-p3kapw",
+      "floorId": "5F",
+      "label": "5030",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.431356,
+          "yRatio": 0.382947,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.387947
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.387947
+          },
+          {
+            "xRatio": 0.437209,
+            "yRatio": 0.378946
+          },
+          {
+            "xRatio": 0.426503,
+            "yRatio": 0.378946
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417909-vao5hi",
+      "floorId": "5F",
+      "label": "5031",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417064,
+          "yRatio": 0.469808,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.4745
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.4745
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.466116
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.466116
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417910-m07y76",
+      "floorId": "5F",
+      "label": "5032",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417064,
+          "yRatio": 0.460189,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.464881
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.464881
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.456497
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.456497
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417911-q1e60e",
+      "floorId": "5F",
+      "label": "5033",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417064,
+          "yRatio": 0.450573,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.455267
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.455267
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.446879
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.446879
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417912-yseruj",
+      "floorId": "5F",
+      "label": "5034",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417064,
+          "yRatio": 0.440958,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.44565
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.44565
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.437265
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.437265
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417913-b84kiw",
+      "floorId": "5F",
+      "label": "5035",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417064,
+          "yRatio": 0.431339,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.436031
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.436031
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.427646
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.427646
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417914-94a7ge",
+      "floorId": "5F",
+      "label": "5036",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417064,
+          "yRatio": 0.421725,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.426417
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.426417
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.418032
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.418032
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417915-wm23jb",
+      "floorId": "5F",
+      "label": "5037",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417064,
+          "yRatio": 0.412108,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.416803
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.416803
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.408414
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.408414
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417916-5351sx",
+      "floorId": "5F",
+      "label": "5038",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417064,
+          "yRatio": 0.402492,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.407185
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.407185
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.3988
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.3988
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417917-102agv",
+      "floorId": "5F",
+      "label": "5039",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417064,
+          "yRatio": 0.392873,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.397566
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.397566
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.389181
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.389181
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417918-slv9yx",
+      "floorId": "5F",
+      "label": "5040",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417064,
+          "yRatio": 0.382947,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.387947
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.387947
+          },
+          {
+            "xRatio": 0.422881,
+            "yRatio": 0.378946
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.378946
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417919-dxbl4s",
+      "floorId": "5F",
+      "label": "5041",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.453382,
+          "yRatio": 0.364638,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.450865,
+            "yRatio": 0.372019
+          },
+          {
+            "xRatio": 0.456899,
+            "yRatio": 0.372019
+          },
+          {
+            "xRatio": 0.456899,
+            "yRatio": 0.358257
+          },
+          {
+            "xRatio": 0.450865,
+            "yRatio": 0.358257
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417920-ym12fi",
+      "floorId": "5F",
+      "label": "5042",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.446512,
+          "yRatio": 0.364638,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.444028,
+            "yRatio": 0.372019
+          },
+          {
+            "xRatio": 0.449995,
+            "yRatio": 0.372019
+          },
+          {
+            "xRatio": 0.449995,
+            "yRatio": 0.358257
+          },
+          {
+            "xRatio": 0.444028,
+            "yRatio": 0.358257
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417921-l43yh5",
+      "floorId": "5F",
+      "label": "5043",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.439456,
+          "yRatio": 0.364638,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.436754,
+            "yRatio": 0.372019
+          },
+          {
+            "xRatio": 0.443158,
+            "yRatio": 0.372019
+          },
+          {
+            "xRatio": 0.443158,
+            "yRatio": 0.358257
+          },
+          {
+            "xRatio": 0.436754,
+            "yRatio": 0.358257
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417922-j0np5y",
+      "floorId": "5F",
+      "label": "5044",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.429788,
+          "yRatio": 0.364638,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.424692,
+            "yRatio": 0.372019
+          },
+          {
+            "xRatio": 0.435883,
+            "yRatio": 0.372019
+          },
+          {
+            "xRatio": 0.435883,
+            "yRatio": 0.358257
+          },
+          {
+            "xRatio": 0.424692,
+            "yRatio": 0.358257
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417923-oc86yb",
+      "floorId": "5F",
+      "label": "5045",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.417535,
+          "yRatio": 0.364638,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.372019
+          },
+          {
+            "xRatio": 0.423823,
+            "yRatio": 0.372019
+          },
+          {
+            "xRatio": 0.423823,
+            "yRatio": 0.358257
+          },
+          {
+            "xRatio": 0.412247,
+            "yRatio": 0.358257
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417924-okqgjn",
+      "floorId": "5F",
+      "label": "5101",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.483596,
+          "yRatio": 0.505294,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.516918
+          },
+          {
+            "xRatio": 0.491826,
+            "yRatio": 0.516918
+          },
+          {
+            "xRatio": 0.491826,
+            "yRatio": 0.49467
+          },
+          {
+            "xRatio": 0.476366,
+            "yRatio": 0.49467
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-5F-1792224417925-plx9ce",
+      "floorId": "5F",
+      "label": "5102",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.46678,
+          "yRatio": 0.508431,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.516918
+          },
+          {
+            "xRatio": 0.475496,
+            "yRatio": 0.516918
+          },
+          {
+            "xRatio": 0.475496,
+            "yRatio": 0.500943
+          },
+          {
+            "xRatio": 0.459064,
+            "yRatio": 0.500943
+          }
+        ]
+      ]
+    },
+    {
       "id": "manual-A-6-9F-1775283196728-i2ogl3",
       "floorId": "A-6-9F",
       "label": "A610実習室",

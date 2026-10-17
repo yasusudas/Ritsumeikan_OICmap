@@ -33,7 +33,7 @@ test('canonical search data distinguishes same-floor names without warnings', as
   const report = validateSearchData(payload);
 
   assert.deepEqual(report.errors, []);
-  assert.equal(report.stats.entries, 668); // 580 + H4001–H4045 faculty research offices + 5F faculty research offices 5301–5315 and 5401–5415 (27 rooms) + H5001–H5006 and H5011–H5020 (16 rooms, 2026-10-17)
+  assert.equal(report.stats.entries, 715); // 580 + H4001–H4045 faculty research offices + 5F faculty research offices 5301–5315 and 5401–5415 (27 rooms) + H5001–H5006 and H5011–H5020 (16 rooms) + OIC Seminar House rooms 5001–5045, 5101, 5102 (47 rooms, 2026-10-17)
   assert.equal(report.stats.facilityRings, 514);
   assert.equal(report.stats.sameFloorLabelGroups, 10);
   assert.equal(report.stats.legacyWhiteRings, 0);
@@ -174,7 +174,7 @@ test('every fifth-floor place has a search outline', async () => {
   const withoutOutline = fifthFloor.filter((entry) => !entry.outlines?.length);
 
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
-  assert.equal(fifthFloor.filter((entry) => entry.outlines?.length).length, 116);
+  assert.equal(fifthFloor.filter((entry) => entry.outlines?.length).length, 163);
 });
 
 test('the 5F A-building faculty research offices are searchable, one outline each', async () => {
@@ -210,5 +210,18 @@ test('the 5F H-building faculty research offices are searchable, one outline eac
     assert.equal(entry.outlines.length, 1, entry.label);
     assert.deepEqual(entry.aliases, ['教員研究室']);
     assert.equal(entry.labelEn, `${entry.label} Faculty Research Office`);
+  }
+});
+
+test('the 5F OIC Seminar House rooms are searchable by number, one outline each', async () => {
+  const payload = await readCanonicalSearchData();
+  const fifthFloor = payload.entries.filter((entry) => entry.floorId === '5F');
+  const labels = [...Array.from({ length: 45 }, (_, i) => String(5001 + i)), '5101', '5102'];
+  const rooms = fifthFloor.filter((entry) => /^5[01]\d\d$/.test(entry.label));
+
+  assert.deepEqual(rooms.map((entry) => entry.label).sort(), labels);
+  for (const entry of rooms) {
+    assert.equal(entry.outlines.length, 1, entry.label);
+    assert.equal(entry.floorId, '5F');
   }
 });
