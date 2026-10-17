@@ -158,7 +158,6 @@
   --line-jr: #ef844a;
   --line-hankyu: #2bb7b3;
   --line-monorail: #036eb8;
-  --line-bus: #9ac344;
   --route-origin-w: 7.5em;
   --route-walk-w: 13em;
 }
@@ -178,10 +177,6 @@
 
 .route-group--monorail {
   --route-color: var(--line-monorail);
-}
-
-.route-group--bus {
-  --route-color: var(--line-bus);
 }
 
 .route-map {
@@ -334,17 +329,6 @@
   line-height: 1.4;
 }
 
-/* Bus: the ride ends at the campus bus stop, so the white chip carries its name. */
-.route-goal--stop {
-  font-size: var(--fs-sm);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-:lang(ja) .route-goal--stop {
-  font-family: var(--font-sans);
-}
-
 .route-map-note {
   margin: 32px 0 0;
   color: var(--c-ink-3);
@@ -435,10 +419,6 @@
     margin-left: 6px;
     padding: 2px 8px;
     font-size: var(--fs-2xs);
-  }
-
-  .route-goal--stop {
-    font-size: var(--fs-xs);
   }
 
   .route-map-note {
