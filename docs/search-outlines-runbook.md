@@ -1,0 +1,136 @@
+# 検索結果の外周（outlines）作成手順 — ピンを部屋の領域に置き換える
+
+1F で実施した作業（ブランチ `map-refine`、コミット b6f9a28〜56a03c7）を、他の階や追加項目でも再現できるよう手順化したもの。
+
+## 0. 完成形（何が変わるか）
+
+- 検索項目に `outlines` があると、検索で選んだとき `renderSearchHighlights()`（`src/main.js`）がピンの代わりに SVG 多角形を描く。`outlines` がない項目は従来どおりピン。
+- 見た目は外周線のみ（`fill: none`）。白い縁 7px の上にピンと同じ色の線 3.5px を描く。色は閲覧ページで `--ls-red`（#9b1b30、`viewer-loose.css`）、それ以外で `--c-pin`（`viewer.css` の `.search-highlight-area*`）。
+- 描画層は `pointer-events: none` なので、ホバーでは出ない。検索で選んだときだけ表示する。
+- `focusSearchEntry()` は外周の外接矩形の中心に寄せ、表示域の 70%（`SEARCH_OUTLINE_FIT_RATIO`）に収まるようズームを下げる。
+- 食事カードを持つ項目（`public/food-places.json` の `places[].entryId`）と ATM は対象外。`foodGuide.search()` が先に処理し、もともとピンを出さない。
+- 編集画面は `outlines` を描画・編集できないが、保存時に保持する（`serializeEntries`）。古い下書きは公開データから引き継ぐ（`upgradeStoredEditorSnapshot`）。
+
+## 1. データと座標
+
+- 正本は `public/manual-search-index.json`。`entries[]` のキー順は `id, floorId, label, labelEn?, locationHint?, locationHintEn?, aliases, rects, polygons?, outlines?`。
+- `rects[0]` がピン位置。幅・高さ 0.001 の矩形で、その中心がピン。
+- `polygons` は食事・ATM のホバー／クリック領域。外周とは別物なので触らない。
+- `outlines` は `[[{xRatio, yRatio}, …], …]` の形で、多角形を複数持てる。各多角形は 3 点以上の異なる点を持つ（`scripts/search-data-validation.mjs` が検査）。
+- 比率は viewBox 原点からの割合で、`xRatio = (x − vbX) / vbW`。
+
+| 階 (floorId) | 日本語 SVG | viewBox |
+|---|---|---|
+| 1F〜5F | `src/assets/floors/ja/1F.svg` など | `0 0 1190.55 841.89` |
+| A-6-9F | `6F7F8F9F_BldgA.svg` | `0 0 1190.55 841.89` |
+| H-6-9F | `6F7F8F9F_BldgH.svg` | `8.5 0 1190.55 841.89`（x から 8.5 を引く） |
+
+- 日本語 SVG を基準に作る。1F は英語 SVG も部屋の形が同一（違いは凡例アイコンのみ）と確認済み。他の階は §8 の方法で確認すること。
+- 1F の閲覧用 SVG はビルド時に食事ピクトグラムだけ除去される（`scripts/food-map-svg.mjs`）。部屋の形は変わらない。
+
+## 2. 道具
+
+- `scripts/outlines/outline-kit.browser.js`: 階 SVG を開いたブラウザで実行する抽出キット（`window.OK`）。2026-10-17 に、開発サーバー上の 1F SVG でこのファイルを `fetch` して実行し、§3 の AC130 再現テストが通ることを確認した（4 頂点、ずれは最大 0.0006 SVG 単位）。
+- `scripts/outlines/apply-outlines.mjs`: 仕様 JSON から外周を書き込む。ドライランが既定で、`--write` で保存する。確認済みの内容は次のとおり。
+  - 既存の外周を同じ値で書き直すと差分はゼロ。
+  - set・replace・add の各操作が正しく動く。
+  - ゼロ幅のとげ（例: D事務室）を除去する。
+  - 他の階が不変であることと、検証エラーを毎回報告する。
+
+## 3. 準備
+
+1. `map-refine`（または作業ブランチ）で開発サーバーを起動する（`.claude/launch.json` の `oic-map-dev`）。ポートは 5173 か 5174 になる（実際の値は preview の結果を見る）。
+2. ブラウザで `http://localhost:<port>/src/assets/floors/ja/<SVG>` を開き、ビューポートを 1400×900 にする（スクショ用）。
+3. キットを読み込む。開発サーバーは `/scripts/outlines/outline-kit.browser.js` を `text/javascript` で返す。ページで `eval(await (await fetch('/scripts/outlines/outline-kit.browser.js')).text())` を実行する。
+4. `await OK.init('1F')` を実行する。塗りの部品と直線の線分を解析し、検索項目を `/@rits-oic-search-data/search-entries.json`（開発時のみ）から読み込む。
+5. 再現テストとして、`OK.pick(...OK.pin(OK.entry('AC130')[0])).pts` が、保存済みの AC130 の外周（`OK.toSvg` で戻した値）とほぼ一致することを確かめる。
+
+## 4. 自動抽出（1回目）
+
+1. `const {auto, report} = OK.autoPick({ skipIds: new Set([食事・ATM の id]) })` を実行する。ピンを含む、面積 60〜10000（SVG 単位²）の最小の塗りを選ぶ。文字色（34,24,21）・白（255,255,255）は除外する。
+2. `report` を読み、次の印がある項目を手作業の対象にする。
+   - `NONE`: 屋外や白地。
+   - `SHARED`: 1 つの塗りを複数の項目が共有。
+   - 面積が極端に小さい: 部屋の一部の小部屋を拾っている。
+   - 面積が極端に大きい: 床全体を拾っている。
+3. 1F の実績では 69 件中おおむね 55 件が自動のまま使えた。
+
+## 5. 目視レビュー
+
+1. `OK.draw(auto)` で、候補を赤、ピンを青点で重ねる。番号は `OK.index()` の順。
+2. `OK.view(x, y, w, h)` で区域ごとに拡大し、スクショで確認する。オーバーレイがラベルを隠すので、`OK.hideOverlay()` で元の地図も必ず見る。
+3. 確認すること:
+   - 外周が部屋の壁に沿っているか。
+   - ラベルの範囲と一致するか。
+   - 引出線の先の部屋を指しているか。
+   - 番号付きの部屋群の扱い。
+4. 凡例（地図の右下）で色の意味を確認する。例: ピンク＝ホール・音楽練習室。
+
+## 6. 手動補正のパターン（1F の実例つき）
+
+| 状況 | 方法 | 1F の例 |
+|---|---|---|
+| ピンがラベル位置にあり、部屋は引出線の先 | `OK.strokesIn(…, 'rgb(34, 24, 21)')` で引出線（0.285px）の端点を求め、`OK.pick(端点)` で部屋を選ぶ | 管理人室、講師控室／共同研究室 |
+| 部屋が複数の塗りに分かれている | `OK.union([…], 1.6)` で壁の隙間を埋めて結合する | ロッカールーム（女子＋男子）、ミーティングルーム1･2、学生サポートルーム、保健センター |
+| 1 枚の塗りを線で区切っている | `OK.strokesIn(bbox, 'rgb(220, 221, 221)')` で仕切り線（0.5px）の座標を取り、`OK.rect` で 1 部屋ずつ作る。点線（dash あり）の境界も同様 | イベントホール1〜3（点線 y=696.719/721.414）、SP LAB 1〜9、スタッフルーム1〜10 |
+| 白線で区切った区画 | `'rgb(255, 255, 255)'` の線の頂点をそのまま多角形にする | OIC Shop |
+| 広い床の一部 | `OK.clip(床, x0, y0, x1, y1)` で切り抜く | TRY SQUARE |
+| 塗りのない屋外 | 周囲の床（ベースの灰色）の頂点で囲む。開いた辺は隣の建物の辺にそろえる | OIC Asian Garden、ESORA |
+| 部屋のない設備 | 引出線の端点に 6×6 程度の小さな四角を置く | 証明書自動発行機 |
+| 2 項目が同じ位置 | 同じ外周を両方に設定する | キャンパスインフォメーション／キャンパス管理室1 |
+| 番号付きの部屋群 | 1 項目を番号ごとの項目に置き換える（`replace`）。合算表記はまとめて 1 件にし、各番号を `aliases` に入れる | SP LAB n、スタッフルームn（labelEn: Staff Room n）、音楽練習室n（6・7 は 1 件、別名に 音楽練習室6／7） |
+
+- 置き換えると旧項目の個別 URL（`#1f-<名前>`）は無効になる。報告に書く。
+- 新しい id は `manual-<floorId>-<13桁の時刻>-<6文字>` 形式で、重複させない。
+
+## 7. 未登録の場所の洗い出し
+
+1. `OK.unmatched()` で、どのピン・外周・食事エリアにも含まれない部屋色の塗りを出す。`OK.draw({}, {extra: unmatched.map(u => u.pts)})` で表示する。
+2. 地図全体を区域ごとに `OK.view` して、ラベルがあるのに青点がない場所を目視で探す。地図の外側の引出線ラベル、通路名、右上の部署一覧も見る。
+3. 名前で検索データを照合する。正規化（NFKC・大文字化・記号除去）した文字列の部分一致で確かめる。部分一致による誤ヒット（例: CLA と Classroom）に注意。
+4. 1F で未着手のもの:
+   - iCommons
+   - 事務室内の部署 20 件（AS/AC/AN 事務室の一覧）
+   - 通路名 4 件（コンコース、サブコンコース、キャンパスプロムナード、シンボルプロムナード）
+
+## 8. 書き込み
+
+1. 仕様 JSON を作る。書式は `apply-outlines.mjs` 冒頭のコメントのとおり。SVG 単位で書き、`viewBox` をその階の値にする。
+2. `node scripts/outlines/apply-outlines.mjs spec.json` でドライランし、次を確認する。
+   - 件数の増減。
+   - `other floors unchanged: true`。
+   - 検証エラー 0。
+3. `--write` で保存し、`git diff --stat` で追加・変更行だけであることを確認する。
+4. 英語 SVG との一致を確かめる。英語 SVG で `OK.init` をやり直し、使った塗りの外接矩形が ±0.6 以内で存在することを確認する（1F で実施した方法）。
+
+## 9. テストと記述の更新
+
+- `tests/search-data.test.mjs` の更新箇所:
+  - 総件数（`report.stats.entries`）。
+  - 1F の外周件数（`every first-floor place without a food card…` の数値）。他の階でも同様のテストを足す。
+- `README.md` の件数（日本語・英語の両方）を更新する。
+- 実行するもの:
+  - `node --test tests/search-data.test.mjs`
+  - `node scripts/check-search-data.mjs`
+  - `npm run build`
+
+## 10. ブラウザでの検証
+
+1. 閲覧ページの検索窓に名前を入れ、Enter で選ぶ。外周だけが出てピンが出ないことを、スクショで数件確認する。
+2. 全件を一括で確認する。`location.hash = '<floor>-' + slug(label)` で順に開き、次の 2 点を数える。
+   - 外周の多角形数（`.search-highlight-area-outline`）＝ `outlines.length`
+   - ピン数（`.search-highlight-pin`）＝ 0
+3. slug の規則は、NFKC → 小文字 → 英数字以外を `-` に置換 → 前後の `-` を除去。同名の項目は `-1`、`-2` が付く。
+4. その他の確認項目:
+   - 食事・ATM は食事カードが開く。
+   - 外周のない階はピンのまま。
+   - `/en/` で英語名から引ける。
+   - 375×812 で表示できる。
+   - ホバーで何も出ない。
+   - 検索を消すと外周も消える。
+   - コンソールエラーがない。
+
+## 11. コミット
+
+- 論理単位ごとにコミットする。メッセージはリポジトリの慣習に合わせて英語 1 文＋本文とし、件数の変化を本文に書く。
+- push と PR はユーザーの指示があるまでしない。
