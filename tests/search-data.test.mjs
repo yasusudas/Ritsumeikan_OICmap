@@ -33,7 +33,7 @@ test('canonical search data distinguishes same-floor names without warnings', as
   const report = validateSearchData(payload);
 
   assert.deepEqual(report.errors, []);
-  assert.equal(report.stats.entries, 652); // 580 + H4001–H4045 faculty research offices + A-building 5F faculty research offices 5301–5315 and 5401–5415 (27 rooms, 2026-10-17)
+  assert.equal(report.stats.entries, 668); // 580 + H4001–H4045 faculty research offices + 5F faculty research offices 5301–5315 and 5401–5415 (27 rooms) + H5001–H5006 and H5011–H5020 (16 rooms, 2026-10-17)
   assert.equal(report.stats.facilityRings, 514);
   assert.equal(report.stats.sameFloorLabelGroups, 10);
   assert.equal(report.stats.legacyWhiteRings, 0);
@@ -174,7 +174,7 @@ test('every fifth-floor place has a search outline', async () => {
   const withoutOutline = fifthFloor.filter((entry) => !entry.outlines?.length);
 
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
-  assert.equal(fifthFloor.filter((entry) => entry.outlines?.length).length, 100);
+  assert.equal(fifthFloor.filter((entry) => entry.outlines?.length).length, 116);
 });
 
 test('the 5F A-building faculty research offices are searchable, one outline each', async () => {
@@ -188,6 +188,24 @@ test('the 5F A-building faculty research offices are searchable, one outline eac
   const offices = fifthFloor.filter((entry) => /^5[34]\d\d$/.test(entry.label));
 
   assert.deepEqual(offices.map((entry) => entry.label).sort(), numbers);
+  for (const entry of offices) {
+    assert.equal(entry.outlines.length, 1, entry.label);
+    assert.deepEqual(entry.aliases, ['教員研究室']);
+    assert.equal(entry.labelEn, `${entry.label} Faculty Research Office`);
+  }
+});
+
+test('the 5F H-building faculty research offices are searchable, one outline each', async () => {
+  const payload = await readCanonicalSearchData();
+  const fifthFloor = payload.entries.filter((entry) => entry.floorId === '5F');
+  // The map draws H5001-H5006 and H5011-H5020 only; there are no rooms numbered H5007-H5010.
+  const labels = [
+    ...[1, 2, 3, 4, 5, 6].map((n) => `H50${String(n).padStart(2, '0')}`),
+    ...[11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((n) => `H50${n}`)
+  ];
+  const offices = fifthFloor.filter((entry) => /^H50\d\d$/.test(entry.label));
+
+  assert.deepEqual(offices.map((entry) => entry.label).sort(), labels);
   for (const entry of offices) {
     assert.equal(entry.outlines.length, 1, entry.label);
     assert.deepEqual(entry.aliases, ['教員研究室']);
