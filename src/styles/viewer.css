@@ -797,7 +797,7 @@ body[data-app-mode="editor"] .facility-area-outline {
 }
 
 .search-highlight-area-outline {
-  fill: color-mix(in srgb, var(--search-area-color) 24%, transparent);
+  fill: none;
   stroke: var(--search-area-color);
   stroke-width: 3.5px;
 }
