@@ -3963,6 +3963,44 @@
       ]
     },
     {
+      "id": "manual-1F-1792228564352-sora01",
+      "floorId": "1F",
+      "label": "空のプラザ",
+      "labelEn": "SORA-NO-Plaza",
+      "aliases": [
+        "そらのプラザ",
+        "Sky Plaza"
+      ],
+      "rects": [
+        {
+          "xRatio": 0.514257,
+          "yRatio": 0.584137,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.53441,
+            "yRatio": 0.612429
+          },
+          {
+            "xRatio": 0.495103,
+            "yRatio": 0.612429
+          },
+          {
+            "xRatio": 0.495103,
+            "yRatio": 0.556844
+          },
+          {
+            "xRatio": 0.53441,
+            "yRatio": 0.556844
+          }
+        ]
+      ]
+    },
+    {
       "id": "manual-2F-1775278203379-xcbyzp",
       "floorId": "2F",
       "label": "AC230",
@@ -5031,6 +5069,68 @@
             "xRatio": 0.298056,
             "yRatio": 0.477558
           }
+        ],
+        [
+          {
+            "xRatio": 0.208668,
+            "yRatio": 0.461402
+          },
+          {
+            "xRatio": 0.225728,
+            "yRatio": 0.461402
+          },
+          {
+            "xRatio": 0.225728,
+            "yRatio": 0.498236
+          },
+          {
+            "xRatio": 0.1609,
+            "yRatio": 0.498236
+          },
+          {
+            "xRatio": 0.1609,
+            "yRatio": 0.488829
+          },
+          {
+            "xRatio": 0.208668,
+            "yRatio": 0.488829
+          }
+        ],
+        [
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.497453
+          },
+          {
+            "xRatio": 0.335094,
+            "yRatio": 0.497453
+          },
+          {
+            "xRatio": 0.335094,
+            "yRatio": 0.477558
+          },
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.477558
+          }
+        ],
+        [
+          {
+            "xRatio": 0.330782,
+            "yRatio": 0.530043
+          },
+          {
+            "xRatio": 0.312825,
+            "yRatio": 0.521459
+          },
+          {
+            "xRatio": 0.312825,
+            "yRatio": 0.508212
+          },
+          {
+            "xRatio": 0.335609,
+            "yRatio": 0.508212
+          }
         ]
       ]
     },
@@ -5241,7 +5341,8 @@
     {
       "id": "manual-2F-1775277326290-9zmnmt",
       "floorId": "2F",
-      "label": "H228",
+      "label": "H228 アフレコルーム",
+      "labelEn": "H228 Recording Room",
       "aliases": [],
       "rects": [
         {
@@ -5275,7 +5376,8 @@
     {
       "id": "manual-2F-1775277318253-uwf13n",
       "floorId": "2F",
-      "label": "H238",
+      "label": "H238 フォーリールーム",
+      "labelEn": "H238 Foley Room",
       "aliases": [],
       "rects": [
         {
@@ -5459,19 +5561,19 @@
         [
           {
             "xRatio": 0.19224,
-            "yRatio": 0.418784
-          },
-          {
-            "xRatio": 0.212858,
-            "yRatio": 0.418784
-          },
-          {
-            "xRatio": 0.212858,
             "yRatio": 0.389929
+          },
+          {
+            "xRatio": 0.219289,
+            "yRatio": 0.389929
+          },
+          {
+            "xRatio": 0.219289,
+            "yRatio": 0.418784
           },
           {
             "xRatio": 0.19224,
-            "yRatio": 0.389929
+            "yRatio": 0.418784
           }
         ]
       ]
@@ -5575,6 +5677,41 @@
           {
             "xRatio": 0.129316,
             "yRatio": 0.38993
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-2F-1792228564353-mach02",
+      "floorId": "2F",
+      "label": "音響マシンルーム",
+      "labelEn": "Audio Machine Room",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.121391,
+          "yRatio": 0.415329,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.129316,
+            "yRatio": 0.412873
+          },
+          {
+            "xRatio": 0.114466,
+            "yRatio": 0.412873
+          },
+          {
+            "xRatio": 0.114466,
+            "yRatio": 0.418785
+          },
+          {
+            "xRatio": 0.129316,
+            "yRatio": 0.418785
           }
         ]
       ]
@@ -7872,6 +8009,60 @@
             "xRatio": 0.353521,
             "yRatio": 0.427451
           }
+        ],
+        [
+          {
+            "xRatio": 0.225723,
+            "yRatio": 0.442642
+          },
+          {
+            "xRatio": 0.215348,
+            "yRatio": 0.442642
+          },
+          {
+            "xRatio": 0.215348,
+            "yRatio": 0.427442
+          },
+          {
+            "xRatio": 0.225723,
+            "yRatio": 0.427442
+          }
+        ],
+        [
+          {
+            "xRatio": 0.235137,
+            "yRatio": 0.479705
+          },
+          {
+            "xRatio": 0.254439,
+            "yRatio": 0.479705
+          },
+          {
+            "xRatio": 0.254439,
+            "yRatio": 0.515497
+          },
+          {
+            "xRatio": 0.235137,
+            "yRatio": 0.515497
+          }
+        ],
+        [
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.49776
+          },
+          {
+            "xRatio": 0.335094,
+            "yRatio": 0.49776
+          },
+          {
+            "xRatio": 0.335094,
+            "yRatio": 0.477976
+          },
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.477976
+          }
         ]
       ]
     },
@@ -8869,6 +9060,73 @@
           {
             "xRatio": 0.115778,
             "yRatio": 0.442647
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-3F-1792228564354-lib003",
+      "floorId": "3F",
+      "label": "OICライブラリー(3F)",
+      "labelEn": "OIC Library (3F)",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.457388,
+          "yRatio": 0.840221,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.426821,
+            "yRatio": 0.932732
+          },
+          {
+            "xRatio": 0.437508,
+            "yRatio": 0.932732
+          },
+          {
+            "xRatio": 0.437508,
+            "yRatio": 0.943316
+          },
+          {
+            "xRatio": 0.441409,
+            "yRatio": 0.943316
+          },
+          {
+            "xRatio": 0.441409,
+            "yRatio": 0.952762
+          },
+          {
+            "xRatio": 0.488955,
+            "yRatio": 0.952697
+          },
+          {
+            "xRatio": 0.488955,
+            "yRatio": 0.856838
+          },
+          {
+            "xRatio": 0.47502,
+            "yRatio": 0.856838
+          },
+          {
+            "xRatio": 0.47502,
+            "yRatio": 0.829713
+          },
+          {
+            "xRatio": 0.488955,
+            "yRatio": 0.829713
+          },
+          {
+            "xRatio": 0.488955,
+            "yRatio": 0.72868
+          },
+          {
+            "xRatio": 0.426821,
+            "yRatio": 0.72868
           }
         ]
       ]
@@ -12614,6 +12872,197 @@
       ]
     },
     {
+      "id": "manual-4F-1792228564355-eizo04",
+      "floorId": "4F",
+      "label": "映像学会学生委員会室",
+      "labelEn": "Student Association",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.164118,
+          "yRatio": 0.43709,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.171484,
+            "yRatio": 0.432124
+          },
+          {
+            "xRatio": 0.157752,
+            "yRatio": 0.432124
+          },
+          {
+            "xRatio": 0.157752,
+            "yRatio": 0.443056
+          },
+          {
+            "xRatio": 0.171484,
+            "yRatio": 0.443056
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-4F-1792228564356-proj04",
+      "floorId": "4F",
+      "label": "プロジェクトルーム",
+      "labelEn": "Project Room",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.365708,
+          "yRatio": 0.457131,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.417501
+          },
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.417501
+          },
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.444512
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.444512
+          }
+        ],
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.444512
+          },
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.444512
+          },
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.462269
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.462269
+          }
+        ],
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.462269
+          },
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.462269
+          },
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.480015
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.480015
+          }
+        ],
+        [
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.480015
+          },
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.480015
+          },
+          {
+            "xRatio": 0.373715,
+            "yRatio": 0.497761
+          },
+          {
+            "xRatio": 0.3587,
+            "yRatio": 0.497761
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-4F-1792228564357-lib004",
+      "floorId": "4F",
+      "label": "OICライブラリー(4F)",
+      "labelEn": "OIC Library (4F)",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.458774,
+          "yRatio": 0.839565,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.490513,
+            "yRatio": 0.952725
+          },
+          {
+            "xRatio": 0.490513,
+            "yRatio": 0.853799
+          },
+          {
+            "xRatio": 0.476502,
+            "yRatio": 0.853799
+          },
+          {
+            "xRatio": 0.476502,
+            "yRatio": 0.826503
+          },
+          {
+            "xRatio": 0.490513,
+            "yRatio": 0.826503
+          },
+          {
+            "xRatio": 0.490513,
+            "yRatio": 0.727405
+          },
+          {
+            "xRatio": 0.428035,
+            "yRatio": 0.727405
+          },
+          {
+            "xRatio": 0.428035,
+            "yRatio": 0.932584
+          },
+          {
+            "xRatio": 0.438085,
+            "yRatio": 0.932584
+          },
+          {
+            "xRatio": 0.438085,
+            "yRatio": 0.942991
+          },
+          {
+            "xRatio": 0.442763,
+            "yRatio": 0.942991
+          },
+          {
+            "xRatio": 0.442763,
+            "yRatio": 0.952725
+          }
+        ]
+      ]
+    },
+    {
       "id": "manual-5F-1775280814382-ba0vhf",
       "floorId": "5F",
       "label": "AN510",
@@ -14987,6 +15436,42 @@
           {
             "xRatio": 0.3587,
             "yRatio": 0.498331
+          }
+        ],
+        [
+          {
+            "xRatio": 0.316719,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.326639,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.326639,
+            "yRatio": 0.41952
+          },
+          {
+            "xRatio": 0.316719,
+            "yRatio": 0.41952
+          }
+        ],
+        [
+          {
+            "xRatio": 0.326639,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.335904,
+            "yRatio": 0.390823
+          },
+          {
+            "xRatio": 0.335904,
+            "yRatio": 0.41952
+          },
+          {
+            "xRatio": 0.326639,
+            "yRatio": 0.41952
           }
         ]
       ]
@@ -30743,6 +31228,94 @@
       ]
     },
     {
+      "id": "manual-A-6-9F-1792228564358-kyoz07",
+      "floorId": "A-6-9F",
+      "label": "教材作成室",
+      "labelEn": "Teaching Material Preparation Room",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.278569,
+          "yRatio": 0.63069,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.287827,
+            "yRatio": 0.619922
+          },
+          {
+            "xRatio": 0.270312,
+            "yRatio": 0.619922
+          },
+          {
+            "xRatio": 0.270312,
+            "yRatio": 0.642458
+          },
+          {
+            "xRatio": 0.287827,
+            "yRatio": 0.642458
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-A-6-9F-1792228564359-kodo06",
+      "floorId": "A-6-9F",
+      "label": "行動実験室",
+      "labelEn": "Behavior Laboratory",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.278568,
+          "yRatio": 0.394622,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.270774,
+            "yRatio": 0.359821
+          },
+          {
+            "xRatio": 0.287363,
+            "yRatio": 0.359821
+          },
+          {
+            "xRatio": 0.287363,
+            "yRatio": 0.394042
+          },
+          {
+            "xRatio": 0.270774,
+            "yRatio": 0.394042
+          }
+        ],
+        [
+          {
+            "xRatio": 0.270774,
+            "yRatio": 0.395539
+          },
+          {
+            "xRatio": 0.287363,
+            "yRatio": 0.395539
+          },
+          {
+            "xRatio": 0.287363,
+            "yRatio": 0.430424
+          },
+          {
+            "xRatio": 0.270774,
+            "yRatio": 0.430424
+          }
+        ]
+      ]
+    },
+    {
       "id": "manual-H-6-9F-1775281343778-e3fg6q",
       "floorId": "H-6-9F",
       "label": "H601共同実験室",
@@ -37133,9 +37706,7 @@
       "aliases": [
         "キッチンカー",
         "Kitchen cars",
-        "ランチストリート",
-        "空のプラザ",
-        "Sky Plaza"
+        "ランチストリート"
       ],
       "rects": [
         {

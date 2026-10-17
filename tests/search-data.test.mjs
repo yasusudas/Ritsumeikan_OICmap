@@ -33,7 +33,7 @@ test('canonical search data distinguishes same-floor names without warnings', as
   const report = validateSearchData(payload);
 
   assert.deepEqual(report.errors, []);
-  assert.equal(report.stats.entries, 1021); // 942 + the 79 faculty research offices on the H-building 6F-9F (2026-10-17)
+  assert.equal(report.stats.entries, 1029); // 1021 + the 8 places picked from the unregistered list (2026-10-17)
   assert.equal(report.stats.facilityRings, 514);
   assert.equal(report.stats.sameFloorLabelGroups, 10);
   assert.equal(report.stats.legacyWhiteRings, 0);
@@ -138,7 +138,7 @@ test('every first-floor place without a food card has a search outline', async (
     withoutOutline.filter((entry) => !cardIds.has(entry.id) && !/^ATM$/.test(entry.label)).map((entry) => entry.label),
     []
   );
-  assert.equal(firstFloor.filter((entry) => entry.outlines?.length).length, 96);
+  assert.equal(firstFloor.filter((entry) => entry.outlines?.length).length, 97);
 });
 
 test('every second-floor place has a search outline', async () => {
@@ -147,7 +147,7 @@ test('every second-floor place has a search outline', async () => {
   const withoutOutline = secondFloor.filter((entry) => !entry.outlines?.length);
 
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
-  assert.equal(secondFloor.filter((entry) => entry.outlines?.length).length, 74);
+  assert.equal(secondFloor.filter((entry) => entry.outlines?.length).length, 75);
 });
 
 test('every third-floor place has a search outline', async () => {
@@ -156,7 +156,7 @@ test('every third-floor place has a search outline', async () => {
   const withoutOutline = thirdFloor.filter((entry) => !entry.outlines?.length);
 
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
-  assert.equal(thirdFloor.filter((entry) => entry.outlines?.length).length, 63);
+  assert.equal(thirdFloor.filter((entry) => entry.outlines?.length).length, 64);
 });
 
 test('every fourth-floor place has a search outline', async () => {
@@ -165,7 +165,7 @@ test('every fourth-floor place has a search outline', async () => {
   const withoutOutline = fourthFloor.filter((entry) => !entry.outlines?.length);
 
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
-  assert.equal(fourthFloor.filter((entry) => entry.outlines?.length).length, 105);
+  assert.equal(fourthFloor.filter((entry) => entry.outlines?.length).length, 108);
 });
 
 test('every fifth-floor place has a search outline', async () => {
@@ -256,7 +256,7 @@ test('every A-building 6F-9F place has a search outline', async () => {
   const withoutOutline = buildingA.filter((entry) => !entry.outlines?.length);
 
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
-  assert.equal(buildingA.filter((entry) => entry.outlines?.length).length, 329);
+  assert.equal(buildingA.filter((entry) => entry.outlines?.length).length, 331);
 });
 
 test('the H-building 6F-9F faculty research offices are searchable, one outline each', async () => {
@@ -285,4 +285,45 @@ test('every H-building 6F-9F place has a search outline', async () => {
 
   assert.deepEqual(withoutOutline.map((entry) => entry.label), []);
   assert.equal(buildingH.filter((entry) => entry.outlines?.length).length, 178);
+});
+
+test('the places picked from the unregistered list are searchable by their map names', async () => {
+  const payload = await readCanonicalSearchData();
+  const find = (floorId, label) => {
+    const hits = payload.entries.filter((entry) => entry.floorId === floorId && entry.label === label);
+    assert.equal(hits.length, 1, `${floorId} ${label}`);
+    return hits[0];
+  };
+  // [floor, label, English label (if any), number of outline polygons]
+  const places = [
+    ['1F', '空のプラザ', 'SORA-NO-Plaza', 1],
+    ['2F', '音響マシンルーム', 'Audio Machine Room', 1],
+    ['2F', 'H238 フォーリールーム', 'H238 Foley Room', 1],
+    ['2F', 'H228 アフレコルーム', 'H228 Recording Room', 1],
+    ['2F', 'Connected Learning Commons(2F)', undefined, 5],
+    ['3F', 'OICライブラリー(3F)', 'OIC Library (3F)', 1],
+    ['3F', 'Connected Learning Commons(3F)', undefined, 6],
+    ['4F', '映像学会学生委員会室', 'Student Association', 1],
+    ['4F', 'プロジェクトルーム', 'Project Room', 4],
+    ['4F', 'OICライブラリー(4F)', 'OIC Library (4F)', 1],
+    ['5F', 'プロジェクトルーム', 'Project Room', 6],
+    ['A-6-9F', '教材作成室', 'Teaching Material Preparation Room', 1],
+    ['A-6-9F', '行動実験室', 'Behavior Laboratory', 2]
+  ];
+
+  for (const [floorId, label, labelEn, polygons] of places) {
+    const entry = find(floorId, label);
+    assert.equal(entry.outlines.length, polygons, label);
+    assert.equal(entry.labelEn, labelEn, label);
+  }
+
+  // H245 reaches over the light-blue strip on its right (x 228.87 to 261.07 of the 2F viewBox).
+  const xs = find('2F', 'H245').outlines.flat().map((point) => point.xRatio);
+  assert.ok(Math.abs(Math.min(...xs) - 0.19224) < 1e-5);
+  assert.ok(Math.abs(Math.max(...xs) - 0.219289) < 1e-5);
+
+  // 空のプラザ is also the location hint of the lunch street, which no longer claims it as an alias.
+  const lunchStreet = payload.entries.find((entry) => entry.id === 'manual-1F-1792100000001-kcar01');
+  assert.equal(lunchStreet.locationHint, '空のプラザ');
+  assert.deepEqual(lunchStreet.aliases, ['キッチンカー', 'Kitchen cars', 'ランチストリート']);
 });
