@@ -2236,15 +2236,225 @@
       ]
     },
     {
-      "id": "manual-1F-1775276488715-0vkkmq",
+      "id": "manual-1F-1792400000000-stfr01",
       "floorId": "1F",
-      "label": "スタッフルーム",
-      "labelEn": "Staff Room",
+      "label": "スタッフルーム1",
+      "labelEn": "Staff Room 1",
       "aliases": [],
       "rects": [
         {
-          "xRatio": 0.149929,
-          "yRatio": 0.44738,
+          "xRatio": 0.199479,
+          "yRatio": 0.431219,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.196917,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.203041,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.203041,
+            "yRatio": 0.439903
+          },
+          {
+            "xRatio": 0.196917,
+            "yRatio": 0.439903
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792400000000-stfr02",
+      "floorId": "1F",
+      "label": "スタッフルーム2",
+      "labelEn": "Staff Room 2",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.193356,
+          "yRatio": 0.431219,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.190794,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.196917,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.196917,
+            "yRatio": 0.439903
+          },
+          {
+            "xRatio": 0.190794,
+            "yRatio": 0.439903
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792400000000-stfr03",
+      "floorId": "1F",
+      "label": "スタッフルーム3",
+      "labelEn": "Staff Room 3",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.187233,
+          "yRatio": 0.431219,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.184671,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.190794,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.190794,
+            "yRatio": 0.439903
+          },
+          {
+            "xRatio": 0.184671,
+            "yRatio": 0.439903
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792400000000-stfr04",
+      "floorId": "1F",
+      "label": "スタッフルーム4",
+      "labelEn": "Staff Room 4",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.181109,
+          "yRatio": 0.431219,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.178548,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.184671,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.184671,
+            "yRatio": 0.439903
+          },
+          {
+            "xRatio": 0.178548,
+            "yRatio": 0.439903
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792400000000-stfr05",
+      "floorId": "1F",
+      "label": "スタッフルーム5",
+      "labelEn": "Staff Room 5",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.174986,
+          "yRatio": 0.431219,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.172425,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.178548,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.178548,
+            "yRatio": 0.439903
+          },
+          {
+            "xRatio": 0.172425,
+            "yRatio": 0.439903
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792400000000-stfr06",
+      "floorId": "1F",
+      "label": "スタッフルーム6",
+      "labelEn": "Staff Room 6",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.168414,
+          "yRatio": 0.431219,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.165403,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.172425,
+            "yRatio": 0.423535
+          },
+          {
+            "xRatio": 0.172425,
+            "yRatio": 0.439903
+          },
+          {
+            "xRatio": 0.165403,
+            "yRatio": 0.439903
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792400000000-stfr07",
+      "floorId": "1F",
+      "label": "スタッフルーム7",
+      "labelEn": "Staff Room 7",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.141241,
+          "yRatio": 0.451317,
           "widthRatio": 0.001,
           "heightRatio": 0.001
         }
@@ -2253,37 +2463,124 @@
         [
           {
             "xRatio": 0.134761,
-            "yRatio": 0.446662
+            "yRatio": 0.44665
           },
           {
-            "xRatio": 0.151122,
-            "yRatio": 0.446662
+            "xRatio": 0.148721,
+            "yRatio": 0.44665
           },
           {
-            "xRatio": 0.151122,
+            "xRatio": 0.148721,
+            "yRatio": 0.456984
+          },
+          {
+            "xRatio": 0.134761,
+            "yRatio": 0.456984
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792400000000-stfr08",
+      "floorId": "1F",
+      "label": "スタッフルーム8",
+      "labelEn": "Staff Room 8",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.141241,
+          "yRatio": 0.460837,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.134761,
+            "yRatio": 0.456984
+          },
+          {
+            "xRatio": 0.148721,
+            "yRatio": 0.456984
+          },
+          {
+            "xRatio": 0.148721,
+            "yRatio": 0.46569
+          },
+          {
+            "xRatio": 0.134761,
+            "yRatio": 0.46569
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792400000000-stfr09",
+      "floorId": "1F",
+      "label": "スタッフルーム9",
+      "labelEn": "Staff Room 9",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.141241,
+          "yRatio": 0.46955,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.134761,
+            "yRatio": 0.46569
+          },
+          {
+            "xRatio": 0.148721,
+            "yRatio": 0.46569
+          },
+          {
+            "xRatio": 0.148721,
+            "yRatio": 0.474409
+          },
+          {
+            "xRatio": 0.134761,
+            "yRatio": 0.474409
+          }
+        ]
+      ]
+    },
+    {
+      "id": "manual-1F-1792400000000-stfr10",
+      "floorId": "1F",
+      "label": "スタッフルーム10",
+      "labelEn": "Staff Room 10",
+      "aliases": [],
+      "rects": [
+        {
+          "xRatio": 0.141241,
+          "yRatio": 0.478797,
+          "widthRatio": 0.001,
+          "heightRatio": 0.001
+        }
+      ],
+      "outlines": [
+        [
+          {
+            "xRatio": 0.134761,
+            "yRatio": 0.474409
+          },
+          {
+            "xRatio": 0.148721,
+            "yRatio": 0.474409
+          },
+          {
+            "xRatio": 0.148721,
             "yRatio": 0.484184
           },
           {
             "xRatio": 0.134761,
             "yRatio": 0.484184
-          }
-        ],
-        [
-          {
-            "xRatio": 0.165403,
-            "yRatio": 0.423535
-          },
-          {
-            "xRatio": 0.203041,
-            "yRatio": 0.423535
-          },
-          {
-            "xRatio": 0.203041,
-            "yRatio": 0.443575
-          },
-          {
-            "xRatio": 0.165403,
-            "yRatio": 0.443575
           }
         ]
       ]
