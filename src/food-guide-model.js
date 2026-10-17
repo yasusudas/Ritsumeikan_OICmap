@@ -370,6 +370,55 @@ function translatedPeriod(label, translate) {
   return value === key ? label : value;
 }
 
+const WEEKDAY_LINE = /^\s*(平日|月[〜～–-]金|Mon[–-]Fri|Weekdays?)/i;
+const WEEKEND_LINE = /^\s*(土日祝|土日|土・日|Sat|Weekends?)/i;
+
+const MONTHS_EN = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
+// "12/29〜1/3休" / "Closed Dec 29–Jan 3." -> { from: 1229, to: 103 } (month * 100 + day).
+function closureRange(line) {
+  const ja = line.match(/^\s*(\d{1,2})\/(\d{1,2})\s*[〜～~–-]\s*(\d{1,2})\/(\d{1,2})\s*休/);
+  if (ja) return { from: ja[1] * 100 + +ja[2], to: ja[3] * 100 + +ja[4] };
+  const en = line.match(/Closed\s+([A-Za-z]{3})[a-z]*\.?\s*(\d{1,2})\s*[–-]\s*([A-Za-z]{3})[a-z]*\.?\s*(\d{1,2})/i);
+  if (en && MONTHS_EN[en[1].toLowerCase()] && MONTHS_EN[en[3].toLowerCase()])
+    return { from: MONTHS_EN[en[1].toLowerCase()] * 100 + +en[2], to: MONTHS_EN[en[3].toLowerCase()] * 100 + +en[4] };
+  return null;
+}
+
+// A version's text is split into one item per line, at "; ", and between time ranges
+// ("11:30–15:00（…）、17:00–21:00（…）"). Then, for the compact card:
+// - a closure period ("12/29〜1/3休") is shown only while today falls in it, and then it is the only
+//   line; on every other day it is left out;
+// - lines for weekdays or for weekends/holidays are kept only if they apply today (Japan time: a
+//   Saturday, a Sunday or a listed holiday counts as weekend);
+// - any other line (a single time range, a note) is kept.
+export function pickTodaysHours(text, service, now = new Date()) {
+  const lines = String(text)
+    .split(/\n|;\s+|、(?=\d{1,2}:\d{2})|,\s+(?=\d{1,2}:\d{2})|\.\s+(?=Closed)/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const today = japaneseDate(now);
+  const [, month, day] = today.match(/-(\d{2})-(\d{2})$/).map(Number);
+  const key = month * 100 + day;
+  const closing = lines.filter((line) => closureRange(line));
+  const inClosure = closing.filter((line) => {
+    const { from, to } = closureRange(line);
+    return from <= to ? key >= from && key <= to : key >= from || key <= to;
+  });
+  if (inClosure.length) return inClosure.join('\n');
+  const open = lines.filter((line) => !closureRange(line));
+  if (!open.some((line) => WEEKDAY_LINE.test(line) || WEEKEND_LINE.test(line))) return open.join('\n');
+  const weekday = new Date(`${today}T00:00:00Z`).getUTCDay();
+  const holiday = (service.status?.exceptions || []).some((item) => item.date === today && !item.closed);
+  const weekend = weekday === 0 || weekday === 6 || holiday;
+  return open
+    .filter((line) => {
+      if (WEEKDAY_LINE.test(line)) return !weekend;
+      if (WEEKEND_LINE.test(line)) return weekend;
+      return true;
+    })
+    .join('\n');
+}
+
 export function describeFoodServiceHours(
   service,
   {
@@ -390,7 +439,7 @@ export function describeFoodServiceHours(
         text: translate(loading ? 'food.hoursLoading' : 'food.hoursUnknown'),
       };
     }
-    const periods = compact ? day.periods.slice(0, 1) : day.periods;
+    const periods = day.periods;
     let copy = day.closed
       ? translate('food.closedDay')
       : day.allDay
@@ -431,7 +480,7 @@ export function describeFoodServiceHours(
         kind: version.kind,
         title,
         text: full,
-        sentence: full.split(/\n|。|\.(?:\s|$)/)[0],
+        todayText: pickTodaysHours(full, service, now),
       };
     }),
   };

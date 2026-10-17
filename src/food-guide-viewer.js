@@ -598,14 +598,7 @@ export class FoodGuideViewer {
     this.renderedMode = this.panelMode;
     this.renderHours();
     if (this.panelMode === 'compact') {
-      if (this.getFacility(this.selected)) {
-        const style = this.panel.style,
-          kept = [style.height, style.maxHeight];
-        style.height = 'auto';
-        style.maxHeight = 'none';
-        this.facilityHeight = this.panel.offsetHeight;
-        [style.height, style.maxHeight] = kept;
-      } else this.facilityHeight = 0;
+      this.measureCompactHeight();
       this.minimumCompactHeight =
         this.panel.querySelector('.food-sheet-handle').offsetHeight +
         this.panel.querySelector('.food-panel-header').offsetHeight +
@@ -641,8 +634,12 @@ export class FoodGuideViewer {
       void this.load();
       this.renderPanel();
     }
-    if (action === 'expand') this.setDetails(true);
-    if (action === 'collapse') this.setDetails(false);
+    if (action === 'expand' || action === 'collapse') {
+      // The buttons glide the sheet the same way a swipe does.
+      const from = this.narrow ? this.sheetBox() : null;
+      this.setDetails(action === 'expand');
+      if (from) this.glideSheet(from);
+    }
     if (action === 'list') {
       if (this.browse) {
         this.selected = null;
@@ -913,6 +910,18 @@ export class FoodGuideViewer {
       if (node.innerHTML !== html) node.innerHTML = html;
     }
   }
+  // The compact sheet is as tall as its content (up to the screen less the room kept for the map),
+  // so the hours are never cut off. Measured again when the hours change after loading.
+  measureCompactHeight() {
+    if (this.panelMode !== 'compact' || !this.selected) return;
+    const style = this.panel.style,
+      kept = [style.height, style.maxHeight];
+    style.height = 'auto';
+    style.maxHeight = 'none';
+    this.facilityHeight = this.panel.offsetHeight;
+    [style.height, style.maxHeight] = kept;
+  }
+
   renderHours() {
     if (this.panelMode === 'list') {
       this.renderListStatus();
@@ -924,10 +933,9 @@ export class FoodGuideViewer {
     const compact = this.panelMode === 'compact';
     const loading = Boolean(this.hours.pending) && !this.hours.error;
     root.innerHTML = place.services
-      .slice(0, compact ? 1 : undefined)
       .map((service) => {
         const heading =
-          place.services.length > 1 && !compact
+          place.services.length > 1
             ? `<h4 class="food-service-name">${escape(local(service.name))}</h4>`
             : '';
         const block = describeFoodServiceHours(service, {
@@ -962,7 +970,7 @@ export class FoodGuideViewer {
                   version.kind === 'temporary'
                     ? `<span class="food-chip is-accent">${escape(t('food.temporary'))}</span> `
                     : '';
-                return `<p>${prefix}${escape(version.sentence)}</p>`;
+                return `<p>${prefix}${escape(version.todayText)}</p>`;
               }
               const text = block.dateLabel ? `${block.dateLabel}\n${version.text}` : version.text;
               return `${version.title ? `<h4 class="food-version-title">${escape(version.title)}</h4>` : ''}<p>${escape(text)}</p>`;
@@ -971,6 +979,12 @@ export class FoodGuideViewer {
         );
       })
       .join('');
+    // Hours that arrive or change after the first draw can make the card taller or shorter.
+    if (compact && this.narrow) {
+      const before = this.facilityHeight;
+      this.measureCompactHeight();
+      if (this.facilityHeight !== before) this.positionPanel();
+    }
   }
   scheduleHours() {
     clearTimeout(this.hoursTimer);

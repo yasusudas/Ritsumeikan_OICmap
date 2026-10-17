@@ -198,3 +198,38 @@ test('a published status record must name an assignee and a real expiry', () => 
   data.places[0].services[0].status = { assignee: '' };
   assert.throws(() => validateFoodPlaces(data, entries), /status assignee/);
 });
+
+test('the compact card keeps only the lines that apply today, and never cuts "L.O." in two', async () => {
+  const { pickTodaysHours, describeFoodServiceHours } = await import('../src/food-guide-model.js');
+  const minamen = payload.places.find((place) => place.name.ja === 'みなめんcafe').services[0];
+  const ja = minamen.hours[0].text.ja;
+  const at = (iso) => new Date(iso);
+  // Saturday 2026-10-17, Friday 2026-10-16, and Tuesday 2026-11-03 (a public holiday).
+  assert.equal(pickTodaysHours(ja, minamen, at('2026-10-17T03:00:00Z')), '土日祝 11:00–20:00（L.O. 19:30）');
+  assert.equal(pickTodaysHours(ja, minamen, at('2026-10-16T03:00:00Z')), '平日 10:30–20:30（L.O. 20:00）');
+  assert.equal(pickTodaysHours(ja, minamen, at('2026-11-03T03:00:00Z')), '土日祝 11:00–20:00（L.O. 19:30）');
+  const en = minamen.hours[0].text.en;
+  assert.match(pickTodaysHours(en, minamen, at('2026-10-17T03:00:00Z')), /^weekends and holidays 11:00–20:00 \(last order 19:30\)\.$/);
+  assert.equal(pickTodaysHours('10:30–15:30', minamen, at('2026-10-17T03:00:00Z')), '10:30–15:30');
+  const block = describeFoodServiceHours(minamen, { text: (v) => v.ja, translate: (k) => k, compact: true, now: at('2026-10-17T03:00:00Z') });
+  assert.match(block.versions[0].todayText, /L.O. 19:30）$/);
+});
+
+test('the compact card puts each time range on its own line and shows the year-end closure only during it', async () => {
+  const { pickTodaysHours } = await import('../src/food-guide-model.js');
+  const lion = payload.places.find((place) => place.name.ja === 'GARDEN TERRACE LION').services[0];
+  const { ja, en } = lion.hours[0].text;
+  const at = (iso) => new Date(iso);
+  assert.equal(pickTodaysHours(ja, lion, at('2026-10-17T03:00:00Z')), '11:30–15:00（ランチL.O. 14:30）\n17:00–21:00（料理L.O. 20:00）');
+  assert.equal(pickTodaysHours(en, lion, at('2026-10-17T03:00:00Z')), '11:30–15:00 (lunch last order 14:30)\n17:00–21:00 (food last order 20:00)');
+  // 12/28 is open; 12/29, 12/31, 1/1 and 1/3 are closed (and then only the closure is shown); 1/4 is open.
+  assert.equal(pickTodaysHours(ja, lion, at('2026-12-28T03:00:00Z')).split('\n').length, 2);
+  for (const day of ['2026-12-29', '2026-12-31', '2027-01-01', '2027-01-03']) {
+    assert.equal(pickTodaysHours(ja, lion, at(`${day}T03:00:00Z`)), '12/29〜1/3休', day);
+    assert.equal(pickTodaysHours(en, lion, at(`${day}T03:00:00Z`)), 'Closed Dec 29–Jan 3.', day);
+  }
+  assert.equal(pickTodaysHours(ja, lion, at('2027-01-04T03:00:00Z')).includes('休'), false);
+  // 12/28 at 23:30 JST is still 12/28; 12/29 at 00:30 JST (= 12/28 15:30Z) is already the closure.
+  assert.equal(pickTodaysHours(ja, lion, at('2026-12-28T14:30:00Z')).includes('休'), false);
+  assert.equal(pickTodaysHours(ja, lion, at('2026-12-28T15:30:00Z')), '12/29〜1/3休');
+});
