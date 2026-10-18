@@ -1,5 +1,11 @@
 # 立命館OICマップ / Ritsumeikan OIC Map
 
+## サイト全体の自動テスト
+
+`npm ci` → `npm run test:e2e:install` → `npm run test:site` で、既存テストとPC・モバイルのブラウザ操作をまとめて実行できます。検索データ全件、食事場所、全ページ、時刻表、編集画面、通信失敗からの復旧、レスポンシブ表示が対象です。
+
+ページ別の全操作一覧、検証範囲、実行オプションは [docs/site-test-matrix.md](docs/site-test-matrix.md) を参照してください。`npm run --silent test:inventory -- --json` で元データから最新の操作対象一覧を出力できます。
+
 ## 日本語
 
 ### 概要

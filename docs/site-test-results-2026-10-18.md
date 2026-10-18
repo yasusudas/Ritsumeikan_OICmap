@@ -1,0 +1,52 @@
+# サイト全体テスト実行結果 — 2026-10-18
+
+`main` を pull 後、`origin/dev` を追跡する `dev` に切り替えて再度 pull。検査対象のアプリ本体は `32e9bd8`。今回の変更はテスト、ドキュメント、開発用依存関係で、以下のサイト側の問題は未修正。
+
+```sh
+E2E_PORT=4177 E2E_WORKERS=4 E2E_OUTPUT_DIR=/tmp/oicmap-verified npm run test:site
+```
+
+Chromium の PC 1440×900 とモバイル 390×844、レスポンシブ13幅で実行。ブラウザ検査の所要時間は約4分19秒。テストの自動再試行は0回。
+
+| 検査 | 結果 |
+|---|---|
+| 日英HTML整合性・検索データ検査・操作一覧生成 | 成功 |
+| Node 単体・回帰テスト | 139件成功、失敗0 |
+| ブラウザ E2E | 276ケース中、252成功・7失敗・17スキップ |
+| 全教室・施設検索 | 1,029件 × 日英 × PC/モバイル = 4,116回、全104バッチ成功 |
+| 全登録別名の検索 | 417件 × 日英 × PC/モバイル = 1,668回、全24バッチ成功 |
+| レスポンシブ | 13幅中12幅成功。320pxのみ出典ページで失敗 |
+
+対象一覧は17ページ、静的コントロール201個、検索1,029件、登録別名417件、施設リング514件、店舗11件、時刻表8カード。詳細な対応表は [site-test-matrix.md](site-test-matrix.md)。店舗/施設カードの検査は日英とも13対象まで巡回し、誤選択後も後続を検査した。
+
+## 検出した問題
+
+| 問題 | 実測・再現条件 | 失敗ケース数 |
+|---|---|---:|
+| 編集画面の言語切替で閲覧画面へ移動 | `/editor/login/` と認証済み `/editor/` で言語ボタンを押すと `/en/` に移動する。両画面を維持する期待に反する。PC・モバイルで再現 | 4 |
+| 320pxの出典ページに横はみ出し | `/sources/` の文書幅330px、`/en/sources/` は329px。フォントと描画を待っても残る。外部Webフォントを置換したOSフォールバックフォントでの結果 | 1（2ページ分の検出） |
+| モバイルで店舗ピンが別の店舗を選択 | 390×844で検索から対象を表示し、カードと領域を開閉した後、ピン中央を実タップ。GARDEN TERRACE LION → スターバックス、OIC Meal Shop → OIC Cafeteria。日英両方で再現 | 2（各2店舗分の検出） |
+
+これらは通常の失敗として残しているため、統合コマンドの終了コードは1。既知の失敗として合格扱いにする指定は入れていない。
+
+```sh
+npm run test:e2e -- --grep 'EDITOR .*language|RESPONSIVE.*320|FOOD every pin'
+```
+
+## スキップと検査条件
+
+17スキップのうち15件は対象プロジェクトの重複除外（画面幅行列13件、PCでのモバイルシート1件、PCでのタッチ入力1件）。残り2件は実パスワードの環境変数 `E2E_EDITOR_PASSWORD` が未指定のため。通常の編集操作は隔離した認証fixtureで実行済み。
+
+外部APIは固定応答、外部リンク先と外部フォントはテスト応答に置換。問い合わせ送信、通話、予約、実際の外部APIの稼働、実機SafariやOSのIME/PWAインストール画面はこの実行結果に含まない。Safari/WebKit用の追加設定は用意しているが、今回は未実行。
+
+## この実行の証拠
+
+以下はこのMacの一時ディレクトリに保存した実行成果物。通常の実行先と分けて保存しているが、OSの一時ファイル削除後は再実行が必要。
+
+- [統合実行ログ](/tmp/oicmap-verified.log)
+- [ブラウザ結果 JSON](/tmp/oicmap-verified/results.json)
+- [LIONのピンからスターバックスが開いた画面](/tmp/oicmap-verified/evidence/mobile-wrong-pin-manual-1F-1775276107988-dvmwti.png)
+- [Meal ShopのピンからCafeteriaが開いた画面](/tmp/oicmap-verified/evidence/mobile-wrong-pin-manual-1F-1775192494050-2avkfe.png)
+- [320pxの出典ページ](/tmp/oicmap-verified/evidence/desktop-overflow--sources-.png)
+
+操作トレースは `/tmp/oicmap-verified/results/<失敗テスト名>/trace.zip` に保存。`npx playwright show-trace <trace.zip>` で再生できる。
