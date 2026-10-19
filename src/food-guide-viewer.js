@@ -875,9 +875,9 @@ export class FoodGuideViewer {
     this.close({ sheet: true });
   }
 
-  // The places whose hours or open/closed label are on screen: the selected one, or all of them in the list.
+  // Places whose hours or status are on screen: the hover tip, selected card, or list.
   shownPlaces() {
-    if (!this.panelMode) return [];
+    if (!this.panelMode) return [this.getPlace(this.hovered)].filter(Boolean);
     if (this.selected) return [this.getPlace(this.selected)].filter(Boolean);
     return this.panelMode === 'list' ? this.places : [];
   }
@@ -923,6 +923,7 @@ export class FoodGuideViewer {
   }
 
   renderHours() {
+    this.renderHover();
     if (this.panelMode === 'list') {
       this.renderListStatus();
       return;
@@ -1377,34 +1378,62 @@ export class FoodGuideViewer {
     this.hoverTimer = setTimeout(
       () => {
         if (this.panelMode || this.hovered !== id) return;
-        const place = this.getPlace(id) ?? this.getFacility(id),
-          button = this.nodes.get(id);
-        this.tip.innerHTML = `<strong>${escape(local(place.name))}</strong><p>${escape(local(place.summary))}</p>`;
         this.tip.hidden = false;
-        const r =
-          button && !button.hidden
-            ? button.getBoundingClientRect()
-            : {
-                left: this.hoverPosition?.x || 8,
-                top: this.hoverPosition?.y || 8,
-                width: 0,
-                height: 0,
-              };
-        const box = this.tip.getBoundingClientRect();
-        const left = Math.max(
-          8,
-          Math.min(
-            innerWidth - box.width - 8,
-            r.left + r.width / 2 - box.width / 2,
-          ),
-        );
-        const above = r.top - box.height - 8;
-        this.tip.style.left = `${left}px`;
-        this.tip.style.top = `${above >= 8 ? above : Math.min(innerHeight - box.height - 8, r.top + r.height + 8)}px`;
-        button?.setAttribute('aria-describedby', this.tip.id);
+        if (this.needsHours() && this.hours.needsRefresh()) void this.hours.refresh();
+        this.renderHover();
+        this.scheduleHours();
       },
       keyboard ? 0 : 200,
     );
+  }
+  renderHover() {
+    if (this.tip.hidden || !this.hovered) return;
+    const place = this.getPlace(this.hovered) ?? this.getFacility(this.hovered);
+    if (!place) return;
+    let body = `<p>${escape(local(place.summary))}</p>`;
+    if (place.services) {
+      const hours = place.services.map((service) => {
+        const block = describeFoodServiceHours(service, {
+          text: local,
+          translate: t,
+          lang: getLang(),
+          payload: this.hours.payload,
+          loading: Boolean(this.hours.pending) && !this.hours.error,
+          compact: true,
+        });
+        const text = block.kind === 'versions'
+          ? block.versions.map((version) => version.todayText).join('\n')
+          : block.text;
+        return `${place.services.length > 1 ? `${local(service.name)}: ` : ''}${text}`;
+      }).join('\n');
+      const status = place.entryId === 'manual-1F-1775168091518-86hkqm'
+        ? ''
+        : this.listStatus(place) || `<span class="food-status is-unknown">${escape(t('food.status.unknown'))}</span>`;
+      body = `${status ? `<p class="food-hover-status">${status}</p>` : ''}<p class="food-hover-hours">${escape(hours)}</p>`;
+    }
+    this.tip.innerHTML = `<strong>${escape(local(place.name))}</strong>${body}`;
+    const button = this.nodes.get(this.hovered);
+    const r =
+      button && !button.hidden
+        ? button.getBoundingClientRect()
+        : {
+            left: this.hoverPosition?.x || 8,
+            top: this.hoverPosition?.y || 8,
+            width: 0,
+            height: 0,
+          };
+    const box = this.tip.getBoundingClientRect();
+    const left = Math.max(
+      8,
+      Math.min(
+        innerWidth - box.width - 8,
+        r.left + r.width / 2 - box.width / 2,
+      ),
+    );
+    const above = r.top - box.height - 8;
+    this.tip.style.left = `${left}px`;
+    this.tip.style.top = `${above >= 8 ? above : Math.min(innerHeight - box.height - 8, r.top + r.height + 8)}px`;
+    button?.setAttribute('aria-describedby', this.tip.id);
   }
   leaveHover() {
     clearTimeout(this.hoverTimer);
@@ -1426,5 +1455,6 @@ export class FoodGuideViewer {
     if (old) {
       this.renderAreas();
     }
+    this.scheduleHours();
   }
 }

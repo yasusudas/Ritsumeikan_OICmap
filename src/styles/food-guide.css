@@ -219,6 +219,17 @@ body[data-app-mode='viewer'] {
   -webkit-line-clamp: 2;
 }
 
+.food-hover-tip .food-hover-status,
+.food-hover-tip .food-hover-hours {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+}
+
+.food-hover-tip .food-hover-hours {
+  white-space: pre-line;
+}
+
 /* ---------------------------------------------------------------------
    Store card and list: one grey sheet, like the search results and the
    phone floor list. Controls inside it are white.
