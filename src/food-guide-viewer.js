@@ -1,5 +1,12 @@
 import { getLang, t } from './i18n.js';
-import { hasFoodUsage, renderFoodLinkButtons, renderFoodLinkRows, renderFoodStatus, renderFoodUsage } from './food-place-cards.js';
+import {
+  hasFoodUsage,
+  renderFoodLinkButtons,
+  renderFoodLinkRows,
+  renderFoodStateLabel,
+  renderFoodStatus,
+  renderFoodUsage,
+} from './food-place-cards.js';
 import { FACILITY_PLACES, FACILITY_TEXT, facilityAnchor } from './facility-places.js';
 import {
   validateFoodPlaces,
@@ -899,9 +906,7 @@ export class FoodGuideViewer {
     );
     if (!states.length || states.includes('disabled')) return '';
     const state = states.includes('within') ? 'within' : states.includes('unknown') ? 'unknown' : 'outside';
-    const label = escape(t(`food.status.${state}`));
-    if (state === 'unknown') return `<span class="food-status is-unknown">${label}</span>`;
-    return `<span class="food-chip${state === 'within' ? ' is-accent' : ''}">${label}</span>`;
+    return renderFoodStateLabel(state, t);
   }
   renderListStatus() {
     for (const node of this.panel.querySelectorAll('[data-food-list-status]')) {
@@ -1408,7 +1413,7 @@ export class FoodGuideViewer {
       }).join('\n');
       const status = place.entryId === 'manual-1F-1775168091518-86hkqm'
         ? ''
-        : this.listStatus(place) || `<span class="food-status is-unknown">${escape(t('food.status.unknown'))}</span>`;
+        : this.listStatus(place) || renderFoodStateLabel('unknown', t);
       body = `${status ? `<p class="food-hover-status">${status}</p>` : ''}<p class="food-hover-hours">${escape(hours)}</p>`;
     }
     this.tip.innerHTML = `<strong>${escape(local(place.name))}</strong>${body}`;

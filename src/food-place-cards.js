@@ -98,13 +98,17 @@ export function foodPlacesReady(places) {
   });
 }
 
+// The open/closed label: 'within', 'outside' or 'unknown'. Shared by the map card, the store list,
+// the hover summary and the OIC Food page.
+export function renderFoodStateLabel(state, translate) {
+  return `<span class="food-open-state is-${state}">${escapeHtml(translate(`food.status.${state}`))}</span>`;
+}
+
 export function renderFoodStatus(service, { translate, now, fetchFailed = false, payload = null } = {}) {
   const judgment = judgeFoodServiceStatus(service, { now, fetchFailed, payload });
   if (judgment.state === 'disabled') return '';
-  const label = escapeHtml(translate(`food.status.${judgment.state}`));
-  if (judgment.state === 'unknown') return `<p class="food-status is-unknown">${label}</p>`;
-  const chip = `<span class="food-chip${judgment.state === 'within' ? ' is-accent' : ''}">${label}</span>`;
-  return `<p class="food-status">${chip}</p>`;
+  const label = renderFoodStateLabel(judgment.state, translate);
+  return `<p class="food-status${judgment.state === 'unknown' ? ' is-unknown' : ''}">${label}</p>`;
 }
 
 // A service whose four answers are all 'na' has no visitor information to show.
