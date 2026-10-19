@@ -365,31 +365,56 @@ body[data-app-mode="viewer"] .search-highlight-area {
     max-width: none;
   }
 
-  /* Floors: a column of lift buttons along the left edge */
+  /* Floors: a column of lift buttons along the left edge. Each group
+     hugs its own labels, so the white sheet steps out into an L. */
   body[data-app-mode="viewer"] .floor-tab-stack {
+    --floor-sheet-radius: 24px;
+    --floor-sheet-fillet: 14px;
     position: absolute;
     top: calc(100% + 20px);
     left: var(--ls-edge);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2px;
+    gap: 0;
     min-height: 0;
     margin: 0;
-    padding: 10px 14px 12px 10px;
-    border-radius: 24px;
-    background: #ffffff;
+    padding: 0;
   }
 
   body[data-app-mode="viewer"] .floor-tabs {
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
+    background: #ffffff;
+  }
+
+  body[data-app-mode="viewer"] .floor-tabs-primary {
+    position: relative;
+    padding: 10px 14px 0 10px;
+    border-radius: var(--floor-sheet-radius) var(--floor-sheet-radius) 0 0;
+  }
+
+  /* Concave corner where the narrow floors meet the wider building row */
+  body[data-app-mode="viewer"] .floor-tabs-primary::after {
+    content: "";
+    position: absolute;
+    right: calc(var(--floor-sheet-fillet) * -1);
+    bottom: 0;
+    width: var(--floor-sheet-fillet);
+    height: var(--floor-sheet-fillet);
+    background: radial-gradient(
+      circle at 100% 0,
+      transparent calc(var(--floor-sheet-fillet) - 0.5px),
+      #ffffff var(--floor-sheet-fillet)
+    );
+    pointer-events: none;
   }
 
   body[data-app-mode="viewer"] .floor-tabs-secondary {
-    margin: 10px 0 0;
-    padding: 0;
+    margin: 0;
+    padding: 10px 14px 12px 10px;
+    border-radius: 0 var(--floor-sheet-radius) var(--floor-sheet-radius) var(--floor-sheet-radius);
   }
 
   body[data-app-mode="viewer"] .floor-tab {

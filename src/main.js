@@ -353,7 +353,6 @@ if (window.__FILE_MODE__) {
     initialZoom: 1,
     safeInsetTop: 0,
     safeInsetBottom: 0,
-    safeInsetLeft: 0,
     facilityToggleState: Object.fromEntries(
       searchIconButtons
         .map((button) => button.dataset.facilityKey?.trim())
@@ -1814,23 +1813,14 @@ if (window.__FILE_MODE__) {
 
   // Height of the floating top bar / footer that overlay the full-bleed map,
   // so the map can be fitted/positioned into the readable area between them.
-  function floorChooserLeftInset() {
-    const stack = document.querySelector('.floor-tab-stack');
-    if (!stack) return 0;
-    if (getComputedStyle(stack).position !== 'absolute') return 0;
-    const rect = stack.getBoundingClientRect();
-    if (rect.width < 48 || rect.left > 120) return 0;
-    return Math.ceil(rect.right + 16);
-  }
-
   function computeViewerSafeInsets() {
     if (isEditorSite) {
-      return { top: 0, bottom: 0, left: 0 };
+      return { top: 0, bottom: 0 };
     }
     const top = topbar ? Math.ceil(topbar.getBoundingClientRect().height) : 0;
     const footerEl = document.querySelector('.site-footer');
     const bottom = footerEl ? Math.ceil(footerEl.getBoundingClientRect().height) : 0;
-    return { top, bottom, left: floorChooserLeftInset() };
+    return { top, bottom };
   }
 
   function getMapFit(intrinsicWidth, intrinsicHeight) {
@@ -1844,21 +1834,13 @@ if (window.__FILE_MODE__) {
     // Phones: the landscape floor sheets are width-limited, so let them run
     // edge to edge; the sheet's own page margin is the breathing room.
     const isNarrowViewer = !isEditorSite && viewport.width <= MOBILE_MAP_VIEWPORT_MAX_WIDTH;
-    const left = insets.left || 0;
-    const safeWidth = isNarrowViewer ? viewport.width : Math.max(viewport.width - left - MAP_PADDING, 80);
+    const safeWidth = isNarrowViewer ? viewport.width : availableWidth;
     // Contain = whole floor visible. Cover = map fills the frame edge-to-edge.
     const containScale = Math.min(availableWidth / intrinsicWidth, availableHeight / intrinsicHeight);
     const coverScale = Math.max(viewport.width / intrinsicWidth, viewport.height / intrinsicHeight);
     const safeContainScale = Math.min(safeWidth / intrinsicWidth, safeHeight / intrinsicHeight);
 
-    return {
-      containScale,
-      coverScale,
-      safeContainScale,
-      insetTop: insets.top,
-      insetBottom: insets.bottom,
-      insetLeft: insets.left || 0
-    };
+    return { containScale, coverScale, safeContainScale, insetTop: insets.top, insetBottom: insets.bottom };
   }
 
   // Keeps the ring layer over the floor image: it changes only when the canvas layer's style does.
@@ -1950,9 +1932,7 @@ if (window.__FILE_MODE__) {
     const { width: viewportWidth, height: viewportHeight } = getViewportSize();
     const top = state.safeInsetTop || 0;
     const bottom = state.safeInsetBottom || 0;
-    const left = state.safeInsetLeft || 0;
     const safeHeight = Math.max(viewportHeight - top - bottom, 0);
-    const readableWidth = Math.max(viewportWidth - left, 0);
     const scaledWidth = state.baseWidth * zoom;
     const scaledHeight = state.baseHeight * zoom;
     const next = { x, y };
@@ -1962,12 +1942,11 @@ if (window.__FILE_MODE__) {
       return { x: clamp(x, 48 - scaledWidth, viewportWidth - 48), y: clamp(y, top + 48 - scaledHeight, viewportHeight - bottom - 48) };
     }
 
-    if (zoom <= (state.minZoom || 1) + 1e-4 && scaledWidth <= readableWidth) {
-      // Opening view only: sit the whole floor to the right of the floor list.
-      next.x = left + (readableWidth - scaledWidth) / 2;
+    if (zoom <= (state.minZoom || 1) + 1e-4 && scaledWidth <= viewportWidth) {
+      // Opening view only: centre the whole floor on the viewport.
+      next.x = (viewportWidth - scaledWidth) / 2;
     } else if (scaledWidth <= viewportWidth) {
-      // Zooming in must keep the focal point. Forcing x to 0 here snaps the
-      // sheet left as soon as it is wider than the area beside the floor list.
+      // Zooming in must keep the focal point, so the sheet is only kept on screen.
       next.x = clamp(x, 0, Math.max(0, viewportWidth - scaledWidth));
     } else {
       next.x = clamp(x, viewportWidth - scaledWidth, 0);
@@ -2068,7 +2047,6 @@ if (window.__FILE_MODE__) {
     state.baseHeight = asset.height * baseScale;
     state.safeInsetTop = fit.insetTop;
     state.safeInsetBottom = fit.insetBottom;
-    state.safeInsetLeft = fit.insetLeft || 0;
 
     if (useFillFit) {
       // The opening view (the whole floor inside the readable zone, clear of
@@ -2203,10 +2181,9 @@ if (window.__FILE_MODE__) {
     const { width, height } = getViewportSize();
     const top = state.safeInsetTop || 0;
     const bottom = state.safeInsetBottom || 0;
-    const left = state.safeInsetLeft || 0;
     const scaledWidth = state.baseWidth * state.zoom;
     const scaledHeight = state.baseHeight * state.zoom;
-    state.x = left + (width - left - scaledWidth) / 2;
+    state.x = (width - scaledWidth) / 2;
     state.y = top + (height - top - bottom - scaledHeight) / 2;
     updateView();
   }
