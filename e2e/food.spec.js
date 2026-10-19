@@ -84,16 +84,25 @@ for (const lang of languages) {
         if (foodData.places.includes(place)) {
           const pin = page.locator(`.food-pin[data-food-place="${place.entryId}"]`);
           if (isMobile) {
-            // Tap the visible pixel, letting the browser dispatch to its actual target.
-            // This also detects a different store's polygon intercepting the pin.
+            // The 48px button includes transparent space and a clipped hit area.
+            // Its box centre can be outside this pin, so tap the visible badge.
             await expect(pin).toBeVisible();
-            const box = await pin.boundingBox();
-            await page.touchscreen.tap(box.x + box.width / 2, box.y + box.height / 2);
+            const badge = pin.locator('.food-badge');
+            const box = await badge.boundingBox();
+            const point = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+            const hitId = await page.evaluate(({ x, y }) =>
+              document.elementFromPoint(x, y)?.closest('.food-pin')?.dataset.foodPlace,
+            point);
+            expect(hitId, `Visible pin ${place.name[lang]} must receive its own tap`).toBe(place.entryId);
+            await page.touchscreen.tap(point.x, point.y);
           } else await pin.click();
           await expect(page.locator('.food-panel')).toBeVisible();
           await expect.soft(page.locator('.food-card-brand'), `Pin ${place.name[lang]} must select its own card`).toHaveAttribute('data-food-place', place.entryId);
           if (await page.locator('.food-card-brand').getAttribute('data-food-place') !== place.entryId) {
             await screenshot(page, testInfo, `wrong-pin-${place.entryId}`);
+          }
+          if (isMobile && ['GARDEN TERRACE LION', 'OIC Meal Shop'].includes(place.name.en)) {
+            await screenshot(page, testInfo, `verified-pin-${place.entryId}-${lang}`);
           }
           await closeFood(page);
           await pin.press('Enter');

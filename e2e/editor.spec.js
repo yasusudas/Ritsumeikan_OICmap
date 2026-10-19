@@ -1,4 +1,4 @@
-import { test, expect, goto, noOverflow, chooseFloor, floors } from './helpers.js';
+import { test, expect, goto, noOverflow, chooseFloor, floors, screenshot } from './helpers.js';
 
 const authKey = 'rits-oic-map-editor-auth-v1';
 const draftKey = 'campus-map-manual-draft-v5';
@@ -49,20 +49,45 @@ test('EDITOR login guard, invalid/empty password, return and logout', async ({ p
   expect(await page.evaluate(key => sessionStorage.getItem(key), authKey)).toBeNull();
 });
 
-test('EDITOR login language toggle preserves the login route', async ({ page }) => {
-  await goto(page, '/editor/login/');
+test('EDITOR login language toggle preserves the login route', async ({ page }, testInfo) => {
+  const route = '/editor/login/?next=%2Feditor%2F#AC130';
+  await goto(page, route);
   await page.locator('[data-lang-toggle]').click();
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-  await expect(page).toHaveURL(/\/editor\/login\//);
+  await expect(page).toHaveURL(new URL(route, page.url()).href);
   await expect(page.locator('#editor-login-password')).toBeVisible();
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await expect(page.locator('#editor-login-password')).toBeVisible();
+  await noOverflow(page);
+  await screenshot(page, testInfo, 'verified-editor-login-en');
+  await page.locator('[data-lang-toggle]').click();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'ja');
+  await expect(page).toHaveURL(new URL(route, page.url()).href);
 });
 
-test('EDITOR authenticated language toggle preserves the editor and draft', async ({ page }) => {
+test('EDITOR authenticated language toggle preserves the editor and draft', async ({ page, isMobile }, testInfo) => {
   await authenticatedEditor(page);
+  const before = await payload(page);
   await page.locator('[data-lang-toggle]').click();
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page).toHaveURL(/\/editor\/$/);
-  expect((await payload(page)).entries[0].id).toBe('e2e-room');
+  expect(await payload(page)).toEqual(before);
+  await expect(page.locator('#editor-label')).toBeVisible();
+  const viewport = page.viewportSize();
+  for (const width of isMobile ? [320, viewport.width] : [viewport.width]) {
+    await page.setViewportSize({ ...viewport, width });
+    await noOverflow(page);
+  }
+  await screenshot(page, testInfo, 'verified-editor-session-en');
+  await page.locator('[data-lang-toggle]').click();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'ja');
+  await expect(page).toHaveURL(/\/editor\/$/);
+  expect(await payload(page)).toEqual(before);
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'ja');
+  await expect.poll(() => payload(page)).toEqual(before);
+  await noOverflow(page);
 });
 
 test('EDITOR real password login when explicitly configured', async ({ page }) => {

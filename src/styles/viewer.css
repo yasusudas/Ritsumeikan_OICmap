@@ -1069,6 +1069,7 @@ body[data-app-mode="editor"] .topbar {
   position: relative;
   z-index: 10;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--s-3);
   padding: calc(var(--s-4) + env(safe-area-inset-top, 0px)) var(--gutter) var(--s-4);
   border-bottom: var(--rule);

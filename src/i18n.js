@@ -780,8 +780,11 @@ export function applyI18n(root = document) {
 
 export function setLang(lang, { persist = true, notify = true } = {}) {
   const nextLang = lang === 'en' ? 'en' : 'ja';
+  const appMode = document.body?.dataset.appMode;
 
-  if (!window.__FILE_MODE__) {
+  // The editor and login share one route across languages; keep their state
+  // mounted instead of navigating to the public map.
+  if (!window.__FILE_MODE__ && appMode !== 'editor' && appMode !== 'login') {
     const isEnPath = window.location.pathname === '/en' || window.location.pathname.startsWith('/en/');
     const needsNavigation = (nextLang === 'en' && !isEnPath) || (nextLang === 'ja' && isEnPath);
 
@@ -789,7 +792,7 @@ export function setLang(lang, { persist = true, notify = true } = {}) {
       if (persist) {
         try { window.localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLang); } catch {}
       }
-      if (document.body?.dataset.appMode === 'viewer') {
+      if (appMode === 'viewer') {
         const target = new URL(window.location.href);
         target.pathname = nextLang === 'en' ? '/en/' : '/';
         window.history.replaceState(window.history.state, '', `${target.pathname}${target.search}${target.hash}`);

@@ -48,6 +48,42 @@ test('viewer language switching keeps query/hash/history state without navigatin
   assert.deepEqual(events.map(event => event.detail.lang), ['en', 'ja']);
 });
 
+test('editor and login switch language in place, preserving their route and stored draft', () => {
+  for (const appMode of ['editor', 'login']) {
+    const originalUrl = `https://rits-oic-map.app/editor/${appMode === 'login' ? 'login/?next=%2Feditor%2F' : '?source=qa'}#AC130`;
+    let url = new URL(originalUrl);
+    let navigations = 0;
+    const draft = '{"entries":[{"id":"unsaved-room"}]}';
+    const storage = new Map([['campus-map-manual-draft-v5', draft]]);
+    const events = [];
+    const context = vm.createContext({
+      URL, document: { body: { dataset: { appMode } } },
+      window: {
+        location: {
+          get pathname() { return url.pathname; },
+          get href() { return url.href; },
+          set href(value) { navigations++; url = new URL(value, url); },
+        },
+        history: { replaceState: () => { throw new Error('Editor URL must stay unchanged'); } },
+        localStorage: { setItem: (key, value) => storage.set(key, value) },
+        dispatchEvent: event => events.push(event.detail.lang),
+      },
+      applyI18n: noop, LANGUAGE_STORAGE_KEY: 'language', LANGUAGE_CHANGE_EVENT: 'languagechange',
+      CustomEvent: class { constructor(type, options) { this.type = type; this.detail = options.detail; } },
+    });
+    vm.runInContext("let currentLang = 'ja';", context);
+    vm.runInContext(i18n.match(/^export function setLang\([^]*?^}/m)[0].replace('export ', ''), context);
+    for (const lang of ['en', 'ja']) {
+      context.setLang(lang);
+      assert.equal(url.href, originalUrl);
+      assert.equal(storage.get('language'), lang);
+      assert.equal(storage.get('campus-map-manual-draft-v5'), draft);
+    }
+    assert.equal(navigations, 0);
+    assert.deepEqual(events, ['en', 'ja']);
+  }
+});
+
 test('language refresh retains whether search suggestions were open or closed', () => {
   for (const hidden of [true, false]) {
     const context = vm.createContext({
