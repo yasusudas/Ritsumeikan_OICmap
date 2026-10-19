@@ -2,6 +2,7 @@ import { getLang, t } from './i18n.js';
 import {
   hasFoodUsage,
   renderFoodLinkButtons,
+  renderFoodLeadStatus,
   renderFoodLinkRows,
   renderFoodStateLabel,
   renderFoodStatus,
@@ -579,7 +580,7 @@ export class FoodGuideViewer {
       if (!place) return;
       header = `<div class="food-card-brand" data-food-place="${escape(place.entryId)}">${this.markerVisual(place, { heading: true })}<div><h2 id="food-panel-title" tabindex="-1">${escape(local(place.name))}</h2><p class="food-meta">${escape(local(place.building))} · 1F</p></div></div>${close}`;
       // The description lives on the OIC Food page; the map card starts with the hours.
-      body = `<section class="food-hours"><h3 class="food-heading">${escape(t('food.hours'))}</h3><div class="food-hours-list" data-food-hours></div></section>`;
+      body = `<section class="food-hours"><div class="food-lead-status" data-food-lead-status></div><h3 class="food-heading">${escape(t('food.hours'))}</h3><div class="food-hours-list" data-food-hours></div></section>`;
       if (place.todayTrucks) {
         body += this.renderTrucksSection(place.todayTrucks);
         this.ensureTrucks();
@@ -952,13 +953,15 @@ export class FoodGuideViewer {
           loading,
           compact,
         });
-        const status = renderFoodStatus(service, {
-          translate: t,
-          payload: this.hours.payload,
-          fetchFailed: Boolean(service.coopScheduleName && this.hours.error),
-          compact,
-        });
-        // The status chip comes first, right under the heading (as on the food page).
+        const status =
+          place.services.length > 1
+            ? renderFoodStatus(service, {
+                translate: t,
+                payload: this.hours.payload,
+                fetchFailed: Boolean(service.coopScheduleName && this.hours.error),
+              })
+            : '';
+        // With several services, each label comes right under its service name (as on the food page).
         if (block.kind === 'message') return `${heading}${status}<p>${escape(block.text)}</p>`;
         if (block.kind === 'coop') {
           const source = compact
@@ -985,6 +988,13 @@ export class FoodGuideViewer {
         );
       })
       .join('');
+    const lead = this.panel.querySelector('[data-food-lead-status]');
+    if (lead)
+      lead.innerHTML = renderFoodLeadStatus(place, {
+        translate: t,
+        payload: this.hours.payload,
+        fetchFailed: Boolean(this.hours.error),
+      });
     // Hours that arrive or change after the first draw can make the card taller or shorter.
     if (compact && this.narrow) {
       const before = this.facilityHeight;

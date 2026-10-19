@@ -581,13 +581,21 @@ body[data-app-mode='viewer'] {
   overflow-wrap: anywhere;
 }
 
-/* The status chip leads the hours, just under the heading. */
 /* The banks of an ATM card, as a short bulleted list. */
 .food-bank-list {
   margin: 0;
   padding-left: 1.1em;
   list-style: disc;
   overflow-wrap: anywhere;
+}
+
+/* One service: the label sits above the 営業時間 heading. Several: under each service name. */
+.food-lead-status {
+  margin-bottom: var(--s-3);
+}
+
+.food-lead-status:empty {
+  display: none;
 }
 
 .food-hours-list .food-status {

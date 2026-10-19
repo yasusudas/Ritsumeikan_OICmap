@@ -4,8 +4,10 @@
 import { foodDataUrl } from 'virtual:rits-oic-food-data';
 import { CoopHoursClient, japaneseDate, FOOD_STATUS_MS } from './food-guide-model.js';
 import {
+  foodPageText,
   foodPlacesReady,
   renderFoodHours,
+  renderFoodLeadStatus,
   renderFoodPlaceList,
   renderFoodPlaceStatus,
 } from './food-place-cards.js';
@@ -187,9 +189,14 @@ function hourOptions() {
 
 function paintHours() {
   if (!placesRoot || !placesLoaded) return;
+  const options = hourOptions();
+  const translate = (key) => foodPageText(LANG, key);
   for (const place of places) {
-    const node = placesRoot.querySelector(`[data-food-hours="${CSS.escape(place.entryId)}"]`);
-    if (node) node.innerHTML = renderFoodHours(place, hourOptions());
+    const id = CSS.escape(place.entryId);
+    const node = placesRoot.querySelector(`[data-food-hours="${id}"]`);
+    if (node) node.innerHTML = renderFoodHours(place, options);
+    const status = placesRoot.querySelector(`[data-food-lead-status="${id}"]`);
+    if (status) status.innerHTML = renderFoodLeadStatus(place, { ...options, translate });
   }
 }
 

@@ -111,6 +111,19 @@ export function renderFoodStatus(service, { translate, now, fetchFailed = false,
   return `<p class="food-status${judgment.state === 'unknown' ? ' is-unknown' : ''}">${label}</p>`;
 }
 
+// A place with one service shows its label above the 営業時間 heading. With several services,
+// each label stays under its service name inside the hours.
+export function renderFoodLeadStatus(place, { translate, now, payload = null, fetchFailed = false } = {}) {
+  if (place.services.length !== 1) return '';
+  const [service] = place.services;
+  return renderFoodStatus(service, {
+    translate,
+    now,
+    payload,
+    fetchFailed: Boolean(service.coopScheduleName && fetchFailed),
+  });
+}
+
 // A service whose four answers are all 'na' has no visitor information to show.
 export function hasFoodUsage(place) {
   return place.services.some((service) => USAGE_KEYS.some((key) => service.usage[key] !== 'na'));
@@ -157,13 +170,16 @@ export function renderFoodHours(place, { lang, payload = null, loading = false, 
         loading,
         now,
       });
-      const status = renderFoodStatus(service, {
-        translate,
-        now,
-        payload,
-        fetchFailed: Boolean(service.coopScheduleName && fetchFailed),
-      });
-      // The status chip comes first, right under the heading, so it sits at the same place on every card.
+      const status =
+        place.services.length > 1
+          ? renderFoodStatus(service, {
+              translate,
+              now,
+              payload,
+              fetchFailed: Boolean(service.coopScheduleName && fetchFailed),
+            })
+          : '';
+      // With several services, each label comes right under its service name.
       if (block.kind === 'message') return `${heading}${status}<p>${escapeHtml(block.text)}</p>`;
       if (block.kind === 'coop') {
         const source = isHttpUrl(block.sourceUrl)
@@ -220,6 +236,7 @@ function renderCard(place, options) {
     </header>
     <p class="food-place-summary">${escapeHtml(localText(place.summary, lang))}</p>
     <section class="food-place-block">
+      <div class="food-lead-status" data-food-lead-status="${escapeHtml(place.entryId)}">${renderFoodLeadStatus(place, { ...options, translate })}</div>
       <h4 class="food-heading">${escapeHtml(foodPageText(lang, 'food.hours'))}</h4>
       <div class="food-place-hours food-hours-list" data-food-hours="${escapeHtml(place.entryId)}">${renderFoodHours(place, options)}</div>
     </section>
