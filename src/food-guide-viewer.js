@@ -6,6 +6,9 @@ import {
   renderFoodStateLabel,
   renderFoodStatus,
   renderFoodTruckPhotos,
+  renderFoodHoursLoading,
+  renderFoodPlaceSkeleton,
+  renderFoodTruckSkeleton,
   renderFoodUsage,
 } from './food-place-cards.js';
 import { FACILITY_PLACES, FACILITY_TEXT, facilityAnchor } from './facility-places.js';
@@ -214,7 +217,7 @@ export class FoodGuideViewer {
       try {
         const [entries, response] = await Promise.all([
           this.host.entries(),
-          fetch(this.dataUrl, { cache: 'no-cache' }),
+          fetch(this.dataUrl, { cache: 'no-cache', signal: AbortSignal.timeout(30_000) }),
         ]);
         if (!response.ok) throw Error('Food information unavailable');
         const payload = await response.json();
@@ -578,7 +581,9 @@ export class FoodGuideViewer {
       footer = '';
     if (!this.ready) {
       header = `<h2 id="food-panel-title" tabindex="-1">${escape(t('food.title'))}</h2>${close}`;
-      body = `<p>${escape(t(this.error ? 'food.loadError' : 'food.loading'))}</p>${this.error ? `<button class="food-control" data-food-action="retry">${escape(t('food.retry'))}</button>` : ''}`;
+      body = this.error
+        ? `<p>${escape(t('food.loadError'))}</p><button class="food-control" data-food-action="retry">${escape(t('food.retry'))}</button>`
+        : renderFoodPlaceSkeleton(t('food.loading'), { compact: true });
     } else if (this.panelMode === 'list') {
       header = `<h2 id="food-panel-title" tabindex="-1">${escape(t('food.listTitle'))}</h2>${close}`;
       const items = this.places;
@@ -619,6 +624,7 @@ export class FoodGuideViewer {
       // The Lunch Street summary sheet has no button at all: it is pulled up to open fully.
       if (this.panelMode === 'compact' && truckCard) footer = '';
     }
+    this.panel.setAttribute('aria-busy', String(!this.ready && !this.error));
     this.panel.innerHTML = `${handle}<header class="food-panel-header">${header}</header><div class="food-panel-body">${body}</div>${footer ? `<footer class="food-panel-footer">${footer}</footer>` : ''}`;
     this.wireImageFallback(this.panel);
     this.wireTruckPhotos(this.panel);
@@ -696,12 +702,14 @@ export class FoodGuideViewer {
     if (state.loading || this.trucksFresh()) return;
     if (state.error && Date.now() - state.fetchedAt < FOOD_TRUCKS_RETRY_MS) return;
     this.trucks = { ...state, loading: true };
-    fetch(FOOD_TRUCKS_URL, { cache: 'no-cache' })
+    fetch(FOOD_TRUCKS_URL, { cache: 'no-cache', signal: AbortSignal.timeout(30_000) })
       .then((response) => {
         if (!response.ok) throw new Error(`${FOOD_TRUCKS_URL} returned ${response.status}`);
         return response.json();
       })
       .then((payload) => {
+        if (payload?.date !== japaneseDate() || !Array.isArray(payload.trucks))
+          throw new Error('Food truck schedule unavailable');
         this.trucks = { payload, error: false, loading: false, fetchedAt: Date.now() };
       })
       .catch(() => {
@@ -720,8 +728,10 @@ export class FoodGuideViewer {
   }
   renderTrucksBody(spot) {
     const { payload, error } = this.trucks;
-    if (!payload)
-      return `<p class="food-muted">${escape(t(error ? 'food.trucks.error' : 'food.trucks.loading'))}</p>`;
+    if (!this.trucksFresh())
+      return error
+        ? `<p class="food-muted">${escape(t('food.trucks.error'))}</p>`
+        : renderFoodTruckSkeleton(t('food.trucks.loading'), { compact: true });
     const trucks = Array.isArray(payload.trucks) ? payload.trucks : [];
     if (payload.outOfPeriod && !trucks.length)
       return `<p class="food-muted">${escape(t('food.trucks.outOfPeriod'))}</p>`;
@@ -941,6 +951,9 @@ export class FoodGuideViewer {
   needsStatus() {
     return this.shownPlaces().some((place) => place.services.some((service) => service.status?.assignee));
   }
+  hoursLoading() {
+    return !this.hours.error && (Boolean(this.hours.pending) || this.hours.needsRefresh());
+  }
   // The list shows only an open/closed label per place, where the description used to be. A place with
   // a service that has no status (the 24-hour unstaffed store next to its bento sales) gets no label.
   listStatus(place) {
@@ -948,11 +961,12 @@ export class FoodGuideViewer {
       (service) =>
         judgeFoodServiceStatus(service, {
           payload: this.hours.payload,
+          loading: this.hoursLoading(),
           fetchFailed: Boolean(service.coopScheduleName && this.hours.error),
         }).state,
     );
     if (!states.length || states.includes('disabled')) return '';
-    const state = states.includes('within') ? 'within' : states.includes('unknown') ? 'unknown' : 'outside';
+    const state = states.includes('within') ? 'within' : states.includes('loading') ? 'loading' : states.includes('unknown') ? 'unknown' : 'outside';
     return renderFoodStateLabel(state, t);
   }
   renderListStatus() {
@@ -984,7 +998,7 @@ export class FoodGuideViewer {
       place = this.getPlace(this.selected);
     if (!root || !place) return;
     const compact = this.panelMode === 'compact';
-    const loading = Boolean(this.hours.pending) && !this.hours.error;
+    const loading = this.hoursLoading();
     root.innerHTML = place.services
       .map((service) => {
         const heading =
@@ -1004,10 +1018,12 @@ export class FoodGuideViewer {
             ? renderFoodStatus(service, {
                 translate: t,
                 payload: this.hours.payload,
+                loading,
                 fetchFailed: Boolean(service.coopScheduleName && this.hours.error),
               })
             : '';
         // With several services, each label comes right under its service name (as on the food page).
+        if (block.kind === 'loading') return `${heading}${status}${renderFoodHoursLoading(block.label)}`;
         if (block.kind === 'message') return `${heading}${status}<p>${escape(block.text)}</p>`;
         if (block.kind === 'coop') {
           return `${heading}${status}<p>${escape(block.dateLabel)}\n${escape(block.text)}</p>`;
@@ -1043,6 +1059,7 @@ export class FoodGuideViewer {
       lead.innerHTML = renderFoodLeadStatus(place, {
         translate: t,
         payload: this.hours.payload,
+        loading,
         fetchFailed: Boolean(this.hours.error),
       });
     // Hours that arrive or change after the first draw can make the card taller or shorter.
@@ -1463,7 +1480,7 @@ export class FoodGuideViewer {
           translate: t,
           lang: getLang(),
           payload: this.hours.payload,
-          loading: Boolean(this.hours.pending) && !this.hours.error,
+          loading: this.hoursLoading(),
           compact: true,
         });
         const text = block.kind === 'versions'

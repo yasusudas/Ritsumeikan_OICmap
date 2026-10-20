@@ -65,10 +65,10 @@
         <section class="section food-board" aria-labelledby="food-board-title">
           <div class="section-head food-board-head">
             <h2 class="section-title food-board-title" id="food-board-title">本日のキッチンカー</h2>
-            <p class="food-board-date" data-food-date hidden></p>
+            <p class="food-board-date" data-food-date>—</p>
           </div>
-          <div class="section-body food-board-body" data-food-trucks aria-live="polite">
-            <p class="food-state">本日のキッチンカーを読み込んでいます…</p>
+          <div class="section-body food-board-body" data-food-trucks aria-live="polite" aria-busy="true">
+            <div class="food-loading-state" role="status" aria-label="本日のキッチンカーを読み込んでいます…"><ul class="food-trucks" aria-hidden="true"><li class="food-truck"><div class="food-truck-thumb loading-skeleton"></div><span class="loading-skeleton"></span><span class="food-loading-dash">—</span></li><li class="food-truck"><div class="food-truck-thumb loading-skeleton"></div><span class="loading-skeleton"></span><span class="food-loading-dash">—</span></li></ul></div>
           </div>
         </section>
 
@@ -76,8 +76,8 @@
           <div class="section-head">
             <h2 class="section-title" id="food-places-title">店舗一覧</h2>
           </div>
-          <div class="section-body" data-food-places>
-            <p class="food-state">食事場所を読み込んでいます…</p>
+          <div class="section-body" data-food-places aria-busy="true">
+            <div class="food-loading-state" role="status" aria-label="食事場所を読み込んでいます…"><ul class="food-place-grid" aria-hidden="true"><li><div class="food-place food-place-skeleton"><div class="food-loading-brand"><span class="food-loading-mark loading-skeleton"></span><span class="food-loading-lines"><span class="loading-skeleton"></span><span class="loading-skeleton"></span></span></div><span class="loading-skeleton"></span><span class="loading-skeleton"></span><span class="food-loading-dash">—</span><span class="loading-skeleton"></span><span class="loading-skeleton"></span></div></li><li><div class="food-place food-place-skeleton"><div class="food-loading-brand"><span class="food-loading-mark loading-skeleton"></span><span class="food-loading-lines"><span class="loading-skeleton"></span><span class="loading-skeleton"></span></span></div><span class="loading-skeleton"></span><span class="loading-skeleton"></span><span class="food-loading-dash">—</span><span class="loading-skeleton"></span><span class="loading-skeleton"></span></div></li></ul></div>
           </div>
         </section>
       </div>

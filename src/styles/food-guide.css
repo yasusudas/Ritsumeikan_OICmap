@@ -925,3 +925,78 @@ body[data-app-mode='viewer'] .facility-more-panel.has-food-option .facility-more
 body[data-app-mode='viewer'] .facility-more-panel.has-food-option[hidden] .facility-more-option {
   --more-stagger: calc((4 - var(--more-i, 0)) * var(--ls-pop-step));
 }
+
+/* Static loading placeholders keep the card/list footprint without inventing
+   opening states. No shimmer or pulse, including when reduced motion is set. */
+.food-open-state.is-loading {
+  min-inline-size: 6em;
+  color: var(--c-ink-3);
+  font-weight: var(--fw-medium);
+}
+
+html[lang="en"] .food-open-state.is-loading {
+  min-inline-size: 11em;
+}
+
+.food-hours-pending,
+.food-loading-dash {
+  color: var(--c-ink-3);
+}
+
+.food-loading-state {
+  min-width: 0;
+}
+
+.food-loading-brand,
+.food-loading-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.food-loading-mark.loading-skeleton {
+  flex: 0 0 44px;
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 50%;
+}
+
+.food-loading-lines {
+  display: grid;
+  gap: var(--s-2);
+  flex: 1;
+  min-width: 0;
+}
+
+.food-loading-lines .loading-skeleton:first-child {
+  inline-size: 70%;
+}
+
+.food-loading-lines .loading-skeleton:last-child {
+  inline-size: 45%;
+}
+
+.food-place-skeleton {
+  min-block-size: 24rem;
+}
+
+.food-place-skeleton > .loading-skeleton:last-child {
+  inline-size: 65%;
+}
+
+.food-loading-rows {
+  display: grid;
+  gap: var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.food-loading-row {
+  min-block-size: 88px;
+}
+
+.food-truck-thumb.loading-skeleton,
+.food-truck-photo.loading-skeleton {
+  block-size: auto;
+}

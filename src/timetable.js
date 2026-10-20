@@ -7,6 +7,7 @@ const LIVE_SERVICE_STATUS_URL = '/api/rail-status';
 const HOLIDAYS_URL = '/api/holidays';
 const HOLIDAYS_TIMEOUT_MS = 5_000;
 const LIVE_SERVICE_STATUS_REFRESH_INTERVAL = 15 * 60 * 1000;
+const LIVE_SERVICE_STATUS_TIMEOUT_MS = 15_000;
 const STORAGE_KEY = 'rits-oic-map:timetable-layout:v1';
 
 // Status id -> tone used for the small status dot.
@@ -58,10 +59,17 @@ let liveServiceStatusState = {
 
 // The shuttle bus card needs no data file, so it shows even when the manifest fails to load.
 mountShuttleBusCard(elements.shuttleBus, { lang: 'ja' });
+// Service status must not wait for the departure data or holiday request.
+setupLiveServiceStatus();
 
 init().catch((error) => {
   console.error(error);
+  if (elements.hiddenList?.getAttribute('aria-busy') === 'true') {
+    elements.hiddenList.setAttribute('aria-busy', 'false');
+    elements.hiddenList.innerHTML = '<p class="timetable-empty">表示設定を読み込めませんでした。</p>';
+  }
   if (elements.cardGrid) {
+    elements.cardGrid.setAttribute('aria-busy', 'false');
     elements.cardGrid.innerHTML = renderBoardMessage(
       '時刻表を読み込めませんでした',
       '通信状態を確認して、もう一度開き直してください。'
@@ -74,13 +82,13 @@ async function init() {
   state = normalizeState(loadState(), manifest.cards);
   setupEvents();
   await render();
-  setupLiveServiceStatus();
   window.setInterval(() => {
     updateCountdownDisplays();
   }, 1_000);
 }
 
 function setupEvents() {
+  if (elements.resetLayout) elements.resetLayout.disabled = false;
   elements.resetLayout?.addEventListener('click', () => {
     state.order = manifest.cards.map((card) => card.id);
     saveState();
@@ -102,7 +110,6 @@ async function render() {
 function setupLiveServiceStatus() {
   if (!elements.liveServiceStatus) return;
   liveServiceStatusState.nextRefreshAt = Date.now() + LIVE_SERVICE_STATUS_REFRESH_INTERVAL;
-  renderLiveServiceStatus();
   void refreshLiveServiceStatus();
   window.setInterval(() => {
     void refreshLiveServiceStatus();
@@ -116,8 +123,10 @@ async function refreshLiveServiceStatus() {
   liveServiceStatusState.error = null;
   renderLiveServiceStatus();
 
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), LIVE_SERVICE_STATUS_TIMEOUT_MS);
   try {
-    const payload = await fetchJson(LIVE_SERVICE_STATUS_URL);
+    const payload = await fetchJson(LIVE_SERVICE_STATUS_URL, { signal: controller.signal });
     (payload?.sources || [])
       .filter((item) => item.status === 'error')
       .forEach((item) => console.warn(`[rail-status] ${item.id}:`, ...(item.details || [])));
@@ -135,6 +144,8 @@ async function refreshLiveServiceStatus() {
       error: error instanceof Error ? error.message : String(error),
       nextRefreshAt: Date.now() + LIVE_SERVICE_STATUS_REFRESH_INTERVAL,
     };
+  } finally {
+    window.clearTimeout(timeoutId);
   }
 
   renderLiveServiceStatus();
@@ -144,31 +155,29 @@ function renderLiveServiceStatus() {
   if (!elements.liveServiceStatus) return;
 
   const { payload, error, isLoading } = liveServiceStatusState;
+  const initialLoading = isLoading && !payload;
+  elements.liveServiceStatus.setAttribute('aria-busy', String(isLoading));
+  elements.liveServiceStatus.toggleAttribute('data-loading', initialLoading);
   const sources = payload?.sources || [];
   const allFailed = sources.length > 0 && sources.every((item) => item.status === 'error');
   let body;
 
-  if (sources.length && !allFailed) {
+  if (initialLoading) {
+    body = '<p class="visually-hidden">運行情報を読み込んでいます…</p>';
+  } else if (sources.length && !allFailed) {
     body = `<ul class="rule-list timetable-status-list">${sources.map(renderLiveServiceStatusRow).join('')}</ul>`;
   } else if (error || allFailed) {
     body = renderLiveServiceStatusUnavailable(allFailed ? sources : []);
   } else {
-    body = `<p class="timetable-status-message">${isLoading ? '運行情報を取得しています…' : '運行情報はまだありません。'}</p>`;
+    body = '<p class="timetable-status-message">運行情報はまだありません。</p>';
   }
 
   const updatedAt = formatLiveStatusUpdatedAt(payload?.generatedAt);
 
-  elements.liveServiceStatus.innerHTML = `
-    <div class="section-head">
-      <h2 id="live-status-title" class="section-title">運行情報</h2>
-      ${
-        updatedAt
-          ? `<p class="meta-text timetable-status-updated"><time datetime="${escapeHtml(payload.generatedAt)}">${escapeHtml(updatedAt)}</time></p>`
-          : ''
-      }
-    </div>
-    <div class="section-body">${body}</div>
-  `;
+  elements.liveServiceStatus.querySelector('[data-live-status-updated]').innerHTML = updatedAt
+    ? `<time datetime="${escapeHtml(payload.generatedAt)}">${escapeHtml(updatedAt)}</time>`
+    : '—';
+  elements.liveServiceStatus.querySelector('[data-live-status-content]').innerHTML = body;
 }
 
 // Shown instead of raw fetch errors. The underlying error is logged to the console.
@@ -234,6 +243,7 @@ async function renderCards() {
 
   if (!cards.length) {
     activeSchedulesByCardId.clear();
+    elements.cardGrid.setAttribute('aria-busy', 'false');
     elements.cardGrid.innerHTML = renderBoardMessage(
       '表示中のカードがありません',
       '最下部の「非表示カード」から再表示してください。'
@@ -246,6 +256,7 @@ async function renderCards() {
   cards.forEach((card, index) => {
     activeSchedulesByCardId.set(card.id, schedules[index]);
   });
+  elements.cardGrid.setAttribute('aria-busy', 'false');
   elements.cardGrid.innerHTML = cards.map((card, index) => renderCard(card, schedules[index])).join('');
   bindCardEvents();
   updateCountdownDisplays();
@@ -936,6 +947,7 @@ function getTimetableDetailsHeight(content) {
 
 function renderHiddenList() {
   if (!elements.hiddenList || !elements.hiddenCount) return;
+  elements.hiddenList.setAttribute('aria-busy', 'false');
   const hiddenCards = orderedCards().filter((card) => state.hidden.includes(card.id));
   elements.hiddenCount.textContent = `${hiddenCards.length}件`;
   if (elements.showAll) elements.showAll.disabled = !hiddenCards.length;
@@ -1043,8 +1055,8 @@ async function loadSchedule(card, calendarId) {
   return scheduleCache.get(url);
 }
 
-async function fetchJson(url) {
-  const response = await fetch(url, { cache: 'no-cache' });
+async function fetchJson(url, options = {}) {
+  const response = await fetch(url, { cache: 'no-cache', ...options });
   if (!response.ok) {
     throw new Error(`Failed to load ${url}: ${response.status}`);
   }

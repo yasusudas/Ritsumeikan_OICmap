@@ -105,7 +105,8 @@ test('language refresh retains whether search suggestions were open or closed', 
 
 function element() {
   return {
-    children: [], style: {}, handlers: {},
+    children: [], style: {}, handlers: {}, attributes: {}, dataset: {},
+    setAttribute(name, value) { this.attributes[name] = value; },
     append(...children) { this.children.push(...children); },
     replaceChildren(...children) { this.children = children; },
     addEventListener(type, handler) { this.handlers[type] = handler; }
@@ -229,4 +230,79 @@ test('keyboard selection scrolls only enough to bring the active result into vie
   row = { top: 70, bottom: 110 };
   context.scrollActiveSearchSuggestionIntoView();
   assert.equal(list.scrollTop, 48);
+});
+
+
+test('an initial floor request shows a loading placeholder and clears it when decoding finishes', async () => {
+  const context = assets();
+  let finish;
+  context.createFloorImageNode = () => ({ style: {}, decode: () => new Promise(resolve => { finish = resolve; }) });
+  const pending = context.renderFloor();
+  await tick();
+  assert.equal(context.state.floorLoading, true);
+  assert.equal(context.assetLoadFeedback.hidden, false);
+  assert.equal(context.assetLoadFeedback.attributes['aria-busy'], 'true');
+  assert.equal(context.assetLoadFeedback.children[0].attributes['aria-label'], 'status.floorLoading');
+  finish();
+  await pending;
+  assert.equal(context.state.floorLoading, false);
+  assert.equal(context.assetLoadFeedback.hidden, true);
+  assert.equal(context.assetLoadFeedback.attributes['aria-busy'], 'false');
+});
+
+test('search placeholders distinguish unrequested and pending data from failure and loaded emptiness', () => {
+  const feedback = [];
+  const context = vm.createContext({
+    state: { searchReady: false, searchLoading: false, searchLoadError: false, searchEntries: [], searchSuggestions: [], activeSuggestionIndex: -1 },
+    document: { createElement: element },
+    searchInput: { value: '' }, searchClearButton: {}, searchResults: element(),
+    getActiveSearchEntry: () => null, setSearchFeedback: value => feedback.push(value), t: key => key,
+  });
+  loadMain(context, ['renderSearchSuggestions']);
+  context.renderSearchSuggestions();
+  assert.equal(feedback.at(-1), '—');
+  assert.equal(context.searchResults.attributes['aria-busy'], 'true');
+  context.searchInput.value = 'AC130';
+  context.state.searchLoading = true;
+  context.renderSearchSuggestions();
+  assert.equal(context.searchResults.hidden, false);
+  assert.equal(context.searchResults.children[0].textContent, '—');
+  assert.equal(context.searchResults.children[0].attributes['aria-label'], 'search.feedback.loading');
+  assert.equal(context.searchResults.children.length, 4);
+  context.state.searchLoading = false;
+  context.state.searchLoadError = true;
+  context.renderSearchSuggestions();
+  assert.equal(context.searchResults.attributes['aria-busy'], 'false');
+  assert.equal(context.searchResults.children[0].textContent, 'search.feedback.loadError');
+  context.searchInput.value = '';
+  context.renderSearchSuggestions();
+  assert.equal(feedback.at(-1), 'search.feedback.loadError');
+  context.state.searchLoadError = false;
+  context.state.searchReady = true;
+  context.renderSearchSuggestions();
+  assert.equal(feedback.at(-1), 'search.feedback.noData');
+  assert.equal(context.searchResults.attributes['aria-busy'], 'false');
+});
+
+
+test('editor loading placeholders retain existing JSON output until data is ready', () => {
+  const editorJson = element();
+  editorJson.value = 'existing output';
+  const context = vm.createContext({
+    isEditorSite: true, editorJson, state: { searchReady: false, searchLoadError: false },
+    t: key => key, serializeManualEntries: () => ({ entries: ['loaded draft'] }),
+  });
+  loadMain(context, ['updateEditorJsonOutput']);
+  context.updateEditorJsonOutput();
+  assert.equal(editorJson.value, 'existing output');
+  assert.equal(editorJson.placeholder, '—');
+  assert.equal(editorJson.attributes['aria-busy'], 'true');
+  context.state.searchLoadError = true;
+  context.updateEditorJsonOutput();
+  assert.equal(editorJson.value, 'existing output');
+  assert.equal(editorJson.attributes['aria-busy'], 'false');
+  context.state.searchReady = true;
+  context.updateEditorJsonOutput();
+  assert.equal(JSON.parse(editorJson.value).entries[0], 'loaded draft');
+  assert.equal(editorJson.placeholder, '');
 });

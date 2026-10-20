@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
+import vm from 'node:vm';
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 const vercel = JSON.parse(read('vercel.json'));
@@ -39,4 +40,63 @@ test('every page footer links to the sources page in its own language', () => {
 test('the terms link on the sources page still points at the terms page', () => {
   assert.match(read('sources/index.html'), /href="\/terms\/">利用規約<\/a>/);
   assert.match(read('en/sources/index.html'), /href="\/en\/terms\/">Terms<\/a>/);
+});
+
+test('sources keep independent loading states and clear skeletons on both success and failure', async () => {
+  const nodes = Object.fromEntries(['food', 'timetable'].map(name => [name, {
+    innerHTML: '<div class="sources-loading">placeholder</div>',
+    attributes: { 'aria-busy': 'true' },
+    setAttribute(name, value) { this.attributes[name] = value; },
+  }]));
+  const requests = new Map();
+  const context = vm.createContext({
+    URL, foodDataUrl: '/food.json',
+    document: {
+      documentElement: { lang: 'en' },
+      querySelector: selector => nodes[selector.includes('timetable') ? 'timetable' : 'food'],
+    },
+    fetch: url => new Promise(resolve => requests.set(url, resolve)),
+  });
+  vm.runInContext(read('src/sources-page.js').replace(/^import .*;$/m, ''), context);
+  assert.equal(requests.size, 2);
+  assert.equal(nodes.food.attributes['aria-busy'], 'true');
+  assert.equal(nodes.timetable.attributes['aria-busy'], 'true');
+  requests.get('/food.json')({ ok: true, json: async () => ({
+    places: [{ name: { ja: '店舗', en: 'Shop' }, order: 1, sources: [{ title: 'Official', url: 'https://example.org/', checkedAt: '2026-10-20' }] }],
+  }) });
+  await new Promise(resolve => setImmediate(resolve));
+  assert.match(nodes.food.innerHTML, /Shop/);
+  assert.doesNotMatch(nodes.food.innerHTML, /sources-loading/);
+  assert.equal(nodes.food.attributes['aria-busy'], 'false');
+  assert.equal(nodes.timetable.attributes['aria-busy'], 'true');
+  requests.get('/timetable/data/manifest.json')({ ok: false });
+  await new Promise(resolve => setImmediate(resolve));
+  assert.match(nodes.timetable.innerHTML, /Could not load the sources/);
+  assert.doesNotMatch(nodes.timetable.innerHTML, /sources-loading/);
+  assert.equal(nodes.timetable.attributes['aria-busy'], 'false');
+});
+
+
+test('resolved empty source lists show a localized empty state instead of loading or failure', async () => {
+  for (const [lang, empty] of [['ja', '出典はまだありません。'], ['en', 'No sources are available yet.']]) {
+    const nodes = Object.fromEntries(['food', 'timetable'].map(name => [name, {
+      innerHTML: '<div class="sources-loading">placeholder</div>',
+      attributes: { 'aria-busy': 'true' },
+      setAttribute(name, value) { this.attributes[name] = value; },
+    }]));
+    const context = vm.createContext({
+      URL, foodDataUrl: '/food.json',
+      document: {
+        documentElement: { lang },
+        querySelector: selector => nodes[selector.includes('timetable') ? 'timetable' : 'food'],
+      },
+      fetch: async url => ({ ok: true, json: async () => url === '/food.json' ? { places: [] } : {} }),
+    });
+    vm.runInContext(read('src/sources-page.js').replace(/^import .*;$/m, ''), context);
+    await new Promise(resolve => setImmediate(resolve));
+    for (const node of Object.values(nodes)) {
+      assert.equal(node.innerHTML, `<p class="meta-text">${empty}</p>`);
+      assert.equal(node.attributes['aria-busy'], 'false');
+    }
+  }
 });

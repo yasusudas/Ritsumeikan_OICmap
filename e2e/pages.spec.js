@@ -31,8 +31,8 @@ for (const path of publicRoutes) {
       for (const source of ['menu', 'footer']) {
         if (source === 'menu' && !hasMenu) continue;
         if (source === 'footer' && ['/', '/en/'].includes(path) && page.viewportSize().width <= 820) {
-          // The map deliberately moves footer actions into the menu at this breakpoint.
-          await expect(page.locator('.site-footer')).toBeHidden();
+          // The map moves dialog actions into the menu but retains its legal footer links.
+          await expect(page.locator(`.site-footer [data-dialog="${kind}"]`)).toBeHidden();
           continue;
         }
         if (source === 'menu') await openMenu(page);

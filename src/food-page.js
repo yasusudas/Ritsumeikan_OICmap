@@ -11,6 +11,7 @@ import {
   renderFoodLeadStatus,
   renderFoodPlaceList,
   renderFoodPlaceStatus,
+  renderFoodTruckSkeleton,
 } from './food-place-cards.js';
 
 const FOOD_TRUCKS_URL = '/api/food-trucks';
@@ -27,6 +28,7 @@ const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
 
 const STRINGS = {
   ja: {
+    loading: '本日のキッチンカーを読み込んでいます…',
     empty: '本日の出店予定はありません。',
     outOfPeriod: '営業カレンダーの期間外です。最新の出店予定は公式の案内をご確認ください。',
     error: '本日のキッチンカー情報を取得できませんでした。',
@@ -35,6 +37,7 @@ const STRINGS = {
     spots: { terrace: 'TERRACE GATE前', plaza: '空のプラザ' },
   },
   en: {
+    loading: 'Loading today’s food trucks…',
     empty: 'No food trucks are scheduled today.',
     outOfPeriod: 'Today is outside the published schedule. Please check the official announcement.',
     error: 'Could not load today’s food trucks.',
@@ -88,7 +91,7 @@ function formatDate(dateLabel) {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url, { cache: 'no-cache' });
+  const response = await fetch(url, { cache: 'no-cache', signal: AbortSignal.timeout(30_000) });
   if (!response.ok) throw new Error(`${url} returned ${response.status}`);
   return response.json();
 }
@@ -143,13 +146,29 @@ function render(payload) {
   container.innerHTML = body;
 }
 
+let truckPayload = null;
+let trucksPending = false;
 async function refresh() {
-  if (!container) return;
+  if (!container || trucksPending) return;
+  trucksPending = true;
+  container.setAttribute('aria-busy', 'true');
+  if (!truckPayload || truckPayload.date !== japaneseDate()) {
+    renderDate('—');
+    container.innerHTML = renderFoodTruckSkeleton(t.loading);
+  }
   try {
-    render(await fetchJson(FOOD_TRUCKS_URL));
+    const payload = await fetchJson(FOOD_TRUCKS_URL);
+    if (payload?.date !== japaneseDate() || !Array.isArray(payload.trucks))
+      throw new Error('Food truck schedule unavailable');
+    truckPayload = payload;
+    render(truckPayload);
   } catch (error) {
     renderDate('');
+    truckPayload = null;
     container.innerHTML = renderState(t.error, 'is-error');
+  } finally {
+    trucksPending = false;
+    container.setAttribute('aria-busy', 'false');
   }
 }
 
@@ -252,9 +271,10 @@ async function loadPlaces() {
   if (!placesRoot) return;
   placesLoaded = false;
   places = [];
+  placesRoot.setAttribute('aria-busy', 'true');
   placesRoot.innerHTML = renderFoodPlaceStatus(LANG, 'loading');
   try {
-    const response = await fetch(foodDataUrl, { cache: 'no-cache' });
+    const response = await fetch(foodDataUrl, { cache: 'no-cache', signal: AbortSignal.timeout(30_000) });
     if (!response.ok) throw new Error('Food places unavailable');
     const payload = await response.json();
     const next = Array.isArray(payload?.places) ? payload.places : [];
@@ -271,6 +291,8 @@ async function loadPlaces() {
     placesLoaded = false;
     awaitingHours = false;
     placesRoot.innerHTML = renderFoodPlaceStatus(LANG, 'error');
+  } finally {
+    placesRoot.setAttribute('aria-busy', 'false');
   }
 }
 

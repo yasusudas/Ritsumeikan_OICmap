@@ -103,11 +103,13 @@ export function foodPlacesReady(places) {
 // The open/closed label: 'within', 'outside' or 'unknown'. Shared by the map card, the store list,
 // the hover summary and the OIC Food page.
 export function renderFoodStateLabel(state, translate) {
+  if (state === 'loading')
+    return `<span class="food-open-state is-loading" role="status" aria-label="${escapeHtml(translate('food.hoursLoading'))}"><span aria-hidden="true">—</span></span>`;
   return `<span class="food-open-state is-${state}">${escapeHtml(translate(`food.status.${state}`))}</span>`;
 }
 
-export function renderFoodStatus(service, { translate, now, fetchFailed = false, payload = null } = {}) {
-  const judgment = judgeFoodServiceStatus(service, { now, fetchFailed, payload });
+export function renderFoodStatus(service, { translate, now, fetchFailed = false, payload = null, loading = false } = {}) {
+  const judgment = judgeFoodServiceStatus(service, { now, fetchFailed, payload, loading });
   if (judgment.state === 'disabled') return '';
   const label = renderFoodStateLabel(judgment.state, translate);
   return `<p class="food-status${judgment.state === 'unknown' ? ' is-unknown' : ''}">${label}</p>`;
@@ -115,13 +117,14 @@ export function renderFoodStatus(service, { translate, now, fetchFailed = false,
 
 // A place with one service shows its label above the 営業時間 heading. With several services,
 // each label stays under its service name inside the hours.
-export function renderFoodLeadStatus(place, { translate, now, payload = null, fetchFailed = false } = {}) {
+export function renderFoodLeadStatus(place, { translate, now, payload = null, fetchFailed = false, loading = false } = {}) {
   if (place.services.length !== 1) return '';
   const [service] = place.services;
   return renderFoodStatus(service, {
     translate,
     now,
     payload,
+    loading,
     fetchFailed: Boolean(service.coopScheduleName && fetchFailed),
   });
 }
@@ -181,6 +184,7 @@ export function renderFoodTruckPhotos(trucks) {
 }
 
 export function renderFoodHours(place, { lang, payload = null, loading = false, fetchFailed = false, now = new Date() } = {}) {
+  loading = loading && !fetchFailed;
   const translate = (key) => foodPageText(lang, key);
   return place.services
     .map((service) => {
@@ -202,10 +206,12 @@ export function renderFoodHours(place, { lang, payload = null, loading = false, 
               translate,
               now,
               payload,
+              loading,
               fetchFailed: Boolean(service.coopScheduleName && fetchFailed),
             })
           : '';
       // With several services, each label comes right under its service name.
+      if (block.kind === 'loading') return `${heading}${status}${renderFoodHoursLoading(block.label)}`;
       if (block.kind === 'message') return `${heading}${status}<p>${escapeHtml(block.text)}</p>`;
       if (block.kind === 'coop') {
         return `${heading}${status}<p>${escapeHtml(block.dateLabel)}\n${escapeHtml(block.text)}</p>`;
@@ -288,7 +294,29 @@ export function renderFoodPlaceList(places, options) {
     .join('')}</ul>`;
 }
 
+// Two lines reserve the date and hours while the calendar is pending. Dashes are
+// visual placeholders; the loading explanation remains available to screen readers.
+export function renderFoodHoursLoading(label) {
+  return `<p class="food-hours-pending" role="status" aria-label="${escapeHtml(label)}"><span aria-hidden="true">—<br>—</span></p>`;
+}
+
+export function renderFoodPlaceSkeleton(label, { compact = false } = {}) {
+  const bar = '<span class="loading-skeleton"></span>';
+  const item = compact
+    ? `<li class="food-loading-row"><span class="food-loading-mark loading-skeleton"></span><span class="food-loading-lines">${bar}${bar}</span></li>`
+    : `<li><div class="food-place food-place-skeleton"><div class="food-loading-brand"><span class="food-loading-mark loading-skeleton"></span><span class="food-loading-lines">${bar}${bar}</span></div>${bar}${bar}<span class="food-loading-dash">—</span>${bar}${bar}</div></li>`;
+  return `<div class="food-loading-state" role="status" aria-label="${escapeHtml(label)}"><ul class="${compact ? 'food-loading-rows' : 'food-place-grid'}" aria-hidden="true">${item.repeat(compact ? 3 : 2)}</ul></div>`;
+}
+
+export function renderFoodTruckSkeleton(label, { compact = false } = {}) {
+  const item = compact
+    ? '<li class="food-truck-photo loading-skeleton"></li>'
+    : '<li class="food-truck"><div class="food-truck-thumb loading-skeleton"></div><span class="loading-skeleton"></span><span class="food-loading-dash">—</span></li>';
+  return `<div class="food-loading-state" role="status" aria-label="${escapeHtml(label)}"><ul class="${compact ? 'food-truck-photos' : 'food-trucks'}" aria-hidden="true">${item.repeat(2)}</ul></div>`;
+}
+
 export function renderFoodPlaceStatus(lang, kind) {
+  if (kind === 'loading') return renderFoodPlaceSkeleton(foodPageText(lang, 'food.loading'));
   const key = kind === 'error' ? 'food.loadError' : 'food.loading';
   const retry =
     kind === 'error'

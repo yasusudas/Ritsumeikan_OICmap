@@ -293,7 +293,7 @@ function judgeIntervals(weekly, minutes, weekday) {
   );
 }
 
-export function judgeFoodServiceStatus(service, { now = new Date(), fetchFailed = false, payload = null } = {}) {
+export function judgeFoodServiceStatus(service, { now = new Date(), fetchFailed = false, payload = null, loading = false } = {}) {
   const status = service?.status;
   if (!status?.assignee?.trim() || !isHttpUrl(status.sourceUrl)) return { state: 'disabled' };
   if (
@@ -315,8 +315,9 @@ export function judgeFoodServiceStatus(service, { now = new Date(), fetchFailed 
   }
   const { minutes, weekday } = jstParts(now);
   if (service.coopScheduleName) {
-    if (!payload) return { state: 'disabled' };
     const day = calendarDay(payload, service.coopScheduleName, now);
+    if (!day && loading) return { state: 'loading' };
+    if (!payload) return { state: 'disabled' };
     if (!day) return { state: 'unknown' };
     if (day.closed) return { state: 'outside' };
     if (day.allDay) return { state: 'within' };
@@ -435,8 +436,9 @@ export function describeFoodServiceHours(
     const day = calendarDay(payload, service.coopScheduleName, now);
     if (!day) {
       return {
-        kind: 'message',
-        text: translate(loading ? 'food.hoursLoading' : 'food.hoursUnknown'),
+        kind: loading ? 'loading' : 'message',
+        text: loading ? '—' : translate('food.hoursUnknown'),
+        label: loading ? translate('food.hoursLoading') : undefined,
       };
     }
     const periods = day.periods;

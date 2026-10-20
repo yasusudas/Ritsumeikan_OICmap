@@ -1221,3 +1221,32 @@ body[data-app-mode="editor"] .site-footer p {
     width: 100%;
   }
 }
+
+/* Static loading placeholders: no pulse or shimmer, including reduced motion. */
+.map-load-progress {
+  display: grid;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  border-radius: var(--radius-control);
+  background: var(--c-bg);
+  color: var(--c-ink-3);
+}
+
+.map-load-progress .loading-skeleton:nth-child(3) {
+  width: 75%;
+}
+
+.map-load-progress .loading-skeleton:last-child {
+  width: 55%;
+}
+
+.search-result-skeleton {
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  padding: var(--s-3) var(--s-4);
+}
+
+.search-result-skeleton .loading-skeleton {
+  width: 70%;
+}

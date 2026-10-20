@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { judgeFoodServiceStatus, validateFoodPlaces } from '../src/food-guide-model.js';
-import { renderFoodHours } from '../src/food-place-cards.js';
+import { renderFoodHours, renderFoodLeadStatus, foodPageText } from '../src/food-place-cards.js';
 
 const payload = JSON.parse(readFileSync(new URL('../public/food-places.json', import.meta.url), 'utf8'));
 const entries = JSON.parse(
@@ -232,4 +232,34 @@ test('the compact card puts each time range on its own line and shows the year-e
   // 12/28 at 23:30 JST is still 12/28; 12/29 at 00:30 JST (= 12/28 15:30Z) is already the closure.
   assert.equal(pickTodaysHours(ja, lion, at('2026-12-28T14:30:00Z')).includes('休'), false);
   assert.equal(pickTodaysHours(ja, lion, at('2026-12-28T15:30:00Z')), '12/29〜1/3休');
+});
+
+
+test('co-op loading has neutral dash labels, cached hours stay valid and failures finish loading', () => {
+  const place = payload.places.find((place) => place.name.ja === 'OIC Cafeteria');
+  const service = place.services[0];
+  const now = new Date('2026-10-19T03:00:00Z');
+  const calendar = {
+    nextUpdateAt: '2026-10-20T00:00:00Z',
+    stores: [{ name: service.coopScheduleName, days: [{ date: '2026-10-19', periods: [{ start: '11:00', end: '14:00' }] }] }],
+  };
+  assert.equal(judgeFoodServiceStatus(service, { now, loading: true }).state, 'loading');
+  assert.equal(judgeFoodServiceStatus(service, { now, loading: true, payload: calendar }).state, 'within');
+  assert.equal(judgeFoodServiceStatus(service, { now, loading: true, payload: { ...calendar, nextUpdateAt: now.toISOString() } }).state, 'loading');
+  assert.equal(judgeFoodServiceStatus(service, { now, loading: true, fetchFailed: true }).state, 'unknown');
+  for (const lang of ['ja', 'en']) {
+    const translate = (key) => foodPageText(lang, key);
+    const pending = renderFoodLeadStatus(place, { translate, now, loading: true });
+    assert.match(pending, /aria-hidden="true">—/);
+    assert.ok(pending.includes(translate('food.hoursLoading')));
+    assert.doesNotMatch(pending, /is-within|is-outside|is-unknown/);
+    const hours = renderFoodHours(place, { lang, now, loading: true });
+    assert.match(hours, /—<br>—/);
+    const failed = renderFoodHours(place, { lang, now, loading: true, fetchFailed: true });
+    assert.doesNotMatch(failed, /food-hours-pending/);
+    assert.ok(failed.includes(translate('food.hoursUnknown')));
+    const cached = renderFoodHours(place, { lang, now, loading: true, payload: calendar });
+    assert.doesNotMatch(cached, /food-hours-pending/);
+    assert.match(cached, /11:00–14:00/);
+  }
 });

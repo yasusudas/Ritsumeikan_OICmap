@@ -5,6 +5,16 @@ async function closeFood(page) {
   await expect(page.locator('.food-panel')).toBeHidden();
 }
 
+async function dragFoodHandle(page, dy) {
+  await page.locator('.food-sheet-handle').hover();
+  const r = await page.locator('.food-sheet-handle').boundingBox();
+  const x = r.x + r.width / 2, y = r.y + r.height / 2;
+  await page.mouse.move(x, y);
+  await page.mouse.down();
+  await page.mouse.move(x, y + dy, { steps: 15 });
+  await page.mouse.up();
+}
+
 for (const lang of languages) {
   test(`FOOD every store list, overview/details and map link ${lang}`, async ({ page, isMobile }, testInfo) => {
     test.setTimeout(180_000);
@@ -18,13 +28,17 @@ for (const lang of languages) {
         await withinViewport(page.locator('.food-panel'));
         if (isMobile) {
           await expect(page.locator('.food-panel')).toHaveClass(/is-compact/);
-          await page.locator('[data-food-action="expand"]').click();
+          if (place.todayTrucks) await dragFoodHandle(page, -230);
+          else await page.locator('[data-food-action="expand"]').click();
           await expect(page.locator('.food-panel')).not.toHaveClass(/is-compact/);
           await withinViewport(page.locator('.food-panel'));
-          await page.locator('[data-food-action="collapse"]').click();
+          if (place.todayTrucks) await dragFoodHandle(page, 160);
+          else await page.locator('[data-food-action="collapse"]').click();
           await expect(page.locator('.food-panel')).toHaveClass(/is-compact/);
-          // Compact sheets expose only Details; List is in the expanded footer.
-          await page.locator('[data-food-action="expand"]').click();
+          // Lunch Street expands by dragging; other compact sheets expose Details.
+          // List is in the expanded footer for both.
+          if (place.todayTrucks) await dragFoodHandle(page, -230);
+          else await page.locator('[data-food-action="expand"]').click();
         }
         await page.locator('[data-food-action="list"]').click();
         await expect(page.locator('.food-store-row')).toHaveCount(foodData.places.length);
@@ -121,18 +135,9 @@ test('FOOD mobile sheet drag expand, collapse, dismiss and rotate', async ({ pag
   await openFood(page);
   await page.locator('.food-store-row').first().click();
   const panel = page.locator('.food-panel');
-  async function dragHandle(dy) {
-    await page.locator('.food-sheet-handle').hover();
-    const r = await page.locator('.food-sheet-handle').boundingBox();
-    const x = r.x + r.width / 2, y = r.y + r.height / 2;
-    await page.mouse.move(x, y);
-    await page.mouse.down();
-    await page.mouse.move(x, y + dy, { steps: 15 });
-    await page.mouse.up();
-  }
-  await dragHandle(-230);
+  await dragFoodHandle(page, -230);
   await expect(panel).not.toHaveClass(/is-compact/);
-  await dragHandle(160);
+  await dragFoodHandle(page, 160);
   await expect(panel).toHaveClass(/is-compact/);
   await page.setViewportSize({ width: 844, height: 390 });
   await expect(panel).not.toHaveClass(/is-compact/);
@@ -140,7 +145,7 @@ test('FOOD mobile sheet drag expand, collapse, dismiss and rotate', async ({ pag
   await withinViewport(panel);
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(panel).toHaveClass(/is-compact/);
-  await dragHandle(280);
+  await dragFoodHandle(page, 280);
   await expect(panel).toBeHidden();
 });
 

@@ -621,7 +621,6 @@ body.subpage .legal-section {
   line-height: var(--lh-snug);
 }
 
-
 /* Campus food places: a grey sheet per place. Section labels, the status
    chip, visitor information and source links are shared with the map
    card (food-guide.css). */
@@ -833,6 +832,10 @@ body.subpage .food-place-retry:hover {
   margin: 0;
 }
 
+.sources-page .prose {
+  overflow-wrap: anywhere;
+}
+
 .sources-meta {
   display: block;
   color: var(--c-ink-3);
@@ -846,4 +849,30 @@ body.subpage .food-place-retry:hover {
 .sources-notes {
   margin: 0 0 var(--s-5);
   color: var(--c-ink-2);
+}
+
+/* Source lists keep their headings and text rhythm while data is pending. */
+.sources-loading .sources-place-name {
+  min-height: calc(var(--fs-base) * var(--lh-body));
+  display: flex;
+  align-items: center;
+}
+
+.sources-loading li {
+  min-height: 1.9em;
+  padding-block: 0.4em;
+}
+
+.sources-loading-title {
+  width: min(14rem, 55%);
+}
+
+.sources-loading-line {
+  width: min(28rem, 90%);
+}
+
+.sources-loading-meta {
+  width: 8rem;
+  margin-top: var(--s-2);
+  block-size: var(--fs-2xs);
 }

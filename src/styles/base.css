@@ -78,6 +78,15 @@ a {
   border: 0;
 }
 
+/* Static placeholders also respect reduced-motion preferences without animation. */
+.loading-skeleton {
+  display: block;
+  block-size: 0.85em;
+  border-radius: var(--radius-control);
+  background: var(--ls-fill-2, var(--c-line));
+  pointer-events: none;
+}
+
 .skip-link {
   position: absolute;
   top: 8px;

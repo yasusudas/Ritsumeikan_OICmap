@@ -167,7 +167,9 @@ test('concurrent search requests share a fetch and show loading instead of no ma
   const first = viewer.buildSearchIndex();
   const second = viewer.buildSearchIndex();
   assert.equal(calls, 1);
-  assert.equal(viewer.searchResults.children[0].textContent, 'search.feedback.loading');
+  assert.equal(viewer.searchResults.children[0].textContent, '—');
+  assert.equal(viewer.searchResults.children[0].attributes['aria-label'], 'search.feedback.loading');
+  assert.equal(viewer.searchResults.attributes['aria-busy'], 'true');
   resolve([]);
   await Promise.all([first, second]);
   assert.equal(viewer.state.searchReady, true);

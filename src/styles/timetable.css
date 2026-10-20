@@ -414,7 +414,7 @@ body.subpage .timetable-status-list > .timetable-status-row {
   color: var(--c-ink-2);
 }
 
-/* Loading / unavailable: one grey strip, links as white pills. */
+/* Empty / unavailable: one grey strip, links as white pills. */
 .timetable-status-message {
   margin: 0;
   padding: 18px 22px;
@@ -451,6 +451,54 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
 
 .timetable-live-status .timetable-status-links {
   margin: -7px 0;
+}
+
+/* Keep the three-row footprint from first paint, including empty/error states.
+   The hidden skeleton remains in the grid so loaded content can grow naturally. */
+.timetable-live-status-body {
+  display: grid;
+}
+
+.timetable-live-status-body > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+  align-self: start;
+}
+
+.timetable-status-skeleton {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.timetable-live-status[data-loading] .timetable-status-skeleton {
+  visibility: visible;
+}
+
+.timetable-status-skeleton .timetable-status-line {
+  align-items: center;
+  min-height: calc(var(--fs-base) * var(--lh-snug));
+}
+
+.timetable-status-skeleton .timetable-status-line .timetable-railway-mark {
+  margin-top: 0;
+}
+
+.timetable-status-skeleton-name {
+  width: 7em;
+  max-width: 100%;
+}
+
+.timetable-status-skeleton-state {
+  width: 4em;
+}
+
+.timetable-status-skeleton .timetable-status-summary {
+  align-content: center;
+  min-height: calc(var(--fs-sm) * var(--lh-snug));
+}
+
+.timetable-status-skeleton-link {
+  width: 7.5rem;
 }
 
 /* ---------------------------------------------------------------------
@@ -539,6 +587,24 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
   gap: 16px;
+}
+
+/* Departure data has its own loading state; dashes are never real train times. */
+.timetable-departure-skeleton {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: space-around;
+  gap: var(--s-4);
+  min-height: 15rem;
+  padding: var(--s-5);
+  border-radius: var(--tt-sheet);
+  background: var(--ls-fill);
+}
+
+.timetable-departure-placeholder {
+  color: var(--c-ink-3);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-tight);
 }
 
 /* A departure-board widget: the station, the next train and the time left on

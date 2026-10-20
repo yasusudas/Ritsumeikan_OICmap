@@ -11,8 +11,8 @@ const TIMETABLE_MANIFEST_URL = '/timetable/data/manifest.json';
 const LANG = (document.documentElement.lang || '').toLowerCase().startsWith('en') ? 'en' : 'ja';
 
 const TEXT = {
-  ja: { checked: '確認日', error: '出典を読み込めませんでした。', holidays: '祝日' },
-  en: { checked: 'Checked', error: 'Could not load the sources.', holidays: 'Holidays' },
+  ja: { checked: '確認日', error: '出典を読み込めませんでした。', holidays: '祝日', empty: '出典はまだありません。' },
+  en: { checked: 'Checked', error: 'Could not load the sources.', holidays: 'Holidays', empty: 'No sources are available yet.' },
 };
 const t = TEXT[LANG];
 
@@ -61,11 +61,12 @@ async function load() {
     const response = await fetch(foodDataUrl, { cache: 'no-cache' });
     if (!response.ok) throw new Error('Food places unavailable');
     const payload = await response.json();
-    const places = Array.isArray(payload?.places) ? payload.places : [];
-    if (!places.length) throw new Error('No food places');
-    root.innerHTML = render(places);
+    if (!Array.isArray(payload?.places)) throw new Error('Invalid food places');
+    root.innerHTML = render(payload.places) || `<p class="meta-text">${escapeHtml(t.empty)}</p>`;
   } catch {
     root.innerHTML = `<p class="meta-text">${escapeHtml(t.error)}</p>`;
+  } finally {
+    root.setAttribute('aria-busy', 'false');
   }
 }
 
@@ -105,9 +106,11 @@ async function loadTimetable() {
   try {
     const response = await fetch(TIMETABLE_MANIFEST_URL, { cache: 'no-cache' });
     if (!response.ok) throw new Error('Timetable manifest unavailable');
-    timetableRoot.innerHTML = renderTimetable(await response.json());
+    timetableRoot.innerHTML = renderTimetable(await response.json()) || `<p class="meta-text">${escapeHtml(t.empty)}</p>`;
   } catch {
     timetableRoot.innerHTML = `<p class="meta-text">${escapeHtml(t.error)}</p>`;
+  } finally {
+    timetableRoot.setAttribute('aria-busy', 'false');
   }
 }
 

@@ -309,6 +309,7 @@ if (window.__FILE_MODE__) {
     pinchStartCenterX: 0,
     pinchStartCenterY: 0,
     floorLoadToken: 0,
+    floorLoading: false,
     floorLoadError: null,
     highlightLayer: null,
     ringLayer: null,
@@ -372,12 +373,31 @@ if (window.__FILE_MODE__) {
 
   function renderAssetLoadFeedback() {
     assetLoadFeedback.replaceChildren();
-    assetLoadFeedback.hidden = !state.floorLoadError && !state.facilityRingsFailedKey;
+    const initialFloorPending = state.floorLoading && !state.highlightLayer;
+    assetLoadFeedback.hidden = !initialFloorPending && !state.floorLoadError && !state.facilityRingsFailedKey;
+    assetLoadFeedback.setAttribute('aria-busy', String(Boolean(initialFloorPending)));
     if (assetLoadFeedback.hidden) {
       return;
     }
 
     assetLoadFeedback.style.top = `${computeViewerSafeInsets().top + 16}px`;
+    if (initialFloorPending) {
+      const progress = document.createElement('div');
+      progress.className = 'map-load-progress';
+      progress.setAttribute('role', 'status');
+      progress.setAttribute('aria-label', t('status.floorLoading', { floor: getFloorLabel(getRenderedFloorDefinition()) }));
+      const dash = document.createElement('span');
+      dash.textContent = '—';
+      dash.setAttribute('aria-hidden', 'true');
+      progress.append(dash);
+      for (let i = 0; i < 3; i++) {
+        const line = document.createElement('span');
+        line.className = 'loading-skeleton';
+        line.setAttribute('aria-hidden', 'true');
+        progress.append(line);
+      }
+      assetLoadFeedback.append(progress);
+    }
     const addRetry = (message, label, retry) => {
       const row = document.createElement('div');
       row.className = 'map-load-error';
@@ -2449,6 +2469,7 @@ if (window.__FILE_MODE__) {
     if (!isEditorSite || !editorRingList) {
       return;
     }
+    if (renderEditorDataPlaceholder(editorRingList)) return;
 
     const facilityKey = state.activeRingEditorFacilityKey;
 
@@ -2571,6 +2592,15 @@ if (window.__FILE_MODE__) {
     if (!isEditorSite || !editorAreaEntrySelect) {
       return;
     }
+    editorAreaEntrySelect.setAttribute('aria-busy', String(!state.searchReady && !state.searchLoadError));
+    if (!state.searchReady) {
+      const placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.textContent = '—';
+      editorAreaEntrySelect.replaceChildren(placeholder);
+      editorAreaEntrySelect.disabled = true;
+      return;
+    }
 
     const entries = getCurrentFloorAreaEntries();
     ensureCurrentAreaEntrySelection();
@@ -2617,6 +2647,7 @@ if (window.__FILE_MODE__) {
     if (!isEditorSite || !editorAreaList) {
       return;
     }
+    if (renderEditorDataPlaceholder(editorAreaList)) return;
 
     const entries = getCurrentFloorAreaEntries();
     const areaRows = entries.flatMap((entry) =>
@@ -2941,13 +2972,44 @@ if (window.__FILE_MODE__) {
       return;
     }
 
+    editorJson.setAttribute('aria-busy', String(!state.searchReady && !state.searchLoadError));
+    if (!state.searchReady) {
+      editorJson.placeholder = state.searchLoadError ? t('search.feedback.loadError') : '—';
+      return;
+    }
+    editorJson.placeholder = '';
     editorJson.value = JSON.stringify(serializeManualEntries(), null, 2);
+  }
+
+  function renderEditorDataPlaceholder(container) {
+    if (state.searchReady) {
+      container?.setAttribute('aria-busy', 'false');
+      return false;
+    }
+    if (!container) return true;
+    container.setAttribute('aria-busy', String(!state.searchLoadError));
+    const message = document.createElement('div');
+    message.className = 'editor-empty';
+    message.setAttribute('role', 'status');
+    message.textContent = state.searchLoadError ? t('search.feedback.loadError') : '—';
+    if (!state.searchLoadError) message.setAttribute('aria-label', t('search.feedback.loading'));
+    container.replaceChildren(message);
+    if (state.searchLoadError) {
+      const retry = document.createElement('button');
+      retry.type = 'button';
+      retry.className = 'editor-entry-button';
+      retry.textContent = t('search.retry');
+      retry.addEventListener('click', () => { void buildSearchIndex(); });
+      container.append(retry);
+    }
+    return true;
   }
 
   function renderEditorList() {
     if (!isEditorSite || !editorList) {
       return;
     }
+    if (renderEditorDataPlaceholder(editorList)) return;
 
     const currentFloorId = getFloorDefinition().id;
     const currentFloorEntries = state.manualEntries.filter((entry) => entry.floorId === currentFloorId);
@@ -3163,7 +3225,9 @@ if (window.__FILE_MODE__) {
     const query = searchInput.value.trim();
     const previousActiveEntryId = state.searchSuggestions[state.activeSuggestionIndex]?.id ?? null;
     searchClearButton.hidden = query.length === 0;
-    searchResults.setAttribute('role', state.searchLoading || state.searchLoadError ? 'group' : 'listbox');
+    const searchPending = state.searchLoading || (!state.searchReady && !state.searchLoadError);
+    searchResults.setAttribute('role', searchPending || state.searchLoadError ? 'group' : 'listbox');
+    searchResults.setAttribute('aria-busy', String(searchPending));
 
     if (!query) {
       searchResults.hidden = true;
@@ -3179,8 +3243,10 @@ if (window.__FILE_MODE__) {
             floor: getEntryFloorLabel(activeEntry)
           })
         );
-      } else if (state.searchLoading) {
-        setSearchFeedback(t('search.feedback.loading'));
+      } else if (searchPending) {
+        setSearchFeedback('—');
+      } else if (state.searchLoadError) {
+        setSearchFeedback(t('search.feedback.loadError'));
       } else if (state.searchEntries.length === 0) {
         setSearchFeedback(t('search.feedback.noData'));
       } else {
@@ -3189,12 +3255,24 @@ if (window.__FILE_MODE__) {
       return;
     }
 
-    if (state.searchLoading || state.searchLoadError) {
+    if (searchPending || state.searchLoadError) {
       const message = document.createElement('div');
       message.className = 'search-result-empty';
       message.setAttribute('role', 'status');
-      message.textContent = t(state.searchLoading ? 'search.feedback.loading' : 'search.feedback.loadError');
+      message.textContent = searchPending ? '—' : t('search.feedback.loadError');
+      if (searchPending) message.setAttribute('aria-label', t('search.feedback.loading'));
       searchResults.replaceChildren(message);
+      if (searchPending) {
+        for (let i = 0; i < 3; i++) {
+          const row = document.createElement('div');
+          row.className = 'search-result-skeleton';
+          row.setAttribute('aria-hidden', 'true');
+          const line = document.createElement('span');
+          line.className = 'loading-skeleton';
+          row.append(line);
+          searchResults.append(row);
+        }
+      }
       if (state.searchLoadError) {
         const retry = document.createElement('button');
         retry.type = 'button';
@@ -3386,6 +3464,7 @@ if (window.__FILE_MODE__) {
     state.searchLoadError = false;
     setSearchFeedback(t('search.feedback.loading'));
     renderSearchSuggestions();
+    if (isEditorSite) refreshEditorUi();
 
     state.searchPromise = (async () => {
       try {
@@ -3403,6 +3482,7 @@ if (window.__FILE_MODE__) {
         state.searchLoading = false;
         state.searchPromise = null;
         renderSearchSuggestions();
+        if (isEditorSite) refreshEditorUi();
         return state.searchEntries;
       }
 
@@ -3475,6 +3555,7 @@ if (window.__FILE_MODE__) {
     const floorLoadToken = ++state.floorLoadToken;
     const centerRatios = preserveView ? captureViewportCenterRatios() : null;
     state.floorLoadError = null;
+    state.floorLoading = true;
     renderAssetLoadFeedback();
 
     setStatus(t('status.floorLoading', { floor: getFloorLabel(floor) }));
@@ -3556,6 +3637,11 @@ if (window.__FILE_MODE__) {
       state.floorLoadError = { resetZoom, preserveView };
       renderAssetLoadFeedback();
       setStatus(t('status.floorError'));
+    } finally {
+      if (floorLoadToken === state.floorLoadToken) {
+        state.floorLoading = false;
+        renderAssetLoadFeedback();
+      }
     }
   }
 

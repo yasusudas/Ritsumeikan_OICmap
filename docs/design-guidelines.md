@@ -62,6 +62,7 @@
 - 行のリスト: `.rule-list`（公開ページではグレーの角丸の行、編集画面では罫線の行）
 - ボタン: `.btn`、`.btn-primary`（えんじ）、`.btn-quiet`、矢印 `.arrow` / 外部リンク `.external`
 - ダイアログ: `.about-dialog-*`
+- 非同期データの初期表示: 一覧・カードは静止した `.loading-skeleton` で場所を確保し、営業時間・営業状態・件数など短い値は `—` にする。取得前に営業中・時間外・0件・空データと断定しない。読み込み領域に `aria-busy`、読み上げ用の説明を付け、成功・空・失敗で解除する。再取得中も有効なキャッシュの表示を維持し、光沢や点滅アニメーションは使わない。
 - フッター: `.site-footer` > `.site-footer-inner` > `.site-footer-links` + `.site-footer-copy`
 - 食事案内（地図のカード・一覧とOICフードで共通、`food-guide.css`）: 店舗内の小見出し `.food-heading`、状態や「臨時」のバッジ `.food-chip`（強調は `.is-accent` の淡いえんじ）、利用案内の2列表 `.food-usage-grid`、出典・生協カレンダーのリンク `.food-source-link`。地図カードのボタン `.food-control` と控えめな操作 `.food-text-control` は `.btn` と同じピル型。閉じるボタンは白い丸の ×
 
