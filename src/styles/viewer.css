@@ -972,6 +972,12 @@ body[data-app-mode="viewer"] .toilet-ring-legend {
     margin-top: 0;
     padding: var(--s-2) 0 0;
     border-top: 0;
+    /* Two rows of two links, centred: terms / privacy, then sources / creator. */
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    justify-items: center;
+    column-gap: var(--s-6, 24px);
   }
 
   .site-header .site-menu-meta-link {
