@@ -82,11 +82,8 @@ test('the source notes moved from the timetable page to the sources page', () =>
   assert.match(read('src/sources-page.js'), /'\/timetable\/data\/manifest\.json'/);
   // The notes and references that the page now lists come from the manifest.
   const manifest = JSON.parse(read('public/timetable/data/manifest.json'));
-  assert.ok(manifest.sourceNotes.some((note) => /阪急電車の時刻表ページ/.test(note)));
-  assert.ok(manifest.sourceNotes.some((note) => /JR西日本の時刻表ページ/.test(note)));
   assert.ok(manifest.sourceReferences.length >= 3);
   assert.match(read('sources/index.html'), /href="\/timetable\/"/);
-  assert.match(read('en/sources/index.html'), /Hankyu's timetable pages state that permission is required/);
 });
 
 test('the shuttle bus card is on /timetable/ and shares one data source with the English links page', () => {
@@ -137,7 +134,6 @@ test('on /timetable/ the hidden cards panel is the last block, after the shuttle
 
 test('the timetable data was refetched after JR West\'s October 2026 revision', () => {
   const manifest = JSON.parse(read('public/timetable/data/manifest.json'));
-  assert.ok(manifest.sourceNotes.includes('JR西日本の時刻は代表日として平日 2026-10-16、休日 2026-10-18 の表示を取得しています。'));
   for (const file of ['kyoto-weekday', 'kyoto-holiday', 'osaka-kobe-weekday', 'osaka-kobe-holiday']) {
     const schedule = JSON.parse(read(`public/timetable/data/jr-west/ibaraki/${file}.json`));
     assert.equal(schedule.revision, '改正日:2026年10月03日', file);

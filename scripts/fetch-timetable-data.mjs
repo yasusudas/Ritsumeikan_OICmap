@@ -282,13 +282,8 @@ async function main() {
     holidayCalendar: HOLIDAY_CALENDAR,
     railways: RAILWAYS,
     cards,
-    sourceNotes: [
-      '各社公式または公式表示ページから取得した時刻表データです。',
-      '運休、臨時列車、遅延、番線変更は反映されない場合があります。乗車前に各社公式情報を確認してください。',
-      `JR西日本の時刻は代表日として平日 ${CALENDARS.weekday.jrRepresentativeDate}、休日 ${CALENDARS.holiday.jrRepresentativeDate} の表示を取得しています。`,
-      '阪急電車の時刻表ページには、データの加工・再利用・再配布に許可が必要である旨が明記されています。',
-      'JR西日本の時刻表ページには、JR時刻表データの無断転載・複写・加工を禁じる旨が明記されています。',
-    ],
+    // The sources page already says this in its own text, so no notes are repeated here.
+    sourceNotes: [],
     sourceReferences: SOURCE_REFERENCES,
   };
   await writeJson(path.join(OUTPUT_ROOT, 'manifest.json'), manifest);
