@@ -939,10 +939,27 @@ body[data-app-mode="viewer"] .toilet-ring-legend {
   }
 }
 
-/* Below the sub pages' nav breakpoint, the menu carries the footer links. */
+/* Below the sub pages' nav breakpoint the footer keeps only terms, privacy,
+   creator and the copyright; the other links live in the menu. */
 @media (max-width: 820px) {
-  body[data-app-mode="viewer"] .site-footer {
+  body[data-app-mode="viewer"] .site-footer-link[data-dialog],
+  body[data-app-mode="viewer"] .site-footer-link[href="/sources/"] {
     display: none;
+  }
+
+  body[data-app-mode="viewer"] .site-footer-inner {
+    row-gap: 0;
+    padding: 12px 0 2px;
+  }
+
+  body[data-app-mode="viewer"] .site-footer-links {
+    align-self: stretch;
+    justify-content: center;
+  }
+
+  body[data-app-mode="viewer"] .site-footer-copy {
+    align-self: stretch;
+    text-align: center;
   }
 
   .site-header .site-menu-meta {
