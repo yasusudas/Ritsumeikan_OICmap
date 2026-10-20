@@ -93,6 +93,33 @@ export function lunchStreetImage(name) {
   return IMAGES[name] ? `/lunch-street/${IMAGES[name]}.webp` : '';
 }
 
+// 各写真の左上に写っている札の英字（大文字・小文字は写真のとおり。A〜J は日替わりの車両、a〜d は毎日のお店）。
+// 写真を差し替えたら、ここも写真の札に合わせて直す。カードの店名の末尾に「(A)」の形で付ける。
+const TAGS = {
+  'とっとのレシピ': 'A',
+  RBDkitchen: 'B',
+  'キッチンカーアド': 'C',
+  'からあげ専門 みこし': 'E',
+  'TencYo食堂': 'E',
+  'ヤドカリkitchen': 'F',
+  'ポブズカー': 'G',
+  'RUI食堂': 'H',
+  'Eeden cafe': 'D',
+  PureWalkCafe: 'J',
+  'キッチン花子': 'a',
+  'デリカショップ モリガキ': 'b',
+  '洋食 Dining KIYO': 'c',
+  'OIC FOOD PARK': 'd',
+  ARAPSUN: 'A',
+  'kyoto ケバブ屋 MOTO-3': 'B',
+  '京タコス': 'C',
+  'オリンピア食堂': 'F',
+};
+
+export function lunchStreetTag(name) {
+  return TAGS[name] ?? '';
+}
+
 // 表示順は空のプラザ → TERRACE GATE前。spot は食事ページの出店場所ラベルのキー。
 export const LUNCH_STREET_SCHEDULE = [
   { spot: 'plaza', days: PLAZA },
@@ -124,6 +151,7 @@ export function getLunchStreetPayload(now = new Date()) {
         dish: '',
         spot,
         image: lunchStreetImage(name),
+        tag: lunchStreetTag(name),
         sourceUrl: '',
       });
     }

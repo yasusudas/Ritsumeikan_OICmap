@@ -154,6 +154,30 @@ function localText(value, lang) {
   return value?.[lang] || value?.ja || '';
 }
 
+// A truck photo is shown only from this site's own path (/lunch-street/…) or an http(s) URL.
+export function safeFoodTruckImage(value) {
+  const text = String(value ?? '');
+  if (/^\/(?!\/)[\w./-]+$/.test(text)) return text;
+  return isHttpUrl(text) ? text : '';
+}
+
+// Today's trucks for one spot as a grid of photos, two to a row. The grid keeps a fixed 4:3 frame per
+// photo (food-guide.css), so rows never shift while the lazy images load. The name is the alt text;
+// a truck without a usable photo gets a tile with its name (the viewer does the same when a photo
+// fails to load). Returns '' when there is nothing to show.
+export function renderFoodTruckPhotos(trucks) {
+  const items = (Array.isArray(trucks) ? trucks : []).filter((truck) => truck?.name);
+  if (!items.length) return '';
+  const tiles = items.map((truck) => {
+    const name = escapeHtml(truck.name);
+    const image = safeFoodTruckImage(truck.image);
+    return image
+      ? `<li class="food-truck-photo"><img src="${escapeHtml(image)}" alt="${name}" loading="lazy" decoding="async" draggable="false" /></li>`
+      : `<li class="food-truck-photo is-fallback"><span>${name}</span></li>`;
+  });
+  return `<ul class="food-truck-photos">${tiles.join('')}</ul>`;
+}
+
 export function renderFoodHours(place, { lang, payload = null, loading = false, fetchFailed = false, now = new Date() } = {}) {
   const translate = (key) => foodPageText(lang, key);
   return place.services

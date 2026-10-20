@@ -5,6 +5,7 @@ import {
   LUNCH_STREET_SCHEDULE,
   getLunchStreetPayload,
   lunchStreetImage,
+  lunchStreetTag,
   japanDateLabel,
 } from '../src/server/lunch-street.js';
 import { FOOD_TRUCKS_SOURCE, getFoodTrucksPayload } from '../src/server/food-trucks.js';
@@ -67,6 +68,24 @@ test('the API serves the calendar by default and keeps the NomNom! route availab
   } finally {
     globalThis.fetch = original;
   }
+});
+
+test('every vendor has the letter shown on its photo, and the payload carries it', () => {
+  const names = new Set(LUNCH_STREET_SCHEDULE.flatMap(({ days }) => Object.values(days).flat()));
+  for (const name of names) assert.match(lunchStreetTag(name), /^[A-Za-z]$/, `${name} has no letter`);
+  // Upper and lower case are different tags: the daily cars are A–J, the daily shops a–d.
+  assert.equal(lunchStreetTag('ARAPSUN'), 'A');
+  assert.equal(lunchStreetTag('キッチン花子'), 'a');
+  assert.equal(lunchStreetTag('OIC FOOD PARK'), 'd');
+  const payload = getLunchStreetPayload(at('2026-10-20T12:00:00'));
+  const tags = Object.fromEntries(payload.trucks.map((truck) => [truck.name, truck.tag]));
+  assert.deepEqual(tags, {
+    PureWalkCafe: 'J',
+    'キッチン花子': 'a',
+    'デリカショップ モリガキ': 'b',
+    'OIC FOOD PARK': 'd',
+    ARAPSUN: 'A',
+  });
 });
 
 test('every vendor in the calendar has a cropped photo that exists', async () => {

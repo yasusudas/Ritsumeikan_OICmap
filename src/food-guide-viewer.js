@@ -6,6 +6,7 @@ import {
   renderFoodLinkRows,
   renderFoodStateLabel,
   renderFoodStatus,
+  renderFoodTruckPhotos,
   renderFoodUsage,
 } from './food-place-cards.js';
 import { FACILITY_PLACES, FACILITY_TEXT, facilityAnchor } from './facility-places.js';
@@ -597,6 +598,7 @@ export class FoodGuideViewer {
     }
     this.panel.innerHTML = `${handle}<header class="food-panel-header">${header}</header><div class="food-panel-body">${body}</div>${footer ? `<footer class="food-panel-footer">${footer}</footer>` : ''}`;
     this.wireImageFallback(this.panel);
+    this.wireTruckPhotos(this.panel);
     if (this.panelMode === 'list') this.renderListStatus();
     const scroller = this.panel.querySelector('.food-panel-body');
     scroller.scrollTop =
@@ -685,7 +687,9 @@ export class FoodGuideViewer {
       .finally(() => {
         // Only the list changes, so the panel's scroll and focus stay as they are.
         const node = this.panel.querySelector('[data-food-trucks]');
-        if (node) node.innerHTML = this.renderTrucksBody(node.dataset.foodTrucks);
+        if (!node) return;
+        node.innerHTML = this.renderTrucksBody(node.dataset.foodTrucks);
+        this.wireTruckPhotos(node);
       });
   }
   renderTrucksSection(spot) {
@@ -698,10 +702,26 @@ export class FoodGuideViewer {
     const trucks = Array.isArray(payload.trucks) ? payload.trucks : [];
     if (payload.outOfPeriod && !trucks.length)
       return `<p class="food-muted">${escape(t('food.trucks.outOfPeriod'))}</p>`;
-    const names = trucks.filter((truck) => truck.spot === spot).map((truck) => truck.name);
-    return names.length
-      ? `<ul class="food-truck-names">${names.map((name) => `<li>${escape(name)}</li>`).join('')}</ul>`
-      : `<p class="food-muted">${escape(t('food.trucks.none'))}</p>`;
+    const here = trucks.filter((truck) => truck.spot === spot);
+    if (!here.length) return `<p class="food-muted">${escape(t('food.trucks.none'))}</p>`;
+    // The letter on the shop's photo (A and a differ) follows the name, so a name can be matched to its photo.
+    const label = (truck) => `${escape(truck.name)}${truck.tag ? ` (${escape(truck.tag)})` : ''}`;
+    const names = `<ul class="food-truck-names">${here.map((truck) => `<li>${label(truck)}</li>`).join('')}</ul>`;
+    // The photos are for the detail sheet; the small overview sheet keeps just the names.
+    return this.panelMode === 'compact' ? names : names + renderFoodTruckPhotos(here);
+  }
+  // A photo that fails to load becomes a tile with the shop's name, so the grid keeps its shape.
+  wireTruckPhotos(root) {
+    const fallBack = (img) => {
+      const tile = img.closest('.food-truck-photo');
+      if (!tile || tile.classList.contains('is-fallback')) return;
+      tile.classList.add('is-fallback');
+      tile.replaceChildren(Object.assign(document.createElement('span'), { textContent: img.alt }));
+    };
+    root.querySelectorAll('.food-truck-photo img').forEach((img) => {
+      if (img.complete && img.naturalWidth === 0 && img.currentSrc) fallBack(img);
+      else img.addEventListener('error', () => fallBack(img), { once: true });
+    });
   }
   setDetails(detail) {
     if (!this.selected) return;

@@ -396,6 +396,48 @@ body[data-app-mode='viewer'] {
   overflow-wrap: anywhere;
 }
 
+/* Today's food trucks on the detail sheet: a photo for each, two to a row, under the names. The
+   frame is a fixed 4:3, so rows keep their height while the lazy photos load. */
+.food-truck-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-2);
+  margin: var(--s-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.food-truck-photo {
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--ls-row);
+  background: var(--c-bg);
+}
+
+.food-truck-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* The calendar's letter tag (A, a …) sits at the top left of each photo; crop from the bottom. */
+  object-fit: cover;
+  object-position: left top;
+  -webkit-user-drag: none;
+}
+
+/* No photo, or it failed to load: the shop's name in the same frame. */
+.food-truck-photo.is-fallback {
+  display: grid;
+  place-items: center;
+  padding: var(--s-2);
+  color: var(--c-ink-2);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
 .food-muted {
   margin: 4px 0 0;
   color: var(--c-ink-3);
@@ -420,6 +462,13 @@ body[data-app-mode='viewer'] {
 
 .food-panel-footer .food-control.is-primary {
   flex: 1 0 100%;
+}
+
+/* The phone's detail sheet is as tall as the screen allows. Let the content take the room, so the
+   buttons sit at the bottom edge instead of right under a short card and scroll with nothing above
+   them; a long card scrolls inside the body, as before. */
+.food-panel.is-narrow:not(.is-compact):not(.has-short-space) .food-panel-body:not(:last-child) {
+  flex: 1 1 auto;
 }
 
 /* Pill buttons, the same shape and type as the sub-page .btn. */
@@ -765,6 +814,14 @@ body[data-app-mode='viewer'] {
 .food-panel.has-short-space .food-panel-header {
   position: sticky;
   top: 0;
+  z-index: 1;
+  background: var(--ls-fill);
+}
+
+/* The whole sheet scrolls here, so the buttons stay on screen at the bottom. */
+.food-panel.has-short-space .food-panel-footer {
+  position: sticky;
+  bottom: 0;
   z-index: 1;
   background: var(--ls-fill);
 }

@@ -165,3 +165,37 @@ test('a service whose usage answers are all na has no usage section', async () =
   assert.equal(hasFoodUsage({ services: [{ usage: na }] }), false);
   assert.equal(hasFoodUsage({ services: [{ usage: { ...na, eatIn: 'yes' } }] }), true);
 });
+
+test('the truck photo grid is two columns of fixed-ratio tiles, with the shop name as alt text', async () => {
+  const { renderFoodTruckPhotos, safeFoodTruckImage } = await import('../src/food-place-cards.js');
+  assert.equal(renderFoodTruckPhotos([]), '');
+  assert.equal(renderFoodTruckPhotos(null), '');
+  const trucks = [
+    { name: 'ARAPSUN', image: '/lunch-street/arapsun.webp' },
+    { name: 'A&B "kitchen"', image: '/lunch-street/arapsun.webp' },
+    { name: 'No photo', image: '' },
+    { name: 'Unsafe path', image: '//evil.example/x.webp' },
+    { name: 'Script', image: 'javascript:alert(1)' },
+  ];
+  const html = renderFoodTruckPhotos(trucks);
+  assert.equal((html.match(/<li /g) || []).length, 5);
+  assert.match(html, /alt="ARAPSUN" loading="lazy" decoding="async"/);
+  // The name is escaped in the alt text, and a photo that cannot be used becomes a name tile.
+  assert.match(html, /alt="A&amp;B &quot;kitchen&quot;"/);
+  assert.equal((html.match(/is-fallback/g) || []).length, 3);
+  assert.doesNotMatch(html, /evil\.example|javascript:/);
+  assert.equal(safeFoodTruckImage('https://example.com/a.webp'), 'https://example.com/a.webp');
+
+  const css = readFileSync(new URL('../src/styles/food-guide.css', import.meta.url), 'utf8');
+  assert.match(css, /\.food-truck-photos \{[^}]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
+  assert.match(css, /\.food-truck-photo \{[^}]*aspect-ratio: 4 \/ 3/);
+  // The phone's detail sheet keeps its buttons at the bottom edge; the short-screen sheet keeps them sticky.
+  assert.match(css, /\.food-panel\.is-narrow:not\(\.is-compact\):not\(\.has-short-space\) \.food-panel-body:not\(:last-child\) \{[^}]*flex: 1 1 auto/);
+  assert.match(css, /\.food-panel\.has-short-space \.food-panel-footer \{[^}]*position: sticky;[^}]*bottom: 0/);
+});
+
+test('the map card shows the photos only on the detail sheet, and the photo letter after each name', () => {
+  const viewer = readFileSync(new URL('../src/food-guide-viewer.js', import.meta.url), 'utf8');
+  assert.match(viewer, /this\.panelMode === 'compact' \? names : names \+ renderFoodTruckPhotos\(here\)/);
+  assert.match(viewer, /truck\.tag \? ` \(\$\{escape\(truck\.tag\)\}\)` : ''/);
+});
