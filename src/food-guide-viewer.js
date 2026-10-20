@@ -466,7 +466,9 @@ export class FoodGuideViewer {
     const h = window.visualViewport?.height || innerHeight;
     const top = rect.top + insets.top + 8;
     const safe = parseFloat(getComputedStyle(this.panel).paddingBottom) || 0;
-    const available = Math.max(0, h - top - insets.bottom - safe);
+    // On a phone the sheet covers the legal footer: the footer's strip is part of the sheet's own area.
+    const footer = this.narrow ? 0 : insets.bottom;
+    const available = Math.max(0, h - top - footer - safe);
     this.shortScreen =
       available < 340 ||
       (this.minimumCompactHeight || 0) - 32 > Math.min(320, available - 120);
@@ -495,10 +497,10 @@ export class FoodGuideViewer {
           : available + safe;
       return {
         left: 0,
-        top: h - insets.bottom - height,
+        top: h - footer - height,
         width: innerWidth,
         height,
-        bottom: insets.bottom,
+        bottom: footer,
       };
     }
     const rail = this.toolbar.getBoundingClientRect();
