@@ -447,8 +447,20 @@ body[data-app-mode='viewer'] {
 .food-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--s-2);
   margin-top: 20px;
+}
+
+.food-links:has(.food-order-link) {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+}
+
+.food-links .food-order-link {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: center;
 }
 
 .food-panel-footer {
@@ -461,7 +473,7 @@ body[data-app-mode='viewer'] {
 }
 
 .food-panel-footer .food-control.is-primary {
-  flex: 1 0 100%;
+  flex: 0 1 auto;
 }
 
 /* The phone's detail sheet is as tall as the screen allows. Let the content take the room, so the
@@ -477,14 +489,14 @@ body[data-app-mode='viewer'] {
   align-items: center;
   justify-content: center;
   gap: var(--s-1);
-  min-height: 48px;
-  padding: 0 20px;
+  min-height: var(--ls-pill-h);
+  padding: var(--s-2) var(--ls-pill-px);
   border: 0;
   border-radius: 999px;
   background: var(--c-bg);
   color: var(--c-ink);
   font: inherit;
-  font-size: var(--fs-sm);
+  font-size: var(--ls-pill-font);
   font-weight: var(--fw-medium);
   line-height: 1.2;
   text-align: center;
@@ -519,15 +531,16 @@ body[data-app-mode='viewer'] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  padding: 0 16px;
+  min-height: var(--ls-pill-h);
+  padding: var(--s-2) var(--ls-pill-px);
   border: 1px solid var(--c-line);
   border-radius: 999px;
   background: #fff;
   color: var(--c-ink-2);
   font: inherit;
-  font-size: var(--fs-sm);
+  font-size: var(--ls-pill-font);
   font-weight: var(--fw-medium);
+  line-height: 1.2;
   cursor: pointer;
   transition:
     background-color var(--dur) var(--ease),

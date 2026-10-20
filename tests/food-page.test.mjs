@@ -87,7 +87,7 @@ test('campus cards keep every comparison field and do not absorb the food-truck 
   assert.doesNotMatch(html, /food-place-map"[^>]*target=/);
   const seven = html.slice(html.indexOf('セブン-イレブン'), html.indexOf('みなめんcafe'));
   assert.equal([...seven.matchAll(/class="food-place-link /g)].length, 1);
-  assert.match(seven, /<div class="food-sources">\s*<p><a class="food-source-link external"[^>]*>営業時間を確認<\/a><\/p>/);
+  assert.match(seven, /class="food-place-link btn external"[^>]*>公式サイト<\/a>/);
   assert.match(html, /11:30–15:00/);
   assert.match(html, /臨時 \(2026-10-07〜2026-11-22\)/);
   assert.match(html, /公式の営業時間をご確認ください。/);
@@ -95,6 +95,37 @@ test('campus cards keep every comparison field and do not absorb the food-truck 
   assert.match(error, /食事場所を読み込めませんでした/);
   assert.match(error, /data-food-places-retry/);
   assert.doesNotMatch(error, /キッチンカー/);
+});
+
+test('every store keeps unique destinations and one co-op calendar action in both languages', () => {
+  const places = linkedPlaces();
+  const calendarUrl = 'https://www.ritsco-op.jp/schedule/schedule_202610.html';
+  const calendar = {
+    nextUpdateAt: new Date(now.getTime() + 60_000).toISOString(),
+    source: { url: 'https://www.ritsco-op.jp/schedule/index.html#s03' },
+    months: [{ month: '2026-10', url: calendarUrl }],
+    stores: places.flatMap((place) => place.services.filter((service) => service.coopScheduleName).map((service) => ({
+      name: service.coopScheduleName,
+      days: [{ date: '2026-10-15', closed: false, periods: [{ start: '10:30', end: '19:00' }] }],
+    }))),
+  };
+  for (const lang of ['ja', 'en']) {
+    for (const data of [calendar, null, { ...calendar, nextUpdateAt: now.toISOString() }]) {
+      const html = renderFoodPlaceList(places, { lang, payload: data, now });
+      const cards = [...html.matchAll(/<article\b[^]*?<\/article>/g)].map(([card]) => card);
+      assert.equal(cards.length, places.length);
+      cards.forEach((card, index) => {
+        const hrefs = [...card.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map((match) => match[1]);
+        assert.equal(new Set(hrefs).size, hrefs.length, `${lang}: ${places[index].name.ja}`);
+        if (places[index].services.some((service) => service.coopScheduleName)) {
+          assert.equal(hrefs.includes(data === calendar ? calendarUrl : places[index].links.hours), true);
+          const label = FOOD_PAGE_COPY[lang]['food.coopSource'];
+          assert.equal(card.split(`>${label}</a>`).length - 1, 1);
+          assert.doesNotMatch(card, /class="food-source-link external"/);
+        }
+      });
+    }
+  }
 });
 
 test('co-op failure hides only co-op hours, while registered hours stay visible', () => {

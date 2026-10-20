@@ -10,7 +10,7 @@
 /* On body, not main: the drag ghost is appended to body. */
 .timetable-page {
   --tt-sheet: 26px; /* big blocks: shuttle routes, departure cards */
-  --tt-chip-h: 36px; /* small pill links and buttons */
+  --tt-chip-h: var(--ls-pill-h); /* small pill links and buttons */
   --tt-line-green: #06c755; /* LINE's green, sampled from LINE's official icon */
   --tt-line-green-hover: #05b04c;
   --timetable-day-link-w: 6.5rem; /* min width of a day link */
@@ -53,11 +53,11 @@ html[lang="en"] .timetable-page {
   align-items: center;
   gap: 6px;
   min-height: var(--tt-chip-h);
-  padding: 0 14px 0 16px;
+  padding: var(--s-2) var(--ls-pill-px);
   border-radius: 999px;
   background: var(--ls-fill);
   color: var(--c-ink);
-  font-size: var(--fs-sm);
+  font-size: var(--ls-pill-font);
   font-weight: var(--fw-medium);
   line-height: 1.2;
   text-decoration: none;
@@ -189,8 +189,8 @@ html[lang="en"] .timetable-station-list {
 
 body.subpage .timetable-day-link {
   min-width: var(--timetable-day-link-w);
-  min-height: 40px;
-  padding: 0 12px;
+  min-height: var(--ls-pill-h);
+  padding: var(--s-2) var(--ls-pill-px);
   gap: 6px;
   background: #ffffff;
 }
@@ -545,8 +545,8 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
    sheet under both columns. */
 .timetable-card {
   --tt-row-gap: 8px;
-  /* The pill's row: the gap above it, its 4px margin and its 32px height. */
-  --tt-foot: calc(var(--tt-row-gap) + 36px);
+  /* The pill's row: the gap above it, its 4px margin and its height. */
+  --tt-foot: calc(var(--tt-row-gap) + 4px + var(--ls-pill-h));
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
@@ -622,14 +622,15 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
 }
 
 .timetable-card-hide {
-  min-height: 32px;
-  padding: 0 11px;
+  min-height: var(--ls-pill-h);
+  padding: var(--s-2) var(--ls-pill-px);
   border: 0;
   border-radius: 999px;
   background: #ffffff;
   color: var(--c-ink-2);
-  font-size: var(--fs-xs);
+  font-size: var(--ls-pill-font);
   font-weight: var(--fw-medium);
+  line-height: 1.2;
   transition:
     background-color var(--dur) var(--ease),
     color var(--dur) var(--ease);
@@ -893,16 +894,17 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   display: inline-flex;
   align-items: center;
   gap: var(--s-2);
-  min-height: 32px;
+  min-height: var(--ls-pill-h);
   margin-top: 4px;
-  padding: 0 14px;
+  padding: var(--s-2) var(--ls-pill-px);
   border: 0;
   border-radius: 999px;
   background: #ffffff;
   color: var(--c-ink);
   font: inherit;
-  font-size: var(--fs-sm);
+  font-size: var(--ls-pill-font);
   font-weight: var(--fw-medium);
+  line-height: 1.2;
   cursor: pointer;
   transition: background-color var(--dur) var(--ease);
 }

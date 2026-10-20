@@ -711,7 +711,7 @@ body.subpage .legal-section {
 }
 
 body.subpage .food-place .btn {
-  min-height: 48px;
+  min-height: var(--ls-pill-h);
 }
 
 body.subpage .food-place .btn:not(.btn-primary) {
@@ -720,10 +720,6 @@ body.subpage .food-place .btn:not(.btn-primary) {
 
 body.subpage .food-place .btn:not(.btn-primary):hover {
   background: var(--ls-fill-2);
-}
-
-.food-place .food-sources {
-  margin-top: -8px;
 }
 
 body.subpage .food-place-retry {
@@ -742,13 +738,6 @@ body.subpage .food-place-retry:hover {
   .food-place-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
-  }
-
-  /* A card without the hours link keeps that row's space under its buttons,
-     so they line up with the card beside it: the card gap (20px), the link
-     row's -8px pull-up and its 48px touch height (food-guide.css). */
-  .food-place:not(:has(.food-sources)) .food-place-actions {
-    margin-bottom: calc(20px - 8px + 48px);
   }
 
   /* Short cards (the lunch-street spots) stack two to a cell: every other

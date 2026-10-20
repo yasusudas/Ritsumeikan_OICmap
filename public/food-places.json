@@ -656,8 +656,9 @@
       ],
       "links": {
         "menu": "https://oic-foodpark.nadeshico1000.jp/menu",
-        "hours": "https://oic-foodpark.nadeshico1000.jp/access",
-        "official": "https://oic-foodpark.nadeshico1000.jp/"
+        "hours": null,
+        "official": "https://oic-foodpark.nadeshico1000.jp/",
+        "order": "https://oic.yubisuma.com"
       },
       "sources": [
         {

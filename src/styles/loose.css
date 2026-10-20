@@ -17,6 +17,9 @@
   --ls-sheet: 22px; /* menus, panels, dialogs */
   --ls-row: 14px; /* rows inside a sheet */
   --ls-pop-dur: 120ms; /* shared menu, floor list and facility timing */
+  --ls-pill-h: 36px;
+  --ls-pill-font: 0.875rem; /* 14px */
+  --ls-pill-px: var(--s-4);
 
   --c-accent: var(--ls-red);
   --c-accent-hover: #741424;
@@ -412,12 +415,13 @@ body.subpage .rule-list > li {
 
 /* Buttons: pills. Grey by default, crimson for the main action. */
 body.subpage .btn {
-  min-height: 44px;
-  padding: 0 20px;
+  min-height: var(--ls-pill-h);
+  padding: var(--s-2) var(--ls-pill-px);
   border: 0;
   border-radius: 999px;
   background: var(--ls-fill);
   color: var(--c-ink);
+  font-size: var(--ls-pill-font);
 }
 
 body.subpage .btn:hover {

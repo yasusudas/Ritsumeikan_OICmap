@@ -3,7 +3,6 @@ import {
   hasFoodUsage,
   renderFoodLinkButtons,
   renderFoodLeadStatus,
-  renderFoodLinkRows,
   renderFoodStateLabel,
   renderFoodStatus,
   renderFoodTruckPhotos,
@@ -610,10 +609,10 @@ export class FoodGuideViewer {
       if (this.panelMode !== 'compact') {
         if (hasFoodUsage(place))
           body += `<section class="food-usage"><h3 class="food-heading">${escape(t('food.usage'))}</h3>${renderFoodUsage(place, { translate: t, text: local, headingTag: 'h4' })}</section>`;
-        const linkButtons = renderFoodLinkButtons(place, { translate: t, className: 'food-control external' });
+        const linkButtons = renderFoodLinkButtons(place, {
+          translate: t, className: 'food-control external', lang: getLang(), payload: this.hours.payload,
+        });
         if (linkButtons) body += `<div class="food-links">${linkButtons}</div>`;
-        const hoursLink = renderFoodLinkRows(place, { translate: t });
-        if (hoursLink) body += `<div class="food-sources">${hoursLink}</div>`;
       }
       const truckCard = this.detailOnly(this.selected);
       footer = `${this.panelMode === 'compact' && !truckCard ? `<button class="food-control is-primary" data-food-action="expand">${escape(t('food.details'))}</button>` : ''}${this.narrow && this.panelMode === 'detail' && !this.shortScreen && !this.detailOnly(this.selected) ? `<button class="food-text-control" data-food-action="collapse">${escape(t('food.collapse'))}</button>` : ''}<button class="food-text-control" data-food-action="list">${escape(this.browse ? t('food.backList') : t('food.listTitle'))}</button>`;
@@ -1011,10 +1010,7 @@ export class FoodGuideViewer {
         // With several services, each label comes right under its service name (as on the food page).
         if (block.kind === 'message') return `${heading}${status}<p>${escape(block.text)}</p>`;
         if (block.kind === 'coop') {
-          const source = compact
-            ? ''
-            : `<a class="food-source-link external" href="${escape(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(t('food.coopSource') + ' ' + t('food.external'))}">${escape(t('food.coopSource'))}</a>`;
-          return `${heading}${status}<p>${escape(block.dateLabel)}\n${escape(block.text)}</p>${source}`;
+          return `${heading}${status}<p>${escape(block.dateLabel)}\n${escape(block.text)}</p>`;
         }
         return (
           heading +
@@ -1035,6 +1031,13 @@ export class FoodGuideViewer {
         );
       })
       .join('');
+    const links = this.panel.querySelector('.food-links');
+    if (links) {
+      const html = renderFoodLinkButtons(place, {
+        translate: t, className: 'food-control external', lang: getLang(), payload: this.hours.payload,
+      });
+      if (links.innerHTML !== html) links.innerHTML = html;
+    }
     const lead = this.panel.querySelector('[data-food-lead-status]');
     if (lead)
       lead.innerHTML = renderFoodLeadStatus(place, {

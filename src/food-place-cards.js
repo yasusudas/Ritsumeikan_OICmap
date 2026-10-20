@@ -9,6 +9,7 @@ export const FOOD_PAGE_COPY = {
     'food.link.menu': 'メニュー',
     'food.link.hours': '営業時間を確認',
     'food.link.official': '公式サイト',
+    'food.link.order': 'モバイルオーダー',
     'food.external': '（新しいタブで開く）',
     'food.hoursLoading': '営業時間を確認中…',
     'food.hoursUnknown': '公式の営業時間をご確認ください。',
@@ -40,6 +41,7 @@ export const FOOD_PAGE_COPY = {
     'food.link.menu': 'Menu',
     'food.link.hours': 'Check hours',
     'food.link.official': 'Official website',
+    'food.link.order': 'Mobile order',
     'food.external': '(opens in a new tab)',
     'food.hoursLoading': 'Checking hours…',
     'food.hoursUnknown': 'Please check the official hours.',
@@ -206,10 +208,7 @@ export function renderFoodHours(place, { lang, payload = null, loading = false, 
       // With several services, each label comes right under its service name.
       if (block.kind === 'message') return `${heading}${status}<p>${escapeHtml(block.text)}</p>`;
       if (block.kind === 'coop') {
-        const source = isHttpUrl(block.sourceUrl)
-          ? `<a class="food-source-link external" href="${escapeHtml(block.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${translate('food.coopSource')} ${translate('food.external')}`)}">${escapeHtml(translate('food.coopSource'))}</a>`
-          : '';
-        return `${heading}${status}<p>${escapeHtml(block.dateLabel)}\n${escapeHtml(block.text)}</p>${source}`;
+        return `${heading}${status}<p>${escapeHtml(block.dateLabel)}\n${escapeHtml(block.text)}</p>`;
       }
       return (
         heading +
@@ -225,31 +224,32 @@ export function renderFoodHours(place, { lang, payload = null, loading = false, 
     .join('');
 }
 
-// Menu and official site stay buttons (one per distinct URL); the hours link is a
-// plain text row in the source list, so it is always shown.
-export function renderFoodLinkButtons(place, { translate, className }) {
+// Keep one action per destination, including the source of the co-op hours.
+export function renderFoodLinkButtons(place, { translate, className, lang = 'ja', payload = null, now = new Date() }) {
+  const coop = place.services.filter((service) => service.coopScheduleName);
+  const calendars = coop.map((service) => describeFoodServiceHours(service, {
+    text: (value) => localText(value, lang), translate, lang, payload, now,
+  })).filter((block) => block.kind === 'coop' && isHttpUrl(block.sourceUrl));
+  const actions = ['order', 'menu', 'official'].map((key) => ({ key, url: place.links[key], label: translate(`food.link.${key}`) }));
+  if (calendars.length) {
+    actions.push(...calendars.map((block) => ({ url: block.sourceUrl, label: translate('food.coopSource') })));
+  } else {
+    actions.push({ url: place.links.hours, label: translate(coop.length ? 'food.coopSource' : 'food.link.hours') });
+  }
   const seen = new Set();
-  return ['menu', 'official']
-    .filter((key) => place.links[key] && !seen.has(place.links[key]) && seen.add(place.links[key]))
-    .map((key) => {
-      const label = translate(`food.link.${key}`);
-      return `<a class="${className}" href="${escapeHtml(place.links[key])}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${label} ${translate('food.external')}`)}">${escapeHtml(label)}</a>`;
+  return actions
+    .filter(({ url }) => url && !seen.has(url) && seen.add(url))
+    .map(({ key, url, label }) => {
+      return `<a class="${className}${key === 'order' ? ' food-order-link' : ''}" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${label} ${translate('food.external')}`)}">${escapeHtml(label)}</a>`;
     })
     .join('');
-}
-
-export function renderFoodLinkRows(place, { translate }) {
-  if (!place.links.hours) return '';
-  const label = translate('food.link.hours');
-  return `<p><a class="food-source-link external" href="${escapeHtml(place.links.hours)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${label} ${translate('food.external')}`)}">${escapeHtml(label)}</a></p>`;
 }
 
 function renderCard(place, options) {
   const { lang } = options;
   const name = localText(place.name, lang);
   const translate = (key) => foodPageText(lang, key);
-  const linkButtons = renderFoodLinkButtons(place, { translate, className: 'food-place-link btn external' });
-  const linkRows = renderFoodLinkRows(place, { translate });
+  const linkButtons = renderFoodLinkButtons(place, { ...options, translate, className: 'food-place-link btn external' });
   return `<article class="food-place" data-food-place="${escapeHtml(place.entryId)}">
     <header class="food-place-brand">
       <span class="food-place-mark"><img src="${escapeHtml(place.mark.src)}" alt="" width="40" height="40" decoding="async" data-food-fallback="${escapeHtml(place.mark.fallbackSrc)}" /></span>
@@ -276,7 +276,6 @@ function renderCard(place, options) {
       <a class="btn btn-primary food-place-map" href="${escapeHtml(foodMapPath(place.mapHash, lang))}">${escapeHtml(foodPageText(lang, 'food.viewOnMap'))}</a>
       ${linkButtons}
     </div>
-    ${linkRows ? `<div class="food-sources">${linkRows}</div>` : ''}
   </article>`;
 }
 

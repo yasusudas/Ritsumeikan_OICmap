@@ -7,6 +7,7 @@ import {
   foodPageText,
   foodPlacesReady,
   renderFoodHours,
+  renderFoodLinkButtons,
   renderFoodLeadStatus,
   renderFoodPlaceList,
   renderFoodPlaceStatus,
@@ -195,6 +196,17 @@ function paintHours() {
     const id = CSS.escape(place.entryId);
     const node = placesRoot.querySelector(`[data-food-hours="${id}"]`);
     if (node) node.innerHTML = renderFoodHours(place, options);
+    const actions = node?.closest('.food-place')?.querySelector('.food-place-actions');
+    if (actions) {
+      const html = renderFoodLinkButtons(place, {
+        ...options, translate, className: 'food-place-link btn external',
+      });
+      const links = [...actions.querySelectorAll('.food-place-link')];
+      if (links.map((link) => link.outerHTML).join('') !== html) {
+        links.forEach((link) => link.remove());
+        actions.insertAdjacentHTML('beforeend', html);
+      }
+    }
     const status = placesRoot.querySelector(`[data-food-lead-status="${id}"]`);
     if (status) status.innerHTML = renderFoodLeadStatus(place, { ...options, translate });
   }

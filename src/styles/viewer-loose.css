@@ -303,6 +303,12 @@ body[data-app-mode="viewer"] .toilet-ring-legend {
    Map
    --------------------------------------------------------------------- */
 
+body[data-app-mode="viewer"] .map-load-retry {
+  min-height: var(--ls-pill-h);
+  padding: var(--s-2) var(--ls-pill-px);
+  font-size: var(--ls-pill-font);
+}
+
 /* Search pin: crimson drop that falls in once */
 body[data-app-mode="viewer"] .search-highlight-pin {
   border-width: 2.5px;
@@ -629,12 +635,13 @@ body[data-app-mode="viewer"] .search-highlight-area {
 /* Floor select (phones and short landscape screens) */
 body[data-app-mode="viewer"] .mobile-floor-toggle {
   gap: var(--s-1);
-  height: 44px;
-  padding: 0 var(--s-3);
+  height: var(--ls-pill-h);
+  padding: 0 var(--ls-pill-px);
   border: 0;
   border-radius: 999px;
   background: var(--ls-red-soft);
   color: var(--ls-red);
+  font-size: var(--ls-pill-font);
   font-weight: var(--fw-bold);
 }
 
