@@ -39,6 +39,13 @@ test('/timetable/ shows the departure cards and stays out of search results', ()
   assert.doesNotMatch(read('public/sitemap.xml'), /rits-oic-map\.app\/timetable\//);
 });
 
+test('/en/timetable/ stays out of search results too, and out of the sitemap', () => {
+  const html = read('en/timetable/index.html');
+  assert.match(html, /<link rel="canonical" href="https:\/\/rits-oic-map\.app\/en\/timetable\/" \/>/);
+  assert.match(html, /<meta name="robots" content="noindex,nofollow,noarchive" \/>/);
+  assert.doesNotMatch(read('public/sitemap.xml'), /rits-oic-map\.app\/en\/timetable\//);
+});
+
 test('the Japanese links page is archived, not built, and its old URL goes to /timetable/', () => {
   assert.equal(exists('hidden/timetable/index.html'), false);
   assert.equal(exists('archive/timetable-links/index.html'), true);

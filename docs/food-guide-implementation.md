@@ -27,7 +27,7 @@ iPhone 17 シミュレーター（Safari）の1Fで、同じピンチ拡大・�
 食事案内とは別件だが、同じ「情報源・権利関係」の追記を伴うため、ここに記す。
 
 - `/timetable/`: 発車時刻のカード（`src/timetable.js`）。`noindex,nofollow,noarchive`（検索に載せない。サイトマップにも入れない）。ヘッダーの「時刻表」のリンクは残してあり、言語切替は `/en/timetable/` へ移る。
-- 公式ページへのリンク集（日本語版）は使わなくなったので、`archive/timetable-links/` に退避した（ビルドに入らない。戻し方は同じ場所の `README.md`）。旧 URL `/hidden/timetable/` は `/timetable/` へ転送する（`vercel.json`）。英語版 `/en/timetable/` は、英語のリンク集のまま公開している。
+- 公式ページへのリンク集（日本語版）は使わなくなったので、`archive/timetable-links/` に退避した（ビルドに入らない。戻し方は同じ場所の `README.md`）。旧 URL `/hidden/timetable/` は `/timetable/` へ転送する（`vercel.json`）。英語版 `/en/timetable/` は、英語のリンク集のまま公開しているが、日本語版と同じく `noindex,nofollow,noarchive` でサイトマップにも入れない（hreflang で互いを指す2ページの index 状態をそろえるため）。
 - 時刻表データの置き場を `public/hidden/timetable/data/` から `public/timetable/data/` に移し、`/hidden/` を取り除いた。更新したもの: `src/timetable.js` の `MANIFEST_URL`、`scripts/fetch-timetable-data.mjs`（出力先とマニフェストの URL）、`public/timetable/data/manifest.json` の URL、`public/sw.js`（キャッシュ対象と、キャッシュ名を v22 に）。
 - `/sources/` の「時刻表・運行情報」に、時刻表データの出典（取得日 2026-06-01）と権利を追記した。阪急電鉄とJR西日本の時刻表ページにある、データの加工・再利用・再配布に許可が必要である旨、無断転載・複写・加工を禁じる旨を、そのまま記している（`manifest.json` の `sourceNotes` と同じ根拠）。
 - 時刻表カードの配置（2026-10-16）: 次の発車を、旧版（2026年6月）の並びに合わせた。大きく出すのは「あと4時間47分」（残り時間、旧版の時刻と同じ大きさ。`clamp(1.95rem, 4.1vw, 2.85rem)`、狭い画面は `clamp(2.1rem, 9.2vw, 2.8rem)`）。発車時刻は、種別・行先と同じ行に「05:36発」として小さく出す（行先と同じ文字サイズ）。色・面・チップの形などの見た目は変えていない。「この後」は、これまでどおりカードの下に並べている（旧版は右側に置いていた）。
