@@ -12,6 +12,7 @@ body[data-app-mode="viewer"] {
   --ls-pop-step: 25ms;
   /* Search field width used by the vertical facility column. */
   --viewer-search-width: 460px;
+  --viewer-search-height: 48px;
 }
 
 /* ---------------------------------------------------------------------
@@ -44,7 +45,7 @@ body[data-app-mode="viewer"] .app-title-main {
    --------------------------------------------------------------------- */
 
 body[data-app-mode="viewer"] .search-input {
-  height: 48px;
+  height: var(--viewer-search-height);
   padding-left: 46px;
   border: 0;
   border-radius: 999px;
@@ -547,6 +548,7 @@ body[data-app-mode="viewer"] .search-highlight-area {
 @media (max-width: 720px) {
   body[data-app-mode="viewer"] {
     --ls-edge: var(--gutter);
+    --viewer-search-height: 44px;
   }
 
   body[data-app-mode="viewer"] .app-title {
@@ -566,12 +568,8 @@ body[data-app-mode="viewer"] .search-highlight-area {
     padding: 4px 0 14px;
   }
 
-  body[data-app-mode="viewer"] .search-input {
-    height: 44px;
-  }
-
   body[data-app-mode="viewer"] .search-results {
-    top: calc(var(--s-2) + 44px + 6px);
+    top: calc(var(--s-2) + var(--viewer-search-height) + 6px);
   }
 
   body[data-app-mode="viewer"] .search-icon-actions {
@@ -635,7 +633,7 @@ body[data-app-mode="viewer"] .search-highlight-area {
 /* Floor select (phones and short landscape screens) */
 body[data-app-mode="viewer"] .mobile-floor-toggle {
   gap: var(--s-1);
-  height: var(--ls-pill-h);
+  height: var(--viewer-search-height);
   padding: 0 var(--ls-pill-px);
   border: 0;
   border-radius: 999px;
