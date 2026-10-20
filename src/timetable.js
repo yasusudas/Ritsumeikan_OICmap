@@ -1213,8 +1213,9 @@ function cardLineLabel(railway, lineName) {
 }
 
 function serviceClass(serviceType) {
-  if (/特急|新快速/.test(serviceType)) return 'is-limited';
-  if (/快速|急行/.test(serviceType)) return 'is-fast';
+  if (/快速/.test(serviceType)) return 'is-rapid';
+  if (/特急/.test(serviceType)) return 'is-limited';
+  if (/急行/.test(serviceType)) return 'is-fast';
   if (/準急/.test(serviceType)) return 'is-semi';
   return 'is-local';
 }

@@ -10,6 +10,8 @@
 /* On body, not main: the drag ghost is appended to body. */
 .timetable-page {
   --tt-sheet: 26px; /* big blocks: shuttle routes, departure cards */
+  --tt-rapid-blue: #1112c6; /* sampled from the rapid-service reference */
+  --tt-semi-green: #019c6c; /* sampled from the semi-express reference */
   --tt-chip-h: var(--ls-pill-h); /* small pill links and buttons */
   --tt-line-green: #06c755; /* LINE's green, sampled from LINE's official icon */
   --tt-line-green-hover: #05b04c;
@@ -755,8 +757,8 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
   overflow-wrap: anywhere;
 }
 
-/* Train type: local trains as plain grey text; faster trains as a soft
-   crimson pill; limited express solid. */
+/* Train type: rapid and semi-express use outlined, compact rectangles.
+   Local, express and limited-express styling stays unchanged. */
 .timetable-train-type {
   display: inline-flex;
   align-items: center;
@@ -781,6 +783,20 @@ body.subpage .timetable-live-status .timetable-status-list > .timetable-status-r
 }
 
 .timetable-train-type.is-semi,
+.timetable-train-type.is-rapid {
+  border: 1px solid currentColor;
+  border-radius: var(--radius-control);
+  background: var(--c-bg);
+}
+
+.timetable-train-type.is-rapid {
+  color: var(--tt-rapid-blue);
+}
+
+.timetable-train-type.is-semi {
+  color: var(--tt-semi-green);
+}
+
 .timetable-train-type.is-fast {
   background: var(--ls-red-soft);
   color: var(--ls-red);
