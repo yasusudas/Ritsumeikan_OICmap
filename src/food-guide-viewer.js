@@ -126,6 +126,16 @@ export class FoodGuideViewer {
       },
       true,
     );
+    // Same for the floor list: it opens in front of the sheet, and the sheet slides away first.
+    const floorToggle = document.querySelector('[data-mobile-floor-toggle]');
+    floorToggle?.addEventListener(
+      'click',
+      () => {
+        if (this.narrow && this.panelMode && floorToggle.getAttribute('aria-expanded') !== 'true')
+          this.dismissSheet();
+      },
+      true,
+    );
     this.panel.addEventListener('click', (event) => this.panelClick(event));
     this.panel.addEventListener('pointerdown', (event) => this.beginSheetDrag(event));
     viewer.addEventListener(

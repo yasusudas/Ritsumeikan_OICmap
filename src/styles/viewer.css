@@ -888,8 +888,9 @@ body[data-app-mode="viewer"] .topbar {
   z-index: 30;
 }
 
-/* While the menu is open it comes in front of a store card (food panel, z-index 55), so its links stay tappable. */
-body[data-app-mode="viewer"] .topbar:has(.site-menu-panel:not([hidden])) {
+/* While the menu or the floor list is open it comes in front of a store card (food panel, z-index 55), so its links stay tappable. */
+body[data-app-mode="viewer"] .topbar:has(.site-menu-panel:not([hidden])),
+body[data-app-mode="viewer"] .topbar:has(.mobile-floor-select.is-open) {
   z-index: 60;
 }
 
