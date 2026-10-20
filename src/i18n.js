@@ -50,11 +50,11 @@ const dictionaries = {
     "food.trucks.outOfPeriod": "営業カレンダーの期間外です。最新の出店予定は公式の案内をご確認ください。",
 
     'meta.appName': '立命館OICマップ',
-    'meta.title.viewer': '立命館OICマップ | 教室・施設を検索',
+    'meta.title.viewer': '立命館OICマップ | 大阪いばらきキャンパスの教室・施設を検索',
     'meta.title.editor': '立命館OICマップ 編集用',
     'meta.title.login': '編集ページログイン',
     'meta.description':
-      '立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室検索とトイレ・エレベーター・プリンターなどの施設位置を確認できます。',
+      '立命館大学大阪いばらきキャンパス(OIC)の非公式キャンパスマップ。500以上の教室を検索でき、トイレ・エレベーター・プリンター・AEDなどの施設位置、食事や周辺駅の時刻表の情報も確認できます。',
     'meta.schemaAlternateName': 'Ritsumeikan OIC Map',
 
     'lang.switchToEnglish': '英語に切り替え',
@@ -333,11 +333,11 @@ const dictionaries = {
     "food.trucks.outOfPeriod": "Today is outside the published schedule. Please check the official announcement.",
 
     'meta.appName': 'Ritsumeikan OIC Map',
-    'meta.title.viewer': 'Ritsumeikan OIC Map',
+    'meta.title.viewer': 'Ritsumeikan OIC Map | Rooms & Facilities at Osaka Ibaraki Campus',
     'meta.title.editor': 'Ritsumeikan OIC Map Editor',
     'meta.title.login': 'Editor Login',
     'meta.description':
-      "Unofficial campus map for Ritsumeikan University's Osaka Ibaraki Campus (OIC). Search 500+ rooms and find restrooms, elevators, printers, and other facilities.",
+      "Unofficial campus map for Ritsumeikan's Osaka Ibaraki Campus (OIC). Search 500+ rooms and find restrooms, elevators, printers, AEDs, dining, and timetables.",
     'meta.schemaAlternateName': '立命館OICマップ',
 
     'lang.switchToEnglish': 'Switch to English',
@@ -650,7 +650,7 @@ function updateJsonLd() {
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: t('meta.title.viewer'),
+      name: t('meta.appName'),
       alternateName: t('meta.schemaAlternateName'),
       description: t('meta.description'),
       url: pageUrl,

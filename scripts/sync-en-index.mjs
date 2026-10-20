@@ -109,7 +109,7 @@ function replaceJsonLd(html, dictionary) {
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: dictionary['meta.title.viewer'],
+      name: dictionary['meta.appName'],
       alternateName: dictionary['meta.schemaAlternateName'],
       description: dictionary['meta.description'],
       url: englishUrl,
