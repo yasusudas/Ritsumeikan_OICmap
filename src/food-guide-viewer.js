@@ -117,6 +117,15 @@ export class FoodGuideViewer {
       if (this.browse) this.close();
       else void this.showList({ keyboard: event.detail === 0 });
     });
+    // On a phone the opening More menu would sit under the store sheet, so the sheet slides away first.
+    this.moreToggle.addEventListener(
+      'click',
+      () => {
+        if (this.narrow && this.panelMode && this.moreToggle.getAttribute('aria-expanded') !== 'true')
+          this.dismissSheet();
+      },
+      true,
+    );
     this.panel.addEventListener('click', (event) => this.panelClick(event));
     this.panel.addEventListener('pointerdown', (event) => this.beginSheetDrag(event));
     viewer.addEventListener(
@@ -472,7 +481,7 @@ export class FoodGuideViewer {
       // map under the card.
       const height =
         this.panelMode === 'compact' && this.facilityHeight
-          ? Math.min(this.facilityHeight, available - 120)
+          ? Math.min(this.detailOnly(this.selected) ? 320 : this.facilityHeight, available - 120)
           : this.panelMode === 'compact'
           ? Math.min(
               Math.max(
@@ -594,7 +603,10 @@ export class FoodGuideViewer {
         const hoursLink = renderFoodLinkRows(place, { translate: t });
         if (hoursLink) body += `<div class="food-sources">${hoursLink}</div>`;
       }
-      footer = `${this.panelMode === 'compact' ? `<button class="food-control is-primary" data-food-action="expand">${escape(t('food.details'))}</button>` : ''}${this.narrow && this.panelMode === 'detail' && !this.shortScreen ? `<button class="food-text-control" data-food-action="collapse">${escape(t('food.collapse'))}</button>` : ''}<button class="food-text-control" data-food-action="list">${escape(this.browse ? t('food.backList') : t('food.listTitle'))}</button>`;
+      const truckCard = this.detailOnly(this.selected);
+      footer = `${this.panelMode === 'compact' && !truckCard ? `<button class="food-control is-primary" data-food-action="expand">${escape(t('food.details'))}</button>` : ''}${this.narrow && this.panelMode === 'detail' && !this.shortScreen && !this.detailOnly(this.selected) ? `<button class="food-text-control" data-food-action="collapse">${escape(t('food.collapse'))}</button>` : ''}<button class="food-text-control" data-food-action="list">${escape(this.browse ? t('food.backList') : t('food.listTitle'))}</button>`;
+      // The Lunch Street summary sheet has no button at all: it is pulled up to open fully.
+      if (this.panelMode === 'compact' && truckCard) footer = '';
     }
     this.panel.innerHTML = `${handle}<header class="food-panel-header">${header}</header><div class="food-panel-body">${body}</div>${footer ? `<footer class="food-panel-footer">${footer}</footer>` : ''}`;
     this.wireImageFallback(this.panel);
@@ -707,8 +719,7 @@ export class FoodGuideViewer {
     // The letter on the shop's photo (A and a differ) follows the name, so a name can be matched to its photo.
     const label = (truck) => `${escape(truck.name)}${truck.tag ? ` (${escape(truck.tag)})` : ''}`;
     const names = `<ul class="food-truck-names">${here.map((truck) => `<li>${label(truck)}</li>`).join('')}</ul>`;
-    // The photos are for the detail sheet; the small overview sheet keeps just the names.
-    return this.panelMode === 'compact' ? names : names + renderFoodTruckPhotos(here);
+    return names + renderFoodTruckPhotos(here);
   }
   // A photo that fails to load becomes a tile with the shop's name, so the grid keeps its shape.
   wireTruckPhotos(root) {
@@ -722,6 +733,10 @@ export class FoodGuideViewer {
       if (img.complete && img.naturalWidth === 0 && img.currentSrc) fallBack(img);
       else img.addEventListener('error', () => fallBack(img), { once: true });
     });
+  }
+  // The Lunch Street cards have no "details" or "back to summary" button: the sheet is pulled up and down.
+  detailOnly(id) {
+    return Boolean(this.getPlace(id)?.todayTrucks);
   }
   setDetails(detail) {
     if (!this.selected) return;

@@ -220,6 +220,8 @@ body.subpage .site-menu::details-content {
     border: 0;
     border-radius: 0 0 26px 26px;
     background: var(--ls-fill);
+    /* A faint lower edge, so the menu reads as separate from a grey sheet (a store card) behind it. */
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.07), 0 8px 12px -10px rgba(0, 0, 0, 0.18);
   }
 
   :is(body[data-app-mode="viewer"], body.subpage) .site-header .site-menu-item {

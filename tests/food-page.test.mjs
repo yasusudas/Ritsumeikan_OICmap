@@ -194,8 +194,17 @@ test('the truck photo grid is two columns of fixed-ratio tiles, with the shop na
   assert.match(css, /\.food-panel\.has-short-space \.food-panel-footer \{[^}]*position: sticky;[^}]*bottom: 0/);
 });
 
-test('the map card shows the photos only on the detail sheet, and the photo letter after each name', () => {
+test('the map card shows the photos under the names, and the photo letter after each name', () => {
   const viewer = readFileSync(new URL('../src/food-guide-viewer.js', import.meta.url), 'utf8');
-  assert.match(viewer, /this\.panelMode === 'compact' \? names : names \+ renderFoodTruckPhotos\(here\)/);
+  assert.match(viewer, /return names \+ renderFoodTruckPhotos\(here\);/);
   assert.match(viewer, /truck\.tag \? ` \(\$\{escape\(truck\.tag\)\}\)` : ''/);
+});
+
+test('the Lunch Street cards open at the summary height and have no details or back-to-summary button', () => {
+  const viewer = readFileSync(new URL('../src/food-guide-viewer.js', import.meta.url), 'utf8');
+  assert.match(viewer, /detailOnly\(id\) \{\s*return Boolean\(this\.getPlace\(id\)\?\.todayTrucks\);/);
+  assert.match(viewer, /this\.panelMode = this\.narrow \? 'compact' : 'detail';/);
+  assert.match(viewer, /!this\.shortScreen && !this\.detailOnly\(this\.selected\) \? `<button class="food-text-control" data-food-action="collapse"/);
+  assert.match(viewer, /if \(this\.panelMode === 'compact' && truckCard\) footer = '';/);
+  assert.match(viewer, /this\.detailOnly\(this\.selected\) \? 320 : this\.facilityHeight/);
 });
