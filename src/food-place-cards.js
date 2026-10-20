@@ -1,4 +1,4 @@
-import { describeFoodServiceHours, isHttpUrl, judgeFoodServiceStatus } from './food-guide-model.js';
+import { describeFoodServiceHours, isHttpUrl, judgeFoodServiceStatus, judgeFoodTruckStatus } from './food-guide-model.js';
 
 const USAGE_KEYS = ['eatIn', 'takeaway', 'outsideFood', 'publicAccess'];
 
@@ -117,7 +117,16 @@ export function renderFoodStatus(service, { translate, now, fetchFailed = false,
 
 // A place with one service shows its label above the 営業時間 heading. With several services,
 // each label stays under its service name inside the hours.
-export function renderFoodLeadStatus(place, { translate, now, payload = null, fetchFailed = false, loading = false } = {}) {
+export function renderFoodLeadStatus(place, {
+  translate, now, payload = null, fetchFailed = false, loading = false,
+  truckPayload = null, trucksLoading = false, trucksFetchFailed = false,
+} = {}) {
+  if (place.todayTrucks) {
+    const { state } = judgeFoodTruckStatus(place.todayTrucks, {
+      now, payload: truckPayload, loading: trucksLoading, fetchFailed: trucksFetchFailed,
+    });
+    return `<p class="food-status${state === 'unknown' ? ' is-unknown' : ''}">${renderFoodStateLabel(state, translate)}</p>`;
+  }
   if (place.services.length !== 1) return '';
   const [service] = place.services;
   return renderFoodStatus(service, {

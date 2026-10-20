@@ -2,12 +2,31 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { judgeFoodServiceStatus, validateFoodPlaces } from '../src/food-guide-model.js';
+import { getLunchStreetPayload } from '../src/server/lunch-street.js';
 import { renderFoodHours, renderFoodLeadStatus, foodPageText } from '../src/food-place-cards.js';
 
 const payload = JSON.parse(readFileSync(new URL('../public/food-places.json', import.meta.url), 'utf8'));
 const entries = JSON.parse(
   readFileSync(new URL('../public/manual-search-index.json', import.meta.url), 'utf8'),
 ).entries;
+
+test('both lunch-street cards share the calendar judgment in Japanese and English', () => {
+  const places = payload.places.filter((place) => place.todayTrucks);
+  for (const lang of ['ja', 'en']) {
+    const translate = (key) => foodPageText(lang, key);
+    for (const [iso, expected] of [['2026-10-20T03:00:00Z', 'within'], ['2026-10-20T06:30:00Z', 'outside']]) {
+      const now = new Date(iso);
+      for (const place of places) {
+        const html = renderFoodLeadStatus(place, { translate, now, truckPayload: getLunchStreetPayload(now) });
+        assert.match(html, new RegExp(`is-${expected}`));
+        assert.ok(html.includes(translate(`food.status.${expected}`)));
+      }
+    }
+    const now = new Date('2026-10-20T03:00:00Z');
+    assert.match(renderFoodLeadStatus(places[0], { translate, now, trucksLoading: true }), /is-loading/);
+    assert.match(renderFoodLeadStatus(places[0], { translate, now, trucksFetchFailed: true }), /is-unknown/);
+  }
+});
 
 const status = {
   assignee: '運営',

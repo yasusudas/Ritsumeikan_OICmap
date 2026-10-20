@@ -17,6 +17,7 @@ import {
   placeFoodMarkers,
   describeFoodServiceHours,
   judgeFoodServiceStatus,
+  judgeFoodTruckStatus,
   japaneseDate,
   FOOD_STATUS_MS,
   CoopHoursClient,
@@ -695,20 +696,23 @@ export class FoodGuideViewer {
   // "Today's food trucks": the vendor names for this card's own spot, from the same API as the food page.
   trucksFresh() {
     const { payload, fetchedAt } = this.trucks;
-    return Boolean(payload) && Date.now() - fetchedAt < FOOD_TRUCKS_FRESH_MS && payload.date === japaneseDate();
+    return Boolean(payload) && Date.now() - fetchedAt < FOOD_TRUCKS_FRESH_MS && payload.date === japaneseDate() &&
+      Date.parse(payload.nextUpdateAt) > Date.now();
   }
   ensureTrucks() {
     const state = this.trucks;
     if (state.loading || this.trucksFresh()) return;
     if (state.error && Date.now() - state.fetchedAt < FOOD_TRUCKS_RETRY_MS) return;
     this.trucks = { ...state, loading: true };
+    this.renderHours();
     fetch(FOOD_TRUCKS_URL, { cache: 'no-cache', signal: AbortSignal.timeout(30_000) })
       .then((response) => {
         if (!response.ok) throw new Error(`${FOOD_TRUCKS_URL} returned ${response.status}`);
         return response.json();
       })
       .then((payload) => {
-        if (payload?.date !== japaneseDate() || !Array.isArray(payload.trucks))
+        if (payload?.date !== japaneseDate() || !Array.isArray(payload.trucks) ||
+            !Number.isFinite(Date.parse(payload.nextUpdateAt)) || Date.parse(payload.nextUpdateAt) <= Date.now())
           throw new Error('Food truck schedule unavailable');
         this.trucks = { payload, error: false, loading: false, fetchedAt: Date.now() };
       })
@@ -718,9 +722,12 @@ export class FoodGuideViewer {
       .finally(() => {
         // Only the list changes, so the panel's scroll and focus stay as they are.
         const node = this.panel.querySelector('[data-food-trucks]');
-        if (!node) return;
-        node.innerHTML = this.renderTrucksBody(node.dataset.foodTrucks);
-        this.wireTruckPhotos(node);
+        if (node) {
+          node.innerHTML = this.renderTrucksBody(node.dataset.foodTrucks);
+          this.wireTruckPhotos(node);
+        }
+        this.renderHours();
+        this.scheduleHours();
       });
   }
   renderTrucksSection(spot) {
@@ -949,7 +956,7 @@ export class FoodGuideViewer {
     return this.shownPlaces().some((place) => place.services.some((s) => s.coopScheduleName));
   }
   needsStatus() {
-    return this.shownPlaces().some((place) => place.services.some((service) => service.status?.assignee));
+    return this.shownPlaces().some((place) => place.todayTrucks || place.services.some((service) => service.status?.assignee));
   }
   hoursLoading() {
     return !this.hours.error && (Boolean(this.hours.pending) || this.hours.needsRefresh());
@@ -957,6 +964,12 @@ export class FoodGuideViewer {
   // The list shows only an open/closed label per place, where the description used to be. A place with
   // a service that has no status (the 24-hour unstaffed store next to its bento sales) gets no label.
   listStatus(place) {
+    if (place.todayTrucks) {
+      const { state } = judgeFoodTruckStatus(place.todayTrucks, {
+        payload: this.trucks.payload, loading: this.trucks.loading, fetchFailed: this.trucks.error,
+      });
+      return renderFoodStateLabel(state, t);
+    }
     const states = place.services.map(
       (service) =>
         judgeFoodServiceStatus(service, {
@@ -1061,6 +1074,9 @@ export class FoodGuideViewer {
         payload: this.hours.payload,
         loading,
         fetchFailed: Boolean(this.hours.error),
+        truckPayload: this.trucks.payload,
+        trucksLoading: this.trucks.loading,
+        trucksFetchFailed: this.trucks.error,
       });
     // Hours that arrive or change after the first draw can make the card taller or shorter.
     if (compact && this.narrow) {
@@ -1071,6 +1087,8 @@ export class FoodGuideViewer {
   }
   scheduleHours() {
     clearTimeout(this.hoursTimer);
+    if (document.visibilityState === 'visible' && this.shownPlaces().some((place) => place.todayTrucks))
+      this.ensureTrucks();
     const hours = this.needsHours();
     const status = this.needsStatus();
     if ((!hours && !status) || document.visibilityState !== 'visible') return;

@@ -177,6 +177,7 @@
   --line-jr: #ef844a;
   --line-hankyu: #2bb7b3;
   --line-monorail: #036eb8;
+  --route-line-width: 2px;
   --route-origin-w: 7.5em;
   --route-walk-w: 13em;
 }
@@ -262,8 +263,7 @@
   min-width: 0;
 }
 
-/* Origin: fixed column so transfers and arrivals line up row to row.
-   Its line runs from the name to the column edge and joins the first leg. */
+/* Origin: keep the fixed column, with its label above the first hop's single line. */
 .route-origin {
   flex: 0 0 var(--route-origin-w);
   gap: var(--s-2);
@@ -271,23 +271,40 @@
   white-space: nowrap;
 }
 
-.route-origin::after {
-  content: "";
-  flex: 1 1 auto;
-  min-width: var(--s-2);
-  height: 2px;
-  border-radius: 1px;
-  background: var(--route-color);
+.route-origin-label {
+  position: relative;
+  z-index: 1;
+  padding-right: var(--s-2);
+  background: var(--ls-fill);
 }
 
 .route-hop {
+  position: relative;
   flex: 1 1 0;
+  min-height: 28px;
+}
+
+/* One border per interval keeps the painted width uniform at fractional zoom levels. */
+.route-hop::before,
+.route-walk::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - var(--route-line-width) / 2);
+  right: 0;
+  left: 0;
+  height: 0;
+  border-top: var(--route-line-width) solid var(--route-color);
+}
+
+.route-origin + .route-hop::before {
+  left: calc(-1 * var(--route-origin-w));
 }
 
 /* Minutes on the line, in Inter. */
 .route-leg {
   flex: 1 1 auto;
-  gap: var(--s-2);
+  justify-content: center;
+  padding-inline: var(--s-3);
   color: var(--c-ink);
   font-family: var(--font-latin);
   font-size: var(--fs-sm);
@@ -300,26 +317,26 @@
   font-family: var(--font-sans);
 }
 
-.route-leg::before,
-.route-leg::after {
-  content: "";
-  flex: 1 1 auto;
-  min-width: var(--s-3);
-  height: 2px;
-  border-radius: 1px;
-  background: var(--route-color);
+.route-duration {
+  position: relative;
+  padding-inline: var(--s-2);
+  background: var(--ls-fill);
 }
 
 .route-stop {
+  position: relative;
   flex: 0 0 auto;
   padding: 0 var(--s-2);
   font-weight: var(--fw-medium);
   white-space: nowrap;
+  background: var(--ls-fill);
 }
 
 /* Walk: a dotted grey line, then the campus as a white chip. */
 .route-walk {
+  position: relative;
   flex: 0 0 var(--route-walk-w);
+  min-height: 28px;
 }
 
 .route-walk .route-leg {
@@ -327,15 +344,12 @@
   font-weight: var(--fw-regular);
 }
 
-.route-walk .route-leg::before,
-.route-walk .route-leg::after {
-  height: 0;
-  border-top: 2px dotted var(--c-ink-3);
-  border-radius: 0;
-  background: none;
+.route-walk::before {
+  border-top: var(--route-line-width) dotted var(--c-ink-3);
 }
 
 .route-goal {
+  position: relative;
   flex: 0 0 auto;
   margin-left: var(--s-2);
   padding: 3px 10px;
@@ -374,8 +388,8 @@
     flex: 0 0 100%;
   }
 
-  .route-origin::after {
-    display: none;
+  .route-origin + .route-hop::before {
+    left: 0;
   }
 
   .route-hop {
@@ -386,10 +400,6 @@
     flex: 0 0 auto;
   }
 
-  .route-walk .route-leg::before,
-  .route-walk .route-leg::after {
-    width: var(--s-3);
-  }
 }
 
 /* Phones: a tighter sheet, smaller type. */
@@ -416,18 +426,12 @@
   }
 
   .route-leg {
-    gap: var(--s-1);
+    padding-inline: var(--s-2);
     font-size: var(--fs-xs);
   }
 
-  .route-leg::before,
-  .route-leg::after {
-    min-width: var(--s-2);
-  }
-
-  .route-walk .route-leg::before,
-  .route-walk .route-leg::after {
-    width: var(--s-2);
+  .route-duration {
+    padding-inline: var(--s-1);
   }
 
   .route-stop {

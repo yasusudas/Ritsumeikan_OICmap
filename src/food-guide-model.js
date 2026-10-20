@@ -293,6 +293,22 @@ function judgeIntervals(weekly, minutes, weekday) {
   );
 }
 
+export function judgeFoodTruckStatus(spot, { now = new Date(), payload = null, loading = false, fetchFailed = false } = {}) {
+  const unavailable = { state: loading && !fetchFailed ? 'loading' : 'unknown' };
+  const today = japaneseDate(now);
+  if (!['plaza', 'terrace'].includes(spot) || !payload || payload.date !== today ||
+      !Number.isFinite(Date.parse(payload.nextUpdateAt)) || Date.parse(payload.nextUpdateAt) <= now.getTime() ||
+      !Array.isArray(payload.trucks) || payload.trucks.some((truck) => !truck || !['plaza', 'terrace'].includes(truck.spot)))
+    return unavailable;
+  if (payload.outOfPeriod !== false || !DATE.test(payload.period?.from) || !DATE.test(payload.period?.to) ||
+      today < payload.period.from || today > payload.period.to) return { state: 'unknown' };
+  if (!payload.trucks.some((truck) => truck.spot === spot)) return { state: 'outside' };
+  const hours = payload.hours;
+  if (!CLOCK.test(hours?.start) || !CLOCK.test(hours?.end) || hours.start === hours.end)
+    return { state: 'unknown' };
+  return { state: intervalCovers(hours, jstParts(now).minutes) ? 'within' : 'outside' };
+}
+
 export function judgeFoodServiceStatus(service, { now = new Date(), fetchFailed = false, payload = null, loading = false } = {}) {
   const status = service?.status;
   if (!status?.assignee?.trim() || !isHttpUrl(status.sourceUrl)) return { state: 'disabled' };

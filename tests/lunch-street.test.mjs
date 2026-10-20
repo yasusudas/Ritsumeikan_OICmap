@@ -9,8 +9,47 @@ import {
   japanDateLabel,
 } from '../src/server/lunch-street.js';
 import { FOOD_TRUCKS_SOURCE, getFoodTrucksPayload } from '../src/server/food-trucks.js';
+import { judgeFoodTruckStatus } from '../src/food-guide-model.js';
 
 const at = (jst) => new Date(`${jst}+09:00`);
+
+test('each lunch-street spot follows its own vendors and the exact opening and closing minute', () => {
+  for (const [time, expected] of [['10:29:59', 'outside'], ['10:30:00', 'within'], ['15:29:59', 'within'], ['15:30:00', 'outside']]) {
+    const now = at(`2026-10-20T${time}`);
+    const payload = getLunchStreetPayload(now);
+    for (const spot of ['plaza', 'terrace'])
+      assert.equal(judgeFoodTruckStatus(spot, { now, payload }).state, expected, `${spot} ${time}`);
+  }
+  const now = at('2026-10-19T12:00:00');
+  const payload = getLunchStreetPayload(now);
+  assert.equal(judgeFoodTruckStatus('plaza', { now, payload }).state, 'within');
+  assert.equal(judgeFoodTruckStatus('terrace', { now, payload }).state, 'outside');
+  const holiday = at('2026-10-12T12:00:00');
+  assert.equal(judgeFoodTruckStatus('plaza', { now: holiday, payload: getLunchStreetPayload(holiday) }).state, 'within');
+  const weekend = at('2026-10-17T12:00:00');
+  for (const spot of ['plaza', 'terrace'])
+    assert.equal(judgeFoodTruckStatus(spot, { now: weekend, payload: getLunchStreetPayload(weekend) }).state, 'outside');
+});
+
+test('missing, stale, failed and out-of-period truck schedules cannot claim to be open or closed', () => {
+  const now = at('2026-10-20T12:00:00');
+  const payload = getLunchStreetPayload(now);
+  assert.equal(judgeFoodTruckStatus('plaza', { now }).state, 'unknown');
+  assert.equal(judgeFoodTruckStatus('plaza', { now, loading: true }).state, 'loading');
+  assert.equal(judgeFoodTruckStatus('plaza', { now, loading: true, fetchFailed: true }).state, 'unknown');
+  assert.equal(judgeFoodTruckStatus('plaza', { now, payload, loading: true, fetchFailed: true }).state, 'within');
+  for (const changed of [
+    { date: '2026-10-19' }, { nextUpdateAt: now.toISOString() }, { nextUpdateAt: 'invalid' },
+    { outOfPeriod: true }, { trucks: null }, { trucks: [null] }, { hours: { start: '10:30', end: 'bad' } },
+    { period: { from: '2026-11-01', to: '2026-11-30' } },
+  ]) assert.equal(judgeFoodTruckStatus('plaza', { now, payload: { ...payload, ...changed } }).state, 'unknown');
+  for (const day of ['2026-09-27', '2026-11-02']) {
+    const time = at(`${day}T12:00:00`);
+    assert.equal(judgeFoodTruckStatus('plaza', { now: time, payload: getLunchStreetPayload(time) }).state, 'unknown');
+  }
+  const midnight = at('2026-10-20T00:00:00');
+  assert.equal(judgeFoodTruckStatus('plaza', { now: midnight, payload: getLunchStreetPayload(at('2026-10-19T23:59:00')) }).state, 'unknown');
+});
 
 test('the calendar lists vendors for each spot on its date, in Japan time', () => {
   // 2026-10-15 (Thu): the red flyer (Sky Plaza) and the blue one (TERRACE GATE).

@@ -148,9 +148,15 @@ function render(payload) {
 
 let truckPayload = null;
 let trucksPending = false;
+let trucksFailed = false;
+function trucksNeedRefresh() {
+  return !truckPayload || truckPayload.date !== japaneseDate() ||
+    !Number.isFinite(Date.parse(truckPayload.nextUpdateAt)) || Date.parse(truckPayload.nextUpdateAt) <= Date.now();
+}
 async function refresh() {
   if (!container || trucksPending) return;
   trucksPending = true;
+  trucksFailed = false;
   container.setAttribute('aria-busy', 'true');
   if (!truckPayload || truckPayload.date !== japaneseDate()) {
     renderDate('—');
@@ -165,10 +171,13 @@ async function refresh() {
   } catch (error) {
     renderDate('');
     truckPayload = null;
+    trucksFailed = true;
     container.innerHTML = renderState(t.error, 'is-error');
   } finally {
     trucksPending = false;
     container.setAttribute('aria-busy', 'false');
+    paintHours();
+    scheduleHours();
   }
 }
 
@@ -194,7 +203,7 @@ function placesNeedCoop() {
 }
 
 function placesNeedStatus() {
-  return placesLoaded && places.some((place) => place.services.some((service) => service.status?.assignee));
+  return placesLoaded && places.some((place) => place.todayTrucks || place.services.some((service) => service.status?.assignee));
 }
 
 function hourOptions() {
@@ -204,6 +213,9 @@ function hourOptions() {
     loading: awaitingHours || (Boolean(hours.pending) && !hours.error),
     fetchFailed: Boolean(hours.error),
     now: new Date(),
+    truckPayload,
+    trucksLoading: trucksPending,
+    trucksFetchFailed: trucksFailed,
   };
 }
 
@@ -252,6 +264,7 @@ function scheduleHours() {
   const wait = Math.min(coop ? hours.nextCheck() : FOOD_STATUS_MS, status ? FOOD_STATUS_MS : Infinity);
   hoursTimer = window.setTimeout(() => {
     paintHours();
+    if (places.some((place) => place.todayTrucks) && trucksNeedRefresh()) void refresh();
     if (coop && (japaneseDate() !== today || hours.needsRefresh())) void hours.refresh();
     else scheduleHours();
   }, Math.min(wait, 2_147_483_647));
@@ -302,6 +315,7 @@ placesRoot?.addEventListener('click', (event) => {
 
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState !== 'visible') return;
+  if (places.some((place) => place.todayTrucks) && trucksNeedRefresh()) void refresh();
   if (placesNeedStatus()) paintHours();
   if (!placesNeedCoop()) {
     scheduleHours();
