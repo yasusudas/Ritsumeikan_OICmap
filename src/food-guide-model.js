@@ -1,6 +1,11 @@
 // Shared data, geometry and calendar rules. No DOM or network side effects.
 export const FOOD_RETRY_MS = 60_000;
 export const FOOD_STATUS_MS = 60_000;
+export const FOOD_TRUCKS_RETRY_MS = 60_000;
+// /api/food-trucks caches for 30 minutes, then serves stale data for up to 5
+// minutes while revalidating. nextUpdateAt starts refresh; it is not expiry.
+export const FOOD_TRUCKS_REFRESH_MS = 30 * 60_000;
+export const FOOD_TRUCKS_STALE_MS = 5 * 60_000;
 export const FOOD_GESTURE_DISTANCE = 8;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const CLOCK = /^([01]\d|2[0-3]):[0-5]\d$/;
@@ -293,19 +298,38 @@ function judgeIntervals(weekly, minutes, weekday) {
   );
 }
 
-export function judgeFoodTruckStatus(spot, { now = new Date(), payload = null, loading = false, fetchFailed = false } = {}) {
-  const unavailable = { state: loading && !fetchFailed ? 'loading' : 'unknown' };
+export function isFoodTruckPayloadUsable(payload, now = new Date()) {
   const today = japaneseDate(now);
-  if (!['plaza', 'terrace'].includes(spot) || !payload || payload.date !== today ||
-      !Number.isFinite(Date.parse(payload.nextUpdateAt)) || Date.parse(payload.nextUpdateAt) <= now.getTime() ||
-      !Array.isArray(payload.trucks) || payload.trucks.some((truck) => !truck || !['plaza', 'terrace'].includes(truck.spot)))
-    return unavailable;
-  if (payload.outOfPeriod !== false || !DATE.test(payload.period?.from) || !DATE.test(payload.period?.to) ||
-      today < payload.period.from || today > payload.period.to) return { state: 'unknown' };
-  if (!payload.trucks.some((truck) => truck.spot === spot)) return { state: 'outside' };
+  if (!payload || payload.date !== today || !Array.isArray(payload.trucks) ||
+      payload.trucks.some((truck) => !truck || !['plaza', 'terrace'].includes(truck.spot) ||
+        typeof truck.name !== 'string' || !truck.name.trim())) return false;
+  const generated = Date.parse(payload.generatedAt);
+  const refresh = Date.parse(payload.nextUpdateAt);
+  if (!Number.isFinite(generated) || !Number.isFinite(refresh) || refresh <= generated ||
+      refresh - generated > FOOD_TRUCKS_REFRESH_MS || generated > now.getTime() + FOOD_TRUCKS_RETRY_MS ||
+      now.getTime() >= refresh + FOOD_TRUCKS_STALE_MS) return false;
+  const validDate = (date) => DATE.test(date) && Number.isFinite(Date.parse(`${date}T00:00:00Z`)) &&
+    new Date(`${date}T00:00:00Z`).toISOString().slice(0, 10) === date;
+  if (!validDate(payload.period?.from) || !validDate(payload.period?.to) ||
+      payload.period.from > payload.period.to) return false;
+  const outside = today < payload.period.from || today > payload.period.to;
+  if (payload.outOfPeriod !== outside || (outside && payload.trucks.length)) return false;
   const hours = payload.hours;
   if (!CLOCK.test(hours?.start) || !CLOCK.test(hours?.end) || hours.start === hours.end)
-    return { state: 'unknown' };
+    return false;
+  return true;
+}
+
+export function foodTrucksNeedRefresh(payload, now = new Date()) {
+  return !isFoodTruckPayloadUsable(payload, now) || Date.parse(payload.nextUpdateAt) <= now.getTime();
+}
+
+export function judgeFoodTruckStatus(spot, { now = new Date(), payload = null, loading = false, fetchFailed = false } = {}) {
+  const unavailable = { state: loading && !fetchFailed ? 'loading' : 'unknown' };
+  if (!['plaza', 'terrace'].includes(spot) || !isFoodTruckPayloadUsable(payload, now)) return unavailable;
+  if (payload.outOfPeriod) return { state: 'unknown' };
+  if (!payload.trucks.some((truck) => truck.spot === spot)) return { state: 'outside' };
+  const hours = payload.hours;
   return { state: intervalCovers(hours, jstParts(now).minutes) ? 'within' : 'outside' };
 }
 

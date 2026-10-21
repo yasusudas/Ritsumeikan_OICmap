@@ -68,7 +68,9 @@ for (const state of ['normal', 'empty', 'out-of-period', 'error']) {
     allowFailure(guard, /api\/food-trucks/);
     await page.route('**/api/food-trucks', route => state === 'error'
       ? route.fulfill({ status: 503, body: 'unavailable' })
-      : route.fulfill({ json: { ...trucks, trucks: state === 'normal' ? trucks.trucks : [], outOfPeriod: state === 'out-of-period' } }));
+      : route.fulfill({ json: { ...trucks, trucks: state === 'normal' ? trucks.trucks : [], outOfPeriod: state === 'out-of-period',
+        ...(state === 'out-of-period' ? { period: { from: '2026-09-01', to: '2026-09-30' } } : {}),
+      } }));
     await goto(page, '/food/');
     const root = page.locator('[data-food-trucks]');
     if (state === 'normal') await expect(root).toContainText('E2E Kitchen');

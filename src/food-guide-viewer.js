@@ -18,6 +18,9 @@ import {
   describeFoodServiceHours,
   judgeFoodServiceStatus,
   judgeFoodTruckStatus,
+  isFoodTruckPayloadUsable,
+  foodTrucksNeedRefresh,
+  FOOD_TRUCKS_RETRY_MS,
   japaneseDate,
   FOOD_STATUS_MS,
   CoopHoursClient,
@@ -28,7 +31,6 @@ const NS = 'http://www.w3.org/2000/svg';
 const FOOD_TRUCKS_URL = '/api/food-trucks';
 // Today's cars are fetched again after this long, or when the day changes.
 const FOOD_TRUCKS_FRESH_MS = 10 * 60 * 1000;
-const FOOD_TRUCKS_RETRY_MS = 60 * 1000;
 // Handle drag settles into the next height, or slides off the bottom.
 const SHEET_GLIDE_MS = 460;
 const SHEET_GLIDE_EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
@@ -696,13 +698,14 @@ export class FoodGuideViewer {
   // "Today's food trucks": the vendor names for this card's own spot, from the same API as the food page.
   trucksFresh() {
     const { payload, fetchedAt } = this.trucks;
-    return Boolean(payload) && Date.now() - fetchedAt < FOOD_TRUCKS_FRESH_MS && payload.date === japaneseDate() &&
-      Date.parse(payload.nextUpdateAt) > Date.now();
+    return Date.now() - fetchedAt < FOOD_TRUCKS_FRESH_MS && !foodTrucksNeedRefresh(payload);
   }
   ensureTrucks() {
     const state = this.trucks;
     if (state.loading || this.trucksFresh()) return;
-    if (state.error && Date.now() - state.fetchedAt < FOOD_TRUCKS_RETRY_MS) return;
+    // A successful SWR response can still need refresh. Throttle successes too,
+    // since finally -> scheduleHours -> ensureTrucks must never spin a fetch loop.
+    if (state.fetchedAt && Date.now() - state.fetchedAt < FOOD_TRUCKS_RETRY_MS) return;
     this.trucks = { ...state, loading: true };
     this.renderHours();
     fetch(FOOD_TRUCKS_URL, { cache: 'no-cache', signal: AbortSignal.timeout(30_000) })
@@ -711,8 +714,7 @@ export class FoodGuideViewer {
         return response.json();
       })
       .then((payload) => {
-        if (payload?.date !== japaneseDate() || !Array.isArray(payload.trucks) ||
-            !Number.isFinite(Date.parse(payload.nextUpdateAt)) || Date.parse(payload.nextUpdateAt) <= Date.now())
+        if (!isFoodTruckPayloadUsable(payload))
           throw new Error('Food truck schedule unavailable');
         this.trucks = { payload, error: false, loading: false, fetchedAt: Date.now() };
       })
@@ -735,8 +737,8 @@ export class FoodGuideViewer {
   }
   renderTrucksBody(spot) {
     const { payload, error } = this.trucks;
-    if (!this.trucksFresh())
-      return error
+    if (!isFoodTruckPayloadUsable(payload))
+      return error || (payload && !this.trucks.loading)
         ? `<p class="food-muted">${escape(t('food.trucks.error'))}</p>`
         : renderFoodTruckSkeleton(t('food.trucks.loading'), { compact: true });
     const trucks = Array.isArray(payload.trucks) ? payload.trucks : [];
@@ -1003,6 +1005,10 @@ export class FoodGuideViewer {
 
   renderHours() {
     this.renderHover();
+    // Expired/day-old names must disappear even while a refresh is pending.
+    const trucks = this.panel.querySelector('[data-food-trucks]');
+    if (trucks && this.trucks.payload && !isFoodTruckPayloadUsable(this.trucks.payload))
+      trucks.innerHTML = this.renderTrucksBody(trucks.dataset.foodTrucks);
     if (this.panelMode === 'list') {
       this.renderListStatus();
       return;

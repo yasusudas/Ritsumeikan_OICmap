@@ -19,8 +19,10 @@ export const patterns = {
 export const fixedDate = '2026-10-19T03:00:00.000Z';
 export const trucks = {
   date: '2026-10-19', generatedAt: fixedDate, outOfPeriod: false,
+  nextUpdateAt: '2026-10-19T03:30:00.000Z',
+  period: { from: '2026-09-28', to: '2026-10-31' },
   hours: { start: '11:00', end: '14:00' },
-  trucks: [{ id: 'e2e-truck', name: 'E2E Kitchen', genre: 'ランチ', spot: 'as', url: 'https://example.org/e2e-kitchen', imageUrl: '/lunch-street/kyo-tacos.webp' }],
+  trucks: [{ kitchenId: 'e2e-truck', name: 'E2E Kitchen', dish: 'ランチ', spot: 'plaza', sourceUrl: 'https://example.org/e2e-kitchen', image: '/lunch-street/kyo-tacos.webp' }],
 };
 export const apiPayloads = {
   '/api/food-trucks': trucks,

@@ -2,7 +2,10 @@
 // 表示言語は <html lang> から判定する(legal-page.js と同じ方針)。
 
 import { foodDataUrl } from 'virtual:rits-oic-food-data';
-import { CoopHoursClient, japaneseDate, FOOD_STATUS_MS } from './food-guide-model.js';
+import {
+  CoopHoursClient, japaneseDate, FOOD_STATUS_MS, FOOD_TRUCKS_RETRY_MS,
+  isFoodTruckPayloadUsable, foodTrucksNeedRefresh,
+} from './food-guide-model.js';
 import {
   foodPageText,
   foodPlacesReady,
@@ -149,31 +152,36 @@ function render(payload) {
 let truckPayload = null;
 let trucksPending = false;
 let trucksFailed = false;
+let trucksFetchedAt = 0;
 function trucksNeedRefresh() {
-  return !truckPayload || truckPayload.date !== japaneseDate() ||
-    !Number.isFinite(Date.parse(truckPayload.nextUpdateAt)) || Date.parse(truckPayload.nextUpdateAt) <= Date.now();
+  return foodTrucksNeedRefresh(truckPayload);
 }
 async function refresh() {
   if (!container || trucksPending) return;
+  if (trucksFetchedAt && Date.now() - trucksFetchedAt < FOOD_TRUCKS_RETRY_MS) return;
   trucksPending = true;
   trucksFailed = false;
   container.setAttribute('aria-busy', 'true');
-  if (!truckPayload || truckPayload.date !== japaneseDate()) {
+  if (!isFoodTruckPayloadUsable(truckPayload)) {
     renderDate('—');
     container.innerHTML = renderFoodTruckSkeleton(t.loading);
   }
   try {
     const payload = await fetchJson(FOOD_TRUCKS_URL);
-    if (payload?.date !== japaneseDate() || !Array.isArray(payload.trucks))
+    if (!isFoodTruckPayloadUsable(payload))
       throw new Error('Food truck schedule unavailable');
     truckPayload = payload;
     render(truckPayload);
   } catch (error) {
-    renderDate('');
-    truckPayload = null;
     trucksFailed = true;
-    container.innerHTML = renderState(t.error, 'is-error');
+    if (isFoodTruckPayloadUsable(truckPayload)) render(truckPayload);
+    else {
+      renderDate('');
+      truckPayload = null;
+      container.innerHTML = renderState(t.error, 'is-error');
+    }
   } finally {
+    trucksFetchedAt = Date.now();
     trucksPending = false;
     container.setAttribute('aria-busy', 'false');
     paintHours();
@@ -220,6 +228,12 @@ function hourOptions() {
 }
 
 function paintHours() {
+  if (container && truckPayload && !isFoodTruckPayloadUsable(truckPayload)) {
+    renderDate('');
+    container.innerHTML = trucksPending
+      ? renderFoodTruckSkeleton(t.loading)
+      : renderState(t.error, 'is-error');
+  }
   if (!placesRoot || !placesLoaded) return;
   const options = hourOptions();
   const translate = (key) => foodPageText(LANG, key);
