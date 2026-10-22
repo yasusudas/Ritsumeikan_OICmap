@@ -2,7 +2,7 @@ import { test, expect, goto, selectEntry, searchData } from './helpers.js';
 
 test.describe('PWA', () => {
   test.use({ serviceWorkers: 'allow' });
-  test('PWA manifest assets, service worker activation and warmed offline map/search', async ({ page, context, request }) => {
+  test('PWA manifest assets, service worker activation and warmed offline map/search', async ({ page, context, request, baseURL, browserName }) => {
     const response = await request.get('/manifest.webmanifest');
     expect(response.status()).toBe(200);
     const manifest = await response.json();
@@ -19,10 +19,21 @@ test.describe('PWA', () => {
       const keys = (await Promise.all((await caches.keys()).map(async key => (await (await caches.open(key)).keys()).map(r => r.url)))).flat();
       return keys.some(url => /search-entries.*\.json/.test(url)) && keys.some(url => /\/assets\/.*\.svg/.test(url));
     })).toBe(true);
-    await context.setOffline(true);
-    await page.reload();
-    await expect(page.locator('#search-input')).toHaveValue('AC130');
-    await expect(page.locator('.search-highlight-area')).toBeAttached();
-    await context.setOffline(false);
+    // WebKit's setOffline rejects navigation before the SW can answer it.
+    // The test server closes this context's connections instead, exercising
+    // the same fetch failure and cached navigation without that engine hook.
+    if (browserName === 'webkit') {
+      await context.addCookies([{ name: '__oic_e2e_offline', value: '1', url: baseURL }]);
+    } else {
+      await context.setOffline(true);
+    }
+    try {
+      await page.reload();
+      await expect(page.locator('#search-input')).toHaveValue('AC130');
+      await expect(page.locator('.search-highlight-area')).toBeAttached();
+    } finally {
+      await context.clearCookies({ name: '__oic_e2e_offline' });
+      await context.setOffline(false);
+    }
   });
 });

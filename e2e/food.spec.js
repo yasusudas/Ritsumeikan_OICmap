@@ -16,8 +16,11 @@ async function dragFoodHandle(page, dy) {
 }
 
 for (const lang of languages) {
-  test(`FOOD every store list, overview/details and map link ${lang}`, async ({ page, isMobile }, testInfo) => {
+  test(`FOOD every store list, overview/details and map link ${lang}`, async ({ page, isMobile, guard }, testInfo) => {
     test.setTimeout(180_000);
+    // Navigating away can cancel a WebKit image decode in the old document.
+    // Verify the destination map below; actual loading errors remain fatal.
+    guard.console.push(/^console: EncodingError: Loading was canceled\.$/);
     await readyMap(page, lang);
     await openFood(page);
     for (const place of foodData.places) {
@@ -52,8 +55,10 @@ for (const lang of languages) {
       await expect(card.locator('h3')).toHaveText(place.name[lang]);
       await card.locator(`a[href^="${mapPath(lang)}#"]`).click();
       await expect(page.locator('#food-panel-title')).toHaveText(place.name[lang]);
+      await expect.poll(() => page.locator('#canvas-layer img.floor-svg').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
       await page.reload();
       await expect(page.locator('#food-panel-title')).toHaveText(place.name[lang]);
+      await expect.poll(() => page.locator('#canvas-layer img.floor-svg').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
     }
     await screenshot(page, testInfo, `food-${lang}`);
   });

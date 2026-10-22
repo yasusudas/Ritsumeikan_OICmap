@@ -38,7 +38,7 @@ export default defineConfig({
     ] : []),
   ],
   webServer: {
-    command: `npm run build -- --outDir ${quote(`${artifacts}/build`)} --emptyOutDir && npm run preview -- --outDir ${quote(`${artifacts}/build`)} --host 127.0.0.1 --port ${port} --strictPort`,
+    command: `npm run build -- --outDir ${quote(`${artifacts}/build`)} --emptyOutDir && node scripts/serve-site-test-build.mjs ${quote(`${artifacts}/build`)} ${port}`,
     url: `http://127.0.0.1:${port}`,
     reuseExistingServer: false,
     timeout: 120_000,

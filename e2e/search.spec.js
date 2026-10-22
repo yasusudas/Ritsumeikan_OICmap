@@ -113,7 +113,8 @@ for (const lang of languages) {
   });
 }
 
-test('MAP wheel zoom and mouse pan change the rendered transform', async ({ page }) => {
+test('MAP wheel zoom and mouse pan change the rendered transform', async ({ page, isMobile, browserName }) => {
+  test.skip(isMobile && browserName === 'webkit', 'Playwright does not support mouse wheels in mobile WebKit.');
   await readyMap(page);
   const canvas = page.locator('#canvas-layer');
   const before = await canvas.getAttribute('style');
@@ -141,7 +142,15 @@ for (const lang of languages) {
       transform: node.style.transform,
     }));
 
-    for (const [floor, file] of [['2F', /\/2F-[^/]+\.svg/], ['H-6-9F', /6F7F8F9F_BldgH-[^/]+\.svg/], ['1F', /\/(?:food-map-[^/]+|1F-[^/]+)\.svg/]]) {
+    for (const [floor, file] of [
+      ['2F', /\/2F-[^/]+\.svg/],
+      ['3F', /\/3F-[^/]+\.svg/],
+      ['4F', /\/4F-[^/]+\.svg/],
+      ['5F', /\/5F-[^/]+\.svg/],
+      ['A-6-9F', /6F7F8F9F_BldgA-[^/]+\.svg/],
+      ['H-6-9F', /6F7F8F9F_BldgH-[^/]+\.svg/],
+      ['1F', /\/(?:food-map-[^/]+|1F-[^/]+)\.svg/],
+    ]) {
       await chooseFloor(page, floor);
       await expect(page.locator('#canvas-layer img.floor-svg')).toHaveAttribute('src', file);
       await expect.poll(() => canvas.evaluate(node => ({

@@ -35,7 +35,7 @@ test('RECOVERY facility rings failure and retry', async ({ page, guard }) => {
 
 test('RECOVERY map image failure and retry', async ({ page, guard }) => {
   allowFailure(guard, /\/assets\/.*\.svg/);
-  guard.console.push(/^console: EncodingError: The source image cannot be decoded\.$/);
+  guard.console.push(/^console: EncodingError: (?:The source image cannot be decoded\.|Loading error\.)$/);
   let fail = true;
   await page.route(/\/assets\/(?:1F|food-map-ja)-.*\.svg/, route => fail ? route.fulfill({ status: 503, body: 'unavailable' }) : route.fallback());
   await goto(page, '/');
