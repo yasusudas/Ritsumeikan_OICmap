@@ -76,12 +76,13 @@ for (const lang of languages) {
         const areaPlace = [...foodData.places, ...facilities].find(p => p.entryId === areaTarget);
         const group = page.locator(`.food-area[data-food-place="${areaTarget}"]`).first();
         const hit = group.locator('.food-area-hit');
-        // Pick a point actually hit by this polygon (concave and overlapping areas cannot
-        // safely be clicked at their bounding-box center).
+        // Prefer the centre, then search concave/overlapping areas. Use actual
+        // integer mouse coordinates: rounding a subpixel ATM edge can hit 7-Eleven.
         const point = await hit.evaluate(element => {
           const r = element.getBoundingClientRect();
-          for (let y = .1; y < 1; y += .1) for (let x = .1; x < 1; x += .1) {
-            const p = { x: r.left + r.width * x, y: r.top + r.height * y };
+          const fractions = [.5, .4, .6, .3, .7, .2, .8, .1, .9];
+          for (const y of fractions) for (const x of fractions) {
+            const p = { x: Math.round(r.left + r.width * x), y: Math.round(r.top + r.height * y) };
             if (document.elementFromPoint(p.x, p.y) === element) return p;
           }
           return null;

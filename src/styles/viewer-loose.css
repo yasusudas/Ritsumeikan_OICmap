@@ -19,7 +19,39 @@ body[data-app-mode="viewer"] {
    Header: a big title; no rule above the tools
    --------------------------------------------------------------------- */
 
+/* The title stays opaque; the controls float over the map.
+   Empty areas and the transparent footer still pass gestures to the map. */
+body[data-app-mode="viewer"] .topbar,
+body[data-app-mode="viewer"] .site-footer {
+  background: transparent;
+  pointer-events: none;
+}
+
+body[data-app-mode="viewer"] .topbar-bar {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  pointer-events: auto;
+}
+
+body[data-app-mode="viewer"] .topbar-bar::before {
+  content: "";
+  position: absolute;
+  top: calc(-1 * env(safe-area-inset-top, 0px));
+  bottom: 0;
+  left: calc((100vw - 100%) / -2);
+  right: calc((100vw - 100%) / -2);
+  z-index: -1;
+  background: var(--c-bg);
+}
+
+body[data-app-mode="viewer"] :is(.search-panel, .floor-tab-stack, .search-icon-button, .facility-more-panel, .site-footer-link) {
+  pointer-events: auto;
+}
+
 body[data-app-mode="viewer"] .topbar-tools {
+  position: relative;
+  isolation: isolate;
   border-top: 0;
 }
 
@@ -105,10 +137,34 @@ body[data-app-mode="viewer"] .search-result.is-active .search-result-label {
    Floors and facilities
    --------------------------------------------------------------------- */
 
+body[data-app-mode="viewer"] .floor-tab-stack {
+  gap: var(--s-2);
+  pointer-events: none;
+}
+
+body[data-app-mode="viewer"] .floor-tabs {
+  gap: var(--s-2);
+  background: transparent;
+}
+
+body[data-app-mode="viewer"] .floor-tabs-secondary {
+  margin-left: 0;
+  padding-left: 0;
+}
+
 body[data-app-mode="viewer"] .floor-tab {
-  border-radius: 999px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--s-3);
+  border-radius: var(--ls-row);
+  background: var(--c-bg);
   color: var(--c-ink-3);
   font-weight: 600;
+  pointer-events: auto;
+}
+
+body[data-app-mode="viewer"] .mobile-floor-select {
+  pointer-events: auto;
 }
 
 body[data-app-mode="viewer"] .floor-tab-label {
@@ -372,18 +428,15 @@ body[data-app-mode="viewer"] .search-highlight-area {
     max-width: none;
   }
 
-  /* Floors: a column of lift buttons along the left edge. Each group
-     hugs its own labels, so the white sheet steps out into an L. */
+  /* Each floor is its own white button; gaps expose the map. */
   body[data-app-mode="viewer"] .floor-tab-stack {
-    --floor-sheet-radius: 24px;
-    --floor-sheet-fillet: 14px;
     position: absolute;
     top: calc(100% + 20px);
     left: var(--ls-edge);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0;
+    gap: var(--s-2);
     min-height: 0;
     margin: 0;
     padding: 0;
@@ -392,51 +445,27 @@ body[data-app-mode="viewer"] .search-highlight-area {
   body[data-app-mode="viewer"] .floor-tabs {
     flex-direction: column;
     align-items: flex-start;
-    gap: 2px;
-    background: #ffffff;
-  }
-
-  body[data-app-mode="viewer"] .floor-tabs-primary {
-    position: relative;
-    padding: 10px 14px 0 10px;
-    border-radius: var(--floor-sheet-radius) var(--floor-sheet-radius) 0 0;
-  }
-
-  /* Concave corner where the narrow floors meet the wider building row */
-  body[data-app-mode="viewer"] .floor-tabs-primary::after {
-    content: "";
-    position: absolute;
-    right: calc(var(--floor-sheet-fillet) * -1);
-    bottom: 0;
-    width: var(--floor-sheet-fillet);
-    height: var(--floor-sheet-fillet);
-    background: radial-gradient(
-      circle at 100% 0,
-      transparent calc(var(--floor-sheet-fillet) - 0.5px),
-      #ffffff var(--floor-sheet-fillet)
-    );
-    pointer-events: none;
+    gap: var(--s-2);
   }
 
   body[data-app-mode="viewer"] .floor-tabs-secondary {
     margin: 0;
-    padding: 10px 14px 12px 10px;
-    border-radius: 0 var(--floor-sheet-radius) var(--floor-sheet-radius) var(--floor-sheet-radius);
+    padding: 0;
   }
 
   body[data-app-mode="viewer"] .floor-tab {
     justify-content: flex-start;
-    min-width: 0;
+    min-width: 44px;
     height: auto;
-    min-height: 38px;
-    padding: 0 6px 0 18px;
+    min-height: 44px;
+    padding: 0 var(--s-3);
     font-family: var(--font-latin);
     font-size: 1.375rem;
     letter-spacing: -0.01em;
   }
 
   body[data-app-mode="viewer"] .floor-tab-wide {
-    min-height: 34px;
+    min-height: 44px;
     font-family: var(--font-sans);
     font-size: 1.375rem;
     letter-spacing: 0;
@@ -457,7 +486,7 @@ body[data-app-mode="viewer"] .search-highlight-area {
   body[data-app-mode="viewer"] .floor-tab.is-active::after {
     top: 50%;
     bottom: auto;
-    left: 0;
+    left: var(--s-1);
     width: 7px;
     height: 7px;
     margin: -3.5px 0 0;
@@ -507,7 +536,7 @@ body[data-app-mode="viewer"] .search-highlight-area {
 
   body[data-app-mode="viewer"] .floor-tab {
     justify-content: center;
-    min-width: 38px;
+    min-width: 44px;
     font-family: var(--font-latin);
     font-size: 20px;
     text-align: center;
@@ -538,6 +567,48 @@ body[data-app-mode="viewer"] .search-highlight-area {
   body[data-app-mode="viewer"] .search-icon-button {
     width: 44px;
     height: 44px;
+  }
+}
+
+/* Approved final: only the tablet's horizontal floor row shares a slim white panel.
+   Short landscape screens use a dropdown; wide/tall screens use a column. */
+@media (min-width: 721px) and (max-width: 1239px) and (min-height: 521px) {
+  body[data-app-mode="viewer"] .floor-tab-stack {
+    position: relative;
+    isolation: isolate;
+    justify-self: center;
+    align-self: center;
+    width: max-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 var(--s-2);
+    border-radius: var(--s-2);
+    background: transparent;
+    pointer-events: auto;
+  }
+
+  /* A 36px panel inside the unchanged 44px touch targets. */
+  body[data-app-mode="viewer"] .floor-tab-stack::before {
+    content: "";
+    position: absolute;
+    inset: var(--s-1) 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--c-bg);
+    pointer-events: none;
+  }
+
+  body[data-app-mode="viewer"] .floor-tab {
+    background: transparent;
+    color: var(--c-ink-3);
+  }
+
+  body[data-app-mode="viewer"] .floor-tab.is-active {
+    color: var(--ls-red);
+  }
+
+  body[data-app-mode="viewer"] .floor-tab.is-active::after {
+    bottom: 5px;
   }
 }
 
@@ -636,19 +707,19 @@ body[data-app-mode="viewer"] .mobile-floor-toggle {
   height: var(--viewer-search-height);
   padding: 0 var(--ls-pill-px);
   border: 0;
-  border-radius: 999px;
-  background: var(--ls-red-soft);
+  border-radius: var(--ls-row);
+  background: var(--c-bg);
   color: var(--ls-red);
   font-size: var(--ls-pill-font);
   font-weight: var(--fw-bold);
 }
 
 body[data-app-mode="viewer"] .mobile-floor-select.is-open .mobile-floor-toggle {
-  background: var(--ls-red);
-  color: #ffffff;
+  background: var(--c-bg);
+  color: var(--ls-red);
 }
 
-/* The floor list drops in as one sheet (fade + 6px) at the same speed as
+/* Individual floor buttons drop in (fade + 6px) at the same speed as
    the More options, lifts away the same way, and the chevron turns with it. */
 body[data-app-mode="viewer"] .mobile-floor-chevron {
   transition: transform var(--ls-pop-dur) var(--ease);
@@ -665,6 +736,7 @@ body[data-app-mode="viewer"] .mobile-floor-list {
 }
 
 body[data-app-mode="viewer"] .mobile-floor-select.is-open .mobile-floor-list {
+  display: grid;
   opacity: 1;
   transform: none;
   pointer-events: auto;
@@ -679,15 +751,17 @@ body[data-app-mode="viewer"] .mobile-floor-select.is-open .mobile-floor-list {
 
 body[data-app-mode="viewer"] .mobile-floor-list {
   top: calc(100% + 8px);
-  padding: 8px;
+  gap: var(--s-2);
+  padding: 0;
   border: 0;
-  border-radius: 22px;
-  background: var(--ls-fill);
+  border-radius: 0;
+  background: transparent;
 }
 
 body[data-app-mode="viewer"] .mobile-floor-option {
   border-bottom: 0;
-  border-radius: 14px;
+  border-radius: var(--ls-row);
+  background: var(--c-bg);
 }
 
 body[data-app-mode="viewer"] .mobile-floor-option:hover {
@@ -697,6 +771,34 @@ body[data-app-mode="viewer"] .mobile-floor-option:hover {
 body[data-app-mode="viewer"] .mobile-floor-option[aria-selected="true"] {
   color: var(--ls-red);
   font-weight: var(--fw-bold);
+}
+
+/* Share the restored phone selector with the short landscape toolbar. */
+@media (max-width: 720px), (min-width: 721px) and (max-height: 520px) and (orientation: landscape) {
+  body[data-app-mode="viewer"] .mobile-floor-toggle {
+    border-radius: 999px;
+    background: var(--ls-red-soft);
+  }
+
+  body[data-app-mode="viewer"] .mobile-floor-select.is-open .mobile-floor-toggle {
+    background: var(--ls-red);
+    color: #ffffff;
+  }
+
+  body[data-app-mode="viewer"] .mobile-floor-select.is-open .mobile-floor-list {
+    display: block;
+  }
+
+  body[data-app-mode="viewer"] .mobile-floor-list {
+    gap: 0;
+    padding: var(--s-2);
+    border-radius: var(--ls-sheet);
+    background: var(--ls-fill);
+  }
+
+  body[data-app-mode="viewer"] .mobile-floor-option {
+    background: transparent;
+  }
 }
 
 /* Small phones: step the title down so the full name fits */

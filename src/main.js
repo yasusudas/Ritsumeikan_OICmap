@@ -1831,11 +1831,15 @@ if (window.__FILE_MODE__) {
     return image;
   }
 
-  // Height of the floating top bar / footer that overlay the full-bleed map,
-  // so the map can be fitted/positioned into the readable area between them.
-  function computeViewerSafeInsets() {
+  // Fit the floor under transparent controls/footer, clear of the opaque title.
+  // Cards and search targets still avoid the controls so they remain usable.
+  function computeViewerSafeInsets({ mapFit = false } = {}) {
     if (isEditorSite) {
       return { top: 0, bottom: 0 };
+    }
+    if (mapFit) {
+      const title = topbar?.querySelector('.topbar-bar');
+      return { top: title ? Math.ceil(title.getBoundingClientRect().bottom) : 0, bottom: 0 };
     }
     const top = topbar ? Math.ceil(topbar.getBoundingClientRect().height) : 0;
     const footerEl = document.querySelector('.site-footer');
@@ -1845,11 +1849,10 @@ if (window.__FILE_MODE__) {
 
   function getMapFit(intrinsicWidth, intrinsicHeight) {
     const viewport = getViewportSize();
-    const insets = computeViewerSafeInsets();
+    const insets = computeViewerSafeInsets({ mapFit: true });
     const availableWidth = Math.max(viewport.width - MAP_PADDING, 80);
     const availableHeight = Math.max(viewport.height - MAP_PADDING, 80);
-    // Safe height excludes the floating top bar / footer so the whole floor can
-    // open inside the readable zone (not hidden behind the menu).
+    // Only the solid title row reduces the map's drawable area.
     const safeHeight = Math.max(viewport.height - insets.top - insets.bottom - MAP_PADDING, 80);
     // Phones: the landscape floor sheets are width-limited, so let them run
     // edge to edge; the sheet's own page margin is the breathing room.
@@ -2069,8 +2072,8 @@ if (window.__FILE_MODE__) {
     state.safeInsetBottom = fit.insetBottom;
 
     if (useFillFit) {
-      // The opening view (the whole floor inside the readable zone, clear of
-      // the header and footer) is also as far as the map zooms out, on
+      // The opening view (the whole floor below the solid title row) is
+      // also as far as the map zooms out, on
       // desktops and phones alike.
       state.initialZoom = clamp(fit.safeContainScale / baseScale, 0.01, 1);
       state.minZoom = state.initialZoom;
@@ -3190,8 +3193,8 @@ if (window.__FILE_MODE__) {
     const outlineBounds = getOutlineBounds(entry.outlines);
     const focusRect = outlineBounds ?? entry.rects[0];
     const { width: viewportWidth, height: viewportHeight } = getViewportSize();
-    const top = state.safeInsetTop || 0;
-    const visibleHeight = viewportHeight - top - (state.safeInsetBottom || 0);
+    const { top, bottom } = computeViewerSafeInsets();
+    const visibleHeight = viewportHeight - top - bottom;
     const fitZoom = outlineBounds
       ? Math.min(
           (viewportWidth * SEARCH_OUTLINE_FIT_RATIO) / (state.baseWidth * outlineBounds.widthRatio),
@@ -3215,8 +3218,8 @@ if (window.__FILE_MODE__) {
     const targetX = state.baseWidth * point.xRatio;
     const targetY = state.baseHeight * point.yRatio;
     const { width: viewportWidth, height: viewportHeight } = getViewportSize();
-    const top = state.safeInsetTop || 0;
-    const focusCenterY = top + (viewportHeight - top - (state.safeInsetBottom || 0)) / 2;
+    const { top, bottom } = computeViewerSafeInsets();
+    const focusCenterY = top + (viewportHeight - top - bottom) / 2;
 
     animateView(nextZoom, viewportWidth / 2 - targetX * nextZoom, focusCenterY - targetY * nextZoom);
   }
