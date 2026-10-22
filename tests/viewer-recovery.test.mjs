@@ -33,7 +33,7 @@ function facilityViewer(floorId) {
       return active;
     },
     renderFloor: async () => {},
-    cancelViewAnimation: noop, clearFacilityAreaDraft: noop, clearMapSelectionsForSpecialFloor: noop,
+    clearFacilityAreaDraft: noop, clearMapSelectionsForSpecialFloor: noop,
     renderFacilityToggleButtons: noop, updateMobileFloorSelection: noop,
     updateTabSelection: noop, renderFacilityAreas: noop, renderFacilityRings: noop
   });

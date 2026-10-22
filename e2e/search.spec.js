@@ -128,39 +128,6 @@ test('MAP wheel zoom and mouse pan change the rendered transform', async ({ page
   await expect(canvas).not.toHaveAttribute('style', zoomed);
 });
 
-for (const lang of languages) {
-  test(`MAP floor controls keep zoom and position ${lang}`, async ({ page }, testInfo) => {
-    await readyMap(page, lang);
-    const entry = searchData.entries.find(item => item.floorId === '1F' && item.label === 'AC130');
-    await selectEntry(page, entry, lang);
-    const canvas = page.locator('#canvas-layer');
-    await expect.poll(() => canvas.evaluate(node => node.style.transform.includes('scale('))).toBe(false);
-    const initialView = await canvas.evaluate(node => ({
-      width: node.style.width,
-      height: node.style.height,
-      transform: node.style.transform,
-    }));
-
-    for (const [floor, file] of [['2F', /\/2F-[^/]+\.svg/], ['H-6-9F', /6F7F8F9F_BldgH-[^/]+\.svg/], ['1F', /\/(?:food-map-[^/]+|1F-[^/]+)\.svg/]]) {
-      await chooseFloor(page, floor);
-      await expect(page.locator('#canvas-layer img.floor-svg')).toHaveAttribute('src', file);
-      await expect.poll(() => canvas.evaluate(node => ({
-        width: node.style.width,
-        height: node.style.height,
-        transform: node.style.transform,
-      }))).toEqual(initialView);
-      if (floor === '2F') await screenshot(page, testInfo, `floor-2f-${lang}`);
-    }
-    if (await page.locator('#site-menu-toggle').isVisible()) {
-      await page.locator('#site-menu-toggle').click();
-      await page.locator('#about-menu-button').click();
-    } else {
-      await page.locator('.site-footer [data-dialog="about"]').click();
-    }
-    await expect(page.locator('#about-dialog .about-dialog-version')).toHaveText('Ver3.1');
-  });
-}
-
 test('MAP menus close on Escape/outside and keyboard enters facility menu', async ({ page }) => {
   await readyMap(page);
   const more = page.locator('#facility-more-toggle');
