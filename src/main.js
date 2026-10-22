@@ -3655,6 +3655,7 @@ if (window.__FILE_MODE__) {
 
     const wasSpecialFloorActive = !preserveSpecialFloor && deactivateSpecialFloorToggle();
     const shouldResetZoom = resetZoom || wasSpecialFloorActive;
+    cancelViewAnimation();
     clearFacilityAreaDraft();
     state.selectedAreaEntryId = null;
     state.floorIndex = nextIndex;
@@ -4422,13 +4423,13 @@ if (window.__FILE_MODE__) {
         return;
       }
 
-      void setActiveFloor(floorId, { resetZoom: true });
+      void setActiveFloor(floorId, { resetZoom: false });
     });
   });
 
   tabButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      void setActiveFloor(button.dataset.floor, { resetZoom: true });
+      void setActiveFloor(button.dataset.floor, { resetZoom: false });
     });
   });
 
