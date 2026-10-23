@@ -16,27 +16,41 @@ function loadFunctions(context, names) {
 
 // A map viewer in a browser described by `window`, with timers run by hand.
 function viewer(window) {
-  const timers = [];
+  const timers = new Map();
+  let now = 0, nextTimer = 0;
   Object.assign(window, {
-    setTimeout: (callback) => timers.push(callback),
-    clearTimeout: () => timers.splice(0),
+    setTimeout: (callback, delay) => { timers.set(++nextTimer, { callback, due: now + delay }); return nextTimer; },
+    clearTimeout: (id) => timers.delete(id),
   });
   const context = vm.createContext({
     window,
+    performance: { now: () => now },
     isEditorSite: false,
     foodGuide: null,
     ZOOM_RASTER_SETTLE_MS: 140,
     ZOOM_RASTER_EVERY_FRAMES: every,
     canvasLayer: { style: {} },
     frontLayer: { style: {} },
-    state: { baseWidth: 1000, baseHeight: 700, zoom: 1, x: 0, y: 0, renderedZoom: 0, zoomRasterTimer: 0, zoomFramesSinceRaster: 0, lastFlushedZoom: 0 },
+    state: { baseWidth: 1000, baseHeight: 700, zoom: 1, x: 0, y: 0, renderedZoom: 0, zoomRasterTimer: 0, zoomLastInputAt: null, zoomFramesSinceRaster: 0, lastFlushedZoom: 0 },
     setStatus() {},
     getFloorLabel: () => '1F',
     getRenderedFloorDefinition: () => ({ id: '1F' }),
   });
-  loadFunctions(context, ['shouldDeferZoomRaster', 'commitZoomRaster', 'flushViewRender', 'mirrorFrontLayer']);
+  loadFunctions(context, ['zoomRasterDelayFromInput', 'recordMapInput', 'shouldDeferZoomRaster', 'commitZoomRaster', 'flushViewRender', 'mirrorFrontLayer']);
   context.flushViewRender();
-  context.settle = () => timers.splice(0).forEach((callback) => callback());
+  context.timers = timers;
+  context.at = value => { now = value; };
+  context.fire = () => {
+    const id = context.state.zoomRasterTimer, timer = timers.get(id);
+    assert.ok(timer, 'pending zoom timer');
+    timers.delete(id);
+    timer.callback();
+  };
+  context.settle = () => {
+    if (!timers.size) return;
+    now = Math.max(...[...timers.values()].map(timer => timer.due));
+    for (const [id, timer] of [...timers]) { timers.delete(id); timer.callback(); }
+  };
   return context;
 }
 
@@ -97,4 +111,48 @@ test('while the zoom keeps changing, every few zoom frames are redrawn at their 
     .filter(Boolean);
   assert.deepEqual(redrawn, [every, every * 2]);
   assert.ok(every > 1, 'the drawn map is scaled on the frames in between');
+});
+
+test('a delayed render keeps the last input plus 140ms deadline', () => {
+  const map = viewer(safari());
+  map.recordMapInput();
+  map.state.zoom = 2;
+  map.at(70);
+  map.flushViewRender();
+  assert.equal(map.timers.get(map.state.zoomRasterTimer).due, 140);
+  map.at(140);
+  map.fire();
+  assert.equal(map.canvasLayer.style.width, '2000px');
+  assert.equal(map.state.zoomLastInputAt, null);
+});
+
+test('new input cancels the old timer and even a stale callback cannot redraw early', () => {
+  const map = viewer(safari());
+  map.recordMapInput(); map.state.zoom = 2; map.flushViewRender();
+  const stale = map.timers.get(map.state.zoomRasterTimer).callback;
+  map.at(100); map.recordMapInput();
+  map.at(140); stale();
+  assert.equal(map.canvasLayer.style.width, '1000px');
+  assert.equal(map.timers.get(map.state.zoomRasterTimer).due, 240);
+  map.at(240); map.fire();
+  assert.equal(map.canvasLayer.style.width, '2000px');
+});
+
+test('continuing pan input moves the pending zoom deadline without advancing the raster cadence', () => {
+  const map = viewer(phone());
+  map.recordMapInput(); map.state.zoom = 2; map.flushViewRender();
+  map.at(130); map.recordMapInput(); map.state.x = 20; map.flushViewRender();
+  assert.equal(map.timers.get(map.state.zoomRasterTimer).due, 270);
+  assert.equal(map.state.zoomFramesSinceRaster, 1);
+  map.at(270); map.fire();
+  assert.equal(map.canvasLayer.style.width, '2000px');
+  assert.equal(map.frontLayer.style.transform, map.canvasLayer.style.transform);
+});
+
+test('programmatic zoom without map input retains its existing 140ms render delay', () => {
+  const map = viewer(safari());
+  map.at(300); map.state.zoom = 2; map.flushViewRender();
+  assert.equal(map.timers.get(map.state.zoomRasterTimer).due, 440);
+  map.at(440); map.fire();
+  assert.equal(map.canvasLayer.style.width, '2000px');
 });

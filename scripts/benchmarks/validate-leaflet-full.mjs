@@ -1,0 +1,28 @@
+// Validate semantic results from actual Safari runs, without driving another browser.
+import{readFile,writeFile,stat}from'node:fs/promises';import{execFileSync}from'node:child_process';import{createHash}from'node:crypto';import assert from'node:assert/strict';
+const root='output/leaflet-full-safari-2026-10-21',read=async n=>JSON.parse(await readFile(`${root}/${n}.json`));
+const result={checkedAt:new Date().toISOString(),checks:[],files:{}};
+const near=(a,b,t=.02)=>assert.ok(Math.abs(a-b)<=t,`${a} != ${b}`);
+const visible=d=>{assert.deepEqual(d.errors,[]);assert.equal(d.environment.visibility,'visible');};
+for(const lang of ['ja','en']){
+ const base=await read(`usage-baseline-${lang}`);visible(base);
+ for(const variant of ['render-only','full']){const d=await read(`usage-${variant}-${lang}`);visible(d);assert.equal(d.hash,base.hash);assert.equal(d.actualLanguage,lang);near(d.afterSearch.width,base.afterSearch.width);for(const k of ['width','height'])near(d.highlight[k],base.highlight[k]);for(const k of ['x','y'])near(d.highlight[k],base.highlight[k],1);}
+ for(const variant of ['baseline','render-only','full']){const d=await read(`controls-${variant}-${lang}`);visible(d);assert.equal(d.rings,35);assert.match(d.foodTitle,/GARDEN TERRACE LION/);assert.deepEqual(d.states.map(s=>s.active),['5F','1F','5F','1F']);assert.deepEqual(d.states.map(s=>s.pins),[0,11,0,11]);}
+ const floors=await read(`floors-full-${lang}`);visible(floors);assert.deepEqual(floors.records.map(r=>r.floor),['2F','3F','4F','5F','A-6-9F','H-6-9F','1F','printer']);for(const r of floors.records){assert.ok(r.state.tiles.ready);assert.deepEqual(r.state.tiles.errors,[]);if(r.floor!=='printer')assert.equal(r.active,r.floor);else assert.match(r.state.tiles.floorUrl,/print-station/);}
+ near(floors.beforeLanguage.width,floors.afterLanguage.width);assert.equal(floors.beforeLanguage.transform,floors.afterLanguage.transform);assert.equal(floors.actualLanguage,lang==='ja'?'en':'ja');
+}
+result.checks.push('3 variants × 2 languages: search size/position, floor toggles, 35 rings, 11/0 pins, food panel','full: all floors/printer in both languages; preserve view on language flip');
+const gesture=await read('gestures-full-ja');visible(gesture);near(gesture.records.at(-1).state.width/gesture.records[0].state.width,2,.00001);near(gesture.afterDouble.width/gesture.beforeDouble.width,1.1,.00001);near(gesture.afterKeyboard.width/gesture.afterDouble.width,1.1,.00001);assert.ok(gesture.afterBox.width>gesture.afterKeyboard.width);assert.ok(gesture.afterBox.tiles.view.zoom<=10.00001);
+const align=await read('animation-alignment');visible(align);assert.equal(align.samples.length,150);assert.ok(align.samples.some(s=>s.animating));const maxAlignmentError=Math.max(...align.samples.map(s=>s.delta));assert.ok(maxAlignmentError<1);result.maxAlignmentError=maxAlignmentError;result.animatedFrames=align.samples.filter(s=>s.animating).length;
+for(const v of ['baseline','full']){const d=await read(`quality-${v}-ja-1F-0-mobile`);visible(d);assert.deepEqual(d.environment.viewport,[390,844]);near(d.state.width,390);}
+result.checks.push('full pinch 2×; double-click/key 1.1×; box zoom; animated highlight error <1px; 390×844 initial fit');
+for(const [name,n]of [['before-cross-floor-search-fix/performance',48],['performance',48],['performance-smoke',3]]){
+ const d=await read(name);assert.equal(d.trials.length,n);assert.deepEqual(d.errors,[]);
+ for(const trial of d.trials)for(const method of ['common','native']){const t=trial[method];assert.equal(t.hiddenFrames,0);assert.equal(t.actualLanguage,trial.language);assert.deepEqual(t.environment.viewport,[960,800]);assert.deepEqual(t.environment.parentViewport,[1024,1132]);assert.equal(t.zoom.frames,144);assert.equal(t.pan.frames,60);assert.ok(new Set(t.panTrace.map(p=>p.transform)).size>50);assert.deepEqual(t.serverAfter.failures,t.serverBefore.failures);if(t.final.tiles){assert.deepEqual(t.final.tiles.errors,[]);if(trial.variant==='full')assert.ok(t.final.tiles.dragStarts>=1);}if(method==='common')for(const phase of t.phases)near(phase.stop.at(-1).width,phase.initial.width*(phase.phase==='zoomIn'?1.1**24:1/1.1**24),.05);}
+}
+result.checks.push('A/B 48 + 48 trials and C 3 trials: 198 workloads, visible, language/viewport/coverage/drag and no new measured HTTP failures');
+const assets=await read('assets');assert.equal(assets.images.length,18);for(const image of assets.images)for(const folder of ['/tmp/oic-leaflet-full-baseline','/tmp/oic-leaflet-render-only','/tmp/oic-leaflet-full']){assert.equal(createHash('sha256').update(await readFile(folder+'/'+image.file)).digest('hex'),image.sha256);}
+execFileSync('git',['-c','core.fsmonitor=false','diff','--quiet','origin/dev','--','src','public','index.html','en','vite.config.js','package.json','package-lock.json']);result.checks.push('18 unchanged SVGs in all builds; normal application equals origin/dev');
+for(const name of ['performance','performance-smoke','summary','build-evidence','candidate-source','animation-alignment','native-visual-comparison','tile-stats-final']){const ext=name==='candidate-source'?'js':'json',path=`${root}/${name}.${ext}`;result.files[name]={sha256:createHash('sha256').update(await readFile(path)).digest('hex'),modifiedAt:(await stat(path)).mtime.toISOString()};}
+for(const [variant,dir]of Object.entries({baseline:'/tmp/oic-leaflet-full-baseline','render-only':'/tmp/oic-leaflet-render-only',full:'/tmp/oic-leaflet-full'})){const bytes=await readFile(dir+'/.vite/manifest.json');result.files[variant+'Manifest']={sha256:createHash('sha256').update(bytes).digest('hex')};}
+await writeFile(root+'/validation.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));

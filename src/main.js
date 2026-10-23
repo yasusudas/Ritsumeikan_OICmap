@@ -1,3 +1,4 @@
+import { floorSvgUrls } from 'virtual:rits-oic-map-assets';
 import './style.css';
 import { inject } from '@vercel/analytics';
 import { facilityRingsUrl, searchEntriesUrl } from 'virtual:rits-oic-search-data';
@@ -24,8 +25,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/1F.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/1F.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/1F.svg'],
+        en: floorSvgUrls['en/1F.svg']
       }
     },
     {
@@ -37,8 +38,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/2F.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/2F.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/2F.svg'],
+        en: floorSvgUrls['en/2F.svg']
       }
     },
     {
@@ -50,8 +51,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/3F.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/3F.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/3F.svg'],
+        en: floorSvgUrls['en/3F.svg']
       }
     },
     {
@@ -63,8 +64,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/4F.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/4F.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/4F.svg'],
+        en: floorSvgUrls['en/4F.svg']
       }
     },
     {
@@ -76,8 +77,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/5F.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/5F.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/5F.svg'],
+        en: floorSvgUrls['en/5F.svg']
       }
     },
     {
@@ -89,8 +90,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/6F7F8F9F_BldgA.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/6F7F8F9F_BldgA.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/6F7F8F9F_BldgA.svg'],
+        en: floorSvgUrls['en/6F7F8F9F_BldgA.svg']
       }
     },
     {
@@ -102,8 +103,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/6F7F8F9F_BldgH.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/6F7F8F9F_BldgH.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/6F7F8F9F_BldgH.svg'],
+        en: floorSvgUrls['en/6F7F8F9F_BldgH.svg']
       }
     }
   ];
@@ -117,8 +118,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1208, height: 859 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/print-station.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/print-station.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/print-station.svg'],
+        en: floorSvgUrls['en/print-station.svg']
       }
     }
   };
@@ -349,6 +350,7 @@ if (window.__FILE_MODE__) {
     mapRelayoutFrame: 0,
     renderedZoom: 0,
     zoomRasterTimer: 0,
+    zoomLastInputAt: null,
     zoomFramesSinceRaster: 0,
     lastFlushedZoom: 0,
     initialZoom: 1,
@@ -1892,6 +1894,21 @@ if (window.__FILE_MODE__) {
   // changing zoom scales the last drawn layer instead, and the sharp redraw
   // happens every few zoom frames (ZOOM_RASTER_EVERY_FRAMES) and once the map
   // has been still for a moment.
+  function zoomRasterDelayFromInput() {
+    return state.zoomLastInputAt === null ? ZOOM_RASTER_SETTLE_MS
+      : Math.max(0, ZOOM_RASTER_SETTLE_MS - (performance.now() - state.zoomLastInputAt));
+  }
+
+  function recordMapInput() {
+    if (isEditorSite) return;
+    state.zoomLastInputAt = performance.now();
+    window.clearTimeout(state.zoomRasterTimer);
+    state.zoomRasterTimer = 0;
+    if (state.renderedZoom > 0 && state.renderedZoom !== state.zoom && shouldDeferZoomRaster()) {
+      state.zoomRasterTimer = window.setTimeout(commitZoomRaster, ZOOM_RASTER_SETTLE_MS);
+    }
+  }
+
   function shouldDeferZoomRaster() {
     if (isEditorSite) {
       return false;
@@ -1901,6 +1918,13 @@ if (window.__FILE_MODE__) {
 
   function commitZoomRaster() {
     state.zoomRasterTimer = 0;
+    if (state.zoomLastInputAt !== null) {
+      const remaining = zoomRasterDelayFromInput();
+      if (remaining > 0) {
+        state.zoomRasterTimer = window.setTimeout(commitZoomRaster, remaining);
+        return;
+      }
+    }
     if (state.renderedZoom !== state.zoom) {
       flushViewRender({ commit: true });
     }
@@ -1920,9 +1944,10 @@ if (window.__FILE_MODE__) {
     if (defer) {
       const scale = state.zoom / state.renderedZoom;
       canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${scale})`;
-      state.zoomRasterTimer = window.setTimeout(commitZoomRaster, ZOOM_RASTER_SETTLE_MS);
+      state.zoomRasterTimer = window.setTimeout(commitZoomRaster, zoomRasterDelayFromInput());
     } else {
       state.renderedZoom = state.zoom;
+      state.zoomLastInputAt = null;
       state.zoomFramesSinceRaster = 0;
       canvasLayer.style.width = `${state.baseWidth * state.zoom}px`;
       canvasLayer.style.height = `${state.baseHeight * state.zoom}px`;
@@ -4859,6 +4884,7 @@ if (window.__FILE_MODE__) {
   viewer.addEventListener(
     'wheel',
     (event) => {
+      recordMapInput();
       if (typeof foodGuide !== 'undefined') foodGuide?.cancelGesture();
       event.preventDefault();
       const rect = viewer.getBoundingClientRect();
@@ -4885,6 +4911,7 @@ if (window.__FILE_MODE__) {
     }
 
     event.preventDefault();
+    recordMapInput();
     startDrag(event.clientX, event.clientY);
   });
 
@@ -4903,6 +4930,7 @@ if (window.__FILE_MODE__) {
       return;
     }
 
+    if (state.isDragging) recordMapInput();
     captureEditorPointAtClient(event.clientX, event.clientY);
     endDrag();
   });
@@ -4926,6 +4954,7 @@ if (window.__FILE_MODE__) {
     if (!state.isDragging) {
       return;
     }
+    recordMapInput();
 
     if (
       Math.abs(event.clientX - state.dragStartX) > 4 ||
@@ -4940,6 +4969,7 @@ if (window.__FILE_MODE__) {
   });
 
   window.addEventListener('mouseup', () => {
+    if (state.isDragging) recordMapInput();
     state.areaVertexDragIndex = null;
     endDrag();
   });
@@ -4951,6 +4981,7 @@ if (window.__FILE_MODE__) {
         return;
       }
 
+      recordMapInput();
       event.preventDefault();
 
       if (event.touches.length === 1 && !state.isPinching) {
@@ -4969,6 +5000,7 @@ if (window.__FILE_MODE__) {
   viewer.addEventListener(
     'touchmove',
     (event) => {
+      recordMapInput();
       event.preventDefault();
 
       if (event.touches.length === 1 && state.isDragging && !state.isPinching) {
@@ -5015,6 +5047,7 @@ if (window.__FILE_MODE__) {
         return;
       }
 
+      recordMapInput();
       event.preventDefault();
 
       if (!state.isPinching && !state.dragMoved && event.changedTouches.length === 1 && event.touches.length === 0) {
@@ -5041,6 +5074,7 @@ if (window.__FILE_MODE__) {
   );
 
   viewer.addEventListener('touchcancel', () => {
+    recordMapInput();
     state.isPinching = false;
     endDrag();
     updateView();

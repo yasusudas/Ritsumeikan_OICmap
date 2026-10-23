@@ -1,0 +1,20 @@
+.leaflet-floor .leaflet-floor-map {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--c-bg);
+}
+.leaflet-floor > #canvas-layer { z-index: 1; }
+.leaflet-floor .map-asset { background: transparent; }
+.leaflet-floor .floor-svg { display: none; }
+.leaflet-floor .leaflet-tile {
+  max-width: none !important;
+  width: 257px !important;
+  height: 257px !important;
+  margin-left: -.5px;
+  margin-top: -.5px;
+}
+/* Leaflet's plus-lighter rule makes overlapping gutters appear as bright seams. */
+.leaflet-floor.leaflet-container img.leaflet-tile,
+.leaflet-floor .leaflet-container img.leaflet-tile { mix-blend-mode: normal; }

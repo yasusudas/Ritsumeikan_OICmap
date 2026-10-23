@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { validateFoodPlaces } from '../src/food-guide-model.js';
 import { removeFoodPictograms } from './food-map-svg.mjs';
+import { optimizeMapSvg } from './map-svg-optimization.mjs';
 import { indexSearchRoutes } from './search-data-validation.mjs';
 
 const virtual = 'virtual:rits-oic-food-data';
@@ -53,8 +54,8 @@ export function foodDataAssetsPlugin() {
     );
     return {
       places: JSON.stringify({ ...payload, places }),
-      ja: removeFoodPictograms(ja, payload.places, 'ja'),
-      en: removeFoodPictograms(en, payload.places, 'en'),
+      ja: optimizeMapSvg(removeFoodPictograms(ja, payload.places, 'ja'), { filename: 'food-map-ja.svg', firstFloor: true }),
+      en: optimizeMapSvg(removeFoodPictograms(en, payload.places, 'en'), { filename: 'food-map-en.svg', firstFloor: true }),
     };
   }
   return {

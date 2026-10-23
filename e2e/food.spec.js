@@ -72,6 +72,13 @@ for (const lang of languages) {
         const entry = searchData.entries.find(e => e.id === place.entryId);
         await selectEntry(page, entry, lang);
         await closeFood(page);
+        // WebKit can restore focus to the search field when the card closes,
+        // reopening its suggestions. Dismiss them before testing a map hit.
+        const suggestions = page.locator('#search-results');
+        if (await suggestions.isVisible()) {
+          await page.locator('#search-input').press('Escape');
+          await expect(suggestions).toBeHidden();
+        }
         const areaTarget = place.areaEntryId && !Number.isInteger(place.areaPolygon) ? place.areaEntryId : place.entryId;
         const areaPlace = [...foodData.places, ...facilities].find(p => p.entryId === areaTarget);
         const group = page.locator(`.food-area[data-food-place="${areaTarget}"]`).first();

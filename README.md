@@ -6,6 +6,12 @@
 
 ページ別の全操作一覧、検証範囲、実行オプションは [docs/site-test-matrix.md](docs/site-test-matrix.md) を参照してください。`npm run --silent test:inventory -- --json` で元データから最新の操作対象一覧を出力できます。
 
+## 地図性能の検証
+
+これまでのSVG軽量化・拡大縮小・Leaflet移行の検証結果は [docs/map-performance/](docs/map-performance/README.md) にまとめています。
+
+日英の配信用フロアSVGは、開発サーバーとビルド時にSVGO（floatPrecision: 5）で軽量化します。1Fの既知の一定濃度mask/filterは先にopacityへ置き換え、食事ピクトグラムの除去は軽量化前に行います。編集用の原本SVGは変更しません。Safari・タッチ端末の4フレームごとの描き直しを維持し、停止時の描き直しは最後に処理した地図入力から140msを基準にします。
+
 ## 日本語
 
 ### 概要
@@ -59,6 +65,8 @@ Eight first-floor food places have individual image pins and clickable store are
 ### Data and Structure
 
 Map images are managed as SVGs. The Japanese version uses `src/assets/floors/ja/`, and the English version uses `src/assets/floors/en/`. The complete editable search data remains in `public/manual-search-index.json`; the viewer's search entries and facility rings are emitted as separate hashed JSON assets at build time. Generated syllabus data and one-off scraping captures are treated as local working files and are not included on GitHub.
+
+Served floor SVGs in both languages are optimized with SVGO at precision 5 in development and production builds. The known constant first-floor mask/filter is replaced with opacity, and legacy food pictograms are removed before optimization. Editable source SVGs remain intact. Safari and touch devices retain the redraw every four changed zoom frames; the final redraw uses a deadline 140ms after the last processed map input.
 
 Facility rings are edited and saved using Japanese SVG coordinates (subtract the 8.5 viewBox x origin for Building H). The editor always displays the Japanese map, regardless of its UI language. The English viewer automatically selects a nearby pictogram of the same facility type from the SVG-derived `src/assets/facility-ring-offsets.json` and adds its offset to the saved coordinates. New or recreated rings need no separate English position settings. Ring radii also follow each language’s individual pictogram sizes, with the colored stroke centered on the circle’s edge. After replacing floor SVGs, regenerate the offsets with `node scripts/generate-facility-ring-offsets.mjs` in an environment with Playwright available.
 
