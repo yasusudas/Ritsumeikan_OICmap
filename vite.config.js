@@ -1,5 +1,6 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
+import { mapAssetsPlugin } from './scripts/vite-map-assets-plugin.mjs';
 import { foodDataAssetsPlugin } from './scripts/vite-food-data-plugin.mjs';
 import { searchDataAssetsPlugin } from './scripts/vite-search-data-plugin.mjs';
 import { getRailStatusPayload, RAIL_STATUS_REFRESH_INTERVAL_SECONDS } from './src/server/rail-status.js';
@@ -150,7 +151,7 @@ function holidaysDevApi() {
 
 export default defineConfig({
   base: './',
-  plugins: [searchDataAssetsPlugin(), foodDataAssetsPlugin(), railStatusDevApi(), foodTrucksDevApi(), coopHoursDevApi(), holidaysDevApi()],
+  plugins: [mapAssetsPlugin(), searchDataAssetsPlugin(), foodDataAssetsPlugin(), railStatusDevApi(), foodTrucksDevApi(), coopHoursDevApi(), holidaysDevApi()],
   build: {
     rollupOptions: {
       input: {

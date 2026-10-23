@@ -88,10 +88,10 @@ for (const lang of languages) {
           await (await facilityButton(page, key)).click();
           await expect(page.locator(`.search-icon-button[data-facility-key="${key}"]`)).toHaveAttribute('aria-pressed', 'true');
           const expected = searchData.facilityRings.filter(r => r.floorId === floor && (r.facilityKey === key || key === 'stairs' && r.facilityKey === 'escalator'));
-          await expect(page.locator('.facility-ring')).toHaveCount(expected.length);
+          await expect(page.locator('.facility-ring:not([data-registration-copy])')).toHaveCount(expected.length);
           if (key === 'toilet') await expect(page.locator('#toilet-ring-legend')).toBeVisible();
           await (await facilityButton(page, key)).click();
-          await expect(page.locator('.facility-ring')).toHaveCount(0);
+          await expect(page.locator('.facility-ring:not([data-registration-copy])')).toHaveCount(0);
         });
       }
     }
@@ -99,7 +99,7 @@ for (const lang of languages) {
       await chooseFloor(page, '3F');
       await (await facilityButton(page, key)).click();
       await expect(page.locator(`.floor-tab[data-floor="${target}"]`)).toHaveClass(/is-active/);
-      await expect(page.locator('.facility-ring')).toHaveCount(searchData.facilityRings.filter(r => r.facilityKey === key && r.floorId === target).length);
+      await expect(page.locator('.facility-ring:not([data-registration-copy])')).toHaveCount(searchData.facilityRings.filter(r => r.facilityKey === key && r.floorId === target).length);
       await (await facilityButton(page, key)).click();
       await expect(page.locator('.floor-tab[data-floor="3F"]')).toHaveClass(/is-active/);
     }
@@ -166,7 +166,7 @@ for (const lang of languages) {
     } else {
       await page.locator('.site-footer [data-dialog="about"]').click();
     }
-    await expect(page.locator('#about-dialog .about-dialog-version')).toHaveText('Ver3.1');
+    await expect(page.locator('#about-dialog .about-dialog-version')).toHaveText('Ver3.2');
   });
 }
 

@@ -93,10 +93,29 @@ export async function goto(page, path) {
   await expect(page).not.toHaveTitle('');
 }
 
+export async function settleMapLayout(page) {
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    await new Promise(resolve => {
+      let previous, stable = 0;
+      const frame = () => {
+        const canvas = document.querySelector('#canvas-layer');
+        const current = canvas?.getAttribute('style') + ':' + document.querySelector('.topbar')?.getBoundingClientRect().height;
+        stable = current === previous ? stable + 1 : 0;
+        previous = current;
+        if (stable >= 3) resolve();
+        else requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+    });
+  });
+}
+
 export async function readyMap(page, lang = 'ja') {
   await goto(page, mapPath(lang));
   await expect(page.locator('.food-pin')).toHaveCount(foodData.places.length);
   await expect.poll(() => page.locator('#canvas-layer img.floor-svg').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+  await settleMapLayout(page);
 }
 
 export async function chooseFloor(page, floor) {
@@ -108,7 +127,10 @@ export async function chooseFloor(page, floor) {
     await expect(page.locator('[data-mobile-floor-toggle]')).toHaveAttribute('aria-expanded', 'false');
   }
   await expect(desktop).toHaveClass(/is-active/);
+  // The selected tab changes before the next image finishes decoding.
+  await expect(page.locator('#canvas-layer')).toHaveAttribute('data-floor-id', floor);
   await expect.poll(() => page.locator('#canvas-layer img.floor-svg').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
 }
 
 export async function facilityButton(page, key) {
@@ -137,9 +159,9 @@ export async function selectEntry(page, entry, lang = 'ja', query = entry.label)
     await expect(page.locator('.food-card-brand')).toHaveAttribute('data-food-place', entry.id);
     await expect(page.locator('.food-area.is-selected').first()).toBeAttached();
   } else if (entry.outlines?.length) {
-    await expect(page.locator('.search-highlight-area-outline')).toHaveCount(entry.outlines.length);
+    await expect(page.locator('.search-highlight-area-outline:not([data-registration-copy])')).toHaveCount(entry.outlines.length);
     for (let i = 0; i < entry.outlines.length; i++) {
-      const points = await page.locator('.search-highlight-area-outline').nth(i).getAttribute('points');
+      const points = await page.locator('.search-highlight-area-outline:not([data-registration-copy])').nth(i).getAttribute('points');
       const actual = points.trim().split(/[\s,]+/).map(Number);
       const expected = entry.outlines[i].flatMap(p => [p.xRatio * 1000, p.yRatio * 1000]);
       expect(actual.length).toBe(expected.length);

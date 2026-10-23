@@ -306,3 +306,15 @@ test('editor loading placeholders retain existing JSON output until data is read
   assert.equal(JSON.parse(editorJson.value).entries[0], 'loaded draft');
   assert.equal(editorJson.placeholder, '');
 });
+
+
+test('map URLs from virtual assets resolve against the page for initial, aligned and editor images', () => {
+  for (const isEditorSite of [false, true]) {
+    const context = vm.createContext({ URL, isEditorSite, window: { location: { href: 'https://example.org/en/' } },
+      getMapLanguage: () => 'en', alignedFloorSvgUrls: { 'en/2F.svg': '/assets/2F-aligned.svg' } });
+    loadMain(context, ['getFloorSvgUrl']);
+    assert.equal(context.getFloorSvgUrl({ id: '1F', svgUrls: { en: '/assets/1F.svg' } }), 'https://example.org/assets/1F.svg');
+    assert.equal(context.getFloorSvgUrl({ id: '2F', svgUrls: { en: '/assets/2F.svg' } }),
+      'https://example.org/assets/' + (isEditorSite ? '2F.svg' : '2F-aligned.svg'));
+  }
+});

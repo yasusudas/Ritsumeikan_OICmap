@@ -1,0 +1,295 @@
+{
+  "branch": "Version3.2",
+  "commit": "03ab05895082ce0c81c44d6db9f18bf8d3288f28",
+  "stats": {
+    "expected": 8,
+    "unexpected": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "scope": "registration cases from latest combined run; final lettering validation is in floor-text-validation.json"
+  },
+  "playwrightVersion": "1.64.1",
+  "buildMainAssets": [
+    "main-DwuyRbuO.js"
+  ],
+  "measurement": "CSS pixels; difference between rendered overlays and corresponding served SVG coordinates, not physical survey accuracy.",
+  "toleranceCssPixels": 0.08,
+  "cameraRetention": "8 switches per condition; width, height and transform strings unchanged",
+  "unitTests": {
+    "passed": 195,
+    "failed": 0
+  },
+  "regressionTests": {
+    "stats": {
+      "startTime": "2026-10-23T17:44:48.570Z",
+      "duration": 129757.83399999999,
+      "expected": 133,
+      "skipped": 5,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "skipped": [
+      {
+        "project": "desktop",
+        "title": "EDITOR real password login when explicitly configured",
+        "annotations": [
+          {
+            "type": "skip",
+            "description": "Set E2E_EDITOR_PASSWORD to verify real credentials; other editor tests use an isolated session fixture.",
+            "location": {
+              "file": "/Users/ichi/.codex/worktrees/floor-alignment-v32/Ritsumeikan-OIC-Map/e2e/editor.spec.js",
+              "line": 109,
+              "column": 8
+            }
+          }
+        ]
+      },
+      {
+        "project": "iphone",
+        "title": "EDITOR real password login when explicitly configured",
+        "annotations": [
+          {
+            "type": "skip",
+            "description": "Set E2E_EDITOR_PASSWORD to verify real credentials; other editor tests use an isolated session fixture.",
+            "location": {
+              "file": "/Users/ichi/.codex/worktrees/floor-alignment-v32/Ritsumeikan-OIC-Map/e2e/editor.spec.js",
+              "line": 109,
+              "column": 8
+            }
+          }
+        ]
+      },
+      {
+        "project": "desktop",
+        "title": "MAP mobile touch pan and pinch zoom",
+        "annotations": [
+          {
+            "type": "skip",
+            "description": "Chromium CDP generates actual touch input; mouse pan is tested separately.",
+            "location": {
+              "file": "/Users/ichi/.codex/worktrees/floor-alignment-v32/Ritsumeikan-OIC-Map/e2e/search.spec.js",
+              "line": 218,
+              "column": 8
+            }
+          }
+        ]
+      },
+      {
+        "project": "iphone",
+        "title": "MAP wheel zoom and mouse pan change the rendered transform",
+        "annotations": [
+          {
+            "type": "skip",
+            "description": "Playwright does not support mouse wheels in mobile WebKit.",
+            "location": {
+              "file": "/Users/ichi/.codex/worktrees/floor-alignment-v32/Ritsumeikan-OIC-Map/e2e/search.spec.js",
+              "line": 117,
+              "column": 8
+            }
+          }
+        ]
+      },
+      {
+        "project": "iphone",
+        "title": "MAP mobile touch pan and pinch zoom",
+        "annotations": [
+          {
+            "type": "skip",
+            "description": "Chromium CDP generates actual touch input; mouse pan is tested separately.",
+            "location": {
+              "file": "/Users/ichi/.codex/worktrees/floor-alignment-v32/Ritsumeikan-OIC-Map/e2e/search.spec.js",
+              "line": 218,
+              "column": 8
+            }
+          }
+        ]
+      }
+    ],
+    "scope": "Surrounding feature regression before the typography fix; latest registration and lettering checks are recorded separately."
+  },
+  "sourceFilesSha256": {
+    "src/main.js": "90939aa936f4985adb122d80f161cfe725d2432ae69c91aa3bac0b4a91c74eb7",
+    "src/geolocation-viewer.js": "8d4ad37dd45a3ff9b8b414cd9a13e5804b4153cc4556f87516a9e8adb0dc432f",
+    "src/styles/viewer.css": "fd8194f057659772251071bd1c9a383713de7f0d047a15bb3e387e47e31914ba",
+    "src/floor-alignment.js": "e68a773532389815385b120f7dc15bf543c46010754940874f01efbcc807edf8",
+    "src/floor-alignment-overlay.js": "e4a25a3877ae238eb9566f751fd0d9768ed26beb009f280eb5e854f23a145482",
+    "src/assets/floor-alignment.json": "12479e5445f89f61813e79822ff1062958c18af6f3e85e9993bbaa0cfcf88380",
+    "scripts/aligned-floor-svg.mjs": "9092454a2fa2f8d100b244748303cd7b20861adc94599c16dd8a158a51fe742c",
+    "scripts/vite-map-assets-plugin.mjs": "aa13adaef8328c4927c63406b50e7d1bdacaddd7c51ea9d0ab9c9f4ac815bf3f",
+    "scripts/floor-text-registration.mjs": "61acc91b521fd632649e832be55af6017b423c3b7918acaa92feffb25ae6ec35",
+    "scripts/generate-floor-text-registration.mjs": "75ead7c1872e75e2c9e86621bb27008f254ac6d6d885880e309f2f802ce354e0",
+    "src/assets/floor-text-registration.json": "0a16766db088496ae76fce6ce9f14e4f1438dd60351c1c7710097fc3a74afa1a"
+  },
+  "conditions": [
+    {
+      "project": "desktop",
+      "language": "ja",
+      "rings": 514,
+      "maxRingCenterPx": 0.00782262687150285,
+      "maxRingEdgePx": 0.007833771075783615,
+      "searchEntriesWithOutline": 1016,
+      "searchPolygons": 1058,
+      "searchSamples": 17628,
+      "maxSearchErrorPx": 0.005249462292795215,
+      "maxClipError": 0,
+      "cameraSwitches": 8,
+      "cardSearches": 13,
+      "facilityAreas": {
+        "polygons": 12,
+        "vertices": 97,
+        "maxError": 0.0015844373514894907,
+        "errors": []
+      }
+    },
+    {
+      "project": "desktop",
+      "language": "en",
+      "rings": 514,
+      "maxRingCenterPx": 0.00782262687150285,
+      "maxRingEdgePx": 0.007833771075783615,
+      "searchEntriesWithOutline": 1016,
+      "searchPolygons": 1058,
+      "searchSamples": 17628,
+      "maxSearchErrorPx": 0.005249462292795215,
+      "maxClipError": 0,
+      "cameraSwitches": 8,
+      "cardSearches": 13,
+      "facilityAreas": {
+        "polygons": 12,
+        "vertices": 97,
+        "maxError": 0.0015844373514894907,
+        "errors": []
+      }
+    },
+    {
+      "project": "mobile",
+      "language": "ja",
+      "rings": 514,
+      "maxRingCenterPx": 0.015732435625198344,
+      "maxRingEdgePx": 0.015785540835603674,
+      "searchEntriesWithOutline": 1016,
+      "searchPolygons": 1058,
+      "searchSamples": 17628,
+      "maxSearchErrorPx": 0.012297115540462917,
+      "maxClipError": 0,
+      "cameraSwitches": 8,
+      "cardSearches": 13,
+      "facilityAreas": {
+        "polygons": 12,
+        "vertices": 97,
+        "maxError": 0.00021784080277955568,
+        "errors": []
+      }
+    },
+    {
+      "project": "mobile",
+      "language": "en",
+      "rings": 514,
+      "maxRingCenterPx": 0.017692162415321257,
+      "maxRingEdgePx": 0.017744942880203736,
+      "searchEntriesWithOutline": 1016,
+      "searchPolygons": 1058,
+      "searchSamples": 17628,
+      "maxSearchErrorPx": 0.00984414573755554,
+      "maxClipError": 0,
+      "cameraSwitches": 8,
+      "cardSearches": 13,
+      "facilityAreas": {
+        "polygons": 12,
+        "vertices": 97,
+        "maxError": 0.00021784080277955568,
+        "errors": []
+      }
+    },
+    {
+      "project": "safari",
+      "language": "ja",
+      "rings": 514,
+      "maxRingCenterPx": 0.006154787738272845,
+      "maxRingEdgePx": 0.006157387559181605,
+      "searchEntriesWithOutline": 1016,
+      "searchPolygons": 1058,
+      "searchSamples": 17628,
+      "maxSearchErrorPx": 0.014962492747518376,
+      "maxClipError": 0,
+      "cameraSwitches": 8,
+      "cardSearches": 13,
+      "facilityAreas": {
+        "polygons": 12,
+        "vertices": 97,
+        "maxError": 0.001584437351489491,
+        "errors": []
+      }
+    },
+    {
+      "project": "safari",
+      "language": "en",
+      "rings": 514,
+      "maxRingCenterPx": 0.006295159920991515,
+      "maxRingEdgePx": 0.006297328455588577,
+      "searchEntriesWithOutline": 1016,
+      "searchPolygons": 1058,
+      "searchSamples": 17628,
+      "maxSearchErrorPx": 0.007326916109294267,
+      "maxClipError": 0,
+      "cameraSwitches": 8,
+      "cardSearches": 13,
+      "facilityAreas": {
+        "polygons": 12,
+        "vertices": 97,
+        "maxError": 0.001584437351489491,
+        "errors": []
+      }
+    },
+    {
+      "project": "iphone",
+      "language": "ja",
+      "rings": 514,
+      "maxRingCenterPx": 0.005002177831170072,
+      "maxRingEdgePx": 0.005036370588401588,
+      "searchEntriesWithOutline": 1016,
+      "searchPolygons": 1058,
+      "searchSamples": 17628,
+      "maxSearchErrorPx": 0.017415058045566114,
+      "maxClipError": 0,
+      "cameraSwitches": 8,
+      "cardSearches": 13,
+      "facilityAreas": {
+        "polygons": 12,
+        "vertices": 97,
+        "maxError": 0.0028942517720325846,
+        "errors": []
+      }
+    },
+    {
+      "project": "iphone",
+      "language": "en",
+      "rings": 514,
+      "maxRingCenterPx": 0.00510413964373197,
+      "maxRingEdgePx": 0.005139515445068245,
+      "searchEntriesWithOutline": 1016,
+      "searchPolygons": 1058,
+      "searchSamples": 17628,
+      "maxSearchErrorPx": 0.028510138456093986,
+      "maxClipError": 0,
+      "cameraSwitches": 8,
+      "cardSearches": 13,
+      "facilityAreas": {
+        "polygons": 12,
+        "vertices": 97,
+        "maxError": 0.0028942517720325846,
+        "errors": []
+      }
+    }
+  ],
+  "sourceRunStats": {
+    "startTime": "2026-10-23T18:14:53.388Z",
+    "duration": 385525.575,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "letteringValidation": "floor-text-validation.json",
+  "validationScope": "Historical complete working tree before isolated commit selection; contains unrelated uncommitted features. For the committed source use floor-alignment-commit-validation.json."
+}

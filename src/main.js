@@ -1,3 +1,4 @@
+import { floorSvgUrls, alignedFloorSvgUrls } from 'virtual:rits-oic-map-assets';
 import './style.css';
 import { inject } from '@vercel/analytics';
 import { facilityRingsUrl, searchEntriesUrl } from 'virtual:rits-oic-search-data';
@@ -6,6 +7,8 @@ import { getFacilityRingDisplayPoint, getFacilityRingDiameterRatio } from './fac
 import { initBrandFit } from './brand-fit.js';
 import { FoodGuideViewer } from './food-guide-viewer.js';
 import { foodDataUrl, foodFloorUrls } from 'virtual:rits-oic-food-data';
+import { alignFloorPoint, alignFloorPolygons, FLOOR_VIEWBOX } from './floor-alignment.js';
+import { alignFloorOverlay } from './floor-alignment-overlay.js';
 
 if (window.__FILE_MODE__) {
   console.warn('This app must be opened through a local server, not file://');
@@ -24,8 +27,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/1F.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/1F.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/1F.svg'],
+        en: floorSvgUrls['en/1F.svg']
       }
     },
     {
@@ -37,8 +40,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/2F.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/2F.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/2F.svg'],
+        en: floorSvgUrls['en/2F.svg']
       }
     },
     {
@@ -50,8 +53,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/3F.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/3F.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/3F.svg'],
+        en: floorSvgUrls['en/3F.svg']
       }
     },
     {
@@ -63,8 +66,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/4F.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/4F.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/4F.svg'],
+        en: floorSvgUrls['en/4F.svg']
       }
     },
     {
@@ -76,8 +79,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/5F.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/5F.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/5F.svg'],
+        en: floorSvgUrls['en/5F.svg']
       }
     },
     {
@@ -89,8 +92,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/6F7F8F9F_BldgA.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/6F7F8F9F_BldgA.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/6F7F8F9F_BldgA.svg'],
+        en: floorSvgUrls['en/6F7F8F9F_BldgA.svg']
       }
     },
     {
@@ -102,8 +105,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1190.55, height: 841.89 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/6F7F8F9F_BldgH.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/6F7F8F9F_BldgH.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/6F7F8F9F_BldgH.svg'],
+        en: floorSvgUrls['en/6F7F8F9F_BldgH.svg']
       }
     }
   ];
@@ -117,8 +120,8 @@ if (window.__FILE_MODE__) {
         en: { width: 1208, height: 859 }
       },
       svgUrls: {
-        ja: new URL('./assets/floors/ja/print-station.svg', import.meta.url).href,
-        en: new URL('./assets/floors/en/print-station.svg', import.meta.url).href
+        ja: floorSvgUrls['ja/print-station.svg'],
+        en: floorSvgUrls['en/print-station.svg']
       }
     }
   };
@@ -659,7 +662,8 @@ if (window.__FILE_MODE__) {
   }
 
   function getLocalizedFacilityRingPoint(ring) {
-    return getFacilityRingDisplayPoint(ring, getMapLanguage());
+    const point = getFacilityRingDisplayPoint(ring, getMapLanguage());
+    return isEditorSite ? point : alignFloorPoint(point, ring.floorId, getMapLanguage());
   }
 
   function createFacilityRingOutline() {
@@ -681,43 +685,40 @@ if (window.__FILE_MODE__) {
   }
 
   function renderFacilityRings() {
-    if (!state.ringLayer) {
-      return;
-    }
-
+    if (!state.ringLayer) return;
     state.ringLayer.replaceChildren();
-
-    if (isSpecialFloorActive()) {
-      return;
-    }
-
-    const currentFloorRings = getCurrentFloorFacilityRings().filter((ring) => {
-      const toggleKey = ring.facilityKey === 'escalator' ? 'stairs' : ring.facilityKey;
-      return state.facilityToggleState[toggleKey] === 1;
+    if (isSpecialFloorActive()) return;
+    const rings = getCurrentFloorFacilityRings().filter(ring => {
+      const key = ring.facilityKey === 'escalator' ? 'stairs' : ring.facilityKey;
+      return state.facilityToggleState[key] === 1;
     });
+    if (!rings.length) return;
 
-    if (currentFloorRings.length === 0) {
-      return;
+    // A single SVG coordinate frame avoids WebKit rounding the position of
+    // hundreds of separately positioned HTML/SVG viewports differently.
+    const [, , width, height] = FLOOR_VIEWBOX;
+    const svg = document.createElementNS(SVG_NAMESPACE, 'svg');
+    svg.classList.add('facility-rings-svg', 'facility-ring-outline');
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    for (const ring of rings) {
+      const point = getFacilityRingDisplayPoint(ring, getMapLanguage());
+      const radius = getFacilityRingDiameterSize(ring).widthPercent / 100 * width / 2;
+      const group = document.createElementNS(SVG_NAMESPACE, 'g');
+      group.classList.add('facility-ring', `color-${getFacilityRingVisualVariant(ring.facilityKey, ring.colorVariant)}`);
+      group.dataset.ringId = ring.id;
+      for (const className of ['facility-ring-halo', 'facility-ring-line']) {
+        const circle = document.createElementNS(SVG_NAMESPACE, 'circle');
+        circle.classList.add(className);
+        circle.setAttribute('cx', point.xRatio * width);
+        circle.setAttribute('cy', point.yRatio * height);
+        circle.setAttribute('r', radius);
+        group.append(circle);
+      }
+      svg.append(group);
     }
-
-    const fragment = document.createDocumentFragment();
-
-    currentFloorRings.forEach((ring) => {
-      const point = getLocalizedFacilityRingPoint(ring);
-      const ringNode = document.createElement('div');
-      const diameterSize = getFacilityRingDiameterSize(ring);
-      ringNode.className = 'facility-ring';
-      ringNode.classList.add(`color-${getFacilityRingVisualVariant(ring.facilityKey, ring.colorVariant)}`);
-      ringNode.style.left = `${point.xRatio * 100}%`;
-      ringNode.style.top = `${point.yRatio * 100}%`;
-      ringNode.style.width = `${diameterSize.widthPercent}%`;
-      ringNode.style.height = `${diameterSize.heightPercent}%`;
-      ringNode.setAttribute('aria-hidden', 'true');
-      ringNode.append(createFacilityRingOutline());
-      fragment.append(ringNode);
-    });
-
-    state.ringLayer.append(fragment);
+    state.ringLayer.append(isEditorSite ? svg : alignFloorOverlay(svg, getFloorDefinition().id, getMapLanguage()));
   }
 
   function getFacilityAreaPointsAttribute(polygon) {
@@ -767,7 +768,8 @@ if (window.__FILE_MODE__) {
     svg.setAttribute('preserveAspectRatio', 'none');
 
     areaEntries.forEach((entry) => {
-      entry.polygons.forEach((polygon, polygonIndex) => {
+      entry.polygons.flatMap((polygon, polygonIndex) => (isEditorSite ? [polygon] : alignFloorPolygons([polygon], entry.floorId, getMapLanguage()))
+        .map(points => ({ polygon: points, polygonIndex }))).forEach(({ polygon, polygonIndex }) => {
         const isDraftTarget =
           isEditorSite &&
           state.areaDraft?.entryId === entry.id &&
@@ -941,8 +943,11 @@ if (window.__FILE_MODE__) {
   function getFloorSvgUrl(floor) {
     const derived = typeof foodGuide !== 'undefined' && foodGuide?.derivedUrl(floor?.id, getMapLanguage());
     if (derived) return new URL(derived, window.location.href).href;
+    const aligned = !isEditorSite && alignedFloorSvgUrls[`${getMapLanguage()}/${floor?.id}.svg`];
+    if (aligned) return new URL(aligned, window.location.href).href;
     const urls = floor?.svgUrls ?? {};
-    return (getMapLanguage() === 'en' ? urls.en : urls.ja) ?? floor?.svgUrl ?? urls.ja ?? urls.en;
+    const url = (getMapLanguage() === 'en' ? urls.en : urls.ja) ?? floor?.svgUrl ?? urls.ja ?? urls.en;
+    return new URL(url, window.location.href).href;
   }
 
   function getFloorSvgDimensions(floor) {
@@ -2064,6 +2069,7 @@ if (window.__FILE_MODE__) {
     const useFillFit = !isEditorSite;
     const baseScale = useFillFit ? fit.coverScale : fit.containScale;
     const hadDimensions = state.baseWidth > 0 && state.baseHeight > 0;
+    const sameLayout = state.baseWidth === asset.width * baseScale && state.baseHeight === asset.height * baseScale;
     state.intrinsicWidth = asset.width;
     state.intrinsicHeight = asset.height;
     state.baseWidth = asset.width * baseScale;
@@ -2087,7 +2093,7 @@ if (window.__FILE_MODE__) {
 
     if (resetZoom || !hadDimensions) {
       resetView();
-    } else if (preservedCenterRatios) {
+    } else if (preservedCenterRatios && !sameLayout) {
       restoreViewportCenterRatios(preservedCenterRatios);
     } else {
       updateView();
@@ -2256,13 +2262,16 @@ if (window.__FILE_MODE__) {
 
     // A place with a traced outline is shown as its area instead of a pin.
     if (activeEntry.outlines.length > 0) {
-      state.highlightLayer.append(createSearchHighlightArea(activeEntry.outlines));
+      const area = createSearchHighlightArea(activeEntry.outlines);
+      area.dataset.entryId = activeEntry.id;
+      state.highlightLayer.append(area);
       return;
     }
 
     const fragment = document.createDocumentFragment();
     activeEntry.rects.forEach((rect, index) => {
-      const center = getRectCenter(rect);
+      const rawCenter = getRectCenter(rect);
+      const center = isEditorSite ? rawCenter : alignFloorPoint(rawCenter, activeEntry.floorId, getMapLanguage());
       const pin = document.createElement('div');
       pin.className = 'search-highlight-pin';
       pin.style.left = `${center.xRatio * 100}%`;
@@ -2284,7 +2293,7 @@ if (window.__FILE_MODE__) {
     // Every white edge goes under every coloured line, so rooms that touch keep both lines.
     outlines.forEach((polygon) => svg.append(createFacilityAreaPolygonNode(polygon, 'search-highlight-area-base')));
     outlines.forEach((polygon) => svg.append(createFacilityAreaPolygonNode(polygon, 'search-highlight-area-outline')));
-    return svg;
+    return isEditorSite ? svg : alignFloorOverlay(svg, getFloorDefinition().id, getMapLanguage());
   }
 
   function getOutlineBounds(outlines) {
@@ -3190,7 +3199,8 @@ if (window.__FILE_MODE__) {
     }
 
     // An outlined place centres on its whole area, zooming out if the area would not fit.
-    const outlineBounds = getOutlineBounds(entry.outlines);
+    const displayOutlines = isEditorSite ? entry.outlines : alignFloorPolygons(entry.outlines, entry.floorId, getMapLanguage());
+    const outlineBounds = getOutlineBounds(displayOutlines);
     const focusRect = outlineBounds ?? entry.rects[0];
     const { width: viewportWidth, height: viewportHeight } = getViewportSize();
     const { top, bottom } = computeViewerSafeInsets();
@@ -3202,8 +3212,10 @@ if (window.__FILE_MODE__) {
         )
       : targetZoom;
     const nextZoom = clamp(Math.min(targetZoom, fitZoom), state.minZoom, state.maxZoom);
-    const targetX = state.baseWidth * (focusRect.xRatio + focusRect.widthRatio / 2);
-    const targetY = state.baseHeight * (focusRect.yRatio + focusRect.heightRatio / 2);
+    const rawCenter = getRectCenter(focusRect);
+    const center = !isEditorSite && !outlineBounds ? alignFloorPoint(rawCenter, entry.floorId, getMapLanguage()) : rawCenter;
+    const targetX = state.baseWidth * center.xRatio;
+    const targetY = state.baseHeight * center.yRatio;
     const focusCenterY = top + visibleHeight / 2;
 
     animateView(nextZoom, viewportWidth / 2 - targetX * nextZoom, focusCenterY - targetY * nextZoom);
@@ -3604,6 +3616,7 @@ if (window.__FILE_MODE__) {
       if (editorLayer) {
         mapAsset.append(editorLayer);
       }
+      canvasLayer.dataset.floorId = floor.id;
       canvasLayer.replaceChildren(mapAsset);
 
       state.highlightLayer = highlightLayer;

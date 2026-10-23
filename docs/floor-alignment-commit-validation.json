@@ -1,0 +1,4465 @@
+{
+  "branch": "Version3.2",
+  "baseCommit": "03ab05895082ce0c81c44d6db9f18bf8d3288f28",
+  "scope": "Only the floor-registration and typography changes plus required SVG build pipeline, excluding pre-existing GPS, offline and Safari input timing work. Version label updated to Ver3.2 after browser geometry checks; the published label is checked again on the live Site.",
+  "unitTests": {
+    "passed": 172,
+    "failed": 0
+  },
+  "browserStats": {
+    "startTime": "2026-10-23T23:04:15.433Z",
+    "duration": 383710.10599999997,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "maxOverlayErrorCssPixels": 0.03435126069704499,
+  "imageComparisons": 96,
+  "glyphInstances": 62008,
+  "sourceFilesSha256": {
+    "README.md": "777baf2c1d91f7c844a97b086fdc8969ba02a51cd9df2ad91c78876ba5b552f4",
+    "e2e/floor-registration-browser.js": "b899366bf127284e975afba2518d686532967bf68742957ec411f52100848d8b",
+    "e2e/floor-registration.spec.js": "ae3ee5743e278b18cf7968444728e2a96d8d39df7d28283caaa26be4066abd83",
+    "e2e/floor-text-registration.spec.js": "0bf0493703c1f96f0deede2eb455cffb01fd20ed40f3033ee7b1410d607ebd41",
+    "e2e/floor-view-stability.spec.js": "1d29490ad9bb7c7bbd4c8ce7609d2bafb0b541efe3f77bb06c22d1720f22a381",
+    "e2e/helpers.js": "fce03e319738eb9c57c6c98e8238779f28a696040aa3a343e5fc8376afd1b647",
+    "e2e/pwa.spec.js": "243b555d0efbe0643c8c136e545453191a68738ece0c32536bacceb1b43a4051",
+    "e2e/search.spec.js": "849315b972b9602e7b7c22a1ec9308ada3f112e7eedfbad9b8e4190c0ebbb2c9",
+    "en/index.html": "2972fd2bd3736311b910a1601a5d9283c0ab1fa53a3a060c37db71f438296d04",
+    "index.html": "4dde25ab674081cd7c52d03f7710a1e66cc9c701d9dc84a931e64d3457669343",
+    "package-lock.json": "3fd44bf86c4b778aa8b667d6090dcb9f0eaf5a9befc9cfe837e6342a9b87a59a",
+    "package.json": "d2a5411717f213f4dcd24ee5effeda177b5d698072170fb237822c8a97f1ee95",
+    "pnpm-lock.yaml": "cdd667ce88c5195aed05181172830e3c7665966840ae8a4306be2df5aaa48eb3",
+    "scripts/aligned-floor-svg.mjs": "9092454a2fa2f8d100b244748303cd7b20861adc94599c16dd8a158a51fe742c",
+    "scripts/first-floor-without-mask-filter.mjs": "bf2dc819181b1cd9eeb1e206051279ae97e9ce4fa68f3669ad72545229fbb55a",
+    "scripts/floor-text-registration.mjs": "61acc91b521fd632649e832be55af6017b423c3b7918acaa92feffb25ae6ec35",
+    "scripts/generate-floor-text-registration.mjs": "75ead7c1872e75e2c9e86621bb27008f254ac6d6d885880e309f2f802ce354e0",
+    "scripts/map-svg-optimization.mjs": "f9c6e7ba1e9394d31c6fad3742e5188b019912957a391324990b4ea41302f23b",
+    "scripts/vite-food-data-plugin.mjs": "0bfda650c0e6473a821429a60da3a31fc5e12b0d6eb235aa4a2f77b31e3a54df",
+    "scripts/vite-map-assets-plugin.mjs": "aa13adaef8328c4927c63406b50e7d1bdacaddd7c51ea9d0ab9c9f4ac815bf3f",
+    "src/assets/floor-alignment.json": "12479e5445f89f61813e79822ff1062958c18af6f3e85e9993bbaa0cfcf88380",
+    "src/assets/floor-text-registration.json": "0a16766db088496ae76fce6ce9f14e4f1438dd60351c1c7710097fc3a74afa1a",
+    "src/floor-alignment-overlay.js": "e4a25a3877ae238eb9566f751fd0d9768ed26beb009f280eb5e854f23a145482",
+    "src/floor-alignment.js": "e68a773532389815385b120f7dc15bf543c46010754940874f01efbcc807edf8",
+    "src/legal-page.js": "6fc6dd5dd8695190e7f4a162629d1a69ca5905a819621e033900acd180a2b627",
+    "src/main.js": "76a238df80cc3bd470ad3280106db424da54fd643316e4b716bd3b742901fb4a",
+    "src/styles/viewer.css": "fd8194f057659772251071bd1c9a383713de7f0d047a15bb3e387e47e31914ba",
+    "tests/floor-alignment.test.mjs": "01019562bbde2f1d53432323150c6a2a9c5847e6bda1d0467f480221ac7d7074",
+    "tests/map-svg-optimization.test.mjs": "344a4ea970cc3a5e46437a44c056489079c24f085f34f3af619322143dc1b92c",
+    "tests/viewer-language-assets.test.mjs": "63eaefdf4f180f61cd7a5e338e710cad857efb83fc1a1472345bcb147ec2793a",
+    "vite.config.js": "3300e546c646da527368c051c19d880cdaa01fa0296b7c2555e7a774e3db79d5"
+  },
+  "geometry": [
+    {
+      "project": "desktop",
+      "language": "ja",
+      "data": {
+        "language": "ja",
+        "project": "desktop",
+        "floors": [
+          {
+            "floor": "1F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 5,
+                "maxCenter": 0.004387322055820619,
+                "maxEdge": 0.004401027631275508,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 30,
+                "maxCenter": 0.004870355627323404,
+                "maxEdge": 0.004884082418636736,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.004848080266243716,
+                "maxEdge": 0.004863627016267483,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 35,
+                "maxCenter": 0.0073289433306987645,
+                "maxEdge": 0.007336279935713648,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.00352377243859408,
+                "maxEdge": 0.0035392477632824864,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 12,
+                "maxCenter": 0.004574957459344868,
+                "maxEdge": 0.004588670505904555,
+                "errors": []
+              },
+              {
+                "key": "atm",
+                "count": 2,
+                "maxCenter": 0.0031450981985654872,
+                "maxEdge": 0.003158783194182827,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 97,
+              "polygons": 97,
+              "vertices": 484,
+              "samples": 1936,
+              "maxError": 0.005853616069543932,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 241,
+            "outlineInkPixels": 617
+          },
+          {
+            "floor": "2F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 4,
+                "maxCenter": 0.0052513625045700705,
+                "maxEdge": 0.0052593114609538446,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 37,
+                "maxCenter": 0.00561223921991512,
+                "maxEdge": 0.005620036721562231,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.005448103153231055,
+                "maxEdge": 0.005455914937739096,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 34,
+                "maxCenter": 0.005463925291225905,
+                "maxEdge": 0.005471508043363513,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 6,
+                "maxCenter": 0.005212396683336161,
+                "maxEdge": 0.005218982008293824,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 7,
+                "maxCenter": 0.00548413652740427,
+                "maxEdge": 0.005492370569014127,
+                "errors": []
+              },
+              {
+                "key": "nursingRoom",
+                "count": 1,
+                "maxCenter": 0.00496335225767277,
+                "maxEdge": 0.004968215198384909,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 75,
+              "polygons": 82,
+              "vertices": 356,
+              "samples": 1424,
+              "maxError": 0.0018834325351999907,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 231,
+            "outlineInkPixels": 721
+          },
+          {
+            "floor": "3F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 3,
+                "maxCenter": 0.0015018090249856414,
+                "maxEdge": 0.0015124321291999743,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 22,
+                "maxCenter": 0.001797807900382033,
+                "maxEdge": 0.0018097978175622659,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.0018715274166230243,
+                "maxEdge": 0.001883500578085989,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.0017105016707090056,
+                "maxEdge": 0.0017216530139401002,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.0015805267088711877,
+                "maxEdge": 0.0015929053167340623,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 6,
+                "maxCenter": 0.0017096488756490748,
+                "maxEdge": 0.0017208112708088947,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 64,
+              "polygons": 69,
+              "vertices": 284,
+              "samples": 1136,
+              "maxError": 0.0018888650626116541,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 266,
+            "outlineInkPixels": 2584
+          },
+          {
+            "floor": "4F",
+            "rings": [
+              {
+                "key": "stairs",
+                "count": 24,
+                "maxCenter": 0.003177596232529327,
+                "maxEdge": 0.003183913471335042,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.003101542372439474,
+                "maxEdge": 0.00310802062349617,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 17,
+                "maxCenter": 0.0030415631879959827,
+                "maxEdge": 0.0030483225638057864,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0027025404702550894,
+                "maxEdge": 0.0027058203548598965,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 3,
+                "maxCenter": 0.003171933660630022,
+                "maxEdge": 0.003178059490179874,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 108,
+              "polygons": 111,
+              "vertices": 458,
+              "samples": 1832,
+              "maxError": 0.0018841351994091583,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 223,
+            "outlineInkPixels": 700
+          },
+          {
+            "floor": "5F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.003271249329656123,
+                "maxEdge": 0.003275182870906843,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.0035108924264215797,
+                "maxEdge": 0.0035173404864079455,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.0034333535991943635,
+                "maxEdge": 0.0034391808628841366,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 17,
+                "maxCenter": 0.0035182701155780497,
+                "maxEdge": 0.003524486398834459,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 3,
+                "maxCenter": 0.003429249826275513,
+                "maxEdge": 0.00343476907596081,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.003303835080333474,
+                "maxEdge": 0.0033080975267134214,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 163,
+              "polygons": 182,
+              "vertices": 734,
+              "samples": 2936,
+              "maxError": 0.0018908056446174176,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 259,
+            "outlineInkPixels": 518
+          },
+          {
+            "floor": "A-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.005608140964891717,
+                "maxEdge": 0.005622541577932088,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 8,
+                "maxCenter": 0.00561252497717895,
+                "maxEdge": 0.005625201242487061,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 44,
+                "maxCenter": 0.005993183532812732,
+                "maxEdge": 0.006005996910720382,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 8,
+                "maxCenter": 0.005915637651479172,
+                "maxEdge": 0.005928476972483396,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.005445190253900861,
+                "maxEdge": 0.005457881262455837,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.005597267277959759,
+                "maxEdge": 0.005609774439402131,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 331,
+              "polygons": 338,
+              "vertices": 1363,
+              "samples": 5452,
+              "maxError": 0.0016733400766497653,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 225,
+            "outlineInkPixels": 1781
+          },
+          {
+            "floor": "H-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 2,
+                "maxCenter": 0.006929234165485888,
+                "maxEdge": 0.006939655263727182,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 16,
+                "maxCenter": 0.00782262687150285,
+                "maxEdge": 0.007833771075783615,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 20,
+                "maxCenter": 0.007427315354740345,
+                "maxEdge": 0.00743798161624809,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 23,
+                "maxCenter": 0.007534599330901024,
+                "maxEdge": 0.007545433497331386,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0070470096317985995,
+                "maxEdge": 0.007058208203407818,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 2,
+                "maxCenter": 0.007387689860868592,
+                "maxEdge": 0.007398657866916133,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 178,
+              "polygons": 179,
+              "vertices": 728,
+              "samples": 2912,
+              "maxError": 0.0019937056977141765,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 229,
+            "outlineInkPixels": 1034
+          }
+        ],
+        "cameraSwitches": 8,
+        "facilityAreas": {
+          "polygons": 12,
+          "vertices": 97,
+          "maxError": 0.0015844373514894907,
+          "errors": []
+        },
+        "cardSearches": 13
+      }
+    },
+    {
+      "project": "desktop",
+      "language": "en",
+      "data": {
+        "language": "en",
+        "project": "desktop",
+        "floors": [
+          {
+            "floor": "1F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 5,
+                "maxCenter": 0.004397015724463593,
+                "maxEdge": 0.0044125581854286685,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 30,
+                "maxCenter": 0.004895305764262314,
+                "maxEdge": 0.0049108400698419825,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.004803347970791712,
+                "maxEdge": 0.004818885378243309,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 35,
+                "maxCenter": 0.007405942281578994,
+                "maxEdge": 0.0074139334399326105,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.0035467643286610727,
+                "maxEdge": 0.0035622175243986707,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 12,
+                "maxCenter": 0.0045197707963479375,
+                "maxEdge": 0.004535318547256067,
+                "errors": []
+              },
+              {
+                "key": "atm",
+                "count": 2,
+                "maxCenter": 0.0033141546771258,
+                "maxEdge": 0.0033296889212507787,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 97,
+              "polygons": 97,
+              "vertices": 484,
+              "samples": 1936,
+              "maxError": 0.0019409428294920872,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 256,
+            "outlineInkPixels": 617
+          },
+          {
+            "floor": "2F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 4,
+                "maxCenter": 0.004739324618052436,
+                "maxEdge": 0.004742120424234382,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 37,
+                "maxCenter": 0.004936644786245433,
+                "maxEdge": 0.004942964446564273,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.004871493965742058,
+                "maxEdge": 0.004875962320810837,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 34,
+                "maxCenter": 0.004768737294592077,
+                "maxEdge": 0.004772515562992298,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 6,
+                "maxCenter": 0.00474587583039324,
+                "maxEdge": 0.004750308070973984,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 7,
+                "maxCenter": 0.0047971446661580885,
+                "maxEdge": 0.0048004826798672615,
+                "errors": []
+              },
+              {
+                "key": "nursingRoom",
+                "count": 1,
+                "maxCenter": 0.004433245922168507,
+                "maxEdge": 0.00443378448698539,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 75,
+              "polygons": 82,
+              "vertices": 356,
+              "samples": 1424,
+              "maxError": 0.001882234982777923,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 258,
+            "outlineInkPixels": 724
+          },
+          {
+            "floor": "3F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 3,
+                "maxCenter": 0.0036768044145675484,
+                "maxEdge": 0.003681399188088352,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 22,
+                "maxCenter": 0.0038969812516529605,
+                "maxEdge": 0.0039030407503104626,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.0038642228972749194,
+                "maxEdge": 0.0038706087896607437,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.003819646141399091,
+                "maxEdge": 0.0038252500038451517,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.00378271225132463,
+                "maxEdge": 0.00378858199294548,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 6,
+                "maxCenter": 0.0037216262977056895,
+                "maxEdge": 0.0037269161863027643,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 64,
+              "polygons": 69,
+              "vertices": 284,
+              "samples": 1136,
+              "maxError": 0.004392993251635038,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 258,
+            "outlineInkPixels": 2609
+          },
+          {
+            "floor": "4F",
+            "rings": [
+              {
+                "key": "stairs",
+                "count": 24,
+                "maxCenter": 0.0023711017559856894,
+                "maxEdge": 0.0023854282692086074,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.002459914277985253,
+                "maxEdge": 0.0024741568870364694,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 17,
+                "maxCenter": 0.0022260410537464077,
+                "maxEdge": 0.002239910365854293,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0016352787867216407,
+                "maxEdge": 0.001648124510253591,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 3,
+                "maxCenter": 0.0013122514385876323,
+                "maxEdge": 0.0013199416854524897,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 108,
+              "polygons": 111,
+              "vertices": 458,
+              "samples": 1832,
+              "maxError": 0.0018877383709266287,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 243,
+            "outlineInkPixels": 701
+          },
+          {
+            "floor": "5F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.004788871007423781,
+                "maxEdge": 0.0047915060393330525,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.00502938990051498,
+                "maxEdge": 0.005029940921370489,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.0050891263266404875,
+                "maxEdge": 0.005093808156646747,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 17,
+                "maxCenter": 0.005094636378020903,
+                "maxEdge": 0.005099020621091557,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 3,
+                "maxCenter": 0.004875225769086821,
+                "maxEdge": 0.0048792902521604216,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.004941087335756764,
+                "maxEdge": 0.004944521623723276,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 163,
+              "polygons": 182,
+              "vertices": 734,
+              "samples": 2936,
+              "maxError": 0.0018964895575152507,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 279,
+            "outlineInkPixels": 564
+          },
+          {
+            "floor": "A-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.005549643451273349,
+                "maxEdge": 0.005564061679365779,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 8,
+                "maxCenter": 0.005588666893277447,
+                "maxEdge": 0.005603040599552895,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 44,
+                "maxCenter": 0.005955423547948579,
+                "maxEdge": 0.005969896915529497,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 8,
+                "maxCenter": 0.005975962098694667,
+                "maxEdge": 0.005990409330652718,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.005456451089173558,
+                "maxEdge": 0.0054705995667093,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.005497726808261563,
+                "maxEdge": 0.0055115198685294796,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 331,
+              "polygons": 338,
+              "vertices": 1363,
+              "samples": 5452,
+              "maxError": 0.004977192409569398,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 219,
+            "outlineInkPixels": 1781
+          },
+          {
+            "floor": "H-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 2,
+                "maxCenter": 0.006929234165485888,
+                "maxEdge": 0.006939655263727182,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 16,
+                "maxCenter": 0.00782262687150285,
+                "maxEdge": 0.007833771075783615,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 20,
+                "maxCenter": 0.007427315354740345,
+                "maxEdge": 0.00743798161624809,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 23,
+                "maxCenter": 0.007534599330901024,
+                "maxEdge": 0.007545433497331386,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0070470096317985995,
+                "maxEdge": 0.007058208203407818,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 2,
+                "maxCenter": 0.007387689860868592,
+                "maxEdge": 0.007398657866916133,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 178,
+              "polygons": 179,
+              "vertices": 728,
+              "samples": 2912,
+              "maxError": 0.0019937056977141765,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 229,
+            "outlineInkPixels": 1034
+          }
+        ],
+        "cameraSwitches": 8,
+        "facilityAreas": {
+          "polygons": 12,
+          "vertices": 97,
+          "maxError": 0.0015844373514894907,
+          "errors": []
+        },
+        "cardSearches": 13
+      }
+    },
+    {
+      "project": "mobile",
+      "language": "ja",
+      "data": {
+        "language": "ja",
+        "project": "mobile",
+        "floors": [
+          {
+            "floor": "1F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 5,
+                "maxCenter": 0.009019647746347805,
+                "maxEdge": 0.009046186749187344,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 30,
+                "maxCenter": 0.014783430671489356,
+                "maxEdge": 0.0148379614684723,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.01402065558257381,
+                "maxEdge": 0.014075186420402766,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 35,
+                "maxCenter": 0.014862357319356726,
+                "maxEdge": 0.014916887164136215,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.014280096320168405,
+                "maxEdge": 0.014334626904899122,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 12,
+                "maxCenter": 0.015020489781005841,
+                "maxEdge": 0.015075020829542096,
+                "errors": []
+              },
+              {
+                "key": "atm",
+                "count": 2,
+                "maxCenter": 0.01203227517897371,
+                "maxEdge": 0.01208724964325674,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 97,
+              "polygons": 97,
+              "vertices": 484,
+              "samples": 1936,
+              "maxError": 0.002473966062780164,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2426,
+            "outlineInkPixels": 5682
+          },
+          {
+            "floor": "2F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 4,
+                "maxCenter": 0.008231913661085019,
+                "maxEdge": 0.00827433255827109,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 37,
+                "maxCenter": 0.012028588920907243,
+                "maxEdge": 0.012078314773933245,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.010419904708237284,
+                "maxEdge": 0.01046780532593576,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 34,
+                "maxCenter": 0.010844239262144461,
+                "maxEdge": 0.01089298583734536,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 6,
+                "maxCenter": 0.01086104556668182,
+                "maxEdge": 0.010909702395035567,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 7,
+                "maxCenter": 0.010621898830860198,
+                "maxEdge": 0.010670069563446908,
+                "errors": []
+              },
+              {
+                "key": "nursingRoom",
+                "count": 1,
+                "maxCenter": 0.006826771067989729,
+                "maxEdge": 0.006864587464904711,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 75,
+              "polygons": 82,
+              "vertices": 356,
+              "samples": 1424,
+              "maxError": 0.012297115540690285,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2621,
+            "outlineInkPixels": 8757
+          },
+          {
+            "floor": "3F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 3,
+                "maxCenter": 0.004425892517545452,
+                "maxEdge": 0.004479526674613232,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 22,
+                "maxCenter": 0.008044828855393224,
+                "maxEdge": 0.008099213881987566,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.006769011913683385,
+                "maxEdge": 0.0068233315194757204,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.007716845152899726,
+                "maxEdge": 0.007771241912850708,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.007847787890768386,
+                "maxEdge": 0.00790058924710686,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 6,
+                "maxCenter": 0.007457310277711595,
+                "maxEdge": 0.007511645797427297,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 64,
+              "polygons": 69,
+              "vertices": 284,
+              "samples": 1136,
+              "maxError": 0.003674970589091811,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2551,
+            "outlineInkPixels": 6483
+          },
+          {
+            "floor": "4F",
+            "rings": [
+              {
+                "key": "stairs",
+                "count": 24,
+                "maxCenter": 0.015732435625198344,
+                "maxEdge": 0.015785540835603674,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.014876542932750925,
+                "maxEdge": 0.014929460410079662,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 17,
+                "maxCenter": 0.015501746937775574,
+                "maxEdge": 0.015553239469639673,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.012407891015744597,
+                "maxEdge": 0.012459851533821302,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 3,
+                "maxCenter": 0.015020894660993702,
+                "maxEdge": 0.015073867446127114,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 108,
+              "polygons": 111,
+              "vertices": 458,
+              "samples": 1832,
+              "maxError": 9.548508027074041e-05,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2495,
+            "outlineInkPixels": 6081
+          },
+          {
+            "floor": "5F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.009729077608390525,
+                "maxEdge": 0.009781975723137975,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.010764947645085503,
+                "maxEdge": 0.010817711928684626,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.011557915695146229,
+                "maxEdge": 0.011610999825334218,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 17,
+                "maxCenter": 0.011560082955027239,
+                "maxEdge": 0.011613137403345231,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 3,
+                "maxCenter": 0.009817390963765056,
+                "maxEdge": 0.009870323197055726,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.009976516802067225,
+                "maxEdge": 0.010029079410937775,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 163,
+              "polygons": 182,
+              "vertices": 734,
+              "samples": 2936,
+              "maxError": 0.00022331174348606887,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2472,
+            "outlineInkPixels": 6226
+          },
+          {
+            "floor": "A-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.008326648317016726,
+                "maxEdge": 0.008370226335292944,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 8,
+                "maxCenter": 0.014999005292046256,
+                "maxEdge": 0.015043619430536209,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 44,
+                "maxCenter": 0.004947824695020363,
+                "maxEdge": 0.004950800731997327,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 8,
+                "maxCenter": 0.0048314203017114565,
+                "maxEdge": 0.0048332853408492695,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.004738990181724697,
+                "maxEdge": 0.0047409843960978405,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.004876844662257164,
+                "maxEdge": 0.004878653726103201,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 331,
+              "polygons": 338,
+              "vertices": 1363,
+              "samples": 5452,
+              "maxError": 0.004147013816802922,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1493,
+            "outlineInkPixels": 16583
+          },
+          {
+            "floor": "H-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 2,
+                "maxCenter": 0.0034139607475570863,
+                "maxEdge": 0.003426091812593683,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 16,
+                "maxCenter": 0.004188926232829888,
+                "maxEdge": 0.004201488281785374,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 20,
+                "maxCenter": 0.013913693107100621,
+                "maxEdge": 0.013967990529472379,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 23,
+                "maxCenter": 0.015110471354446217,
+                "maxEdge": 0.015164775779291557,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.010923368774979717,
+                "maxEdge": 0.010976348053917066,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 2,
+                "maxCenter": 0.01394930413084721,
+                "maxEdge": 0.014003600757026962,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 178,
+              "polygons": 179,
+              "vertices": 728,
+              "samples": 2912,
+              "maxError": 0.00023210169645480961,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2533,
+            "outlineInkPixels": 12237
+          }
+        ],
+        "cameraSwitches": 8,
+        "facilityAreas": {
+          "polygons": 12,
+          "vertices": 97,
+          "maxError": 0.00021784080277955568,
+          "errors": []
+        },
+        "cardSearches": 13
+      }
+    },
+    {
+      "project": "mobile",
+      "language": "en",
+      "data": {
+        "language": "en",
+        "project": "mobile",
+        "floors": [
+          {
+            "floor": "1F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 5,
+                "maxCenter": 0.009145789658201115,
+                "maxEdge": 0.009172380151204152,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 30,
+                "maxCenter": 0.015045783208143683,
+                "maxEdge": 0.015098765134647188,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.013775440475994315,
+                "maxEdge": 0.01382842359589053,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 35,
+                "maxCenter": 0.014770219178040566,
+                "maxEdge": 0.014823202329528246,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.014378471531518193,
+                "maxEdge": 0.014431454247230116,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 12,
+                "maxCenter": 0.015269361464070513,
+                "maxEdge": 0.015322344450861627,
+                "errors": []
+              },
+              {
+                "key": "atm",
+                "count": 2,
+                "maxCenter": 0.011904968657260548,
+                "maxEdge": 0.0119583946246939,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 97,
+              "polygons": 97,
+              "vertices": 484,
+              "samples": 1936,
+              "maxError": 0.03253454787740102,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2424,
+            "outlineInkPixels": 5423
+          },
+          {
+            "floor": "2F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 4,
+                "maxCenter": 0.013227868529314443,
+                "maxEdge": 0.013280552101220339,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 37,
+                "maxCenter": 0.017692162415321257,
+                "maxEdge": 0.017744942880203736,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.01580907697487187,
+                "maxEdge": 0.015861857640896027,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 34,
+                "maxCenter": 0.016501179551612084,
+                "maxEdge": 0.016553948407478355,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 6,
+                "maxCenter": 0.016501270088249226,
+                "maxEdge": 0.01655403961802252,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 7,
+                "maxCenter": 0.016211111081371913,
+                "maxEdge": 0.01626386277951442,
+                "errors": []
+              },
+              {
+                "key": "nursingRoom",
+                "count": 1,
+                "maxCenter": 0.011552539436804591,
+                "maxEdge": 0.011604678635601306,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 75,
+              "polygons": 82,
+              "vertices": 356,
+              "samples": 1424,
+              "maxError": 0.00984414573755554,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2646,
+            "outlineInkPixels": 9142
+          },
+          {
+            "floor": "3F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 3,
+                "maxCenter": 0.008237431196020602,
+                "maxEdge": 0.008286825058693296,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 22,
+                "maxCenter": 0.011591367934393101,
+                "maxEdge": 0.011642381224757246,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.010563821450686222,
+                "maxEdge": 0.010614602396282749,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.011301706864472606,
+                "maxEdge": 0.011352603951638132,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.01139354768701208,
+                "maxEdge": 0.011444525388226112,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 6,
+                "maxCenter": 0.01121244161027277,
+                "maxEdge": 0.011263360323775002,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 64,
+              "polygons": 69,
+              "vertices": 284,
+              "samples": 1136,
+              "maxError": 0.006096298812811085,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2555,
+            "outlineInkPixels": 6101
+          },
+          {
+            "floor": "4F",
+            "rings": [
+              {
+                "key": "stairs",
+                "count": 24,
+                "maxCenter": 0.009666206794435821,
+                "maxEdge": 0.009711853623723845,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.008974943847853098,
+                "maxEdge": 0.00901961696948933,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 17,
+                "maxCenter": 0.009548820154696363,
+                "maxEdge": 0.009594337125953289,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0069093803448279,
+                "maxEdge": 0.00694807189989924,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 3,
+                "maxCenter": 0.00908931716825813,
+                "maxEdge": 0.009134257098372985,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 108,
+              "polygons": 111,
+              "vertices": 458,
+              "samples": 1832,
+              "maxError": 0.0001345580756945243,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2480,
+            "outlineInkPixels": 6080
+          },
+          {
+            "floor": "5F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.012698572369448434,
+                "maxEdge": 0.012751428283869175,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.013776857583619647,
+                "maxEdge": 0.013829327528832293,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.014383329707679181,
+                "maxEdge": 0.014435805953218682,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 17,
+                "maxCenter": 0.014734799863921717,
+                "maxEdge": 0.014787258330304035,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 3,
+                "maxCenter": 0.012426174207456016,
+                "maxEdge": 0.012479024343819567,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.01282964834181956,
+                "maxEdge": 0.012882091092146147,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 163,
+              "polygons": 182,
+              "vertices": 734,
+              "samples": 2936,
+              "maxError": 0.00017356217903213313,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2560,
+            "outlineInkPixels": 5700
+          },
+          {
+            "floor": "A-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.00830412134383074,
+                "maxEdge": 0.008347678576005152,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 8,
+                "maxCenter": 0.014859951974124637,
+                "maxEdge": 0.01490519116634602,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 44,
+                "maxCenter": 0.004973237410931256,
+                "maxEdge": 0.004976140272450358,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 8,
+                "maxCenter": 0.004870989086501316,
+                "maxEdge": 0.00487232125929596,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.004716169342524734,
+                "maxEdge": 0.0047182907593165,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.004759151514108228,
+                "maxEdge": 0.0047607117258362495,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 331,
+              "polygons": 338,
+              "vertices": 1363,
+              "samples": 5452,
+              "maxError": 0.0011191648515073483,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1489,
+            "outlineInkPixels": 15862
+          },
+          {
+            "floor": "H-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 2,
+                "maxCenter": 0.0034139607475570863,
+                "maxEdge": 0.003426091812593683,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 16,
+                "maxCenter": 0.004188926232829888,
+                "maxEdge": 0.004201488281785374,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 20,
+                "maxCenter": 0.013913693107100621,
+                "maxEdge": 0.013967990529472379,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 23,
+                "maxCenter": 0.015110471354446217,
+                "maxEdge": 0.015164775779291557,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.010923368774979717,
+                "maxEdge": 0.010976348053917066,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 2,
+                "maxCenter": 0.01394930413084721,
+                "maxEdge": 0.014003600757026962,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 178,
+              "polygons": 179,
+              "vertices": 728,
+              "samples": 2912,
+              "maxError": 0.00023210169645480961,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2461,
+            "outlineInkPixels": 13170
+          }
+        ],
+        "cameraSwitches": 8,
+        "facilityAreas": {
+          "polygons": 12,
+          "vertices": 97,
+          "maxError": 0.00021784080277955568,
+          "errors": []
+        },
+        "cardSearches": 13
+      }
+    },
+    {
+      "project": "safari",
+      "language": "ja",
+      "data": {
+        "language": "ja",
+        "project": "safari",
+        "floors": [
+          {
+            "floor": "1F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 5,
+                "maxCenter": 0.0014566646141226912,
+                "maxEdge": 0.001470329322555248,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 30,
+                "maxCenter": 0.0019393169691817723,
+                "maxEdge": 0.0019530475080488175,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.001916985585297375,
+                "maxEdge": 0.0019325368031072104,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 35,
+                "maxCenter": 0.006154787738272845,
+                "maxEdge": 0.006157387559181605,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.001112798720031289,
+                "maxEdge": 0.0011265293233672018,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 12,
+                "maxCenter": 0.0016430613770001372,
+                "maxEdge": 0.0016567616227148804,
+                "errors": []
+              },
+              {
+                "key": "atm",
+                "count": 2,
+                "maxCenter": 0.0002452073231853048,
+                "maxEdge": 0.00025679242501255384,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 97,
+              "polygons": 97,
+              "vertices": 484,
+              "samples": 1936,
+              "maxError": 0.03435126069613919,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1873,
+            "outlineInkPixels": 3928
+          },
+          {
+            "floor": "2F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 4,
+                "maxCenter": 0.0014578427636658623,
+                "maxEdge": 0.0014733935636853616,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 37,
+                "maxCenter": 0.001964745266782589,
+                "maxEdge": 0.0019784556204467253,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.0018746362871975614,
+                "maxEdge": 0.0018883643812643773,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 34,
+                "maxCenter": 0.0017835847304131943,
+                "maxEdge": 0.0017991899711051957,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 6,
+                "maxCenter": 0.0012669944182370646,
+                "maxEdge": 0.001280757313963305,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 7,
+                "maxCenter": 0.001683275968764643,
+                "maxEdge": 0.0016987740243097334,
+                "errors": []
+              },
+              {
+                "key": "nursingRoom",
+                "count": 1,
+                "maxCenter": 0.0005075967371191324,
+                "maxEdge": 0.0005206480878269208,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 75,
+              "polygons": 82,
+              "vertices": 356,
+              "samples": 1424,
+              "maxError": 0.0018496863491879194,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1877,
+            "outlineInkPixels": 5324
+          },
+          {
+            "floor": "3F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 3,
+                "maxCenter": 0.0014035076868872858,
+                "maxEdge": 0.0014172362643793605,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 22,
+                "maxCenter": 0.0018150755635795801,
+                "maxEdge": 0.0018287860456685234,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.0018754104379265528,
+                "maxEdge": 0.0018891342125078757,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.0017192365366848147,
+                "maxEdge": 0.0017329092853894316,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.0011940869247791493,
+                "maxEdge": 0.0012077310467687036,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 6,
+                "maxCenter": 0.0016318754407287674,
+                "maxEdge": 0.001645604390287959,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 64,
+              "polygons": 69,
+              "vertices": 284,
+              "samples": 1136,
+              "maxError": 0.001888865035668192,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1863,
+            "outlineInkPixels": 17887
+          },
+          {
+            "floor": "4F",
+            "rings": [
+              {
+                "key": "stairs",
+                "count": 24,
+                "maxCenter": 0.0018150769931654608,
+                "maxEdge": 0.0018287873085175634,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.001875410722009485,
+                "maxEdge": 0.001889134329664478,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 17,
+                "maxCenter": 0.0016746144282927507,
+                "maxEdge": 0.0016901586985989712,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.001060910921410415,
+                "maxEdge": 0.0010746191041401372,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 3,
+                "maxCenter": 0.000978267494034387,
+                "maxEdge": 0.000991821860922923,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 108,
+              "polygons": 111,
+              "vertices": 458,
+              "samples": 1832,
+              "maxError": 0.0018841351724659938,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1869,
+            "outlineInkPixels": 4523
+          },
+          {
+            "floor": "5F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.0006077891385343438,
+                "maxEdge": 0.0006207611001952272,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.0018754104310190417,
+                "maxEdge": 0.0018891342065217025,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.0016746147967467216,
+                "maxEdge": 0.0016901592569545983,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 17,
+                "maxCenter": 0.0018150755654756455,
+                "maxEdge": 0.0018287860484700231,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 3,
+                "maxCenter": 0.001584626592688024,
+                "maxEdge": 0.0015983262264282054,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.0010058766989845189,
+                "maxEdge": 0.0010195959796220372,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 163,
+              "polygons": 182,
+              "vertices": 734,
+              "samples": 2936,
+              "maxError": 0.0018908056177873304,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1861,
+            "outlineInkPixels": 4201
+          },
+          {
+            "floor": "A-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.0012881609484782116,
+                "maxEdge": 0.0013036844096806243,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 8,
+                "maxCenter": 0.0012748478777579058,
+                "maxEdge": 0.0012885724720538903,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 44,
+                "maxCenter": 0.001686188520753379,
+                "maxEdge": 0.0016999150741466354,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 8,
+                "maxCenter": 0.0016274966089815633,
+                "maxEdge": 0.0016412023358517427,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0011316592778406237,
+                "maxEdge": 0.0011453179472544718,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.0011966403228270202,
+                "maxEdge": 0.0012103081622284637,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 331,
+              "polygons": 338,
+              "vertices": 1363,
+              "samples": 5452,
+              "maxError": 0.007286379444738776,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1869,
+            "outlineInkPixels": 13492
+          },
+          {
+            "floor": "H-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 2,
+                "maxCenter": 0.0016562433480060367,
+                "maxEdge": 0.0016704585218689288,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 16,
+                "maxCenter": 0.0019939250886841357,
+                "maxEdge": 0.0020079600389561656,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 20,
+                "maxCenter": 0.0016801264929839745,
+                "maxEdge": 0.0016941417990269467,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 23,
+                "maxCenter": 0.0019676172675316492,
+                "maxEdge": 0.0019816417653478846,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.001659540811593867,
+                "maxEdge": 0.0016750426710984143,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 2,
+                "maxCenter": 0.0013769297654629565,
+                "maxEdge": 0.001390907786440068,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 178,
+              "polygons": 179,
+              "vertices": 728,
+              "samples": 2912,
+              "maxError": 0.0019937056977141765,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1862,
+            "outlineInkPixels": 8248
+          }
+        ],
+        "cameraSwitches": 8,
+        "facilityAreas": {
+          "polygons": 12,
+          "vertices": 97,
+          "maxError": 0.001584437351489491,
+          "errors": []
+        },
+        "cardSearches": 13
+      }
+    },
+    {
+      "project": "safari",
+      "language": "en",
+      "data": {
+        "language": "en",
+        "project": "safari",
+        "floors": [
+          {
+            "floor": "1F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 5,
+                "maxCenter": 0.0014650623932769419,
+                "maxEdge": 0.0014806112084232363,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 30,
+                "maxCenter": 0.001963173022429405,
+                "maxEdge": 0.0019787014068931882,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.0018711200455252203,
+                "maxEdge": 0.0018866568476024784,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 35,
+                "maxCenter": 0.006295159920991515,
+                "maxEdge": 0.006297328455588577,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.000987406544682911,
+                "maxEdge": 0.0010029576592273763,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 12,
+                "maxCenter": 0.0015892655950558465,
+                "maxEdge": 0.001604814843181027,
+                "errors": []
+              },
+              {
+                "key": "atm",
+                "count": 2,
+                "maxCenter": 0.0003822777768356827,
+                "maxEdge": 0.0003977721207977879,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 97,
+              "polygons": 97,
+              "vertices": 484,
+              "samples": 1936,
+              "maxError": 0.03435126069704499,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1859,
+            "outlineInkPixels": 3928
+          },
+          {
+            "floor": "2F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 4,
+                "maxCenter": 0.0014551044152646367,
+                "maxEdge": 0.0014706529008749148,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 37,
+                "maxCenter": 0.001980310785768912,
+                "maxEdge": 0.0019958615024908135,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.0018900152626918677,
+                "maxEdge": 0.0019055213920613396,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 34,
+                "maxCenter": 0.0017575484147980605,
+                "maxEdge": 0.0017731560217010343,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 6,
+                "maxCenter": 0.0012095321920966326,
+                "maxEdge": 0.0012250788525074246,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 7,
+                "maxCenter": 0.0016333711333862946,
+                "maxEdge": 0.0016489151233148648,
+                "errors": []
+              },
+              {
+                "key": "nursingRoom",
+                "count": 1,
+                "maxCenter": 0.0005331753162445971,
+                "maxEdge": 0.0005473964105875262,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 75,
+              "polygons": 82,
+              "vertices": 356,
+              "samples": 1424,
+              "maxError": 0.0018822349558341462,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1871,
+            "outlineInkPixels": 5326
+          },
+          {
+            "floor": "3F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 3,
+                "maxCenter": 0.0013846947105407368,
+                "maxEdge": 0.0014002428817711954,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 22,
+                "maxCenter": 0.001817815480801708,
+                "maxEdge": 0.001833359962645648,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.0018856023761126513,
+                "maxEdge": 0.0019011526851216093,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.0016864046568310525,
+                "maxEdge": 0.0017018924628960691,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.0013237679925424501,
+                "maxEdge": 0.0013393120229138668,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 6,
+                "maxCenter": 0.0017061201929985351,
+                "maxEdge": 0.0017216185964137373,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 64,
+              "polygons": 69,
+              "vertices": 284,
+              "samples": 1136,
+              "maxError": 0.001889709926269673,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1864,
+            "outlineInkPixels": 17888
+          },
+          {
+            "floor": "4F",
+            "rings": [
+              {
+                "key": "stairs",
+                "count": 24,
+                "maxCenter": 0.0018178150183971117,
+                "maxEdge": 0.0018333593157975395,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.0018856019878824412,
+                "maxEdge": 0.0019011521122686437,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 17,
+                "maxCenter": 0.0016204374234905531,
+                "maxEdge": 0.0016359876312007809,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0009835042161603859,
+                "maxEdge": 0.0009990338742326469,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 3,
+                "maxCenter": 0.0010447281023263067,
+                "maxEdge": 0.0010595688509433057,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 108,
+              "polygons": 111,
+              "vertices": 458,
+              "samples": 1832,
+              "maxError": 0.0018877383442107948,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1858,
+            "outlineInkPixels": 4522
+          },
+          {
+            "floor": "5F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.00047415719980897704,
+                "maxEdge": 0.0004890163260516816,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.0018856025490231495,
+                "maxEdge": 0.0019011528579196838,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.0016204367251152253,
+                "maxEdge": 0.0016359871174127605,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 17,
+                "maxCenter": 0.0018178154417607323,
+                "maxEdge": 0.0018333599248402035,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 3,
+                "maxCenter": 0.001634062544393533,
+                "maxEdge": 0.0016496051505257479,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.0009207103507645021,
+                "maxEdge": 0.0009362325640023463,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 163,
+              "polygons": 182,
+              "vertices": 734,
+              "samples": 2936,
+              "maxError": 0.0018964895303441452,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1864,
+            "outlineInkPixels": 4116
+          },
+          {
+            "floor": "A-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.001243297556837671,
+                "maxEdge": 0.0012587829232022713,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 8,
+                "maxCenter": 0.0012595909731574278,
+                "maxEdge": 0.0012751240854379303,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 44,
+                "maxCenter": 0.0016354240862053123,
+                "maxEdge": 0.0016509746169188115,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 8,
+                "maxCenter": 0.0016930257070465681,
+                "maxEdge": 0.001708527207152671,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0010590087432642947,
+                "maxEdge": 0.001074526106492481,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.0011469583144662367,
+                "maxEdge": 0.0011624951568693358,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 331,
+              "polygons": 338,
+              "vertices": 1363,
+              "samples": 5452,
+              "maxError": 0.007286379444738776,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1869,
+            "outlineInkPixels": 13492
+          },
+          {
+            "floor": "H-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 2,
+                "maxCenter": 0.0016562433480060367,
+                "maxEdge": 0.0016717773498751668,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 16,
+                "maxCenter": 0.0019939250886841357,
+                "maxEdge": 0.0020079600389561656,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 20,
+                "maxCenter": 0.0016801264929839745,
+                "maxEdge": 0.0016941417990269467,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 23,
+                "maxCenter": 0.0019676172675316492,
+                "maxEdge": 0.0019816417653478846,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.001659540811593867,
+                "maxEdge": 0.0016750426710984143,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 2,
+                "maxCenter": 0.0013769297654629565,
+                "maxEdge": 0.001390907786440068,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 178,
+              "polygons": 179,
+              "vertices": 728,
+              "samples": 2912,
+              "maxError": 0.0019937056977141765,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 1861,
+            "outlineInkPixels": 8248
+          }
+        ],
+        "cameraSwitches": 8,
+        "facilityAreas": {
+          "polygons": 12,
+          "vertices": 97,
+          "maxError": 0.001584437351489491,
+          "errors": []
+        },
+        "cardSearches": 13
+      }
+    },
+    {
+      "project": "iphone",
+      "language": "ja",
+      "data": {
+        "language": "ja",
+        "project": "iphone",
+        "floors": [
+          {
+            "floor": "1F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 5,
+                "maxCenter": 0.0014574221974463972,
+                "maxEdge": 0.0014634138279821397,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 30,
+                "maxCenter": 0.0022256359853050547,
+                "maxEdge": 0.002260980613522732,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.0023569993663717353,
+                "maxEdge": 0.0023912058994949165,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 35,
+                "maxCenter": 0.005002177831170072,
+                "maxEdge": 0.005036370588401588,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.002072895839544952,
+                "maxEdge": 0.002106956785776925,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 12,
+                "maxCenter": 0.0021198586446273485,
+                "maxEdge": 0.002154022350611288,
+                "errors": []
+              },
+              {
+                "key": "atm",
+                "count": 2,
+                "maxCenter": 0.001114818428672044,
+                "maxEdge": 0.0011489099288414914,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 97,
+              "polygons": 97,
+              "vertices": 484,
+              "samples": 1936,
+              "maxError": 0.028510138457002676,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2911,
+            "outlineInkPixels": 8296
+          },
+          {
+            "floor": "2F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 4,
+                "maxCenter": 0.0025227739418046636,
+                "maxEdge": 0.002556932326930197,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 37,
+                "maxCenter": 0.0030625258277083857,
+                "maxEdge": 0.0030960944470263666,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.002628601848146114,
+                "maxEdge": 0.0026618406433793758,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 34,
+                "maxCenter": 0.0033336573919898597,
+                "maxEdge": 0.0033672393698952413,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 6,
+                "maxCenter": 0.0014454264249349322,
+                "maxEdge": 0.0014790552380846993,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 7,
+                "maxCenter": 0.002519395141488956,
+                "maxEdge": 0.002554770953931266,
+                "errors": []
+              },
+              {
+                "key": "nursingRoom",
+                "count": 1,
+                "maxCenter": 0.0015504638792683614,
+                "maxEdge": 0.001583958743241253,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 75,
+              "polygons": 82,
+              "vertices": 356,
+              "samples": 1424,
+              "maxError": 0.002625059712480265,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2919,
+            "outlineInkPixels": 8014
+          },
+          {
+            "floor": "3F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 3,
+                "maxCenter": 0.0005496281654506553,
+                "maxEdge": 0.0005829361157018956,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 22,
+                "maxCenter": 0.003260545694004973,
+                "maxEdge": 0.0032937730137225355,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.002540116767154267,
+                "maxEdge": 0.002574554247796283,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.003358134110886931,
+                "maxEdge": 0.003392832183413206,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.0006885056147878805,
+                "maxEdge": 0.000723649772884832,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 6,
+                "maxCenter": 0.002418664474064317,
+                "maxEdge": 0.0024519715509253924,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 64,
+              "polygons": 69,
+              "vertices": 284,
+              "samples": 1136,
+              "maxError": 0.003213559725929429,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2908,
+            "outlineInkPixels": 26127
+          },
+          {
+            "floor": "4F",
+            "rings": [
+              {
+                "key": "stairs",
+                "count": 24,
+                "maxCenter": 0.0032531579946428117,
+                "maxEdge": 0.003286376305409349,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.0025021386301713635,
+                "maxEdge": 0.0025353497356586153,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 17,
+                "maxCenter": 0.0033608084243614677,
+                "maxEdge": 0.0033940061904538864,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0004883717420743005,
+                "maxEdge": 0.0005219156636941854,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 3,
+                "maxCenter": 0.0010403970891489937,
+                "maxEdge": 0.0010734580886997325,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 108,
+              "polygons": 111,
+              "vertices": 458,
+              "samples": 1832,
+              "maxError": 0.0015657999985294018,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2912,
+            "outlineInkPixels": 7036
+          },
+          {
+            "floor": "5F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.000200481236217324,
+                "maxEdge": 0.00023287614248193906,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.0024779004726015034,
+                "maxEdge": 0.00251827255782422,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.0015837378360501072,
+                "maxEdge": 0.0016245069496206026,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 17,
+                "maxCenter": 0.002291696780100085,
+                "maxEdge": 0.0023307542809340434,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 3,
+                "maxCenter": 0.000583845950815089,
+                "maxEdge": 0.0006179481659993721,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.001069073873982244,
+                "maxEdge": 0.001103408258653219,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 163,
+              "polygons": 182,
+              "vertices": 734,
+              "samples": 2936,
+              "maxError": 0.0030403455509316678,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2911,
+            "outlineInkPixels": 6721
+          },
+          {
+            "floor": "A-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.00035959630017739656,
+                "maxEdge": 0.00037158473349260747,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 8,
+                "maxCenter": 0.000926098142477637,
+                "maxEdge": 0.0009399437622985818,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 44,
+                "maxCenter": 0.001071546038745904,
+                "maxEdge": 0.001085290321814987,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 8,
+                "maxCenter": 0.0009353739854104197,
+                "maxEdge": 0.0009491363481235856,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0008820560660347543,
+                "maxEdge": 0.0008958658002690505,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.0009996658069539696,
+                "maxEdge": 0.0010138931157106595,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 331,
+              "polygons": 338,
+              "vertices": 1363,
+              "samples": 5452,
+              "maxError": 0.0025473989044257905,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2291,
+            "outlineInkPixels": 20776
+          },
+          {
+            "floor": "H-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 2,
+                "maxCenter": 0.0013064679153526153,
+                "maxEdge": 0.001317164696036246,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 16,
+                "maxCenter": 0.0017052257323342526,
+                "maxEdge": 0.001739658429633783,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 20,
+                "maxCenter": 0.00139101851396511,
+                "maxEdge": 0.001425446768988881,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 23,
+                "maxCenter": 0.0017027950228628004,
+                "maxEdge": 0.0017365389730807116,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0010720686028503038,
+                "maxEdge": 0.0011073938907527677,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 2,
+                "maxCenter": 0.0006363425529097996,
+                "maxEdge": 0.0006695243998290194,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 178,
+              "polygons": 179,
+              "vertices": 728,
+              "samples": 2912,
+              "maxError": 0.0018145274661947042,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2918,
+            "outlineInkPixels": 12596
+          }
+        ],
+        "cameraSwitches": 8,
+        "facilityAreas": {
+          "polygons": 12,
+          "vertices": 97,
+          "maxError": 0.0028942517720325846,
+          "errors": []
+        },
+        "cardSearches": 13
+      }
+    },
+    {
+      "project": "iphone",
+      "language": "en",
+      "data": {
+        "language": "en",
+        "project": "iphone",
+        "floors": [
+          {
+            "floor": "1F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 5,
+                "maxCenter": 0.0023297238713524166,
+                "maxEdge": 0.0023650380099810952,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 30,
+                "maxCenter": 0.0022372956228166705,
+                "maxEdge": 0.00227265914609238,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.002376388161873618,
+                "maxEdge": 0.002411580211642704,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 35,
+                "maxCenter": 0.00510413964373197,
+                "maxEdge": 0.005139515445068245,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.002048659278146702,
+                "maxEdge": 0.0020840351471952947,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 12,
+                "maxCenter": 0.002068551935950997,
+                "maxEdge": 0.0021039080898864705,
+                "errors": []
+              },
+              {
+                "key": "atm",
+                "count": 2,
+                "maxCenter": 0.0010652523249448406,
+                "maxEdge": 0.0010999785171774362,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 97,
+              "polygons": 97,
+              "vertices": 484,
+              "samples": 1936,
+              "maxError": 0.028510138456093986,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2895,
+            "outlineInkPixels": 8936
+          },
+          {
+            "floor": "2F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 4,
+                "maxCenter": 0.0024960691213509953,
+                "maxEdge": 0.0025313810688590856,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 37,
+                "maxCenter": 0.0032052534371474033,
+                "maxEdge": 0.0032399827109740147,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 10,
+                "maxCenter": 0.002600490075223073,
+                "maxEdge": 0.002634898424180362,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 34,
+                "maxCenter": 0.00334596068322512,
+                "maxEdge": 0.003380741293510366,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 6,
+                "maxCenter": 0.001520385313869013,
+                "maxEdge": 0.0015551666786277083,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 7,
+                "maxCenter": 0.0024567490938690274,
+                "maxEdge": 0.0024921281981545355,
+                "errors": []
+              },
+              {
+                "key": "nursingRoom",
+                "count": 1,
+                "maxCenter": 0.0015085550299195995,
+                "maxEdge": 0.0015431851616109489,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 75,
+              "polygons": 82,
+              "vertices": 356,
+              "samples": 1424,
+              "maxError": 0.025903023377599272,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2915,
+            "outlineInkPixels": 7690
+          },
+          {
+            "floor": "3F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 3,
+                "maxCenter": 0.0005826852683122545,
+                "maxEdge": 0.0006179476010787037,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 22,
+                "maxCenter": 0.0031051545415550284,
+                "maxEdge": 0.003139593477581756,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.002635425568939861,
+                "maxEdge": 0.0026697929508371276,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.003370066412436136,
+                "maxEdge": 0.0034045068715757476,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 5,
+                "maxCenter": 0.0007690434952181106,
+                "maxEdge": 0.0008024715918254191,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 6,
+                "maxCenter": 0.0025125161018935156,
+                "maxEdge": 0.00254691048874709,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 64,
+              "polygons": 69,
+              "vertices": 284,
+              "samples": 1136,
+              "maxError": 0.009165310495696983,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2905,
+            "outlineInkPixels": 25223
+          },
+          {
+            "floor": "4F",
+            "rings": [
+              {
+                "key": "stairs",
+                "count": 24,
+                "maxCenter": 0.003114195518496951,
+                "maxEdge": 0.003148552737251123,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.002538959909955085,
+                "maxEdge": 0.0025732402503628716,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 17,
+                "maxCenter": 0.0031525109747151787,
+                "maxEdge": 0.003186870027804532,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.00048748728026468775,
+                "maxEdge": 0.0005226458982993548,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 3,
+                "maxCenter": 0.00099975435203011,
+                "maxEdge": 0.0010340973220910167,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 108,
+              "polygons": 111,
+              "vertices": 458,
+              "samples": 1832,
+              "maxError": 0.0017035743153850217,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2897,
+            "outlineInkPixels": 6822
+          },
+          {
+            "floor": "5F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.00019088451759672419,
+                "maxEdge": 0.0002094418411389505,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 9,
+                "maxCenter": 0.002529821274723603,
+                "maxEdge": 0.0025703235875530737,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 25,
+                "maxCenter": 0.0015423496881095916,
+                "maxEdge": 0.001583106998528691,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 17,
+                "maxCenter": 0.0022826616939282916,
+                "maxEdge": 0.002322874221981998,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 3,
+                "maxCenter": 0.00048186435379531827,
+                "maxEdge": 0.0005170271300066648,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.0010500206182217186,
+                "maxEdge": 0.0010838192512446243,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 163,
+              "polygons": 182,
+              "vertices": 734,
+              "samples": 2936,
+              "maxError": 0.0030422210887094533,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2912,
+            "outlineInkPixels": 6681
+          },
+          {
+            "floor": "A-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 1,
+                "maxCenter": 0.00037849917364087156,
+                "maxEdge": 0.0003884805546272174,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 8,
+                "maxCenter": 0.0009361061971241723,
+                "maxEdge": 0.0009507463338545967,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 44,
+                "maxCenter": 0.0010748405877872781,
+                "maxEdge": 0.0010893592897976523,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 8,
+                "maxCenter": 0.0009903634799903875,
+                "maxEdge": 0.0010049395864048453,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0009754177882057137,
+                "maxEdge": 0.0009901888379326958,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 4,
+                "maxCenter": 0.0009140106809118962,
+                "maxEdge": 0.0009287766387608842,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 331,
+              "polygons": 338,
+              "vertices": 1363,
+              "samples": 5452,
+              "maxError": 0.005074640673559155,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2292,
+            "outlineInkPixels": 19436
+          },
+          {
+            "floor": "H-6-9F",
+            "rings": [
+              {
+                "key": "waterServer",
+                "count": 2,
+                "maxCenter": 0.0013064679153526153,
+                "maxEdge": 0.001317164696036246,
+                "errors": []
+              },
+              {
+                "key": "elevator",
+                "count": 16,
+                "maxCenter": 0.0017200494051571227,
+                "maxEdge": 0.0017544575843741004,
+                "errors": []
+              },
+              {
+                "key": "toilet",
+                "count": 20,
+                "maxCenter": 0.00139101851396511,
+                "maxEdge": 0.001425446768988881,
+                "errors": []
+              },
+              {
+                "key": "stairs",
+                "count": 23,
+                "maxCenter": 0.0017027950228628004,
+                "maxEdge": 0.0017365389730807116,
+                "errors": []
+              },
+              {
+                "key": "vendingMachine",
+                "count": 2,
+                "maxCenter": 0.0010720686028503038,
+                "maxEdge": 0.0011073938907527677,
+                "errors": []
+              },
+              {
+                "key": "aed",
+                "count": 2,
+                "maxCenter": 0.0006363425529097996,
+                "maxEdge": 0.0006695243998290194,
+                "errors": []
+              }
+            ],
+            "outlines": {
+              "entries": 178,
+              "polygons": 179,
+              "vertices": 728,
+              "samples": 2912,
+              "maxError": 0.0018145274661947042,
+              "maxClipError": 0,
+              "errors": []
+            },
+            "ringInkPixels": 2914,
+            "outlineInkPixels": 13432
+          }
+        ],
+        "cameraSwitches": 8,
+        "facilityAreas": {
+          "polygons": 12,
+          "vertices": 97,
+          "maxError": 0.0028942517720325846,
+          "errors": []
+        },
+        "cardSearches": 13
+      }
+    }
+  ],
+  "lettering": [
+    {
+      "project": "desktop",
+      "language": "ja",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 1275,
+          "paintScope": "lettering",
+          "count": 1275,
+          "unique": 1275,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1007,
+          "paintScope": "lettering",
+          "count": 1007,
+          "unique": 1007,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 747,
+          "paintScope": "lettering",
+          "count": 747,
+          "unique": 747,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 772,
+          "paintScope": "lettering",
+          "count": 772,
+          "unique": 772,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 815,
+          "paintScope": "lettering",
+          "count": 815,
+          "unique": 815,
+          "maxError": 1.1368683772161603e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 1270,
+          "paintScope": "lettering",
+          "count": 1270,
+          "unique": 1270,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "desktop",
+      "language": "en",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 2399,
+          "paintScope": "lettering",
+          "count": 2399,
+          "unique": 2399,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1669,
+          "paintScope": "lettering",
+          "count": 1669,
+          "unique": 1669,
+          "maxError": 2.2737367544323206e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 1084,
+          "paintScope": "lettering",
+          "count": 1084,
+          "unique": 1084,
+          "maxError": 2.2737367544323206e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 1213,
+          "paintScope": "lettering",
+          "count": 1213,
+          "unique": 1213,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 1208,
+          "paintScope": "lettering",
+          "count": 1208,
+          "unique": 1208,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 2043,
+          "paintScope": "lettering",
+          "count": 2043,
+          "unique": 2043,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "mobile",
+      "language": "ja",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 1275,
+          "paintScope": "lettering",
+          "count": 1275,
+          "unique": 1275,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1007,
+          "paintScope": "lettering",
+          "count": 1007,
+          "unique": 1007,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 747,
+          "paintScope": "lettering",
+          "count": 747,
+          "unique": 747,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 772,
+          "paintScope": "lettering",
+          "count": 772,
+          "unique": 772,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 815,
+          "paintScope": "lettering",
+          "count": 815,
+          "unique": 815,
+          "maxError": 1.1368683772161603e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 1270,
+          "paintScope": "lettering",
+          "count": 1270,
+          "unique": 1270,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "mobile",
+      "language": "en",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 2399,
+          "paintScope": "lettering",
+          "count": 2399,
+          "unique": 2399,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1669,
+          "paintScope": "lettering",
+          "count": 1669,
+          "unique": 1669,
+          "maxError": 2.2737367544323206e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 1084,
+          "paintScope": "lettering",
+          "count": 1084,
+          "unique": 1084,
+          "maxError": 2.2737367544323206e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 1213,
+          "paintScope": "lettering",
+          "count": 1213,
+          "unique": 1213,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 1208,
+          "paintScope": "lettering",
+          "count": 1208,
+          "unique": 1208,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 2043,
+          "paintScope": "lettering",
+          "count": 2043,
+          "unique": 2043,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "safari",
+      "language": "ja",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 1275,
+          "paintScope": "lettering",
+          "count": 1275,
+          "unique": 1275,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1007,
+          "paintScope": "lettering",
+          "count": 1007,
+          "unique": 1007,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 747,
+          "paintScope": "lettering",
+          "count": 747,
+          "unique": 747,
+          "maxError": 1.1368683772161603e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 772,
+          "paintScope": "lettering",
+          "count": 772,
+          "unique": 772,
+          "maxError": 1.797546735911271e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 815,
+          "paintScope": "lettering",
+          "count": 815,
+          "unique": 815,
+          "maxError": 1.1368683772161603e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 1270,
+          "paintScope": "lettering",
+          "count": 1270,
+          "unique": 1270,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "safari",
+      "language": "en",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 2399,
+          "paintScope": "lettering",
+          "count": 2399,
+          "unique": 2399,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1669,
+          "paintScope": "lettering",
+          "count": 1669,
+          "unique": 1669,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 1084,
+          "paintScope": "lettering",
+          "count": 1084,
+          "unique": 1084,
+          "maxError": 2.2737367544323206e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 1213,
+          "paintScope": "lettering",
+          "count": 1213,
+          "unique": 1213,
+          "maxError": 1.1368683772161603e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 1208,
+          "paintScope": "lettering",
+          "count": 1208,
+          "unique": 1208,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 2043,
+          "paintScope": "lettering",
+          "count": 2043,
+          "unique": 2043,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "iphone",
+      "language": "ja",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 1275,
+          "paintScope": "lettering",
+          "count": 1275,
+          "unique": 1275,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1007,
+          "paintScope": "lettering",
+          "count": 1007,
+          "unique": 1007,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 747,
+          "paintScope": "lettering",
+          "count": 747,
+          "unique": 747,
+          "maxError": 2.3437142008433856e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 772,
+          "paintScope": "lettering",
+          "count": 772,
+          "unique": 772,
+          "maxError": 2.3437142008433856e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 815,
+          "paintScope": "lettering",
+          "count": 815,
+          "unique": 815,
+          "maxError": 2.5421149729252077e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 1270,
+          "paintScope": "lettering",
+          "count": 1270,
+          "unique": 1270,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "iphone",
+      "language": "en",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 2399,
+          "paintScope": "lettering",
+          "count": 2399,
+          "unique": 2399,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1669,
+          "paintScope": "lettering",
+          "count": 1669,
+          "unique": 1669,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 1084,
+          "paintScope": "lettering",
+          "count": 1084,
+          "unique": 1084,
+          "maxError": 2.8421709430404007e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 1213,
+          "paintScope": "lettering",
+          "count": 1213,
+          "unique": 1213,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 1208,
+          "paintScope": "lettering",
+          "count": 1208,
+          "unique": 1208,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 2043,
+          "paintScope": "lettering",
+          "count": 2043,
+          "unique": 2043,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    }
+  ]
+}

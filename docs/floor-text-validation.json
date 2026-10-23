@@ -1,0 +1,985 @@
+{
+  "branch": "Version3.2",
+  "textStats": {
+    "startTime": "2026-10-23T18:23:39.157Z",
+    "duration": 106053.455,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "registrationCasesPassed": 8,
+  "unitTestsPassed": 195,
+  "registeredGlyphs": 8515,
+  "badgeShapes": 100,
+  "leaders": 18,
+  "conditions": [
+    {
+      "project": "desktop",
+      "language": "ja",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 1275,
+          "paintScope": "lettering",
+          "count": 1275,
+          "unique": 1275,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1007,
+          "paintScope": "lettering",
+          "count": 1007,
+          "unique": 1007,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 747,
+          "paintScope": "lettering",
+          "count": 747,
+          "unique": 747,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 772,
+          "paintScope": "lettering",
+          "count": 772,
+          "unique": 772,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 815,
+          "paintScope": "lettering",
+          "count": 815,
+          "unique": 815,
+          "maxError": 1.1368683772161603e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 1270,
+          "paintScope": "lettering",
+          "count": 1270,
+          "unique": 1270,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "desktop",
+      "language": "en",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 2399,
+          "paintScope": "lettering",
+          "count": 2399,
+          "unique": 2399,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1669,
+          "paintScope": "lettering",
+          "count": 1669,
+          "unique": 1669,
+          "maxError": 2.2737367544323206e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 1084,
+          "paintScope": "lettering",
+          "count": 1084,
+          "unique": 1084,
+          "maxError": 2.2737367544323206e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 1213,
+          "paintScope": "lettering",
+          "count": 1213,
+          "unique": 1213,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 1208,
+          "paintScope": "lettering",
+          "count": 1208,
+          "unique": 1208,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 2043,
+          "paintScope": "lettering",
+          "count": 2043,
+          "unique": 2043,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "mobile",
+      "language": "ja",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 1275,
+          "paintScope": "lettering",
+          "count": 1275,
+          "unique": 1275,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1007,
+          "paintScope": "lettering",
+          "count": 1007,
+          "unique": 1007,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 747,
+          "paintScope": "lettering",
+          "count": 747,
+          "unique": 747,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 772,
+          "paintScope": "lettering",
+          "count": 772,
+          "unique": 772,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 815,
+          "paintScope": "lettering",
+          "count": 815,
+          "unique": 815,
+          "maxError": 1.1368683772161603e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 1270,
+          "paintScope": "lettering",
+          "count": 1270,
+          "unique": 1270,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "mobile",
+      "language": "en",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 2399,
+          "paintScope": "lettering",
+          "count": 2399,
+          "unique": 2399,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1669,
+          "paintScope": "lettering",
+          "count": 1669,
+          "unique": 1669,
+          "maxError": 2.2737367544323206e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 1084,
+          "paintScope": "lettering",
+          "count": 1084,
+          "unique": 1084,
+          "maxError": 2.2737367544323206e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 1213,
+          "paintScope": "lettering",
+          "count": 1213,
+          "unique": 1213,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 1208,
+          "paintScope": "lettering",
+          "count": 1208,
+          "unique": 1208,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 2043,
+          "paintScope": "lettering",
+          "count": 2043,
+          "unique": 2043,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "safari",
+      "language": "ja",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 1275,
+          "paintScope": "lettering",
+          "count": 1275,
+          "unique": 1275,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1007,
+          "paintScope": "lettering",
+          "count": 1007,
+          "unique": 1007,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 747,
+          "paintScope": "lettering",
+          "count": 747,
+          "unique": 747,
+          "maxError": 1.1368683772161603e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 772,
+          "paintScope": "lettering",
+          "count": 772,
+          "unique": 772,
+          "maxError": 1.797546735911271e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 815,
+          "paintScope": "lettering",
+          "count": 815,
+          "unique": 815,
+          "maxError": 1.1368683772161603e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 1270,
+          "paintScope": "lettering",
+          "count": 1270,
+          "unique": 1270,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "safari",
+      "language": "en",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 2399,
+          "paintScope": "lettering",
+          "count": 2399,
+          "unique": 2399,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1669,
+          "paintScope": "lettering",
+          "count": 1669,
+          "unique": 1669,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 1084,
+          "paintScope": "lettering",
+          "count": 1084,
+          "unique": 1084,
+          "maxError": 2.2737367544323206e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 1213,
+          "paintScope": "lettering",
+          "count": 1213,
+          "unique": 1213,
+          "maxError": 1.1368683772161603e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 1208,
+          "paintScope": "lettering",
+          "count": 1208,
+          "unique": 1208,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 2043,
+          "paintScope": "lettering",
+          "count": 2043,
+          "unique": 2043,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "iphone",
+      "language": "ja",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 1275,
+          "paintScope": "lettering",
+          "count": 1275,
+          "unique": 1275,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1007,
+          "paintScope": "lettering",
+          "count": 1007,
+          "unique": 1007,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 747,
+          "paintScope": "lettering",
+          "count": 747,
+          "unique": 747,
+          "maxError": 2.3437142008433856e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 772,
+          "paintScope": "lettering",
+          "count": 772,
+          "unique": 772,
+          "maxError": 2.3437142008433856e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 815,
+          "paintScope": "lettering",
+          "count": 815,
+          "unique": 815,
+          "maxError": 2.5421149729252077e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 1270,
+          "paintScope": "lettering",
+          "count": 1270,
+          "unique": 1270,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    },
+    {
+      "project": "iphone",
+      "language": "en",
+      "data": [
+        {
+          "floor": "1F",
+          "glyphs": 2399,
+          "paintScope": "lettering",
+          "count": 2399,
+          "unique": 2399,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "2F",
+          "glyphs": 1669,
+          "paintScope": "lettering",
+          "count": 1669,
+          "unique": 1669,
+          "maxError": 1.2710574864626038e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 5,
+            "vertices": 10,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "3F",
+          "glyphs": 1084,
+          "paintScope": "lettering",
+          "count": 1084,
+          "unique": 1084,
+          "maxError": 2.8421709430404007e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 3,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "4F",
+          "glyphs": 1213,
+          "paintScope": "lettering",
+          "count": 1213,
+          "unique": 1213,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 2,
+            "vertices": 4,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "5F",
+          "glyphs": 1208,
+          "paintScope": "lettering",
+          "count": 1208,
+          "unique": 1208,
+          "maxError": 1.6077746776921858e-13,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 1,
+            "vertices": 2,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "A-6-9F",
+          "glyphs": 2043,
+          "paintScope": "lettering",
+          "count": 2043,
+          "unique": 2043,
+          "maxError": 0,
+          "errors": [],
+          "leaderAudit": {
+            "leaders": 0,
+            "vertices": 0,
+            "maxError": 0
+          },
+          "pixelDiffs": [
+            0,
+            0
+          ]
+        },
+        {
+          "floor": "H-6-9F",
+          "glyphs": 0,
+          "paintScope": "entire SVG byte identity and native screenshot",
+          "identicalSvgBytes": true
+        }
+      ]
+    }
+  ],
+  "sourceFilesSha256": {
+    "scripts/aligned-floor-svg.mjs": "9092454a2fa2f8d100b244748303cd7b20861adc94599c16dd8a158a51fe742c",
+    "scripts/floor-text-registration.mjs": "61acc91b521fd632649e832be55af6017b423c3b7918acaa92feffb25ae6ec35",
+    "scripts/generate-floor-text-registration.mjs": "75ead7c1872e75e2c9e86621bb27008f254ac6d6d885880e309f2f802ce354e0",
+    "src/assets/floor-text-registration.json": "0a16766db088496ae76fce6ce9f14e4f1438dd60351c1c7710097fc3a74afa1a"
+  },
+  "validationScope": "Historical complete working tree before isolated commit selection; contains unrelated uncommitted features. For the committed source use floor-alignment-commit-validation.json."
+}

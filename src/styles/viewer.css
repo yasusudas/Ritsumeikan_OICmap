@@ -809,6 +809,12 @@ body[data-app-mode="editor"] .facility-area-outline {
   transform: translate(-50%, -50%);
 }
 
+/* Viewer rings share one SVG viewport with the floor's coordinate frame. */
+.facility-rings-svg .facility-ring {
+  position: static;
+  transform: none;
+}
+
 .facility-ring-outline {
   position: absolute;
   inset: 0;

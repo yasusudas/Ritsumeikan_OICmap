@@ -11,6 +11,15 @@ async function zoomedMap(page, lang) {
   await readyMap(page, lang);
   await selectEntry(page, searchData.entries.find(entry => entry.label === 'AC130'), lang);
   await expect.poll(() => page.locator('#canvas-layer').evaluate(node => node.style.transform.includes('scale('))).toBe(false);
+  // Chrome updates width/height throughout the search camera animation, even
+  // when there is no CSS scale(). Capture the settled view for the retry test.
+  let previous = '';
+  let unchangedSince = Date.now();
+  await expect.poll(async () => {
+    const next = JSON.stringify(await view(page));
+    if (next !== previous) { previous = next; unchangedSince = Date.now(); }
+    return Date.now() - unchangedSince;
+  }, { intervals: [50, 100, 100] }).toBeGreaterThanOrEqual(200);
   return view(page);
 }
 
