@@ -6,6 +6,10 @@
 
 [3項目適用後のVersion3.1と改善なしDevの実Safari比較・録画](version31-combined-safari-comparison-2026-10-24.md)
 
+[公開Version3.1からの追加4案：UI計算・DOM計測・可変更新・Canvas/SVG併用](next-optimizations-safari-comparison-2026-10-24.md)
+
+[Version3.1のSites公開先・反映範囲・公開確認](sites-version31-publication-2026-10-24.md)
+
 | ドキュメント | 検証内容 |
 |---|---|
 | [svgo-safari-comparison-2026-10-20.md](svgo-safari-comparison-2026-10-20.md) | SVGOによるSVG軽量化 |

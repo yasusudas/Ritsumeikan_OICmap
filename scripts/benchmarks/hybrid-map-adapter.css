@@ -1,0 +1,5 @@
+.hybrid-map-floor { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0; }
+.hybrid-map-viewer > #canvas-layer { z-index: 1; }
+.hybrid-canvas-visible > .hybrid-map-floor { opacity: 1; }
+.hybrid-map-working .map-asset { background: transparent; }
+.hybrid-map-working .floor-svg { visibility: hidden; }

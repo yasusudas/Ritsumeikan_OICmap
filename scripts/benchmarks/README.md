@@ -1,5 +1,27 @@
 # 地図描画の比較検証
 
+## 公開Version3.1からの追加4案（2026-10-24）
+
+[結果と条件](../../docs/map-performance/next-optimizations-safari-comparison-2026-10-24.md)。`build-next-optimization.mjs`は未改善Devと公開Version3.1を固定commitから専用一時ディレクトリへexportし、`ui-cache`、`geometry-cache`、`adaptive-raster`、`hybrid`をそれぞれ公開版へ独立して差し込む。作業ツリーのGPS・offline等のWIPは取り込まない。通常アプリへの採用ではない。
+
+```sh
+node scripts/benchmarks/build-next-optimization.mjs ui-cache
+node scripts/benchmarks/build-next-optimization.mjs geometry-cache
+node scripts/benchmarks/build-next-optimization.mjs adaptive-raster
+node scripts/benchmarks/build-next-optimization.mjs hybrid
+node scripts/benchmarks/next-optimizations-safari-server.mjs
+```
+
+サーバーは別の実行セッションで最後まで保持する。短命なcontrollerの子プロセスとして起動するとcontroller終了時に停止し、後続録画を完了できない場合がある。port5211の専用Safariページを使用する。今回の所有ウィンドウIDは59248、boundsは100,44,1424,1213。再実行時は`find-macos-window.swift Safari 'Next optimizations'`でID・寸法を確認し、controllerとcaptureのIDを合わせる。
+
+画面・電源状態の取得は同梱の`inspect-macos-display.swift`を使う。buildスクリプトはPlaywright設定も固定元のエクスポート先へ生成する。ブランチに後続のdocsコミットがあっても、比較するアプリは明記した固定commitから取り出す。Canvas用のsharpは既存検証と同じ`/tmp/oic-leaflet-tools/node_modules`、画像解析にはNumPy/Pillowを使えるPython環境が必要。
+
+`?run=perf&controlled=1&candidate=ui-cache&pairs=2`なら日英1F/5Fで各2対応組、Dev/公開版/候補の24試行。開始論理幅2000px、16段階×3往復、停止区間・パンを別保存する。候補名を順に変更する。`run-next-stable-safari.py`はこの4段階を順次実行した後、別診断・native PNGを自動取得する。Foundationの低電力・温度状態、無操作rAF、各試行の停止後rAFも確認する。主計測中はbuild・撮影・録画・テスト・画像解析を実行しない。30/60 Hzの混在を合算せず、再測定前のデータは別フォルダへ保持する。
+
+画質はnative PNGを使い、`capture-next-optimizations-safari.py baseline version31 ui-cache geometry-cache adaptive-raster hybrid`、続いてNumPy/Pillow付きPythonの`summarize-next-optimizations-quality.py`で比較する。日英1F、20/23段階、AC130を中心とした600×440pxの地図領域。拡大途中の停止callbackとCanvas画像更新は撮影時だけ保留する。Laplacian分散比は知覚画質スコアではない。`summarize-next-optimizations-safari.py`は各試行の寸法・言語・倍率・停止後scale・約60 Hzの継続を検証する。
+
+操作回帰とCanvas/SVG切替のnative録画は`validate-next-stable-safari.py`。主計測完了を待ってから実行する。Playwrightの表示回帰を実SafariのFPS証拠として使わない。録画と主FPSの結果も分離する。生成物は`output/next-optimizations-safari-2026-10-24/`に保存する。
+
 ## Version3.1の採用後の組み合わせ比較（2026-10-24）
 
 ユーザー指定により、この回は実際の`Version3.1`作業ツリーと、未改善Dev `cb403e0a0c882b0de79ae0182a3a98988f9097e4`を比較する。既存GPS・オフライン等のWIPも含むため、3変更だけの因果対照とはしない。下記の独立検証とは区別する。
