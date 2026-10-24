@@ -23,12 +23,26 @@ async function authenticatedEditor(page) {
   await expect(page.locator('#editor-list .editor-entry')).toHaveCount(1);
 }
 async function payload(page) {
+  await expect(page.locator('#editor-json')).not.toHaveValue('');
   return JSON.parse(await page.locator('#editor-json').inputValue());
 }
 async function mapPoint(page, x = .55, y = .55) {
   await page.locator('#viewer').scrollIntoViewIfNeeded();
+  await expect(page.locator('#canvas-layer img.floor-svg')).toBeVisible();
+  // A focused ring leaves the camera zoomed across floor switches. Click the
+  // visible map, rather than an off-screen fraction of the enlarged canvas.
   const box = await page.locator('#canvas-layer').boundingBox();
-  await page.mouse.click(box.x + box.width * x, box.y + box.height * y);
+  const viewer = await page.locator('#viewer').boundingBox();
+  const viewport = page.viewportSize();
+  const left = Math.max(box.x, viewer.x, 0) + 12;
+  const top = Math.max(box.y, viewer.y, 0) + 12;
+  const right = Math.min(box.x + box.width, viewer.x + viewer.width, viewport.width) - 12;
+  const bottom = Math.min(box.y + box.height, viewer.y + viewer.height, viewport.height) - 12;
+  expect(right).toBeGreaterThan(left);
+  expect(bottom).toBeGreaterThan(top);
+  const point = { x: left + (right - left) * x, y: top + (bottom - top) * y };
+  expect(await page.evaluate(({ x, y }) => Boolean(document.elementFromPoint(x, y)?.closest('#viewer')), point)).toBe(true);
+  await page.mouse.click(point.x, point.y);
 }
 
 test('EDITOR login guard, invalid/empty password, return and logout', async ({ page }) => {
@@ -43,6 +57,7 @@ test('EDITOR login guard, invalid/empty password, return and logout', async ({ p
   await expect(page.locator('#editor-login-submit')).toBeEnabled();
   await page.locator('a[href="/"]').click();
   await expect(page.locator('#viewer')).toBeVisible();
+  await expect(page.locator('#canvas-layer img.floor-svg')).toBeVisible();
   await authenticatedEditor(page);
   await page.locator('#editor-logout-button').click();
   await expect(page).toHaveURL(/\/editor\/login\//);

@@ -1,8 +1,9 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
-import { mapAssetsPlugin } from './scripts/vite-map-assets-plugin.mjs';
 import { foodDataAssetsPlugin } from './scripts/vite-food-data-plugin.mjs';
+import { mapAssetsPlugin } from './scripts/vite-map-assets-plugin.mjs';
 import { searchDataAssetsPlugin } from './scripts/vite-search-data-plugin.mjs';
+import { offlineMapPlugin } from './scripts/vite-offline-map-plugin.mjs';
 import { getRailStatusPayload, RAIL_STATUS_REFRESH_INTERVAL_SECONDS } from './src/server/rail-status.js';
 import { getFoodTrucksPayload, FOOD_TRUCKS_REFRESH_INTERVAL_SECONDS } from './src/server/food-trucks.js';
 import { getCoopHoursPayload, COOP_HOURS_REFRESH_INTERVAL_SECONDS } from './src/server/coop-hours.js';
@@ -151,7 +152,7 @@ function holidaysDevApi() {
 
 export default defineConfig({
   base: './',
-  plugins: [mapAssetsPlugin(), searchDataAssetsPlugin(), foodDataAssetsPlugin(), railStatusDevApi(), foodTrucksDevApi(), coopHoursDevApi(), holidaysDevApi()],
+  plugins: [searchDataAssetsPlugin(), mapAssetsPlugin(), foodDataAssetsPlugin(), offlineMapPlugin(), railStatusDevApi(), foodTrucksDevApi(), coopHoursDevApi(), holidaysDevApi()],
   build: {
     rollupOptions: {
       input: {

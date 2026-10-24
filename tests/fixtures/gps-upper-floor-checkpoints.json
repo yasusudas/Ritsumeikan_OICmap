@@ -1,0 +1,919 @@
+{
+  "description": "Diagram-to-diagram checks, not surveyed GPS accuracy. Target panels ordered 6F,7F,8F,9F. H x is normalized by subtracting viewBox x=8.5. Corners with different floor footprints are excluded. Original control points are never counted as independent checks.",
+  "sourceSha256": {
+    "1F.svg": "f9bd801a6d78889c6a374fb6d4b18c06c1f721456bd7a552a3a1fe636ac1c9be",
+    "6F7F8F9F_BldgA.svg": "67bda623a3f9b2c02cc4210adec643c806bd8fbfbea7d5a208959cc224345325",
+    "6F7F8F9F_BldgH.svg": "3815a213c7a466d14dd0a6003d2074874678aaded4215dea12efd09f77ebdae0"
+  },
+  "sheets": {
+    "A-6-9F": [
+      {
+        "floor": 6,
+        "originalSource": [
+          [
+            645.77,
+            240.73
+          ],
+          [
+            736.4,
+            403.35
+          ],
+          [
+            854.94,
+            403.35
+          ]
+        ],
+        "originalTarget": [
+          [
+            178.59,
+            176.441
+          ],
+          [
+            287.7,
+            364.95
+          ],
+          [
+            431.74,
+            364.95
+          ]
+        ],
+        "addedCalibration": [
+          {
+            "id": "AN-stair",
+            "label": "AN側コンコース階段",
+            "source": [
+              934.34,
+              423.605
+            ],
+            "target": [
+              499.426,
+              377.898
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "AN-tip",
+            "label": "AN翼上端の外角（右）",
+            "source": [
+              921.097,
+              249.426
+            ],
+            "target": [
+              511.894,
+              178.75
+            ],
+            "evidence": "ground path 617; upper paths 544/440/808/707"
+          }
+        ],
+        "holdout": [
+          {
+            "id": "AS-passage",
+            "label": "AS翼の通路上端角",
+            "source": [
+              645.77,
+              298.886
+            ],
+            "target": [
+              178.59,
+              240.535
+            ],
+            "evidence": "ground path 617/633; upper paths 594/440/808/707"
+          },
+          {
+            "id": "AS-stair",
+            "label": "AS側コンコース階段",
+            "source": [
+              649.951,
+              416.283
+            ],
+            "target": [
+              190.449,
+              377.898
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "AN-passage",
+            "label": "AN翼の通路上端角（右）",
+            "source": [
+              921.097,
+              298.886
+            ],
+            "target": [
+              511.894,
+              240.543
+            ],
+            "evidence": "ground path 617/667; upper paths 544/440/808/707"
+          }
+        ]
+      },
+      {
+        "floor": 7,
+        "originalSource": [
+          [
+            645.77,
+            240.73
+          ],
+          [
+            736.4,
+            403.35
+          ],
+          [
+            854.94,
+            403.35
+          ]
+        ],
+        "originalTarget": [
+          [
+            180.883,
+            492.204
+          ],
+          [
+            289.88,
+            674.51
+          ],
+          [
+            429.41,
+            674.5
+          ]
+        ],
+        "addedCalibration": [
+          {
+            "id": "AN-stair",
+            "label": "AN側コンコース階段",
+            "source": [
+              934.34,
+              423.605
+            ],
+            "target": [
+              495.582,
+              689.172
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "AN-tip",
+            "label": "AN翼上端の外角（右）",
+            "source": [
+              921.097,
+              249.426
+            ],
+            "target": [
+              508.16,
+              492.2
+            ],
+            "evidence": "ground path 617; upper paths 544/440/808/707"
+          }
+        ],
+        "holdout": [
+          {
+            "id": "AS-passage",
+            "label": "AS翼の通路上端角",
+            "source": [
+              645.77,
+              298.886
+            ],
+            "target": [
+              180.883,
+              550.618
+            ],
+            "evidence": "ground path 617/633; upper paths 594/440/808/707"
+          },
+          {
+            "id": "AS-stair",
+            "label": "AS側コンコース階段",
+            "source": [
+              649.951,
+              416.283
+            ],
+            "target": [
+              194.074,
+              689.172
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "AN-passage",
+            "label": "AN翼の通路上端角（右）",
+            "source": [
+              921.097,
+              298.886
+            ],
+            "target": [
+              508.16,
+              550.575
+            ],
+            "evidence": "ground path 617/667; upper paths 544/440/808/707"
+          }
+        ]
+      },
+      {
+        "floor": 8,
+        "originalSource": [
+          [
+            645.77,
+            240.73
+          ],
+          [
+            736.4,
+            403.35
+          ],
+          [
+            854.94,
+            403.35
+          ]
+        ],
+        "originalTarget": [
+          [
+            663.066,
+            181.786
+          ],
+          [
+            772.06,
+            364.04
+          ],
+          [
+            911.6,
+            364.04
+          ]
+        ],
+        "addedCalibration": [
+          {
+            "id": "AN-stair",
+            "label": "AN側コンコース階段",
+            "source": [
+              934.34,
+              423.605
+            ],
+            "target": [
+              977.768,
+              378.709
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "AN-tip",
+            "label": "AN翼上端の外角（右）",
+            "source": [
+              921.097,
+              249.426
+            ],
+            "target": [
+              990.39,
+              181.778
+            ],
+            "evidence": "ground path 617; upper paths 544/440/808/707"
+          }
+        ],
+        "holdout": [
+          {
+            "id": "AS-passage",
+            "label": "AS翼の通路上端角",
+            "source": [
+              645.77,
+              298.886
+            ],
+            "target": [
+              663.066,
+              240.203
+            ],
+            "evidence": "ground path 617/633; upper paths 594/440/808/707"
+          },
+          {
+            "id": "AS-stair",
+            "label": "AS側コンコース階段",
+            "source": [
+              649.951,
+              416.283
+            ],
+            "target": [
+              676.257,
+              378.707
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "AN-passage",
+            "label": "AN翼の通路上端角（右）",
+            "source": [
+              921.097,
+              298.886
+            ],
+            "target": [
+              990.39,
+              240.247
+            ],
+            "evidence": "ground path 617/667; upper paths 544/440/808/707"
+          }
+        ]
+      },
+      {
+        "floor": 9,
+        "originalSource": [
+          [
+            645.77,
+            240.73
+          ],
+          [
+            736.4,
+            403.35
+          ],
+          [
+            854.94,
+            403.35
+          ]
+        ],
+        "originalTarget": [
+          [
+            663.121,
+            492.41
+          ],
+          [
+            771.81,
+            674.51
+          ],
+          [
+            912.46,
+            674.5
+          ]
+        ],
+        "addedCalibration": [
+          {
+            "id": "AN-stair",
+            "label": "AN側コンコース階段",
+            "source": [
+              934.34,
+              423.605
+            ],
+            "target": [
+              977.932,
+              689.172
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "AN-tip",
+            "label": "AN翼上端の外角（右）",
+            "source": [
+              921.097,
+              249.426
+            ],
+            "target": [
+              990.394,
+              492.41
+            ],
+            "evidence": "ground path 617; upper paths 544/440/808/707"
+          }
+        ],
+        "holdout": [
+          {
+            "id": "AS-passage",
+            "label": "AS翼の通路上端角",
+            "source": [
+              645.77,
+              298.886
+            ],
+            "target": [
+              663.121,
+              550.82
+            ],
+            "evidence": "ground path 617/633; upper paths 594/440/808/707"
+          },
+          {
+            "id": "AS-stair",
+            "label": "AS側コンコース階段",
+            "source": [
+              649.951,
+              416.283
+            ],
+            "target": [
+              676.215,
+              689.172
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "AN-passage",
+            "label": "AN翼の通路上端角（右）",
+            "source": [
+              921.097,
+              298.886
+            ],
+            "target": [
+              990.394,
+              550.825
+            ],
+            "evidence": "ground path 617/667; upper paths 544/440/808/707"
+          }
+        ]
+      }
+    ],
+    "H-6-9F": [
+      {
+        "floor": 6,
+        "originalSource": [
+          [
+            123.03,
+            342.15
+          ],
+          [
+            442.24,
+            343.83
+          ],
+          [
+            196.92,
+            411.32
+          ]
+        ],
+        "originalTarget": [
+          [
+            94.33,
+            230.65
+          ],
+          [
+            500.06,
+            232.5
+          ],
+          [
+            191.61,
+            318.46
+          ]
+        ],
+        "addedCalibration": [
+          {
+            "id": "west-outer",
+            "label": "西端外角（図の左上）",
+            "source": [
+              116.668,
+              332.41
+            ],
+            "target": [
+              88.38,
+              218.31
+            ],
+            "evidence": "ground path 735; upper paths 256/296/329/220"
+          }
+        ],
+        "holdout": [
+          {
+            "id": "east-outer",
+            "label": "東端外角（図の右上）",
+            "source": [
+              446.818,
+              332.41
+            ],
+            "target": [
+              506.91,
+              218.31
+            ],
+            "evidence": "ground path 735; upper paths 256/296/329/220"
+          },
+          {
+            "id": "west-stair",
+            "label": "西端階段",
+            "source": [
+              130.887,
+              343.77
+            ],
+            "target": [
+              106.4495,
+              233.0301
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "east-stair",
+            "label": "東端階段",
+            "source": [
+              432.793,
+              343.836
+            ],
+            "target": [
+              489.1506,
+              233.6396
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "inner-west-lift",
+            "label": "内側西エレベーター",
+            "source": [
+              201.047,
+              340.877
+            ],
+            "target": [
+              195.4097,
+              228.6649
+            ],
+            "evidence": "facility-ring-offsets elevator red"
+          },
+          {
+            "id": "inner-east-lift",
+            "label": "内側東エレベーター",
+            "source": [
+              362.0,
+              344.525
+            ],
+            "target": [
+              399.1402,
+              233.8846
+            ],
+            "evidence": "facility-ring-offsets elevator red"
+          },
+          {
+            "id": "south-east-stair",
+            "label": "南側東階段",
+            "source": [
+              368.043,
+              410.801
+            ],
+            "target": [
+              402.7702,
+              319.36
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          }
+        ]
+      },
+      {
+        "floor": 7,
+        "originalSource": [
+          [
+            123.03,
+            342.15
+          ],
+          [
+            442.24,
+            343.83
+          ],
+          [
+            196.92,
+            411.32
+          ]
+        ],
+        "originalTarget": [
+          [
+            94.33,
+            508.99
+          ],
+          [
+            500.06,
+            510.85
+          ],
+          [
+            191.61,
+            596.81
+          ]
+        ],
+        "addedCalibration": [
+          {
+            "id": "west-outer",
+            "label": "西端外角（図の左上）",
+            "source": [
+              116.668,
+              332.41
+            ],
+            "target": [
+              88.38,
+              496.66
+            ],
+            "evidence": "ground path 735; upper paths 256/296/329/220"
+          }
+        ],
+        "holdout": [
+          {
+            "id": "east-outer",
+            "label": "東端外角（図の右上）",
+            "source": [
+              446.818,
+              332.41
+            ],
+            "target": [
+              506.91,
+              496.66
+            ],
+            "evidence": "ground path 735; upper paths 256/296/329/220"
+          },
+          {
+            "id": "west-stair",
+            "label": "西端階段",
+            "source": [
+              130.887,
+              343.77
+            ],
+            "target": [
+              106.4495,
+              511.38
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "east-stair",
+            "label": "東端階段",
+            "source": [
+              432.793,
+              343.836
+            ],
+            "target": [
+              489.1506,
+              511.9904
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "inner-west-lift",
+            "label": "内側西エレベーター",
+            "source": [
+              201.047,
+              340.877
+            ],
+            "target": [
+              195.4097,
+              507.0198
+            ],
+            "evidence": "facility-ring-offsets elevator red"
+          },
+          {
+            "id": "inner-east-lift",
+            "label": "内側東エレベーター",
+            "source": [
+              362.0,
+              344.525
+            ],
+            "target": [
+              399.1402,
+              512.2353
+            ],
+            "evidence": "facility-ring-offsets elevator red"
+          },
+          {
+            "id": "south-east-stair",
+            "label": "南側東階段",
+            "source": [
+              368.043,
+              410.801
+            ],
+            "target": [
+              402.7702,
+              597.7099
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          }
+        ]
+      },
+      {
+        "floor": 8,
+        "originalSource": [
+          [
+            123.03,
+            342.15
+          ],
+          [
+            442.24,
+            343.83
+          ],
+          [
+            196.92,
+            411.32
+          ]
+        ],
+        "originalTarget": [
+          [
+            689.61,
+            230.59
+          ],
+          [
+            1095.33,
+            232.44
+          ],
+          [
+            786.89,
+            318.4
+          ]
+        ],
+        "addedCalibration": [
+          {
+            "id": "west-outer",
+            "label": "西端外角（図の左上）",
+            "source": [
+              116.668,
+              332.41
+            ],
+            "target": [
+              683.65,
+              218.25
+            ],
+            "evidence": "ground path 735; upper paths 256/296/329/220"
+          }
+        ],
+        "holdout": [
+          {
+            "id": "east-outer",
+            "label": "東端外角（図の右上）",
+            "source": [
+              446.818,
+              332.41
+            ],
+            "target": [
+              1102.18,
+              218.25
+            ],
+            "evidence": "ground path 735; upper paths 256/296/329/220"
+          },
+          {
+            "id": "west-stair",
+            "label": "西端階段",
+            "source": [
+              130.887,
+              343.77
+            ],
+            "target": [
+              701.7197,
+              232.9703
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "east-stair",
+            "label": "東端階段",
+            "source": [
+              432.793,
+              343.836
+            ],
+            "target": [
+              1084.4303,
+              233.5698
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "inner-west-lift",
+            "label": "内側西エレベーター",
+            "source": [
+              201.047,
+              340.877
+            ],
+            "target": [
+              790.6895,
+              228.595
+            ],
+            "evidence": "facility-ring-offsets elevator red"
+          },
+          {
+            "id": "inner-east-lift",
+            "label": "内側東エレベーター",
+            "source": [
+              362.0,
+              344.525
+            ],
+            "target": [
+              994.42,
+              233.8147
+            ],
+            "evidence": "facility-ring-offsets elevator red"
+          },
+          {
+            "id": "south-east-stair",
+            "label": "南側東階段",
+            "source": [
+              368.043,
+              410.801
+            ],
+            "target": [
+              998.05,
+              319.2902
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          }
+        ]
+      },
+      {
+        "floor": 9,
+        "originalSource": [
+          [
+            123.03,
+            342.15
+          ],
+          [
+            442.24,
+            343.83
+          ],
+          [
+            196.92,
+            411.32
+          ]
+        ],
+        "originalTarget": [
+          [
+            689.61,
+            508.94
+          ],
+          [
+            1095.33,
+            510.79
+          ],
+          [
+            786.89,
+            596.75
+          ]
+        ],
+        "addedCalibration": [
+          {
+            "id": "west-outer",
+            "label": "西端外角（図の左上）",
+            "source": [
+              116.668,
+              332.41
+            ],
+            "target": [
+              683.65,
+              496.6
+            ],
+            "evidence": "ground path 735; upper paths 256/296/329/220"
+          }
+        ],
+        "holdout": [
+          {
+            "id": "east-outer",
+            "label": "東端外角（図の右上）",
+            "source": [
+              446.818,
+              332.41
+            ],
+            "target": [
+              1102.18,
+              496.6
+            ],
+            "evidence": "ground path 735; upper paths 256/296/329/220"
+          },
+          {
+            "id": "west-stair",
+            "label": "西端階段",
+            "source": [
+              130.887,
+              343.77
+            ],
+            "target": [
+              701.7197,
+              511.3101
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "east-stair",
+            "label": "東端階段",
+            "source": [
+              432.793,
+              343.836
+            ],
+            "target": [
+              1084.4303,
+              511.9196
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          },
+          {
+            "id": "inner-west-lift",
+            "label": "内側西エレベーター",
+            "source": [
+              201.047,
+              340.877
+            ],
+            "target": [
+              790.6895,
+              506.9449
+            ],
+            "evidence": "facility-ring-offsets elevator red"
+          },
+          {
+            "id": "inner-east-lift",
+            "label": "内側東エレベーター",
+            "source": [
+              362.0,
+              344.525
+            ],
+            "target": [
+              994.4105,
+              512.1646
+            ],
+            "evidence": "facility-ring-offsets elevator red"
+          },
+          {
+            "id": "south-east-stair",
+            "label": "南側東階段",
+            "source": [
+              368.043,
+              410.801
+            ],
+            "target": [
+              998.05,
+              597.64
+            ],
+            "evidence": "facility-ring-offsets stairs red"
+          }
+        ]
+      }
+    ]
+  },
+  "ringSha256": "f6bef3a8a63372a0315c11851037903aa07200e8e16d8ff18f052f5c3feb9126"
+}

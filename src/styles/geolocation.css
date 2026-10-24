@@ -1,0 +1,10 @@
+.gps-location-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+.gps-location-accuracy { fill: #4285f4; fill-opacity: 0.16; stroke: #4285f4; stroke-opacity: 0.3; stroke-width: 1; }
+.gps-location-dot { fill: #1a73e8; stroke: #fff; stroke-width: 2.5; }

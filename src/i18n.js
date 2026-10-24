@@ -73,6 +73,11 @@ const dictionaries = {
     'menu.food': 'OICフード',
     'menu.contactForm': 'お問い合わせ',
 
+    'gps.trial': '現在地（試験）',
+    'offline.pending': '地図の表示と操作が落ち着いてから、オフライン用の保存を自動で開始します。',
+    'offline.saving': '地図と教室検索をバックグラウンドで保存しています。完了までオンラインのままお待ちください。',
+    'offline.ready': '全階の地図・教室検索・施設表示をオフラインで利用できます。運行情報などの最新情報には通信が必要です。',
+    'offline.error': 'オフライン用の保存を完了できませんでした。オンラインで地図を開き直すと再試行します。',
     'about.title': 'このサイトについて',
     'about.close': '説明を閉じる',
     'about.intro':
@@ -357,6 +362,11 @@ const dictionaries = {
     'menu.food': 'OIC Food',
     'menu.contactForm': 'Contact',
 
+    'gps.trial': 'My location (trial)',
+    'offline.pending': 'Maps will be saved automatically once the page has loaded and you pause interacting.',
+    'offline.saving': 'Saving maps and classroom search in the background. Stay online until saving finishes.',
+    'offline.ready': 'All floor maps, classroom search and facility locations are available offline. Live information such as rail status needs an internet connection.',
+    'offline.error': 'Offline saving could not finish. Reopen the map online to try again.',
     'about.title': 'About this map',
     'about.close': 'Close description',
     'about.intro':

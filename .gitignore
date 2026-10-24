@@ -41,3 +41,7 @@ copilot-instructions.md
 .openhands/
 .github/copilot-instructions.md
 dot_github/copilot-instructions.md
+
+# Generated Python bytecode
+__pycache__/
+*.py[cod]

@@ -1,0 +1,4 @@
+.canvas-block-floor { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.canvas-block-viewer > #canvas-layer { z-index: 1; }
+.canvas-block-viewer .map-asset { background: transparent; }
+.canvas-block-viewer .floor-svg { display: none; }

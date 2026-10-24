@@ -13,6 +13,11 @@ for (const lang of languages) {
         footerBackground: getComputedStyle(document.querySelector('.site-footer')).backgroundColor,
         titleBackground: getComputedStyle(title, '::before').backgroundColor,
         titleBottom: title.getBoundingClientRect().bottom,
+        // The existing wide layout reserves the full toolbar and footer;
+        // the narrow layout fits below the solid title row.
+        fittedCenter: innerWidth <= 900
+          ? (title.getBoundingClientRect().bottom + innerHeight) / 2
+          : (Math.ceil(document.querySelector('.topbar').getBoundingClientRect().height) + innerHeight - Math.ceil(document.querySelector('.site-footer').getBoundingClientRect().height)) / 2,
         imageCenter: (image.top + image.bottom) / 2,
         mapHeight: viewer.getBoundingClientRect().height,
         height: innerHeight,
@@ -36,7 +41,7 @@ for (const lang of languages) {
     expect(layout.footerBackground).toBe('rgba(0, 0, 0, 0)');
     expect(layout.titleBackground).toBe('rgb(255, 255, 255)');
     expect(layout.mapHeight).toBe(layout.height);
-    expect(Math.abs(layout.imageCenter - (layout.titleBottom + layout.height) / 2)).toBeLessThan(2);
+    expect(Math.abs(layout.imageCenter - layout.fittedCenter)).toBeLessThan(2);
     expect(layout.toolbarGapIsMap).toBe(true);
     expect(layout.footerGapIsMap).toBe(true);
     await noOverflow(page);
@@ -76,6 +81,9 @@ for (const lang of languages) {
     await expect(page.locator('.site-menu-panel')).toBeVisible();
     await page.locator(`.site-menu-panel a[href="${lang === 'en' ? '/en/' : '/'}"]`).click();
     await expect(page.locator('.site-menu-panel')).toBeHidden();
+    // The map route has just reloaded; finish decoding before navigating away
+    // again so WebKit does not report the intentionally canceled decode.
+    await expect(page.locator('#canvas-layer img.floor-svg')).toBeVisible();
     await page.locator('.site-footer-link[href$="/terms/"]').click();
     await expect(page).toHaveURL(lang === 'en' ? /\/en\/terms\/$/ : /\/terms\/$/);
     // Other pages retain their ordinary opaque header and scrolling layout.
@@ -152,6 +160,7 @@ for (const [device, viewport] of [
     const phone = device === 'phone' || device === 'short landscape';
     const dropdown = await page.locator('[data-mobile-floor-toggle]').isVisible();
     const grouped = device.startsWith('tablet');
+    const connected = viewport.width >= 1240 && viewport.height >= 700;
     const settleList = async () => {
       await expect(page.locator('[data-mobile-floor-toggle]')).toHaveAttribute('aria-expanded', 'true');
       await expect(page.locator('[data-mobile-floor-list]')).toHaveCSS('opacity', '1');
@@ -171,15 +180,19 @@ for (const [device, viewport] of [
     await expect(buttons).toHaveCount(7);
     for (const button of await buttons.all()) {
       await expect(button).toBeVisible();
-      await expect(button).toHaveCSS('background-color', phone || grouped ? 'rgba(0, 0, 0, 0)' : 'rgb(255, 255, 255)');
+      await expect(button).toHaveCSS('background-color', phone || grouped || connected ? 'rgba(0, 0, 0, 0)' : 'rgb(255, 255, 255)');
       const geometry = await button.evaluate(el => ({ height: el.getBoundingClientRect().height, radius: parseFloat(getComputedStyle(el).borderRadius) }));
       expect(geometry.height).toBeGreaterThanOrEqual(44);
       expect(geometry.radius).toBeGreaterThan(0);
       expect(geometry.radius).toBeLessThan(geometry.height / 2);
     }
     for (const group of await page.locator(dropdown ? '.mobile-floor-list' : '.floor-tabs').all())
-      await expect(group).toHaveCSS('background-color', phone ? 'rgb(243, 243, 241)' : 'rgba(0, 0, 0, 0)');
+      await expect(group).toHaveCSS('background-color', phone ? 'rgb(243, 243, 241)' : connected ? 'rgb(255, 255, 255)' : 'rgba(0, 0, 0, 0)');
     await expect(page.locator('.floor-tab-stack')).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    if (connected) {
+      const plate = await page.locator('.floor-tab-stack').evaluate(el => getComputedStyle(el, '::before').backgroundColor);
+      expect(plate).toBe('rgb(255, 255, 255)');
+    }
     if (grouped) {
       const row = await page.locator('.floor-tab-stack').evaluate(el => {
         const panel = el.getBoundingClientRect(), buttons = [...el.querySelectorAll('.floor-tab')].map(button => button.getBoundingClientRect());

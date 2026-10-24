@@ -1,0 +1,23 @@
+import {build} from 'vite';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const root=process.cwd(),output=resolve('output/svg-viewport-safari-2026-10-21');
+execFileSync('git',['-c','core.fsmonitor=false','diff','--quiet','origin/dev','--','src','public','index.html','en','vite.config.js','package.json','package-lock.json']);
+const source=await readFile('src/main.js','utf8'),adapter=resolve('scripts/benchmarks/svg-viewport-adapter.js');
+let code=source;const changes=[];
+function replace(a,b){assert.equal(code.split(a).length-1,1,a);code=code.replace(a,b);changes.push({before:a,after:b});}
+replace('image.src = url.href;',`image.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/%3E'; image.dataset.originalSvgUrl = url.href;`);
+replace('      await svgNode.decode();','      await prepareVectorSvg(svgNode);');
+replace('      applyMapLayout(asset, { resetZoom, preserveView: Boolean(centerRatios), centerRatios });','      applyMapLayout(asset, { resetZoom, preserveView: Boolean(centerRatios), centerRatios });\n      mountVectorSvg(svgNode);');
+replace("        svgNode.style.opacity = '0';","        svgNode.style.opacity = '0'; setVectorOpacity(svgNode,0);");
+replace("          svgNode.style.opacity = '1';","          svgNode.style.opacity = '1'; setVectorOpacity(svgNode,1);");
+replace("image: canvasLayer.querySelector('.floor-svg'),","image: { src: getFloorSvgUrl(getRenderedFloorDefinition()) },");
+replace('    const percent = Math.round(state.zoom * 100);',`    renderVisibleSvg({x:state.x,y:state.y,width:state.baseWidth*state.zoom,height:state.baseHeight*state.zoom});\n    const percent = Math.round(state.zoom * 100);`);
+code=`import {prepareVectorSvg,mountVectorSvg,setVectorOpacity,renderVisibleSvg} from ${JSON.stringify(adapter)};\n${code}`;
+await mkdir(output,{recursive:true});
+for(const mode of ['all','cull'])await build({root,configFile:resolve('vite.config.js'),define:{__SVG_VIEWPORT_MODE__:JSON.stringify(mode)},plugins:[{name:'svg-viewport-only',enforce:'pre',transform(input,id){if(id.split('?')[0]!==resolve('src/main.js'))return;assert.equal(input,source);return{code,map:null};}}],build:{outDir:`/tmp/oic-svg-${mode}`,manifest:true,emptyOutDir:true}});
+await writeFile(resolve(output,'candidate-source.js'),code);
+await writeFile(resolve(output,'build-evidence.json'),JSON.stringify({commit:execFileSync('git',['rev-parse','origin/dev'],{encoding:'utf8'}).trim(),sourceSha256:createHash('sha256').update(source).digest('hex'),candidateSha256:createHash('sha256').update(code).digest('hex'),changes,policy:'original SVG bytes, defs/mask/filter, 1/4 raster cadence,140ms flush timer,maxZoom10,input handlers unchanged; top-level drawable entries,8 SVG-unit bounds pad,64 CSS-px overscan; effect-bearing entries always retained; inline-all control'},null,2));

@@ -6,6 +6,10 @@
 
 ページ別の全操作一覧、検証範囲、実行オプションは [docs/site-test-matrix.md](docs/site-test-matrix.md) を参照してください。`npm run --silent test:inventory -- --json` で元データから最新の操作対象一覧を出力できます。
 
+## 地図性能の検証
+
+これまでのSVG軽量化・拡大縮小・Leaflet移行の検証結果は [docs/map-performance/](docs/map-performance/README.md) にまとめています。
+
 ## 日本語
 
 ### 概要
@@ -16,7 +20,9 @@
 
 閲覧用サイトでは、1Fから5Fに加えて、A棟6から9F、H棟6から9F、プリンター案内図を切り替えて表示できます。地図はスマートフォンではピンチ操作、PCではホイールやドラッグ操作で拡大、縮小、移動できます。
 
-階を切り替えても、表示位置と拡大率を引き継ぎます。1F〜5Fは棟ごとに1Fの図面座標へ位置合わせし、地図・施設リング・検索外周を同じ変換で表示します。補正方法と全件照合は [docs/floor-alignment.md](docs/floor-alignment.md) を参照してください。言語を切り替えても、表示中の階、検索結果、施設選択、拡大位置を維持します。地図や施設の位置情報の読み込みに失敗した場合は、地図上のボタンから再試行できます。検索候補は上下キーで選択でき、選択中の候補が見えるように一覧がスクロールします。
+階を切り替えても、表示位置と拡大率を引き継ぎます。 1F〜5Fは棟ごとに1Fの図面座標へ位置合わせし、地図・施設リング・検索外周を同じ変換で表示します。補正方法と全件照合は [docs/floor-alignment.md](docs/floor-alignment.md) を参照してください。言語を切り替えても、表示中の階、検索結果、施設選択、拡大位置を維持します。地図や施設の位置情報の読み込みに失敗した場合は、地図上のボタンから再試行できます。検索候補は上下キーで選択でき、選択中の候補が見えるように一覧がスクロールします。
+
+オンラインで地図を開くと、初期表示と操作が落ち着いてから、全階の日英地図・教室検索・施設表示に必要なデータをバックグラウンドで自動保存します。保存完了後は、まだ表示していない階やプリンター案内図もオフラインで利用できます。「このサイトについて」で保存状況を確認できます。運行情報などの最新情報や外部リンクには通信が必要です。詳細は [docs/offline-map.md](docs/offline-map.md) を参照してください。
 
 検索欄に教室名や施設名を入力すると、該当する場所が地図上でハイライトされます。1Fでは食事カードを持たない97項目、2Fでは75項目、3Fでは64項目、4Fでは108項目、5Fでは163項目、A棟6〜9Fでは331項目、H棟6〜9Fでは178項目が、ピンの代わりに部屋の外周をピンと同じエンジ色の領域で囲んで表示します（検索で選んだときだけ表示し、ホバーでは出ません）。通信に失敗した場合は、検索欄の「再試行」から読み込み直せます。施設アイコンを使うと、トイレ、ウォーターサーバー、自販機、階段・エスカレーター、エレベーターを確認できます。「その他」には食事、プリンター案内図、AED、ATM、授乳スペースをこの順に格納しています。施設ボタンをもう一度押すとリングが消え、別の施設を押すと表示が切り替わります。ATMは1F、授乳スペースは2Fへ自動で切り替わり、解除すると選択前の階に戻ります。両者を切り替えた場合も、最初に開いていた階に戻ります。
 
@@ -51,6 +57,8 @@ Ritsumeikan OIC Map is an unofficial campus map for browsing classrooms and faci
 On the viewing site, you can switch between displays for the 1st to 5th floors, as well as Building A floors 6 to 9, Building H floors 6 to 9, and a printer guide map. You can zoom in/out and move the map using pinch gestures on smartphones, or by using the mouse wheel and dragging on a PC.
 
 Switching floors retains the map position and zoom. Switching languages retains the current floor, search result, selected facility, zoom, and map position. If the map or facility locations fail to load, use the retry buttons over the map. Use the up/down arrow keys to select search suggestions; the list scrolls to keep the selected result visible.
+
+After the initial map loads and interaction pauses, the site automatically saves all Japanese and English floor maps, classroom search and facility data in the background. Once saving finishes, unvisited floors and the printer guide also work offline. Saving status appears in About this map. Live information such as rail status and external links require an internet connection. See [docs/offline-map.md](docs/offline-map.md).
 
 When you enter a classroom or facility name in the search bar, the corresponding location will be highlighted on the map. On 1F, the 97 places without a food card, on 2F all 75 places, on 3F all 64 places, on 4F all 108 places, on 5F all 163 places, on the A building 6F-9F all 331 places, and on the H building 6F-9F all 178 places, show the room's outline in the pin's crimson instead of a pin (only when chosen from search, never on hover). If loading fails, use “Try again” in the search panel to retry. Facility icons show restrooms, water dispensers, vending machines, stairs and escalators, and elevators. The More menu contains Food, the printer guide, AEDs, ATMs, and the nursing space, in that order. Select a facility again to hide its rings, or select another facility to switch the display. Selecting ATMs switches to 1F, and selecting the nursing space switches to 2F. Deselecting returns to the previous floor, even after switching between these two facilities.
 

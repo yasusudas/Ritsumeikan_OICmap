@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>probe</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #fff; }
+  iframe { display: block; border: 0; width: 900px; height: 440px; margin: 0 auto; }
+  #label { position: fixed; top: 10px; right: 12px; z-index: 10; padding: 6px 14px; border-radius: 10px; background: rgb(0 0 0 / 85%); color: #fff; font: 700 28px/1.2 system-ui, sans-serif; pointer-events: none; }
+  #label small { display: block; font: 500 13px/1.4 ui-monospace, monospace; color: #9f9; }
+  #hud { position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 10; padding: 8px 10px; background: rgb(0 0 0 / 85%); color: #0f0; font: 13px/1.45 ui-monospace, monospace; white-space: pre; pointer-events: none; overflow: hidden; }
+</style>
+</head>
+<body>
+<iframe></iframe>
+<div id="label">…<small></small></div>
+<div id="hud">準備中…</div>
+<script type="module" src="/canvas-probe.js"></script>
+</body>
+</html>

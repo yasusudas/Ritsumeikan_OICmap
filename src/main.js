@@ -7,6 +7,7 @@ import { getFacilityRingDisplayPoint, getFacilityRingDiameterRatio } from './fac
 import { initBrandFit } from './brand-fit.js';
 import { FoodGuideViewer } from './food-guide-viewer.js';
 import { foodDataUrl, foodFloorUrls } from 'virtual:rits-oic-food-data';
+import { initOfflineMap } from './offline-map.js';
 import { alignFloorPoint, alignFloorPolygons, FLOOR_VIEWBOX } from './floor-alignment.js';
 import { alignFloorOverlay } from './floor-alignment-overlay.js';
 
@@ -352,6 +353,7 @@ if (window.__FILE_MODE__) {
     mapRelayoutFrame: 0,
     renderedZoom: 0,
     zoomRasterTimer: 0,
+    zoomLastInputAt: null,
     zoomFramesSinceRaster: 0,
     lastFlushedZoom: 0,
     initialZoom: 1,
@@ -461,11 +463,9 @@ if (window.__FILE_MODE__) {
       return;
     }
 
-    const swUrl = new URL('/sw.js', window.location.origin);
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register(swUrl, { updateViaCache: 'none' }).catch((error) => {
-        console.warn('Failed to register service worker.', error);
-      });
+    initOfflineMap({
+      isMapReady: () => !state.floorLoading && state.baseWidth > 0 && !state.floorLoadError && !state.searchLoading
+        && (state.searchReady || state.searchLoadError) && (!foodGuide || foodGuide.ready || foodGuide.error),
     });
   }
 
@@ -1854,7 +1854,7 @@ if (window.__FILE_MODE__) {
 
   function getMapFit(intrinsicWidth, intrinsicHeight) {
     const viewport = getViewportSize();
-    const insets = computeViewerSafeInsets({ mapFit: true });
+    const insets = computeViewerSafeInsets({ mapFit: viewport.width <= MOBILE_MAP_VIEWPORT_MAX_WIDTH });
     const availableWidth = Math.max(viewport.width - MAP_PADDING, 80);
     const availableHeight = Math.max(viewport.height - MAP_PADDING, 80);
     // Only the solid title row reduces the map's drawable area.
@@ -1897,6 +1897,21 @@ if (window.__FILE_MODE__) {
   // changing zoom scales the last drawn layer instead, and the sharp redraw
   // happens every few zoom frames (ZOOM_RASTER_EVERY_FRAMES) and once the map
   // has been still for a moment.
+  function zoomRasterDelayFromInput() {
+    return state.zoomLastInputAt === null ? ZOOM_RASTER_SETTLE_MS
+      : Math.max(0, ZOOM_RASTER_SETTLE_MS - (performance.now() - state.zoomLastInputAt));
+  }
+
+  function recordMapInput() {
+    if (isEditorSite) return;
+    state.zoomLastInputAt = performance.now();
+    window.clearTimeout(state.zoomRasterTimer);
+    state.zoomRasterTimer = 0;
+    if (state.renderedZoom > 0 && state.renderedZoom !== state.zoom && shouldDeferZoomRaster()) {
+      state.zoomRasterTimer = window.setTimeout(commitZoomRaster, ZOOM_RASTER_SETTLE_MS);
+    }
+  }
+
   function shouldDeferZoomRaster() {
     if (isEditorSite) {
       return false;
@@ -1906,6 +1921,13 @@ if (window.__FILE_MODE__) {
 
   function commitZoomRaster() {
     state.zoomRasterTimer = 0;
+    if (state.zoomLastInputAt !== null) {
+      const remaining = zoomRasterDelayFromInput();
+      if (remaining > 0) {
+        state.zoomRasterTimer = window.setTimeout(commitZoomRaster, remaining);
+        return;
+      }
+    }
     if (state.renderedZoom !== state.zoom) {
       flushViewRender({ commit: true });
     }
@@ -1925,9 +1947,10 @@ if (window.__FILE_MODE__) {
     if (defer) {
       const scale = state.zoom / state.renderedZoom;
       canvasLayer.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${scale})`;
-      state.zoomRasterTimer = window.setTimeout(commitZoomRaster, ZOOM_RASTER_SETTLE_MS);
+      state.zoomRasterTimer = window.setTimeout(commitZoomRaster, zoomRasterDelayFromInput());
     } else {
       state.renderedZoom = state.zoom;
+      state.zoomLastInputAt = null;
       state.zoomFramesSinceRaster = 0;
       canvasLayer.style.width = `${state.baseWidth * state.zoom}px`;
       canvasLayer.style.height = `${state.baseHeight * state.zoom}px`;
@@ -1958,8 +1981,9 @@ if (window.__FILE_MODE__) {
 
   function clampTranslate(x, y, zoom) {
     const { width: viewportWidth, height: viewportHeight } = getViewportSize();
-    const top = state.safeInsetTop || 0;
-    const bottom = state.safeInsetBottom || 0;
+    const opening = zoom <= (state.minZoom || 1) + 1e-4;
+    const top = (opening ? state.initialInsetTop : state.safeInsetTop) || 0;
+    const bottom = (opening ? state.initialInsetBottom : state.safeInsetBottom) || 0;
     const safeHeight = Math.max(viewportHeight - top - bottom, 0);
     const scaledWidth = state.baseWidth * zoom;
     const scaledHeight = state.baseHeight * zoom;
@@ -2074,8 +2098,11 @@ if (window.__FILE_MODE__) {
     state.intrinsicHeight = asset.height;
     state.baseWidth = asset.width * baseScale;
     state.baseHeight = asset.height * baseScale;
-    state.safeInsetTop = fit.insetTop;
-    state.safeInsetBottom = fit.insetBottom;
+    state.initialInsetTop = fit.insetTop;
+    state.initialInsetBottom = fit.insetBottom;
+    const panInsets = computeViewerSafeInsets({ mapFit: true });
+    state.safeInsetTop = panInsets.top;
+    state.safeInsetBottom = panInsets.bottom;
 
     if (useFillFit) {
       // The opening view (the whole floor below the solid title row) is
@@ -4460,6 +4487,63 @@ if (window.__FILE_MODE__) {
     setFacilityMoreOpen(!isFacilityMoreOpen());
   });
 
+  let startAutomaticGeolocation;
+  if (!isEditorSite) {
+    const control = document.getElementById('gps-trial-control');
+    const button = document.getElementById('gps-trial-toggle');
+    viewer.append(control);
+    // This control floats inside the gesture surface. Let native taps create
+    // clicks without the map cancelling them or starting a drag/pinch.
+    for (const type of ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'mousedown', 'mouseup', 'wheel']) {
+      control.addEventListener(type, event => event.stopPropagation(), { passive: true });
+    }
+    button.classList.remove('facility-more-option');
+    button.removeAttribute('aria-pressed');
+    const positionLocationButton = () => {
+      const facility = document.querySelector('.search-icon-actions > .search-icon-button');
+      if (facility) control.style.setProperty('--gps-button-size', `${Math.min(44, facility.getBoundingClientRect().width)}px`);
+      const primary = document.querySelector('.floor-tabs-primary');
+      if (primary) primary.parentElement.style.setProperty('--floor-spine-width', `${primary.getBoundingClientRect().width}px`);
+      const footer = document.querySelector('.site-footer');
+      control.style.bottom = `${Math.ceil(footer?.getBoundingClientRect().height || 0) + 16}px`;
+    };
+    positionLocationButton();
+    window.addEventListener('resize', positionLocationButton);
+    const footer = document.querySelector('.site-footer');
+    if (footer) new ResizeObserver(positionLocationButton).observe(footer);
+    control.hidden = false;
+    let controller, loading, attempted = false;
+    function activateGeolocation(automatic = false) {
+      attempted = true;
+      if (controller) { controller.locate(); return; }
+      if (loading) return;
+      // Ask before the lazy module download. A manual retry still calls the
+      // API directly from the tap when a browser requires user activation.
+      const initialRequest = new Promise(resolve => {
+        if (!window.isSecureContext || !navigator.geolocation) { resolve({ error: { code: 2 } }); return; }
+        try {
+          navigator.geolocation.getCurrentPosition(position => resolve({ position }), error => resolve({ error }),
+            { enableHighAccuracy: true, maximumAge: 0, timeout: 15_000 });
+        } catch { resolve({ error: { code: 2 } }); }
+      });
+      button.disabled = true;
+      loading = import('./geolocation-viewer.js').then(({ createGeolocationViewer }) => {
+        controller = createGeolocationViewer({
+          button, canvasLayer, markerLayer: frontLayer,
+          getMapFrame: () => ({ floorId: canvasLayer.dataset.floorId ?? getRenderedFloorDefinition().id, element: canvasLayer.querySelector('.map-asset') }),
+          center: point => focusMapPoint(point, Math.max(state.zoom, 3)),
+        });
+        // Automatic location must not override a room link or the user's view.
+        controller.locate(initialRequest, { centerOnFirstFix: !automatic });
+      }).catch(() => { controller = null; }).finally(() => { loading = null; button.disabled = false; });
+    }
+    button.addEventListener('click', () => {
+      setFacilityMoreOpen(false);
+      activateGeolocation();
+    });
+    startAutomaticGeolocation = () => { if (!attempted) activateGeolocation(true); };
+  }
+
   facilityMoreToggle?.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowDown') {
       event.preventDefault();
@@ -4872,6 +4956,7 @@ if (window.__FILE_MODE__) {
   viewer.addEventListener(
     'wheel',
     (event) => {
+      recordMapInput();
       if (typeof foodGuide !== 'undefined') foodGuide?.cancelGesture();
       event.preventDefault();
       const rect = viewer.getBoundingClientRect();
@@ -4898,6 +4983,7 @@ if (window.__FILE_MODE__) {
     }
 
     event.preventDefault();
+    recordMapInput();
     startDrag(event.clientX, event.clientY);
   });
 
@@ -4916,6 +5002,7 @@ if (window.__FILE_MODE__) {
       return;
     }
 
+    if (state.isDragging) recordMapInput();
     captureEditorPointAtClient(event.clientX, event.clientY);
     endDrag();
   });
@@ -4939,6 +5026,7 @@ if (window.__FILE_MODE__) {
     if (!state.isDragging) {
       return;
     }
+    recordMapInput();
 
     if (
       Math.abs(event.clientX - state.dragStartX) > 4 ||
@@ -4953,6 +5041,7 @@ if (window.__FILE_MODE__) {
   });
 
   window.addEventListener('mouseup', () => {
+    if (state.isDragging) recordMapInput();
     state.areaVertexDragIndex = null;
     endDrag();
   });
@@ -4964,6 +5053,7 @@ if (window.__FILE_MODE__) {
         return;
       }
 
+      recordMapInput();
       event.preventDefault();
 
       if (event.touches.length === 1 && !state.isPinching) {
@@ -4982,6 +5072,7 @@ if (window.__FILE_MODE__) {
   viewer.addEventListener(
     'touchmove',
     (event) => {
+      recordMapInput();
       event.preventDefault();
 
       if (event.touches.length === 1 && state.isDragging && !state.isPinching) {
@@ -5028,6 +5119,7 @@ if (window.__FILE_MODE__) {
         return;
       }
 
+      recordMapInput();
       event.preventDefault();
 
       if (!state.isPinching && !state.dragMoved && event.changedTouches.length === 1 && event.touches.length === 0) {
@@ -5054,6 +5146,7 @@ if (window.__FILE_MODE__) {
   );
 
   viewer.addEventListener('touchcancel', () => {
+    recordMapInput();
     state.isPinching = false;
     endDrag();
     updateView();
@@ -5156,5 +5249,16 @@ if (window.__FILE_MODE__) {
       }
     });
   }
-  void initializeMap();
+  void initializeMap().then(() => {
+    if (!startAutomaticGeolocation) return;
+    // Let the initial map paint before requesting location or its lazy assets.
+    // A page opened in the background waits until it becomes visible.
+    const startWhenVisible = () => {
+      if (document.visibilityState !== 'visible') return;
+      document.removeEventListener('visibilitychange', startWhenVisible);
+      requestAnimationFrame(() => requestAnimationFrame(() => startAutomaticGeolocation()));
+    };
+    document.addEventListener('visibilitychange', startWhenVisible);
+    startWhenVisible();
+  });
 }

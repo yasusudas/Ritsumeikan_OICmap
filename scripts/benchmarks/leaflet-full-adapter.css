@@ -1,0 +1,6 @@
+/* Existing viewer remains the interaction target; map pane below existing overlays. */
+.leaflet-full.leaflet-container { font: inherit; background: var(--c-bg); }
+.leaflet-full > #canvas-layer { z-index: 1; }
+.leaflet-full .leaflet-map-pane { z-index: 0; }
+.leaflet-full .leaflet-control-container { display: none; }
+.leaflet-full-overlays { position:absolute;inset:0;z-index:1;pointer-events:none;transform-origin:0 0; }

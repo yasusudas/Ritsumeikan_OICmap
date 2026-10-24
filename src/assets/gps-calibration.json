@@ -1,0 +1,98 @@
+{
+  "description": "OSM building corners matched to the original Japanese 1F drawing. Not surveyed ground truth. Keep validation points out of fitting; B/C and the southeast extent need independently identified geographic controls.",
+  "georeference": {
+    "latitude": 34.81,
+    "longitude": 135.561,
+    "width": 1190.55,
+    "height": 841.89,
+    "x": [
+      -0.16174776354784548,
+      2.475697136757557,
+      560.3918069950691
+    ],
+    "y": [
+      2.470851803394357,
+      0.05321661547903411,
+      305.0175306020657
+    ]
+  },
+  "points": [
+    {
+      "id": "D-corner",
+      "role": "control",
+      "latitude": 34.809735,
+      "longitude": 135.5601185,
+      "svg": [
+        500.391,
+        104.375
+      ],
+      "source": "Existing OSM/SVG correspondence from GPS trial; not a field measurement"
+    },
+    {
+      "id": "A-corner",
+      "role": "control",
+      "latitude": 34.8112938,
+      "longitude": 135.5607199,
+      "svg": [
+        921.097,
+        249.426
+      ],
+      "source": "Existing OSM/SVG correspondence from GPS trial; not a field measurement"
+    },
+    {
+      "id": "H-corner",
+      "role": "control",
+      "latitude": 34.8083987,
+      "longitude": 135.5611633,
+      "svg": [
+        116.668,
+        332.41
+      ],
+      "source": "Existing OSM/SVG correspondence from GPS trial; not a field measurement"
+    },
+    {
+      "id": "D-opposite",
+      "role": "validation",
+      "latitude": 34.8100942,
+      "longitude": 135.560118,
+      "svg": [
+        589.746,
+        104.375
+      ],
+      "source": "Existing OSM/SVG correspondence from GPS trial; not a field measurement"
+    },
+    {
+      "id": "H-opposite",
+      "role": "validation",
+      "latitude": 34.8095872,
+      "longitude": 135.5611456,
+      "svg": [
+        446.818,
+        332.41
+      ],
+      "source": "Existing OSM/SVG correspondence from GPS trial; not a field measurement"
+    },
+    {
+      "id": "A-AS-corner",
+      "role": "validation",
+      "latitude": 34.81023,
+      "longitude": 135.5607015,
+      "svg": [
+        645.77,
+        240.73
+      ],
+      "source": "Existing OSM/SVG correspondence from GPS trial; not a field measurement"
+    },
+    {
+      "id": "legacy-G-corner",
+      "role": "validation",
+      "latitude": 34.8095174,
+      "longitude": 135.5608475,
+      "svg": [
+        420.44,
+        261.75
+      ],
+      "source": "Existing OSM/SVG correspondence from GPS trial; not a field measurement"
+    }
+  ]
+}

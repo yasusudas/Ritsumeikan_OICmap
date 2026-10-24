@@ -139,9 +139,9 @@ test('the timetable data was refetched after JR West\'s October 2026 revision', 
     assert.equal(schedule.revision, '改正日:2026年10月03日', file);
   }
   // Returning visitors must not keep the old data from the service worker cache.
-  // v24: the A快速 trains had been stored as 普通 (see the parser tests below).
-  assert.match(read('public/sw.js'), /rits-oic-map-runtime-v24/);
-  assert.match(read('public/sw.js'), /rits-oic-map-static-v24/);
+  // v25 also excludes timetables from the offline map download.
+  assert.match(read('public/sw.js'), /rits-oic-map-runtime-v25/);
+  assert.match(read('public/sw.js'), /rits-oic-map-static-v25/);
   assert.match(read('sources/index.html'), /2026年10月16日に取得/);
 });
 

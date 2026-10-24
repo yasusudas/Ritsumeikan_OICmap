@@ -823,3 +823,30 @@ body[data-app-mode="viewer"] .mobile-floor-option[aria-selected="true"] {
     font-size: 0.8125rem;
   }
 }
+
+/* Desktop floors share one connected L-shaped sheet. */
+@media (min-width: 1240px) and (min-height: 700px) {
+  body[data-app-mode="viewer"] .floor-tab-stack { isolation: isolate; }
+  body[data-app-mode="viewer"] .floor-tab-stack::before {
+    content: ""; position: absolute; inset: 0 auto 0 0;
+    width: var(--floor-spine-width, 56px); border-radius: 14px 14px 0 14px; background: var(--c-bg); z-index: -1;
+  }
+  body[data-app-mode="viewer"] .floor-tabs { background: var(--c-bg); border-radius: 14px; }
+  body[data-app-mode="viewer"] .floor-tabs-primary { border-radius: 14px 14px 0 0; }
+  body[data-app-mode="viewer"] .floor-tabs-secondary { border-top-left-radius: 0; }
+  body[data-app-mode="viewer"] .floor-tab { background: transparent; }
+}
+
+/* Always accessible, clear of the footer on phones and desktop. */
+body[data-app-mode="viewer"] #gps-trial-control {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  z-index: 29;
+  pointer-events: auto;
+}
+body[data-app-mode="viewer"] #gps-trial-toggle {
+  width: var(--gps-button-size, 40px); height: var(--gps-button-size, 40px); border-radius: 50%;
+  color: #80868b;
+  background: #fff; box-shadow: 0 2px 6px #0003;
+}
+body[data-app-mode="viewer"] #gps-trial-toggle[data-gps-available="true"] { color: #1a73e8; }
