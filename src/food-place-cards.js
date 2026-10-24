@@ -1,6 +1,6 @@
 import { describeFoodServiceHours, isHttpUrl, judgeFoodServiceStatus, judgeFoodTruckStatus } from './food-guide-model.js';
 
-const USAGE_KEYS = ['eatIn', 'takeaway', 'outsideFood', 'publicAccess'];
+const USAGE_KEYS = ['coopElectronicMoney', 'eatIn', 'takeaway', 'outsideFood', 'publicAccess'];
 
 export const FOOD_PAGE_COPY = {
   ja: {
@@ -21,12 +21,15 @@ export const FOOD_PAGE_COPY = {
     'food.coopSource': '生協の営業カレンダー',
     'food.temporary': '臨時',
     'food.regular': '通常',
+    'food.usage.coopElectronicMoney': '生協電子マネーの利用',
     'food.usage.eatIn': '店内飲食',
     'food.usage.takeaway': '持ち帰り',
-    'food.usage.outsideFood': '購入品以外の持ち込み',
+    'food.usage.outsideFood': '購入品以外持ち込み',
     'food.usage.publicAccess': '一般の方の利用',
-    'food.value.yes': '可',
-    'food.value.no': '不可',
+    'food.value.yes': '〇',
+    'food.value.no': '✕',
+    'food.value.yesLabel': '可',
+    'food.value.noLabel': '不可',
     'food.value.unknown': '未確認',
     'food.period.弁当・ドリンク販売': '弁当・ドリンク販売',
     'food.period.クレープ・ドリンク販売': 'クレープ・ドリンク販売',
@@ -53,12 +56,15 @@ export const FOOD_PAGE_COPY = {
     'food.coopSource': 'Co-op calendar',
     'food.temporary': 'Temporary',
     'food.regular': 'Regular',
+    'food.usage.coopElectronicMoney': 'Co-op electronic money',
     'food.usage.eatIn': 'Eat in',
     'food.usage.takeaway': 'Takeaway',
     'food.usage.outsideFood': 'Bring outside food',
     'food.usage.publicAccess': 'Public access',
-    'food.value.yes': 'Yes',
-    'food.value.no': 'Not available',
+    'food.value.yes': '〇',
+    'food.value.no': '✕',
+    'food.value.yesLabel': 'Yes',
+    'food.value.noLabel': 'Not available',
     'food.value.unknown': 'Unconfirmed',
     'food.period.弁当・ドリンク販売': 'Bento & drinks',
     'food.period.クレープ・ドリンク販売': 'Crepes & drinks',
@@ -138,9 +144,9 @@ export function renderFoodLeadStatus(place, {
   });
 }
 
-// A service whose four answers are all 'na' has no visitor information to show.
+// Missing or 'na' answers do not create visitor information rows.
 export function hasFoodUsage(place) {
-  return place.services.some((service) => USAGE_KEYS.some((key) => service.usage[key] !== 'na'));
+  return place.services.some((service) => USAGE_KEYS.some((key) => ['yes', 'no', 'unknown'].includes(service.usage[key])));
 }
 
 // Visitor information in one white block. Services with identical answers
@@ -150,14 +156,18 @@ export function renderFoodUsage(place, { translate, text, headingTag = 'h5' }) {
     JSON.stringify(USAGE_KEYS.map((key) => [service.usage[key], text(service.usageNotes?.[key])]));
   const shared = place.services.every((service) => answers(service) === answers(place.services[0]));
   return (shared ? place.services.slice(0, 1) : place.services)
-    .filter((service) => USAGE_KEYS.some((key) => service.usage[key] !== 'na'))
+    .filter((service) => USAGE_KEYS.some((key) => ['yes', 'no', 'unknown'].includes(service.usage[key])))
     .map((service) => {
       const heading = shared
         ? ''
         : `<${headingTag} class="food-service-name">${escapeHtml(text(service.name))}</${headingTag}>`;
-      const rows = USAGE_KEYS.map((key) => {
+      const rows = USAGE_KEYS.filter((key) => ['yes', 'no', 'unknown'].includes(service.usage[key])).map((key) => {
         const note = service.usageNotes?.[key] ? text(service.usageNotes[key]) : '';
-        return `<div><dt>${escapeHtml(translate(`food.usage.${key}`))}</dt><dd>${escapeHtml(translate(`food.value.${service.usage[key]}`))}${note ? `<span>${escapeHtml(note)}</span>` : ''}</dd></div>`;
+        const value = service.usage[key];
+        const answer = value === 'unknown'
+          ? escapeHtml(translate('food.value.unknown'))
+          : `<span class="food-usage-symbol" role="img" aria-label="${escapeHtml(translate(`food.value.${value}Label`))}">${escapeHtml(translate(`food.value.${value}`))}</span>`;
+        return `<div${key === 'coopElectronicMoney' ? ' class="food-usage-payment"' : ''}><dt>${escapeHtml(translate(`food.usage.${key}`))}</dt><dd>${answer}${note ? `<span>${escapeHtml(note)}</span>` : ''}</dd></div>`;
       }).join('');
       return `${heading}<dl class="food-usage-grid">${rows}</dl>`;
     })

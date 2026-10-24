@@ -527,6 +527,13 @@ if (window.__FILE_MODE__) {
       return;
     }
 
+    if (isOpen && facilityMorePanel.hidden && foodGuide?.active()) {
+      foodGuide.dismissSheet({ restoreFocus: false });
+    }
+    if (isOpen) {
+      searchResults.hidden = true;
+    }
+
     facilityMorePanel.hidden = !isOpen;
     facilityMoreToggle.setAttribute('aria-expanded', String(isOpen));
     if (!isOpen && focusToggle) {
@@ -830,8 +837,8 @@ if (window.__FILE_MODE__) {
 
   function shouldAllowNativeDoubleTap(target) {
     return (
-      target instanceof HTMLElement &&
-      Boolean(target.closest('input, textarea, select, option, [contenteditable="true"], [contenteditable="plaintext-only"]'))
+      target instanceof Element &&
+      Boolean(target.closest('input, textarea, select, option, [contenteditable="true"], [contenteditable="plaintext-only"], #facility-more'))
     );
   }
 

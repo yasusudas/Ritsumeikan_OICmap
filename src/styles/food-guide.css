@@ -750,6 +750,11 @@ body[data-app-mode='viewer'] {
 
 .food-usage-grid div {
   min-width: 0;
+  text-align: center;
+}
+
+.food-usage-grid .food-usage-payment {
+  grid-column: 1 / -1;
 }
 
 .food-usage-grid dt {
@@ -766,7 +771,7 @@ body[data-app-mode='viewer'] {
   overflow-wrap: anywhere;
 }
 
-.food-usage-grid dd span {
+.food-usage-grid dd span:not(.food-usage-symbol) {
   display: block;
   margin-top: 2px;
   color: var(--c-ink-2);

@@ -148,7 +148,7 @@ export function validateFoodPlaces(payload, entries) {
         (typeof service.coopScheduleName !== 'string' || service.hours.length)
       )
         fail('mixed hours sources');
-      for (const key of ['eatIn', 'takeaway', 'outsideFood', 'publicAccess']) {
+      for (const key of ['coopElectronicMoney', 'eatIn', 'takeaway', 'outsideFood', 'publicAccess']) {
         if (!['yes', 'no', 'unknown', 'na'].includes(service.usage?.[key]))
           fail('usage');
         if (

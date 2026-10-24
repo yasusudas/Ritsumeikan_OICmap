@@ -122,16 +122,7 @@ export class FoodGuideViewer {
       if (this.browse) this.close();
       else void this.showList({ keyboard: event.detail === 0 });
     });
-    // On a phone the opening More menu would sit under the store sheet, so the sheet slides away first.
-    this.moreToggle.addEventListener(
-      'click',
-      () => {
-        if (this.narrow && this.panelMode && this.moreToggle.getAttribute('aria-expanded') !== 'true')
-          this.dismissSheet();
-      },
-      true,
-    );
-    // Same for the floor list: it opens in front of the sheet, and the sheet slides away first.
+    // The phone floor list opens in front of the sheet, which slides away first.
     const floorToggle = document.querySelector('[data-mobile-floor-toggle]');
     floorToggle?.addEventListener(
       'click',
@@ -353,7 +344,7 @@ export class FoodGuideViewer {
       keyboard: document.activeElement?.closest('#search-panel') !== null,
     });
   }
-  close({ clearHash = true, sheet = false } = {}) {
+  close({ clearHash = true, sheet = false, restoreFocus = true } = {}) {
     const token = ++this.action;
     this.selected = null;
     this.browse = false;
@@ -397,7 +388,7 @@ export class FoodGuideViewer {
     this.renderAreas();
     this.render();
     this.scheduleHours();
-    if (this.keyboard) {
+    if (this.keyboard && restoreFocus) {
       const origin =
         this.opener?.isConnected &&
         !this.opener.closest('[hidden]') &&
@@ -931,12 +922,12 @@ export class FoodGuideViewer {
       if (this.sheetMotion === motion) this.sheetMotion = null;
     };
   }
-  dismissSheet() {
+  dismissSheet({ restoreFocus = true } = {}) {
     if (
       !this.narrow ||
       matchMedia('(prefers-reduced-motion: reduce)').matches
     ) {
-      this.close();
+      this.close({ restoreFocus });
       return;
     }
     this.sheetMotion?.cancel();
@@ -945,7 +936,7 @@ export class FoodGuideViewer {
       [{ transform: 'translateY(0)' }, { transform: 'translateY(110%)' }],
       { duration: 420, easing: SHEET_DISMISS_EASE, fill: 'forwards' },
     );
-    this.close({ sheet: true });
+    this.close({ sheet: true, restoreFocus });
   }
 
   // Places whose hours or status are on screen: the hover tip, selected card, or list.

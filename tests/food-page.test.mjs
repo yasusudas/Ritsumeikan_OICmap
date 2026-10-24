@@ -8,6 +8,7 @@ import {
   foodPlacesReady,
   renderFoodPlaceList,
   renderFoodPlaceStatus,
+  renderFoodUsage,
 } from '../src/food-place-cards.js';
 import { indexSearchRoutes, normalizeHashRouteId } from '../scripts/search-data-validation.mjs';
 
@@ -73,11 +74,11 @@ test('campus cards keep every comparison field and do not absorb the food-truck 
   assert.equal([...html.matchAll(/<h3>/g)].length, 11);
   // The two lunch-street spots are marked so that, on two columns, they stack in one cell.
   assert.equal([...html.matchAll(/<li class="is-compact">/g)].length, 2);
-  // Three places have no visitor information (all answers 'na') and omit the usage section.
+  // Payment information is available even when the other visitor answers are omitted.
   for (const label of ['営業時間', '地図で見る']) {
     assert.equal([...html.matchAll(new RegExp(label, 'g'))].length >= 8, true, label);
   }
-  for (const label of ['利用案内', '店内飲食', '持ち帰り', '購入品以外の持ち込み', '一般の方の利用']) {
+  for (const label of ['利用案内', '店内飲食', '持ち帰り', '購入品以外持ち込み', '一般の方の利用']) {
     assert.equal([...html.matchAll(new RegExp(label, 'g'))].length >= 5, true, label);
   }
   // Sources and rights are listed on the sources page, not repeated on every card.
@@ -192,9 +193,32 @@ test('the food pages place today’s trucks ahead of the campus stores and use t
 
 test('a service whose usage answers are all na has no usage section', async () => {
   const { hasFoodUsage } = await import('../src/food-place-cards.js');
-  const na = { eatIn: 'na', takeaway: 'na', outsideFood: 'na', publicAccess: 'na' };
+  const na = { coopElectronicMoney: 'na', eatIn: 'na', takeaway: 'na', outsideFood: 'na', publicAccess: 'na' };
   assert.equal(hasFoodUsage({ services: [{ usage: na }] }), false);
   assert.equal(hasFoodUsage({ services: [{ usage: { ...na, eatIn: 'yes' } }] }), true);
+});
+
+test('co-op payment is limited to the four approved services and Mini Meal Shop keeps separate answers', () => {
+  const places = linkedPlaces();
+  const accepted = places.flatMap(place => place.services
+    .filter(service => service.usage.coopElectronicMoney === 'yes')
+    .map(service => `${place.name.ja}/${service.id}`));
+  assert.deepEqual(accepted, ['OIC Cafeteria/cafeteria', 'OIC Café/cafe', 'OIC Meal Shop/shop', 'OIC Mini Meal Shop/bento']);
+  for (const place of places) for (const service of place.services)
+    assert.ok(['yes', 'no'].includes(service.usage.coopElectronicMoney));
+
+  const mini = places.find(place => place.name.ja === 'OIC Mini Meal Shop');
+  for (const lang of ['ja', 'en']) {
+    const html = renderFoodUsage(mini, {
+      translate: key => FOOD_PAGE_COPY[lang][key],
+      text: value => value?.[lang] || '',
+    });
+    const payments = [...html.matchAll(/<div class="food-usage-payment">([\s\S]*?)<\/div>/g)];
+    assert.equal(payments.length, 2);
+    assert.match(payments[0][1], /✕/);
+    assert.match(payments[1][1], /〇/);
+    assert.doesNotMatch(html, /food\.value\.|undefined/);
+  }
 });
 
 test('the truck photo grid is two columns of fixed-ratio tiles, with the shop name as alt text', async () => {

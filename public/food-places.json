@@ -85,12 +85,14 @@
             }
           ],
           "usage": {
+            "coopElectronicMoney": "no",
             "eatIn": "na",
             "takeaway": "na",
             "outsideFood": "na",
             "publicAccess": "na"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -310,12 +312,14 @@
           "coopScheduleName": "OIC Cafeteria",
           "hours": [],
           "usage": {
+            "coopElectronicMoney": "yes",
             "eatIn": "yes",
             "takeaway": "no",
             "outsideFood": "no",
             "publicAccess": "yes"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -427,12 +431,14 @@
           "coopScheduleName": "OIC Cafeteria内OIC Café",
           "hours": [],
           "usage": {
+            "coopElectronicMoney": "yes",
             "eatIn": "yes",
             "takeaway": "yes",
             "outsideFood": "no",
             "publicAccess": "yes"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -565,12 +571,14 @@
             }
           ],
           "usage": {
+            "coopElectronicMoney": "no",
             "eatIn": "yes",
             "takeaway": "yes",
             "outsideFood": "no",
             "publicAccess": "yes"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -747,12 +755,14 @@
           "coopScheduleName": "OIC Meal Shop",
           "hours": [],
           "usage": {
+            "coopElectronicMoney": "yes",
             "eatIn": "no",
             "takeaway": "yes",
             "outsideFood": "no",
             "publicAccess": "yes"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -885,12 +895,14 @@
             }
           ],
           "usage": {
+            "coopElectronicMoney": "no",
             "eatIn": "no",
             "takeaway": "yes",
             "outsideFood": "no",
             "publicAccess": "yes"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -906,12 +918,14 @@
           "coopScheduleName": "OIC Mini Meal Shop みにみる（テイクアウト）",
           "hours": [],
           "usage": {
+            "coopElectronicMoney": "yes",
             "eatIn": "no",
             "takeaway": "yes",
             "outsideFood": "no",
             "publicAccess": "yes"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -1144,12 +1158,14 @@
             }
           ],
           "usage": {
+            "coopElectronicMoney": "no",
             "eatIn": "na",
             "takeaway": "na",
             "outsideFood": "na",
             "publicAccess": "na"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -1400,12 +1416,14 @@
             }
           ],
           "usage": {
+            "coopElectronicMoney": "no",
             "eatIn": "na",
             "takeaway": "na",
             "outsideFood": "na",
             "publicAccess": "na"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -1698,12 +1716,14 @@
             }
           ],
           "usage": {
+            "coopElectronicMoney": "no",
             "eatIn": "yes",
             "takeaway": "yes",
             "outsideFood": "yes",
             "publicAccess": "yes"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -1953,12 +1973,14 @@
             }
           ],
           "usage": {
+            "coopElectronicMoney": "no",
             "eatIn": "na",
             "takeaway": "na",
             "outsideFood": "na",
             "publicAccess": "na"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,
@@ -2070,12 +2092,14 @@
             }
           ],
           "usage": {
+            "coopElectronicMoney": "no",
             "eatIn": "na",
             "takeaway": "na",
             "outsideFood": "na",
             "publicAccess": "na"
           },
           "usageNotes": {
+            "coopElectronicMoney": null,
             "eatIn": null,
             "takeaway": null,
             "outsideFood": null,

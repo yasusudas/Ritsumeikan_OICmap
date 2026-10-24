@@ -30,6 +30,10 @@
 
 食事情報は `public/food-places.json`、独自画像は `public/food-marks/`、仕様は `docs/food-guide-spec.md` で管理します。閲覧用1F SVGはビルド時に旧食事ピクトグラム7個だけを除去して生成し、元SVGと編集画面を維持します。`/api/coop-hours` は生協の当月・翌月カレンダーを解析します。詳細は `docs/food-guide-implementation.md` を参照してください。
 
+利用案内の「〇／✕」は各サービスの `usage` にある `yes` / `no` を表示します。先頭の中央1列に表示する生協電子マネーは `services[].usage.coopElectronicMoney` で設定し、補足は `usageNotes.coopElectronicMoney` に記述します。未確認は `unknown`、項目を表示しない場合は `na` です。Mini Meal Shopの売店と弁当販売のように、サービスごとに異なる値を設定できます。
+
+店舗カードや店舗一覧の表示中に「その他」を開くと、PC・スマートフォンともにカードを閉じます。展開した施設メニューは、カードが閉じる途中も手前で操作できます。キーボードの下矢印から開く場合も同じ動作です。
+
 UIの文言は `src/i18n.js` にまとまっています。日本語と英語の表示を変える場合は、原則としてこの翻訳辞書を更新し、`npm run sync:en` または `npm run build` で英語版HTMLを同期します。
 
 検索結果の外周は各項目の `outlines`（`polygons` と同じ比率座標の多角形の配列）に保存します。1Fから5F、A棟6〜9F、H棟6〜9Fは日本語SVGの部屋の塗りパスから抽出しています。英語SVGも部屋の形状は同じで、2Fから5F、A棟6〜9F、H棟6〜9Fは使った塗りの外接矩形が±0.6以内で一致することを確認しています。`polygons` は食事・ATMのホバー／クリック領域で、`outlines` とは別物です。`outlines` のない項目は従来どおりピンで表示します。

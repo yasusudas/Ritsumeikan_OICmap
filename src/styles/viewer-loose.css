@@ -240,6 +240,7 @@ body[data-app-mode="viewer"] .facility-more {
   position: relative;
   display: flex;
   justify-content: center;
+  touch-action: manipulation;
 }
 
 body[data-app-mode="viewer"] #facility-more-toggle[aria-expanded="true"] {

@@ -16,6 +16,39 @@ async function dragFoodHandle(page, dy) {
 }
 
 for (const lang of languages) {
+  test(`FOOD More menu dismisses store and list cards before opening ${lang}`, async ({ page, isMobile }) => {
+    await readyMap(page, lang);
+    const place = foodData.places.find(place => place.name.en === 'OIC Mini Meal Shop');
+    const entry = searchData.entries.find(entry => entry.id === place.entryId);
+    await selectEntry(page, entry, lang);
+    const panel = page.locator('.food-panel');
+    const more = page.locator('#facility-more-toggle');
+    const food = page.locator('#facility-more-panel .food-action-button');
+    await expect(panel).toBeVisible();
+
+    if (isMobile) await more.tap();
+    else await more.click();
+    await expect(more).toHaveAttribute('aria-expanded', 'true');
+    await expect(panel).toBeHidden();
+    await expect(page.locator('#search-results')).toBeHidden();
+    await expect(food).toBeVisible();
+    expect(await food.evaluate(button => {
+      const r = button.getBoundingClientRect();
+      return button.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2));
+    })).toBe(true);
+
+    if (isMobile) await food.tap();
+    else await food.click();
+    await expect(page.locator('.food-store-row')).toHaveCount(foodData.places.length);
+    await expect(more).toHaveAttribute('aria-expanded', 'false');
+    if (isMobile) await more.tap();
+    else await more.press('ArrowDown');
+    await expect(more).toHaveAttribute('aria-expanded', 'true');
+    await expect(panel).toBeHidden();
+    await expect(food).toBeVisible();
+    await noOverflow(page);
+  });
+
   test(`FOOD every store list, overview/details and map link ${lang}`, async ({ page, isMobile, guard }, testInfo) => {
     test.setTimeout(180_000);
     // Navigating away can cancel a WebKit image decode in the old document.
